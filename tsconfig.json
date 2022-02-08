@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+      "target": "es2016",
+      "jsx": "react",
+      "allowJs": true,
+      "module": "ES2020",
+      "outDir": "dist",
+      "forceConsistentCasingInFileNames": true,
+      "allowSyntheticDefaultImports": true,
+      "moduleResolution": "Node",
+      "strict": true,
+      "declaration": true,
+      "declarationDir": "dist",
+      "skipLibCheck": true
+  },
+  "include": [
+    "stories"
+  ]
+}
