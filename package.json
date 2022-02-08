@@ -1,7 +1,7 @@
 {
   "name": "@uniwhales/component-library",
   "version": "0.0.1-development",
-  "description": "",
+  "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -9,7 +9,13 @@
     "build-library": "rollup -c",
     "lint": "npx eslint . --ext .tsx,.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "react-component",
+    "typescript",
+    "sass",
+    "styled-component"
+  ],
   "author": "George Travin",
   "license": "ISC",
   "devDependencies": {
