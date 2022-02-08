@@ -1,6 +1,6 @@
 {
-  "name": "@myinterview/component-library",
-  "version": "0.0.0-development",
+  "name": "@uniwhales/component-library",
+  "version": "0.0.1-development",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
