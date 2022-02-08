@@ -5,6 +5,9 @@ UniWhales React Component Library
 
 
 React components to be shared across UniWhales applications
+
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+![ts](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 ### Use
 
 #### Install the package
