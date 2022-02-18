@@ -1,3 +1,5 @@
+import React, { FC } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { TEXT_FONTS, TEXT_VARIANTS } from './typography/text';
 
 /** A list of breakpoints accessible by key/value. */
@@ -89,6 +91,11 @@ export const SpacingUnit = {
   12: '12',
 } as const;
 
+export enum Mode {
+  night = 'night',
+  light = 'light',
+}
+
 type Theme = {
   breakpoints: typeof BREAKPOINTS_SCALE,
   colors: { [key in Color]: string },
@@ -108,7 +115,6 @@ type Theme = {
  */
 export const THEME: Theme = {
   breakpoints: BREAKPOINTS_SCALE,
-
   colors: {
     /* === THEME AGNOSTIC === */
 
@@ -246,3 +252,5 @@ export const THEME: Theme = {
 
   textVariants: TEXT_VARIANTS,
 } as const;
+
+export const CieloThemeProvider: FC = ({ children }) => <ThemeProvider theme={THEME}>{children}</ThemeProvider>;

@@ -9,7 +9,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 import { Color, THEME } from '../Theme';
-import { TextVariant } from '../typography/text';
+import { TextTreatment, TextVariant, TEXT_VARIANTS } from '../typography/text';
 
 /** BaseTextProps */
 export type BaseTextProps = TypographyProps &
@@ -23,8 +23,8 @@ Omit<ColorProps, 'color'> & {
      * "md"
      * ["md", "sm"]
      * @see {@link TextVariant}
-     */
-  variant?: ResponsiveValue<TextVariant>;
+   */
+  variant?: ResponsiveValue<TextTreatment>;
   textColor?: Color;
   /*
     Max number of lines before truncating the content with an ellipsis at the end of the last line.
@@ -88,5 +88,5 @@ Text.displayName = 'Text';
 
 Text.defaultProps = {
   fontFamily: 'Poppins',
-  variant: 'text',
+  variant: [TEXT_VARIANTS.small.text],
 };

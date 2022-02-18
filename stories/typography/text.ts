@@ -7,138 +7,165 @@ export const TEXT_FONTS = {
 
 export interface TextTreatment {
   fontSize: string;
-  lineHeight: string;
-  letterSpacing?: string;
+  lineHeight: TextLineHeight;
+  letterSpacing?: TextLetterSpacing;
   fontWeight?: 'normal' | 'bold';
 }
 
 /** font-size scale */
-export const TEXT_FONT_SIZES = {
-  size12: '62px',
-  size11: '55px',
-  size10: '48px',
-  size9: '32px',
-  size8: '28px',
-  size7: '24px',
-  size6: '18px',
-  size5: '16px',
-  size4: '15px',
-  size3: '14px',
-  size2: '13px',
-  size1: '12px',
+
+export enum TextFontSize {
+  'size12' = 'size12',
+  'size11' = 'size11',
+  'size10' = 'size10',
+  'size9' = 'size9',
+  'size8' = 'size8',
+  'size7' = 'size7',
+  'size6' = 'size6',
+  'size5' = 'size5',
+  'size4' = 'size4',
+  'size3' = 'size3',
+  'size2' = 'size2',
+  'size1' = 'size1',
+}
+
+export const TEXT_FONT_SIZES: { [key in keyof typeof TextFontSize]: string } = {
+  [TextFontSize.size12]: '62px',
+  [TextFontSize.size11]: '55px',
+  [TextFontSize.size10]: '48px',
+  [TextFontSize.size9]: '32px',
+  [TextFontSize.size8]: '28px',
+  [TextFontSize.size7]: '24px',
+  [TextFontSize.size6]: '18px',
+  [TextFontSize.size5]: '16px',
+  [TextFontSize.size4]: '15px',
+  [TextFontSize.size3]: '14px',
+  [TextFontSize.size2]: '13px',
+  [TextFontSize.size1]: '12px',
 };
 
 /** line-height scale */
-export const TEXT_LINE_HEIGHTS = {
-  solid: 1,
-  title: 1.25,
-  body: 1.5,
+export enum TextLineHeight {
+  'solid' = 'solid',
+  'title' = 'title',
+  'body' = 'body',
+}
+export const TEXT_LINE_HEIGHTS: { [key in keyof typeof TextLineHeight]: number } = {
+  [TextLineHeight.solid]: 1,
+  [TextLineHeight.title]: 1.25,
+  [TextLineHeight.body]: 1.5,
 };
 
 /** letter-spacing scale */
-export const TEXT_LETTER_SPACING = {
+export enum TextLetterSpacing {
+  tight = 'tight',
+  tightest = 'tightest',
+}
+export const TEXT_LETTER_SPACING: { [key in keyof typeof TextLetterSpacing]: string } = {
   tight: '-0.02em',
   tightest: '-0.03em',
 };
 
 /** Names of typographic treatments */
-export const TEXT_VARIANT_NAMES = [
-  'largeTitle',
-  'title',
-  'subtitle',
-  'text',
-  'mediumText',
-  'caption',
-  'small',
-] as const;
+export enum TextVariantName {
+  'largeTitle' = 'largeTitle',
+  'title' = 'title',
+  'subtitle' = 'subtitle',
+  'text' = 'text',
+  'mediumText' = 'mediumText',
+  'caption' = 'caption',
+  'small' = 'small',
+}
+
+export enum TextVariant {
+  'large' = 'large',
+  'small' = 'small',
+}
 
 /** Available typographic treatments */
 export const TEXT_VARIANTS: Record<
-string,
-Record<typeof TEXT_VARIANT_NAMES[number], TextTreatment>
+TextVariant,
+Record<TextVariantName, TextTreatment>
 > = {
-  large: {
-    largeTitle: {
-      fontSize: 'size9',
-      lineHeight: 'title',
-      letterSpacing: 'tight',
+  [TextVariant.large]: {
+    [TextVariantName.largeTitle]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size9],
+      lineHeight: TextLineHeight.title,
+      letterSpacing: TextLetterSpacing.tight,
       fontWeight: 'normal',
     },
-    title: {
-      fontSize: 'size7',
-      lineHeight: 'title',
-      letterSpacing: 'tight',
+    [TextVariantName.title]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size7],
+      lineHeight: TextLineHeight.title,
+      letterSpacing: TextLetterSpacing.tight,
       fontWeight: 'normal',
     },
-    subtitle: {
-      fontSize: 'size6',
-      lineHeight: 'title',
+    [TextVariantName.subtitle]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size6],
+      lineHeight: TextLineHeight.title,
       fontWeight: 'normal',
     },
-    text: {
-      fontSize: 'size3',
-      lineHeight: 'body',
+    [TextVariantName.text]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size3],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
-    mediumText: {
-      fontSize: 'size3',
-      lineHeight: 'body',
+    [TextVariantName.mediumText]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size3],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'bold',
     },
-    caption: {
-      fontSize: 'size2',
-      lineHeight: 'body',
+    [TextVariantName.caption]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size2],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
-    small: {
-      fontSize: 'size1',
-      lineHeight: 'body',
+    [TextVariantName.small]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size1],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
   },
-  small: {
-    largeTitle: {
-      fontSize: 'size8',
-      lineHeight: 'title',
-      letterSpacing: 'tight',
+  [TextVariant.small]: {
+    [TextVariantName.largeTitle]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size8],
+      lineHeight: TextLineHeight.title,
+      letterSpacing: TextLetterSpacing.tight,
       fontWeight: 'normal',
     },
-    title: {
-      fontSize: 'size6',
-      lineHeight: 'title',
-      letterSpacing: 'tight',
+    [TextVariantName.title]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size6],
+      lineHeight: TextLineHeight.title,
+      letterSpacing: TextLetterSpacing.tight,
       fontWeight: 'normal',
     },
-    subtitle: {
-      fontSize: 'size5',
-      lineHeight: 'title',
+    [TextVariantName.subtitle]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size5],
+      lineHeight: TextLineHeight.title,
       fontWeight: 'normal',
     },
-    text: {
-      fontSize: 'size4',
-      lineHeight: 'body',
+    [TextVariantName.text]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size4],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
-    mediumText: {
-      fontSize: 'size4',
-      lineHeight: 'body',
+    [TextVariantName.mediumText]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size4],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'bold',
     },
-    caption: {
-      fontSize: 'size3',
-      lineHeight: 'body',
+    [TextVariantName.caption]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size3],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
-    small: {
-      fontSize: 'size2',
-      lineHeight: 'body',
+    [TextVariantName.small]: {
+      fontSize: TEXT_FONT_SIZES[TextFontSize.size2],
+      lineHeight: TextLineHeight.body,
       fontWeight: 'normal',
     },
   },
-} as const;
-
-/** Name of typographic treatment */
-export type TextVariant = typeof TEXT_VARIANT_NAMES[number];
+};
 
 /**
  * Type definition for font objects
