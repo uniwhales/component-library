@@ -7,7 +7,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-library": "rollup -c",
-    "lint": "npx eslint . --ext .tsx,.ts"
+    "lint": "npx eslint . --ext .tsx,.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "react",
@@ -27,6 +29,9 @@
     "@storybook/addon-links": "^6.4.18",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.18",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@types/jest": "^27.4.0",
     "@types/react": "^17.0.38",
     "@types/styled-components": "^5.1.22",
     "@types/styled-system": "^5.1.15",
@@ -41,9 +46,11 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jest-styled-components": "^7.0.8",
     "postcss": "^8.4.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
     "rollup": "^2.67.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
@@ -51,6 +58,8 @@
     "rollup-plugin-uglify": "^6.0.4",
     "sass": "^1.49.7",
     "sass-loader": "^10.2.1",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
   },
   "peerDependencies": {

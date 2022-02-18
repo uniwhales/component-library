@@ -8,7 +8,6 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import { BoxProps } from '../box/Box';
 import { Color, THEME } from '../Theme';
 import { TextVariant } from '../typography/text';
 
@@ -61,8 +60,7 @@ export const overflowEllipsisMixin = css`
 `;
 
 /** TextProps */
-export type TextProps = BaseTextProps &
-BoxProps & {
+export type TextProps = BaseTextProps & {
   overflowEllipsis?: boolean;
   textTransform?: ResponsiveValue<TextTransform>;
   lineClamp?: ResponsiveValue<number>;

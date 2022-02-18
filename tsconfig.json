@@ -11,7 +11,9 @@
       "strict": true,
       "declaration": true,
       "declarationDir": "dist",
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      /* Required for jest */
+      "esModuleInterop": true
   },
   "include": [
     "stories"
