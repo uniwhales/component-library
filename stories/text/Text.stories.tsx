@@ -14,6 +14,10 @@ export default {
       options: Object.keys(THEME.colors),
       control: { type: 'select' },
     },
+    size: {
+      options: Object.keys(THEME.sizes),
+      control: { type: 'select' },
+    },
   },
 } as ComponentMeta<typeof Text>;
 
@@ -21,7 +25,6 @@ export default {
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args}>Lorem ipsum dolor</Text>;
 
 export const Primary = Template.bind({});
-
-Template.parameters = {
-  variant: [THEME.textVariants.large.largeTitle],
+Primary.parameters = {
+  size: '20px',
 };

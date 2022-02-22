@@ -1,40 +1,3 @@
-import React, { FC } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { TEXT_FONTS, TEXT_VARIANTS } from './typography/text';
-
-/** A list of breakpoints accessible by key/value. */
-export const breakpoints = {
-  /** Above 1920 */
-  lg: '1920px',
-  /** Between 1280 and 1919 */
-  md: '1280px',
-  /** Between 768 and  1279 */
-  sm: '768px',
-  /** Below 767 */
-  xs: '767px',
-} as const;
-
-/** Copy of `breakpoints` as integers */
-export const unitlessBreakpoints = {
-  /** Above 1920 */
-  lg: parseInt(breakpoints.lg, 10),
-  /** Between 1280 and 1919 */
-  md: parseInt(breakpoints.md, 10),
-  /** Between 768 and  1279 */
-  sm: parseInt(breakpoints.sm, 10),
-  /** Below 767 */
-  xs: parseInt(breakpoints.xs, 10),
-};
-
-/**
- * We alias breakpoints onto the scale so that styled-system has access
- * to the named breakpoints as well as the scale
- */
-const BREAKPOINTS_SCALE = Object.assign(
-  [breakpoints.sm, breakpoints.md, breakpoints.lg],
-  breakpoints,
-);
-
 export enum Color {
   'UWLBlue' = 'UWLBlue',
   'WaterBlue' = 'WaterBlue',
@@ -82,31 +45,23 @@ export enum Gradient {
   'BlurpleGradientHighlight' = 'BlurpleGradientHighlight',
 }
 
-export const SpacingUnit = {
-  0.5: '0.5',
-  1: '1',
-  2: '2',
-  4: '4',
-  6: '6',
-  12: '12',
-} as const;
-
-export enum Mode {
-  night = 'night',
-  light = 'light',
+export enum FontSize {
+  H1Headline = 'H1Headline',
+  H2Headline = 'H2Headline',
+  H3Headline = 'H3Headline',
+  H4Headline = 'H4Headline',
+  H5Headline = 'H5Headline',
+  H6Headline = 'H6Headline',
+  BodyLarge = 'BodyLarge',
+  Body = 'Body',
+  Caption = 'Caption',
+  Overline = 'Overline',
 }
 
 type Theme = {
-  breakpoints: typeof BREAKPOINTS_SCALE,
   colors: { [key in Color]: string },
   gradients: { [key in Gradient]: string },
-  fonts: typeof TEXT_FONTS,
-  mediaQueries: { [key in keyof typeof breakpoints]: string } & {
-    hover: string
-  },
-  grid: { breakpoints: {} },
-  space: { [key in keyof typeof SpacingUnit]: string },
-  textVariants: typeof TEXT_VARIANTS
+  sizes: { [key in FontSize]: string }
 };
 
 /**
@@ -114,7 +69,18 @@ type Theme = {
  * design system from our design team
  */
 export const THEME: Theme = {
-  breakpoints: BREAKPOINTS_SCALE,
+  sizes: {
+    [FontSize.H1Headline]: '54px',
+    [FontSize.H2Headline]: '50px',
+    [FontSize.H3Headline]: '48px',
+    [FontSize.H4Headline]: '32px',
+    [FontSize.H5Headline]: '24px',
+    [FontSize.H6Headline]: '20px',
+    [FontSize.BodyLarge]: '18px',
+    [FontSize.Body]: '16px',
+    [FontSize.Caption]: '10px',
+    [FontSize.Overline]: '8px',
+  },
   colors: {
     /* === THEME AGNOSTIC === */
 
@@ -215,42 +181,4 @@ export const THEME: Theme = {
     [Gradient.BlurpleGradientHighlight]:
       'linear-gradient(180deg, #509CF4 0%, #4A00E0 100%)',
   },
-
-  fonts: TEXT_FONTS,
-
-  // prettier-ignore
-  // Media queries to work with in web
-  mediaQueries: {
-    lg: `(min-width: ${breakpoints.lg})`,
-    md: `(min-width: ${breakpoints.md}) and (max-width: ${parseInt(breakpoints.lg, 10) - 1}px)`,
-    sm: `(min-width: ${breakpoints.sm}) and (max-width: ${parseInt(breakpoints.md, 10) - 1}px)`,
-    xs: `(max-width: ${parseInt(breakpoints.sm, 10) - 1}px)`,
-    /** Determines if the input device has the notion of hover, e.g. mouse. */
-    hover: `not all and (pointer: coarse), not all and (-moz-touch-enabled: 1)`,
-  },
-
-  // Empty grid object to prevent `Grid` component from throwing
-  grid: {
-    breakpoints: {},
-  },
-
-  space: {
-    // unit: px value
-    /** Equivalent to 5px  */
-    0.5: '5px',
-    /** Equivalent to 10px  */
-    1: '10px',
-    /** Equivalent to 20px  */
-    2: '20px',
-    /** Equivalent to 40px  */
-    4: '40px',
-    /** Equivalent to 60px  */
-    6: '60px',
-    /** Equivalent to 120px  */
-    12: '120px',
-  },
-
-  textVariants: TEXT_VARIANTS,
 } as const;
-
-export const CieloThemeProvider: FC = ({ children }) => <ThemeProvider theme={THEME}>{children}</ThemeProvider>;

@@ -20,5 +20,6 @@ rules: {
   "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
   "import/prefer-default-export": "off",
   "react/jsx-props-no-spreading": "off",
-  "@typescript-eslint/quotes": [ "error", "single", { "allowTemplateLiterals": true }]
+  "@typescript-eslint/quotes": [ "error", "single", { "allowTemplateLiterals": true }],
+  'max-len': [2, { code: 100, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true }]
 }
