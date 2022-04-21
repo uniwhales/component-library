@@ -33,10 +33,8 @@ export const IconWrapper: React.FC<Props> = ({
   fill,
   icon,
   stroke,
-}) => {
-  return (
-    <IconComponent onClick={onClick} height={height} width={width} fill={fill} stroke={stroke}>
-      {icon && iconsArray[icon]}
-    </IconComponent>
-  );
-};
+}) => (
+  <IconComponent onClick={onClick} height={height} width={width} fill={fill} stroke={stroke}>
+    {icon && iconsArray[icon]}
+  </IconComponent>
+);
