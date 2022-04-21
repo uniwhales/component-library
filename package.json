@@ -1,6 +1,6 @@
 {
   "name": "@uniwhales/component-library",
-  "version": "0.0.1-development",
+  "version": "0.0.2-development",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
