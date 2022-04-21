@@ -16,10 +16,11 @@ module.exports = {
     return config;
   },
   "stories": [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    "../src/atoms/**/*.stories.mdx",
+    "../src/atoms/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   "addons": [
+    "@storybook/addon-controls",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-postcss"
