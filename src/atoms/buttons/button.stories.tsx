@@ -32,7 +32,6 @@ const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
 };
-
 export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
 export const Tertiary = Template.bind({});

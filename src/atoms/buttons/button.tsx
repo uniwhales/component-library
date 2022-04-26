@@ -8,6 +8,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   buttonVariant: ButtonVariant;
   disabled?: boolean
   icon?: 'star'
+  onClick: () => void;
 }
 
 export enum ButtonVariant {
@@ -154,11 +155,12 @@ export const ButtonAtom = ({
   buttonVariant,
   disabled = false,
   icon,
+  onClick,
 }:ButtonProps) => {
   switch (ButtonVariant[buttonVariant]) {
     case ButtonVariant.SECONDARY:
       return (
-        <ButtonSecondary disabled={disabled} type="button">
+        <ButtonSecondary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {icon ? (
             <div className="button__group">
               {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
@@ -169,7 +171,7 @@ export const ButtonAtom = ({
       );
     case ButtonVariant.TERTIARY:
       return (
-        <ButtonTertiary disabled={disabled} type="button">
+        <ButtonTertiary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {icon ? (
             <div className="button__group">
               {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
@@ -180,31 +182,31 @@ export const ButtonAtom = ({
       );
     case ButtonVariant.PRIMARY_ACTION:
       return (
-        <ButtonPrimaryAction disabled={disabled} type="button">
+        <ButtonPrimaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />
         </ButtonPrimaryAction>
       );
     case ButtonVariant.SECONDARY_ACTION:
       return (
-        <ButtonSecondaryAction disabled={disabled} type="button">
+        <ButtonSecondaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />
         </ButtonSecondaryAction>
       );
     case ButtonVariant.TINY_ACTION:
       return (
-        <ButtonTinyAction disabled={disabled} type="button">
+        <ButtonTinyAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="17px" height="17px" icon={icon} />
         </ButtonTinyAction>
       );
     case ButtonVariant.SECONDARY_ACTION_INVERSE:
       return (
-        <ButtonSecondaryActionInverse disabled={disabled} type="button">
+        <ButtonSecondaryActionInverse onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />
         </ButtonSecondaryActionInverse>
       );
     default:
       return (
-        <ButtonPrimary disabled={disabled} type="button">
+        <ButtonPrimary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {icon ? (
             <div className="button__group">
               {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
