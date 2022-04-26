@@ -28,7 +28,7 @@ const Button = Styled.button`
   font-weight: 700;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: 12px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   .button__group {
     display: flex;
     align-items: center;
