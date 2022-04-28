@@ -28,6 +28,9 @@ const Theme = {
       GREY: '#A5A6B8',
       DISABLED: '#23293B',
     },
+    neutral: {
+      SHADE_0: '#252E4F',
+    },
   },
   gradients: {
     primary: {
