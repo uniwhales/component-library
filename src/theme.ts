@@ -30,6 +30,8 @@ const Theme = {
     },
     neutral: {
       SHADE_0: '#252E4F',
+      SHADE_3: '#1F2128',
+      SHADE_4: '#BBBCCE',
     },
   },
   gradients: {

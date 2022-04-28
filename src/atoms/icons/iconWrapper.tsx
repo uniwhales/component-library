@@ -1,9 +1,19 @@
 import React from 'react';
 import { Styled } from '../../theme';
-import { Star } from '.';
+import { Aurora, Star } from '.';
 
 const iconsArray = {
   star: <Star />,
+  ethereum: <Star />,
+  bsc: <Star />,
+  polygon: <Star />,
+  avalanche: <Star />,
+  fantom: <Star />,
+  arbitrum: <Star />,
+  boba: <Star />,
+  metis: <Star />,
+  aurora: <Aurora />,
+  optimism: <Star />,
 };
 const IconComponent = Styled.div<Props>`
   height: ${(props) => props.height};
@@ -18,7 +28,7 @@ const IconComponent = Styled.div<Props>`
 `;
 
 export interface Props {
-  icon?: 'star'
+  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
   onClick?: () => void;
   height?: string;
   width?: string;
