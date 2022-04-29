@@ -5,6 +5,8 @@ import { Styled } from '../../theme';
 export interface Props {
   type: 'text' | 'number';
   placeholder?: string;
+  value?:string;
+  onChange: any;
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -42,13 +44,15 @@ const InputStyled = Styled.input`
   `}
   }
 `;
-export const Input = ({ type, placeholder }:Props) => {
+export const Input = ({
+  type, placeholder, value, onChange,
+}:Props) => {
   const [focus, setFocus] = useState(false);
   return (
     <InputWrapper>
       <InputLabel />
       <BorderWrapper focus={focus}>
-        <InputStyled focus={focus} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
+        <InputStyled focus={focus} value={value} onChange={(e) => onChange(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
       </BorderWrapper>
       <InputUserMessage />
     </InputWrapper>
