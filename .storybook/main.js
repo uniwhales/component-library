@@ -18,7 +18,10 @@ module.exports = {
   "stories": [
     "../src/intro/**/*.stories.mdx",
     "../src/atoms/**/*.stories.mdx",
+    "../src/molecules/**/*.stories.mdx",
     "../src/atoms/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/molecules/**/*.stories.@(js|jsx|ts|tsx)",
+
   ],
   "addons": [
     "@storybook/addon-controls",

@@ -1,19 +1,21 @@
 import React from 'react';
 import { Styled } from '../../theme';
-import { Aurora, Star } from '.';
+import {
+  Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star,
+} from '.';
 
 const iconsArray = {
   star: <Star />,
-  ethereum: <Star />,
-  bsc: <Star />,
+  ethereum: <Eth />,
+  bsc: <Bsc />,
   polygon: <Star />,
-  avalanche: <Star />,
-  fantom: <Star />,
+  avalanche: <Avalanche />,
+  fantom: <Fantom />,
   arbitrum: <Star />,
-  boba: <Star />,
-  metis: <Star />,
+  boba: <Boba />,
+  metis: <Metis />,
   aurora: <Aurora />,
-  optimism: <Star />,
+  optimism: <Optimism />,
 };
 const IconComponent = Styled.div<Props>`
   height: ${(props) => props.height};

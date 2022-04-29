@@ -5,9 +5,10 @@ import { IconWrapper } from '../icons/iconWrapper';
 
 export interface Props {
   title?: string;
-  isHighlighted: boolean
+  isHighlighted?: boolean
   tabIndex: number
   icon?: 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
+  setActiveTab?: () => void;
 }
 const SelectorTab = Styled.div<Props>`
   .tabs__group {
@@ -21,34 +22,49 @@ const SelectorTab = Styled.div<Props>`
   background: ${(props) => props.theme.colors.neutral.SHADE_3};
   border: 1px solid ${(props) => props.theme.colors.neutral.SHADE_4};
   color: ${(props) => props.theme.colors.neutral.SHADE_4};
-  max-width: 200px;
+  width: 200px;
   height: 32px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   justify-content: center;
+  &:not(:last-child) {
+    border-right: transparent
+  }
+  &:first-child {
+    border-radius: 12px 0 0 12px;
+  }
+  &:last-child {
+    border-radius: 0 12px 12px 0;
+  }
   :hover {
+    transition: all 0.4s;
     color: ${(props) => props.theme.colors.system.WHITE};
-    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
     font-weight: bold;
+    svg {
+      transition: all 0.4s;
+      fill: white;
+    }
   }
   ${({ isHighlighted }) => isHighlighted && css`
     color: ${(props) => props.theme.colors.system.WHITE};
-    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
-    :hover {
-      font-weight: bold;
+    font-weight: bold;
+    svg {
+      transition: all 0.4s;
+      fill: white;
     }
   `}
 `;
 
 export const SelectorTabAtom = ({
-  title, isHighlighted, tabIndex, icon,
+  title, isHighlighted, tabIndex, icon, setActiveTab,
 }:Props) => (
-  <SelectorTab role="tab" tabIndex={tabIndex} isHighlighted={isHighlighted}>
+  <SelectorTab onClick={setActiveTab} role="tab" tabIndex={tabIndex} isHighlighted={isHighlighted}>
     {icon ? (
       <div className="tabs__group">
-        {icon && <IconWrapper width="17px" height="17px" icon={icon} />}
+        {icon && <IconWrapper fill={isHighlighted ? 'white' : 'grey'} width="17px" height="17px" icon={icon} />}
         {title}
       </div>
     ) : title}
