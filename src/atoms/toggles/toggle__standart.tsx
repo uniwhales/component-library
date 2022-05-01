@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { Styled } from '../../theme';
+import { Text } from '../texts/text';
 
 export interface Props {
   isOn?: boolean;
   onClick?: () => void;
+  label?:string
 }
+const Wrapper = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+`;
 const Switcher = Styled.label`
   position: relative;
   display: inline-block;
@@ -50,13 +58,17 @@ const FakeInput = Styled.input`
     background-color: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
-export const ToggleAtom = ({ isOn, onClick }:Props) => {
+export const ToggleAtom = ({ isOn, onClick, label }:Props) => {
   const [trigger, setTrigger] = useState(false);
   const functionWrapper = () => setTrigger(!trigger);
   return (
-    <Switcher>
-      <FakeInput type="checkbox" defaultChecked={isOn || trigger} onChange={onClick || functionWrapper} />
-      <Toggle />
-    </Switcher>
+    <Wrapper>
+      <Switcher>
+        <FakeInput type="checkbox" defaultChecked={isOn || trigger} onChange={onClick || functionWrapper} />
+        <Toggle />
+      </Switcher>
+      {label && <Text size="M-Regular">{label}</Text>}
+    </Wrapper>
+
   );
 };

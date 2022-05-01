@@ -21,6 +21,7 @@ module.exports = {
     "../src/molecules/**/*.stories.mdx",
     "../src/atoms/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/molecules/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/organisms/**/*.stories.@(js|jsx|ts|tsx)",
 
   ],
   "addons": [

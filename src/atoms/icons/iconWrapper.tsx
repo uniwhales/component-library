@@ -1,11 +1,14 @@
 import React from 'react';
 import { Styled } from '../../theme';
 import {
-  Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star,
+  Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star, Copy, Edit, Remove,
 } from '.';
 
 const iconsArray = {
   star: <Star />,
+  copy: <Copy />,
+  edit: <Edit />,
+  remove: <Remove />,
   ethereum: <Eth />,
   bsc: <Bsc />,
   polygon: <Star />,
@@ -30,7 +33,7 @@ const IconComponent = Styled.div<Props>`
 `;
 
 export interface Props {
-  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
+  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove';
   onClick?: () => void;
   height?: string;
   width?: string;

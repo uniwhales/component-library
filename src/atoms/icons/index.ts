@@ -1,4 +1,8 @@
 export * from './start';
+export * from './copy';
+export * from './edit';
+export * from './remove';
+// chains
 export * from './chains/aurora';
 export * from './chains/bsc';
 export * from './chains/ethereum';

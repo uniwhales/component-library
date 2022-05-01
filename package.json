@@ -59,6 +59,7 @@
   "dependencies": {
     "@storybook/addon-controls": "^6.4.22",
     "react-select": "^5.3.1",
+    "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.5"
   },
   "repository": {

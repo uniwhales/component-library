@@ -16,7 +16,7 @@ const InputWrapper = Styled.div`
   gap: 5px;
 `;
 
-const BorderWrapper = Styled.div`
+const BorderWrapper = Styled.div<{ focus: boolean }>`
   border-radius: 12px;
   padding: 1px;
   box-sizing: border-box;
@@ -26,7 +26,7 @@ const BorderWrapper = Styled.div`
 `;
 
 const InputUserMessage = Styled.p``;
-const InputStyled = Styled.input`
+const InputStyled = Styled.input<{ focus: boolean }>`
   outline: none;
   width: 398px;
   cursor: pointer;
@@ -51,7 +51,8 @@ const InputStyled = Styled.input`
   `}
   }
 `;
-const InputLabel = Styled.label`
+const InputLabel = Styled.label<{ focus: boolean, hover:boolean }>`
+  font-size: 12px;
   color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_2};
   font-weight: 700;
   line-height: 16px;

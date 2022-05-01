@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import ReactSelect, { components } from 'react-select';
+import ReactSelect, {
+  components, GroupBase, OptionProps, StylesConfig,
+} from 'react-select';
 import { Styled, Theme } from '../../theme';
 
 const StyledSelect = Styled(ReactSelect)`
   max-width: 172px;
   outline: none;
+
   :hover .react-select__placeholder {
     color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
   }
+
   .react-checkbox {
     display: flex;
     align-items: center;
@@ -15,11 +19,13 @@ const StyledSelect = Styled(ReactSelect)`
     padding: 0 10px;
   }
 `;
+
 interface Props {
-  isSelected:boolean
-  label:string;
+  isSelected: boolean
+  label: string;
 }
-const colourOptions = [
+
+export const colourOptions = [
   { value: 'ocean1', label: 'Ocean' },
   { value: 'blue', label: 'Blue' },
   { value: 'purple', label: 'Purple' },
@@ -31,18 +37,20 @@ const colourOptions = [
   { value: 'slate', label: 'Slate' },
   { value: 'silver', label: 'Silver' },
 ];
+
 interface StyledProps {
   isFocused?: boolean
   isSelected?: boolean
-  menuIsOpen?:boolean
+  menuIsOpen?: boolean
 }
-const colourStyles = {
-  placeholder: (defaultStyles:any, { isFocused }:StyledProps) => ({
+
+const colourStyles:StylesConfig<StyledProps, false> = {
+  placeholder: (defaultStyles, { isFocused }: StyledProps) => ({
     ...defaultStyles,
-    // 'text-align': 'center',
     color: isFocused ? 'white' : Theme.colors.neutral.SHADE_4,
   }),
-  dropdownIndicator: (defaultStyles:any, { isFocused }: StyledProps) => ({
+  // @ts-ignore
+  dropdownIndicator: (defaultStyles, { isFocused }: StyledProps) => ({
     ...defaultStyles,
     svg: {
       transition: 'all 0.4s',
@@ -50,38 +58,32 @@ const colourStyles = {
       transform: isFocused && 'rotateZ(-180deg)',
     },
   }),
-  indicatorsContainer: (defaultStyles:any) => ({
+  container: (defaultStyles) => ({
     ...defaultStyles,
   }),
-  container: (defaultStyles:any) => ({
-    ...defaultStyles,
-  }),
-  option: (defaultStyles:any, { isFocused, isSelected }:StyledProps) => ({
+  // @ts-ignore
+  option: (defaultStyles, { isFocused, isSelected }: StyledProps) => ({
     ...defaultStyles,
     background:
-    // eslint-disable-next-line max-len
         isSelected ? Theme.colors.primary.WATER_BLUE : isFocused && Theme.colors.neutral.SHADE_0,
     '&:hover': {
       background: !isSelected && Theme.colors.neutral.SHADE_0,
     },
   }),
-  menu: (defaultStyles:any) => ({
+  menu: (defaultStyles) => ({
     ...defaultStyles,
     marginTop: 0,
     borderRadius: 0,
   }),
-  menuList: (defaultStyles:any) => ({
+  menuList: (defaultStyles) => ({
     ...defaultStyles,
     background: '#1F232F',
     color: Theme.colors.neutral.SHADE_INPUT_3,
     paddingTop: 0,
   }),
-  valueContainer: (defaultStyles:any) => ({
-    ...defaultStyles,
-  }),
-  control: (defaultStyles:any, {
+  control: (defaultStyles, {
     isFocused, menuIsOpen,
-  }:StyledProps) => ({
+  }: StyledProps) => ({
     ...defaultStyles,
     background: isFocused ? 'linear-gradient(180deg, #2D75E2 0%, #4A00E0 100%);' : Theme.colors.neutral.SHADE_INPUT,
     border: '1px solid transparent',
@@ -95,7 +97,8 @@ const colourStyles = {
     },
   }),
 };
-const CheckBoxOption = (props:Props) => (
+const CheckBoxOption = (props: JSX.IntrinsicAttributes
+& OptionProps<unknown, boolean, GroupBase<unknown>>) => (
   <div>
     <components.Option {...props}>
       <div className="react-checkbox">
@@ -108,12 +111,11 @@ const CheckBoxOption = (props:Props) => (
   </div>
 );
 
-export const Select = () => {
+export const Select = ({ options }:any) => {
   const [data, setData] = useState();
-  console.log(data);
   return (
     <StyledSelect
-      options={colourOptions}
+      options={options}
       isMulti
       isSearchable={false}
       styles={colourStyles}

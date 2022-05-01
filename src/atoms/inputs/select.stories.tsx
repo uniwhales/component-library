@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Select } from './select';
+import { colourOptions, Select } from './select';
 
 export default {
   title: 'Atoms/Select',
@@ -9,9 +9,12 @@ export default {
   },
 } as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof Select> = () => <Select />;
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 export const Primary = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
+};
+Primary.args = {
+  options: colourOptions,
 };
