@@ -34,6 +34,7 @@ const Theme = {
       SHADE_4: '#BBBCCE',
       SHADE_INPUT: '#191B20',
       SHADE_INPUT_2: '#666C81',
+      SHADE_INPUT_3: '#F8F9FF',
     },
   },
   gradients: {

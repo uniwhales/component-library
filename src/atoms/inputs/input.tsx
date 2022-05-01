@@ -7,12 +7,15 @@ export interface Props {
   placeholder?: string;
   value?:string;
   onChange: any;
+  label?:string;
 }
 const InputWrapper = Styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 5px;
 `;
+
 const BorderWrapper = Styled.div`
   border-radius: 12px;
   padding: 1px;
@@ -21,7 +24,7 @@ const BorderWrapper = Styled.div`
     background: ${(props) => props.theme.gradients.primary.BLURPLE};
   `}
 `;
-const InputLabel = Styled.label``;
+
 const InputUserMessage = Styled.p``;
 const InputStyled = Styled.input`
   outline: none;
@@ -35,23 +38,43 @@ const InputStyled = Styled.input`
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.colors.neutral.SHADE_INPUT};
   background: ${(props) => props.theme.colors.neutral.SHADE_INPUT};
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  ::placeholder {
     color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_2};
   }
+  :focus  {
+    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+  }
   :hover {
+    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
     ${({ focus }) => !focus && css`
       border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
   `}
   }
 `;
+const InputLabel = Styled.label`
+  color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_2};
+  font-weight: 700;
+  line-height: 16px;
+  ${({ hover }) => hover && css`
+    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+  `}
+  ${({ focus }) => focus && css`
+    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+  `}
+`;
 export const Input = ({
-  type, placeholder, value, onChange,
+  type, placeholder, value, onChange, label,
 }:Props) => {
   const [focus, setFocus] = useState(false);
+  const [hover, setHover] = useState(false);
   return (
     <InputWrapper>
-      <InputLabel />
-      <BorderWrapper focus={focus}>
+      {label && <InputLabel focus={focus} hover={hover}>{label}</InputLabel>}
+      <BorderWrapper
+        focus={focus}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
         <InputStyled focus={focus} value={value} onChange={(e) => onChange(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
       </BorderWrapper>
       <InputUserMessage />

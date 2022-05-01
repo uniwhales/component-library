@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Input> = () => {
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
-  return <Input value={localValue} onChange={onChangeInput} type="text" />;
+  return <Input value={localValue} label="Login" onChange={onChangeInput} type="text" />;
 };
 export const Primary = Template.bind({});
 
