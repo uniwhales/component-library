@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 
-export interface Props {
+export interface InputsProps {
   type: 'text' | 'number';
   placeholder?: string;
   value?:string;
@@ -67,7 +67,7 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean }>`
 
 export const Input = ({
   type, placeholder, value, onChange, label,
-}:Props) => {
+}:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
   return (

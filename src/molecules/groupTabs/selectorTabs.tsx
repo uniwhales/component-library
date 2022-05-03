@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SelectorTabAtom } from '../../atoms/tabs/selectorTab';
 import { Styled } from '../../theme';
 
@@ -7,7 +7,7 @@ export interface Tab {
   name: string;
   icon: boolean;
 }
-export interface Props {
+export interface SelectorTabsProps {
   tabs: Tab[];
   isActive?: boolean
   setActiveTab: (e:any) => void;
@@ -17,7 +17,7 @@ const Wrapper = Styled.div`
   display: flex;
 `;
 
-export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:Props) => {
+export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:SelectorTabsProps) => {
   const menu = tabs.map((item, i) => (
     <SelectorTabAtom
         // @ts-ignore

@@ -37,7 +37,7 @@ export type HeaderSizes =
     | 'H6-Semibold'
     | 'H6-Bold';
 
-export interface Props {
+export interface TextProps {
   children:React.ReactChild;
   size: BodySizes | HeaderSizes;
 }
@@ -59,7 +59,7 @@ const StyledHeading = Styled.div<{ textType:string, textWeight:string }>`
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
 `;
 
-export const Text:FC<Props> = ({
+export const Text:FC<TextProps> = ({
   children, size,
 }) => {
   const [textType, textWeight] = size.split('-');

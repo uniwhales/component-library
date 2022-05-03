@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
 
-export interface Props {
+export interface ToggleProps {
   isOn?: boolean;
   onClick?: () => void;
   label?:string
@@ -57,7 +57,7 @@ const FakeInput = Styled.input`
     background: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
-export const ToggleAtom = ({ isOn, onClick, label }:Props) => {
+export const ToggleAtom = ({ isOn, onClick, label }:ToggleProps) => {
   const [trigger, setTrigger] = useState(false);
   const functionWrapper = () => setTrigger(!trigger);
   return (

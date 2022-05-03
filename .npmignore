@@ -1,7 +1,9 @@
-stories
+src
 node_modules
 rollup.config.js
 tsconfig.json
 .storybook
 .idea
 .eslintrc.yml
+.eslintignore
+fonts.d.ts

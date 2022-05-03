@@ -7,7 +7,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children: React.ReactChild;
   buttonVariant: ButtonVariant;
   disabled?: boolean
-  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor';
+  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor' | 'copyColor';
   onClick: () => void;
 }
 
@@ -60,6 +60,7 @@ const ButtonPrimary = Styled(Button)`
   `}
 `;
 const ButtonSecondary = Styled(Button)`
+  color: ${(props) => props.theme.textShades.SHADE_3};
   // disabled state
   ${(props) => props.disabled && css`
      opacity: 0.2;
@@ -71,14 +72,17 @@ const ButtonSecondary = Styled(Button)`
     background-color: transparent;
     border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
     &:hover {
+      color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
     };
     &:active {
+      color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
     };
   `}
 `;
 const ButtonTertiary = Styled(Button)`
+  color: ${(props) => props.theme.textShades.SHADE_3};
   // disabled state
   ${(props) => props.disabled && css`
      background: ${props.theme.colors.system.DISABLED};

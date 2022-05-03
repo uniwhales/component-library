@@ -3,14 +3,14 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 
-export interface Props {
+export interface SelectorTabProps {
   title?: string;
   isHighlighted?: boolean
   tabIndex: number
   icon?: 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
   setActiveTab?: () => void;
 }
-const SelectorTab = Styled.div<Props>`
+const SelectorTab = Styled.div<SelectorTabProps>`
   .tabs__group {
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@ const SelectorTab = Styled.div<Props>`
 
 export const SelectorTabAtom = ({
   title, isHighlighted, tabIndex, icon, setActiveTab,
-}:Props) => (
+}:SelectorTabProps) => (
   <SelectorTab onClick={setActiveTab} role="tab" tabIndex={tabIndex} isHighlighted={isHighlighted}>
     {icon ? (
       <div className="tabs__group">

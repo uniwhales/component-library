@@ -1,10 +1,17 @@
 import baseStyled, { ThemedStyledInterface, createGlobalStyle } from 'styled-components';
-import PoppinsRegular from '../public/fonts/Poppins-Regular.ttf';
-import PoppinsSemiBold from '../public/fonts/Poppins-SemiBold.ttf';
-import OpenSansSemiBold from '../public/fonts/OpenSans-SemiBold.ttf';
-import OpenSansRegular from '../public/fonts/OpenSans-Regular.ttf';
-import OpenSansBold from '../public/fonts/OpenSans-Bold.ttf';
-import LeagueSpartanBold from '../public/fonts/LeagueSpartan-Bold.otf';
+// import PoppinsRegular from './fonts/Poppins-Regular.ttf';
+// import PoppinsSemiBold from './fonts/Poppins-SemiBold.ttf';
+// import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf';
+// import OpenSansRegular from './fonts/OpenSans-Regular.ttf';
+// import OpenSansBold from './fonts/OpenSans-Bold.ttf';
+// import LeagueSpartanBold from './fonts/LeagueSpartan-Bold.otf';
+
+const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
+const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
+const OpenSansSemiBold = require('./fonts/OpenSans-SemiBold.ttf');
+const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
+const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
+const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
 const DarkTheme = {
   textShades: {
@@ -135,6 +142,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export {
-  GlobalStyle, Theme, colors, gradients,
+  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme,
 };
 export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;

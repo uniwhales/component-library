@@ -2,7 +2,7 @@ import React from 'react';
 import { Styled } from '../../theme';
 import {
   Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star, Copy, Edit, Remove,
-  AlertBotColor,
+  AlertBotColor, CopyColor,
 } from '.';
 
 const iconsArray = {
@@ -22,8 +22,9 @@ const iconsArray = {
   optimism: <Optimism />,
   // FullColorStyle
   alertBotColor: <AlertBotColor />,
+  copyColor: <CopyColor />,
 };
-const IconComponent = Styled.div<Props>`
+const IconComponent = Styled.div<IconWrapperProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   svg {
@@ -35,8 +36,23 @@ const IconComponent = Styled.div<Props>`
 }
 `;
 
-export interface Props {
-  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor'
+export interface IconWrapperProps {
+  icon?: 'star'
+  | 'ethereum'
+  | 'bsc'
+  | 'polygon'
+  | 'avalanche'
+  | 'fantom'
+  | 'arbitrum'
+  | 'boba'
+  | 'metis'
+  | 'aurora'
+  | 'optimism'
+  | 'copy'
+  | 'edit'
+  | 'remove'
+  | 'alertBotColor'
+  | 'copyColor'
   onClick?: () => void;
   height?: string;
   width?: string;
@@ -44,7 +60,7 @@ export interface Props {
   stroke?: string;
 }
 
-export const IconWrapper: React.FC<Props> = ({
+export const IconWrapper: React.FC<IconWrapperProps> = ({
   onClick,
   height,
   width,

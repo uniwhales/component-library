@@ -8,7 +8,7 @@ enum TEXT {
   COPY = 'Copy to clipboard',
   COPIED = 'Copied',
 }
-export interface Props {
+export interface CopyToClipBoardProps {
   text:string;
 }
 const CustomReactTooltip = Styled(ReactTooltip)`
@@ -21,7 +21,7 @@ const Wrapper = Styled.div`
   gap: 5px;
 `;
 
-export const CopyToClipBoard = ({ text = '0xF592602a944162760A68E7cb767ceA826e4386Cc' }:Props) => {
+export const CopyToClipBoard = ({ text = '0xF592602a944162760A68E7cb767ceA826e4386Cc' }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const copyText = () => {
     setCopy(true);
