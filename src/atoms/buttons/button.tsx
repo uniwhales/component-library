@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -26,7 +26,10 @@ const Button = Styled.button`
   line-height: 24px;
   padding: 12px;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.system.WHITE};
+  color: ${(props) => {
+    console.log('debug', props);
+    return props.theme.colors.system.WHITE;
+  }};
   border-radius: 12px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   .button__group {
@@ -154,13 +157,13 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   `}
 `;
 
-export const ButtonAtom = ({
+export const ButtonAtom:FC<ButtonProps> = ({
   children,
   buttonVariant,
   disabled = false,
   icon,
   onClick,
-}:ButtonProps) => {
+}) => {
   switch (ButtonVariant[buttonVariant]) {
     case ButtonVariant.SECONDARY:
       return (
