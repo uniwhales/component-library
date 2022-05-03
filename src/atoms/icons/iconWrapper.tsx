@@ -2,6 +2,7 @@ import React from 'react';
 import { Styled } from '../../theme';
 import {
   Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star, Copy, Edit, Remove,
+  AlertBotColor,
 } from '.';
 
 const iconsArray = {
@@ -19,6 +20,8 @@ const iconsArray = {
   metis: <Metis />,
   aurora: <Aurora />,
   optimism: <Optimism />,
+  // FullColorStyle
+  alertBotColor: <AlertBotColor />,
 };
 const IconComponent = Styled.div<Props>`
   height: ${(props) => props.height};
@@ -33,7 +36,7 @@ const IconComponent = Styled.div<Props>`
 `;
 
 export interface Props {
-  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove';
+  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor'
   onClick?: () => void;
   height?: string;
   width?: string;

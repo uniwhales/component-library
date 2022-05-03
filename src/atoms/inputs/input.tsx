@@ -15,7 +15,6 @@ const InputWrapper = Styled.div`
   align-items: flex-start;
   gap: 5px;
 `;
-
 const BorderWrapper = Styled.div<{ focus: boolean }>`
   border-radius: 12px;
   padding: 1px;
@@ -24,28 +23,30 @@ const BorderWrapper = Styled.div<{ focus: boolean }>`
     background: ${(props) => props.theme.gradients.primary.BLURPLE};
   `}
 `;
-
 const InputUserMessage = Styled.p``;
 const InputStyled = Styled.input<{ focus: boolean }>`
   outline: none;
   width: 398px;
   cursor: pointer;
-  color: ${(props) => props.theme.colors.neutral.SHADE_4};
+  color: ${(props) => props.theme.textShades.SHADE_2};
   height: 48px;
   border-radius: 12px;
   padding: 12px 24px;
   z-index: 1;
   box-sizing: border-box;
-  border: 1px solid ${(props) => props.theme.colors.neutral.SHADE_INPUT};
-  background: ${(props) => props.theme.colors.neutral.SHADE_INPUT};
+  border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_4};
+  background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_4};
   ::placeholder {
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_2};
+    color: ${(props) => props.theme.textShades.SHADE_1};
   }
   :focus  {
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+    color: ${(props) => props.theme.textShades.SHADE_3};
   }
   :hover {
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+    ::placeholder {
+      color: ${(props) => props.theme.contrastColor.HIGH_CONTRAST};
+    }
+    color: ${(props) => props.theme.textShades.SHADE_3};
     ${({ focus }) => !focus && css`
       border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
   `}
@@ -53,16 +54,17 @@ const InputStyled = Styled.input<{ focus: boolean }>`
 `;
 const InputLabel = Styled.label<{ focus: boolean, hover:boolean }>`
   font-size: 12px;
-  color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_2};
+  color: ${(props) => props.theme.textShades.SHADE_1};
   font-weight: 700;
   line-height: 16px;
   ${({ hover }) => hover && css`
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+    color: ${(props) => props.theme.textShades.SHADE_3};
   `}
   ${({ focus }) => focus && css`
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
+    color: ${(props) => props.theme.textShades.SHADE_3};
   `}
 `;
+
 export const Input = ({
   type, placeholder, value, onChange, label,
 }:Props) => {

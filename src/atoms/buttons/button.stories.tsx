@@ -17,6 +17,7 @@ export default {
         options: {
           none: '',
           star: 'star',
+          alertBotColor: 'alertBotColor',
         },
       },
     },

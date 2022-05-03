@@ -7,11 +7,11 @@ import { GlobalStyle } from "../src/theme";
 
 const ThemeDecorator = (storyFn) => (
     <ThemeProvider theme={Theme}>
-        {storyFn()}
         <GlobalStyle />
+        {storyFn()}
     </ThemeProvider>
 );
-
+console.log('123');
 export default ThemeDecorator;
 
 

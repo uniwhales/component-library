@@ -19,9 +19,9 @@ const SelectorTab = Styled.div<Props>`
   }
   cursor: pointer;
   transition: 0.4s;
-  background: ${(props) => props.theme.colors.neutral.SHADE_3};
-  border: 1px solid ${(props) => props.theme.colors.neutral.SHADE_4};
-  color: ${(props) => props.theme.colors.neutral.SHADE_4};
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
+  border: 1px solid ${(props) => props.theme.contrastColor.LOW_CONTRAST};
+  color: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
   width: 200px;
   height: 32px;
   display: flex;

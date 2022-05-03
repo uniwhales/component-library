@@ -10,7 +10,7 @@ export interface Props {
 
 }
 const Wrapper = Styled.div`
-  background: ${(props) => props.theme.colors.neutral.SHADE_3};
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
   border-radius: 12px;
   box-sizing: border-box;
   display: flex;
@@ -21,7 +21,6 @@ const Wrapper = Styled.div`
   padding: 10px 25px;
 `;
 const Section = Styled.div`
-  //border: 1px solid yellow;
   flex: 1;
 `;
 const Group = Styled.div`
@@ -63,7 +62,6 @@ export const WalletAlertsTable = ({}:Props) => {
       <Section>
         <ButtonGroup>
           <ButtonAtom icon="edit" onClick={editAction} buttonVariant={ButtonVariant.SECONDARY}>Edit</ButtonAtom>
-          {/* eslint-disable-next-line max-len */}
           <ButtonAtom icon="remove" onClick={removeAction} buttonVariant={ButtonVariant.TERTIARY}>Remove</ButtonAtom>
         </ButtonGroup>
       </Section>

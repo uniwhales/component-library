@@ -7,11 +7,6 @@ import { Styled, Theme } from '../../theme';
 const StyledSelect = Styled(ReactSelect)`
   max-width: 172px;
   outline: none;
-
-  :hover .react-select__placeholder {
-    color: ${(props) => props.theme.colors.neutral.SHADE_INPUT_3};
-  }
-
   .react-checkbox {
     display: flex;
     align-items: center;
@@ -19,11 +14,6 @@ const StyledSelect = Styled(ReactSelect)`
     padding: 0 10px;
   }
 `;
-
-interface Props {
-  isSelected: boolean
-  label: string;
-}
 
 export const colourOptions = [
   { value: 'ocean1', label: 'Ocean' },
@@ -47,27 +37,41 @@ interface StyledProps {
 const colourStyles:StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { isFocused }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? 'white' : Theme.colors.neutral.SHADE_4,
+    color: isFocused ? Theme.colors.system.WHITE : Theme.textShades.SHADE_2,
   }),
-  // @ts-ignore
   dropdownIndicator: (defaultStyles, { isFocused }: StyledProps) => ({
     ...defaultStyles,
     svg: {
       transition: 'all 0.4s',
-      fill: isFocused ? 'white' : Theme.colors.neutral.SHADE_4,
-      transform: isFocused && 'rotateZ(-180deg)',
+      fill: isFocused ? Theme.colors.system.WHITE : Theme.textShades.SHADE_1,
+      transform: isFocused ? 'rotateZ(-180deg)' : undefined,
     },
   }),
-  container: (defaultStyles) => ({
+  control: (defaultStyles, { isFocused, menuIsOpen }: StyledProps) => ({
     ...defaultStyles,
+    boxSizing: 'border-box',
+    background: isFocused
+      ? Theme.gradients.primary.BLURPLE : Theme.containerAndCardShades.BG_SHADE_4,
+    border: '1px solid transparent',
+    outline: 'none',
+    padding: '0 10px 0 10px',
+    boxShadow: 'none',
+    borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
+    height: '48px',
+    '&:hover': {
+      color: 'blue',
+      border: `1px solid ${Theme.colors.primary.UWL_BLUE}`,
+      svg: {
+        fill: !isFocused ? Theme.contrastColor.HIGH_CONTRAST : undefined,
+      },
+    },
   }),
-  // @ts-ignore
   option: (defaultStyles, { isFocused, isSelected }: StyledProps) => ({
     ...defaultStyles,
-    background:
-        isSelected ? Theme.colors.primary.WATER_BLUE : isFocused && Theme.colors.neutral.SHADE_0,
+    background: isSelected ? Theme.colors.primary.WATER_BLUE
+      : isFocused ? Theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
-      background: !isSelected && Theme.colors.neutral.SHADE_0,
+      background: !isSelected ? Theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     },
   }),
   menu: (defaultStyles) => ({
@@ -77,39 +81,28 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   menuList: (defaultStyles) => ({
     ...defaultStyles,
-    background: '#1F232F',
-    color: Theme.colors.neutral.SHADE_INPUT_3,
+    background: Theme.containerAndCardShades.SHADE_2,
+    color: Theme.textShades.SHADE_3,
     paddingTop: 0,
   }),
-  control: (defaultStyles, {
-    isFocused, menuIsOpen,
-  }: StyledProps) => ({
-    ...defaultStyles,
-    background: isFocused ? 'linear-gradient(180deg, #2D75E2 0%, #4A00E0 100%);' : Theme.colors.neutral.SHADE_INPUT,
-    border: '1px solid transparent',
-    outline: 'none',
-    padding: '0 10px 0 10px',
-    boxShadow: 'none',
-    borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
-    height: '48px',
-    '&:hover': {
-      border: `1px solid ${Theme.colors.primary.UWL_BLUE}`,
-    },
-  }),
+
 };
 const CheckBoxOption = (props: JSX.IntrinsicAttributes
-& OptionProps<unknown, boolean, GroupBase<unknown>>) => (
-  <div>
-    <components.Option {...props}>
-      <div className="react-checkbox">
-        <label>
-          {props.label}
-        </label>
-        <input type="checkbox" checked={props.isSelected} onChange={() => null} />
-      </div>
-    </components.Option>
-  </div>
-);
+& OptionProps<unknown, boolean, GroupBase<unknown>>) => {
+  const { label, isSelected } = props;
+  return (
+    <div>
+      <components.Option {...props}>
+        <div className="react-checkbox">
+          <label>
+            {label}
+          </label>
+          <input type="checkbox" checked={isSelected} onChange={() => null} />
+        </div>
+      </components.Option>
+    </div>
+  );
+};
 
 export const Select = ({ options }:any) => {
   const [data, setData] = useState();
@@ -118,7 +111,7 @@ export const Select = ({ options }:any) => {
       options={options}
       isMulti
       isSearchable={false}
-      styles={colourStyles}
+      styles={colourStyles as StylesConfig}
       controlShouldRenderValue={false}
       isClearable={false}
       placeholder={<div className="react-select__placeholder">Alert Filters</div>}

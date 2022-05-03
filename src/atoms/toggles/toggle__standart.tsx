@@ -26,8 +26,7 @@ const Toggle = Styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${(props) => props.theme.colors.neutral.SHADE_0};
-  transition: 0.4s;
+  background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
   border-radius: 34px;
   :before {
     position: absolute;
@@ -36,7 +35,7 @@ const Toggle = Styled.span`
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -55,7 +54,7 @@ const FakeInput = Styled.input`
   }
   :checked + ${Toggle}:before {
     transform: translateX(26px);
-    background-color: ${(props) => props.theme.colors.system.WHITE};
+    background: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
 export const ToggleAtom = ({ isOn, onClick, label }:Props) => {
