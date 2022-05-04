@@ -1,4 +1,6 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
 import { Select } from '../../atoms/inputs/select';
@@ -15,7 +17,12 @@ export interface WalletAlertsTableProps {
   editWallet: () => {};
   removeWallet: () => {};
   id: number;
+  isLoading: boolean;
 }
+const CustomLoading = Styled(Skeleton)`
+  height: 80px;
+  border-radius: 12px;
+`;
 const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
   border-radius: 12px;
@@ -43,28 +50,31 @@ const ButtonGroup = Styled.div`
   gap: 25px;
 `;
 export const WalletAlertsTable = ({
-  id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet,
-}:WalletAlertsTableProps) => (
-  <Wrapper>
-    <Section>
-      {label && <Text size="S-Regular">{label}</Text>}
-      <CopyToClipBoard text={wallet} />
-    </Section>
-    <Section>
-      <Group>
-        <ToggleAtom label={isActive ? 'On' : 'Off'} isOn={isActive} onClick={() => setIsActive(id, isActive)} />
-      </Group>
-    </Section>
-    <Section>
-      <Group>
-        <Select readOnly options={chains} />
-      </Group>
-    </Section>
-    <Section>
-      <ButtonGroup>
-        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant={ButtonVariant.SECONDARY}>Edit</ButtonAtom>
-        <ButtonAtom icon="remove" onClick={removeWallet} buttonVariant={ButtonVariant.TERTIARY}>Remove</ButtonAtom>
-      </ButtonGroup>
-    </Section>
-  </Wrapper>
-);
+  id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading,
+}:WalletAlertsTableProps) => {
+  const result = (
+    <Wrapper>
+      <Section>
+        {label && <Text size="S-Regular">{label}</Text>}
+        <CopyToClipBoard text={wallet} />
+      </Section>
+      <Section>
+        <Group>
+          <ToggleAtom label={isActive ? 'On' : 'Off'} isOn={isActive} onClick={() => setIsActive(id, isActive)} />
+        </Group>
+      </Section>
+      <Section>
+        <Group>
+          <Select readOnly options={chains} />
+        </Group>
+      </Section>
+      <Section>
+        <ButtonGroup>
+          <ButtonAtom icon="edit" onClick={editWallet} buttonVariant={ButtonVariant.SECONDARY}>Edit</ButtonAtom>
+          <ButtonAtom icon="remove" onClick={removeWallet} buttonVariant={ButtonVariant.TERTIARY}>Remove</ButtonAtom>
+        </ButtonGroup>
+      </Section>
+    </Wrapper>
+  );
+  return isLoading ? <CustomLoading duration={1} /> : result;
+};
