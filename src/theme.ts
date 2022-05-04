@@ -59,7 +59,7 @@ const LightTheme = {
 };
 
 const Theme = {
-  ...LightTheme,
+  ...DarkTheme,
   colors: {
     primary: {
       UWL_BLUE: '#355DFF',
