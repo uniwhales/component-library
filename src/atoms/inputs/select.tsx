@@ -16,7 +16,7 @@ const StyledSelect = Styled(ReactSelect)`
 `;
 
 export const colourOptions = [
-  { value: 'ocean1', label: 'Ocean' },
+  { value: 'ocean1', label: 'Ocean', isSelected: true },
   { value: 'blue', label: 'Blue' },
   { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },
@@ -89,7 +89,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
 };
 const CheckBoxOption = (props: JSX.IntrinsicAttributes
 & OptionProps<unknown, boolean, GroupBase<unknown>>) => {
-  const { label, isSelected } = props;
+  const { label, isSelected, readOnly } = props;
   return (
     <div>
       <components.Option {...props}>
@@ -97,32 +97,32 @@ const CheckBoxOption = (props: JSX.IntrinsicAttributes
           <label>
             {label}
           </label>
-          <input type="checkbox" checked={isSelected} onChange={() => null} />
+          {!readOnly && <input type="checkbox" checked={isSelected} onChange={() => null} />}
         </div>
       </components.Option>
     </div>
   );
 };
 
-export const Select = ({ options }:any) => {
-  const [data, setData] = useState();
-  return (
-    <StyledSelect
-      options={options}
-      isMulti
-      isSearchable={false}
-      styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={false}
-      isClearable={false}
-      placeholder={<div className="react-select__placeholder">Alert Filters</div>}
-      closeMenuOnSelect={false}
-      hideSelectedOptions={false}
-      components={{
-        Option: CheckBoxOption,
-        IndicatorSeparator: () => null,
-      }}
-      onChange={() => setData}
-      value={data}
-    />
-  );
-};
+export const Select = ({
+  options, readOnly, onChange, value,
+}:any) => (
+  <StyledSelect
+    options={options}
+    isMulti
+    isOptionDisabled={() => readOnly}
+    isSearchable={false}
+    styles={colourStyles as StylesConfig}
+    controlShouldRenderValue={false}
+    isClearable={false}
+    placeholder={<div className="react-select__placeholder">Alert Filters</div>}
+    closeMenuOnSelect={false}
+    hideSelectedOptions={false}
+    components={{
+      Option: (props) => CheckBoxOption({ ...props, readOnly }),
+      IndicatorSeparator: () => null,
+    }}
+    onChange={() => onChange}
+    value={value}
+  />
+);

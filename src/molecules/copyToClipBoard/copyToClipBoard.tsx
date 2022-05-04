@@ -21,7 +21,7 @@ const Wrapper = Styled.div`
   gap: 5px;
 `;
 
-export const CopyToClipBoard = ({ text = '0xF592602a944162760A68E7cb767ceA826e4386Cc' }:CopyToClipBoardProps) => {
+export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386Cc' }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const copyText = () => {
     setCopy(true);

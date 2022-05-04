@@ -17,4 +17,5 @@ Primary.parameters = {
 };
 Primary.args = {
   options: colourOptions,
+  readOnly: false,
 };
