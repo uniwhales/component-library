@@ -10,13 +10,13 @@ export default {
 } as ComponentMeta<typeof WalletAlertsTable>;
 
 const Template: ComponentStory<typeof
-    WalletAlertsTable> = (args) => {
-  console.warn(args);
-  return <WalletAlertsTable {...args} />;
-};
+    WalletAlertsTable> = (args) => <WalletAlertsTable {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
+  id: 123,
+  isActive: false,
+  setIsActive: (e, status) => console.log(e, status),
   chains: [{ value: 'one', label: 'one' }, { value: 'two', label: 'two' }, { value: 'three', label: 'three' }],
 };
 

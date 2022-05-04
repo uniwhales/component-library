@@ -16,7 +16,7 @@ const StyledSelect = Styled(ReactSelect)`
 `;
 
 export const colourOptions = [
-  { value: 'ocean1', label: 'Ocean', isSelected: true },
+  { value: 'ocean1', label: 'Ocean' },
   { value: 'blue', label: 'Blue' },
   { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },

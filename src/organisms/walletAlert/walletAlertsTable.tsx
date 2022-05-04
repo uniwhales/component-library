@@ -10,10 +10,11 @@ export interface WalletAlertsTableProps {
   label?: string;
   wallet: string;
   isActive: boolean;
-  setIsActive: () => {};
+  setIsActive: (wallet:number, status:boolean) => any;
   chains: any;
   editWallet: () => {};
   removeWallet: () => {};
+  id: number;
 }
 const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
@@ -42,7 +43,7 @@ const ButtonGroup = Styled.div`
   gap: 25px;
 `;
 export const WalletAlertsTable = ({
-  label, wallet, chains, isActive, setIsActive, editWallet, removeWallet,
+  id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet,
 }:WalletAlertsTableProps) => (
   <Wrapper>
     <Section>
@@ -51,7 +52,7 @@ export const WalletAlertsTable = ({
     </Section>
     <Section>
       <Group>
-        <ToggleAtom label={isActive ? 'On' : 'Off'} isOn={isActive} onClick={setIsActive} />
+        <ToggleAtom label={isActive ? 'On' : 'Off'} isOn={isActive} onClick={() => setIsActive(id, isActive)} />
       </Group>
     </Section>
     <Section>
