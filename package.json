@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-library": "rollup -c",
+    "bl": "rollup -c",
     "lint": "npx eslint . --ext .tsx,.ts"
   },
   "keywords": [

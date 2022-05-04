@@ -22,8 +22,9 @@ const SelectorTab = Styled.div<SelectorTabProps>`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
   border: 1px solid ${(props) => props.theme.contrastColor.LOW_CONTRAST};
   color: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
-  width: 200px;
+  max-width: 200px;
   height: 32px;
+  flex:1;
   display: flex;
   align-items: center;
   box-sizing: border-box;

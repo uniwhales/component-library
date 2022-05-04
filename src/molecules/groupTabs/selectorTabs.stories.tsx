@@ -3,14 +3,12 @@ import React, { useState } from 'react';
 import { SelectorTabsMolecules, Tab } from './selectorTabs';
 
 const demo = [
-  { id: '1', name: 'All Chains', icon: false },
-  { id: '2', name: 'Polygon', icon: true },
-  { id: '3', name: 'Binance', icon: true },
-  { id: '4', name: 'Fantom', icon: true },
-  { id: '5', name: 'Arbitrum', icon: true },
-  { id: '6', name: 'Ethereum', icon: true },
-  { id: '7', name: 'Boba', icon: true },
-  { id: '8', name: 'Harmony', icon: true },
+  { id: '1', label: 'All Chains', value: 'All Chains' },
+  { id: '2', label: 'All Chains', value: 'All Chains' },
+  { id: '3', label: 'All Chains', value: 'All Chains' },
+  { id: '4', label: 'All Chains', value: 'All Chains' },
+  { id: '5', label: 'All Chains', value: 'All Chains' },
+
 ];
 
 export default {

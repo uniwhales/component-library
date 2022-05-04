@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactSelect, {
-  components, GroupBase, OptionProps, StylesConfig,
+  components, StylesConfig,
 } from 'react-select';
 import { Styled, Theme } from '../../theme';
 
@@ -87,6 +87,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
 
 };
+console.warn('Teset Theme', Theme);
 const CheckBoxOption = (props:any) => {
   const { label, isSelected, readOnly } = props;
   return (
