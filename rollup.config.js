@@ -2,6 +2,7 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from "@rollup/plugin-node-resolve";
 import copy from 'rollup-plugin-copy';
+import postcss from 'rollup-plugin-postcss';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from "rollup-plugin-typescript2";
 import { uglify } from "rollup-plugin-uglify";
@@ -21,6 +22,7 @@ export default {
         peerDepsExternal(),
         resolve({preferBuiltins: true, browser: true}),
         typescript(),
+        postcss({}),
         copy({
             targets: [
                 { src: ['src/fonts/'], dest: 'dist' },
