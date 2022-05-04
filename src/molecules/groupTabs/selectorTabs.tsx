@@ -4,8 +4,9 @@ import { Styled } from '../../theme';
 
 export interface Tab {
   id: string;
-  name: string;
-  icon: boolean;
+  value: string;
+  icon?: boolean;
+  label: string;
 }
 export interface SelectorTabsProps {
   tabs: Tab[];
