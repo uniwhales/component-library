@@ -87,8 +87,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
 
 };
-const CheckBoxOption = (props: JSX.IntrinsicAttributes
-& OptionProps<unknown, boolean, GroupBase<unknown>>) => {
+const CheckBoxOption = (props:any) => {
   const { label, isSelected, readOnly } = props;
   return (
     <div>
