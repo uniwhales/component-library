@@ -2,7 +2,9 @@ import React from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
-import { Styled, Theme } from '../../theme';
+import { Styled } from '../../theme';
+// eslint-disable-next-line import/no-cycle
+import { Theme } from '../../index';
 
 const StyledSelect = Styled(ReactSelect)`
   max-width: 172px;

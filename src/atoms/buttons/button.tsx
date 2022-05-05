@@ -34,7 +34,6 @@ const Button = Styled.button`
   }
   svg {
     cursor: pointer;
-    //fill: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
 const ButtonPrimary = Styled(Button)`
@@ -71,10 +70,16 @@ const ButtonSecondary = Styled(Button)`
     &:hover {
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
+      svg {
+        fill: ${props.theme.colors.system.WHITE};
+      }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
+      svg {
+        fill: ${props.theme.colors.system.WHITE};
+      }
     };
   `}
 `;
@@ -96,6 +101,9 @@ const ButtonTertiary = Styled(Button)`
     &:active {
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
+      svg {
+        fill: ${props.theme.colors.system.WHITE};
+      }
     };
   `};
 `;
