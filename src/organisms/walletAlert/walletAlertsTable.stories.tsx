@@ -10,7 +10,12 @@ export default {
 } as ComponentMeta<typeof WalletAlertsTable>;
 
 const Template: ComponentStory<typeof
-    WalletAlertsTable> = (args) => <WalletAlertsTable {...args} />;
+    WalletAlertsTable> = (args) => (
+      <>
+        <WalletAlertsTable {...args} />
+        <WalletAlertsTable {...args} />
+      </>
+);
 export const Primary = Template.bind({});
 
 Primary.args = {

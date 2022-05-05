@@ -34,7 +34,7 @@ const Button = Styled.button`
   }
   svg {
     cursor: pointer;
-    fill: ${(props) => props.theme.colors.system.WHITE};
+    //fill: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
 const ButtonPrimary = Styled(Button)`

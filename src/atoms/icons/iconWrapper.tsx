@@ -30,7 +30,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
-    fill: ${(props) => props.theme.textShades.SHADE_3};
+    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST};
     stroke: ${(props) => props.stroke};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 }

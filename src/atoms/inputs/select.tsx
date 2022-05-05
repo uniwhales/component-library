@@ -68,6 +68,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   option: (defaultStyles, { isFocused, isSelected }: StyledProps) => ({
     ...defaultStyles,
+    color: Theme.textShades.SHADE_3,
     background: isSelected ? Theme.colors.primary.WATER_BLUE
       : isFocused ? Theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {

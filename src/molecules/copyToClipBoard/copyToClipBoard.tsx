@@ -36,7 +36,7 @@ export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386C
     <Wrapper>
       <Text size="M-Regular">{text}</Text>
       <div data-tip="Copy to clipboard">
-        <CustomReactTooltip effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
+        <CustomReactTooltip id={text as string} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper onClick={copyText} icon="copy" />
       </div>
     </Wrapper>
