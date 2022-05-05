@@ -5,20 +5,17 @@ import { IconWrapper } from '../icons/iconWrapper';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactChild;
-  buttonVariant: ButtonVariant;
+  buttonVariant:
+  'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'primary_action'
+  | 'secondary_action'
+  | 'tiny_action'
+  | 'secondary_action_inverse'
   disabled?: boolean
   icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor' | 'copyColor';
   onClick: () => void;
-}
-
-export enum ButtonVariant {
-  PRIMARY = 'PRIMARY',
-  SECONDARY = 'SECONDARY',
-  TERTIARY = 'TERTIARY',
-  PRIMARY_ACTION = 'PRIMARY_ACTION',
-  SECONDARY_ACTION = 'SECONDARY_ACTION',
-  TINY_ACTION = 'TINY_ACTION',
-  SECONDARY_ACTION_INVERSE = 'SECONDARY_ACTION_INVERSE',
 }
 
 const Button = Styled.button`
@@ -82,8 +79,6 @@ const ButtonSecondary = Styled(Button)`
   `}
 `;
 const ButtonTertiary = Styled(Button)`
-  color: ${(props) => props.theme.textShades.SHADE_3};
-  // disabled state
   ${(props) => props.disabled && css`
      background: ${props.theme.colors.system.DISABLED};
      opacity: 0.2;
@@ -91,12 +86,15 @@ const ButtonTertiary = Styled(Button)`
   `};
   // active state
   ${(props) => !props.disabled && css`
+    color: ${props.theme.textShades.SHADE_3};
     background-color: transparent;
-    border: 1px solid ${props.theme.colors.system.WHITE};
+    border: 1px solid ${props.theme.textShades.SHADE_3};
     &:hover {
        border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
+       color: ${props.theme.colors.primary.UWL_BLUE};
     };
     &:active {
+      color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
     };
   `};
@@ -161,8 +159,8 @@ export const ButtonAtom:FC<ButtonProps> = ({
   icon,
   onClick,
 }) => {
-  switch (ButtonVariant[buttonVariant]) {
-    case ButtonVariant.SECONDARY:
+  switch (buttonVariant) {
+    case 'secondary':
       return (
         <ButtonSecondary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {icon ? (
@@ -173,7 +171,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           ) : children}
         </ButtonSecondary>
       );
-    case ButtonVariant.TERTIARY:
+    case 'tertiary':
       return (
         <ButtonTertiary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {icon ? (
@@ -184,25 +182,25 @@ export const ButtonAtom:FC<ButtonProps> = ({
           ) : children}
         </ButtonTertiary>
       );
-    case ButtonVariant.PRIMARY_ACTION:
+    case 'primary_action':
       return (
         <ButtonPrimaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />
         </ButtonPrimaryAction>
       );
-    case ButtonVariant.SECONDARY_ACTION:
+    case 'secondary_action':
       return (
         <ButtonSecondaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />
         </ButtonSecondaryAction>
       );
-    case ButtonVariant.TINY_ACTION:
+    case 'tiny_action':
       return (
         <ButtonTinyAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="17px" height="17px" icon={icon} />
         </ButtonTinyAction>
       );
-    case ButtonVariant.SECONDARY_ACTION_INVERSE:
+    case 'secondary_action_inverse':
       return (
         <ButtonSecondaryActionInverse onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           <IconWrapper width="21px" height="21px" icon={icon} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ButtonAtom, ButtonVariant } from './button';
+import { ButtonAtom } from './button';
 
 export default {
   title: 'Atoms/Buttons',
@@ -30,6 +30,7 @@ export default {
 } as ComponentMeta<typeof ButtonAtom>;
 
 const Template: ComponentStory<typeof ButtonAtom> = (args) => {
+  console.log(args);
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
 };
@@ -42,44 +43,44 @@ export const TinyAction = Template.bind({});
 export const SecondaryActionInverse = Template.bind({});
 Primary.args = {
   children: 'Primary',
-  buttonVariant: ButtonVariant.PRIMARY,
+  buttonVariant: 'primary',
 };
 Secondary.args = {
   children: 'Secondary',
-  buttonVariant: ButtonVariant.SECONDARY,
+  buttonVariant: 'secondary',
 };
 Tertiary.args = {
   children: 'Tertiary',
-  buttonVariant: ButtonVariant.TERTIARY,
+  buttonVariant: 'tertiary',
 };
 PrimaryAction.args = {
   icon: 'star',
-  buttonVariant: ButtonVariant.PRIMARY_ACTION,
+  buttonVariant: 'primary_action',
 };
 SecondaryAction.args = {
   icon: 'star',
-  buttonVariant: ButtonVariant.SECONDARY_ACTION,
+  buttonVariant: 'secondary_action',
 };
 TinyAction.args = {
   icon: 'star',
-  buttonVariant: ButtonVariant.TINY_ACTION,
+  buttonVariant: 'tiny_action',
 };
 SecondaryActionInverse.args = {
   icon: 'star',
-  buttonVariant: ButtonVariant.SECONDARY_ACTION_INVERSE,
+  buttonVariant: 'secondary_action_inverse',
 };
-Secondary.parameters = {
-  backgrounds: { default: 'dark' },
-};
-TinyAction.parameters = {
-  backgrounds: { default: 'dark' },
-};
-SecondaryAction.parameters = {
-  backgrounds: { default: 'dark' },
-};
-Tertiary.parameters = {
-  backgrounds: { default: 'dark' },
-};
-SecondaryActionInverse.parameters = {
-  backgrounds: { default: 'dark' },
-};
+// Secondary.parameters = {
+//   backgrounds: { default: 'dark' },
+// };
+// TinyAction.parameters = {
+//   backgrounds: { default: 'dark' },
+// };
+// SecondaryAction.parameters = {
+//   backgrounds: { default: 'dark' },
+// };
+// Tertiary.parameters = {
+//   backgrounds: { default: 'dark' },
+// };
+// SecondaryActionInverse.parameters = {
+//   backgrounds: { default: 'dark' },
+// };

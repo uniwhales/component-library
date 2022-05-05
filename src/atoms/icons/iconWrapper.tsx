@@ -30,7 +30,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
-    fill: ${(props) => props.fill};
+    fill: ${(props) => props.theme.textShades.SHADE_3};
     stroke: ${(props) => props.stroke};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 }
@@ -68,7 +68,13 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   icon,
   stroke,
 }) => (
-  <IconComponent onClick={onClick} height={height} width={width} fill={fill} stroke={stroke}>
+  <IconComponent
+    onClick={onClick}
+    height={height}
+    width={width}
+    fill={fill}
+    stroke={stroke}
+  >
     {icon && iconsArray[icon]}
   </IconComponent>
 );

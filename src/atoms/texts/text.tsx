@@ -40,6 +40,7 @@ export type HeaderSizes =
 export interface TextProps {
   children:React.ReactChild;
   size: BodySizes | HeaderSizes;
+  color?: string;
 }
 
 const StyledP = Styled.p<{ textType:string, textWeight:string }>`
@@ -47,20 +48,20 @@ const StyledP = Styled.p<{ textType:string, textWeight:string }>`
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
   padding: 0;
   margin: 0;
-  color: ${(props) => props.theme.textShades.SHADE_3};
+  color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_3)};
   line-height: 24px;
 `;
 const StyledHeading = Styled.div<{ textType:string, textWeight:string }>`
   padding: 0;
   margin: 0;
   line-height: ${(props) => H_LINE_HEIGHT[props.textType as keyof typeof H_LINE_HEIGHT]}px;
-  color: ${(props) => props.theme.textShades.SHADE_3};
+  color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_3)};
   font-size: ${(props) => H_FONTSIZE[props.textType as keyof typeof H_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
 `;
 
 export const Text:FC<TextProps> = ({
-  children, size,
+  children, size, color,
 }) => {
   const [textType, textWeight] = size.split('-');
   if ((['L', 'M', 'S', 'XS'].includes(textType))) {

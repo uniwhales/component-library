@@ -35,7 +35,7 @@ export const Copy = () => (
       />
     </mask>
     <g mask="url(#mask0_4790_468126)">
-      <path fill="#F8F9FF" d="M0 0.5H17.333V17.833H0z" />
+      <path d="M0 0.5H17.333V17.833H0z" />
     </g>
   </svg>
 );

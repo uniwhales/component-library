@@ -3,7 +3,7 @@ import { Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
 import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
-import { ButtonAtom, ButtonVariant } from '../../atoms/buttons/button';
+import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
 
 export interface WalletAlertsTableProps {
@@ -79,11 +79,11 @@ export const WalletAlertsTable = ({
     </Section>
     <Section>
       <ButtonGroup>
-        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant={ButtonVariant.SECONDARY}>Edit</ButtonAtom>
+        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant="secondary">Edit</ButtonAtom>
         <ButtonAtom
           icon="remove"
           onClick={removeWallet}
-          buttonVariant={ButtonVariant.TERTIARY}
+          buttonVariant="tertiary"
         >
           Remove
         </ButtonAtom>

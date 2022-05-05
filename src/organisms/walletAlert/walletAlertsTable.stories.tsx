@@ -16,7 +16,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   id: 123,
   isActive: false,
-  isLoading: true,
+  isLoading: false,
   setIsActive: (e, status) => console.log(e, status),
   chains: [{ value: 'one', label: 'one' }, { value: 'two', label: 'two' }, { value: 'three', label: 'three' }],
 };
