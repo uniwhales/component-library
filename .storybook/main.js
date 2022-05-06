@@ -25,6 +25,8 @@ module.exports = {
 
   ],
   "addons": [
+      "@storybook/addon-backgrounds",
+    "@react-theming/storybook-addon",
     "@storybook/addon-controls",
     "@storybook/addon-links",
     "@storybook/addon-essentials",

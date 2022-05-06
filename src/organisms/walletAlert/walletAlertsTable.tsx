@@ -19,13 +19,13 @@ export interface WalletAlertsTableProps {
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
   position: relative;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
   opacity: ${(props) => (props.isLoading ? '0.5' : 1)};
   box-sizing: border-box;
   display: flex;
   height: 80px;
-  width: 1205px;
+  max-width: 1205px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
@@ -66,6 +66,7 @@ export const WalletAlertsTable = ({
     <Section>
       <Group>
         <ToggleAtom
+          size="small"
           label={isActive ? 'On' : 'Off'}
           isOn={isActive}
           onClick={() => setIsActive(id, isActive)}

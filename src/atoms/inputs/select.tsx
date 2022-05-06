@@ -2,9 +2,8 @@ import React from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
+import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
-// eslint-disable-next-line import/no-cycle
-import { Theme } from '../../index';
 
 const StyledSelect = Styled(ReactSelect)`
   max-width: 172px;
@@ -34,26 +33,27 @@ interface StyledProps {
   isFocused?: boolean
   isSelected?: boolean
   menuIsOpen?: boolean
+  theme?: any;
 }
 
 const colourStyles:StylesConfig<StyledProps, false> = {
-  placeholder: (defaultStyles, { isFocused }: StyledProps) => ({
+  placeholder: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? Theme.colors.system.WHITE : Theme.textShades.SHADE_2,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
   }),
-  dropdownIndicator: (defaultStyles, { isFocused }: StyledProps) => ({
+  dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
     svg: {
       transition: 'all 0.4s',
-      fill: isFocused ? Theme.colors.system.WHITE : Theme.textShades.SHADE_1,
+      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
       transform: isFocused ? 'rotateZ(-180deg)' : undefined,
     },
   }),
-  control: (defaultStyles, { isFocused, menuIsOpen }: StyledProps) => ({
+  control: (defaultStyles, { isFocused, menuIsOpen, theme }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
     background: isFocused
-      ? Theme.gradients.primary.BLURPLE : Theme.containerAndCardShades.BG_SHADE_4,
+      ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: '1px solid transparent',
     outline: 'none',
     padding: '0 10px 0 10px',
@@ -62,19 +62,19 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     height: '48px',
     '&:hover': {
       color: 'blue',
-      border: `1px solid ${Theme.colors.primary.UWL_BLUE}`,
+      border: `1px solid ${theme.colors.primary.UWL_BLUE}`,
       svg: {
-        fill: !isFocused ? Theme.contrastColor.HIGH_CONTRAST : undefined,
+        fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
       },
     },
   }),
-  option: (defaultStyles, { isFocused, isSelected }: StyledProps) => ({
+  option: (defaultStyles, { isFocused, isSelected, theme }: StyledProps) => ({
     ...defaultStyles,
-    color: Theme.textShades.SHADE_3,
-    background: isSelected ? Theme.colors.primary.WATER_BLUE
-      : isFocused ? Theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+    color: theme.textShades.SHADE_MINUS_3,
+    background: isSelected ? theme.colors.primary.WATER_BLUE
+      : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
-      background: !isSelected ? Theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+      background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     },
   }),
   menu: (defaultStyles) => ({
@@ -82,15 +82,16 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     marginTop: 0,
     borderRadius: 0,
   }),
-  menuList: (defaultStyles) => ({
+  menuList: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    background: Theme.containerAndCardShades.SHADE_2,
-    color: Theme.textShades.SHADE_3,
+    background: theme.containerAndCardShades.SHADE_PLUS_2,
+    color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
+    borderRadius: '0px 0px 10px 10px',
+    zIndex: 10,
   }),
 
 };
-console.warn('Teset Theme', Theme);
 const CheckBoxOption = (props:any) => {
   const { label, isSelected, readOnly } = props;
   return (
@@ -109,23 +110,27 @@ const CheckBoxOption = (props:any) => {
 
 export const Select = ({
   options, readOnly, onChange, value,
-}:any) => (
-  <StyledSelect
-    options={options}
-    isMulti
-    isOptionDisabled={() => readOnly}
-    isSearchable={false}
-    styles={colourStyles as StylesConfig}
-    controlShouldRenderValue={false}
-    isClearable={false}
-    placeholder={<div className="react-select__placeholder">Alert Filters</div>}
-    closeMenuOnSelect={false}
-    hideSelectedOptions={false}
-    components={{
-      Option: (props) => CheckBoxOption({ ...props, readOnly }),
-      IndicatorSeparator: () => null,
-    }}
-    onChange={() => onChange}
-    value={value}
-  />
-);
+}:any) => {
+  const theme = useTheme();
+  return (
+    <StyledSelect
+      options={options}
+      isMulti
+      theme={theme as any}
+      isOptionDisabled={() => readOnly}
+      isSearchable={false}
+      styles={colourStyles as StylesConfig}
+      controlShouldRenderValue={false}
+      isClearable={false}
+      placeholder={<div className="react-select__placeholder">Alert Filters</div>}
+      closeMenuOnSelect={false}
+      hideSelectedOptions={false}
+      components={{
+        Option: (props) => CheckBoxOption({ ...props, readOnly }),
+        IndicatorSeparator: () => null,
+      }}
+      onChange={() => onChange}
+      value={value}
+    />
+  );
+};

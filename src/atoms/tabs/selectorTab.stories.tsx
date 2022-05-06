@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof SelectorTabAtom> = (args) => <SelectorTabA
 export const PrimaryMasterTabGroup = Template.bind({});
 PrimaryMasterTabGroup.args = {
   title: 'Primary',
+  icon: 'avalanche',
 };
 PrimaryMasterTabGroup.parameters = {
   backgrounds: { default: 'dark' },

@@ -28,25 +28,25 @@ const InputStyled = Styled.input<{ focus: boolean }>`
   outline: none;
   width: 398px;
   cursor: pointer;
-  color: ${(props) => props.theme.textShades.SHADE_2};
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 48px;
   border-radius: 12px;
   padding: 12px 24px;
   z-index: 1;
   box-sizing: border-box;
-  border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_4};
-  background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_4};
+  border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
-    color: ${(props) => props.theme.textShades.SHADE_1};
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_1};
   }
   :focus  {
-    color: ${(props) => props.theme.textShades.SHADE_3};
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   }
   :hover {
     ::placeholder {
       color: ${(props) => props.theme.contrastColor.HIGH_CONTRAST};
     }
-    color: ${(props) => props.theme.textShades.SHADE_3};
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     ${({ focus }) => !focus && css`
       border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
   `}
@@ -54,14 +54,14 @@ const InputStyled = Styled.input<{ focus: boolean }>`
 `;
 const InputLabel = Styled.label<{ focus: boolean, hover:boolean }>`
   font-size: 12px;
-  color: ${(props) => props.theme.textShades.SHADE_1};
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_1};
   font-weight: 700;
   line-height: 16px;
   ${({ hover }) => hover && css`
-    color: ${(props) => props.theme.textShades.SHADE_3};
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   `}
   ${({ focus }) => focus && css`
-    color: ${(props) => props.theme.textShades.SHADE_3};
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   `}
 `;
 

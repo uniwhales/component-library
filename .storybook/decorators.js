@@ -1,17 +1,20 @@
 
 import React from 'react';
 import { ThemeProvider } from 'styled-components'
-import { Theme } from '../src/theme';
+import {DarkTheme, LightTheme, Theme} from '../src/';
 import { GlobalStyle } from "../src/theme";
 
+const darkTheme = {...Theme, ...DarkTheme}
+const lightTheme = {...Theme, ...LightTheme}
 
-const ThemeDecorator = (storyFn) => (
-    <ThemeProvider theme={Theme}>
+
+const ThemeDecorator = (storyFn, context) => {
+    return (
+        <ThemeProvider theme={context.globals.backgrounds?.value ==='#909090' ? darkTheme : lightTheme}>
         <GlobalStyle />
         {storyFn()}
-    </ThemeProvider>
-);
-console.log('123');
+    </ThemeProvider>)
+};
 export default ThemeDecorator;
 
 

@@ -56,7 +56,7 @@ const ButtonPrimary = Styled(Button)`
   `}
 `;
 const ButtonSecondary = Styled(Button)`
-  color: ${(props) => props.theme.textShades.SHADE_3};
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   // disabled state
   ${(props) => props.disabled && css`
      opacity: 0.2;
@@ -91,12 +91,15 @@ const ButtonTertiary = Styled(Button)`
   `};
   // active state
   ${(props) => !props.disabled && css`
-    color: ${props.theme.textShades.SHADE_3};
+    color: ${props.theme.textShades.SHADE_MINUS_3};
     background-color: transparent;
-    border: 1px solid ${props.theme.textShades.SHADE_3};
+    border: 1px solid ${props.theme.textShades.SHADE_MINUS_3};
     &:hover {
        border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
-       color: ${props.theme.colors.primary.UWL_BLUE};
+       // color: ${props.theme.colors.primary.UWL_BLUE};
+      svg {
+        fill: ${props.theme.colors.primary.UWL_BLUE};
+      }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};

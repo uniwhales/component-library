@@ -22,7 +22,7 @@ export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:Selector
   const menu = tabs.map((item, i) => (
     <SelectorTabAtom
         // @ts-ignore
-      // icon={item.icon ? item.name.toLowerCase() : undefined}
+      icon={item.name?.toLowerCase()}
       setActiveTab={() => setActiveTab(item)}
       key={item.id}
       isHighlighted={activeTab && activeTab.id === item.id}

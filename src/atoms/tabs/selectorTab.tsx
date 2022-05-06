@@ -10,17 +10,18 @@ export interface SelectorTabProps {
   icon?: 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
   setActiveTab?: () => void;
 }
+// ${(props) => props.theme.contrastColor.LOW_CONTRAST}
 const SelectorTab = Styled.div<SelectorTabProps>`
   .tabs__group {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
   }
   cursor: pointer;
   transition: 0.4s;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_3};
-  border: 1px solid ${(props) => props.theme.contrastColor.LOW_CONTRAST};
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+  border: 1px solid ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
   color: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
   max-width: 200px;
   height: 32px;
@@ -42,6 +43,7 @@ const SelectorTab = Styled.div<SelectorTabProps>`
     transition: all 0.4s;
     color: ${(props) => props.theme.colors.system.WHITE};
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
     font-weight: bold;
     svg {
       transition: all 0.4s;
@@ -51,6 +53,7 @@ const SelectorTab = Styled.div<SelectorTabProps>`
   ${({ isHighlighted }) => isHighlighted && css`
     color: ${(props) => props.theme.colors.system.WHITE};
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
     font-weight: bold;
     svg {
       transition: all 0.4s;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
 
@@ -6,6 +6,7 @@ export interface ToggleProps {
   isOn?: boolean;
   onClick?: () => void;
   label?:string
+  size?: 'standard' | 'small'
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -13,13 +14,13 @@ const Wrapper = Styled.div`
   justify-content: center;
   gap: 8px;
 `;
-const Switcher = Styled.label`
+const Switcher = Styled.label<{ size: string }>`
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: ${(props) => (props.size === 'small' ? 32 : 48)}px;
+  height: ${(props) => (props.size === 'small' ? 16 : 24)}px;
 `;
-const Toggle = Styled.span`
+const Toggle = Styled.span<{ size: string }>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -31,16 +32,16 @@ const Toggle = Styled.span`
   :before {
     position: absolute;
     content: '';
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: ${(props) => (props.size === 'small' ? 12 : 18)}px;
+    width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
+    left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
+    bottom: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
     transition: 0.4s;
     border-radius: 50%;
   }
 `;
-const FakeInput = Styled.input`
+const FakeInput = Styled.input<{ size:any }>`
   opacity: 0;
   width: 0;
   height: 0;
@@ -53,21 +54,19 @@ const FakeInput = Styled.input`
     : 'rgba(41, 121, 254, 0.5);')};
   }
   :checked + ${Toggle}:before {
-    transform: translateX(26px);
+    transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
     background: ${(props) => props.theme.colors.system.WHITE};
   }
 `;
-export const ToggleAtom = ({ isOn, onClick, label }:ToggleProps) => {
-  const [trigger, setTrigger] = useState(false);
-  const functionWrapper = () => setTrigger(!trigger);
-  return (
-    <Wrapper>
-      <Switcher>
-        <FakeInput type="checkbox" defaultChecked={isOn || trigger} onChange={onClick || functionWrapper} />
-        <Toggle />
-      </Switcher>
-      {label && <Text size="M-Regular">{label}</Text>}
-    </Wrapper>
+export const ToggleAtom = ({
+  isOn, onClick, label, size = 'standard',
+}:ToggleProps) => (
+  <Wrapper>
+    <Switcher size={size}>
+      <FakeInput size={size} type="checkbox" defaultChecked={isOn} onChange={onClick} />
+      <Toggle size={size} />
+    </Switcher>
+    {label && <Text size="M-Regular">{label}</Text>}
+  </Wrapper>
 
-  );
-};
+);
