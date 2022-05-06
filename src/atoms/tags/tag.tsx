@@ -7,7 +7,8 @@ export interface TagProps {
   name: string;
   isOn: boolean;
   id: number;
-  type: 'tag1' | 'tag2' | 'tag3' | 'tag4' | 'tag5' | 'tag6'
+  type: 'tag1' | 'tag2' | 'tag3' | 'tag4' | 'tag5' | 'tag6';
+  onClick: any;
 }
 
 const CustomTag = Styled.div<{ type: string, isOn:boolean }>`
@@ -20,11 +21,11 @@ const CustomTag = Styled.div<{ type: string, isOn:boolean }>`
 `;
 
 export const Tag = ({
-  name, isOn, type, id,
+  name, isOn, type, id, onClick,
 }:TagProps) => {
   const theme:any = useTheme();
   return (
-    <CustomTag key={id} isOn={isOn} type={type}>
+    <CustomTag onClick={(e) => onClick(e)} key={id} isOn={isOn} type={type}>
       <Text size="S-Regular" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
     </CustomTag>
   );
