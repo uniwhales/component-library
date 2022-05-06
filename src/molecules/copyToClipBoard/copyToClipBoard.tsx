@@ -10,8 +10,10 @@ enum TEXT {
 }
 export interface CopyToClipBoardProps {
   text:string;
+  walletCut?: boolean;
+  id: string;
 }
-const CustomReactTooltip = Styled(ReactTooltip)`
+const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
   text-align: center;
 `;
@@ -21,8 +23,10 @@ const Wrapper = Styled.div`
   gap: 5px;
 `;
 
-export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386Cc' }:CopyToClipBoardProps) => {
+export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
+  const start = text.substring(0, 5);
+  const end = text.substring(text.length - 5);
   const copyText = () => {
     setCopy(true);
     navigator.clipboard.writeText(text)
@@ -34,9 +38,9 @@ export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386C
   };
   return (
     <Wrapper>
-      <Text size="M-Regular">{text}</Text>
-      <div data-tip="Copy to clipboard">
-        <CustomReactTooltip effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
+      <Text size="M-Regular">{walletCut ? [start, end].join('...') : text }</Text>
+      <div data-for={id} data-tip="Copy to clipboard">
+        <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper onClick={copyText} icon="copy" />
       </div>
     </Wrapper>

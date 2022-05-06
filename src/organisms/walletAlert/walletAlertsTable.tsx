@@ -30,8 +30,8 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
   align-items: center;
   padding: 10px 25px;
 `;
-const Section = Styled.div`
-  flex: 1;
+const Section = Styled.div<{ flex?: number }>`
+  flex: ${(props) => props.flex || 1};
 `;
 const Group = Styled.div`
   display: flex;
@@ -40,11 +40,24 @@ const Group = Styled.div`
   height:100%;
 `;
 const ButtonGroup = Styled.div`
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 25px;
+  display: none;
+  @media (min-width: 1440px) {
+    display: flex;
+  }
 `;
+const ButtonGroupMobile = Styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  @media (max-width: 1440px) {
+    display: flex;
+  }
+`;
+
 const Overlay = Styled.div`
   width: 100%;
   height: 100%;
@@ -61,7 +74,7 @@ export const WalletAlertsTable = ({
     {isLoading && <Overlay />}
     <Section>
       {label && <Text size="S-Regular">{label}</Text>}
-      <CopyToClipBoard text={wallet} />
+      <CopyToClipBoard walletCut id={id.toString()} text={wallet} />
     </Section>
     <Section>
       <Group>
@@ -73,12 +86,12 @@ export const WalletAlertsTable = ({
         />
       </Group>
     </Section>
-    <Section>
+    <Section flex={2}>
       <Group>
         <Select readOnly options={chains} />
       </Group>
     </Section>
-    <Section>
+    <Section flex={2}>
       <ButtonGroup>
         <ButtonAtom icon="edit" onClick={editWallet} buttonVariant="secondary">Edit</ButtonAtom>
         <ButtonAtom
@@ -89,6 +102,16 @@ export const WalletAlertsTable = ({
           Remove
         </ButtonAtom>
       </ButtonGroup>
+      <ButtonGroupMobile>
+        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant="secondary">Edit</ButtonAtom>
+        <ButtonAtom
+          icon="remove"
+          onClick={removeWallet}
+          buttonVariant="secondary_action"
+        >
+          Remove
+        </ButtonAtom>
+      </ButtonGroupMobile>
     </Section>
   </Wrapper>
 );
