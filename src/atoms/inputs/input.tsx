@@ -26,7 +26,7 @@ const BorderWrapper = Styled.div<{ focus: boolean }>`
 const InputUserMessage = Styled.p``;
 const InputStyled = Styled.input<{ focus: boolean }>`
   outline: none;
-  width: 398px;
+  width: 100%;
   cursor: pointer;
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 48px;

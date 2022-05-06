@@ -8,6 +8,9 @@ import { Styled } from '../../theme';
 const StyledSelect = Styled(ReactSelect)`
   max-width: 172px;
   outline: none;
+  input{
+    width: fit-content;
+  }
 `;
 
 export const colourOptions = [
