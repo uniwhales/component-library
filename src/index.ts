@@ -6,6 +6,7 @@ export * from './atoms/tabs/selectorTab';
 export * from './atoms/texts/text';
 export * from './atoms/toggles/toggle__standart';
 export * from './atoms/inputs/select';
+export * from './atoms/tags/tag';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';

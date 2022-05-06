@@ -11,7 +11,11 @@ export default {
 
 const Template: ComponentStory<typeof
     WalletAlertsTable> = (args) => (
-      <WalletAlertsTable {...args} />
+      <>
+        <WalletAlertsTable {...args} />
+        <WalletAlertsTable {...args} />
+      </>
+
 );
 export const Primary = Template.bind({});
 
