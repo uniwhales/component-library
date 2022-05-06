@@ -6,19 +6,19 @@ import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 
 const StyledSelect = Styled(ReactSelect)`
-  //max-width: 172px;
+  max-width: 172px;
   outline: none;
   .react-checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
+    //display: flex;
+    //align-items: center;
+    //justify-content: space-between;
+    //padding: 0 10px;
   }
 `;
 
 export const colourOptions = [
   { value: 'Oceanrwerewrwerwerwerwerwe  rewrw', label: '423 rewrw' },
-  { value: 'blue', label: 'Blue' },
+  { value: 'blue blue', label: 'Blue Blue' },
   { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
@@ -70,6 +70,9 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   option: (defaultStyles, { isFocused, isSelected, theme }: StyledProps) => ({
     ...defaultStyles,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     color: theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.WATER_BLUE
       : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -97,12 +100,10 @@ const CheckBoxOption = (props:any) => {
   return (
     <div>
       <components.Option {...props}>
-        <div className="react-checkbox">
-          <label>
-            {label}
-          </label>
-          {!readOnly && <input type="checkbox" checked={isSelected} onChange={() => null} />}
-        </div>
+        <label>
+          {label}
+        </label>
+        {!readOnly && <input type="checkbox" checked={isSelected} onChange={() => null} />}
       </components.Option>
     </div>
   );
@@ -116,6 +117,7 @@ export const Select = ({
     <StyledSelect
       options={options}
       isMulti
+      menuIsOpen
       theme={theme as any}
       isOptionDisabled={() => readOnly}
       isSearchable={false}
