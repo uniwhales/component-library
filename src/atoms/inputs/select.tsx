@@ -129,7 +129,7 @@ export const Select = ({
         Option: (props) => CheckBoxOption({ ...props, readOnly }),
         IndicatorSeparator: () => null,
       }}
-      onChange={() => onChange}
+      onChange={(e) => onChange(e)}
       value={value}
     />
   );
