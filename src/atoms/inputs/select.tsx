@@ -6,7 +6,7 @@ import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 
 const StyledSelect = Styled(ReactSelect)`
-  max-width: 172px;
+  //max-width: 172px;
   outline: none;
   .react-checkbox {
     display: flex;
@@ -17,7 +17,7 @@ const StyledSelect = Styled(ReactSelect)`
 `;
 
 export const colourOptions = [
-  { value: 'ocean1', label: 'Ocean' },
+  { value: 'Oceanrwerewrwerwerwerwerwe  rewrw', label: '423 rewrw' },
   { value: 'blue', label: 'Blue' },
   { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },
