@@ -5,6 +5,8 @@ import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { CrossIcon, EditStandard } from '../../atoms/icons';
 
 export interface WalletAlertsTableProps {
   label?: string;
@@ -93,23 +95,36 @@ export const WalletAlertsTable = ({
     </Section>
     <Section flex={2}>
       <ButtonGroup>
-        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant="secondary">Edit</ButtonAtom>
+        <ButtonAtom onClick={editWallet} buttonVariant="secondary">
+          <>
+            <IconWrapper icon={<EditStandard />} />
+            Edit
+          </>
+        </ButtonAtom>
         <ButtonAtom
-          icon="remove"
           onClick={removeWallet}
           buttonVariant="tertiary"
         >
-          Remove
+          <>
+            <IconWrapper icon={<CrossIcon />} />
+            Remove
+          </>
         </ButtonAtom>
       </ButtonGroup>
       <ButtonGroupMobile>
-        <ButtonAtom icon="edit" onClick={editWallet} buttonVariant="secondary">Edit</ButtonAtom>
+        <ButtonAtom onClick={editWallet} buttonVariant="secondary">
+          <>
+            <IconWrapper icon={<EditStandard />} />
+            Edit
+          </>
+        </ButtonAtom>
         <ButtonAtom
-          icon="remove"
           onClick={removeWallet}
           buttonVariant="secondary_action"
         >
-          Remove
+
+          <IconWrapper icon={<CrossIcon />} />
+
         </ButtonAtom>
       </ButtonGroupMobile>
     </Section>

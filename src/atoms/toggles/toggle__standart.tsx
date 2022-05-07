@@ -35,7 +35,7 @@ const Toggle = Styled.span<{ size: string }>`
     height: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
-    bottom: ${(props) => (props.size === 'small' ? 2 : 4)}px;
+    bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
     background: ${(props) => props.theme.colors.primary.UWL_BLUE};
     transition: 0.4s;
     border-radius: 50%;

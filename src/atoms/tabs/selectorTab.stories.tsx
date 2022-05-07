@@ -8,11 +8,20 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof SelectorTabAtom>;
 
-const Template: ComponentStory<typeof SelectorTabAtom> = (args) => <SelectorTabAtom {...args} />;
+const Template: ComponentStory<typeof SelectorTabAtom> = ({
+  children, isHighlighted, tabIndex, setActiveTab,
+}) => (
+  <SelectorTabAtom
+    isHighlighted={isHighlighted}
+    tabIndex={tabIndex}
+    setActiveTab={setActiveTab}
+  >
+    {children}
+  </SelectorTabAtom>
+);
 export const PrimaryMasterTabGroup = Template.bind({});
 PrimaryMasterTabGroup.args = {
-  title: 'Primary',
-  icon: 'avalanche',
+  children: 'Primary',
 };
 PrimaryMasterTabGroup.parameters = {
   backgrounds: { default: 'dark' },

@@ -21,14 +21,13 @@ const Wrapper = Styled.div`
 export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:SelectorTabsProps) => {
   const menu = tabs.map((item, i) => (
     <SelectorTabAtom
-        // @ts-ignore
-      icon={item.name?.toLowerCase()}
       setActiveTab={() => setActiveTab(item)}
       key={item.id}
       isHighlighted={activeTab && activeTab.id === item.id}
       tabIndex={i}
-      title={item.label}
-    />
+    >
+      {item.label}
+    </SelectorTabAtom>
   ));
   return (
     <Wrapper>

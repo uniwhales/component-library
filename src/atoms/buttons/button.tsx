@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { IconWrapper } from '../icons/iconWrapper';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactChild;
@@ -14,7 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'tiny_action'
   | 'secondary_action_inverse'
   disabled?: boolean
-  icon?: 'star' | 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism' | 'copy' | 'edit' | 'remove' | 'alertBotColor' | 'copyColor';
+  icon?: JSX.Element;
   onClick: () => void;
 }
 
@@ -22,6 +21,9 @@ const Button = Styled.button`
   font-size: 14px;
   line-height: 24px;
   padding: 12px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
   font-weight: 700;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: 12px;
@@ -167,65 +169,49 @@ export const ButtonAtom:FC<ButtonProps> = ({
   children,
   buttonVariant,
   disabled = false,
-  icon,
   onClick,
 }) => {
   switch (buttonVariant) {
     case 'secondary':
       return (
         <ButtonSecondary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          {icon ? (
-            <div className="button__group">
-              {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
-              {children}
-            </div>
-          ) : children}
+          {children}
         </ButtonSecondary>
       );
     case 'tertiary':
       return (
         <ButtonTertiary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          {icon ? (
-            <div className="button__group">
-              {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
-              {children}
-            </div>
-          ) : children}
+          {children}
         </ButtonTertiary>
       );
     case 'primary_action':
       return (
         <ButtonPrimaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          <IconWrapper width="21px" height="21px" icon={icon} />
+          {children}
         </ButtonPrimaryAction>
       );
     case 'secondary_action':
       return (
         <ButtonSecondaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          <IconWrapper width="21px" height="21px" icon={icon} />
+          {children}
         </ButtonSecondaryAction>
       );
     case 'tiny_action':
       return (
         <ButtonTinyAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          <IconWrapper width="17px" height="17px" icon={icon} />
+          {children}
         </ButtonTinyAction>
       );
     case 'secondary_action_inverse':
       return (
         <ButtonSecondaryActionInverse onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          <IconWrapper width="21px" height="21px" icon={icon} />
+          {children}
         </ButtonSecondaryActionInverse>
       );
     default:
       return (
         <ButtonPrimary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
-          {icon ? (
-            <div className="button__group">
-              {icon && <IconWrapper width="21px" height="21px" icon={icon} />}
-              {children}
-            </div>
-          ) : children}
+          {children}
         </ButtonPrimary>
       );
   }

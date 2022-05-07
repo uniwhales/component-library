@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { CopyStandard } from '../../atoms/icons';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -41,7 +42,7 @@ export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386C
       <Text size="M-Regular">{walletCut ? [start, end].join('...') : text }</Text>
       <div data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        <IconWrapper onClick={copyText} icon="copy" />
+        <IconWrapper onClick={copyText} icon={<CopyStandard />} />
       </div>
     </Wrapper>
   );

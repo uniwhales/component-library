@@ -31,6 +31,7 @@ interface StyledProps {
   isSelected?: boolean
   menuIsOpen?: boolean
   theme?: any;
+  readOnly?:boolean;
 }
 
 const colourStyles:StylesConfig<StyledProps, false> = {
@@ -65,14 +66,16 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       },
     },
   }),
-  option: (defaultStyles, { isFocused, isSelected, theme }: StyledProps) => ({
+  option: (defaultStyles, {
+    isFocused, isSelected, theme, readOnly,
+  }: StyledProps) => ({
     ...defaultStyles,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     color: theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.WATER_BLUE
-      : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+      : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
       background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     },

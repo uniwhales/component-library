@@ -1,32 +1,11 @@
 import React from 'react';
 import { Styled } from '../../theme';
-import {
-  Aurora, Avalanche, Boba, Bsc, Eth, Fantom, Metis, Optimism, Star, Copy, Edit, Remove,
-  AlertBotColor, CopyColor,
-} from '.';
 
-const iconsArray = {
-  star: <Star />,
-  copy: <Copy />,
-  edit: <Edit />,
-  remove: <Remove />,
-  ethereum: <Eth />,
-  bsc: <Bsc />,
-  polygon: <Star />,
-  avalanche: <Avalanche />,
-  fantom: <Fantom />,
-  arbitrum: <Star />,
-  boba: <Boba />,
-  metis: <Metis />,
-  aurora: <Aurora />,
-  optimism: <Optimism />,
-  // FullColorStyle
-  alertBotColor: <AlertBotColor />,
-  copyColor: <CopyColor />,
-};
 const IconComponent = Styled.div<IconWrapperProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
+  display: flex;
+  align-items: center;
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
@@ -37,22 +16,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
 `;
 
 export interface IconWrapperProps {
-  icon?: 'star'
-  | 'ethereum'
-  | 'bsc'
-  | 'polygon'
-  | 'avalanche'
-  | 'fantom'
-  | 'arbitrum'
-  | 'boba'
-  | 'metis'
-  | 'aurora'
-  | 'optimism'
-  | 'copy'
-  | 'edit'
-  | 'remove'
-  | 'alertBotColor'
-  | 'copyColor'
+  icon?: JSX.Element;
   onClick?: () => void;
   height?: string;
   width?: string;
@@ -75,6 +39,6 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
     fill={fill}
     stroke={stroke}
   >
-    {icon && iconsArray[icon]}
+    {icon && icon}
   </IconComponent>
 );

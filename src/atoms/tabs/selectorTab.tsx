@@ -1,16 +1,13 @@
 import React from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { IconWrapper } from '../icons/iconWrapper';
 
 export interface SelectorTabProps {
-  title?: string;
+  children: React.ReactChild;
   isHighlighted?: boolean
   tabIndex: number
-  icon?: 'ethereum' | 'bsc' | 'polygon' | 'avalanche' | 'fantom' | 'arbitrum' | 'boba' | 'metis' | 'aurora' | 'optimism';
   setActiveTab?: () => void;
 }
-// ${(props) => props.theme.contrastColor.LOW_CONTRAST}
 const SelectorTab = Styled.div<SelectorTabProps>`
   .tabs__group {
     display: flex;
@@ -63,14 +60,9 @@ const SelectorTab = Styled.div<SelectorTabProps>`
 `;
 
 export const SelectorTabAtom = ({
-  title, isHighlighted, tabIndex, icon, setActiveTab,
+  children, isHighlighted, tabIndex, setActiveTab,
 }:SelectorTabProps) => (
   <SelectorTab onClick={setActiveTab} role="tab" tabIndex={tabIndex} isHighlighted={isHighlighted}>
-    {icon ? (
-      <div className="tabs__group">
-        {icon && <IconWrapper fill={isHighlighted ? 'white' : 'grey'} width="17px" height="17px" icon={icon} />}
-        {title}
-      </div>
-    ) : title}
+    {children}
   </SelectorTab>
 );
