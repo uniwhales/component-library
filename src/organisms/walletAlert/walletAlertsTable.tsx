@@ -14,8 +14,8 @@ export interface WalletAlertsTableProps {
   isActive: boolean;
   setIsActive: (wallet:number, status:boolean) => any;
   chains: any;
-  editWallet: () => {};
-  removeWallet: () => {};
+  editWallet: (id:number) => {};
+  removeWallet: (id:number) => {};
   id: number;
   isLoading: boolean;
 }
@@ -99,14 +99,14 @@ export const WalletAlertsTable = ({
     </Section>
     <Section flex={1}>
       <ButtonGroup>
-        <ButtonAtom onClick={editWallet} buttonVariant="secondary">
+        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
           <>
             <IconWrapper icon={<EditStandard />} />
             Edit
           </>
         </ButtonAtom>
         <ButtonAtom
-          onClick={removeWallet}
+          onClick={() => removeWallet(id)}
           buttonVariant="tertiary"
         >
           <>
@@ -116,14 +116,14 @@ export const WalletAlertsTable = ({
         </ButtonAtom>
       </ButtonGroup>
       <ButtonGroupMobile>
-        <ButtonAtom onClick={editWallet} buttonVariant="secondary">
+        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
           <>
             <IconWrapper icon={<EditStandard />} />
             Edit
           </>
         </ButtonAtom>
         <ButtonAtom
-          onClick={removeWallet}
+          onClick={() => removeWallet(id)}
           buttonVariant="secondary_action"
         >
 
