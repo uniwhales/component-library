@@ -43,7 +43,7 @@ const Group = Styled.div`
 `;
 const ButtonGroup = Styled.div`
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 25px;
   display: none;
   @media (min-width: 1440px) {
@@ -53,10 +53,14 @@ const ButtonGroup = Styled.div`
 const ButtonGroupMobile = Styled.div`
   display: none;
   align-items: center;
-  justify-content: center;
-  gap: 25px;
+  justify-content: flex-end;
+  gap: 15px;
   @media (max-width: 1440px) {
     display: flex;
+  }
+  @media (max-width: 1024px) {
+    display: flex;
+    gap: 5px;
   }
 `;
 
@@ -88,12 +92,12 @@ export const WalletAlertsTable = ({
         />
       </Group>
     </Section>
-    <Section flex={2}>
+    <Section flex={1}>
       <Group>
         <Select readOnly options={chains} />
       </Group>
     </Section>
-    <Section flex={2}>
+    <Section flex={1}>
       <ButtonGroup>
         <ButtonAtom onClick={editWallet} buttonVariant="secondary">
           <>
