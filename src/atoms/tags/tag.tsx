@@ -25,7 +25,7 @@ export const Tag = ({
 }:TagProps) => {
   const theme:any = useTheme();
   return (
-    <CustomTag onClick={(e) => onClick(e)} key={id} isOn={isOn} type={type}>
+    <CustomTag onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
       <Text size="S-Regular" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
     </CustomTag>
   );

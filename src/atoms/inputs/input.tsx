@@ -12,7 +12,7 @@ export interface InputsProps {
 const InputWrapper = Styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 5px;
 `;
 const BorderWrapper = Styled.div<{ focus: boolean }>`

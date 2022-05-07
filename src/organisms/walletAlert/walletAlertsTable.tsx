@@ -27,7 +27,7 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
   box-sizing: border-box;
   display: flex;
   height: 80px;
-  max-width: 1205px;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
