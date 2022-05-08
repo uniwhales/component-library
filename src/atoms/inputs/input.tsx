@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
+import { Text } from '../texts/text';
 
 export interface InputsProps {
   type: 'text' | 'number';
@@ -8,24 +9,33 @@ export interface InputsProps {
   value?:string;
   onChange: any;
   label?:string;
-  disabled?:boolean
+  disabled?:boolean;
+  isError?:string;
 }
 const InputWrapper = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 5px;
+  p{
+    margin: 0;
+  }
 `;
-const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean }>`
+const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, isError?: string }>`
   border-radius: 12px;
   padding: 1px;
   box-sizing: border-box;
-  ${({ focus, disabled }) => focus && !disabled && css`
+  background: ${(props) => props.isError && props.theme.colors.system.RED};
+  ${({ focus, disabled, isError }) => focus && !disabled && !isError && css`
     background: ${(props) => props.theme.gradients.primary.BLURPLE};
   `}
 `;
-const InputUserMessage = Styled.p``;
-const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean }>`
+const InputUserMessage = Styled.p`
+  p{
+    color: ${(props) => props.theme.colors.system.RED};
+  }
+`;
+const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string }>`
   outline: none;
   width: 100%;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
@@ -49,7 +59,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean }>`
       color: ${(props) => !props.disabled && props.theme.contrastColor.HIGH_CONTRAST};
     }
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-    ${({ focus, disabled }) => !focus && !disabled && css`
+    ${({ focus, disabled, isError }) => !focus && !disabled && !isError && css`
       border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
   `}
   }
@@ -69,7 +79,7 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
 `;
 
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled,
+  type, placeholder, value, onChange, label, disabled, isError,
 }:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
@@ -77,14 +87,19 @@ export const Input = ({
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
       <BorderWrapper
+        isError={isError}
         disabled={disabled}
         focus={focus}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <InputStyled disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
+        <InputStyled isError={isError} disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
       </BorderWrapper>
-      <InputUserMessage />
+      {isError && (
+      <InputUserMessage>
+        <Text size="S-Regular">{isError}</Text>
+      </InputUserMessage>
+      )}
     </InputWrapper>
   );
 };

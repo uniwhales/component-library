@@ -9,17 +9,18 @@ export default {
   },
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = ({ disabled }) => {
+const Template: ComponentStory<typeof Input> = ({ disabled, isError }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
-  return <Input value={localValue} disabled={disabled} label="Login" onChange={onChangeInput} type="text" />;
+  return <Input value={localValue} disabled={disabled} isError={isError} label="Login" onChange={onChangeInput} type="text" />;
 };
 export const Primary = Template.bind({});
 
 Primary.args = {
   disabled: true,
+  isError: 'error happend',
 };
 
 Primary.parameters = {
