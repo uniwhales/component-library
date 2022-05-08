@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './input';
-import { Secondary } from '../buttons/button.stories';
 
 export default {
   title: 'Atoms/Inputs',
@@ -10,14 +9,18 @@ export default {
   },
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = () => {
+const Template: ComponentStory<typeof Input> = ({ disabled }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
-  return <Input value={localValue} label="Login" onChange={onChangeInput} type="text" />;
+  return <Input value={localValue} disabled={disabled} label="Login" onChange={onChangeInput} type="text" />;
 };
 export const Primary = Template.bind({});
+
+Primary.args = {
+  disabled: true,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
