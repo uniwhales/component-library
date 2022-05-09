@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Input> = ({ disabled, isError }) => {
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
-  return <Input value={localValue} disabled={disabled} isError={isError} label="Login" onChange={onChangeInput} type="text" />;
+  return <Input value={localValue} disabled={disabled} isError={isError} label="Login" onChange={(e:any) => onChangeInput(e.target.value)} type="text" />;
 };
 export const Primary = Template.bind({});
 

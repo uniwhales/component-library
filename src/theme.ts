@@ -59,51 +59,6 @@ const LightTheme = {
   },
 };
 
-// const DarkTheme = {
-//   textShades: {
-//     SHADE_3: '#F8F9FF',
-//     SHADE_2: '#BBBCCE',
-//     SHADE_1: '#666C81',
-//   },
-//   containerAndCardShades: {
-//     NEUTRAL_SHADE_0: '#252E4F',
-//     SHADE_1: '#23293B',
-//     SHADE_2: '#1F232F',
-//     SHADE_3: '#1F2128',
-//     BG_SHADE_4: '#191B20',
-//   },
-//   contrastColor: {
-//     HIGH_CONTRAST: '#F8F9FF',
-//     LOW_CONTRAST: '#BBBCCE',
-//   },
-//   inverseContrastColor: {
-//     INVERSE_HIGH_CONTRAST: '#F8F9FF',
-//     INVERSE_LOW_CONTRAST: '#BBBCCE',
-//   },
-// };
-// const LightTheme = {
-//   textShades: {
-//     SHADE_3: '#1F2128',
-//     SHADE_2: '#575761',
-//     SHADE_1: '#797A84',
-//   },
-//   containerAndCardShades: {
-//     NEUTRAL_SHADE_0: '#D1DAFF',
-//     SHADE_1: '#FFFFFF',
-//     SHADE_2: '#FDFDFF',
-//     SHADE_3: '#F9FAFF',
-//     BG_SHADE_4: '#EFF1F8',
-//   },
-//   contrastColor: {
-//     HIGH_CONTRAST: '#355DFF',
-//     LOW_CONTRAST: '#0993EC',
-//   },
-//   inverseContrastColor: {
-//     INVERSE_HIGH_CONTRAST: '#355DFF',
-//     INVERSE_LOW_CONTRAST: '#0993EC',
-//   },
-// };
-
 const Theme = {
   ...DarkTheme,
   colors: {
