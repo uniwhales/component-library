@@ -13,6 +13,7 @@ export * from './molecules/groupTabs/selectorTabs';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 // theme
+export * from './atoms/icons/index';
 export {
   Theme, LightTheme, DarkTheme, Styled,
 } from './theme';
