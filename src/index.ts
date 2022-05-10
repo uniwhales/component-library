@@ -7,6 +7,7 @@ export * from './atoms/texts/text';
 export * from './atoms/toggles/toggle__standart';
 export * from './atoms/inputs/select';
 export * from './atoms/tags/tag';
+export * from './atoms/inputs/checkbox';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
