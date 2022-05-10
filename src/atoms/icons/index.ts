@@ -90,3 +90,6 @@ export * from './chains/Sushiswap';
 export * from './chains/Terra';
 export * from './chains/Uniswap';
 export * from './chains/UniWhales';
+export * from './chains/Boba';
+export * from './chains/Aurora';
+export * from './chains/Metis';

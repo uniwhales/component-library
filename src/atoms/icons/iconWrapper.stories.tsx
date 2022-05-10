@@ -21,6 +21,10 @@ import {
   Arbitrum,
   Avalanche,
   Optimism,
+  Binance,
+  Boba,
+  Aurora,
+  Metis,
 } from '.';
 
 export default {
@@ -56,6 +60,10 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper icon={<Arbitrum />} />
     <IconWrapper icon={<Avalanche />} />
     <IconWrapper icon={<Optimism />} />
+    <IconWrapper icon={<Binance />} />
+    <IconWrapper icon={<Boba />} />
+    <IconWrapper icon={<Aurora />} />
+    <IconWrapper icon={<Metis />} />
   </>
 );
 export const navigationIcons = Template.bind({});
