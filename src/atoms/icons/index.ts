@@ -31,6 +31,7 @@ export * from './generalIcons/fullColorStyle/TimeColor';
 export * from './generalIcons/fullColorStyle/TwitterColor';
 export * from './generalIcons/fullColorStyle/WalletColor';
 export * from './generalIcons/fullColorStyle/WebinarColor';
+export * from './generalIcons/fullColorStyle/Check';
 // generalIcons//STANDARD
 export * from './generalIcons/filledStyle/AlertBotStandard';
 export * from './generalIcons/filledStyle/EditStandard';
