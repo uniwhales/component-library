@@ -35,31 +35,32 @@ interface StyledProps {
 }
 
 const colourStyles:StylesConfig<StyledProps, false> = {
-  placeholder: (defaultStyles, { isFocused, theme }: StyledProps) => ({
+  placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
   }),
   dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
     svg: {
       transition: 'all 0.4s',
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-      transform: isFocused ? 'rotateZ(-180deg)' : undefined,
     },
   }),
   control: (defaultStyles, { isFocused, menuIsOpen, theme }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
-    background: isFocused
+    background: menuIsOpen
       ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: '1px solid transparent',
+    border: `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',
     padding: '0 10px 0 10px',
     boxShadow: 'none',
     borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
     height: '48px',
+    svg: {
+      transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
+    },
     '&:hover': {
-      color: 'blue',
       border: `1px solid ${theme.colors.primary.UWL_BLUE}`,
       svg: {
         fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
