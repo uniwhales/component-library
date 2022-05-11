@@ -60,6 +60,9 @@ const ButtonPrimary = Styled(Button)`
 `;
 const ButtonSecondary = Styled(Button)`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  svg {
+    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
+  }
   // disabled state
   ${(props) => props.disabled && css`
      opacity: 0.2;
@@ -74,14 +77,14 @@ const ButtonSecondary = Styled(Button)`
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
       svg {
-        fill: ${props.theme.colors.system.WHITE};
+        fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
       svg {
-        fill: ${props.theme.colors.system.WHITE};
+        fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
   `}

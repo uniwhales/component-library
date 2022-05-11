@@ -37,7 +37,7 @@ interface StyledProps {
 const colourStyles:StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
   }),
   dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
@@ -49,7 +49,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   control: (defaultStyles, { isFocused, menuIsOpen, theme }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
-    background: menuIsOpen
+    background: isFocused
       ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',

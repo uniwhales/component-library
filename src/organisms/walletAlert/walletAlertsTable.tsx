@@ -47,7 +47,7 @@ const ButtonGroup = Styled.div`
   justify-content: flex-end;
   gap: 25px;
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 1920px) {
     display: flex;
   }
 `;
@@ -56,7 +56,7 @@ const ButtonGroupMobile = Styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 15px;
-  @media (max-width: 1440px) {
+  @media (max-width: 1919px) {
     display: flex;
   }
   @media (max-width: 1024px) {
