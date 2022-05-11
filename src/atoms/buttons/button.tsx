@@ -13,7 +13,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'tiny_action'
   | 'secondary_action_inverse'
   disabled?: boolean
-  icon?: JSX.Element;
   onClick: () => void;
 }
 
@@ -36,6 +35,7 @@ const Button = Styled.button`
   }
   svg {
     cursor: pointer;
+    fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
 const ButtonPrimary = Styled(Button)`
@@ -47,6 +47,7 @@ const ButtonPrimary = Styled(Button)`
   `}
   // active state
   ${(props) => !props.disabled && css`
+      cursor: pointer;
       background: ${props.theme.gradients.primary.BLURPLE};
       border: none;
       &:hover {
@@ -86,6 +87,9 @@ const ButtonSecondary = Styled(Button)`
   `}
 `;
 const ButtonTertiary = Styled(Button)`
+  svg {
+    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
+  }
   ${(props) => props.disabled && css`
      background: ${props.theme.colors.system.DISABLED};
      opacity: 0.2;
@@ -100,14 +104,14 @@ const ButtonTertiary = Styled(Button)`
        border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
        // color: ${props.theme.colors.primary.UWL_BLUE};
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE};
+        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
       }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};
       background: ${props.theme.colors.primary.UWL_BLUE};
       svg {
-        fill: ${props.theme.colors.system.WHITE};
+        fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
   `};
@@ -115,7 +119,7 @@ const ButtonTertiary = Styled(Button)`
 const ButtonPrimaryAction = Styled(ButtonPrimary)``;
 const ButtonSecondaryAction = Styled(Button)`
   svg {
-    fill: ${(props) => props.theme.colors.system.WHITE};
+    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
   }
   border: none;
   // disabled state
@@ -128,12 +132,12 @@ const ButtonSecondaryAction = Styled(Button)`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE};
+        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
       }
     };
     &:active {
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE};
+        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
       }
     };
   `}
@@ -141,7 +145,7 @@ const ButtonSecondaryAction = Styled(Button)`
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
 const ButtonSecondaryActionInverse = Styled(Button)`
   svg {
-    fill: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    fill: ${(props) => props.theme.colors.primary.UWL_BLUE}!important;
   }
   border: none;
   // disabled state
@@ -154,12 +158,12 @@ const ButtonSecondaryActionInverse = Styled(Button)`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.system.WHITE};
+        fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
     &:active {
       svg {
-        fill: ${props.theme.colors.system.WHITE};
+        fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
   `}
