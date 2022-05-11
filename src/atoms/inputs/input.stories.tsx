@@ -19,8 +19,6 @@ const Template: ComponentStory<typeof Input> = ({ disabled, isError }) => {
 export const Primary = Template.bind({});
 
 Primary.args = {
-  disabled: true,
-  isError: 'error happend',
 };
 
 Primary.parameters = {
