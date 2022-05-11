@@ -16,6 +16,7 @@ const SelectorTab = Styled.div<SelectorTabProps>`
     gap: 4px;
   }
   cursor: pointer;
+  font-size: 14px;
   transition: 0.4s;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
   border: 1px solid ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};

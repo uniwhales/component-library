@@ -15,6 +15,16 @@ import {
   LinkIcon,
   NoticeIcon,
   RefreshIcon,
+  Ethereum,
+  Polygon,
+  Fantom,
+  Arbitrum,
+  Avalanche,
+  Optimism,
+  Binance,
+  Boba,
+  Aurora,
+  Metis,
 } from '.';
 
 export default {
@@ -42,8 +52,22 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper icon={<RefreshIcon />} />
   </>
 );
-
+const Template2: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper icon={<Ethereum />} />
+    <IconWrapper icon={<Polygon />} />
+    <IconWrapper icon={<Fantom />} />
+    <IconWrapper icon={<Arbitrum />} />
+    <IconWrapper icon={<Avalanche />} />
+    <IconWrapper icon={<Optimism />} />
+    <IconWrapper icon={<Binance />} />
+    <IconWrapper icon={<Boba />} />
+    <IconWrapper icon={<Aurora />} />
+    <IconWrapper icon={<Metis />} />
+  </>
+);
 export const navigationIcons = Template.bind({});
+export const chainsIcons = Template2.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
