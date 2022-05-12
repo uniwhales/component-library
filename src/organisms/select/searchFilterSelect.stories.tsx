@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Select } from './singleSelect';
-import { Uniswap } from '../../atoms/icons';
+import { Select } from './searchFilterSelect';
+import { Avalanche, Terra, Uniswap } from '../../atoms/icons';
 
 export default {
-  title: 'Organisms/SingleSelect',
+  title: 'Organisms/SearchFilterSelect',
   component: Select,
   argTypes: {
   },
@@ -15,22 +15,22 @@ const MockData = [{
   symbol: 'UNI',
   name: 'Uniswap',
   address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
-  value: 'PancakeSwap',
-  label: 'PancakeSwap',
+  value: 'Uniswap',
+  label: 'Uniswap',
 }, {
-  icon: <Uniswap />,
-  symbol: 'UNI',
-  name: 'Uniswap',
+  icon: <Avalanche />,
+  symbol: 'AVA',
+  name: 'Avalanche',
   address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
-  value: 'UNI',
-  label: 'Uniwswap',
+  value: 'Avalanche',
+  label: 'Avalanche',
 }, {
-  icon: <Uniswap />,
-  symbol: 'UNI',
-  name: 'Uniswap',
+  icon: <Terra />,
+  symbol: 'SHIB',
+  name: 'Shiba Inu',
   address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
-  value: 'SushiSwap',
-  label: 'SushiSwap',
+  value: 'Shiba Inu',
+  label: 'Shiba Inu',
 }];
 
 const Template: ComponentStory<typeof Select> = (args) => {
@@ -40,7 +40,7 @@ const Template: ComponentStory<typeof Select> = (args) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [options, setOptions] = useState<any[]>([]);
   const [isContractSearch, setIsContractSearch] = useState(true);
-
+  const { options: storyOptions } = args;
   return (
     <Select
       {...args}
@@ -49,15 +49,14 @@ const Template: ComponentStory<typeof Select> = (args) => {
         setValue(e);
       }}
       onInputChange={(e) => {
+        console.log(e);
         setInputValue(e);
         if (e.length > 2) {
           setIsLoading(true);
           setTimeout(() => {
-            if (!isLoading) {
-              setOptions(MockData);
-              setIsLoading(false);
-              setMenuIsOpen(true);
-            }
+            setOptions(storyOptions || MockData);
+            setIsLoading(false);
+            setMenuIsOpen(true);
           }, 2000);
         }
       }}
@@ -68,6 +67,7 @@ const Template: ComponentStory<typeof Select> = (args) => {
       isLoading={isLoading}
       isContractSearch={isContractSearch}
       onSwitch={() => setIsContractSearch(!isContractSearch)}
+      placeholder="Search Token"
     />
   );
 };
@@ -78,6 +78,5 @@ Primary.parameters = {
 };
 
 Primary.args = {
-  placeholder: 'Search Token',
-  readOnly: false,
+
 };
