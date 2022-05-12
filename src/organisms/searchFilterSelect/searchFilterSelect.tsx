@@ -6,10 +6,10 @@ import ReactSelect, {
 import { useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
-import { Option } from './selectComponents/option';
-import { Control } from './selectComponents/control';
-import { LoadingMessage } from './selectComponents/loadingMessage';
-import { IndicatorsContainer } from './selectComponents/indicatorsContainer';
+import { Option } from './searchFilterSelectComponents/option';
+import { Control } from './searchFilterSelectComponents/control';
+import { LoadingMessage } from './searchFilterSelectComponents/loadingMessage';
+import { IndicatorsContainer } from './searchFilterSelectComponents/indicatorsContainer';
 
 const StyledSelect = Styled(ReactSelect)<{
   label?: string

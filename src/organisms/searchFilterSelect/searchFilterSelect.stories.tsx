@@ -49,7 +49,6 @@ const Template: ComponentStory<typeof Select> = (args) => {
         setValue(e);
       }}
       onInputChange={(e) => {
-        console.log(e);
         setInputValue(e);
         if (e.length > 2) {
           setIsLoading(true);
