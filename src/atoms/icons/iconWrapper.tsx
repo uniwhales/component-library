@@ -9,7 +9,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
-    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST};
+    fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
     stroke: ${(props) => props.stroke};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 }

@@ -5,6 +5,7 @@ export interface SwitcherProps {
   isOn?: boolean;
   onClick?: () => void;
   disabled: boolean;
+  size?: 'big' | 'small'
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -12,11 +13,11 @@ const Wrapper = Styled.div`
   justify-content: center;
   gap: 8px;
 `;
-const Switcher = Styled.label`
+const Switcher = Styled.label<Pick<SwitcherProps, 'size'>>`
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 24px;
+  width: ${(props) => (props.size === 'small' ? '32px' : '48px')};
+  height: ${(props) => (props.size === 'small' ? '16px' : '24px')};
 `;
 const Toggle = Styled.span<SwitcherProps>`
   position: absolute;
@@ -38,8 +39,8 @@ const Toggle = Styled.span<SwitcherProps>`
   :before {
     position: absolute;
     content: '';
-    height: 24px;
-    width: 24px;
+    height: 100%;
+    width: 50%;
     bottom: 0;
     background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.gradients.primary.BLURPLE)};
     transition: 0.4s;
@@ -58,10 +59,10 @@ const FakeInput = Styled.input`
 `;
 
 export const SwitcherAtom = ({
-  isOn, onClick, disabled,
+  isOn, onClick, disabled, size = 'small',
 }:SwitcherProps) => (
   <Wrapper>
-    <Switcher>
+    <Switcher size={size}>
       <FakeInput type="checkbox" onChange={onClick} disabled={disabled} />
       <Toggle disabled={disabled} isOn={isOn} />
     </Switcher>
