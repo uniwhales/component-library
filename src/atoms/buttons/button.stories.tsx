@@ -1,24 +1,21 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ButtonAtom } from './button';
+import { IconWrapper } from '../icons/iconWrapper';
+import { DashboardStandard } from '../icons';
 
 export default {
   title: 'Atoms/Buttons',
   component: ButtonAtom,
   argTypes: {
-    buttonVariant: {
+    children: {
       control: {
         type: null,
       },
     },
-    icon: {
+    buttonVariant: {
       control: {
-        type: 'select',
-        options: {
-          none: '',
-          star: 'star',
-          alertBotColor: 'alertBotColor',
-        },
+        type: null,
       },
     },
     disabled: {
@@ -29,18 +26,31 @@ export default {
   },
 } as ComponentMeta<typeof ButtonAtom>;
 
+const WithIcon = (isText = true) => (
+  <>
+    <IconWrapper icon={<DashboardStandard />} />
+    {isText && 'With Icon'}
+  </>
+);
 const Template: ComponentStory<typeof ButtonAtom> = (args) => {
-  console.log(args);
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
 };
 export const Primary = Template.bind({});
+export const PrimaryWithIcon = Template.bind({});
 export const Secondary = Template.bind({});
+export const SecondaryWithIcon = Template.bind({});
 export const Tertiary = Template.bind({});
+export const TertiaryWithIcon = Template.bind({});
 export const PrimaryAction = Template.bind({});
 export const SecondaryAction = Template.bind({});
 export const TinyAction = Template.bind({});
 export const SecondaryActionInverse = Template.bind({});
+
+PrimaryWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'primary',
+};
 Primary.args = {
   children: 'Primary',
   buttonVariant: 'primary',
@@ -49,38 +59,31 @@ Secondary.args = {
   children: 'Secondary',
   buttonVariant: 'secondary',
 };
+SecondaryWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'secondary',
+};
 Tertiary.args = {
   children: 'Tertiary',
   buttonVariant: 'tertiary',
 };
+TertiaryWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'tertiary',
+};
 PrimaryAction.args = {
-  icon: 'star',
+  children: WithIcon(false),
   buttonVariant: 'primary_action',
 };
 SecondaryAction.args = {
-  icon: 'star',
+  children: WithIcon(false),
   buttonVariant: 'secondary_action',
 };
 TinyAction.args = {
-  icon: 'star',
+  children: WithIcon(false),
   buttonVariant: 'tiny_action',
 };
 SecondaryActionInverse.args = {
-  icon: 'star',
+  children: WithIcon(false),
   buttonVariant: 'secondary_action_inverse',
 };
-// Secondary.parameters = {
-//   backgrounds: { default: 'dark' },
-// };
-// TinyAction.parameters = {
-//   backgrounds: { default: 'dark' },
-// };
-// SecondaryAction.parameters = {
-//   backgrounds: { default: 'dark' },
-// };
-// Tertiary.parameters = {
-//   backgrounds: { default: 'dark' },
-// };
-// SecondaryActionInverse.parameters = {
-//   backgrounds: { default: 'dark' },
-// };

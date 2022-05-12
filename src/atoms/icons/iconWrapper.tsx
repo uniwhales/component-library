@@ -11,7 +11,6 @@ const IconComponent = Styled.div<IconWrapperProps>`
     width: ${(props) => props.width};
     fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
     stroke: ${(props) => props.stroke};
-    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 }
 `;
 

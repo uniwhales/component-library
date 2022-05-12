@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
 import { Select } from '../../atoms/inputs/select';
@@ -46,7 +47,7 @@ const ButtonGroup = Styled.div`
   justify-content: flex-end;
   gap: 25px;
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 1920px) {
     display: flex;
   }
 `;
@@ -55,7 +56,7 @@ const ButtonGroupMobile = Styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 15px;
-  @media (max-width: 1440px) {
+  @media (max-width: 1919px) {
     display: flex;
   }
   @media (max-width: 1024px) {
@@ -75,62 +76,65 @@ const Overlay = Styled.div`
 
 export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading,
-}:WalletAlertsTableProps) => (
-  <Wrapper isLoading={isLoading}>
-    {isLoading && <Overlay />}
-    <Section>
-      {label && <Text size="S-Regular">{label}</Text>}
-      <CopyToClipBoard walletCut id={id.toString()} text={wallet} />
-    </Section>
-    <Section>
-      <Group>
-        <ToggleAtom
-          size="small"
-          label={isActive ? 'On' : 'Off'}
-          isOn={isActive}
-          onClick={() => setIsActive(id, isActive)}
-        />
-      </Group>
-    </Section>
-    <Section flex={1}>
-      <Group>
-        <Select readOnly options={chains} />
-      </Group>
-    </Section>
-    <Section flex={1}>
-      <ButtonGroup>
-        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
-          <>
-            <IconWrapper icon={<EditStandard />} />
-            Edit
-          </>
-        </ButtonAtom>
-        <ButtonAtom
-          onClick={() => removeWallet(id)}
-          buttonVariant="tertiary"
-        >
-          <>
+}:WalletAlertsTableProps) => {
+  const theme:any = useTheme();
+  return (
+    <Wrapper isLoading={isLoading}>
+      {isLoading && <Overlay />}
+      <Section>
+        {label && <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{label}</Text>}
+        <CopyToClipBoard walletCut id={id.toString()} text={wallet} />
+      </Section>
+      <Section>
+        <Group>
+          <ToggleAtom
+            size="small"
+            label={isActive ? 'On' : 'Off'}
+            isOn={isActive}
+            onClick={() => setIsActive(id, isActive)}
+          />
+        </Group>
+      </Section>
+      <Section flex={1}>
+        <Group>
+          <Select readOnly options={chains} />
+        </Group>
+      </Section>
+      <Section flex={1}>
+        <ButtonGroup>
+          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
+            <>
+              <IconWrapper icon={<EditStandard />} />
+              Edit
+            </>
+          </ButtonAtom>
+          <ButtonAtom
+            onClick={() => removeWallet(id)}
+            buttonVariant="tertiary"
+          >
+            <>
+              <IconWrapper icon={<CrossIcon />} />
+              Remove
+            </>
+          </ButtonAtom>
+        </ButtonGroup>
+        <ButtonGroupMobile>
+          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
+            <>
+              <IconWrapper icon={<EditStandard />} />
+              Edit
+            </>
+          </ButtonAtom>
+          <ButtonAtom
+            onClick={() => removeWallet(id)}
+            buttonVariant="secondary_action"
+          >
+
             <IconWrapper icon={<CrossIcon />} />
-            Remove
-          </>
-        </ButtonAtom>
-      </ButtonGroup>
-      <ButtonGroupMobile>
-        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
-          <>
-            <IconWrapper icon={<EditStandard />} />
-            Edit
-          </>
-        </ButtonAtom>
-        <ButtonAtom
-          onClick={() => removeWallet(id)}
-          buttonVariant="secondary_action"
-        >
 
-          <IconWrapper icon={<CrossIcon />} />
-
-        </ButtonAtom>
-      </ButtonGroupMobile>
-    </Section>
-  </Wrapper>
-);
+          </ButtonAtom>
+        </ButtonGroupMobile>
+      </Section>
+    </Wrapper>
+  );
+};

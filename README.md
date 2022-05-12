@@ -31,7 +31,7 @@ $ npm i
 #### After installing all dependencies
 
 ```
-$ npm run strorybook
+$ npm run storybook
 ```
 
 ### To publish
