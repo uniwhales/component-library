@@ -61,6 +61,7 @@ export * from './generalIcons/filledStyle/TimeStandard';
 export * from './generalIcons/filledStyle/TwitterStandard';
 export * from './generalIcons/filledStyle/WalletStandard';
 export * from './generalIcons/filledStyle/WebinarStandard';
+export * from './generalIcons/filledStyle/DownloadStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

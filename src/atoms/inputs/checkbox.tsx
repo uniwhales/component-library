@@ -54,7 +54,7 @@ export interface CheckboxProps {
 export const Checkbox: FC<CheckboxProps> = ({
   disabled, selected, size, onClick,
 }) => {
-  const theme = useTheme();
+  const theme:any = useTheme();
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
 
