@@ -4,6 +4,7 @@ import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard } from '../../atoms/icons';
+import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -26,8 +27,6 @@ const Wrapper = Styled.div`
 
 export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
-  const start = text.substring(0, 5);
-  const end = text.substring(text.length - 5);
   const copyText = () => {
     setCopy(true);
     navigator.clipboard.writeText(text)
@@ -39,7 +38,7 @@ export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386C
   };
   return (
     <Wrapper>
-      <Text size="M-Regular">{walletCut ? [start, end].join('...') : text }</Text>
+      <Text size="M-Regular">{walletCut ? shortenAddressTo11Chars(text) : text }</Text>
       <div data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper width="17px" height="17px" onClick={copyText} icon={<CopyStandard />} />
