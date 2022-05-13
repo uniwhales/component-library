@@ -24,7 +24,13 @@ export const IndicatorsContainer = (
   return (
     <IndicatorsContainerWrapper {...props}>
       <DropdownIndicator {...props} />
-      <ButtonAtom borderRadius="0px 12px 12px 0px;" buttonVariant="primary" onClick={() => { selectProps.onSubmit(); }}>
+      <ButtonAtom
+        borderRadius="0px 10px 10px 0px"
+        buttonVariant="primary"
+        onClick={() => {
+          selectProps.onSubmit();
+        }}
+      >
         <IconWrapper icon={<SearchStandard />} />
       </ButtonAtom>
     </IndicatorsContainerWrapper>

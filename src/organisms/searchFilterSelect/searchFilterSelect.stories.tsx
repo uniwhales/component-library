@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Select } from './searchFilterSelect';
-import { Avalanche, Terra, Uniswap } from '../../atoms/icons';
+import { SearchFilterSelect } from './searchFilterSelect';
+import {
+  Avalanche, Near, Terra, Uniswap,
+} from '../../atoms/icons';
 
 export default {
   title: 'Organisms/SearchFilterSelect',
-  component: Select,
+  component: SearchFilterSelect,
   argTypes: {
   },
-} as ComponentMeta<typeof Select>;
+} as ComponentMeta<typeof SearchFilterSelect>;
 
 const MockData = [{
   icon: <Uniswap />,
@@ -31,18 +33,26 @@ const MockData = [{
   address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
   value: 'Shiba Inu',
   label: 'Shiba Inu',
+}, {
+  icon: <Near />,
+  symbol: 'NEAR',
+  name: 'NEAR',
+  address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
+  value: 'NEAR',
+  label: 'NEAR',
 }];
 
-const Template: ComponentStory<typeof Select> = (args) => {
+const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
+  const { menuIsOpen: argMenuIsOpen, isLoading: argIsLoading, options: argOptions } = args;
   const [value, setValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [options, setOptions] = useState<any[]>([]);
   const [isContractSearch, setIsContractSearch] = useState(true);
-  const { options: storyOptions } = args;
+
   return (
-    <Select
+    <SearchFilterSelect
       {...args}
       options={options}
       onChange={(e) => {
@@ -51,19 +61,22 @@ const Template: ComponentStory<typeof Select> = (args) => {
       onInputChange={(e) => {
         setInputValue(e);
         if (e.length > 2) {
-          setIsLoading(true);
+          setIsLoading(argIsLoading || true);
           setTimeout(() => {
-            setOptions(storyOptions || MockData);
-            setIsLoading(false);
-            setMenuIsOpen(true);
+            setOptions(argOptions || MockData);
+            setIsLoading(argIsLoading || false);
+            setMenuIsOpen(argMenuIsOpen || true);
           }, 2000);
         }
       }}
+      onSubmit={(e) => {
+        setValue(e);
+      }}
       label="Explorer"
       value={value}
-      menuIsOpen={menuIsOpen}
+      menuIsOpen={argMenuIsOpen || menuIsOpen}
       inputValue={inputValue}
-      isLoading={isLoading}
+      isLoading={argIsLoading || isLoading}
       isContractSearch={isContractSearch}
       onSwitch={() => setIsContractSearch(!isContractSearch)}
       placeholder="Search Token"
@@ -77,5 +90,4 @@ Primary.parameters = {
 };
 
 Primary.args = {
-
 };

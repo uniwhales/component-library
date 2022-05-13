@@ -2,6 +2,7 @@ import React, { } from 'react';
 import ReactSelect, {
   StylesConfig,
   components,
+  InputActionMeta,
 } from 'react-select';
 import { useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
@@ -14,7 +15,8 @@ import { IndicatorsContainer } from './searchFilterSelectComponents/indicatorsCo
 const StyledSelect = Styled(ReactSelect)<{
   label?: string
   isContractSearch?: boolean,
-  onSwitch?: () => void
+  onSwitch: () => void
+  onSubmit: (e: any) => void
 }>`
   width: 450px;
   outline: none;
@@ -44,13 +46,14 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       color: isFocused ? theme.contrastColor.HIGH_CONTRAST : theme.textShades.SHADE_MINUS_1,
     });
   },
-  dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
+  dropdownIndicator: (defaultStyles, { isFocused, theme, selectProps }: StyledProps) => ({
     ...defaultStyles,
     fontSize: '1rem',
     svg: {
       transition: 'all 0.4s',
-      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-      transform: isFocused ? 'rotateZ(-180deg)' : undefined,
+      fill: isFocused || selectProps.menuIsOpen
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      transform: selectProps.menuIsOpen ? 'rotateZ(-180deg)' : undefined,
       fontsize: 10,
     },
   }),
@@ -59,21 +62,28 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
-    background: selectProps.menuIsOpen
+    background: selectProps.menuIsOpen || isFocused
       ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: '1px solid transparent',
     outline: 'none',
     boxShadow: 'none',
     paddingLeft: 8,
     borderRadius: selectProps.menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
-    color: isFocused ? theme.contrastColor.HIGH_CONTRAST : theme.textShades.SHADE_MINUS_2,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    '.react-select__placeholder': {
+      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    },
     fontWeight: isFocused || hasValue ? 'bold' : 'normal',
     height: '50px',
     '&:hover': {
-      color: theme.contrastColor.HIGH_CONTRAST,
-      border: `1px solid ${theme.colors.primary.UWL_BLUE}`,
+      color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
+      border: isFocused ? '' : `1px solid ${theme.colors.primary.UWL_BLUE}`,
       svg: {
         fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
+      },
+      // Required to target the placeholder
+      '.react-select__placeholder': {
+        color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
       },
     },
   }),
@@ -84,9 +94,12 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    color: theme.textShades.SHADE_MINUS_3,
+    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
+    svg: {
+      fill: isSelected && theme.colors.system.WHITE,
+    },
     paddingLeft: 8,
-    background: isSelected ? theme.colors.primary.WATER_BLUE
+    background: isSelected ? `${theme.colors.primary.WATER_BLUE}!important`
       : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
       background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -97,21 +110,32 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     marginTop: 0,
     borderRadius: '0px 0px 12px 12px',
+    paddingBottom: 0,
   }),
-  menuList: (defaultStyles, { theme }: StyledProps) => ({
+  menuList: (defaultStyles, props: StyledProps) => ({
     ...defaultStyles,
-    background: theme.containerAndCardShades.SHADE_PLUS_1,
-    color: theme.textShades.SHADE_MINUS_3,
+    background: props.theme.containerAndCardShades.SHADE_PLUS_2,
+    color: props.theme.textShades.SHADE_MINUS_3,
     paddingBottom: 0,
     paddingTop: 0,
     borderRadius: '0px 0px 12px 12px',
     zIndex: 10,
+    '> :nth-child(2n)': {
+      background: props.theme.containerAndCardShades.SHADE_PLUS_1,
+      '&:hover': {
+        background: !props.isSelected
+          ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+        cursor: 'pointer',
+      },
+    },
   }),
   input: (defaultStyles, props: StyledProps) => {
-    const { theme, menuIsOpen, selectProps } = props;
+    const {
+      theme, menuIsOpen, selectProps,
+    } = props;
     return ({
       ...defaultStyles,
-      color: theme.textShades.SHADE_MINUS_3,
+      color: theme.colors.system.WHITE,
       fontWeight: menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     });
   },
@@ -123,6 +147,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
 
 const NoOptionsMessageStyled = Styled(components.NoOptionsMessage)`
   text-align: left;
+  margin-left: 8px;
 `;
 
 const NoOptionsMessage = (props: any) => (
@@ -139,7 +164,7 @@ type OptionBase = {
 type Props<T extends OptionBase> = {
   options: T[]
   onChange: (e: T) => void
-  onInputChange: (e: string) => void
+  onInputChange: (v: string, actionMeta: InputActionMeta) => void
   value: T
   placeholder: string
   menuIsOpen: boolean
@@ -147,12 +172,13 @@ type Props<T extends OptionBase> = {
   isLoading: boolean
   label?: string
   isContractSearch?: boolean,
-  onSwitch?: () => void
+  onSwitch: () => void
+  onSubmit: (e: T) => void
 };
 
 type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
 
-export const Select: SelectFn = ({
+export const SearchFilterSelect: SelectFn = ({
   options,
   onChange,
   value,
@@ -163,6 +189,7 @@ export const Select: SelectFn = ({
   label,
   isContractSearch,
   onSwitch,
+  onSubmit,
 }) => {
   const theme = useTheme();
   return (
@@ -184,14 +211,21 @@ export const Select: SelectFn = ({
         LoadingMessage,
       }}
       label={label}
-      onChange={(e) => onChange(e as any)}
+      onChange={(e: any) => {
+        onChange(e === value ? '' : e);
+      }}
       value={value}
       inputValue={inputValue}
-      onInputChange={(e) => onInputChange(e)}
+      onInputChange={(v, actionMeta) => {
+        if (actionMeta.action === 'input-change' || actionMeta.action === 'set-value') {
+          onInputChange(v, actionMeta);
+        }
+      }}
       isLoading={isLoading}
       isContractSearch={isContractSearch}
       onSwitch={onSwitch}
       blurInputOnSelect
+      onSubmit={(e: any) => onSubmit(e)}
     />
   );
 };

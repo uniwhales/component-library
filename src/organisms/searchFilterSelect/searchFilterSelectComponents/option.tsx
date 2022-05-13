@@ -12,7 +12,6 @@ const OptionGrid = Styled.div`
   grid-template-columns: 0.5fr 2fr;
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 5px;
-  grid-row-gap: 5px;
 
   div:nth-child(1) {
     grid-area: 1 / 1 / 4 / 2;
@@ -37,33 +36,31 @@ const OptionEntry = Styled.div`
 `;
 
 export const Option = (props:any) => {
-  const { data, theme } = props;
-
+  const { data, theme, isSelected } = props;
+  const color = isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2;
   return (
-    <div>
-      <components.Option {...props}>
-        <OptionGrid>
-          <IconWrapper icon={data.icon} />
-          <OptionEntry>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
-              Symbol:
-            </Text>
-            <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
-          </OptionEntry>
-          <OptionEntry>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
-              Name:
-            </Text>
-            <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.name}</Text>
-          </OptionEntry>
-          <OptionEntry>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
-              Address:
-            </Text>
-            <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{shortenAddressTo11Chars(data.address)}</Text>
-          </OptionEntry>
-        </OptionGrid>
-      </components.Option>
-    </div>
+    <components.Option {...props}>
+      <OptionGrid>
+        <IconWrapper icon={data.icon} />
+        <OptionEntry>
+          <Text size="S-Regular" color={color}>
+            Symbol:
+          </Text>
+          <Text size="S-Bold" color={color}>{data.symbol}</Text>
+        </OptionEntry>
+        <OptionEntry>
+          <Text size="S-Regular" color={color}>
+            Name:
+          </Text>
+          <Text size="S-Bold" color={color}>{data.name}</Text>
+        </OptionEntry>
+        <OptionEntry>
+          <Text size="S-Regular" color={color}>
+            Address:
+          </Text>
+          <Text size="S-Bold" color={color}>{shortenAddressTo11Chars(data.address)}</Text>
+        </OptionEntry>
+      </OptionGrid>
+    </components.Option>
   );
 };
