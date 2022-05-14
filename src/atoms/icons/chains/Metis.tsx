@@ -15,7 +15,7 @@ export const Metis = () => (
     </g>
     <defs>
       <clipPath id="clip0_5241_598840">
-        <path fill="#fff" d="M0 0H24V24H0z" />
+        <path d="M0 0H24V24H0z" />
       </clipPath>
     </defs>
   </svg>

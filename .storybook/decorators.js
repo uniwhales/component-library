@@ -10,7 +10,7 @@ const lightTheme = {...Theme, ...LightTheme}
 
 const ThemeDecorator = (storyFn, context) => {
     return (
-        <ThemeProvider theme={context.globals.backgrounds?.value ==='#909090' ? darkTheme : lightTheme}>
+        <ThemeProvider theme={context.globals.backgrounds?.value ==='#1F2128' ? darkTheme : lightTheme}>
         <GlobalStyle />
         {storyFn()}
     </ThemeProvider>)

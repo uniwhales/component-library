@@ -11,12 +11,15 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'primary_action'
   | 'secondary_action'
   | 'tiny_action'
-  | 'secondary_action_inverse'
+  | 'secondary_action_inverse',
+  borderRadius?: string,
   disabled?: boolean
   onClick: () => void;
 }
 
-const Button = Styled.button`
+type GenericStylingProps = Partial<Pick<ButtonProps, 'borderRadius'>>;
+
+const Button = Styled.button<GenericStylingProps>`
   font-size: 14px;
   line-height: 24px;
   padding: 12px;
@@ -25,7 +28,7 @@ const Button = Styled.button`
   align-items: center;
   font-weight: 700;
   color: ${(props) => props.theme.colors.system.WHITE};
-  border-radius: 12px;
+  border-radius: ${(props) => props.borderRadius || '12px'};
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   .button__group {
     display: flex;
@@ -69,6 +72,7 @@ const ButtonSecondary = Styled(Button)`
      background: ${props.theme.colors.system.DISABLED};
      border: none;
   `} 
+  
   // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
@@ -177,47 +181,48 @@ export const ButtonAtom:FC<ButtonProps> = ({
   buttonVariant,
   disabled = false,
   onClick,
+  borderRadius,
 }) => {
   switch (buttonVariant) {
     case 'secondary':
       return (
-        <ButtonSecondary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSecondary>
       );
     case 'tertiary':
       return (
-        <ButtonTertiary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonTertiary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonTertiary>
       );
     case 'primary_action':
       return (
-        <ButtonPrimaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonPrimaryAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonPrimaryAction>
       );
     case 'secondary_action':
       return (
-        <ButtonSecondaryAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondaryAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSecondaryAction>
       );
     case 'tiny_action':
       return (
-        <ButtonTinyAction onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonTinyAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonTinyAction>
       );
     case 'secondary_action_inverse':
       return (
-        <ButtonSecondaryActionInverse onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondaryActionInverse borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSecondaryActionInverse>
       );
     default:
       return (
-        <ButtonPrimary onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonPrimary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonPrimary>
       );
