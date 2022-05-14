@@ -14,6 +14,7 @@ export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
+export * from './organisms/searchFilterSelect/searchFilterSelect';
 // theme
 export * from './atoms/icons/index';
 export {
