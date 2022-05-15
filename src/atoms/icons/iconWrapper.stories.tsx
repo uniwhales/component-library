@@ -25,6 +25,33 @@ import {
   Boba,
   Aurora,
   Metis,
+  AuroraColor,
+  UniswapV2Color,
+  UniswapV3Color,
+  BobaColor,
+  CieloColor,
+  ArbitrumColor,
+  AvalancheColor,
+  BinanceColor,
+  CurveColor,
+  EthereumColor,
+  EtherscanColor,
+  FantomColor,
+  HarmonyColor,
+  MetaMaskColor,
+  MetisColor,
+  NearColor,
+  OptimismColor,
+  PolygonColor,
+  SushiswapColor,
+  TerraColor,
+  WalletConnectColor,
+  UniWhalesColor,
+  Dai,
+  Doge,
+  Usdc,
+  Usdt,
+  Weth,
 } from '.';
 
 export default {
@@ -66,8 +93,47 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper icon={<Metis />} />
   </>
 );
+const Template3: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper icon={<AuroraColor />} />
+    <IconWrapper icon={<UniswapV2Color />} />
+    <IconWrapper icon={<UniswapV3Color />} />
+    <IconWrapper icon={<BobaColor />} />
+    <IconWrapper icon={<CieloColor />} />
+    <IconWrapper icon={<ArbitrumColor />} />
+    <IconWrapper icon={<AvalancheColor />} />
+    <IconWrapper icon={<BinanceColor />} />
+    <IconWrapper icon={<CurveColor />} />
+    <IconWrapper icon={<EthereumColor />} />
+    <IconWrapper icon={<EtherscanColor />} />
+    <IconWrapper icon={<FantomColor />} />
+    <IconWrapper icon={<HarmonyColor />} />
+    <IconWrapper icon={<MetaMaskColor />} />
+    <IconWrapper icon={<MetisColor />} />
+    <IconWrapper icon={<NearColor />} />
+    <IconWrapper icon={<OptimismColor />} />
+    <IconWrapper icon={<PolygonColor />} />
+    <IconWrapper icon={<SushiswapColor />} />
+    <IconWrapper icon={<TerraColor />} />
+    <IconWrapper icon={<WalletConnectColor />} />
+    <IconWrapper icon={<UniWhalesColor />} />
+  </>
+);
+
+const Template4: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper icon={<Weth />} />
+    <IconWrapper icon={<Dai />} />
+    <IconWrapper icon={<Doge />} />
+    <IconWrapper icon={<Usdc />} />
+    <IconWrapper icon={<Usdt />} />
+
+  </>
+);
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
+export const chainsIconsColor = Template3.bind({});
+export const tokens = Template4.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
