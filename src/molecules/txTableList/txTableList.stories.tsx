@@ -49,12 +49,7 @@ export default {
 const Template: ComponentStory<typeof TxTableItem> = () => (
   <Wrapper>
     <TxTableItem
-      key={1}
-      total_usd={data.total_usd}
-      timestamp={data.timestamp}
-      dex={data.dex}
-      transaction={data.transaction as any}
-      address={data.address}
+      wsData={[data]}
     />
   </Wrapper>
 
