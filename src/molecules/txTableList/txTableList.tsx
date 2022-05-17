@@ -5,8 +5,11 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
   SushiswapColor, Weth, Usdt, ArrowRightIcon, EtherscanColor,
 } from '../../atoms/icons';
-import { CopyToClipBoard, Text } from '../..';
+// eslint-disable-next-line import/no-cycle
+import { CopyToClipBoard, Text } from '../../index';
 import { formatNumber } from '../../utils/format';
+
+const ImgGenerator = 'https://logos.uniwhales.io/';
 
 export interface TxTableItemInterface {
   timestamp:string;
@@ -26,22 +29,6 @@ export interface TokenInterface {
   token_price: number,
   address: number,
 }
-// transaction: {
-//   from: {
-//     amount: 6.475606354627268,
-//         token: 'ETH',
-//         total_usd: 13045.340842633306,
-//         token_price: 2014.5358022436785,
-//         address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-//   },
-//   for: {
-//     amount: 10471.612,
-//         token: 'SUSHI',
-//         total_usd: 13025.645302453013,
-//         token_price: 1.243900681428324,
-//         address: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
-//   },
-// },
 const Wrapper = Styled.div`
   :nth-child(2n){
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
@@ -80,14 +67,14 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
 }) => {
   const theme:any = useTheme();
   const customTimestamp:string[] = timestamp.split(' ');
-  const getDexIcon = (dexIndex:string) => {
-    switch (dexIndex) {
-      case 'sushiswap':
-        return <IconWrapper icon={<SushiswapColor />} />;
-      default:
-        return <IconWrapper icon={<SushiswapColor />} />;
-    }
-  };
+  // const getDexIcon = (dexIndex:string) => {
+  //   switch (dexIndex) {
+  //     case 'sushiswap':
+  //       return <IconWrapper icon={<SushiswapColor />} />;
+  //     default:
+  //       return <IconWrapper icon={<SushiswapColor />} />;
+  //   }
+  // };
   const getTransactionIcon = (transIndex:string) => {
     console.log(transIndex);
     switch (transIndex) {
@@ -105,7 +92,19 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
         <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
         <Text textDecoration="underline" size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{customTimestamp.at(1)}</Text>
       </DateSection>
-      <Section>{getDexIcon(dex)}</Section>
+      <Section>
+        <div
+          className="token-image"
+          style={{
+            height: 30,
+            width: 30,
+            backgroundImage: `url(${ImgGenerator}${dex}.jpg)`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            borderRadius: '50%',
+          }}
+        />
+      </Section>
       <Section>
         <SwapWrapper>
           <Block>
@@ -113,9 +112,9 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
               <Text size="S-Bold">{transaction.from.token}</Text>
               <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                 <>
-                  {transaction.from.total_usd.toFixed(2)}
+                  {formatNumber(transaction.from.total_usd.toFixed(2))}
                   /
-                  {transaction.from.token_price.toFixed(2)}
+                  {formatNumber(transaction.from.token_price.toFixed(2))}
                 </>
               </Text>
             </TextArea>
@@ -128,9 +127,9 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
               <Text size="S-Bold">{transaction.for.token}</Text>
               <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                 <>
-                  {transaction.for.total_usd.toFixed(2)}
+                  {formatNumber(transaction.for.total_usd.toFixed(2))}
                   /
-                  {transaction.for.token_price.toFixed(2)}
+                  {formatNumber(transaction.for.token_price.toFixed(2))}
                 </>
               </Text>
             </TextArea>

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
+// eslint-disable-next-line import/no-cycle
 import {
-  ArrowUpIcon, HeartStandard, LinkIcon, Text,
+  ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
 
@@ -57,7 +58,6 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data }) => {
         <TextBlock>
           {/* <IconWrapper icon={<HeartStandard />} /> */}
           <Text size="H6-Bold">1</Text>
-          {/* <IconWrapper width="24px" height="24px" icon={<Doge />} /> */}
           <div
             className="token-image"
             style={{
