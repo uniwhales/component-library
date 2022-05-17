@@ -38,38 +38,51 @@ export type HeaderSizes =
     | 'H6-Bold';
 
 export interface TextProps {
-  children:React.ReactChild;
+  children?:React.ReactChild;
   size: BodySizes | HeaderSizes;
   color?: string;
+  textDecoration?:string;
 }
 
-const StyledP = Styled.p<{ textType:string, textWeight:string }>`
+const StyledP = Styled.p<{ textType:string, textWeight:string, textDecoration?:string }>`
   font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
   padding: 0;
   margin: 0;
   color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_MINUS_3)};
   line-height: 24px;
+  text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
-const StyledHeading = Styled.div<{ textType:string, textWeight:string }>`
+const StyledHeading = Styled.div<{ textType:string, textWeight:string, textDecoration?:string }>`
   padding: 0;
   margin: 0;
   line-height: ${(props) => H_LINE_HEIGHT[props.textType as keyof typeof H_LINE_HEIGHT]}px;
   color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_MINUS_3)};
   font-size: ${(props) => H_FONTSIZE[props.textType as keyof typeof H_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
+  text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
 
 export const Text:FC<TextProps> = ({
-  children, size, color,
+  children, size, color, textDecoration,
 }) => {
   const [textType, textWeight] = size.split('-');
   if ((['L', 'M', 'S', 'XS'].includes(textType))) {
-    return <StyledP textType={textType} color={color} textWeight={textWeight}>{children}</StyledP>;
+    return (
+      <StyledP
+        textDecoration={textDecoration}
+        textType={textType}
+        color={color}
+        textWeight={textWeight}
+      >
+        {children}
+      </StyledP>
+    );
   }
   if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(textType)) {
     return (
       <StyledHeading
+        textDecoration={textDecoration}
         color={color}
         as={textType.toLowerCase() as never}
         textType={textType}
