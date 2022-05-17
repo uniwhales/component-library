@@ -11,6 +11,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
     width: ${(props) => props.width};
     fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
     stroke: ${(props) => props.stroke};
+    cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')}
 }
 `;
 
@@ -21,6 +22,7 @@ export interface IconWrapperProps {
   width?: string;
   fill?: string;
   stroke?: string;
+  cursor?: string;
 }
 
 export const IconWrapper: React.FC<IconWrapperProps> = ({
@@ -30,8 +32,10 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   fill,
   icon,
   stroke,
+  cursor,
 }) => (
   <IconComponent
+    cursor={cursor}
     onClick={onClick}
     height={height}
     width={width}

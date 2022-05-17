@@ -6,11 +6,42 @@ import {
   SushiswapColor, Weth, Usdt, ArrowRightIcon, EtherscanColor,
 } from '../../atoms/icons';
 import { CopyToClipBoard, Text } from '../..';
+import { formatNumber } from '../../utils/format';
 
 export interface TxTableItemInterface {
-  data:any
+  timestamp:string;
+  dex:string;
+  transaction: TransactionInterface;
+  address: string;
+  total_usd:number;
 }
-
+export interface TransactionInterface {
+  from: TokenInterface,
+  for: TokenInterface
+}
+export interface TokenInterface {
+  amount: number,
+  token: string,
+  total_usd: number,
+  token_price: number,
+  address: number,
+}
+// transaction: {
+//   from: {
+//     amount: 6.475606354627268,
+//         token: 'ETH',
+//         total_usd: 13045.340842633306,
+//         token_price: 2014.5358022436785,
+//         address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+//   },
+//   for: {
+//     amount: 10471.612,
+//         token: 'SUSHI',
+//         total_usd: 13025.645302453013,
+//         token_price: 1.243900681428324,
+//         address: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+//   },
+// },
 const Wrapper = Styled.div`
   :nth-child(2n){
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
@@ -44,11 +75,12 @@ const TextArea = Styled.div<{ textAlign: string }>`
 `;
 const IconArea = Styled.div``;
 
-export const TxTableItem:FC<TxTableItemInterface> = ({ data }) => {
+export const TxTableItem:FC<TxTableItemInterface> = ({
+  timestamp, dex, transaction, address, total_usd,
+}) => {
   const theme:any = useTheme();
-  const customTimestamp = data.timestamp.split(' ');
+  const customTimestamp:string[] = timestamp.split(' ');
   const getDexIcon = (dexIndex:string) => {
-    console.log(dexIndex);
     switch (dexIndex) {
       case 'sushiswap':
         return <IconWrapper icon={<SushiswapColor />} />;
@@ -73,32 +105,32 @@ export const TxTableItem:FC<TxTableItemInterface> = ({ data }) => {
         <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
         <Text textDecoration="underline" size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{customTimestamp.at(1)}</Text>
       </DateSection>
-      <Section>{getDexIcon(data.dex)}</Section>
+      <Section>{getDexIcon(dex)}</Section>
       <Section>
         <SwapWrapper>
           <Block>
             <TextArea textAlign="right">
-              <Text size="S-Bold">{data.transaction.from.token}</Text>
+              <Text size="S-Bold">{transaction.from.token}</Text>
               <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                 <>
-                  {data.transaction.from.total_usd.toFixed(1)}
+                  {transaction.from.total_usd.toFixed(2)}
                   /
-                  {data.transaction.from.token_price.toFixed(1)}
+                  {transaction.from.token_price.toFixed(2)}
                 </>
               </Text>
             </TextArea>
-            <IconArea>{getTransactionIcon(data.transaction.from.token)}</IconArea>
+            <IconArea>{getTransactionIcon(transaction.from.token)}</IconArea>
           </Block>
           <IconWrapper icon={<ArrowRightIcon />} />
           <Block>
-            <IconArea>{getTransactionIcon(data.transaction.for.token)}</IconArea>
+            <IconArea>{getTransactionIcon(transaction.for.token)}</IconArea>
             <TextArea textAlign="left">
-              <Text size="S-Bold">{data.transaction.for.token}</Text>
+              <Text size="S-Bold">{transaction.for.token}</Text>
               <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                 <>
-                  {data.transaction.for.total_usd.toFixed(1)}
+                  {transaction.for.total_usd.toFixed(2)}
                   /
-                  {data.transaction.for.token_price.toFixed(1)}
+                  {transaction.for.token_price.toFixed(2)}
                 </>
               </Text>
             </TextArea>
@@ -106,11 +138,13 @@ export const TxTableItem:FC<TxTableItemInterface> = ({ data }) => {
         </SwapWrapper>
       </Section>
       <Section>
-        <Text size="S-Regular">Amount</Text>
-        <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>(+/-%00)</Text>
+        <Text size="S-Regular">
+          {`$${formatNumber(total_usd.toFixed(2))}`}
+        </Text>
+        <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>(+0.15%)</Text>
       </Section>
       <Section>
-        <CopyToClipBoard walletCut text={data.address} id={data.address} />
+        <CopyToClipBoard walletCut text={address} id={address} />
       </Section>
       <Section>
         <IconWrapper icon={<EtherscanColor />} />

@@ -46,17 +46,16 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof TxTableItem>;
 
-const Template: ComponentStory<typeof TxTableItem> = (args) => (
+const Template: ComponentStory<typeof TxTableItem> = () => (
   <Wrapper>
-    <TxTableItem key={1} data={data} />
-    <TxTableItem key={2} data={data} />
-    <TxTableItem key={3} data={data} />
-    <TxTableItem key={4} data={data} />
-    <TxTableItem key={5} data={data} />
-    <TxTableItem key={6} data={data} />
-    <TxTableItem key={7} data={data} />
-    <TxTableItem key={8} data={data} />
-    <TxTableItem key={9} data={data} />
+    <TxTableItem
+      key={1}
+      total_usd={data.total_usd}
+      timestamp={data.timestamp}
+      dex={data.dex}
+      transaction={data.transaction as any}
+      address={data.address}
+    />
   </Wrapper>
 
 );
