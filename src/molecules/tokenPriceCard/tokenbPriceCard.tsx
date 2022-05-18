@@ -72,14 +72,14 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
             }}
           />
           <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.name}</Text>
-          <a target="_blank" href={`https://etherscan.io/token/${data?.token_address}`} rel="noreferrer">
+          <a target="_blank" href={`https://etherscan.io/token/${data.token_address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
           </a>
         </TextBlock>
       </Section>
       <SectionColumn>
         <Block>
-          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data?.price)}</Text>
+          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data.price)}</Text>
           <IconWrapper width="21px" height="21px" icon={<ArrowUpIcon />} />
         </Block>
         <Block>
