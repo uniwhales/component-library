@@ -52,6 +52,7 @@ import {
   Usdc,
   Usdt,
   Weth,
+  OxColor,
 } from '.';
 
 export default {
@@ -117,6 +118,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper icon={<TerraColor />} />
     <IconWrapper icon={<WalletConnectColor />} />
     <IconWrapper icon={<UniWhalesColor />} />
+    <IconWrapper icon={<OxColor />} />
   </>
 );
 

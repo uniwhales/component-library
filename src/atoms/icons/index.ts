@@ -118,6 +118,14 @@ export * from './chains/fullColorStyle/SushiswapColor';
 export * from './chains/fullColorStyle/TerraColor';
 export * from './chains/fullColorStyle/WalletConnectColor';
 export * from './chains/fullColorStyle/UniWhalesColor';
+export * from './chains/fullColorStyle/0xColor';
+
+export * from './chains/fullColorStyle/OneInchV3';
+export * from './chains/fullColorStyle/OneInchV4';
+export * from './chains/fullColorStyle/BalancerColor';
+export * from './chains/fullColorStyle/BancorColor';
+export * from './chains/fullColorStyle/ParaSwapV4';
+export * from './chains/fullColorStyle/ParaSwapV5';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
