@@ -64,12 +64,21 @@ const SectionTotal = Styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  p:nth-child(2){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
 const DateSection = Styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap:4px;
+  p:nth-child(1){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
+  p:nth-child(3){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
 const SwapWrapper = Styled.div`
   display: flex;
@@ -88,8 +97,15 @@ const TextArea = Styled.div<{ textAlign: string }>`
   display: flex;
   text-align: ${(props) => props.textAlign};
   flex-direction: column;
+  p:nth-child(2){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
-
+const TextWrap = Styled.div<{ highLight?: boolean }>`
+  p{
+    color: ${(props) => props.highLight && props.theme.colors.primary.UWL_BLUE}!important;
+  }
+`;
 const dexIcons:Readonly<{
   uniswap_v2: JSX.Element,
   uniswap_v3: JSX.Element,
@@ -112,17 +128,18 @@ const dexIcons:Readonly<{
   '1inch_v4': <OneInchV4 />,
 };
 
-export const TxTableColumns = (wsData :TableItem[]) => {
+export const TxTableColumns = (wsData :TableItem[], theme:any) => {
   const data = useMemo(() => [...wsData], [wsData]);
-  const theme:any = useTheme();
   const columns = React.useMemo(
     () => [
       {
         accessor: (row:TableItem) => (
           <DateSection>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(0)}</Text>
+            <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text>
             <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
-            <Text textDecoration="underline" size="S-Bold" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(1)}</Text>
+            <TextWrap highLight={row?.isNew}>
+              <Text textDecoration="underline" size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
+            </TextWrap>
           </DateSection>
         ),
         Header: 'Time (Local)',
@@ -143,7 +160,7 @@ export const TxTableColumns = (wsData :TableItem[]) => {
             <Block justifyContent="flex-end">
               <TextArea textAlign="right">
                 <Text size="S-Bold">{row.transaction.from.token}</Text>
-                <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
+                <Text size="XS-Regular">
                   <>
                     {formatNumber(row.transaction.from.total_usd.toFixed(2))}
                     /

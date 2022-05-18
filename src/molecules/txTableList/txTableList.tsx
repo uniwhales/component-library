@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useTable } from 'react-table';
+import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 import { TxTableColumns } from './txTableColumns';
 
@@ -40,10 +41,6 @@ const Table = Styled.table`
   td{
     padding: 10px 24px;
   };
-  tr:hover {
-    transform: translateY(-2px);
-    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
-  }
   th:first-child {
     text-align: left;
   }
@@ -60,8 +57,11 @@ const Table = Styled.table`
   border-spacing: 0 16px;
 `;
 const Tbody = Styled.tbody`
+  tr:hover {
+    transform: translateY(-2px);
+  }
   tr{
-    transition: all .2s;
+     transition: all .2s;
      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   }
   tr:nth-child(2n){
@@ -80,7 +80,8 @@ const Thead = Styled.thead`
 export const TxTableItem:FC<TxTableItemInterface> = ({
   wsData,
 }) => {
-  const { data, columns } = TxTableColumns(wsData as TableItem[]);
+  const theme:any = useTheme();
+  const { data, columns } = TxTableColumns(wsData as TableItem[], theme);
   const {
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
   } = useTable({ columns, data });
