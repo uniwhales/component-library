@@ -16,7 +16,7 @@ export interface TokenPriceCardInterface {
 }
 const ImgGenerator = 'https://logos.uniwhales.io/';
 
-const Wrapper = Styled.div`
+export const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
   transition: all .2s;
@@ -88,8 +88,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
         <Block>
           <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>
             <>
-              {formatter.format(data.price)}
-              $
+              {formatter(true).format(data.price)}
             </>
           </Text>
           <IconWrapper

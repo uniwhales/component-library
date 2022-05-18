@@ -98,7 +98,7 @@ const TextArea = Styled.div<{ textAlign: string }>`
     color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   }
 `;
-const dexIcons:Readonly<{
+export const dexIcons:Readonly<{
   '0x': JSX.Element,
   '1inchV3': JSX.Element,
   '1inchV4': JSX.Element,

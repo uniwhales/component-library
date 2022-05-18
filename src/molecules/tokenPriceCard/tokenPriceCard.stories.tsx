@@ -26,9 +26,9 @@ const fake = {
 
 const Template: ComponentStory<typeof TokenPriceCard> = () => (
   <Wrapper>
-    <TokenPriceCard index={0} data={fake} key={10} />
-    <TokenPriceCard index={2} data={fake} key={30} />
-    <TokenPriceCard index={4} data={fake} key={50} />
+    <TokenPriceCard onClick={() => {}} index={0} data={fake} key={10} />
+    <TokenPriceCard onClick={() => {}} index={2} data={fake} key={30} />
+    <TokenPriceCard onClick={() => {}} index={4} data={fake} key={50} />
   </Wrapper>
 
 );

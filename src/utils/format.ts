@@ -2,10 +2,10 @@ export function formatNumber(x:number | string) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-export const formatter = new Intl.NumberFormat('en-US', {
+export const formatter = (maximum:boolean) => new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
-  maximumSignificantDigits: 1,
+  maximumSignificantDigits: maximum ? 1 : 7,
   // minimumFractionDigits: 0,
 
   // These options are needed to round to whole numbers if that's what you want.
