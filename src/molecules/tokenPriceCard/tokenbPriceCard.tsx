@@ -65,7 +65,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
             style={{
               height: 30,
               width: 30,
-              backgroundImage: `url(${ImgGenerator}${data.token_address}.jpg)`,
+              backgroundImage: `url(${ImgGenerator}${data.address}.jpg)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               borderRadius: '50%',
