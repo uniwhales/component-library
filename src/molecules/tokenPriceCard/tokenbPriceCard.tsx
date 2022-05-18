@@ -49,7 +49,7 @@ const TextBlock = Styled.div`
 export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
-    if (stat?.toString().includes('-')) {
+    if (stat.toString().includes('-')) {
       return theme.colors.system.RED;
     }
     return theme.colors.system.GREEN;
