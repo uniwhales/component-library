@@ -145,6 +145,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
           );
         },
         Header: 'DEX',
+        width: 10,
       },
       {
         accessor: (row:TableItem) => (
@@ -220,6 +221,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
           </Section>
         ),
         Header: 'Address',
+        width: 60,
       },
       {
         accessor: (row:TableItem) => (

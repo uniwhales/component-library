@@ -38,18 +38,18 @@ export interface TransactionInterface {
 }
 
 const Table = Styled.table`
-  td{
-    padding: 10px 24px;
-  };
+  table-layout: auto;
+  width: 100%;
   th:first-child {
     text-align: left;
   }
   td:first-child {
-    
+    padding-left: 24px;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
   td:last-child {
+    padding-right: 24px;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
   }

@@ -19,7 +19,7 @@ const Wrapper = Styled.div`
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
-  max-width: 400px;
+  width: 100%;
   padding: 28px 24px;
   box-sizing: border-box;
 `;
