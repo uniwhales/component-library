@@ -32,6 +32,7 @@ interface TableItem {
   total_usd: number;
   transaction: TransactionInterface
   version: string;
+  isNew?: boolean;
 }
 
 interface TokenInterface {
@@ -121,7 +122,7 @@ export const TxTableColumns = (wsData :TableItem[]) => {
           <DateSection>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(0)}</Text>
             <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
-            <Text textDecoration="underline" size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(1)}</Text>
+            <Text textDecoration="underline" size="S-Bold" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(1)}</Text>
           </DateSection>
         ),
         Header: 'Time (Local)',

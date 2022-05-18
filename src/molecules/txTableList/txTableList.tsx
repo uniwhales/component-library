@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useTable } from 'react-table';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Styled } from '../../theme';
 import { TxTableColumns } from './txTableColumns';
 
@@ -77,56 +76,30 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
   const {
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
   } = useTable({ columns, data });
-  const spring = React.useMemo(
-    () => ({
-      type: 'spring',
-      damping: 50,
-      stiffness: 100,
-    }),
-    [],
-  );
   return (
     <Table {...getTableProps()}>
       <Thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <motion.th
-                {...column.getHeaderProps({
-                  // @ts-ignore
-                  layoutTransition: spring,
-                })}
+              <th
+                {...column.getHeaderProps()}
               >
                 {column.render('Header')}
-              </motion.th>
+              </th>
             ))}
           </tr>
         ))}
       </Thead>
       <Tbody {...getTableBodyProps()}>
-        <AnimatePresence>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <motion.tr {...row.getRowProps({
-                // @ts-ignore
-                layoutTransition: spring,
-                exit: { opacity: 0, maxHeight: 0 },
-              })}
-              >
-                {row.cells.map((cell) => (
-                  <motion.td {...cell.getCellProps({
-                    // @ts-ignore
-                    layoutTransition: spring,
-                  })}
-                  >
-                    {cell.render('Cell')}
-                  </motion.td>
-                ))}
-              </motion.tr>
-            );
-          })}
-        </AnimatePresence>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell')}</td>)}
+            </tr>
+          );
+        })}
       </Tbody>
     </Table>
   );
