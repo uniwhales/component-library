@@ -19,7 +19,7 @@ const Wrapper = Styled.div`
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  max-width: 400px;
   padding: 28px 24px;
   box-sizing: border-box;
 `;
@@ -49,7 +49,7 @@ const TextBlock = Styled.div`
 export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
-    if (stat.toString().includes('-')) {
+    if (stat?.toString().includes('-')) {
       return theme.colors.system.RED;
     }
     return theme.colors.system.GREEN;
@@ -71,15 +71,15 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
               borderRadius: '50%',
             }}
           />
-          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.token_symbol}</Text>
-          <a target="_blank" href={`https://etherscan.io/token/${data.token_address}`} rel="noreferrer">
+          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.name}</Text>
+          <a target="_blank" href={`https://etherscan.io/token/${data?.token_address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
           </a>
         </TextBlock>
       </Section>
       <SectionColumn>
         <Block>
-          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data.price)}</Text>
+          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data?.price)}</Text>
           <IconWrapper width="21px" height="21px" icon={<ArrowUpIcon />} />
         </Block>
         <Block>
