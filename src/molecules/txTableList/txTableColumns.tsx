@@ -4,7 +4,7 @@ import { formatNumber } from '../../utils/format';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
   ArrowRightIcon, BalancerColor,
-  EtherscanColor, OneInchV3, OneInchV4, ParaSwapV4, ParaSwapV5,
+  EtherscanColor, OneInchV3, OneInchV4, OxColor, ParaSwapV4, ParaSwapV5,
   PolygonColor,
   Sushiswap,
   UniswapV2Color,
@@ -106,20 +106,25 @@ const dexIcons:Readonly<{
   sushiswap: JSX.Element,
   polygon: JSX.Element,
   balancer: JSX.Element,
+  balancer_v2: JSX.Element,
   paraswap_v4:JSX.Element,
   paraswap_v5:JSX.Element,
   '1inch_v3':JSX.Element,
   '1inch_v4':JSX.Element,
+  '0x':JSX.Element,
+
 }> = {
   uniswap_v2: <UniswapV2Color />,
   uniswap_v3: <UniswapV3Color />,
   sushiswap: <Sushiswap />,
   polygon: <PolygonColor />,
   balancer: <BalancerColor />,
+  balancer_v2: <BalancerColor />,
   paraswap_v4: <ParaSwapV4 />,
   paraswap_v5: <ParaSwapV5 />,
   '1inch_v3': <OneInchV3 />,
   '1inch_v4': <OneInchV4 />,
+  '0x': <OxColor />,
 };
 
 export const TxTableColumns = (wsData :TableItem[], theme:any) => {
