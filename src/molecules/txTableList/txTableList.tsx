@@ -40,21 +40,25 @@ export interface TransactionInterface {
 const Table = Styled.table`
   table-layout: auto;
   width: 100%;
+  td {
+    padding: 10px 0;
+  }
   th:first-child {
     text-align: left;
   }
   td:first-child {
-    padding-left: 24px;
+    padding-left: 24px!important;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
   td:last-child {
-    padding-right: 24px;
+    padding-right: 24px!important;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
   }
   border-collapse: separate;
   border-spacing: 0 16px;
+
 `;
 const Tbody = Styled.tbody`
   tr:hover {

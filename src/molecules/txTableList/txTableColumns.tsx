@@ -4,7 +4,8 @@ import { formatNumber } from '../../utils/format';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
   ArrowRightIcon, BalancerColor,
-  EtherscanColor, OneInchV3, OneInchV4, OxColor, ParaSwapV4, ParaSwapV5,
+  BancorColor, CurveColor,
+  EtherscanColor, MetaMaskColor, OneInchV3, OneInchV4, OxColor, ParaSwapV4, ParaSwapV5,
   PolygonColor,
   Sushiswap,
   UniswapV2Color,
@@ -75,9 +76,6 @@ const DateSection = Styled.div`
   p:nth-child(1){
     color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   }
-  // p:nth-child(3){
-  //   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  // }
 `;
 const SwapWrapper = Styled.div`
   display: flex;
@@ -101,30 +99,32 @@ const TextArea = Styled.div<{ textAlign: string }>`
   }
 `;
 const dexIcons:Readonly<{
-  uniswap_v2: JSX.Element,
-  uniswap_v3: JSX.Element,
-  sushiswap: JSX.Element,
-  polygon: JSX.Element,
-  balancer: JSX.Element,
-  balancer_v2: JSX.Element,
-  paraswap_v4:JSX.Element,
-  paraswap_v5:JSX.Element,
-  '1inch_v3':JSX.Element,
-  '1inch_v4':JSX.Element,
-  '0x':JSX.Element,
+  '0x': JSX.Element,
+  '1inchV3': JSX.Element,
+  '1inchV4': JSX.Element,
+  balancerV2: JSX.Element,
+  bancor: JSX.Element,
+  curveV2: JSX.Element,
+  metaMask: JSX.Element,
+  paraSwapP4: JSX.Element,
+  paraSwapP5: JSX.Element,
+  sushiSwap: JSX.Element,
+  uniswapV2: JSX.Element,
+  uniswapV3: JSX.Element,
 
 }> = {
-  uniswap_v2: <UniswapV2Color />,
-  uniswap_v3: <UniswapV3Color />,
-  sushiswap: <Sushiswap />,
-  polygon: <PolygonColor />,
-  balancer: <BalancerColor />,
-  balancer_v2: <BalancerColor />,
-  paraswap_v4: <ParaSwapV4 />,
-  paraswap_v5: <ParaSwapV5 />,
-  '1inch_v3': <OneInchV3 />,
-  '1inch_v4': <OneInchV4 />,
+  metaMask: <MetaMaskColor />,
+  uniswapV2: <UniswapV2Color />,
+  uniswapV3: <UniswapV3Color />,
+  sushiSwap: <Sushiswap />,
+  balancerV2: <BalancerColor />,
+  paraSwapP4: <ParaSwapV4 />,
+  paraSwapP5: <ParaSwapV5 />,
+  '1inchV3': <OneInchV3 />,
+  '1inchV4': <OneInchV4 />,
   '0x': <OxColor />,
+  bancor: <BancorColor />,
+  curveV2: <CurveColor />,
 };
 
 export const TxTableColumns = (wsData :TableItem[], theme:any) => {

@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 // eslint-disable-next-line import/no-cycle
 import {
+  ArrowDownIcon,
   ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
@@ -71,7 +72,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
               borderRadius: '50%',
             }}
           />
-          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.name}</Text>
+          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
           <a target="_blank" href={`https://etherscan.io/token/${data.token_address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
           </a>
@@ -80,7 +81,13 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
       <SectionColumn>
         <Block>
           <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data.price)}</Text>
-          <IconWrapper width="21px" height="21px" icon={<ArrowUpIcon />} />
+          <IconWrapper
+            width="21px"
+            height="21px"
+            fill={generateColor(data.price_change_percentage_1h)}
+            icon={data.price_change_percentage_1h.toString().includes('-')
+              ? <ArrowDownIcon /> : <ArrowUpIcon />}
+          />
         </Block>
         <Block>
           <TimeSection>
