@@ -38,9 +38,17 @@ export interface TransactionInterface {
 
 const Table = Styled.table`
   td{
-    height: 64px;
+    padding: 10px 24px;
   };
+  tr:hover {
+    transform: translateY(-2px);
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+  }
+  th:first-child {
+    text-align: left;
+  }
   td:first-child {
+    
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
@@ -49,15 +57,15 @@ const Table = Styled.table`
     border-top-right-radius: 12px;
   }
   border-collapse: separate;
-  border-spacing: 0 20px;
+  border-spacing: 0 16px;
 `;
 const Tbody = Styled.tbody`
-  
   tr{
+    transition: all .2s;
      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   }
-
   tr:nth-child(2n){
+    transition: all .2s;
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   }
 `;

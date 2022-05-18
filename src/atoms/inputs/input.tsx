@@ -11,6 +11,7 @@ export interface InputsProps {
   label?:string;
   disabled?:boolean;
   isError?:string;
+  min?:string;
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -79,7 +80,7 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
 `;
 
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError,
+  type, placeholder, value, onChange, label, disabled, isError, min,
 }:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
@@ -93,7 +94,7 @@ export const Input = ({
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <InputStyled isError={isError} disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
+        <InputStyled min={min} isError={isError} disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
       </BorderWrapper>
       {isError && (
       <InputUserMessage>
