@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
 import { formatNumber } from '../../utils/format';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
@@ -76,9 +75,9 @@ const DateSection = Styled.div`
   p:nth-child(1){
     color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   }
-  p:nth-child(3){
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  }
+  // p:nth-child(3){
+  //   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  // }
 `;
 const SwapWrapper = Styled.div`
   display: flex;
@@ -99,11 +98,6 @@ const TextArea = Styled.div<{ textAlign: string }>`
   flex-direction: column;
   p:nth-child(2){
     color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  }
-`;
-const TextWrap = Styled.div<{ highLight?: boolean }>`
-  p{
-    color: ${(props) => props.highLight && props.theme.colors.primary.UWL_BLUE}!important;
   }
 `;
 const dexIcons:Readonly<{
@@ -137,9 +131,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
           <DateSection>
             <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text>
             <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
-            <TextWrap highLight={row?.isNew}>
-              <Text textDecoration="underline" size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
-            </TextWrap>
+            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
           </DateSection>
         ),
         Header: 'Time (Local)',
