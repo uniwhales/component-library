@@ -32,6 +32,8 @@ interface StyledProps {
   menuIsOpen?: boolean
   theme?: any;
   readOnly?:boolean;
+  isMulti?:boolean;
+  isCheckBox?: boolean;
 }
 
 const colourStyles:StylesConfig<StyledProps, false> = {
@@ -97,27 +99,37 @@ const colourStyles:StylesConfig<StyledProps, false> = {
 
 };
 const CheckBoxOption = (props:any) => {
-  const { label, isSelected, readOnly } = props;
+  const {
+    label, isSelected, readOnly, isCheckBox,
+  } = props;
   return (
     <div>
       <components.Option {...props}>
-        <label>
-          {label}
-        </label>
-        {!readOnly && <input type="checkbox" checked={isSelected} onChange={() => null} />}
+        {!readOnly && isCheckBox ? (
+          <>
+            <label>
+              {label}
+            </label>
+            <input type="checkbox" checked={isSelected} onChange={() => null} />
+          </>
+        ) : (
+          <label>
+            {label}
+          </label>
+        ) }
       </components.Option>
     </div>
   );
 };
 
 export const Select = ({
-  options, readOnly, onChange, value,
+  options, readOnly, onChange, value, isMulti = true, isCheckBox,
 }:any) => {
   const theme = useTheme();
   return (
     <StyledSelect
       options={options}
-      isMulti
+      isMulti={isMulti}
       theme={theme as any}
       isOptionDisabled={() => readOnly}
       isSearchable={false}
@@ -128,7 +140,7 @@ export const Select = ({
       closeMenuOnSelect={false}
       hideSelectedOptions={false}
       components={{
-        Option: (props) => CheckBoxOption({ ...props, readOnly }),
+        Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
         IndicatorSeparator: () => null,
       }}
       onChange={(e) => onChange(e)}

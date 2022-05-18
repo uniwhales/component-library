@@ -12,6 +12,10 @@ export * from './atoms/toggles/switcher';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
+// eslint-disable-next-line import/no-cycle
+export * from './molecules/txTableList/txTableList';
+// eslint-disable-next-line import/no-cycle
+export * from './molecules/tokenPriceCard/tokenbPriceCard';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
