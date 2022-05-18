@@ -6,9 +6,11 @@ import {
   ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
+import { formatNumber } from '../../utils/format';
 
 export interface TokenPriceCardInterface {
   data:any;
+  index:number;
 }
 const ImgGenerator = 'https://logos.uniwhales.io/';
 
@@ -44,7 +46,7 @@ const TextBlock = Styled.div`
     align-items: center;
     gap: 8px;
 `;
-export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data }) => {
+export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
     if (stat.toString().includes('-')) {
@@ -57,7 +59,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data }) => {
       <Section>
         <TextBlock>
           {/* <IconWrapper icon={<HeartStandard />} /> */}
-          <Text size="H6-Bold">1</Text>
+          <Text size="H6-Bold">{index + 1}</Text>
           <div
             className="token-image"
             style={{
@@ -77,26 +79,26 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data }) => {
       </Section>
       <SectionColumn>
         <Block>
-          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{data.current_price}</Text>
+          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data.price)}</Text>
           <IconWrapper width="21px" height="21px" icon={<ArrowUpIcon />} />
         </Block>
         <Block>
           <TimeSection>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>1h</Text>
             <Text size="S-Regular" color={generateColor(data.price_change_percentage_1h)}>
-              {`${data.price_change_percentage_1h}%`}
+              {`${data.price_change_percentage_1h.toFixed(2)}%`}
             </Text>
           </TimeSection>
           <TimeSection>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>1d</Text>
             <Text size="S-Regular" color={generateColor(data.price_change_percentage_24h)}>
-              {`${data.price_change_percentage_24h}%`}
+              {`${data.price_change_percentage_24h.toFixed(2)}%`}
             </Text>
           </TimeSection>
           <TimeSection>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>7d</Text>
             <Text size="S-Regular" color={generateColor(data.price_change_percentage_7d)}>
-              {`${data.price_change_percentage_7d}%`}
+              {`${data.price_change_percentage_7d.toFixed(2)}%`}
             </Text>
           </TimeSection>
         </Block>
