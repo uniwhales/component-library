@@ -7,22 +7,28 @@ import {
   ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
-import { formatNumber } from '../../utils/format';
+import { formatter } from '../../utils/format';
 
 export interface TokenPriceCardInterface {
   data:any;
   index:number;
+  onClick: (data:any) => void;
 }
 const ImgGenerator = 'https://logos.uniwhales.io/';
 
 const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
+  transition: all .2s;
   display: flex;
+  cursor: pointer;
   justify-content: space-between;
   width: 100%;
   padding: 28px 24px;
   box-sizing: border-box;
+  :hover {
+    transform: translateY(-2px);
+  }
 `;
 const Section = Styled.div`
   display: flex;
@@ -47,7 +53,7 @@ const TextBlock = Styled.div`
     align-items: center;
     gap: 8px;
 `;
-export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
+export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClick }) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
     if (stat.toString().includes('-')) {
@@ -56,7 +62,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
     return theme.colors.system.GREEN;
   };
   return (
-    <Wrapper>
+    <Wrapper onClick={() => onClick(data)}>
       <Section>
         <TextBlock>
           {/* <IconWrapper icon={<HeartStandard />} /> */}
@@ -80,7 +86,12 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index }) => {
       </Section>
       <SectionColumn>
         <Block>
-          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatNumber(data.price)}</Text>
+          <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>
+            <>
+              {formatter.format(data.price)}
+              $
+            </>
+          </Text>
           <IconWrapper
             width="21px"
             height="21px"

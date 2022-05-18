@@ -25,6 +25,24 @@ const fake = {
   price_change_percentage_24h: -5.017057173892765,
   symbol: 'SHIB',
 };
+const fake1 = {
+  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
+  name: 'Shiba Inu',
+  price: 0.01,
+  price_change_percentage_1h: -1.547955670514793,
+  price_change_percentage_7d: -25.58472054970993,
+  price_change_percentage_24h: -5.017057173892765,
+  symbol: 'SHIB',
+};
+const fake2 = {
+  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
+  name: 'Shiba Inu',
+  price: 100000,
+  price_change_percentage_1h: -1.547955670514793,
+  price_change_percentage_7d: -25.58472054970993,
+  price_change_percentage_24h: -5.017057173892765,
+  symbol: 'SHIB',
+};
 export default {
   title: 'Molecules/TxListItem',
   component: TxTableItem,
@@ -37,9 +55,9 @@ const Template: ComponentStory<typeof TxTableItem> = () => (
       wsData={mockData as any}
     />
     <CardWrapper>
-      <TokenPriceCard index={0} data={fake} key={10} />
-      <TokenPriceCard index={2} data={fake} key={30} />
-      <TokenPriceCard index={4} data={fake} key={50} />
+      <TokenPriceCard onClick={() => {}} index={0} data={fake} key={10} />
+      <TokenPriceCard onClick={() => {}} index={2} data={fake1} key={30} />
+      <TokenPriceCard onClick={() => {}} index={4} data={fake2} key={50} />
     </CardWrapper>
 
   </Wrapper>
