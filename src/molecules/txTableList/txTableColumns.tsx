@@ -55,6 +55,8 @@ const Section = Styled.div`
 const LinkSection = Styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap:4px;
 `;
 const SectionTotal = Styled.div`
   display: flex;
@@ -212,9 +214,11 @@ export const TxTableColumns = (wsData :TableItem[]) => {
       {
         accessor: (row:TableItem) => (
           <LinkSection>
+            <Text size="S-Regular" />
             <a target="_blank" href={`https://etherscan.io/tx/${row.hash}`} rel="noreferrer">
               <IconWrapper cursor="pointer" icon={<EtherscanColor />} />
             </a>
+            <Text size="S-Regular" />
           </LinkSection>
         ),
         Header: 'Link',

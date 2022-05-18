@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { useTable } from 'react-table';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Styled } from '../../theme';
 import { TxTableColumns } from './txTableColumns';
 
-interface TableItem {
+export interface TableItem {
   address: string;
   block: number;
   contract: string;
@@ -19,6 +20,7 @@ interface TableItem {
   total_usd: number;
   transaction: TransactionInterface
   version: string;
+  isNew?:boolean;
 }
 export interface TokenInterface {
   amount: number,
@@ -27,10 +29,10 @@ export interface TokenInterface {
   token_price: number,
   address: number,
 }
-interface TxTableItemInterface {
+export interface TxTableItemInterface {
   wsData:TableItem[];
 }
-interface TransactionInterface {
+export interface TransactionInterface {
   from: TokenInterface,
   for: TokenInterface
 }
@@ -51,8 +53,9 @@ const Table = Styled.table`
   border-spacing: 0 20px;
 `;
 const Tbody = Styled.tbody`
+  
   tr{
-    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   }
 
   tr:nth-child(2n){
@@ -74,30 +77,56 @@ export const TxTableItem:FC<TxTableItemInterface> = ({
   const {
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
   } = useTable({ columns, data });
+  const spring = React.useMemo(
+    () => ({
+      type: 'spring',
+      damping: 50,
+      stiffness: 100,
+    }),
+    [],
+  );
   return (
     <Table {...getTableProps()}>
       <Thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
+              <motion.th
+                {...column.getHeaderProps({
+                  // @ts-ignore
+                  layoutTransition: spring,
+                })}
               >
                 {column.render('Header')}
-              </th>
+              </motion.th>
             ))}
           </tr>
         ))}
       </Thead>
       <Tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell')}</td>)}
-            </tr>
-          );
-        })}
+        <AnimatePresence>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <motion.tr {...row.getRowProps({
+                // @ts-ignore
+                layoutTransition: spring,
+                exit: { opacity: 0, maxHeight: 0 },
+              })}
+              >
+                {row.cells.map((cell) => (
+                  <motion.td {...cell.getCellProps({
+                    // @ts-ignore
+                    layoutTransition: spring,
+                  })}
+                  >
+                    {cell.render('Cell')}
+                  </motion.td>
+                ))}
+              </motion.tr>
+            );
+          })}
+        </AnimatePresence>
       </Tbody>
     </Table>
   );

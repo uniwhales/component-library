@@ -18,7 +18,7 @@ export default {
 const Template: ComponentStory<typeof TxTableItem> = () => (
   <Wrapper>
     <TxTableItem
-      wsData={mockData}
+      wsData={mockData as any}
     />
   </Wrapper>
 

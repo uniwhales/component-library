@@ -5,6 +5,7 @@ export const mockData = [
     timestamp: '2022-18-05 06:06:11',
     timestamp_int: 1652853971,
     swap_num: 1,
+    isNew: true,
     address: '0x22f9dcf4647084d6c31b2765f6910cd85c178c18',
     maker: '0x22f9dcf4647084d6c31b2765f6910cd85c178c18',
     pair: '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc',
