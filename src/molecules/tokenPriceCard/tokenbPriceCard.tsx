@@ -6,11 +6,11 @@ import {
   ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
+import { LogoUrlBase } from '../../utils/constants';
 
 export interface TokenPriceCardInterface {
   data:any;
 }
-const ImgGenerator = 'https://logos.uniwhales.io/';
 
 const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
@@ -63,7 +63,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data }) => {
             style={{
               height: 30,
               width: 30,
-              backgroundImage: `url(${ImgGenerator}${data.token_address}.jpg)`,
+              backgroundImage: `url(${LogoUrlBase}${data.token_address}.jpg)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               borderRadius: '50%',

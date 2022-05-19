@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SearchFilterSelect } from './searchFilterSelect';
-import {
-  Avalanche, Near, Terra, Uniswap,
-} from '../../atoms/icons';
 
 export default {
   title: 'Organisms/SearchFilterSelect',
@@ -13,41 +10,36 @@ export default {
 } as ComponentMeta<typeof SearchFilterSelect>;
 
 const MockData = [{
-  icon: <Uniswap />,
   symbol: 'UNI',
   name: 'Uniswap',
-  address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
+  address: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
   value: 'Uniswap',
   label: 'Uniswap',
 }, {
-  icon: <Avalanche />,
   symbol: 'AVA',
   name: 'Avalanche',
-  address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
+  address: '0x1ce0c2827e2ef14d5c4f29a091d735a204794041',
   value: 'Avalanche',
   label: 'Avalanche',
 }, {
-  icon: <Terra />,
   symbol: 'SHIB',
   name: 'Shiba Inu',
-  address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
+  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
   value: 'Shiba Inu',
   label: 'Shiba Inu',
 }, {
-  icon: <Near />,
   symbol: 'NEAR',
   name: 'NEAR',
-  address: '0x71Ee45BE594E82Ad1FAb81F5385DAe144E325a8E',
+  address: '0x1fa4a73a3f0133f0025378af00236f3abdee5d63',
   value: 'NEAR',
   label: 'NEAR',
 }];
 
 const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
-  const { menuIsOpen: argMenuIsOpen, isLoading: argIsLoading, options: argOptions } = args;
+  const { isLoading: argIsLoading, options: argOptions } = args;
   const [value, setValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [options, setOptions] = useState<any[]>([]);
   const [isContractSearch, setIsContractSearch] = useState(true);
 
@@ -65,8 +57,7 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
           setTimeout(() => {
             setOptions(argOptions || MockData);
             setIsLoading(argIsLoading || false);
-            setMenuIsOpen(argMenuIsOpen || true);
-          }, 2000);
+          }, 1000);
         }
       }}
       onSubmit={(e) => {
@@ -74,7 +65,6 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
       }}
       label="Explorer"
       value={value}
-      menuIsOpen={argMenuIsOpen || menuIsOpen}
       inputValue={inputValue}
       isLoading={argIsLoading || isLoading}
       isContractSearch={isContractSearch}

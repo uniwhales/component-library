@@ -167,7 +167,6 @@ type Props<T extends OptionBase> = {
   onInputChange: (v: string, actionMeta: InputActionMeta) => void
   value: T
   placeholder: string
-  menuIsOpen: boolean
   inputValue: string
   isLoading: boolean
   label?: string

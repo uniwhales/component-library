@@ -2,9 +2,9 @@ import React, { } from 'react';
 import {
   components,
 } from 'react-select';
-import { IconWrapper } from '../../../atoms/icons/iconWrapper';
 import { Text } from '../../../atoms/texts/text';
 import { Styled } from '../../../theme';
+import { LogoUrlBase } from '../../../utils/constants';
 import { shortenAddressTo11Chars } from '../../../utils/shortenAddress';
 
 const OptionGrid = Styled.div`
@@ -30,6 +30,15 @@ const OptionGrid = Styled.div`
   }
 `;
 
+const Icon = Styled.div<{ address: string }>`
+  height: 20px;
+  width: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: ${(props) => `url(${LogoUrlBase}${props.address}.jpg)`};
+  justify-self: flex-end;
+`;
+
 const OptionEntry = Styled.div`
   display: flex;
   gap: 5px;
@@ -41,7 +50,7 @@ export const Option = (props:any) => {
   return (
     <components.Option {...props}>
       <OptionGrid>
-        <IconWrapper icon={data.icon} />
+        <Icon address={data.address} />
         <OptionEntry>
           <Text size="S-Regular" color={color}>
             Symbol:
