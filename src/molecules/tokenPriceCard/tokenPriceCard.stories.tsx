@@ -15,32 +15,20 @@ export default {
 } as ComponentMeta<typeof TokenPriceCard>;
 
 const fake = {
-  token_symbol: 'ENS',
-  token: 'Ethereum Name Service',
-  current_price: 9.37,
-  price_change_percentage_1h: 33,
-  price_change_percentage_24h: -33,
-  price_change_percentage_7d: 33,
-  isLoading: false,
-  token_address: '0xc18360217d8f7ab5e7c516566761ea12ce7f9d72',
+  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
+  name: 'Shiba Inu',
+  price: 0.00001206,
+  price_change_percentage_1h: -1.547955670514793,
+  price_change_percentage_7d: -25.58472054970993,
+  price_change_percentage_24h: -5.017057173892765,
+  symbol: 'SHIB',
 };
-const fake1 = {
-  token_symbol: 'APE',
-  token: 'ApeCoin',
-  current_price: 8.39,
-  price_change_percentage_1h: -33,
-  price_change_percentage_24h: 33,
-  price_change_percentage_7d: -33,
-  isLoading: false,
-  token_address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
-};
+
 const Template: ComponentStory<typeof TokenPriceCard> = () => (
   <Wrapper>
-    <TokenPriceCard data={fake} key={10} />
-    <TokenPriceCard data={fake1} key={20} />
-    <TokenPriceCard data={fake} key={30} />
-    <TokenPriceCard data={fake1} key={40} />
-    <TokenPriceCard data={fake} key={50} />
+    <TokenPriceCard onClick={() => {}} index={0} data={fake} key={10} />
+    <TokenPriceCard onClick={() => {}} index={2} data={fake} key={30} />
+    <TokenPriceCard onClick={() => {}} index={4} data={fake} key={50} />
   </Wrapper>
 
 );

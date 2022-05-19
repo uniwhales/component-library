@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
 import { formatNumber } from '../../utils/format';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
   ArrowRightIcon, BalancerColor,
-  EtherscanColor, OneInchV3, OneInchV4, ParaSwapV4, ParaSwapV5,
+  BancorColor, CurveColor,
+  EtherscanColor, MetaMaskColor, OneInchV3, OneInchV4, OxColor, ParaSwapV4, ParaSwapV5,
   PolygonColor,
   Sushiswap,
   UniswapV2Color,
@@ -32,6 +32,7 @@ interface TableItem {
   total_usd: number;
   transaction: TransactionInterface
   version: string;
+  isNew?: boolean;
 }
 
 interface TokenInterface {
@@ -55,18 +56,26 @@ const Section = Styled.div`
 const LinkSection = Styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap:4px;
 `;
 const SectionTotal = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  p:nth-child(2){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
 const DateSection = Styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap:4px;
+  p:nth-child(1){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
 const SwapWrapper = Styled.div`
   display: flex;
@@ -85,41 +94,49 @@ const TextArea = Styled.div<{ textAlign: string }>`
   display: flex;
   text-align: ${(props) => props.textAlign};
   flex-direction: column;
+  p:nth-child(2){
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  }
 `;
+export const dexIcons:Readonly<{
+  '0x': JSX.Element,
+  '1inchV3': JSX.Element,
+  '1inchV4': JSX.Element,
+  balancerV2: JSX.Element,
+  bancor: JSX.Element,
+  curveV2: JSX.Element,
+  metaMask: JSX.Element,
+  paraSwapP4: JSX.Element,
+  paraSwapP5: JSX.Element,
+  sushiSwap: JSX.Element,
+  uniswapV2: JSX.Element,
+  uniswapV3: JSX.Element,
 
-const dexIcons:Readonly<{
-  uniswap_v2: JSX.Element,
-  uniswap_v3: JSX.Element,
-  sushiswap: JSX.Element,
-  polygon: JSX.Element,
-  balancer: JSX.Element,
-  paraswap_v4:JSX.Element,
-  paraswap_v5:JSX.Element,
-  '1inch_v3':JSX.Element,
-  '1inch_v4':JSX.Element,
 }> = {
-  uniswap_v2: <UniswapV2Color />,
-  uniswap_v3: <UniswapV3Color />,
-  sushiswap: <Sushiswap />,
-  polygon: <PolygonColor />,
-  balancer: <BalancerColor />,
-  paraswap_v4: <ParaSwapV4 />,
-  paraswap_v5: <ParaSwapV5 />,
-  '1inch_v3': <OneInchV3 />,
-  '1inch_v4': <OneInchV4 />,
+  metaMask: <MetaMaskColor />,
+  uniswapV2: <UniswapV2Color />,
+  uniswapV3: <UniswapV3Color />,
+  sushiSwap: <Sushiswap />,
+  balancerV2: <BalancerColor />,
+  paraSwapP4: <ParaSwapV4 />,
+  paraSwapP5: <ParaSwapV5 />,
+  '1inchV3': <OneInchV3 />,
+  '1inchV4': <OneInchV4 />,
+  '0x': <OxColor />,
+  bancor: <BancorColor />,
+  curveV2: <CurveColor />,
 };
 
-export const TxTableColumns = (wsData :TableItem[]) => {
+export const TxTableColumns = (wsData :TableItem[], theme:any) => {
   const data = useMemo(() => [...wsData], [wsData]);
-  const theme:any = useTheme();
   const columns = React.useMemo(
     () => [
       {
         accessor: (row:TableItem) => (
           <DateSection>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(0)}</Text>
+            <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text>
             <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
-            <Text textDecoration="underline" size="S-Bold" color={theme.textShades.SHADE_MINUS_2}>{row.timestamp.split(' ').at(1)}</Text>
+            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
           </DateSection>
         ),
         Header: 'Time (Local)',
@@ -133,6 +150,7 @@ export const TxTableColumns = (wsData :TableItem[]) => {
           );
         },
         Header: 'DEX',
+        width: 10,
       },
       {
         accessor: (row:TableItem) => (
@@ -140,7 +158,7 @@ export const TxTableColumns = (wsData :TableItem[]) => {
             <Block justifyContent="flex-end">
               <TextArea textAlign="right">
                 <Text size="S-Bold">{row.transaction.from.token}</Text>
-                <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
+                <Text size="XS-Regular">
                   <>
                     {formatNumber(row.transaction.from.total_usd.toFixed(2))}
                     /
@@ -208,13 +226,16 @@ export const TxTableColumns = (wsData :TableItem[]) => {
           </Section>
         ),
         Header: 'Address',
+        width: 60,
       },
       {
         accessor: (row:TableItem) => (
           <LinkSection>
+            <Text size="S-Regular" />
             <a target="_blank" href={`https://etherscan.io/tx/${row.hash}`} rel="noreferrer">
               <IconWrapper cursor="pointer" icon={<EtherscanColor />} />
             </a>
+            <Text size="S-Regular" />
           </LinkSection>
         ),
         Header: 'Link',
