@@ -68,6 +68,8 @@ const colourStyles:StylesConfig<StyledProps, false> = {
         fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
       },
     },
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    fontWeight: isFocused ? 'bold' : 'normal',
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly,
@@ -76,7 +78,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    color: theme.textShades.SHADE_MINUS_3,
+    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.WATER_BLUE
       : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
@@ -123,7 +125,7 @@ const CheckBoxOption = (props:any) => {
 };
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox,
+  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, closeMenuOnSelect,
 }:any) => {
   const theme = useTheme();
   return (
@@ -134,10 +136,10 @@ export const Select = ({
       isOptionDisabled={() => readOnly}
       isSearchable={false}
       styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={false}
+      controlShouldRenderValue={!isMulti}
       isClearable={false}
-      placeholder={<div className="react-select__placeholder">Alert Filters</div>}
-      closeMenuOnSelect={false}
+      placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+      closeMenuOnSelect={closeMenuOnSelect}
       hideSelectedOptions={false}
       components={{
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),

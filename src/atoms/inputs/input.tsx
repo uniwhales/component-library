@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
+import { cleanNumber } from '../../utils/format';
 import { Text } from '../texts/text';
 
 export interface InputsProps {
@@ -12,6 +13,7 @@ export interface InputsProps {
   disabled?:boolean;
   isError?:string;
   min?:string;
+  formatNumbers?: boolean
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -80,10 +82,11 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
 `;
 
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError, min,
+  type, placeholder, value, onChange, label, disabled, isError, min, formatNumbers,
 }:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
+
   return (
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
@@ -94,7 +97,18 @@ export const Input = ({
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <InputStyled min={min} isError={isError} disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
+        <InputStyled
+          min={min}
+          isError={isError}
+          disabled={disabled}
+          focus={focus}
+          value={formatNumbers && value ? Number(cleanNumber(value)).toLocaleString('en-US') : value}
+          onChange={onChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          placeholder={placeholder || 'Placeholder'}
+          type={type}
+        />
       </BorderWrapper>
       {isError && (
       <InputUserMessage>
