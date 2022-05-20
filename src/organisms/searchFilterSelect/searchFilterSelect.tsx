@@ -131,12 +131,12 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   input: (defaultStyles, props: StyledProps) => {
     const {
-      theme, menuIsOpen, selectProps,
+      theme, selectProps,
     } = props;
     return ({
       ...defaultStyles,
-      color: theme.colors.system.WHITE,
-      fontWeight: menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
+      color: selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     });
   },
   noOptionsMessage: (defaultStyles) => ({
