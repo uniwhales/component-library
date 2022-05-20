@@ -5,7 +5,7 @@ export function formatNumber(x:number | string) {
 export const formatter = (maximum:boolean) => new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
-  maximumSignificantDigits: maximum ? 1 : 7,
+  maximumSignificantDigits: maximum ? 3 : 7,
   // minimumFractionDigits: 0,
 
   // These options are needed to round to whole numbers if that's what you want.
