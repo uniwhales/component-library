@@ -415,7 +415,7 @@ export const mockData = [
     total_usd: 79151.74603468385,
     total_amount_usd: 79151.74603468385,
     slippage: 0,
-    dex: 'UniswapV3',
+    dex: 'SushiSwap',
     index: 6,
     isNew: false,
   },
