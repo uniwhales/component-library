@@ -18,6 +18,8 @@ const StyledSelect = Styled(ReactSelect)<{
   isContractSearch?: boolean,
   onSwitch: () => void
   onSubmit: (e: any) => void
+  rightSwitchText: string,
+  leftSwitchText: string,
 }>`
   width: 450px;
   outline: none;
@@ -174,6 +176,8 @@ type Props<T extends OptionBase> = {
   isContractSearch?: boolean,
   onSwitch: () => void
   onSubmit: (e: T) => void
+  leftSwitchText:string
+  rightSwitchText:string
 };
 
 type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
@@ -193,6 +197,8 @@ type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
  * @param onSwitch function to trigger when the switch on top of dropdown is clicked
  * @param onSubmit triggered when search button inside input is clicked
  * @param isLoading flag to decided whether to show loading message
+ * @param leftSwitchText  text to show on the left side of the switch
+ * @param rightSwitchText text to show on the right side of the switch
  *
  * State of this component should be managed in the parent component
  * (isLoading/value/inputValue/isContractSearch/options/)
@@ -210,6 +216,8 @@ export const SearchFilterSelect: SelectFn = ({
   isContractSearch,
   onSwitch,
   onSubmit,
+  leftSwitchText,
+  rightSwitchText,
 }) => {
   const theme = useTheme();
   return (
@@ -221,6 +229,8 @@ export const SearchFilterSelect: SelectFn = ({
       controlShouldRenderValue
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect
+      leftSwitchText={leftSwitchText}
+      rightSwitchText={rightSwitchText}
       components={{
         IndicatorSeparator: () => null,
         IndicatorsContainer,

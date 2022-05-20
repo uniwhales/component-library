@@ -36,7 +36,9 @@ const MockData = [{
 }];
 
 const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
-  const { isLoading: argIsLoading, options: argOptions } = args;
+  const {
+    isLoading: argIsLoading, options: argOptions,
+  } = args;
   const [value, setValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +65,8 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
       onSubmit={(e) => {
         setValue(e);
       }}
+      leftSwitchText="Token"
+      rightSwitchText="Wallet Address"
       label="Explorer"
       value={value}
       inputValue={inputValue}
