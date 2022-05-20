@@ -13,8 +13,3 @@ export const formatter = (maximum:boolean) => new Intl.NumberFormat('en-US', {
   // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
   // maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
-
-/**
- * Cleans number from dots and comas
- */
-export const cleanNumber = (val: string | number) => val.toString().replace(/,|\./g, '');

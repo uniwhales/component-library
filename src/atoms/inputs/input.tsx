@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { cleanNumber } from '../../utils/format';
 import { Text } from '../texts/text';
 
 export interface InputsProps {
@@ -13,7 +12,6 @@ export interface InputsProps {
   disabled?:boolean;
   isError?:string;
   min?:string;
-  formatNumbers?: boolean
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -82,7 +80,7 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
 `;
 
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError, min, formatNumbers,
+  type, placeholder, value, onChange, label, disabled, isError, min,
 }:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
@@ -102,7 +100,7 @@ export const Input = ({
           isError={isError}
           disabled={disabled}
           focus={focus}
-          value={formatNumbers && value ? Number(cleanNumber(value)).toLocaleString('en-US') : value}
+          value={value}
           onChange={onChange}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
