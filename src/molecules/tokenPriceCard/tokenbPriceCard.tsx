@@ -76,6 +76,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               borderRadius: '50%',
+              backgroundPositionY: 'center',
             }}
           />
           <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>

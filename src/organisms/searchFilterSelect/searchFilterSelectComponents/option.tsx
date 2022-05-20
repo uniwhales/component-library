@@ -15,9 +15,6 @@ const OptionGrid = Styled.div`
 
   div:nth-child(1) {
     grid-area: 1 / 1 / 4 / 2;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
   }
   div:nth-child(2) {
     grid-area: 1 / 2 / 2 / 4;
@@ -37,6 +34,7 @@ const Icon = Styled.div<{ address: string }>`
   background-repeat: no-repeat;
   background-image: ${(props) => `url(${LogoUrlBase}${props.address}.jpg)`};
   justify-self: flex-end;
+  margin-top: 6px;
 `;
 
 const OptionEntry = Styled.div`
