@@ -84,6 +84,7 @@ export const Input = ({
 }:InputsProps) => {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
+
   return (
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
@@ -94,7 +95,18 @@ export const Input = ({
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <InputStyled min={min} isError={isError} disabled={disabled} focus={focus} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder={placeholder || 'Placeholder'} type={type} />
+        <InputStyled
+          min={min}
+          isError={isError}
+          disabled={disabled}
+          focus={focus}
+          value={value}
+          onChange={onChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          placeholder={placeholder || 'Placeholder'}
+          type={type}
+        />
       </BorderWrapper>
       {isError && (
       <InputUserMessage>

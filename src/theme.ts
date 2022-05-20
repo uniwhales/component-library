@@ -34,6 +34,9 @@ const DarkTheme = {
     INVERSE_HIGH_CONTRAST: '#F8F9FF',
     INVERSE_LOW_CONTRAST: '#BBBCCE',
   },
+  dropShadow: {
+    REGULAR: '',
+  },
 };
 
 const LightTheme = {
@@ -56,6 +59,9 @@ const LightTheme = {
   inverseContrastColor: {
     INVERSE_HIGH_CONTRAST: '#355DFF',
     INVERSE_LOW_CONTRAST: '#0993EC',
+  },
+  dropShadow: {
+    REGULAR: '',
   },
 };
 
@@ -100,6 +106,9 @@ const Theme = {
     },
   },
 };
+
+LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;
+DarkTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.BLACK}`;
 
 const { colors, gradients } = Theme;
 

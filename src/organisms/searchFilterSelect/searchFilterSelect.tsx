@@ -4,6 +4,7 @@ import ReactSelect, {
   components,
   InputActionMeta,
 } from 'react-select';
+
 import { useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
@@ -131,12 +132,12 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   input: (defaultStyles, props: StyledProps) => {
     const {
-      theme, menuIsOpen, selectProps,
+      theme, selectProps,
     } = props;
     return ({
       ...defaultStyles,
-      color: theme.colors.system.WHITE,
-      fontWeight: menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
+      color: selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     });
   },
   noOptionsMessage: (defaultStyles) => ({
@@ -167,7 +168,6 @@ type Props<T extends OptionBase> = {
   onInputChange: (v: string, actionMeta: InputActionMeta) => void
   value: T
   placeholder: string
-  menuIsOpen: boolean
   inputValue: string
   isLoading: boolean
   label?: string
@@ -178,6 +178,26 @@ type Props<T extends OptionBase> = {
 
 type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
 
+/**
+ * Dropdown with search and filtering functionality
+ *
+ * @param options array of options (must have symbol and value)
+ * @param onChange function triggered when user clicked one of the options from dropdown
+ * @param value The selected option from list
+ * (must have symbol and value where value matches one of the options value)
+ * @param placeholder placeholder for the input to show when not in focus and empty
+ * @param onInputChange function to trigger when user types inside input field
+ * @param inputValue value of input field
+ * @param label Text to show before the | separator next to switch
+ * @param isContractSearch flag which decides whether left or right hand of switch is toggled
+ * @param onSwitch function to trigger when the switch on top of dropdown is clicked
+ * @param onSubmit triggered when search button inside input is clicked
+ * @param isLoading flag to decided whether to show loading message
+ *
+ * State of this component should be managed in the parent component
+ * (isLoading/value/inputValue/isContractSearch/options/)
+ *
+*/
 export const SearchFilterSelect: SelectFn = ({
   options,
   onChange,

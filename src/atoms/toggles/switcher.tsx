@@ -31,7 +31,7 @@ const Toggle = Styled.span<SwitcherProps>`
   :hover {
     background: ${(props) => !props.disabled && props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
     :before {
-      box-shadow: ${(props) => !props.disabled && '0px 6px 18px #101013'};
+      box-shadow: ${(props) => !props.disabled && props.theme.dropShadow.REGULAR};
       background: ${(props) => !props.disabled && props.theme.gradients.primary.BLURPLE_HIGHLIGHTED};
     }
   }

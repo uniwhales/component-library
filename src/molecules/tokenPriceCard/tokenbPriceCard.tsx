@@ -7,6 +7,7 @@ import {
   ArrowUpIcon, LinkIcon, Text,
 } from '../..';
 import { Styled } from '../../theme';
+import { LogoUrlBase } from '../../utils/constants';
 import { formatter } from '../../utils/format';
 
 export interface TokenPriceCardInterface {
@@ -14,7 +15,6 @@ export interface TokenPriceCardInterface {
   index:number;
   onClick: (data:any) => void;
 }
-const ImgGenerator = 'https://logos.uniwhales.io/';
 
 export const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
@@ -72,10 +72,11 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
             style={{
               height: 30,
               width: 30,
-              backgroundImage: `url(${ImgGenerator}${data.address}.jpg)`,
+              backgroundImage: `url(${LogoUrlBase}${data.address}.jpg)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               borderRadius: '50%',
+              backgroundPositionY: 'center',
             }}
           />
           <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
