@@ -79,7 +79,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
             }}
           />
           <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
-          <a target="_blank" href={`https://etherscan.io/token/${data.token_address}`} rel="noreferrer">
+          <a target="_blank" href={`https://etherscan.io/token/${data.address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
           </a>
         </TextBlock>
