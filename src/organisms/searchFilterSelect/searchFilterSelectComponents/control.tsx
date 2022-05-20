@@ -18,7 +18,9 @@ export const Control = (props: any) => {
   const {
     selectProps, isDisabled, theme,
   } = props;
-  const { onSwitch, isContractSearch, label } = selectProps;
+  const {
+    onSwitch, isContractSearch, label, leftSwitchText, rightSwitchText,
+  } = selectProps;
 
   return (
     <>
@@ -26,13 +28,13 @@ export const Control = (props: any) => {
         <Text color={theme.textShades.SHADE_MINUS_1} size="S-Bold">
           {`${label}  |`}
         </Text>
-        <Text size={!isContractSearch ? 'S-Regular' : 'S-Bold'}>Token</Text>
+        <Text size={!isContractSearch ? 'S-Regular' : 'S-Bold'}>{leftSwitchText}</Text>
         <SwitcherAtom
           disabled={isDisabled}
           isOn={!isContractSearch}
           onClick={() => onSwitch && onSwitch()}
         />
-        <Text size={isContractSearch ? 'S-Regular' : 'S-Bold'}>Contract Address</Text>
+        <Text size={isContractSearch ? 'S-Regular' : 'S-Bold'}>{rightSwitchText}</Text>
       </ControlHeaderContainer>
       <components.Control {...props} />
     </>
