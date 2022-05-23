@@ -162,7 +162,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 <Text size="S-Bold">{row.transaction.from.token}</Text>
                 <Text size="XS-Regular">
                   <>
-                    {formatNumber(row.transaction.from.total_usd.toFixed(2))}
+                    {formatNumber(row.transaction.from.amount.toFixed(2))}
                     /
                     {formatNumber(row.transaction.from.token_price.toFixed(2))}
                   </>
@@ -197,7 +197,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 <Text size="S-Bold">{row.transaction.for.token}</Text>
                 <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                   <>
-                    {formatNumber(row.transaction.for.total_usd.toFixed(2))}
+                    {formatNumber(row.transaction.for.amount.toFixed(2))}
                     /
                     {formatNumber(row.transaction.for.token_price.toFixed(2))}
                   </>
