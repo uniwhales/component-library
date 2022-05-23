@@ -22,7 +22,7 @@ Primary.parameters = {
 Primary.args = {
   options: colourOptions,
   isMulti: false,
-  readOnly: false,
+  readOnly: true,
   placeholder: 'DEX filters',
   closeMenuOnSelect: true,
 };

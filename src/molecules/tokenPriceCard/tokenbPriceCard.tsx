@@ -53,6 +53,11 @@ const TextBlock = Styled.div`
     align-items: center;
     gap: 8px;
 `;
+const ClickBlock = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
 export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClick }) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
@@ -62,30 +67,32 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
     return theme.colors.system.GREEN;
   };
   return (
-    <Wrapper onClick={() => onClick(data)}>
+    <Wrapper>
       <Section>
         <TextBlock>
           {/* <IconWrapper icon={<HeartStandard />} /> */}
-          <Text size="H6-Bold">{index + 1}</Text>
-          <div
-            className="token-image"
-            style={{
-              height: 30,
-              width: 30,
-              backgroundImage: `url(${LogoUrlBase}${data.address}.jpg)`,
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              borderRadius: '50%',
-              backgroundPositionY: 'center',
-            }}
-          />
-          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
+          <ClickBlock onClick={() => onClick(data)}>
+            <Text size="H6-Bold">{index + 1}</Text>
+            <div
+              className="token-image"
+              style={{
+                height: 30,
+                width: 30,
+                backgroundImage: `url(${LogoUrlBase}${data.address}.jpg)`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                borderRadius: '50%',
+                backgroundPositionY: 'center',
+              }}
+            />
+            <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
+          </ClickBlock>
           <a target="_blank" href={`https://etherscan.io/token/${data.address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
           </a>
         </TextBlock>
       </Section>
-      <SectionColumn>
+      <SectionColumn onClick={() => onClick(data)}>
         <Block>
           <Text size="H4-Regular" color={theme.textShades.SHADE_MINUS_2}>
             <>

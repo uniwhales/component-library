@@ -15,13 +15,15 @@ export default {
 } as ComponentMeta<typeof TokenPriceCard>;
 
 const fake = {
-  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
-  name: 'Shiba Inu',
-  price: 0.00001206,
-  price_change_percentage_1h: -1.547955670514793,
-  price_change_percentage_7d: -25.58472054970993,
-  price_change_percentage_24h: -5.017057173892765,
+
   symbol: 'SHIB',
+  name: 'Shiba Inu',
+  address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
+  price: 0.00001176,
+  price_change_percentage_1h: -0.38620990993425053,
+  price_change_percentage_24h: 0.9689926628542215,
+  price_change_percentage_7d: -8.048321568361459,
+
 };
 
 const Template: ComponentStory<typeof TokenPriceCard> = () => (
