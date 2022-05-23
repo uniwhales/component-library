@@ -52,6 +52,12 @@ const Section = Styled.div`
   justify-content: center;
   gap: 4px;
 `;
+const SectionDex = Styled(Section)`
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+`;
 const LinkSection = Styled.div`
   display: flex;
   justify-content: center;
@@ -140,9 +146,9 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
       {
         accessor(row:TableItem) {
           return (
-            <Section>
+            <SectionDex>
               {(dexIcons as any)[row.dex]}
-            </Section>
+            </SectionDex>
           );
         },
         Header: 'DEX',

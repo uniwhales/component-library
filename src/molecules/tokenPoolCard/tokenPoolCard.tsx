@@ -28,7 +28,7 @@ const Wrapper = Styled.div`
   border-radius: 12px;
   transition: all .2s;
   max-width: 500px;
-  height: 144px;
+  //height: 144px;
   width: 100%;
   padding: 24px 24px;
   box-sizing: border-box;
@@ -55,7 +55,12 @@ const TokenInfo = Styled.div`
     margin-bottom: 5px;
   }
 `;
-const DexInfo = Styled.div``;
+const DexInfo = Styled.div`
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+`;
 const TotalLiquidity = Styled.div``;
 const Volume = Styled.div``;
 const ImgBlock = Styled.div`
