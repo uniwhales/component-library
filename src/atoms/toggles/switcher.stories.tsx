@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof SwitcherAtom>;
 
 const Template: ComponentStory<typeof SwitcherAtom> = (args) => {
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState<boolean>(false);
   return <SwitcherAtom {...args} isOn={isOn} onClick={() => setIsOn(!isOn)} />;
 };
 export const Standard = Template.bind({});

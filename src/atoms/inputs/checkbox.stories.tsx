@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (props) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState<boolean>(false);
   return <Checkbox {...props} selected={selected} onClick={() => { setSelected(!selected); }} />;
 };
 
