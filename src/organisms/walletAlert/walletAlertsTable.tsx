@@ -13,10 +13,10 @@ export interface WalletAlertsTableProps {
   label?: string;
   wallet: string;
   isActive: boolean;
-  setIsActive: (wallet:number, status:boolean) => any;
+  setIsActive: (wallet: number, status: boolean) => any;
   chains: any;
-  editWallet: (id:number) => {};
-  removeWallet: (id:number) => {};
+  editWallet: (id: number) => void;
+  removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
 }
@@ -75,14 +75,26 @@ const Overlay = Styled.div`
 `;
 
 export const WalletAlertsTable = ({
-  id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading,
-}:WalletAlertsTableProps) => {
-  const theme:any = useTheme();
+  id,
+  label,
+  wallet,
+  chains,
+  isActive,
+  setIsActive,
+  editWallet,
+  removeWallet,
+  isLoading,
+}: WalletAlertsTableProps) => {
+  const theme: any = useTheme();
   return (
     <Wrapper isLoading={isLoading}>
       {isLoading && <Overlay />}
       <Section>
-        {label && <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{label}</Text>}
+        {label && (
+          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>
+            {label}
+          </Text>
+        )}
         <CopyToClipBoard walletCut id={id.toString()} text={wallet} />
       </Section>
       <Section>
@@ -108,10 +120,7 @@ export const WalletAlertsTable = ({
               Edit
             </>
           </ButtonAtom>
-          <ButtonAtom
-            onClick={() => removeWallet(id)}
-            buttonVariant="tertiary"
-          >
+          <ButtonAtom onClick={() => removeWallet(id)} buttonVariant="tertiary">
             <>
               <IconWrapper icon={<CrossIcon />} />
               Remove
@@ -129,9 +138,7 @@ export const WalletAlertsTable = ({
             onClick={() => removeWallet(id)}
             buttonVariant="secondary_action"
           >
-
             <IconWrapper icon={<CrossIcon />} />
-
           </ButtonAtom>
         </ButtonGroupMobile>
       </Section>

@@ -10,7 +10,11 @@ export enum CheckboxSize {
 }
 
 type CheckboxStyledProps = {
-  focus: boolean, hover: boolean, selected: boolean, disabled: boolean, size: CheckboxSize
+  focus: boolean;
+  hover: boolean;
+  selected: boolean;
+  disabled: boolean;
+  size: CheckboxSize;
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
@@ -26,14 +30,21 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
       return props.theme.textShades.SHADE_MINUS_2;
     }
 
-    if (((props.hover || props.selected) && !props.disabled) || (props.selected && props.disabled)) return 'transparent';
+    if (
+      ((props.hover || props.selected) && !props.disabled)
+      || (props.selected && props.disabled)
+    ) {
+      return 'transparent';
+    }
 
     return props.theme.colors.primary.WATER_BLUE;
-  }}; 
+  }};
   border-radius: 4px;
   background-color: ${(props) => {
     if (!props.selected) return props.theme.colors.system.WHITE;
-    if (props.disabled && props.selected) return props.theme.colors.secondary.TURQUOISE;
+    if (props.disabled && props.selected) {
+      return props.theme.colors.secondary.TURQUOISE;
+    }
 
     return props.theme.colors.primary.WATER_BLUE;
   }};
@@ -45,18 +56,21 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
 `;
 
 export interface CheckboxProps {
-  disabled: boolean,
-  selected: boolean,
-  size: CheckboxSize
+  disabled: boolean;
+  selected: boolean;
+  size: CheckboxSize;
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
-  disabled, selected, size, onClick,
+  disabled,
+  selected,
+  size,
+  onClick,
 }) => {
-  const theme:any = useTheme();
-  const [focus, setFocus] = useState(false);
-  const [hover, setHover] = useState(false);
+  const theme: any = useTheme();
+  const [focus, setFocus] = useState<boolean>(false);
+  const [hover, setHover] = useState<boolean>(false);
 
   return (
     <CheckboxStyled
@@ -75,9 +89,13 @@ export const Checkbox: FC<CheckboxProps> = ({
         if (!disabled) onClick(e);
       }}
     >
-      { ((hover && !disabled) || selected) && (
+      {((hover && !disabled) || selected) && (
         <IconWrapper
-          stroke={selected ? theme.colors.system.WHITE : theme.colors.primary.WATER_BLUE}
+          stroke={
+            selected
+              ? theme.colors.system.WHITE
+              : theme.colors.primary.WATER_BLUE
+          }
           fill="none"
           icon={<Check />}
         />

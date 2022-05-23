@@ -39,8 +39,8 @@ const InputUserMessage = Styled.div`
 const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string }>`
   outline: none;
   width: 100%;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${(props) => (props.disabled ? '0.2' : 1)};
+  cursor: ${(disabled) => (disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(disabled) => (disabled ? '0.2' : 1)};
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 48px;
   border-radius: 12px;
@@ -82,8 +82,8 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
 export const Input = ({
   type, placeholder, value, onChange, label, disabled, isError, min,
 }:InputsProps) => {
-  const [focus, setFocus] = useState(false);
-  const [hover, setHover] = useState(false);
+  const [focus, setFocus] = useState<boolean>(false);
+  const [hover, setHover] = useState<boolean>(false);
 
   return (
     <InputWrapper>

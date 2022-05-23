@@ -82,53 +82,53 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper icon={<Ethereum />} />
-    <IconWrapper icon={<Polygon />} />
-    <IconWrapper icon={<Fantom />} />
-    <IconWrapper icon={<Arbitrum />} />
-    <IconWrapper icon={<Avalanche />} />
-    <IconWrapper icon={<Optimism />} />
-    <IconWrapper icon={<Binance />} />
-    <IconWrapper icon={<Boba />} />
-    <IconWrapper icon={<Aurora />} />
-    <IconWrapper icon={<Metis />} />
+    <IconWrapper name="Ethereum" icon={<Ethereum />} />
+    <IconWrapper name="Polygon" icon={<Polygon />} />
+    <IconWrapper name="Fantom" icon={<Fantom />} />
+    <IconWrapper name="Arbitrum" icon={<Arbitrum />} />
+    <IconWrapper name="Avalanche" icon={<Avalanche />} />
+    <IconWrapper name="Optimism" icon={<Optimism />} />
+    <IconWrapper name="Binance" icon={<Binance />} />
+    <IconWrapper name="Boba" icon={<Boba />} />
+    <IconWrapper name="Aurora" icon={<Aurora />} />
+    <IconWrapper name="Metis" icon={<Metis />} />
   </>
 );
 const Template3: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper icon={<AuroraColor />} />
-    <IconWrapper icon={<UniswapV2Color />} />
-    <IconWrapper icon={<UniswapV3Color />} />
-    <IconWrapper icon={<BobaColor />} />
-    <IconWrapper icon={<CieloColor />} />
-    <IconWrapper icon={<ArbitrumColor />} />
-    <IconWrapper icon={<AvalancheColor />} />
-    <IconWrapper icon={<BinanceColor />} />
-    <IconWrapper icon={<CurveColor />} />
-    <IconWrapper icon={<EthereumColor />} />
-    <IconWrapper icon={<EtherscanColor />} />
-    <IconWrapper icon={<FantomColor />} />
-    <IconWrapper icon={<HarmonyColor />} />
-    <IconWrapper icon={<MetaMaskColor />} />
-    <IconWrapper icon={<MetisColor />} />
-    <IconWrapper icon={<NearColor />} />
-    <IconWrapper icon={<OptimismColor />} />
-    <IconWrapper icon={<PolygonColor />} />
-    <IconWrapper icon={<SushiswapColor />} />
-    <IconWrapper icon={<TerraColor />} />
-    <IconWrapper icon={<WalletConnectColor />} />
-    <IconWrapper icon={<UniWhalesColor />} />
-    <IconWrapper icon={<OxColor />} />
+    <IconWrapper name="Aurora" icon={<AuroraColor />} />
+    <IconWrapper name="UniswapV2" icon={<UniswapV2Color />} />
+    <IconWrapper name="UniswapV3" icon={<UniswapV3Color />} />
+    <IconWrapper name="Boba" icon={<BobaColor />} />
+    <IconWrapper name="Cielo" icon={<CieloColor />} />
+    <IconWrapper name="Arbitrum" icon={<ArbitrumColor />} />
+    <IconWrapper name="Avalanche" icon={<AvalancheColor />} />
+    <IconWrapper name="Binance" icon={<BinanceColor />} />
+    <IconWrapper name="Curve" icon={<CurveColor />} />
+    <IconWrapper name="Ethereum" icon={<EthereumColor />} />
+    <IconWrapper name="Etherscan" icon={<EtherscanColor />} />
+    <IconWrapper name="Fantom" icon={<FantomColor />} />
+    <IconWrapper name="Harmony" icon={<HarmonyColor />} />
+    <IconWrapper name="Metamask" icon={<MetaMaskColor />} />
+    <IconWrapper name="Metis" icon={<MetisColor />} />
+    <IconWrapper name="Near" icon={<NearColor />} />
+    <IconWrapper name="Optimism" icon={<OptimismColor />} />
+    <IconWrapper name="Polygon" icon={<PolygonColor />} />
+    <IconWrapper name="Sushiswap" icon={<SushiswapColor />} />
+    <IconWrapper name="Terra" icon={<TerraColor />} />
+    <IconWrapper name="Wallet Connect" icon={<WalletConnectColor />} />
+    <IconWrapper name="Uniwhales" icon={<UniWhalesColor />} />
+    <IconWrapper name="0x" icon={<OxColor />} />
   </>
 );
 
 const Template4: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper icon={<Weth />} />
-    <IconWrapper icon={<Dai />} />
-    <IconWrapper icon={<Doge />} />
-    <IconWrapper icon={<Usdc />} />
-    <IconWrapper icon={<Usdt />} />
+    <IconWrapper name="Weth" icon={<Weth />} />
+    <IconWrapper name="Dai" icon={<Dai />} />
+    <IconWrapper name="Doge" icon={<Doge />} />
+    <IconWrapper name="USDC" icon={<Usdc />} />
+    <IconWrapper name="USDT" icon={<Usdt />} />
 
   </>
 );

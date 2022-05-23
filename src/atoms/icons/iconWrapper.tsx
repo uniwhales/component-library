@@ -1,5 +1,6 @@
 import React from 'react';
 import { Styled } from '../../theme';
+import { Text } from '../texts/text';
 
 const IconComponent = Styled.div<IconWrapperProps>`
   height: ${(props) => props.height};
@@ -23,6 +24,7 @@ export interface IconWrapperProps {
   fill?: string;
   stroke?: string;
   cursor?: string;
+  name?: string;
 }
 
 export const IconWrapper: React.FC<IconWrapperProps> = ({
@@ -33,6 +35,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   icon,
   stroke,
   cursor,
+  name,
 }) => (
   <IconComponent
     cursor={cursor}
@@ -41,7 +44,9 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
     width={width}
     fill={fill}
     stroke={stroke}
+    name={name}
   >
     {icon && icon}
+    {name && <Text size="S-Regular">{name}</Text>}
   </IconComponent>
 );

@@ -10,7 +10,7 @@ export interface Tab {
 }
 export interface SelectorTabsProps {
   tabs: Tab[];
-  isActive?: boolean
+  // isActive?: boolean
   setActiveTab: (e:any) => void;
   activeTab?: Tab;
 }
