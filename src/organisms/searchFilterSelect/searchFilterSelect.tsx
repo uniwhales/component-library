@@ -228,7 +228,6 @@ export const SearchFilterSelect: SelectFn = ({
       styles={colourStyles as StylesConfig}
       controlShouldRenderValue
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect
       leftSwitchText={leftSwitchText}
       rightSwitchText={rightSwitchText}
       components={{
