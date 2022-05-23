@@ -55,9 +55,9 @@ const Template: ComponentStory<typeof TxTableItem> = () => (
       wsData={mockData as any}
     />
     <CardWrapper>
-      <TokenPriceCard onClick={() => {}} index={0} data={fake} key={10} />
-      <TokenPriceCard onClick={() => {}} index={2} data={fake1} key={30} />
-      <TokenPriceCard onClick={() => {}} index={4} data={fake2} key={50} />
+      <TokenPriceCard onClick={() => { console.warn('1'); }} index={0} data={fake} key={10} />
+      <TokenPriceCard onClick={() => { console.warn('1'); }} index={2} data={fake1} key={30} />
+      <TokenPriceCard onClick={() => { console.warn('1'); }} index={4} data={fake2} key={50} />
     </CardWrapper>
 
   </Wrapper>

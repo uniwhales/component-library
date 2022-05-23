@@ -6,7 +6,6 @@ import {
   ArrowRightIcon, BalancerColor,
   BancorColor, CurveColor,
   EtherscanColor, MetaMaskColor, OneInchV3, OneInchV4, OxColor, ParaSwapV4, ParaSwapV5,
-  PolygonColor,
   Sushiswap,
   UniswapV2Color,
   UniswapV3Color,
@@ -134,8 +133,8 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
       {
         accessor: (row:TableItem) => (
           <DateSection>
-            <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text>
-            <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text>
+            {/* <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
+            {/* <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text> */}
             <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
           </DateSection>
         ),
