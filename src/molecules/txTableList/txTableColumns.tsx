@@ -72,9 +72,6 @@ const DateSection = Styled.div`
   justify-content: center;
   align-items: center;
   gap:4px;
-  p:nth-child(1){
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  }
 `;
 const SwapWrapper = Styled.div`
   display: flex;
