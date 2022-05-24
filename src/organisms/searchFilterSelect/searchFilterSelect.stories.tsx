@@ -10,6 +10,26 @@ export default {
 } as ComponentMeta<typeof SearchFilterSelect>;
 
 const MockData = [{
+  symbol: 'APE',
+  name: 'Uniswap',
+  address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
+  value: 'APE',
+  label: 'APE',
+},
+{
+  symbol: 'SOL',
+  name: 'Wrapped SOL (Wormhole)',
+  address: '0xd31a59c85ae9d8edefec411d448f90841571b89c',
+  value: 'SOL',
+  label: 'SOL',
+}, {
+  symbol: 'APED',
+  name: 'APED',
+  address: '0xfa898efdb91e35bd311c45b9b955f742b6719aa2',
+  value: 'APED',
+  label: 'APED',
+},
+{
   symbol: 'UNI',
   name: 'Uniswap',
   address: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',

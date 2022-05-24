@@ -9,12 +9,13 @@ import { shortenAddressTo11Chars } from '../../../utils/shortenAddress';
 
 const OptionGrid = Styled.div`
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 30px;
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 5px;
 
   div:nth-child(1) {
     grid-area: 1 / 1 / 4 / 2;
+    border-radius: 50%;
   }
   div:nth-child(2) {
     grid-area: 1 / 2 / 2 / 4;
