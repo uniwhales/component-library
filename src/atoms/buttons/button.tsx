@@ -1,23 +1,7 @@
 import React, { FC } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactChild;
-  buttonVariant:
-  'primary'
-  | 'secondary'
-  | 'tertiary'
-  | 'primary_action'
-  | 'secondary_action'
-  | 'tiny_action'
-  | 'secondary_action_inverse',
-  borderRadius?: string,
-  disabled?: boolean
-  onClick: () => void;
-}
-
-type GenericStylingProps = Partial<Pick<ButtonProps, 'borderRadius'>>;
+import { ButtonProps, GenericStylingProps } from './types';
 
 const Button = Styled.button<GenericStylingProps>`
   font-size: 14px;
@@ -71,8 +55,8 @@ const ButtonSecondary = Styled(Button)`
      opacity: 0.2;
      background: ${props.theme.colors.system.DISABLED};
      border: none;
-  `} 
-  
+  `}
+
   // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
@@ -133,7 +117,7 @@ const ButtonSecondaryAction = Styled(Button)`
   ${(props) => props.disabled && css`
      opacity: 0.2;
      background: transparent;
-  `} 
+  `}
   // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
