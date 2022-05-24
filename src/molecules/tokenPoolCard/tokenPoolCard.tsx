@@ -8,7 +8,7 @@ import { dexIcons } from '../txTableList/txTableColumns';
 
 export interface TokenPoolCardInterface {
   data: CardInterface
-  index?:number;
+  index:number;
 }
 export interface CardInterface {
   address: string;
