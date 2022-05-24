@@ -9,7 +9,6 @@ const IconComponent = Styled.div<IconWrapperProps>`
   display: flex;
   align-items: center;
   svg {
-    margin-right: 8px;
     height: ${(props) => props.height};
     width: ${(props) => props.width};
     fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
@@ -28,16 +27,20 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   cursor,
   name,
 }) => (
-  <IconComponent
-    cursor={cursor}
-    onClick={onClick}
-    height={height}
-    width={width}
-    fill={fill}
-    stroke={stroke}
-    name={name}
-  >
-    {icon && icon}
+  <>
+    <IconComponent
+      cursor={cursor}
+      onClick={onClick}
+      height={height}
+      width={width}
+      fill={fill}
+      stroke={stroke}
+      name={name}
+    >
+      {icon && icon}
+
+    </IconComponent>
     {name && <Text size="S-Regular">{name}</Text>}
-  </IconComponent>
+  </>
+
 );
