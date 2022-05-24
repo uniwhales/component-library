@@ -1,13 +1,9 @@
 import React, { FC, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
+import { CheckboxSize, getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
 import { Check } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
-
-export enum CheckboxSize {
-  'Big' = 'Big',
-  'Small' = 'Small',
-}
 
 type CheckboxStyledProps = {
   focus: boolean;
@@ -19,12 +15,12 @@ type CheckboxStyledProps = {
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   svg {
-    height: ${(props) => (props.size === CheckboxSize.Big ? '20px' : '16px')};
-    width: ${(props) => (props.size === CheckboxSize.Big ? '20px' : '16px')};
+    height: ${(props) => (getCheckboxSvgSize(props.size))};
+    width: ${(props) => (getCheckboxSvgSize(props.size))};
     cursor: pointer;
   }
-  width: ${(props) => (props.size === CheckboxSize.Big ? '24px' : '20px')};
-  height: ${(props) => (props.size === CheckboxSize.Big ? '24px' : '20px')};
+  width: ${(props) => (getCheckboxSize(props.size))};
+  height: ${(props) => (getCheckboxSize(props.size))};
   border: 2px solid ${(props) => {
     if (props.hover && !props.selected && !props.disabled) {
       return props.theme.textShades.SHADE_MINUS_2;

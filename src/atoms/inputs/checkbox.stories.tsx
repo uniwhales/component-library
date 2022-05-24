@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Checkbox, CheckboxSize } from './checkbox';
+import { Checkbox } from './checkbox';
+import { CheckboxSize } from '../../utils/getSize';
 
 export default {
   title: 'Atoms/Checkboxes',
