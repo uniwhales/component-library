@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 // eslint-disable-next-line import/no-cycle
-import { Text } from '../..';
+import { IconWrapper, LinkIcon, Text } from '../..';
 import { formatter } from '../../utils/format';
 import { dexIcons } from '../txTableList/txTableColumns';
 
@@ -21,13 +21,14 @@ export interface CardInterface {
   dex: string;
   token0_image: string;
   token1_image: string;
+  link: string;
 }
 const Wrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
   transition: all .2s;
   max-width: 500px;
-  height: 144px;
+  //height: 144px;
   width: 100%;
   padding: 24px 24px;
   box-sizing: border-box;
@@ -50,13 +51,21 @@ const TokenInfo = Styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  svg {
+    margin-bottom: 5px;
+  }
 `;
-const DexInfo = Styled.div``;
+const DexInfo = Styled.div`
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+`;
 const TotalLiquidity = Styled.div``;
 const Volume = Styled.div``;
 const ImgBlock = Styled.div`
   img:nth-child(1){
-    margin-right: -16px;
+    margin-right: -5px;
   }
 `;
 const TextBlock = Styled.div`
@@ -82,6 +91,9 @@ export const TokenPoolCard:FC<TokenPoolCardInterface> = (
             <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">+</Text>
             <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">{data.token1}</Text>
           </TextBlock>
+          <a target="_blank" href={data.link} rel="noreferrer">
+            <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
+          </a>
         </TokenInfo>
         <DexInfo>
           {(dexIcons as any)[data.dex]}

@@ -51,6 +51,12 @@ const Section = Styled.div`
   justify-content: center;
   gap: 4px;
 `;
+const SectionDex = Styled(Section)`
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+`;
 const LinkSection = Styled.div`
   display: flex;
   justify-content: center;
@@ -142,9 +148,9 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
       {
         accessor(row:TableItem) {
           return (
-            <Section>
+            <SectionDex>
               {(dexIcons as any)[row.dex]}
-            </Section>
+            </SectionDex>
           );
         },
         Header: 'DEX',
@@ -158,7 +164,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 <Text size="S-Bold">{row.transaction.from.token}</Text>
                 <Text size="XS-Regular">
                   <>
-                    {formatNumber(row.transaction.from.total_usd.toFixed(2))}
+                    {formatNumber(row.transaction.from.amount.toFixed(2))}
                     /
                     {formatNumber(row.transaction.from.token_price.toFixed(2))}
                   </>
@@ -193,7 +199,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 <Text size="S-Bold">{row.transaction.for.token}</Text>
                 <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
                   <>
-                    {formatNumber(row.transaction.for.total_usd.toFixed(2))}
+                    {formatNumber(row.transaction.for.amount.toFixed(2))}
                     /
                     {formatNumber(row.transaction.for.token_price.toFixed(2))}
                   </>

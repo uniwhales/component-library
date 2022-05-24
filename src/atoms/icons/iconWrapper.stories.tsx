@@ -52,7 +52,7 @@ import {
   Usdc,
   Usdt,
   Weth,
-  OxColor,
+  OxColor, OneInchV3, OneInchV4,
 } from '.';
 
 export default {
@@ -99,6 +99,8 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Aurora" icon={<AuroraColor />} />
     <IconWrapper name="UniswapV2" icon={<UniswapV2Color />} />
     <IconWrapper name="UniswapV3" icon={<UniswapV3Color />} />
+    <IconWrapper name="OneInchV3" icon={<OneInchV3 />} />
+    <IconWrapper name="OneInchV4" icon={<OneInchV4 />} />
     <IconWrapper name="Boba" icon={<BobaColor />} />
     <IconWrapper name="Cielo" icon={<CieloColor />} />
     <IconWrapper name="Arbitrum" icon={<ArbitrumColor />} />

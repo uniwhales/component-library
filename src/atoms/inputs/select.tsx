@@ -125,7 +125,7 @@ const CheckBoxOption = (props:any) => {
 };
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, closeMenuOnSelect,
+  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder,
 }:any) => {
   const theme = useTheme();
   return (
@@ -139,7 +139,7 @@ export const Select = ({
       controlShouldRenderValue={!isMulti}
       isClearable={false}
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect={closeMenuOnSelect}
+      closeMenuOnSelect={!isMulti}
       hideSelectedOptions={false}
       components={{
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),

@@ -19,6 +19,7 @@ export interface WalletAlertsTableProps {
   removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
+  filters: any
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
   position: relative;
@@ -75,17 +76,9 @@ const Overlay = Styled.div`
 `;
 
 export const WalletAlertsTable = ({
-  id,
-  label,
-  wallet,
-  chains,
-  isActive,
-  setIsActive,
-  editWallet,
-  removeWallet,
-  isLoading,
-}: WalletAlertsTableProps) => {
-  const theme: any = useTheme();
+  id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
+}:WalletAlertsTableProps) => {
+  const theme:any = useTheme();
   return (
     <Wrapper isLoading={isLoading}>
       {isLoading && <Overlay />}
@@ -109,7 +102,7 @@ export const WalletAlertsTable = ({
       </Section>
       <Section flex={1}>
         <Group>
-          <Select readOnly placeholder="Alert Filters" options={chains} />
+          <Select readOnly placeholder="Alert Filters" options={chains} value={filters} />
         </Group>
       </Section>
       <Section flex={1}>
