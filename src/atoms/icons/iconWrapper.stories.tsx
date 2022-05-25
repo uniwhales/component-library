@@ -53,6 +53,7 @@ import {
   Usdt,
   Weth,
   OxColor, OneInchV3, OneInchV4,
+  StarIcon,
 } from '.';
 
 export default {
@@ -134,10 +135,14 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 
   </>
 );
+const Template5: ComponentStory<typeof IconWrapper> = () => (
+  <IconWrapper name="Placeholder" icon={<StarIcon />} />
+);
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
 export const tokens = Template4.bind({});
+export const placeholder = Template5.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
