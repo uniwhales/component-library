@@ -138,7 +138,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
             {/* <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
             {/* <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text> */}
             {row.timestamp && (
-            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ').at(1)!}</Text>
+            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ')[1]}</Text>
             )}
 
           </DateSection>
