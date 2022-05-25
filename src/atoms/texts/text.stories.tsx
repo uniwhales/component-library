@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { BodySizes, HeaderSizes, Text } from './text';
-import { Primary } from '../../molecules/copyToClipBoard/copyToClipBoard.stories';
 
 const headerSizes: HeaderSizes[] = ['H1-Regular',
   'H1-Semibold',

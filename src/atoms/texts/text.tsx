@@ -38,7 +38,7 @@ export type HeaderSizes =
     | 'H6-Bold';
 
 export interface TextProps {
-  children?:React.ReactChild;
+  children:React.ReactChild;
   size: BodySizes | HeaderSizes;
   color?: string;
   textDecoration?:string;

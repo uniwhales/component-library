@@ -1,5 +1,7 @@
 import React from 'react';
 import { Styled } from '../../theme';
+import { Text } from '../texts/text';
+import { IconWrapperProps } from './types';
 
 const IconComponent = Styled.div<IconWrapperProps>`
   height: ${(props) => props.height};
@@ -15,16 +17,6 @@ const IconComponent = Styled.div<IconWrapperProps>`
 }
 `;
 
-export interface IconWrapperProps {
-  icon?: JSX.Element;
-  onClick?: () => void;
-  height?: string;
-  width?: string;
-  fill?: string;
-  stroke?: string;
-  cursor?: string;
-}
-
 export const IconWrapper: React.FC<IconWrapperProps> = ({
   onClick,
   height,
@@ -33,15 +25,22 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   icon,
   stroke,
   cursor,
+  name,
 }) => (
-  <IconComponent
-    cursor={cursor}
-    onClick={onClick}
-    height={height}
-    width={width}
-    fill={fill}
-    stroke={stroke}
-  >
-    {icon && icon}
-  </IconComponent>
+  <>
+    <IconComponent
+      cursor={cursor}
+      onClick={onClick}
+      height={height}
+      width={width}
+      fill={fill}
+      stroke={stroke}
+      name={name}
+    >
+      {icon && icon}
+
+    </IconComponent>
+    {name && <Text size="S-Regular">{name}</Text>}
+  </>
+
 );

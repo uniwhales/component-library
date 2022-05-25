@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { ToggleAtom } from './toggle__standart';
-import { Primary } from '../buttons/button.stories';
 
 export default {
   title: 'Atoms/Toggles',

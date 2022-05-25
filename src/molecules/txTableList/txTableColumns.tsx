@@ -12,8 +12,7 @@ import {
 } from '../../atoms/icons';
 import { CopyToClipBoard } from '../copyToClipBoard/copyToClipBoard';
 import { Styled } from '../../theme';
-
-const ImgGenerator = 'https://logos.uniwhales.io/';
+import { LogoUrlBase } from '../../utils/constants';
 
 interface TableItem {
   address: string;
@@ -27,9 +26,9 @@ interface TableItem {
   source: string;
   swap_num: number
   timestamp: string;
-  timestamp_int: number
+  timestamp_int: number;
   total_usd: number;
-  transaction: TransactionInterface
+  transaction: TransactionInterface;
   version: string;
   isNew?: boolean;
 }
@@ -138,7 +137,10 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
           <DateSection>
             {/* <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
             {/* <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>/</Text> */}
-            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ').at(1)}</Text>
+            {row.timestamp && (
+            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ')[1]}</Text>
+            )}
+
           </DateSection>
         ),
         Header: 'Time (Local)',
@@ -173,7 +175,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 style={{
                   height: 30,
                   width: 30,
-                  backgroundImage: `url(${ImgGenerator}${row.transaction.from.address}.jpg)`,
+                  backgroundImage: `url(${LogoUrlBase}${row.transaction.from.address}.jpg)`,
                   backgroundSize: 'contain',
                   backgroundRepeat: 'no-repeat',
                   borderRadius: '50%',
@@ -187,7 +189,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
                 style={{
                   height: 30,
                   width: 30,
-                  backgroundImage: `url(${ImgGenerator}${row.transaction.for.address}.jpg)`,
+                  backgroundImage: `url(${LogoUrlBase}${row.transaction.for.address}.jpg)`,
                   backgroundSize: 'contain',
                   backgroundRepeat: 'no-repeat',
                   borderRadius: '50%',
@@ -233,11 +235,9 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
       {
         accessor: (row:TableItem) => (
           <LinkSection>
-            <Text size="S-Regular" />
             <a target="_blank" href={`https://etherscan.io/tx/${row.hash}`} rel="noreferrer">
               <IconWrapper cursor="pointer" icon={<EtherscanColor />} />
             </a>
-            <Text size="S-Regular" />
           </LinkSection>
         ),
         Header: 'Link',

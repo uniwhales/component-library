@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Checkbox, CheckboxSize } from './checkbox';
+import { Checkbox } from './checkbox';
+import { CheckboxSize } from '../../utils/getSize';
 
 export default {
   title: 'Atoms/Checkboxes',
@@ -10,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (props) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState<boolean>(false);
   return <Checkbox {...props} selected={selected} onClick={() => { setSelected(!selected); }} />;
 };
 
