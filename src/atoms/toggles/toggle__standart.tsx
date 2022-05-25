@@ -5,7 +5,8 @@ import { Text } from '../texts/text';
 export interface ToggleProps {
   isOn?: boolean;
   onClick?: () => void;
-  label?:string
+  label?:string;
+  disabled: boolean;
   size?: 'standard' | 'small'
 }
 const Wrapper = Styled.div`
@@ -20,7 +21,7 @@ const Switcher = Styled.label<{ size: string }>`
   width: ${(props) => (props.size === 'small' ? 32 : 48)}px;
   height: ${(props) => (props.size === 'small' ? 16 : 24)}px;
 `;
-const Toggle = Styled.span<{ size: string }>`
+const Toggle = Styled.span<ToggleProps>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -36,10 +37,16 @@ const Toggle = Styled.span<{ size: string }>`
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
-    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.colors.primary.UWL_BLUE)};
     transition: 0.4s;
     border-radius: 50%;
   }
+    :hover {
+    background: ${(props) => !props.disabled && props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+    :before {
+      box-shadow: ${(props) => !props.disabled && props.theme.dropShadow.REGULAR};
+      background: ${(props) => !props.disabled && props.theme.gradients.primary.BLURPLE_HIGHLIGHTED};
+    }
 `;
 const FakeInput = Styled.input<{ size:any }>`
   opacity: 0;
@@ -59,12 +66,12 @@ const FakeInput = Styled.input<{ size:any }>`
   }
 `;
 export const ToggleAtom = ({
-  isOn, onClick, label, size = 'standard',
+  isOn, onClick, disabled, label, size = 'standard',
 }:ToggleProps) => (
   <Wrapper>
     <Switcher size={size}>
       <FakeInput size={size} type="checkbox" defaultChecked={isOn} onChange={onClick} />
-      <Toggle size={size} />
+      <Toggle disabled={disabled} size={size} />
     </Switcher>
     {label && <Text size="M-Regular">{label}</Text>}
   </Wrapper>

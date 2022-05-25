@@ -10,3 +10,6 @@ export default {
 
 const Template: ComponentStory<typeof ToggleAtom> = (args) => <ToggleAtom {...args} />;
 export const Standart = Template.bind({});
+Standart.args = {
+  disabled: false,
+};
