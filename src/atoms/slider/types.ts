@@ -3,4 +3,5 @@ export interface SliderProps {
   max: number;
   value: number;
   onInput: (e: any) => void;
+  onMax?: () => void
 }

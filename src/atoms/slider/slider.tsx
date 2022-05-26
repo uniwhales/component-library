@@ -1,46 +1,29 @@
-import React, { FC, useState } from 'react';
-import { useTheme, css } from 'styled-components';
+import React, { FC } from 'react';
+import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { SliderProps } from './types';
-
-const trackH = '0.4em';
-const thumbD = '1.5em';
-const trackC = '#ccced0';
-const filllC = '#ffc069';
 
 const track = css`
   box-sizing: border-box;
   border: none;
-  height: 4px;
-  background: ${trackC};
   border-radius: 8px;
-`;
-
-const trackFill = css`
-  ${track};
-  height: 6px;
-  background-color: transparent;
-  background-image: linear-gradient(${filllC}, ${filllC}),
-    linear-gradient(${trackC}, ${trackC});
-  background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
-  background-position: left center, right center;
-  background-repeat: no-repeat;
+  height: 8px;
+  background-color: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
 `;
 
 const fill = css`
-  height: ${trackH};
-  background: ${filllC};
+  height: 8px;
+  background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
   border-radius: 4px;
 `;
 
 const thumb = css`
   box-sizing: border-box;
   border: none;
-  width: ${thumbD};
-  height: ${thumbD};
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: white;
-  box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
+  background: ${(props) => props.theme.colors.primary.WATER_BLUE};
 `;
 
 const SliderInput = Styled.input<SliderProps>`
@@ -67,16 +50,16 @@ const SliderInput = Styled.input<SliderProps>`
 
   --range: calc(var(--max) - var(--min));
   --ratio: calc((var(--val) - var(--min)) / var(--range));
-  --sx: calc(0.5 * ${thumbD} + var(--ratio) * (100% - ${thumbD}));
+  --sx: calc(0.5 * 16px + var(--ratio) * (100% - 16px));
 
   margin: 0;
   padding: 0;
-  height: ${thumbD};
+  height: 16px;
   background: transparent;
   font: 1em/1 arial, sans-serif;
 
   &::-webkit-slider-runnable-track {
-    ${trackFill};
+    ${track};
   }
 
   &::-moz-range-track {
@@ -96,7 +79,7 @@ const SliderInput = Styled.input<SliderProps>`
   }
 
   &::-webkit-slider-thumb {
-    margin-top: calc(0.5 * (${trackH} - ${thumbD}));
+    margin-top: calc(0.5 * (8px - 16px));
     ${thumb};
   }
 
@@ -115,6 +98,7 @@ const SliderInput = Styled.input<SliderProps>`
 
   &::-moz-focus-outer {
     border: 0;
+    outline: none;
   }
 `;
 
@@ -123,8 +107,9 @@ const MaxButton = Styled.button`
   margin-left: 8px;
   gap 8px;
   border-radius: 12px;
-  background-color: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  border: none;
 `;
 
 const Container = Styled.div`
@@ -133,7 +118,7 @@ const Container = Styled.div`
 `;
 
 export const Slider: FC<SliderProps> = ({
-  min, max, value, onInput,
+  min, max, value, onInput, onMax,
 }) => (
   <Container>
     <SliderInput
@@ -143,6 +128,6 @@ export const Slider: FC<SliderProps> = ({
       value={value}
       onInput={onInput}
     />
-    <MaxButton>MAX</MaxButton>
+    <MaxButton onClick={onMax}>MAX</MaxButton>
   </Container>
 );

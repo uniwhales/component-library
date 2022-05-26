@@ -12,7 +12,12 @@ export default {
 const Template: ComponentStory<typeof Slider> = (props) => {
   const [value, setValue] = useState(50);
   return (
-    <Slider {...props} onInput={(e) => setValue(e.target.value)} value={value} />
+    <Slider
+      {...props}
+      onMax={() => setValue(100)}
+      onInput={(e) => setValue(e.target.value)}
+      value={value}
+    />
   );
 };
 
