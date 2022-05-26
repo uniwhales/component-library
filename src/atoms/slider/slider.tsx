@@ -6,10 +6,9 @@ const SliderInput = Styled.input<SliderProps>`
   margin: 0;
   padding: 0;
   height: 16px;
-  background: transparent;
 
   &::-webkit-slider-runnable-track {
-      box-sizing: border-box;
+  box-sizing: border-box;
   border: none;
   border-radius: 12px;
   height: 8px;
@@ -17,14 +16,15 @@ const SliderInput = Styled.input<SliderProps>`
   }
 
   &::-webkit-slider-thumb {
-    margin-top: calc(0.5 * (8px - 16px));
-      box-sizing: border-box;
+  margin-top: calc(0.5 * (8px - 16px));
+  box-sizing: border-box;
   border: none;
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+  background: red;
   }
+
 `;
 
 const MaxButton = Styled.button`
