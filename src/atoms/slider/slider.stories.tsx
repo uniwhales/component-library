@@ -15,7 +15,7 @@ export default {
 } as ComponentMeta<typeof Slider>;
 
 const Template: ComponentStory<typeof Slider> = (props) => {
-  const [sliderValue, setSliderValue] = useState(50);
+  const [sliderValue, setSliderValue] = useState(0);
 
   return (
     <Slider

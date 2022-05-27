@@ -15,7 +15,7 @@ const trackFill = css<SliderProps>`
   height: 8px;
   background-color: ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   &:hover {
-    background-color: ${(props) => props.theme.gradients.system.LAVENDAR} ;
+    background-color: ${(props) => props.theme.colors.primary.DARK_BLUE} ;
   }
 `;
 
@@ -31,7 +31,7 @@ const thumb = css<SliderProps>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.theme.colors.primary.WATER_BLUE)};
+  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.value === 0 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.colors.primary.WATER_BLUE)};
   &:hover {
     background: ${(props) => props.theme.colors.system.WHITE}
   };
