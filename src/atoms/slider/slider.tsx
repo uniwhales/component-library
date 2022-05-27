@@ -13,6 +13,6 @@ export const Slider: FC<SliderProps> = ({
       value={value}
       onInput={onInput}
     />
-    <MaxButton onClick={onMax}>MAX</MaxButton>
+    <MaxButton value={value} onClick={onMax}>MAX</MaxButton>
   </Container>
 );

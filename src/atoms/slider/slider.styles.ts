@@ -2,18 +2,18 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { SliderProps } from './types';
 
-const track = css`
+const track = css<SliderProps>`
   box-sizing: border-box;
   border: none;
   height: 8px;
-  background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background: ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
 
-const trackFill = css`
+const trackFill = css<SliderProps>`
   ${track};
   height: 8px;
-  background-color: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background-color:  ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
 `;
 
 const fill = css`
@@ -28,7 +28,7 @@ const thumb = css<SliderProps>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background:  ${(props) => (props.value === 100 ? 'white' : props.theme.colors.primary.WATER_BLUE)};
+  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.theme.colors.primary.WATER_BLUE)};
 `;
 
 export const Input = Styled.input<SliderProps>`
@@ -96,7 +96,7 @@ export const MaxButton = Styled.button<SliderProps>`
   gap 8px;
   border-radius: 12px;
   background: ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  color: ${(props) => (props.value === 100 ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.textShades.SHADE_MINUS_3)};
   border: none;
   cursor: pointer;
 `;
