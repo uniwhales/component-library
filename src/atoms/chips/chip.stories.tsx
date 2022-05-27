@@ -30,7 +30,8 @@ const WithIcon = (isText = true) => (
 
 const Template: ComponentStory<typeof Chip> = (args) => {
   const { children } = args;
-  return <Chip {...args}>{children}</Chip>;
+  const editMode = true;
+  return <Chip {...args}>{!editMode ? children : '.....'}</Chip>;
 };
 export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
