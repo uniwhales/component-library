@@ -16,10 +16,11 @@ export default {
 
 const Template: ComponentStory<typeof Slider> = (props) => {
   const [sliderValue, setSliderValue] = useState(50);
+
   return (
     <Slider
       {...props}
-      onMax={() => setSliderValue(100)}
+      onClick={() => setSliderValue(100)}
       onInput={(e) => setSliderValue(e.target.value)}
       value={sliderValue}
     />

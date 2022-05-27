@@ -13,7 +13,10 @@ const track = css<SliderProps>`
 const trackFill = css<SliderProps>`
   ${track};
   height: 8px;
-  background-color:  ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background-color: ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  &:hover {
+    background-color: ${(props) => props.theme.gradients.system.LAVENDAR} ;
+  }
 `;
 
 const fill = css`
@@ -29,9 +32,13 @@ const thumb = css<SliderProps>`
   height: 20px;
   border-radius: 50%;
   background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.theme.colors.primary.WATER_BLUE)};
+  &:hover {
+    background: ${(props) => props.theme.colors.system.WHITE}
+  };
 `;
 
 export const Input = Styled.input<SliderProps>`
+  cursor: pointer;
   &,
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -99,6 +106,9 @@ export const MaxButton = Styled.button<SliderProps>`
   color: ${(props) => (props.value === 100 ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.textShades.SHADE_MINUS_3)};
   border: none;
   cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
 `;
 
 export const Container = Styled.div`
