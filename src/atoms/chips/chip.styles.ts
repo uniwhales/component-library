@@ -64,7 +64,7 @@ export const TertiaryChip = Styled(CustomChip)`
   border-radius: 12px;
   background: ${(props) => props.theme.colors.primary.UWL_BLUE};
   &:hover {
-    box-shadow: 0px 4px 30px #131313;
+    box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   }
     svg {
     height: 16px;
