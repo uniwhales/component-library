@@ -57,7 +57,10 @@ const MockData = [{
 
 const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
   const {
-    isLoading: argIsLoading, options: argOptions,
+    isLoading: argIsLoading,
+    options: argOptions,
+    isContractSearch: argsIsContractSearch,
+    isDropdownDisabled: argsIsDropdownDisabled,
   } = args;
   const [value, setValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
@@ -90,10 +93,12 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
       label="Explorer"
       value={value}
       inputValue={inputValue}
-      isLoading={argIsLoading || isLoading}
-      isContractSearch={isContractSearch}
+      isLoading={argIsLoading === undefined ? isLoading : argIsLoading}
+      isContractSearch={argsIsContractSearch === undefined
+        ? isContractSearch : argsIsContractSearch}
       onSwitch={() => setIsContractSearch(!isContractSearch)}
       placeholder="Search Token"
+      isDropdownDisabled={argsIsDropdownDisabled}
     />
   );
 };
