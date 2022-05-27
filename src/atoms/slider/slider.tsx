@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { SliderProps } from './types';
-import { Container, SliderInput, MaxButton } from './slider.styles';
+import { Container, Input, MaxButton } from './slider.styles';
 
 export const Slider: FC<SliderProps> = ({
   value, onInput, onMax,
 }) => (
   <Container>
-    <SliderInput
+    <Input
       type="range"
       min={0}
       max={100}
