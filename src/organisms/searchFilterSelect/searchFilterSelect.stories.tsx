@@ -103,10 +103,19 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
   );
 };
 export const Primary = Template.bind({});
+export const NoDropdown = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
 };
 
 Primary.args = {
+};
+
+NoDropdown.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+NoDropdown.args = {
+  isDropdownDisabled: true,
 };
