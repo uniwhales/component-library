@@ -14,7 +14,11 @@ export const Chip = ({ type, children }: ChipProps) => {
       );
     case 'editable':
       return (
-        <EditableChip type={type}>
+        <EditableChip
+          suppressContentEditableWarning
+          contentEditable
+          type={type}
+        >
           {children}
         </EditableChip>
       );

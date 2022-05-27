@@ -54,5 +54,5 @@ Tertiary.args = {
 };
 Editable.args = {
   type: 'editable',
-  children: 'Edit Icon',
+  children: 'Edit Chip',
 };
