@@ -13,38 +13,38 @@ export const Tag = ({
   switch (type) {
     case 'tag2':
       return (
-        <TagTwo onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <TagTwo onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </TagTwo>
       );
     case 'tag3':
       return (
-        <TagThree onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <TagThree onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </TagThree>
       );
     case 'tag4':
       return (
-        <TagFour onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <TagFour onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </TagFour>
       );
     case 'tag5':
       return (
-        <TagFive onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <TagFive onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </TagFive>
       );
     case 'tag6':
       return (
-        <TagSix onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <TagSix onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </TagSix>
       );
 
     default:
       return (
-        <CustomTag onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
+        <CustomTag onClick={onClick} key={id} isOn={isOn} type={type}>
           <Text size="S-Bold" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
         </CustomTag>
       );
