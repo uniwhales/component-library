@@ -31,7 +31,7 @@ const thumb = css<SliderProps>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.value === 0 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.colors.primary.WATER_BLUE)};
+  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.value === 0 ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0 : props.theme.colors.primary.WATER_BLUE)};
   &:hover {
     background: ${(props) => props.theme.colors.system.WHITE}
   };
