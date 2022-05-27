@@ -4,7 +4,7 @@ import {
   PrimaryChip, SecondaryChip, EditableChip, TertiaryChip,
 } from './chip.styles';
 
-export const Chip = ({ type, children }: ChipProps) => {
+export const Chip = ({ type, children, onClick }: ChipProps) => {
   switch (type) {
     case 'secondary':
       return (
@@ -18,6 +18,7 @@ export const Chip = ({ type, children }: ChipProps) => {
           suppressContentEditableWarning
           contentEditable
           type={type}
+          onClick={onClick}
         >
           {children}
         </EditableChip>
