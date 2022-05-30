@@ -41,7 +41,9 @@ export const SecondaryChip = Styled(CustomChip)`
 export const EditableChip = Styled(CustomChip)`
   padding: 4px 12px;
   width: fit-content;
+  min-width: 50px;
   font-size: 14px;
+  -webkit-transition: all .3s;
   line-height: 18px;
   font-weight: 400;
   border-radius: 12px;
