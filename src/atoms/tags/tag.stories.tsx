@@ -15,7 +15,7 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 const Template: ComponentStory<typeof Tag> = (args) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(true);
   return (
     <Tag {...args} isOn={isActive} onClick={() => setIsActive(!isActive)} />
   );
