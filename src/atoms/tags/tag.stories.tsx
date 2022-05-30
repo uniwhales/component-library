@@ -20,34 +20,34 @@ const Template: ComponentStory<typeof Tag> = (args) => {
     <Tag {...args} isOn={isActive} onClick={() => setIsActive(!isActive)} />
   );
 };
-export const Tag1 = Template.bind({});
-export const Tag2 = Template.bind({});
-export const Tag3 = Template.bind({});
-export const Tag4 = Template.bind({});
-export const Tag5 = Template.bind({});
-export const Tag6 = Template.bind({});
+export const NFT = Template.bind({});
+export const Privacy = Template.bind({});
+export const Defi = Template.bind({});
+export const Metaverse = Template.bind({});
+export const Aurora = Template.bind({});
+export const L2 = Template.bind({});
 
-Tag1.args = {
-  name: 'Tag 01',
+NFT.args = {
+  name: 'NFT',
   type: 'tag1',
 };
-Tag2.args = {
-  name: 'Tag 02',
+Privacy.args = {
+  name: 'privacy',
   type: 'tag2',
 };
-Tag3.args = {
-  name: 'Tag 03',
+Defi.args = {
+  name: 'defi',
   type: 'tag3',
 };
-Tag4.args = {
-  name: 'Tag 04',
+Metaverse.args = {
+  name: 'metaverse',
   type: 'tag4',
 };
-Tag5.args = {
-  name: 'Tag 05',
+Aurora.args = {
+  name: 'aurora',
   type: 'tag5',
 };
-Tag6.args = {
-  name: 'Tag 06',
+L2.args = {
+  name: 'L2',
   type: 'tag6',
 };
