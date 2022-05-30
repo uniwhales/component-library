@@ -32,7 +32,7 @@ export const SecondaryChip = Styled(CustomChip)`
   gap: 8px;
   border-radius: 12px;
   background: ${(props) => props.theme.colors.primary.UWL_BLUE};
-    svg {
+  svg {
     height: 20px;
     width: 20px;
   }
@@ -43,7 +43,7 @@ export const EditableChip = Styled(CustomChip)`
   width: fit-content;
   min-width: 50px;
   font-size: 14px;
-  -webkit-transition: all .3s;
+  transition: all .3s;
   line-height: 18px;
   font-weight: 400;
   border-radius: 12px;
@@ -68,7 +68,7 @@ export const TertiaryChip = Styled(CustomChip)`
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   }
-    svg {
+  svg {
     height: 16px;
     width: 16px;
   }
