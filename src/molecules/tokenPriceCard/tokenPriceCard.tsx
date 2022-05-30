@@ -1,19 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 // eslint-disable-next-line import/no-cycle
 import {
   ArrowDownIcon,
-  ArrowUpIcon, LinkIcon, Text,
+  ArrowUpIcon, LinkIcon, Text, HeartStandard,
 } from '../..';
 import { Styled } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import { formatter } from '../../utils/format';
 
+export type TokenPriceCardData = {
+  symbol: string,
+  name: string,
+  address: string,
+  price: number,
+  price_change_percentage_1h: number,
+  price_change_percentage_24h: number,
+  price_change_percentage_7d: number,
+};
+
 export interface TokenPriceCardInterface {
   data:any;
   index:number;
-  onClick: (data:any) => void;
+  onClick: (data: TokenPriceCardData) => void;
+  onHeartClick?: (data: TokenPriceCardData) => void;
+  isFavorite?: boolean
 }
 
 export const Wrapper = Styled.div`
@@ -58,7 +70,18 @@ const ClickBlock = Styled.div`
   align-items: center;
   gap: 4px;
 `;
-export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClick }) => {
+
+const HeartWrapper = Styled.div<{ isFavorite?: boolean }>`
+  :hover {
+    svg {
+      fill: ${({ isFavorite, theme }) => (isFavorite ? theme.textShades.SHADE_MINUS_1 : theme.colors.primary.UWL_BLUE)};
+    }
+  }
+`;
+
+export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
+  data, index, onClick, onHeartClick, isFavorite,
+}) => {
   const theme:any = useTheme();
   const generateColor = (stat:number) => {
     if (stat.toString().includes('-')) {
@@ -66,11 +89,22 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({ data, index, onClic
     }
     return theme.colors.system.GREEN;
   };
+
   return (
     <Wrapper>
       <Section>
         <TextBlock>
-          {/* <IconWrapper icon={<HeartStandard />} /> */}
+          <HeartWrapper
+            isFavorite={isFavorite}
+          >
+            <IconWrapper
+              key={index}
+              cursor="pointer"
+              fill={isFavorite ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_1}
+              icon={<HeartStandard />}
+              onClick={() => onHeartClick && onHeartClick(data)}
+            />
+          </HeartWrapper>
           <ClickBlock onClick={() => onClick(data)}>
             <Text size="H6-Bold">{index + 1}</Text>
             <div
