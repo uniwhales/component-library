@@ -6,16 +6,20 @@ const track = css<SliderProps>`
   box-sizing: border-box;
   border: none;
   height: 8px;
-  background: ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background: ${(props) => (props.value === 100
+    ? props.theme.textShades.SHADE_MINUS_3
+    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
 
 const trackFill = css<SliderProps>`
   ${track};
   height: 8px;
-  background-color: ${(props) => (props.value === 100 ? props.theme.textShades.SHADE_MINUS_3 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background-color: ${(props) => (props.value === 100
+    ? props.theme.textShades.SHADE_MINUS_3
+    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   &:hover {
-    background-color: ${(props) => props.theme.colors.primary.DARK_BLUE} ;
+    background-color: ${(props) => props.theme.colors.primary.DARK_BLUE};
   }
 `;
 
@@ -31,10 +35,14 @@ const thumb = css<SliderProps>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background:  ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.value === 0 ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0 : props.theme.colors.primary.WATER_BLUE)};
+  background: ${(props) => (props.value === 100
+    ? props.theme.colors.system.WHITE
+    : props.value === 0
+      ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0
+      : props.theme.colors.primary.WATER_BLUE)};
   &:hover {
-    background: ${(props) => props.theme.colors.system.WHITE}
-  };
+    background: ${(props) => props.theme.colors.system.WHITE};
+  }
 `;
 
 export const Input = Styled.input<SliderProps>`
@@ -102,8 +110,12 @@ export const MaxButton = Styled.button<SliderProps>`
   margin-left: 8px;
   gap 8px;
   border-radius: 12px;
-  background: ${(props) => (props.value === 100 ? props.theme.colors.system.WHITE : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
-  color: ${(props) => (props.value === 100 ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.textShades.SHADE_MINUS_3)};
+  background: ${(props) => (props.value === 100
+    ? props.theme.textShades.SHADE_MINUS_3
+    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  color: ${(props) => (props.value === 100
+    ? props.theme.containerAndCardShades.SHADE_PLUS_3
+    : props.theme.textShades.SHADE_MINUS_3)};
   border: none;
   cursor: pointer;
   font-weight: 700;
