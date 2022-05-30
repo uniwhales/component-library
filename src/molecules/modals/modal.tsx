@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {
-  ModalWrapper, Overlay, ModalComponent, ModalHeader, ModalContent,
+  ModalWrapper, Overlay, ModalComponent, ModalHeader,
+  ModalTitle, ModalSubtitle, ModalContent, ModalLink,
 } from './modal.styles';
+import { PlaceholderSpinner } from './PlaceholderSpinner';
 import { ModalProps } from './types';
 
-export const Modal = ({ show, toggle }: ModalProps) => {
+export const Modal = ({
+  show, toggle, header, title, subtitle, content, link,
+}: ModalProps) => {
   if (!show) return null;
   return ReactDom.createPortal(
     <>
@@ -13,11 +17,15 @@ export const Modal = ({ show, toggle }: ModalProps) => {
       <ModalWrapper>
         <ModalComponent>
           <ModalHeader>
-            <h1>Heading</h1>
+            {header}
           </ModalHeader>
+          <ModalTitle>{title}</ModalTitle>
+          <PlaceholderSpinner />
+          {subtitle && (<ModalSubtitle>{subtitle}</ModalSubtitle>)}
           <ModalContent>
-            <p>content</p>
+            {content}
           </ModalContent>
+          {link && (<ModalLink href={link.href}>{link.text}</ModalLink>)}
         </ModalComponent>
       </ModalWrapper>
     </>,

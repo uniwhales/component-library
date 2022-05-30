@@ -19,26 +19,55 @@ export const ModalWrapper = Styled.div`
 `;
 
 export const ModalComponent = Styled.div`
-  width: 250px;
-  height: 170px;
-  background: white;
-  color: white;
-  z-index: 10;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-`;
-
-export const ModalHeader = Styled.div`
-  height: 50px;
-  background: white;
-  overflow: hidden;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-`;
-
-export const ModalContent = Styled.div`
-  padding: 10px;
-  font-size: 14px;
-  color: #2c3e50;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  padding: 48px 48px 96px 48px;
+  z-index: 10;
+  border-radius: 12px;
+  max-width: 430px;
+  box-sizing: border-box;
+`;
+
+export const ModalHeader = Styled.h3`
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  font-size: 16px;
+  line-height: 24px;
+  font-weight:400;
+  strong {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+`;
+
+export const ModalTitle = Styled.h2`
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  font-size: 32px;
+  line-height: 40px;
+  font-weight:300;
+`;
+
+export const ModalSubtitle = Styled.h4`
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  font-size: 20px;
+  line-height: 32px;
+  font-weight:300;
+`;
+
+export const ModalContent = Styled.p`
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  font-size: 16px;
+  line-height: 24px;
+  font-weight:400;
+`;
+
+export const ModalLink = Styled.a`
+  color: ${(props) => props.theme.colors.primary.UWL_BLUE};
+  font-size: 16px;
+  line-height: 24px;
+  font-weight:700;
+  cursor: pointer;
+  text-decoration: underline;
 `;
