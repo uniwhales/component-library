@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent, MouseEvent } from 'react';
 import { SliderProps } from './types';
 import { Container, Input, MaxButton } from './slider.styles';
 
@@ -11,12 +11,12 @@ export const Slider: FC<SliderProps> = (props) => {
         min={0}
         max={100}
         value={value}
-        onInput={onInput}
+        onInput={(e: ChangeEvent<HTMLInputElement>) => onInput(e)}
       />
       <MaxButton
         {...props}
         value={value}
-        onClick={onClick}
+        onClick={(e: MouseEvent<HTMLButtonElement>) => onClick(e)}
       >
         Max
 
