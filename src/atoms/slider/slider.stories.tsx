@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof Slider> = (props) => {
     <Slider
       {...props}
       onClick={() => setSliderValue(100)}
-      onInput={(e) => setSliderValue(e.target.value)}
+      onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
       value={sliderValue}
     />
   );

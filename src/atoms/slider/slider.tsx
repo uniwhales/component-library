@@ -13,7 +13,14 @@ export const Slider: FC<SliderProps> = (props) => {
         value={value}
         onInput={onInput}
       />
-      <MaxButton {...props} value={value} onClick={onClick}>Max</MaxButton>
+      <MaxButton
+        {...props}
+        value={value}
+        onClick={onClick}
+      >
+        Max
+
+      </MaxButton>
     </Container>
   );
 };

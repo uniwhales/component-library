@@ -1,5 +1,7 @@
+import { ChangeEvent, MouseEvent } from 'react';
+
 export interface SliderProps {
   value: number;
-  onInput: (e: any) => void;
-  onClick?: () => void;
+  onInput: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
