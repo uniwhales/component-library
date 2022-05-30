@@ -71,14 +71,6 @@ const ClickBlock = Styled.div`
   gap: 4px;
 `;
 
-const HeartWrapper = Styled.div<{ isFavorite?: boolean }>`
-  :hover {
-    svg {
-      fill: ${({ isFavorite, theme }) => (isFavorite ? theme.textShades.SHADE_MINUS_1 : theme.colors.primary.UWL_BLUE)};
-    }
-  }
-`;
-
 export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
   data, index, onClick, onHeartClick, isFavorite,
 }) => {
@@ -90,21 +82,25 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
     return theme.colors.system.GREEN;
   };
 
+  const [isHighlighted, setIsHighlighted] = useState(false);
+
   return (
     <Wrapper>
       <Section>
         <TextBlock>
-          <HeartWrapper
-            isFavorite={isFavorite}
-          >
-            <IconWrapper
-              key={index}
-              cursor="pointer"
-              fill={isFavorite ? theme.colors.primary.UWL_BLUE : theme.textShades.SHADE_MINUS_1}
-              icon={<HeartStandard />}
-              onClick={() => onHeartClick && onHeartClick(data)}
-            />
-          </HeartWrapper>
+          <IconWrapper
+            key={index}
+            cursor="pointer"
+            fill={(isFavorite && !isHighlighted) || (!isFavorite && isHighlighted)
+              ? theme.colors.primary.UWL_BLUE
+              : (isFavorite && isHighlighted) || (!isFavorite && !isHighlighted)
+                ? theme.textShades.SHADE_MINUS_1
+                : theme.textShades.SHADE_MINUS_1}
+            icon={<HeartStandard />}
+            onClick={() => onHeartClick && onHeartClick(data)}
+            onMouseEnter={() => setIsHighlighted(true)}
+            onMouseLeave={() => setIsHighlighted(false)}
+          />
           <ClickBlock onClick={() => onClick(data)}>
             <Text size="H6-Bold">{index + 1}</Text>
             <div

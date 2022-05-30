@@ -7,4 +7,6 @@ export interface IconWrapperProps {
   stroke?: string;
   cursor?: string;
   name?: string;
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
