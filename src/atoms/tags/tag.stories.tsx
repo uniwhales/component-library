@@ -17,7 +17,7 @@ export default {
 const Template: ComponentStory<typeof Tag> = (args) => {
   const [isActive, setIsActive] = useState<boolean>(true);
   return (
-    <Tag {...args} isOn={isActive} onClick={() => setIsActive(!isActive)} />
+    <Tag {...args} isOn={isActive} onClick={() => setIsActive(!isActive)} tabIndex={4} borderColor />
   );
 };
 export const NFT = Template.bind({});
