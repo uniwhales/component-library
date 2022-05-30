@@ -1,6 +1,7 @@
+import { ReactChild } from 'react';
+
 export interface ChipProps {
-  children: React.ReactChild;
-  onClick?: any;
+  children: ReactChild;
   type: 'primary'
   | 'secondary'
   | 'tertiary'
