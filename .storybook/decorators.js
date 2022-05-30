@@ -13,6 +13,7 @@ const ThemeDecorator = (storyFn, context) => {
         <ThemeProvider theme={context.globals.backgrounds?.value ==='#191B20' ? darkTheme : lightTheme}>
         <GlobalStyle />
         {storyFn()}
+        <div id="modal"></div>
     </ThemeProvider>)
 };
 export default ThemeDecorator;
