@@ -20,10 +20,11 @@ const StyledSelect = Styled(ReactSelect)<{
   onSubmit: (e: any) => void
   rightSwitchText: string,
   leftSwitchText: string,
+  isDropdownDisabled?: boolean
 }>`
   width: 450px;
   outline: none;
-  input{
+  input {
     width: fit-content;
   };
 `;
@@ -71,10 +72,15 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     outline: 'none',
     boxShadow: 'none',
     paddingLeft: 8,
-    borderRadius: selectProps.menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
+    borderRadius: selectProps.menuIsOpen && !selectProps.isDropdownDisabled && isFocused ? '12px 12px 0 0 ' : '12px',
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     '.react-select__placeholder': {
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    },
+    input: {
+      color: isFocused || selectProps.menuIsOpen
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     },
     fontWeight: isFocused || hasValue ? 'bold' : 'normal',
     height: '50px',
@@ -117,6 +123,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
   menuList: (defaultStyles, props: StyledProps) => ({
     ...defaultStyles,
+    display: props.selectProps.isDropdownDisabled ? 'none' : 'block',
     background: props.theme.containerAndCardShades.SHADE_PLUS_2,
     color: props.theme.textShades.SHADE_MINUS_3,
     paddingBottom: 0,
@@ -132,16 +139,6 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       },
     },
   }),
-  input: (defaultStyles, props: StyledProps) => {
-    const {
-      theme, selectProps,
-    } = props;
-    return ({
-      ...defaultStyles,
-      color: selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-      fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
-    });
-  },
   noOptionsMessage: (defaultStyles) => ({
     ...defaultStyles,
     textAlign: 'left',
@@ -153,11 +150,16 @@ const NoOptionsMessageStyled = Styled(components.NoOptionsMessage)`
   margin-left: 8px;
 `;
 
-const NoOptionsMessage = (props: any) => (
-  <NoOptionsMessageStyled {...props}>
-    <Text size="M-Regular">No Results</Text>
-  </NoOptionsMessageStyled>
-);
+const NoOptionsMessage = (props: any) => {
+  const { selectProps } = props;
+  console.log({ selectProps });
+  if (selectProps.isDropdownDisabled) return null;
+  return (
+    <NoOptionsMessageStyled {...props}>
+      <Text size="M-Regular">No Results</Text>
+    </NoOptionsMessageStyled>
+  );
+};
 
 type OptionBase = {
   value: string,
@@ -178,6 +180,7 @@ type Props<T extends OptionBase> = {
   onSubmit: (e: T) => void
   leftSwitchText:string
   rightSwitchText:string
+  isDropdownDisabled?: boolean
 };
 
 type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
@@ -199,6 +202,7 @@ type SelectFn = <T extends OptionBase>(props: Props<T>) => JSX.Element;
  * @param isLoading flag to decided whether to show loading message
  * @param leftSwitchText  text to show on the left side of the switch
  * @param rightSwitchText text to show on the right side of the switch
+ * @param isDropdownDisabled flag to show no dropdown variants (no results/options/loading)
  *
  * State of this component should be managed in the parent component
  * (isLoading/value/inputValue/isContractSearch/options/)
@@ -218,6 +222,7 @@ export const SearchFilterSelect: SelectFn = ({
   onSubmit,
   leftSwitchText,
   rightSwitchText,
+  isDropdownDisabled,
 }) => {
   const theme = useTheme();
   return (
@@ -230,6 +235,7 @@ export const SearchFilterSelect: SelectFn = ({
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       leftSwitchText={leftSwitchText}
       rightSwitchText={rightSwitchText}
+      isDropdownDisabled={isDropdownDisabled}
       components={{
         IndicatorSeparator: () => null,
         IndicatorsContainer,
