@@ -15,7 +15,7 @@ export * from './molecules/groupTabs/selectorTabs';
 // eslint-disable-next-line import/no-cycle
 export * from './molecules/txTableList/txTableList';
 // eslint-disable-next-line import/no-cycle
-export * from './molecules/tokenPriceCard/tokenbPriceCard';
+export * from './molecules/tokenPriceCard/tokenPriceCard';
 // eslint-disable-next-line import/no-cycle
 export * from './molecules/tokenPoolCard/tokenPoolCard';
 // organisms
