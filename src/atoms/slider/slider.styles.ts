@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { SliderProps } from './types';
 
-const track = css<SliderProps>`
+const track = css<Pick<SliderProps, 'value'>>`
   box-sizing: border-box;
   border: none;
   height: 8px;
@@ -12,7 +12,7 @@ const track = css<SliderProps>`
   border-radius: 12px;
 `;
 
-const trackFill = css<SliderProps>`
+const trackFill = css<Pick<SliderProps, 'value'>>`
   ${track};
   height: 8px;
   background-color: ${(props) => (props.value === 100
@@ -29,7 +29,7 @@ const fill = css`
   border-radius: 12px;
 `;
 
-const thumb = css<SliderProps>`
+const thumb = css<Pick<SliderProps, 'value'>>`
   box-sizing: border-box;
   border: none;
   width: 20px;
@@ -45,7 +45,7 @@ const thumb = css<SliderProps>`
   }
 `;
 
-export const Input = Styled.input<SliderProps>`
+export const Input = Styled.input<Pick<SliderProps, 'value'>>`
   cursor: pointer;
   &,
   &::-webkit-slider-thumb {
@@ -105,7 +105,7 @@ export const Input = Styled.input<SliderProps>`
   }
 `;
 
-export const MaxButton = Styled.button<SliderProps>`
+export const MaxButton = Styled.button<Pick<SliderProps, 'value'>>`
   padding: 4px 12px;
   margin-left: 8px;
   gap 8px;
