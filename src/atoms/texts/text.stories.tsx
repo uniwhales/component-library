@@ -60,8 +60,18 @@ const Template: Story<TemplateSizes> = (args) => {
     </>
   );
 };
+
+const LinkTemplate: Story<TemplateSizes> = (args) => {
+  const { list } = args;
+  return (
+    <>
+      {list.map((item) => <div><Text key={item} href="test" size={item}>{item}</Text></div>)}
+    </>
+  );
+};
 export const HeadingsAndTitles = Template.bind({});
 export const BodyText = Template.bind({});
+export const Link = LinkTemplate.bind({});
 
 BodyText.args = {
   list: bodySizes,
@@ -69,7 +79,12 @@ BodyText.args = {
 HeadingsAndTitles.args = {
   list: headerSizes,
 };
-
+Link.args = {
+  list: bodySizes,
+};
+Link.parameters = {
+  backgrounds: { default: 'dark' },
+};
 HeadingsAndTitles.parameters = {
   backgrounds: { default: 'dark' },
 };
