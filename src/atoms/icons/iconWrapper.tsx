@@ -26,6 +26,8 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   stroke,
   cursor,
   name,
+  onMouseEnter,
+  onMouseLeave,
 }) => (
   <>
     <IconComponent
@@ -36,6 +38,8 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       fill={fill}
       stroke={stroke}
       name={name}
+      onMouseEnter={() => onMouseEnter && onMouseEnter()}
+      onMouseLeave={() => onMouseLeave && onMouseLeave()}
     >
       {icon && icon}
 

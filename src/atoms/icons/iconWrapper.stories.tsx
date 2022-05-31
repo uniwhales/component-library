@@ -65,20 +65,20 @@ export default {
 
 const Template: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper icon={<ArrowDownIcon />} />
-    <IconWrapper icon={<ArrowUpIcon />} />
-    <IconWrapper icon={<ArrowLeftIcon />} />
-    <IconWrapper icon={<ArrowRightIcon />} />
-    <IconWrapper icon={<ArrowRightSquareIcon />} />
-    <IconWrapper icon={<ArrowLeftSquareIcon />} />
-    <IconWrapper icon={<ChevronDownIcon />} />
-    <IconWrapper icon={<ChevronUpIcon />} />
-    <IconWrapper icon={<ChevronLeftIcon />} />
-    <IconWrapper icon={<ChevronRightIcon />} />
-    <IconWrapper icon={<CrossIcon />} />
-    <IconWrapper icon={<LinkIcon />} />
-    <IconWrapper icon={<NoticeIcon />} />
-    <IconWrapper icon={<RefreshIcon />} />
+    <IconWrapper name="Arrow Down" icon={<ArrowDownIcon />} />
+    <IconWrapper name="Arrow Up" icon={<ArrowUpIcon />} />
+    <IconWrapper name="Arrow Left" icon={<ArrowLeftIcon />} />
+    <IconWrapper name="Arrow Right" icon={<ArrowRightIcon />} />
+    <IconWrapper name="Arrow Right Square" icon={<ArrowRightSquareIcon />} />
+    <IconWrapper name="Arrow Left Square" icon={<ArrowLeftSquareIcon />} />
+    <IconWrapper name="Chevron Down" icon={<ChevronDownIcon />} />
+    <IconWrapper name="Chevron Up" icon={<ChevronUpIcon />} />
+    <IconWrapper name="Chevron Left" icon={<ChevronLeftIcon />} />
+    <IconWrapper name="ChevronRight" icon={<ChevronRightIcon />} />
+    <IconWrapper name="Cross" icon={<CrossIcon />} />
+    <IconWrapper name="Link" icon={<LinkIcon />} />
+    <IconWrapper name="Notice" icon={<NoticeIcon />} />
+    <IconWrapper name="Refresh" icon={<RefreshIcon />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (

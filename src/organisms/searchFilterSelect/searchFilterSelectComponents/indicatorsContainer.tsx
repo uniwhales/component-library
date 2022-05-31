@@ -23,7 +23,7 @@ export const IndicatorsContainer = (
 
   return (
     <IndicatorsContainerWrapper {...props}>
-      <DropdownIndicator {...props} />
+      {!selectProps.isDropdownDisabled && <DropdownIndicator {...props} />}
       <ButtonAtom
         borderRadius="0px 10px 10px 0px"
         buttonVariant="primary"

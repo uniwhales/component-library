@@ -1,32 +1,36 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { Styled } from '../../theme';
 import { Text } from '../texts/text';
-
-export interface TagProps {
-  name: string;
-  isOn: boolean;
-  id: number;
-  type: 'tag1' | 'tag2' | 'tag3' | 'tag4' | 'tag5' | 'tag6';
-  onClick: any;
-}
-
-const CustomTag = Styled.div<{ type: string, isOn:boolean }>`
-  border-radius: 12px;
-  padding: 4px 12px;
-  cursor: pointer;
-  width: fit-content;
-  background: ${(props) => (props.isOn ? props.theme.colors.primary.WATER_BLUE : 'none')};
-  border: 1px solid ${(props) => (props.isOn ? 'transparent' : props.theme.colors.primary.WATER_BLUE)}
-`;
+import { TagProps } from './types';
+import {
+  CustomTag,
+} from './tag.styles';
 
 export const Tag = ({
-  name, isOn, type, id, onClick,
-}:TagProps) => {
-  const theme:any = useTheme();
+  children, isOn, onClick, tabIndex,
+}: TagProps) => {
+  const theme: any = useTheme();
+  const textColour = isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3;
+
+  const backgroundAndBorderColors = [
+    { background: isOn ? theme.colors.primary.UWL_BLUE : 'none', border: `1px solid ${theme.colors.primary.UWL_BLUE}` },
+    { background: isOn ? theme.colors.secondary.PURPLE : 'none', border: `1px solid ${theme.colors.secondary.PURPLE}` },
+    { background: isOn ? theme.colors.secondary.TANGY : 'none', border: `1px solid ${theme.colors.secondary.TANGY}` },
+    { background: isOn ? theme.colors.secondary.FUSCHIA : 'none', border: `1px solid ${theme.colors.secondary.FUSCHIA}` },
+    { background: isOn ? theme.colors.primary.WATER_BLUE : 'none', border: `1px solid ${theme.colors.primary.WATER_BLUE}` },
+    { background: isOn ? theme.colors.primary.DARK_BLUE : 'none', border: `1px solid ${theme.colors.primary.DARK_BLUE}` },
+  ];
+
   return (
-    <CustomTag onClick={() => onClick(id)} key={id} isOn={isOn} type={type}>
-      <Text size="S-Regular" color={isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}>{name}</Text>
+    <CustomTag
+      onClick={onClick}
+      key={tabIndex}
+      isOn={isOn}
+      tabIndex={tabIndex}
+      border={backgroundAndBorderColors[tabIndex % 6].border}
+      background={backgroundAndBorderColors[tabIndex % 6].background}
+    >
+      <Text size="S-Bold" color={textColour}>{children}</Text>
     </CustomTag>
   );
 };

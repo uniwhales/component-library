@@ -3,7 +3,7 @@ import React from 'react';
 import { TxTableItem } from './txTableList';
 import { Styled } from '../../theme';
 import { mockData } from './data';
-import { TokenPriceCard } from '../tokenPriceCard/tokenbPriceCard';
+import { TokenPriceCard } from '../tokenPriceCard/tokenPriceCard';
 
 const Wrapper = Styled.div`
   display: flex;
