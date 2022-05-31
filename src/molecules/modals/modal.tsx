@@ -3,8 +3,8 @@ import ReactDom from 'react-dom';
 import { ModalIcon } from '../../atoms/icons';
 import {
   ModalWrapper, Overlay, ModalComponent, ModalHeader,
-  ModalTitle, ModalSubtitle, ModalContent, ModalLink,
 } from './modal.styles';
+import { Text } from '../../atoms/texts/text';
 import { ModalProps } from './types';
 
 export const Modal = ({
@@ -16,16 +16,23 @@ export const Modal = ({
       <Overlay onClick={toggle} />
       <ModalWrapper>
         <ModalComponent>
-          <ModalHeader>
+          <ModalHeader size="M-Regular">
             {header}
           </ModalHeader>
-          <ModalTitle>{title}</ModalTitle>
+          <Text size="H3-Regular">{title}</Text>
           <ModalIcon />
-          {subtitle && (<ModalSubtitle>{subtitle}</ModalSubtitle>)}
-          <ModalContent>
+          {subtitle && (<Text size="H5-Regular">{subtitle}</Text>)}
+          <Text size="M-Regular">
             {content}
-          </ModalContent>
-          {link && (<ModalLink href={link.href}>{link.text}</ModalLink>)}
+          </Text>
+          {link && (
+            <Text
+              href={link.href}
+              size="M-Regular"
+            >
+              {link.text}
+            </Text>
+          )}
         </ModalComponent>
       </ModalWrapper>
     </>,

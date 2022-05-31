@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactChild } from 'react';
 
 export interface ModalProps {
   show: boolean;
   toggle: () => void;
-  header: ReactNode | string;
+  header: ReactChild;
   title: string;
   subtitle?: string;
   content: string;
