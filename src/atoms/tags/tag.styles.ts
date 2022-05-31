@@ -1,7 +1,7 @@
 import { TagProps } from './types';
 import { Styled } from '../../theme';
 
-export const CustomTag = Styled.div<Pick<TagProps, 'background' | 'border' | 'isOn'>>`
+export const CustomTag = Styled.div<Pick<TagProps, 'isOn'> & { background: string, border: string }>`
   border-radius: 12px;
   padding: 4px 12px;
   cursor: pointer;
@@ -9,7 +9,7 @@ export const CustomTag = Styled.div<Pick<TagProps, 'background' | 'border' | 'is
   background: ${(props) => props.background};
   border: ${(props) => props.border};
   margin: 8px;
-   transition: all .3s;
+  transition: all .3s;
 `;
 
 export const Wrapper = Styled.div`
