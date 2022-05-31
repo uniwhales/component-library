@@ -53,7 +53,7 @@ import {
   Usdt,
   Weth,
   OxColor, OneInchV3, OneInchV4,
-  ModalIcon,
+  DashedSpinner,
 } from '.';
 
 export default {
@@ -137,7 +137,7 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 );
 
 const Template5: ComponentStory<typeof IconWrapper> = () => (
-  <IconWrapper name="Modal Icon" icon={<ModalIcon />} />
+  <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
 );
 
 export const navigationIcons = Template.bind({});

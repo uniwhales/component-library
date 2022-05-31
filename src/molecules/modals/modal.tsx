@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { ModalIcon } from '../../atoms/icons';
+import { DashedSpinner } from '../../atoms/icons';
 import {
   ModalWrapper, Overlay, ModalComponent, ModalHeader,
 } from './modal.styles';
@@ -20,7 +20,7 @@ export const Modal = ({
             {header}
           </ModalHeader>
           <Text size="H3-Regular">{title}</Text>
-          <ModalIcon />
+          <DashedSpinner />
           {subtitle && (<Text size="H5-Regular">{subtitle}</Text>)}
           <Text size="M-Regular">
             {content}
