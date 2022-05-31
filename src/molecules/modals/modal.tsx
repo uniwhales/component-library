@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { ModalIcon } from '../../atoms/icons';
 import {
   ModalWrapper, Overlay, ModalComponent, ModalHeader,
   ModalTitle, ModalSubtitle, ModalContent, ModalLink,
 } from './modal.styles';
-import { PlaceholderSpinner } from './PlaceholderSpinner';
 import { ModalProps } from './types';
 
 export const Modal = ({
@@ -20,7 +20,7 @@ export const Modal = ({
             {header}
           </ModalHeader>
           <ModalTitle>{title}</ModalTitle>
-          <PlaceholderSpinner />
+          <ModalIcon />
           {subtitle && (<ModalSubtitle>{subtitle}</ModalSubtitle>)}
           <ModalContent>
             {content}

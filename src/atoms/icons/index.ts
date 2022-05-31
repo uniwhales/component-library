@@ -132,3 +132,5 @@ export { Doge } from './tokens/DOGE';
 export { Usdc } from './tokens/USDC';
 export { Usdt } from './tokens/USDT';
 export { Weth } from './tokens/WETH';
+// misc
+export { ModalIcon } from './miscIcons/ModalIcon';
