@@ -36,3 +36,7 @@ const Template: ComponentStory<typeof Tag> = (args) => (
   </Wrapper>
 );
 export const ContentTags = Template.bind({});
+
+ContentTags.parameters = {
+  backgrounds: { default: 'dark' },
+};
