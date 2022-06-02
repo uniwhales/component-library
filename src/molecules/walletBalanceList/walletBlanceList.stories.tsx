@@ -20,8 +20,23 @@ const Template: ComponentStory<typeof WalletBalanceListItem> = () => {
   );
 };
 
-export const WalletBalanceList = Template.bind({});
+const Template2: ComponentStory<typeof WalletBalanceListItem> = () => {
+  const [selectedRow, setSelectedRow] = useState<string>('');
 
-WalletBalanceList.parameters = {
+  return (
+    <Wrapper>
+      <WalletBalanceListItem selectedRow={selectedRow} setSelectedRow={setSelectedRow} type="dashboard" wbData={mockData as any} />
+    </Wrapper>
+  );
+};
+
+export const CheckoutWalletBalanceList = Template.bind({});
+export const DashboardWalletBalanceList = Template2.bind({});
+
+CheckoutWalletBalanceList.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+DashboardWalletBalanceList.parameters = {
   backgrounds: { default: 'dark' },
 };

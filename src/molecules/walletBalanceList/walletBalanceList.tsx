@@ -3,7 +3,7 @@ import { useTable } from 'react-table';
 import { useTheme } from 'styled-components';
 import { TableItem, WalletBalanceList } from './types';
 import {
-  Table, Tbody, Thead, Trow,
+  Table, Thead, Trow,
 } from './walletBalance.styles';
 import { WalletBalanceColumns } from './walletBalanceColumns';
 
@@ -34,17 +34,20 @@ export const WalletBalanceListItem: FC<WalletBalanceList> = ({
           </tr>
         ))}
       </Thead>
-      <Tbody {...getTableBodyProps()}>
+      <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           const { tokenName } = row.original;
           return (
-            <Trow isSelected={selectedRow === tokenName} {...row.getRowProps()}>
-              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow, tokenName })}</td>)}
+            <Trow
+              isSelected={selectedRow === tokenName}
+              {...row.getRowProps()}
+            >
+              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow })}</td>)}
             </Trow>
           );
         })}
-      </Tbody>
+      </tbody>
     </Table>
   );
 };
