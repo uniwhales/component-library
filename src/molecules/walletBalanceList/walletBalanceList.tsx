@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import { useTable } from 'react-table';
 import { useTheme } from 'styled-components';
 import { TableItem, WalletBalanceList } from './types';
-import { Table, Tbody, Thead } from './walletBalance.styles';
+import {
+  Table, Tbody, Thead, Trow,
+} from './walletBalance.styles';
 import { WalletBalanceColumns } from './walletBalanceColumns';
 
 export const WalletBalanceListItem: FC<WalletBalanceList> = ({
@@ -35,10 +37,11 @@ export const WalletBalanceListItem: FC<WalletBalanceList> = ({
       <Tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
+          const { tokenName } = row.original;
           return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow })}</td>)}
-            </tr>
+            <Trow isSelected={selectedRow === tokenName} {...row.getRowProps()}>
+              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow, tokenName })}</td>)}
+            </Trow>
           );
         })}
       </Tbody>

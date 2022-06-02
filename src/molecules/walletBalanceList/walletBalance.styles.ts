@@ -23,7 +23,7 @@ export const Table = Styled.table`
 
 `;
 export const Tbody = Styled.tbody`
-  tr:hover {
+  /* tr:hover {
     transform: translateY(-2px);
   }
   tr{
@@ -39,7 +39,22 @@ export const Tbody = Styled.tbody`
     &:hover {
      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
      }
-  }
+  } */
+`;
+export const Trow = Styled.tr<{ isSelected: boolean }>`
+   transition: all .2s;
+     background: ${(props) => (props.isSelected ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.containerAndCardShades.SHADE_PLUS_3)};
+     &:hover {
+      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+      transform: translateY(-2px);
+     }
+     &:nth-child(2n){
+      transition: all .2s;
+    background: ${(props) => (props.isSelected ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.containerAndCardShades.SHADE_PLUS_2)};
+    &:hover {
+     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+     }
+     }
 `;
 export const Thead = Styled.thead`
   th{
