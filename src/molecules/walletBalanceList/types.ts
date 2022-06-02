@@ -4,7 +4,7 @@ export interface TableItem {
   tokenName: string;
   balance: string;
   wrappedBalance: string;
-  inUse: boolean;
+  inUse?: boolean;
 }
 
 export interface WalletBalanceList {

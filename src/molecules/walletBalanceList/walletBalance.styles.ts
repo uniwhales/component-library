@@ -29,10 +29,16 @@ export const Tbody = Styled.tbody`
   tr{
      transition: all .2s;
      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+     &:hover {
+      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+     }
   }
   tr:nth-child(2n){
     transition: all .2s;
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+    &:hover {
+     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+     }
   }
 `;
 export const Thead = Styled.thead`
