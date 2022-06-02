@@ -114,7 +114,6 @@ import {
   MoreCircleColor,
   NewsColor,
   NotificationColor,
-  Plus1Color,
   Plus2Color,
   PlusColor,
   RocketColor,
@@ -128,6 +127,7 @@ import {
   TwitterColor,
   WalletColor,
   WebinarColor,
+  MinusColor,
 } from '.';
 
 export default {
@@ -285,7 +285,7 @@ const Template8: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="News" icon={<NewsColor />} />
     <IconWrapper name="Notification" icon={<NotificationColor />} />
     <IconWrapper name="Plus" icon={<PlusColor />} />
-    <IconWrapper name="Plus1" icon={<Plus1Color />} />
+    <IconWrapper name="Minus" icon={<MinusColor />} />
     <IconWrapper name="Plus2" icon={<Plus2Color />} />
     <IconWrapper name="Rocket" icon={<RocketColor />} />
     <IconWrapper name="Search" icon={<SearchColor />} />

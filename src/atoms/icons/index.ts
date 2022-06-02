@@ -18,7 +18,7 @@ export * from './generalIcons/fullColorStyle/MoreCircleColor';
 export * from './generalIcons/fullColorStyle/NewsColor';
 export * from './generalIcons/fullColorStyle/NotificationColor';
 export * from './generalIcons/fullColorStyle/PlusColor';
-export * from './generalIcons/fullColorStyle/Plus1Color';
+export * from './generalIcons/fullColorStyle/MinusColor';
 export * from './generalIcons/fullColorStyle/Plus2Color';
 export * from './generalIcons/fullColorStyle/RocketColor';
 export * from './generalIcons/fullColorStyle/SearchColor';

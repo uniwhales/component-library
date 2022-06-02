@@ -7,6 +7,7 @@ export const mockData = [
     tokenName: 'DAI',
     balance: '10,567.00',
     wrappedBalance: '0000.0000',
+    inUse: true,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const mockData = [
     tokenName: 'USDT',
     balance: '8,324.00',
     wrappedBalance: '0000.0000',
+    inUse: false,
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const mockData = [
     tokenName: 'USDC',
     balance: '0000.0000',
     wrappedBalance: '0000.0000',
+    inUse: false,
   },
 
 ];

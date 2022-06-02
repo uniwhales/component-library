@@ -4,4 +4,10 @@ export interface TableItem {
   tokenName: string;
   balance: string;
   wrappedBalance: string;
+  inUse: boolean;
+}
+
+export interface WalletBalanceList {
+  type: 'dashboard' | 'checkout';
+  wbData: any;
 }

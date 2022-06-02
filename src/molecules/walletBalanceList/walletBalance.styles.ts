@@ -56,6 +56,25 @@ export const SelectSection = Styled.div`
   gap: 4px;
 `;
 
+export const InUseSection = Styled.div`
+  svg {
+    height: 25px;
+    width: 25px;
+  }
+`;
+
+export const WrapButtonSection = Styled.div`
+  display: flex;
+  svg:first-child {
+    margin-right: 8px;
+  }
+  svg {
+    cursor: pointer;
+    height: 25px;
+    width: 25px
+  }
+`;
+
 export const Wrapper = Styled.div`
   display: flex;
   gap: 16px;

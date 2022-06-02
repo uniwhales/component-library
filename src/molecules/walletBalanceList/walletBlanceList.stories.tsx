@@ -12,7 +12,7 @@ export default {
 
 const Template: ComponentStory<typeof WalletBalanceListItem> = () => (
   <Wrapper>
-    <WalletBalanceListItem wbData={mockData as any} />
+    <WalletBalanceListItem type="checkout" wbData={mockData as any} />
   </Wrapper>
 );
 
