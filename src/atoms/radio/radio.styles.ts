@@ -7,7 +7,6 @@ export const Item = Styled.div`
   height: 48px;
   position: relative;
   cursor: pointer;
-  margin: 10px;
 `;
 
 export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'disabled'>>`

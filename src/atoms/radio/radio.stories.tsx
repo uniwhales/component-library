@@ -21,9 +21,10 @@ const Template: ComponentStory<typeof Radio> = () => {
           key={item.label}
           label={item.label}
           value={item.label}
+          name={item.label}
           disabled={item.disabled}
           selected={selected === item.label}
-          onChange={(e) => setSelected(e.target.value)}
+          onClick={(e) => setSelected(e.target.value)}
         />
       ))}
     </div>

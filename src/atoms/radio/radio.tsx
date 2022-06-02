@@ -6,14 +6,15 @@ import {
 } from './radio.styles';
 
 export const Radio = ({
-  disabled, selected, onChange, value, label,
+  disabled, selected, onClick, value, label, name,
 }: RadioProps) => (
   <Item>
     <RadioButton
       type="radio"
+      name={name}
       value={value}
       selected={selected}
-      onChange={onChange}
+      onClick={onClick}
       disabled={disabled}
     />
     <RadioButtonLabel disabled={disabled} />

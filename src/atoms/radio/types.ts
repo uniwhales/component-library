@@ -1,7 +1,8 @@
 export interface RadioProps {
   selected: boolean;
   disabled: boolean;
-  onChange: (e: any) => void;
+  onClick: (e: any) => void;
+  name: string;
   value?: string;
   label?: string;
 }
