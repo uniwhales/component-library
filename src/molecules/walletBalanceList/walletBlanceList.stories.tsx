@@ -12,8 +12,12 @@ export default {
 
 const Template: ComponentStory<typeof WalletBalanceListItem> = () => (
   <Wrapper>
-    <WalletBalanceListItem wsData={mockData as any} />
+    <WalletBalanceListItem wbData={mockData as any} />
   </Wrapper>
 );
 
 export const WalletBalanceList = Template.bind({});
+
+WalletBalanceList.parameters = {
+  backgrounds: { default: 'dark' },
+};

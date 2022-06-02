@@ -6,10 +6,12 @@ import { TableItem } from './types';
 import { Section, SelectSection } from './walletBalance.styles';
 
 export const WalletBalanceColumns = (
-  wsData: TableItem[],
+  wbData: TableItem[],
   theme: any,
+  selected: string,
+  setSelected: (e: any) => void,
 ) => {
-  const data = useMemo(() => [...wsData], [wsData]);
+  const data = useMemo(() => [...wbData], [wbData]);
   const columns = useMemo(() => [
     {
       accessor: (row: TableItem) => (
@@ -43,8 +45,8 @@ export const WalletBalanceColumns = (
             name={row.tokenName}
             disabled={parseInt(row.balance, 10) < 1}
             value={row.tokenName}
-            selected={false}
-            onClick={(e) => console.log(e)}
+            selected={selected === row.tokenName}
+            onClick={(e) => setSelected(e.target.value)}
           />
         </SelectSection>
       ),

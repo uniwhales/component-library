@@ -5,10 +5,15 @@ import { TableItem } from './types';
 import { Table, Tbody, Thead } from './walletBalance.styles';
 import { WalletBalanceColumns } from './walletBalanceColumns';
 
-export const WalletBalanceListItem: FC<any> = ({ wsData }) => {
-  const [selected, setSelected] = useState<null | string>(null);
+export const WalletBalanceListItem: FC<any> = ({ wbData }) => {
+  const [selected, setSelected] = useState<string>('');
   const theme: any = useTheme();
-  const { data, columns } = WalletBalanceColumns(wsData as TableItem[], theme);
+  const { data, columns } = WalletBalanceColumns(
+    wbData as TableItem[],
+    theme,
+    selected,
+    setSelected,
+  );
   const {
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,
   } = useTable({ columns, data });
