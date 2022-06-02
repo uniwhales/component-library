@@ -22,7 +22,13 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <IconWrapper icon={<row.token />} />
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.tokenName}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.tokenName}
+          </Text>
         </Section>
       ),
       Header: 'Stablecoin',
@@ -30,7 +36,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.balance}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.balance}
+          </Text>
         </Section>
       ),
       Header: 'Balance',
@@ -38,7 +50,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.wrappedBalance}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.wrappedBalance}
+          </Text>
         </Section>
       ),
       Header: 'Wrapped Balance',
@@ -65,7 +83,13 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <IconWrapper icon={<row.token />} />
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.tokenName}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.tokenName}
+          </Text>
         </Section>
       ),
       Header: 'Stablecoin',
@@ -73,7 +97,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.balance}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.balance}
+          </Text>
         </Section>
       ),
       Header: 'Balance',
@@ -81,7 +111,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{row.wrappedBalance}</Text>
+          <Text
+            color={selected === row.tokenName
+              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+          >
+            {row.wrappedBalance}
+          </Text>
         </Section>
       ),
       Header: 'Wrapped Balance',
