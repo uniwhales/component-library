@@ -10,4 +10,6 @@ export interface TableItem {
 export interface WalletBalanceList {
   type: 'dashboard' | 'checkout';
   wbData: any;
+  selectedRow: string;
+  setSelectedRow: (e:any) => void;
 }

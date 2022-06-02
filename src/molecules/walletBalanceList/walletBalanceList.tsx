@@ -1,18 +1,19 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useTable } from 'react-table';
 import { useTheme } from 'styled-components';
 import { TableItem, WalletBalanceList } from './types';
 import { Table, Tbody, Thead } from './walletBalance.styles';
 import { WalletBalanceColumns } from './walletBalanceColumns';
 
-export const WalletBalanceListItem: FC<WalletBalanceList> = ({ wbData, type }) => {
-  const [selected, setSelected] = useState<string>('');
+export const WalletBalanceListItem: FC<WalletBalanceList> = ({
+  wbData, type, selectedRow, setSelectedRow,
+}) => {
   const theme: any = useTheme();
   const { data, checkoutColumns, dashboardColumns } = WalletBalanceColumns(
     wbData as TableItem[],
     theme,
-    selected,
-    setSelected,
+    selectedRow,
+    setSelectedRow,
   );
   const selectType = type === 'checkout' ? checkoutColumns : dashboardColumns;
   const {
@@ -36,7 +37,7 @@ export const WalletBalanceListItem: FC<WalletBalanceList> = ({ wbData, type }) =
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selected, setSelected })}</td>)}
+              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow })}</td>)}
             </tr>
           );
         })}

@@ -13,8 +13,8 @@ import {
 export const WalletBalanceColumns = (
   wbData: TableItem[],
   theme: any,
-  selected: string,
-  setSelected: (e: any) => void,
+  selectedRow: string,
+  setSelectedRow: (e: any) => void,
 ) => {
   const data = useMemo(() => [...wbData], [wbData]);
   const checkoutColumns = useMemo(() => [
@@ -23,9 +23,9 @@ export const WalletBalanceColumns = (
         <Section>
           <IconWrapper icon={<row.token />} />
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.tokenName}
           </Text>
@@ -37,9 +37,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
           </Text>
@@ -51,9 +51,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}
           </Text>
@@ -68,15 +68,15 @@ export const WalletBalanceColumns = (
             name={row.tokenName}
             disabled={parseInt(row.balance, 10) < 1}
             value={row.tokenName}
-            selected={selected === row.tokenName}
-            onClick={(e) => setSelected(e.target.value)}
+            selected={selectedRow === row.tokenName}
+            onClick={(e) => setSelectedRow(e.target.value)}
           />
         </SelectSection>
       ),
       id: 'select',
     },
 
-  ], []);
+  ], [selectedRow]);
 
   const dashboardColumns = useMemo(() => [
     {
@@ -84,9 +84,9 @@ export const WalletBalanceColumns = (
         <Section>
           <IconWrapper icon={<row.token />} />
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.tokenName}
           </Text>
@@ -98,9 +98,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
           </Text>
@@ -112,9 +112,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selected === row.tokenName
+            color={selectedRow === row.tokenName
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selected === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}
           </Text>
@@ -143,7 +143,7 @@ export const WalletBalanceColumns = (
       ),
       Header: 'Wrap (+)(-)',
     },
-  ], []);
+  ], [selectedRow]);
 
   return { data, checkoutColumns, dashboardColumns };
 };
