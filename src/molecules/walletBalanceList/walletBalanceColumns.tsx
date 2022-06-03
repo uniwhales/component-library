@@ -124,7 +124,7 @@ export const WalletBalanceColumns = (
     },
     {
       accessor: (row: TableItem) => {
-        const renderIcon = row.inUse;
+        const renderIcon = selectedRow === row.tokenName;
         if (!renderIcon) return null;
         return (
           <InUseSection>
@@ -135,10 +135,10 @@ export const WalletBalanceColumns = (
       Header: 'in Use',
     },
     {
-      accessor: () => (
+      accessor: (row: TableItem) => (
         <WrapButtonSection>
-          <IconWrapper onClick={() => console.log('increment')} icon={<Plus2Color />} />
-          <IconWrapper onClick={() => console.log('decrement')} icon={<MinusColor />} />
+          <IconWrapper onClick={() => setSelectedRow(row.tokenName)} icon={<Plus2Color />} />
+          <IconWrapper onClick={() => setSelectedRow(row.tokenName)} icon={<MinusColor />} />
         </WrapButtonSection>
       ),
       Header: 'Wrap (+)(-)',
