@@ -1,7 +1,15 @@
+export interface TokenDetails {
+  amount: number,
+  token: string,
+  total_usd: number,
+  token_price: number,
+  address: number,
+}
+
 export interface TableItem {
   id: number;
-  token: any;
-  tokenName: string;
+  tokenDetails: TokenDetails;
+  tokenIcon: string;
   balance: string;
   wrappedBalance: string;
   inUse?: boolean;

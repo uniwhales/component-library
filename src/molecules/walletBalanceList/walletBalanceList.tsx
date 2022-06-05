@@ -37,10 +37,10 @@ export const WalletBalanceListItem: FC<WalletBalanceList> = ({
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
-          const { tokenName } = row.original;
+          const { token } = row.original.tokenDetails;
           return (
             <Trow
-              isSelected={selectedRow === tokenName}
+              isSelected={selectedRow === token}
               {...row.getRowProps()}
             >
               {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell', { selectedRow, setSelectedRow })}</td>)}

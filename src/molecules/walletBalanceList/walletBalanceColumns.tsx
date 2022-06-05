@@ -21,13 +21,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <IconWrapper icon={<row.token />} />
+          <IconWrapper icon={<row.tokenIcon />} />
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
-            {row.tokenName}
+            {row.tokenDetails.token}
           </Text>
         </Section>
       ),
@@ -37,9 +37,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
           </Text>
@@ -51,9 +51,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}
           </Text>
@@ -65,10 +65,10 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <SelectSection>
           <Radio
-            name={row.tokenName}
+            name={row.tokenDetails.token}
             disabled={parseInt(row.balance, 10) < 1}
-            value={row.tokenName}
-            selected={selectedRow === row.tokenName}
+            value={row.tokenDetails.token}
+            selected={selectedRow === row.tokenDetails.token}
             onClick={(e) => setSelectedRow(e.target.value)}
           />
         </SelectSection>
@@ -82,13 +82,13 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <Section>
-          <IconWrapper icon={<row.token />} />
+          <IconWrapper icon={<row.tokenDetails.token />} />
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
-            {row.tokenName}
+            {row.tokenDetails.token}
           </Text>
         </Section>
       ),
@@ -98,9 +98,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
           </Text>
@@ -112,9 +112,9 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <Section>
           <Text
-            color={selectedRow === row.tokenName
+            color={selectedRow === row.tokenDetails.token
               ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
-            size={selectedRow === row.tokenName ? 'S-Bold' : 'S-Regular'}
+            size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}
           </Text>
@@ -124,7 +124,7 @@ export const WalletBalanceColumns = (
     },
     {
       accessor: (row: TableItem) => {
-        const renderIcon = selectedRow === row.tokenName;
+        const renderIcon = selectedRow === row.tokenDetails.token;
         if (!renderIcon) return null;
         return (
           <InUseSection>
@@ -137,8 +137,14 @@ export const WalletBalanceColumns = (
     {
       accessor: (row: TableItem) => (
         <WrapButtonSection>
-          <IconWrapper onClick={() => setSelectedRow(row.tokenName)} icon={<Plus2Color />} />
-          <IconWrapper onClick={() => setSelectedRow(row.tokenName)} icon={<MinusColor />} />
+          <IconWrapper
+            onClick={() => setSelectedRow(row.tokenDetails.token)}
+            icon={<Plus2Color />}
+          />
+          <IconWrapper
+            onClick={() => setSelectedRow(row.tokenDetails.token)}
+            icon={<MinusColor />}
+          />
         </WrapButtonSection>
       ),
       Header: 'Wrap (+)(-)',
