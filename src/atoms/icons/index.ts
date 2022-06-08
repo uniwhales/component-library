@@ -134,3 +134,5 @@ export { Usdt } from './tokens/USDT';
 export { Weth } from './tokens/WETH';
 // misc
 export { DashedSpinner } from './miscIcons/DashedSpinner';
+export { Meatball } from './miscIcons/Meatball';
+export { Kebab } from './miscIcons/Kebab';
