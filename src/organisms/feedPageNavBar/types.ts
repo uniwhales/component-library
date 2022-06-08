@@ -4,4 +4,6 @@ export interface FeedPageNavBarProps {
   selectOptions: {};
   selectValue: string;
   selectOnChange: (e: any) => void;
+  account: string | null;
+  onConnectClick: () => void;
 }

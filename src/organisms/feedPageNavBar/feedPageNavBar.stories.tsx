@@ -12,6 +12,15 @@ export default {
 
 const Template: ComponentStory<typeof FeedPageNavBar> = () => {
   const [value, setValue] = useState<string>('');
+  const [account, setAccount] = useState<string | null>(null);
+
+  const handleSwitch = () => {
+    if (account) {
+      setAccount(null);
+    } else {
+      setAccount('0x32c2FE388ABbB3e678D44DF6a0471086D705316a');
+    }
+  };
   return (
     <FeedPageNavBar
       label="Alert Feed"
@@ -19,6 +28,8 @@ const Template: ComponentStory<typeof FeedPageNavBar> = () => {
       selectPlaceholder="Select Group Tags"
       selectValue={value}
       selectOnChange={() => setValue(value)}
+      account={account}
+      onConnectClick={handleSwitch}
     />
   );
 };

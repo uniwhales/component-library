@@ -1,14 +1,18 @@
 import React from 'react';
-import { ButtonAtom } from '../../atoms/buttons/button';
-import { WalletIcon } from '../../atoms/icons';
-import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
 import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { NavContainer, NavBar } from './feedPageNavBar.styles';
 import { FeedPageNavBarProps } from './types';
 
 export const FeedPageNavBar = ({
-  label, selectOptions, selectPlaceholder, selectOnChange, selectValue,
+  label,
+  selectOptions,
+  selectPlaceholder,
+  selectOnChange,
+  selectValue,
+  onConnectClick,
+  account,
 }: FeedPageNavBarProps) => (
   <NavBar>
     <NavContainer>
@@ -21,13 +25,7 @@ export const FeedPageNavBar = ({
       />
     </NavContainer>
     <NavContainer>
-      <ButtonAtom onClick={() => { }} buttonVariant="secondary">
-        <>
-          <IconWrapper icon={<WalletIcon />} />
-          {' '}
-          Connect
-        </>
-      </ButtonAtom>
+      <ConnectWalletButton onClick={onConnectClick} account={account} />
     </NavContainer>
   </NavBar>
 );
