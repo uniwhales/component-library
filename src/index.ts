@@ -9,6 +9,7 @@ export * from './atoms/inputs/select';
 export * from './atoms/tags/tag';
 export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
+export * from './atoms/chips/filterChip';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';

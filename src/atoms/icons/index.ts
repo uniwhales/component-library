@@ -62,6 +62,9 @@ export * from './generalIcons/filledStyle/TwitterStandard';
 export * from './generalIcons/filledStyle/WalletStandard';
 export * from './generalIcons/filledStyle/WebinarStandard';
 export * from './generalIcons/filledStyle/DownloadStandard';
+export * from './generalIcons/filledStyle/AllIcon';
+export * from './generalIcons/filledStyle/StarIcon';
+export * from './generalIcons/filledStyle/ImageIcon';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
