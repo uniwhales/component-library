@@ -2,8 +2,8 @@ import React from 'react';
 import { Styled } from '../../theme';
 
 export interface ToggleProps {
-  isOn?: boolean;
-  onClick?: () => void;
+  isOn: boolean;
+  onClick: () => void;
 }
 const Wrapper = Styled.div`
   display: flex;
