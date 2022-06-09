@@ -44,31 +44,28 @@ const ActionChains = Styled.div``;
 
 export const ActionBar = ({
   filters, chains, chainHandler, setChip, chipValue, chainValue,
-}:ActionBarProps) => {
-  console.log('ActionBar');
-  return (
-    <Wrapper>
-      <ActionTags>
-        { filters.map((chip:any) => (
-          <FilterChip
-            key={chip.id}
-            onClick={setChip}
-            isOn={chipValue === chip.id}
-            {...chip}
-          >
-            {chip.label}
-          </FilterChip>
-        )) }
-      </ActionTags>
-      <ActionChains>
-        <Select
-          options={chains}
-          isMulti={false}
-          value={chainValue}
-          onChange={chainHandler}
-          placeholder={ActionBarTexts.Select.placeholder}
-        />
-      </ActionChains>
-    </Wrapper>
-  );
-};
+}:ActionBarProps) => (
+  <Wrapper>
+    <ActionTags>
+      { filters.map((chip:any) => (
+        <FilterChip
+          key={chip.id}
+          onClick={setChip}
+          isOn={chipValue === chip.id}
+          {...chip}
+        >
+          {chip.label}
+        </FilterChip>
+      )) }
+    </ActionTags>
+    <ActionChains>
+      <Select
+        options={chains}
+        isMulti={false}
+        value={chainValue}
+        onChange={chainHandler}
+        placeholder={ActionBarTexts.Select.placeholder}
+      />
+    </ActionChains>
+  </Wrapper>
+);
