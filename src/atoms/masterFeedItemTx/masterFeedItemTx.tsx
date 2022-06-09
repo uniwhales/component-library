@@ -21,7 +21,7 @@ import {
 } from './masterFeedItemTx.styles';
 import { MasterFeedItemTxProps } from './types';
 
-export const MasterFeedItemTx = ({ isOpen }: MasterFeedItemTxProps) => {
+export const MasterFeedItemTx = ({ isOpen, isMulti }: MasterFeedItemTxProps) => {
   const theme: any = useTheme();
   const [hover, setHover] = useState<boolean>(false);
   return (
@@ -58,7 +58,7 @@ export const MasterFeedItemTx = ({ isOpen }: MasterFeedItemTxProps) => {
       </CenterContentContainer>
 
       <HoverItemsContainer>
-        {hover && (
+        {hover && !isMulti && (
           <>
             <IconWrapper cursor="pointer" icon={<Meatball />} />
             <Spacer />
@@ -66,7 +66,11 @@ export const MasterFeedItemTx = ({ isOpen }: MasterFeedItemTxProps) => {
           </>
         )}
       </HoverItemsContainer>
-      <ChevronButton icon={<ChevronDownIcon />} />
+      {isMulti && (
+        <ChevronButton isOpen={isOpen}>
+          <IconWrapper cursor="pointer" icon={<ChevronDownIcon />} />
+        </ChevronButton>
+      )}
     </MasterContainer>
   );
 };
