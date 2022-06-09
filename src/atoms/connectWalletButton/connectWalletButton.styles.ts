@@ -2,6 +2,10 @@ import { Styled } from '../../theme';
 import { ConnectButtonProps } from './types';
 
 export const ConnectButton = Styled.button<ConnectButtonProps>`
+  svg {
+    cursor: pointer;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
+  };
   font-size: 14px;
   line-height: 24px;
   padding: 12px;
@@ -20,10 +24,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps>`
     justify-content: center;
     gap: 5px;
   };
-  svg {
-    cursor: pointer;
-    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
-  };
+
   &:hover {
   color: ${(props) => props.theme.colors.system.WHITE};
   background: ${(props) => (props.account !== null ? props.theme.colors.system.RED : props.theme.colors.primary.UWL_BLUE)};
