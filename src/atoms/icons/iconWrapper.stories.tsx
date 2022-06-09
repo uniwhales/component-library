@@ -57,6 +57,7 @@ import {
   Meatball,
   Kebab,
 } from '.';
+import { OverlappedIcon } from './placeholder/OverlappedIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -143,6 +144,7 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
     <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
     <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
+    <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
   </>
 );
 
