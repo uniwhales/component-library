@@ -9,7 +9,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps>`
   gap: 4px;
   align-items: center;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.system.WHITE};
+  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   border-radius: 12px;
   background-color: transparent;
   border: ${(props) => `1px solid ${props.theme.colors.primary.UWL_BLUE}`};
@@ -19,16 +19,17 @@ export const ConnectButton = Styled.button<ConnectButtonProps>`
     align-items: center;
     justify-content: center;
     gap: 5px;
-  }
+  };
   svg {
     cursor: pointer;
-    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
-  }
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
+  };
   &:hover {
+  color: ${(props) => props.theme.colors.system.WHITE};
   background: ${(props) => (props.account !== null ? props.theme.colors.system.RED : props.theme.colors.primary.UWL_BLUE)};
     border: ${(props) => (props.account !== null ? `1px solid ${props.theme.colors.system.RED}` : `1px solid ${props.theme.colors.primary.UWL_BLUE}`)};
   svg {
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
-  }
+  };
 };
 `;
