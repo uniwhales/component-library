@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import {
+  ChevronDownIcon,
   LinkIcon, Meatball, OverlappedIcon, TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -9,10 +10,18 @@ import { Text } from '../texts/text';
 import {
   CenterContentContainer,
   HoverItemsContainer,
-  MasterContainer, Spacer, TxTypeContainer, TxTypeWrapper, XPartyContent, YPartyContent,
+  MasterContainer,
+  Spacer,
+  TxIconContainer,
+  TxTypeContainer,
+  TxTypeWrapper,
+  XPartyContent,
+  YPartyContent,
+  ChevronButton,
 } from './masterFeedItemTx.styles';
+import { MasterFeedItemTxProps } from './types';
 
-export const MasterFeedItemTx = () => {
+export const MasterFeedItemTx = ({ isOpen }: MasterFeedItemTxProps) => {
   const theme: any = useTheme();
   const [hover, setHover] = useState<boolean>(false);
   return (
@@ -21,7 +30,9 @@ export const MasterFeedItemTx = () => {
       onMouseLeave={() => setHover(false)}
     >
       <TxTypeWrapper>
-        <IconWrapper icon={<OverlappedIcon />} />
+        <TxIconContainer>
+          <IconWrapper icon={<OverlappedIcon />} />
+        </TxIconContainer>
         <TxTypeContainer>
           <Text size="S-Regular">Tx Type</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Platform</Text>
@@ -35,7 +46,6 @@ export const MasterFeedItemTx = () => {
           <Spacer />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>($00000)</Text>
         </XPartyContent>
-
         <Text size="S-Regular" color={theme.colors.system.WHITE}>text</Text>
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>0000</Text>
@@ -44,17 +54,19 @@ export const MasterFeedItemTx = () => {
           <Spacer />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>($00000)</Text>
         </YPartyContent>
-        <IconWrapper height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
+        <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
       </CenterContentContainer>
+
       <HoverItemsContainer>
         {hover && (
           <>
-            <IconWrapper icon={<Meatball />} />
+            <IconWrapper cursor="pointer" icon={<Meatball />} />
             <Spacer />
-            <IconWrapper icon={<TwitterColor />} />
+            <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </>
         )}
       </HoverItemsContainer>
+      <ChevronButton icon={<ChevronDownIcon />} />
     </MasterContainer>
   );
 };

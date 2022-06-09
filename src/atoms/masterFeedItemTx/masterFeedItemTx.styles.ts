@@ -1,7 +1,8 @@
+import { IconWrapper } from '../icons/iconWrapper';
 import { Styled } from '../../theme';
 
 export const MasterContainer = Styled.div`
-  &:nth-child(odd): {
+  &:nth-child(2n): {
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
   };
   display: flex;
@@ -16,7 +17,6 @@ export const MasterContainer = Styled.div`
 `;
 
 export const TxTypeWrapper = Styled.div`
-  //min-width: 180px;
   display: flex;
   align-items: center;
 `;
@@ -25,6 +25,13 @@ export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 16px;
+`;
+
+export const TxIconContainer = Styled.div`
+  display: inline-block;
+  position: relative;
+  height: 35px;
+  width: 35px;
 `;
 
 export const CenterContentContainer = Styled.div`
@@ -52,4 +59,11 @@ export const HoverItemsContainer = Styled.div`
   display: flex;
   align-items: center;
   min-width: 56px;
+`;
+
+export const ChevronButton = Styled(IconWrapper)`
+  svg {
+      background: green;
+  border-radius: 50%;
+  }
 `;
