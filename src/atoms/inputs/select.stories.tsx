@@ -25,4 +25,5 @@ Primary.args = {
   readOnly: true,
   placeholder: 'DEX filters',
   closeMenuOnSelect: true,
+  isXL: false,
 };

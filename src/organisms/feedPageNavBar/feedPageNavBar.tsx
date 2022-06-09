@@ -22,6 +22,7 @@ export const FeedPageNavBar = ({
         options={selectOptions}
         onChange={(e: any) => selectOnChange(e)}
         value={selectValue}
+        isXL
       />
     </NavContainer>
     <NavContainer>
