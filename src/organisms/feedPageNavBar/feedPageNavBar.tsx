@@ -20,9 +20,12 @@ export const FeedPageNavBar = ({
       <Select
         placeholder={selectPlaceholder}
         options={selectOptions}
-        onChange={(e: any) => selectOnChange(e)}
+        onChange={selectOnChange}
         value={selectValue}
         isXL
+        readOnly={false}
+        closeMenuOnSelect
+        isMulti={false}
       />
     </NavContainer>
     <NavContainer>

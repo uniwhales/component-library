@@ -10,8 +10,8 @@ export default {
   },
 } as ComponentMeta<typeof FeedPageNavBar>;
 
-const Template: ComponentStory<typeof FeedPageNavBar> = () => {
-  const [value, setValue] = useState<string>('');
+const Template: ComponentStory<typeof FeedPageNavBar> = (args) => {
+  const [value, setValue] = useState<string | undefined>(undefined);
   const [account, setAccount] = useState<string | null>(null);
 
   const handleSwitch = () => {
@@ -23,9 +23,8 @@ const Template: ComponentStory<typeof FeedPageNavBar> = () => {
   };
   return (
     <FeedPageNavBar
+      {...args}
       label="Alert Feed"
-      selectOptions={groupTagOptions}
-      selectPlaceholder="Select Group Tags"
       selectValue={value}
       selectOnChange={() => setValue(value)}
       account={account}
@@ -35,6 +34,11 @@ const Template: ComponentStory<typeof FeedPageNavBar> = () => {
 };
 
 export const FeedPageNav = Template.bind({});
+
+FeedPageNav.args = {
+  selectOptions: groupTagOptions,
+  selectPlaceholder: 'Select Group Tags',
+};
 
 FeedPageNav.parameters = {
   backgrounds: { default: 'dark' },
