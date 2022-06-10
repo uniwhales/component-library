@@ -12,7 +12,7 @@ export const MainCardContent = Styled.div`
   border-radius: 12px;
   background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 8px 24px 8px 24px;
-  margin: 0 8px;
+  margin: 4px 8px;
   flex: 1;
 `;
 

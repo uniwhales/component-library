@@ -18,6 +18,7 @@ export const MasterContainer = Styled.div`
 export const TxTypeWrapper = Styled.div`
   display: flex;
   align-items: center;
+  width: 15%;
 `;
 
 export const IconContainer = Styled.div`
@@ -42,7 +43,7 @@ export const CenterContentContainer = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  flex: 1;
 `;
 
 export const XPartyContent = Styled.div`
@@ -81,4 +82,11 @@ export const ChevronButton = Styled.div<Pick<MasterFeedItemTxProps, 'isOpen'>>`
     transform: ${(props) => (props.isOpen ? 'rotateZ(-180deg)' : undefined)};
     transition: all 0.4s;
   }
+`;
+
+export const SecondaryActionContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  width: 15%;
+  justify-content: flex-end;
 `;

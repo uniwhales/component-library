@@ -18,6 +18,7 @@ import {
   ChevronButton,
   IconContainer,
   ChainIcon,
+  SecondaryActionContainer,
 } from './masterFeedItemTx.styles';
 import { MasterFeedItemTxProps } from './types';
 
@@ -53,20 +54,19 @@ export const MasterFeedItemTx = ({ isOpen, isMulti }: MasterFeedItemTxProps) => 
         </YPartyContent>
         <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
       </CenterContentContainer>
-
-      <HoverItemsContainer>
+      <SecondaryActionContainer>
         {hover && !isMulti && (
-          <>
+          <HoverItemsContainer>
             <IconWrapper cursor="pointer" icon={<Meatball />} />
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
-          </>
+          </HoverItemsContainer>
         )}
-      </HoverItemsContainer>
-      {isMulti && (
-        <ChevronButton isOpen={isOpen}>
-          <IconWrapper cursor="pointer" icon={<ChevronDownIcon />} />
-        </ChevronButton>
-      )}
+        {isMulti && (
+          <ChevronButton isOpen={isOpen}>
+            <IconWrapper cursor="pointer" icon={<ChevronDownIcon />} />
+          </ChevronButton>
+        )}
+      </SecondaryActionContainer>
     </MasterContainer>
   );
 };
