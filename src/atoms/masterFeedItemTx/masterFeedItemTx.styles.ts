@@ -5,7 +5,6 @@ import { Styled } from '../../theme';
 export const MasterContainer = Styled.div`
   display: flex;
   align-items: center;
-  min-width: 850px;
   justify-content: space-between;
   border-radius: 12px;
   margin: 2px 0;
@@ -46,24 +45,23 @@ export const CenterContentContainer = Styled.div`
   width: 60%;
 `;
 
-export const Spacer = Styled.div`
-  width: 10px;
-`;
-
 export const XPartyContent = Styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 
 export const YPartyContent = Styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 
 export const HoverItemsContainer = Styled.div`
   display: flex;
   align-items: center;
   min-width: 56px;
+  gap: 10px;
 `;
 
 export const ChevronButton = Styled.div<Pick<MasterFeedItemTxProps, 'isOpen'>>`

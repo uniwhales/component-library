@@ -1,7 +1,6 @@
 export const getDate = (unixTimestamp: number) => {
-  const timestamp = new Date(unixTimestamp * 1000);
-  const date = timestamp.toLocaleDateString();
-  const time = timestamp.toLocaleTimeString();
+  const date = (new Date(unixTimestamp * 1000)).toISOString().split('T')[0];
+  const time = (new Date(unixTimestamp * 1000)).toISOString().split('T')[1].split('.')[0];
 
   return { date, time };
 };

@@ -11,7 +11,6 @@ import {
   CenterContentContainer,
   HoverItemsContainer,
   MasterContainer,
-  Spacer,
   TxTypeContainer,
   TxTypeWrapper,
   XPartyContent,
@@ -43,17 +42,13 @@ export const MasterFeedItemTx = ({ isOpen, isMulti }: MasterFeedItemTxProps) => 
       <CenterContentContainer>
         <XPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>0000</Text>
-          <Spacer />
           <IconWrapper height="32px" width="32px" icon={<StarIcon />} />
-          <Spacer />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>($00000)</Text>
         </XPartyContent>
         <Text size="S-Regular" color={theme.colors.system.WHITE}>text</Text>
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>0000</Text>
-          <Spacer />
           <IconWrapper height="32px" width="32px" icon={<StarIcon />} />
-          <Spacer />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>($00000)</Text>
         </YPartyContent>
         <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
@@ -63,7 +58,6 @@ export const MasterFeedItemTx = ({ isOpen, isMulti }: MasterFeedItemTxProps) => 
         {hover && !isMulti && (
           <>
             <IconWrapper cursor="pointer" icon={<Meatball />} />
-            <Spacer />
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </>
         )}
