@@ -1,4 +1,5 @@
 export interface MasterFeedItemTxProps {
   isMulti: boolean;
-  isOpen: boolean;
+  isOpen?: boolean;
+  data: any;
 }

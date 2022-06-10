@@ -1,4 +1,3 @@
-import { MasterContainer } from '../../atoms/masterFeedItemTx/masterFeedItemTx.styles';
 import { Styled } from '../../theme';
 
 export const Wrapper = Styled.div`
@@ -20,12 +19,6 @@ export const FeedCardHeader = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const TransactionWrapper = Styled.div`
-    ${MasterContainer}:nth-child(2) {
-   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
-  }
 `;
 
 export const DateTime = Styled.div`

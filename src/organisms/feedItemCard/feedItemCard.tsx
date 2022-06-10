@@ -5,7 +5,7 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
 import { getDate } from '../../utils/getDate';
 import {
-  FeedCardHeader, MainCardContent, TransactionWrapper, Wrapper, DateTime,
+  FeedCardHeader, MainCardContent, Wrapper, DateTime,
 } from './feedItemCard.styles';
 import { FeedItemCardProps } from './types';
 
@@ -27,9 +27,9 @@ export const FeedItemCard = ({ children, datetime }: FeedItemCardProps) => {
             <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_2} textDecoration="underline">{getDate(datetime).time}</Text>
           </DateTime>
         </FeedCardHeader>
-        <TransactionWrapper>
-          {children}
-        </TransactionWrapper>
+
+        {children}
+
       </MainCardContent>
       <IconWrapper cursor="pointer" icon={<Kebab />} />
     </Wrapper>

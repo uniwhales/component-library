@@ -1,17 +1,29 @@
-import { IconWrapper } from '../icons/iconWrapper';
 import { MasterFeedItemTxProps } from './types';
 import { Styled } from '../../theme';
 
-export const MasterContainer = Styled.div`
+export const MasterContainer = Styled.div<Pick<MasterFeedItemTxProps, 'isMulti'>>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 12px;
-  margin: 2px 0;
+  margin: ${(props) => (!props.isMulti ? '2px 0' : 0)};
   padding: 8px 16px 8px 16px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   &:hover {
     background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  };
+`;
+
+export const TransactionWrapper = Styled.div`
+  ${MasterContainer}:first-of-type {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  };
+  ${MasterContainer}:last-of-type {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  };
+  ${MasterContainer}:nth-child(2) {
+   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
   };
 `;
 
@@ -25,12 +37,6 @@ export const IconContainer = Styled.div`
   height: 36px;
   width: 36px;
   position: relative;
-`;
-
-export const ChainIcon = Styled(IconWrapper)`
-   position: absolute;
-   top: 0;
-   left: 60%;
 `;
 
 export const TxTypeContainer = Styled.div`
