@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { WalletIcon } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
+import { Text } from '../texts/text';
 import { ConnectButton } from './connectWalletButton.styles';
 import { ConnectButtonProps } from './types';
 
@@ -18,7 +19,7 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
       account={account}
     >
       <IconWrapper icon={<WalletIcon />} />
-      {text}
+      <Text size="S-Bold">{text}</Text>
     </ConnectButton>
   );
 };

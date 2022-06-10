@@ -12,7 +12,7 @@ export const NavBar = Styled.div`
 export const NavContainer = Styled.div`
   display: flex;
   align-items: center;
-  p {
+  p:first-child {
     margin-right: 24px;
   }
 `;
