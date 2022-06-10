@@ -4,7 +4,7 @@ import { ConnectButtonProps } from './types';
 export const ConnectButton = Styled.button<ConnectButtonProps>`
   svg {
     cursor: pointer;
-    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   };
   font-size: 14px;
   line-height: 24px;
@@ -27,10 +27,10 @@ export const ConnectButton = Styled.button<ConnectButtonProps>`
 
   &:hover {
   color: ${(props) => props.theme.colors.system.WHITE};
-  background: ${(props) => (props.account !== null ? props.theme.colors.system.RED : props.theme.colors.primary.UWL_BLUE)};
-    border: ${(props) => (props.account !== null ? `1px solid ${props.theme.colors.system.RED}` : `1px solid ${props.theme.colors.primary.UWL_BLUE}`)};
+  background: ${(props) => (props.account ? props.theme.colors.system.RED : props.theme.colors.primary.UWL_BLUE)};
+    border: ${(props) => (props.account ? `1px solid ${props.theme.colors.system.RED}` : `1px solid ${props.theme.colors.primary.UWL_BLUE}`)};
   svg {
-    fill: ${(props) => props.theme.colors.system.WHITE}!important;
+    fill: ${(props) => props.theme.colors.system.WHITE};
   };
 };
 `;

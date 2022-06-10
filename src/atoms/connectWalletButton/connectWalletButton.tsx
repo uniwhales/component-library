@@ -7,7 +7,7 @@ import { ConnectButtonProps } from './types';
 export const ConnectWalletButton: FC<ConnectButtonProps> = ({
   onClick, account,
 }) => {
-  const [text, setText] = useState<string>();
+  const [text, setText] = useState<string>('');
   const textToDisplay = () => (account ? `${account.slice(0, 4)}...${account.slice(account.length - 4)}` : 'Connect');
   useEffect(() => setText(textToDisplay()), [account]);
   return (
