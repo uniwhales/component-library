@@ -1,9 +1,11 @@
+import { ConnectButtonProps } from '../../atoms/connectWalletButton/types';
+
 export interface FeedPageNavBarProps {
   label: string;
   selectPlaceholder: string;
   selectOptions: {};
   selectValue: string | undefined;
   selectOnChange: (e: any) => void;
-  account: string | null;
+  account: ConnectButtonProps['account'];
   onConnectClick: () => void;
 }
