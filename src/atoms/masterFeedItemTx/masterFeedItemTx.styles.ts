@@ -1,14 +1,14 @@
+import { IconWrapper } from '../icons/iconWrapper';
 import { MasterFeedItemTxProps } from './types';
 import { Styled } from '../../theme';
 
 export const MasterContainer = Styled.div`
-  &:nth-child(2n): {
-    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
-  };
   display: flex;
   align-items: center;
+  min-width: 850px;
   justify-content: space-between;
   border-radius: 12px;
+  margin: 2px 0;
   padding: 8px 16px 8px 16px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   &:hover {
@@ -21,17 +21,22 @@ export const TxTypeWrapper = Styled.div`
   align-items: center;
 `;
 
+export const IconContainer = Styled.div`
+  height: 36px;
+  width: 36px;
+  position: relative;
+`;
+
+export const ChainIcon = Styled(IconWrapper)`
+   position: absolute;
+   top: 0;
+   left: 60%;
+`;
+
 export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 16px;
-`;
-
-export const TxIconContainer = Styled.div`
-  display: inline-block;
-  position: relative;
-  height: 35px;
-  width: 35px;
 `;
 
 export const CenterContentContainer = Styled.div`

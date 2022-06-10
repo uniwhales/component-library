@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import {
   ChevronDownIcon,
-  LinkIcon, Meatball, OverlappedIcon, TwitterColor,
+  LinkIcon, Meatball, TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { StarIcon } from '../icons/placeholder/StarIcon';
@@ -12,12 +12,13 @@ import {
   HoverItemsContainer,
   MasterContainer,
   Spacer,
-  TxIconContainer,
   TxTypeContainer,
   TxTypeWrapper,
   XPartyContent,
   YPartyContent,
   ChevronButton,
+  IconContainer,
+  ChainIcon,
 } from './masterFeedItemTx.styles';
 import { MasterFeedItemTxProps } from './types';
 
@@ -30,9 +31,10 @@ export const MasterFeedItemTx = ({ isOpen, isMulti }: MasterFeedItemTxProps) => 
       onMouseLeave={() => setHover(false)}
     >
       <TxTypeWrapper>
-        <TxIconContainer>
-          <IconWrapper icon={<OverlappedIcon />} />
-        </TxIconContainer>
+        <IconContainer>
+          <IconWrapper height="28px" width="28px" icon={<StarIcon />} />
+          <ChainIcon height="14px" width="14px" icon={<StarIcon />} />
+        </IconContainer>
         <TxTypeContainer>
           <Text size="S-Regular">Tx Type</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Platform</Text>

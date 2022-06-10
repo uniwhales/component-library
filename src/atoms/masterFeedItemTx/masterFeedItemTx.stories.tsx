@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof MasterFeedItemTx>;
 
 const Template: ComponentStory<typeof MasterFeedItemTx> = () => (
-  <MasterFeedItemTx isOpen={false} isMulti />
+  <MasterFeedItemTx isOpen={false} isMulti={false} />
 );
 
 export const MasterFeedItem = Template.bind({});

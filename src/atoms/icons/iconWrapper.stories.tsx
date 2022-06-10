@@ -56,8 +56,10 @@ import {
   DashedSpinner,
   Meatball,
   Kebab,
+  Identicon,
 } from '.';
 import { OverlappedIcon } from './placeholder/OverlappedIcon';
+import { StarIcon } from './placeholder/StarIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -148,11 +150,19 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template6: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper name="Star Icon" icon={<StarIcon />} />
+    <IconWrapper name="Identicon" icon={<Identicon />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
 export const tokens = Template4.bind({});
 export const misc = Template5.bind({});
+export const placeholder = Template6.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

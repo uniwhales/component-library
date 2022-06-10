@@ -136,4 +136,6 @@ export { Weth } from './tokens/WETH';
 export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { Meatball } from './miscIcons/Meatball';
 export { Kebab } from './miscIcons/Kebab';
+// placeholder
 export { OverlappedIcon } from './placeholder/OverlappedIcon';
+export { Identicon } from './placeholder/Identicon';
