@@ -27,9 +27,7 @@ export const FeedItemCard = ({ children, datetime }: FeedItemCardProps) => {
             <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_2} textDecoration="underline">{getDate(datetime).time}</Text>
           </DateTime>
         </FeedCardHeader>
-
         {children}
-
       </MainCardContent>
       <IconWrapper cursor="pointer" icon={<Kebab />} />
     </Wrapper>

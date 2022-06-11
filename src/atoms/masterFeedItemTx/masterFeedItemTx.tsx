@@ -24,16 +24,19 @@ import { MasterFeedItemTxProps } from './types';
 
 export const MasterFeedItemTx = ({ isMulti, data }: MasterFeedItemTxProps) => {
   const theme: any = useTheme();
+  const firstItem = data[0];
+  const fiveTransactions = data.slice(0, 5);
+  const hasMoreThanFiveTransactions = data.length > 5;
   const [hover, setHover] = useState<boolean>(false);
-  const [itemsToDisplay, setItemsToDisplay] = useState([data[0]]);
+  const [itemsToDisplay, setItemsToDisplay] = useState([firstItem]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
     if (itemsToDisplay.length === 1) {
-      setItemsToDisplay(data);
+      setItemsToDisplay(fiveTransactions);
     } else {
-      setItemsToDisplay([data[0]]);
+      setItemsToDisplay([firstItem]);
     }
   };
   return (
@@ -71,7 +74,7 @@ export const MasterFeedItemTx = ({ isMulti, data }: MasterFeedItemTxProps) => {
               <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
             </CenterContentContainer>
             <SecondaryActionContainer>
-              {hover && index !== 0 && (
+              {hover && (
                 <HoverItemsContainer>
                   <IconWrapper cursor="pointer" icon={<Meatball />} />
                   <IconWrapper cursor="pointer" icon={<TwitterColor />} />
