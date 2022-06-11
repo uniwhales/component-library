@@ -18,12 +18,14 @@ const Template: ComponentStory<typeof FeedPageScrollableContent> = () => {
       newUpdates={updates && updates}
       onShowNew={() => setUpdates(undefined)}
     >
-      <Text size="M-Bold">Content Here</Text>
-      {!updates && (
-        <ButtonAtom buttonVariant="primary" onClick={() => setUpdates(['foo', 'bar', 'baz'])}>
-          <Text size="M-Regular">Show load more notifications</Text>
-        </ButtonAtom>
-      )}
+      <>
+        <Text size="M-Bold">Feed Cards go here</Text>
+        {!updates && (
+          <ButtonAtom buttonVariant="primary" onClick={() => setUpdates(['foo', 'bar', 'baz'])}>
+            <Text size="M-Regular">Show load more notifications</Text>
+          </ButtonAtom>
+        )}
+      </>
     </FeedPageScrollableContent>
   );
 };
