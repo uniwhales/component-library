@@ -9,7 +9,12 @@ import {
 } from './feedItemCard.styles';
 import { FeedItemCardProps } from './types';
 
-export const FeedItemCard = ({ children, datetime }: FeedItemCardProps) => {
+export const FeedItemCard = (
+  {
+    children,
+    datetime,
+  }: FeedItemCardProps,
+) => {
   const theme: any = useTheme();
   return (
     <Wrapper>
