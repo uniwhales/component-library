@@ -14,16 +14,14 @@ const Wrapper = Styled.div<{ isOn: boolean }>`
   max-width: fit-content;
   min-width: 79px;
   box-sizing: border-box;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  background: ${({ isOn, theme }) => (isOn
+    ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : theme.containerAndCardShades.SHADE_PLUS_2)};
   padding: 4px 12px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  ${({ isOn }) => isOn && css`
-    background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
-  `}
   &:hover {
     background: ${(props) => props.theme.colors.primary.WATER_BLUE};
     font-weight: 700;
