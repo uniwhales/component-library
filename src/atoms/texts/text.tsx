@@ -71,7 +71,7 @@ const StyledA = Styled.a<{ textType: string, textWeight: string }>`
   font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   text-decoration: underline;
-  color: ${(props) => props.theme.colors.secondary.TURQUOISE}
+  color: ${(props) => props.theme.colors.secondary.TURQUOISE};
 `;
 
 export const Text: FC<TextProps> = ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Styled } from '../../theme';
 
-export interface ToggleProps {
+export interface ThemeToggleProps {
   isOn: boolean;
   onClick: () => void;
 }
@@ -59,7 +59,7 @@ const FakeInput = Styled.input`
 `;
 export const ThemeToggle = ({
   onClick, isOn,
-}:ToggleProps) => (
+}:ThemeToggleProps) => (
   <Wrapper>
     <Switcher>
       <FakeInput type="checkbox" defaultChecked={isOn} onChange={onClick} />

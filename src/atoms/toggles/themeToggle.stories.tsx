@@ -12,4 +12,5 @@ const Template: ComponentStory<typeof ThemeToggle> = (args) => {
   const [isOn, setIsOn] = useState<boolean>(false);
   return <ThemeToggle {...args} isOn={isOn} onClick={() => setIsOn(!isOn)} />;
 };
+
 export const ThemeToggleStandard = Template.bind({});
