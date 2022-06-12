@@ -11,6 +11,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps>`
   gap: 4px;
   align-items: center;
   border-radius: 12px;
+  font-family: inherit;
   background-color: transparent;
   border: ${(props) => `1px solid ${props.theme.colors.primary.UWL_BLUE}`};
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
