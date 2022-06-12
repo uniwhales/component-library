@@ -7,7 +7,7 @@ export const Footer = () => {
   const theme: any = useTheme();
   return (
     <FooterComponent>
-      <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Copyright UniWhales ©2022 </Text>
+      <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Copyright UniWhales ©2022</Text>
     </FooterComponent>
   );
 };
