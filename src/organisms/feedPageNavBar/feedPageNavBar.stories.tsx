@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof FeedPageNavBar> = (args) => {
       selectOnChange={() => setValue(value)}
       account={account}
       onConnectClick={handleSwitch}
+      plan="Whale"
     />
   );
 };
@@ -38,7 +39,6 @@ export const FeedPageNav = Template.bind({});
 FeedPageNav.args = {
   selectOptions: groupTagOptions,
   selectPlaceholder: 'Select Group Tags',
-  plan: 'Whale',
   following: 1000,
 };
 
