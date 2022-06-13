@@ -5,7 +5,7 @@ export interface Transaction {
   transaction: TransactionData;
 }
 
-export interface FeedItemCardProps {
+export interface FeedCardProps {
   transactions: Transaction[];
   datetime: number;
   moreThanFiveTxs: boolean;

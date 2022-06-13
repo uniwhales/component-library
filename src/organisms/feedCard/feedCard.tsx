@@ -8,15 +8,15 @@ import { Theme } from '../../theme';
 import { getDate } from '../../utils/getDate';
 import {
   FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
-} from './feedItemCard.styles';
-import { FeedItemCardProps, Transaction } from './types';
+} from './feedCard.styles';
+import { FeedCardProps, Transaction } from './types';
 
-export const FeedItemCard = (
+export const FeedCard = (
   {
     transactions,
     datetime,
     moreThanFiveTxs,
-  }: FeedItemCardProps,
+  }: FeedCardProps,
 ) => {
   const theme = useTheme() as typeof Theme;
   const firstItem = transactions[0];

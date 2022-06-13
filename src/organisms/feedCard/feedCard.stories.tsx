@@ -1,22 +1,22 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { FeedItemCard } from './feedItemCard';
+import { FeedCard } from './feedCard';
 import { mockData } from './mockData';
 
 export default {
   title: 'Organisms/FeedCard',
-  component: FeedItemCard,
+  component: FeedCard,
   argTypes: {},
-} as ComponentMeta<typeof FeedItemCard>;
+} as ComponentMeta<typeof FeedCard>;
 
-const Template: ComponentStory<typeof FeedItemCard> = () => (
+const Template: ComponentStory<typeof FeedCard> = () => (
   <>
     {mockData.data.map((transactions, index: number) => {
       const txKeys: string[] = Object.keys(transactions);
       const firstTxKey: string = txKeys[0];
       const firstTransactionTime: number = transactions[firstTxKey][0].timestamp;
       return (
-        <FeedItemCard
+        <FeedCard
           datetime={firstTransactionTime}
           key={txKeys[index]}
           transactions={transactions[txKeys[0]]}
@@ -27,8 +27,8 @@ const Template: ComponentStory<typeof FeedItemCard> = () => (
   </>
 );
 
-export const FeedCard = Template.bind({});
+export const AlertFeedCard = Template.bind({});
 
-FeedCard.parameters = {
+AlertFeedCard.parameters = {
   backgrounds: { default: 'dark' },
 };
