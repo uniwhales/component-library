@@ -38,6 +38,8 @@ export const FeedPageNav = Template.bind({});
 FeedPageNav.args = {
   selectOptions: groupTagOptions,
   selectPlaceholder: 'Select Group Tags',
+  plan: 'Whale',
+  following: 1000,
 };
 
 FeedPageNav.parameters = {

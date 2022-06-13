@@ -8,4 +8,6 @@ export interface FeedPageNavBarProps {
   selectOnChange: (e: any) => void;
   account: ConnectButtonProps['account'];
   onConnectClick: () => void;
+  plan: 'Free' | 'Pro' | 'Whale';
+  following: number;
 }
