@@ -19,17 +19,17 @@ import {
   ChevronButton,
   IconContainer,
   SecondaryActionContainer,
-} from './masterFeedItemTx.styles';
-import { MasterFeedItemTxProps } from './types';
+} from './feedCardItem.styles';
+import { FeedCardItemProps } from './types';
 
-export const MasterFeedItemTx = (
+export const FeedCardItem = (
   {
     isMulti,
     txData,
     handleToggle,
     isOpen,
     isFirst,
-  }: MasterFeedItemTxProps,
+  }: FeedCardItemProps,
 ) => {
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);

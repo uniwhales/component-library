@@ -1,4 +1,4 @@
-import { TransactionData } from '../../atoms/masterFeedItemTx/types';
+import { TransactionData } from '../../atoms/feedCardItem/types';
 
 export interface Transaction {
   [key: string]: TransactionData;

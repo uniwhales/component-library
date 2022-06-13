@@ -1,7 +1,7 @@
-import { MasterFeedItemTxProps } from './types';
+import { FeedCardItemProps } from './types';
 import { Styled } from '../../theme';
 
-export const MasterContainer = Styled.div<Pick<MasterFeedItemTxProps, 'isMulti'>>`
+export const MasterContainer = Styled.div<Pick<FeedCardItemProps, 'isMulti'>>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +62,7 @@ export const HoverItemsContainer = Styled.div`
   gap: 10px;
 `;
 
-export const ChevronButton = Styled.div<Pick<MasterFeedItemTxProps, 'isOpen'>>`
+export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
   display: flex;
   justify-content: center;
   align-items: center;

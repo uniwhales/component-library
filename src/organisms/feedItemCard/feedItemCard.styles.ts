@@ -1,4 +1,4 @@
-import { MasterContainer } from '../../atoms/masterFeedItemTx/masterFeedItemTx.styles';
+import { MasterContainer } from '../../atoms/feedCardItem/feedCardItem.styles';
 import { Styled } from '../../theme';
 
 export const Wrapper = Styled.div`
@@ -15,7 +15,7 @@ export const TransactionsWrapper = Styled.div`
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
   };
-  ${MasterContainer}:nth-child(2) {
+  ${MasterContainer}:nth-child(2n) {
    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
      &:hover {
     background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { Identicon, Kebab } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
-import { MasterFeedItemTx } from '../../atoms/masterFeedItemTx/masterFeedItemTx';
+import { FeedCardItem } from '../../atoms/feedCardItem/feedCardItem';
 import { Text } from '../../atoms/texts/text';
 import { Theme } from '../../theme';
 import { getDate } from '../../utils/getDate';
@@ -59,7 +59,7 @@ export const FeedItemCard = (
               transaction: any,
               index: number,
             ) => (
-              <MasterFeedItemTx
+              <FeedCardItem
                 key={transaction.hash}
                 isMulti={transactions.length > 1}
                 txData={transaction}

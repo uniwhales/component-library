@@ -1,12 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { MasterFeedItemTx } from './masterFeedItemTx';
+import { FeedCardItem } from './feedCardItem';
 
 export default {
-  title: 'Atoms/MasterFeedItemTx',
-  component: MasterFeedItemTx,
+  title: 'Atoms/FeedCardItem',
+  component: FeedCardItem,
   argTypes: {},
-} as ComponentMeta<typeof MasterFeedItemTx>;
+} as ComponentMeta<typeof FeedCardItem>;
 
 const fakeData = {
   '0xa54ee1791a7d0ef94e3567a95c9ffb19fb07e32e6503b0586dfc75621b0e3420': [
@@ -38,13 +38,13 @@ const fakeData = {
   ],
 };
 
-const Template: ComponentStory<typeof MasterFeedItemTx> = () => {
+const Template: ComponentStory<typeof FeedCardItem> = () => {
   const key = '0xa54ee1791a7d0ef94e3567a95c9ffb19fb07e32e6503b0586dfc75621b0e3420';
   return (
     <>
       {
         fakeData[key].map((tx) => (
-          <MasterFeedItemTx
+          <FeedCardItem
             handleToggle={() => { }}
             txData={tx}
             isOpen={false}

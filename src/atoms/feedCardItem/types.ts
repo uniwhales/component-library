@@ -23,7 +23,7 @@ export interface TransactionData {
   index: number;
   chain: string;
 }
-export interface MasterFeedItemTxProps {
+export interface FeedCardItemProps {
   isMulti: boolean;
   isOpen: boolean;
   txData: TransactionData;
