@@ -27,18 +27,25 @@ export const NavigationUl = Styled.ul`
 `;
 
 export const IconContainer = Styled.div<{ isExpanded: boolean, isDisabled: boolean, isHighlighted: boolean }>`
-  width: ${({ isExpanded }) => (isExpanded ? '13px' : '100%')};
-  margin: ${({ isExpanded }) => isExpanded ? '0px 7px 0px 17px' : '0px 7px 0px 28px'};
+  width: ${({ isExpanded }) => (isExpanded ? '13px' : '90%')};
+  margin: ${({ isExpanded }) => isExpanded ? '0px 7px 0px 17px' : '0px 0px 0px 28px'};
   svg {
     cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
+    fill: ${({ isHighlighted, theme }) => isHighlighted ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1 }
+  }
+
+  :hover {
+    svg {
+      fill: ${({ isHighlighted, theme }) => isHighlighted ? theme.colors.primary.WATER_BLUE : theme.textShades.SHADE_MINUS_3 }
+    }
   }
 `;
 
-export const HighlightMark = Styled.div<{ isActive: boolean }>`
+export const HighlightMark = Styled.div<{ isActive: boolean, lvl: number }>`
   height: 100%;
   width: 4px;
   border: none;
-  background-color: ${({ isActive, theme }) => isActive && theme.colors.primary.UWL_BLUE};
+  background-color: ${({ isActive, theme, lvl }) => isActive && (lvl >= 2 ? theme.contrastColor.HIGH_CONTRAST : lvl === 1 ? theme.colors.primary.DARK_BLUE : theme.colors.primary.UWL_BLUE)};
   border-radius: ${({ isActive }) => isActive && '0 12px 12px 0'};
 `;
 
@@ -46,7 +53,6 @@ export const NavigationTabName = Styled.div<{ tag: SidebarElement<any>['tag'] }>
   width: ${({ tag }) => (tag ? '92px' : '120px')};
   overflow-x: auto;
   scrollbar-width: thin;
-
 `;
 
 export const ChipWrapper = Styled.div`

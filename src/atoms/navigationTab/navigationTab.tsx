@@ -45,7 +45,7 @@ export const NavigationTab: NavigationTabComp = ({
   */
   useEffect(() => {
     setIsHighlighted(shouldHighlight({ path, subitems, id }, selectedTab) && !itemsExpanded);
-  }, [expanded, itemsExpanded]);
+  }, [expanded, itemsExpanded, selectedTab]);
 
   return (
     <>
@@ -59,28 +59,29 @@ export const NavigationTab: NavigationTabComp = ({
           if (subitems) setItemsExpanded(!itemsExpanded);
           if (!subitems && onClick) onClick({ path, pro, whale });
           if (!expanded) setExpanded(true);
-          if (!disabled) setSelectedTab(id);
+          if (expanded && isHighlighted && !subitems) setExpanded(false)
+          if (!disabled && !subitems) setSelectedTab(id);
         }}
       >
-        <HighlightMark isActive={isHighlighted} />
+        <HighlightMark lvl={lvl} isActive={isHighlighted} />
         <IconContainer
           isHighlighted={isHighlighted}
           isDisabled={!!disabled}
           isExpanded={expanded}
         >
           {icon && (
-            <IconWrapper width={expanded ? '17px' : '26px'} icon={icon} />
+            <IconWrapper width={expanded ? '16px' : '24px'} icon={icon} />
           )}
         </IconContainer>
         {expanded && <NavigationTabName tag={tag}><Text size="S-Regular">{name}</Text></NavigationTabName>}
         {expanded && tag && (
-          <ChipWrapper className="nav-tab__chip">
+          <ChipWrapper>
             <Chip type="secondary">{tag}</Chip>
           </ChipWrapper>
         )}
         {subitems && expanded && <IconWrapper width="18px" icon={itemsExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />} />}
       </NavigationLi>
-      <NavigationUl style={{ padding: 0 }}>
+      <NavigationUl>
         {itemsExpanded
             && subitems
             && subitems.map((si) => (
@@ -89,7 +90,7 @@ export const NavigationTab: NavigationTabComp = ({
                 hasAccessGuard={hasAccessGuard}
                 account={account}
                 setExpanded={setExpanded}
-                disabled={!!(account && !hasAccessGuard(si))}
+                disabled={si.isDisabled || !!(account && !hasAccessGuard(si))}
                 expanded={expanded}
                 selectedTab={selectedTab}
                 setSelectedTab={setSelectedTab}

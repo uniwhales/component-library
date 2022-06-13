@@ -41,7 +41,7 @@ export const SidebarBottomButtons = Styled.div`
 `;
 
 export const SidebarThemeAndShareButtons = Styled.div`
-  margin-top: 10px;
+  margin-top: 52px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

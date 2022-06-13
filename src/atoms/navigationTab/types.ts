@@ -11,6 +11,7 @@ export type SidebarElement<ID> = {
   whale?: boolean
   path?: string
   tag?: string
+  isDisabled?: boolean
   subitems?: SidebarElement<ID>[]
 };
 

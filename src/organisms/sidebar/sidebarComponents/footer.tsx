@@ -9,6 +9,7 @@ const Container = Styled.div`
   padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const Spacer = Styled.div`
@@ -31,12 +32,7 @@ export const SidebarFooter: FC<SidebarFooterProps> = ({ plan, version }) => {
     <Container>
       <Spacer />
       <Text color={theme.textShades.SHADE_MINUS_1} size="XS-Regular">
-        <>
-          v
-          {`${version} `}
-          | Plan:
-          {` ${plan}`}
-        </>
+        {`v ${version} `}
       </Text>
     </Container>
   )

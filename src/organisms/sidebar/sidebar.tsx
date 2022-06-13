@@ -32,7 +32,8 @@ export const Sidebar: SidebarComp = ({
   onGetUwlClick,
   telegramLink,
   twitterLink,
-  webappLink
+  webappLink,
+  onLogoClick
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultSelectedTab);
@@ -41,7 +42,6 @@ export const Sidebar: SidebarComp = ({
   useClickOutside(clickRef, () => setExpanded(false));
 
   const width = expanded ? SidebarWidth.Expanded : SidebarWidth.Collapsed;
-  console.log({ width });
   return (
     <SidebarContainer
       ref={clickRef}
@@ -49,7 +49,7 @@ export const Sidebar: SidebarComp = ({
       width={width}
       isExpanded={expanded}
     >
-      <SidebarHeader onLogoClick={() => {}} expanded={expanded} setExpanded={setExpanded} />
+      <SidebarHeader onLogoClick={() => onLogoClick()} expanded={expanded} setExpanded={setExpanded} />
       <SidebarItems>
         {items.map((item) => (
           <NavigationTab
@@ -71,7 +71,7 @@ export const Sidebar: SidebarComp = ({
             tag={pickTag(item, hasAccessGuard, account)}
             expanded={expanded}
             subitems={item.subitems}
-            disabled={!!account && !hasAccessGuard(item)}
+            disabled={item.isDisabled || !!account && !hasAccessGuard(item)}
             pro={item.pro}
             whale={item.whale}
           />

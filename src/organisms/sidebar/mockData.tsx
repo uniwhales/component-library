@@ -14,6 +14,7 @@ import {
   NewsStandard,
   DashboardStandard,
 } from '../../atoms/icons';
+import { SidebarElement } from '../../atoms/navigationTab/types';
 
 export enum Plans {
   FREE = 'FREE',
@@ -83,19 +84,9 @@ export enum DashboardNames {
   Alerts = 'Alerts',
 }
 
-export type SidebarElement = {
-  id: SidebarItemID
-  name: string
-  to?: string
-  icon?: JSX.Element
-  pro?: boolean
-  whale?: boolean
-  path?: string
-  tag?: string
-  subitems?: SidebarElement[]
-};
 
-export const sidebarItems: SidebarElement[] = [
+
+export const sidebarItems: SidebarElement<any>[] = [
   {
     id: SidebarItemID.Newsdesk,
     name: DashboardNames.Newsdesk,
@@ -115,7 +106,7 @@ export const sidebarItems: SidebarElement[] = [
           {
             id: SidebarItemID.TransactionsETH,
             name: DashboardNames.Transactions,
-            path: '/',
+            path: '/organisms-sidebar--sidebar-standard',
           },
           {
             id: SidebarItemID.LiquidityETH, name: DashboardNames.Liquidity, path: '/liquidity', pro: true, tag: 'Soon',
