@@ -9,7 +9,7 @@ import { getDate } from '../../utils/getDate';
 import {
   FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
 } from './feedItemCard.styles';
-import { FeedItemCardProps } from './types';
+import { FeedItemCardProps, Transaction } from './types';
 
 export const FeedItemCard = (
   {
@@ -21,7 +21,7 @@ export const FeedItemCard = (
   const theme = useTheme() as typeof Theme;
   const firstItem = transactions[0];
   const firstFiveItems = transactions.slice(0, 5);
-  const [transactionsToDisplay, setTransactionsToDisplay] = useState([firstItem]);
+  const [transactionsToDisplay, setTransactionsToDisplay] = useState<Transaction[]>([firstItem]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
