@@ -32,8 +32,8 @@ export const MasterFeedItemTx = (
 ) => {
   const theme: any = useTheme();
   const [hover, setHover] = useState<boolean>(false);
-  const token0Usd = `($${txData.token0_amount_usd})`;
-  const token1Usd = `($${txData.token1_amount_usd})`;
+  const token0Usd = `($${Number(txData.token0_amount_usd).toFixed(2)})`;
+  const token1Usd = `($${Number(txData.token1_amount_usd).toFixed(2)})`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
@@ -52,7 +52,7 @@ export const MasterFeedItemTx = (
       </TxTypeWrapper>
       <CenterContentContainer>
         <XPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{txData.token0_amount}</Text>
+          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token0_amount).toFixed(4)}</Text>
           <div
             className="token-image"
             style={{
@@ -68,7 +68,7 @@ export const MasterFeedItemTx = (
         </XPartyContent>
         <Text size="S-Regular" color={theme.colors.system.WHITE}>text</Text>
         <YPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{txData.token1_amount}</Text>
+          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token1_amount).toFixed(4)}</Text>
           <div
             className="token-image"
             style={{

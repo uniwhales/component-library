@@ -16,7 +16,7 @@ export const MasterContainer = Styled.div<Pick<MasterFeedItemTxProps, 'isMulti'>
 export const TxTypeWrapper = Styled.div`
   display: flex;
   align-items: center;
-  width: 15%;
+  min-width: 10%;
 `;
 
 export const IconContainer = Styled.div`
@@ -42,14 +42,14 @@ export const XPartyContent = Styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 35%;
+  min-width: 25%;
 `;
 
 export const YPartyContent = Styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-    width: 35%;
+  min-width: 25%;
 `;
 
 export const HoverItemsContainer = Styled.div`
@@ -81,6 +81,6 @@ export const ChevronButton = Styled.div<Pick<MasterFeedItemTxProps, 'isOpen'>>`
 export const SecondaryActionContainer = Styled.div`
   display: flex;
   align-items: center;
-  width: 15%;
+  width: 10%;
   justify-content: flex-end;
 `;
