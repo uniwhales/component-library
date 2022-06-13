@@ -1,7 +1,12 @@
-import { MasterFeedItemTxProps } from '../../atoms/masterFeedItemTx/types';
+import { TransactionData } from '../../atoms/masterFeedItemTx/types';
+
+export interface Transaction {
+  [key: string]: TransactionData;
+  transaction: TransactionData;
+}
 
 export interface FeedItemCardProps {
-  transactions: MasterFeedItemTxProps[];
+  transactions: Transaction[];
   datetime: number;
   moreThanFiveTxs: boolean;
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { Theme } from '../../../theme';
 
 export const Meatball = () => {
-  const theme: any = useTheme();
+  const theme = useTheme() as typeof Theme;
   const hoverColor = theme.colors.primary.WATER_BLUE;
   const standardColor = theme.containerAndCardShades.NEUTRAL_SHADE_0;
   const [fillValue, setFillValue] = useState<string>(standardColor);

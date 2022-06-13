@@ -12,10 +12,9 @@ export default {
 const Template: ComponentStory<typeof FeedItemCard> = () => (
   <>
     {mockData.data.map((transactions, index: number) => {
-      const txKeys = Object.keys(transactions);
-      const firstTxKey = txKeys[0];
-      const firstTransactionTime = transactions[firstTxKey][0].timestamp;
-      console.log('Hello', transactions[txKeys]);
+      const txKeys: string[] = Object.keys(transactions);
+      const firstTxKey: string = txKeys[0];
+      const firstTransactionTime: number = transactions[firstTxKey][0].timestamp;
       return (
         <FeedItemCard
           datetime={firstTransactionTime}

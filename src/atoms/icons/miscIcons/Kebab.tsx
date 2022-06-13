@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { Theme } from '../../../theme';
 
 export const Kebab = () => {
-  const theme: any = useTheme();
+  const theme = useTheme() as typeof Theme;
   const hoverColor = theme.colors.primary.WATER_BLUE;
   const standardColor = theme.contrastColor.HIGH_CONTRAST;
   const [fillValue, setFillValue] = useState<string>(standardColor);

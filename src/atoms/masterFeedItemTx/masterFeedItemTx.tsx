@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { Theme } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import {
   ChevronDownIcon,
@@ -30,11 +31,11 @@ export const MasterFeedItemTx = (
     isFirst,
   }: MasterFeedItemTxProps,
 ) => {
-  const theme: any = useTheme();
+  const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
   const token0Usd = `($${txData.token0_amount_usd.toFixed(2)})`;
   const token1Usd = `($${txData.token1_amount_usd.toFixed(2)})`;
-  console.log('hello', txData);
+  console.log('GE', txData);
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}

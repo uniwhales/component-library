@@ -4,6 +4,7 @@ import { Identicon, Kebab } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { MasterFeedItemTx } from '../../atoms/masterFeedItemTx/masterFeedItemTx';
 import { Text } from '../../atoms/texts/text';
+import { Theme } from '../../theme';
 import { getDate } from '../../utils/getDate';
 import {
   FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
@@ -17,7 +18,7 @@ export const FeedItemCard = (
     moreThanFiveTxs,
   }: FeedItemCardProps,
 ) => {
-  const theme: any = useTheme();
+  const theme = useTheme() as typeof Theme;
   const firstItem = transactions[0];
   const firstFiveItems = transactions.slice(0, 5);
   const [transactionsToDisplay, setTransactionsToDisplay] = useState([firstItem]);
@@ -53,16 +54,21 @@ export const FeedItemCard = (
           </DateTime>
         </FeedCardHeader>
         <TransactionsWrapper>
-          {transactionsToDisplay.map((transaction: any, index: number) => (
-            <MasterFeedItemTx
-              key={transaction.hash}
-              isMulti={transactions.length > 1}
-              txData={transaction}
-              handleToggle={handleToggle}
-              isOpen={isOpen}
-              isFirst={index === 0}
-            />
-          ))}
+          {transactionsToDisplay.map(
+            (
+              transaction: any,
+              index: number,
+            ) => (
+              <MasterFeedItemTx
+                key={transaction.hash}
+                isMulti={transactions.length > 1}
+                txData={transaction}
+                handleToggle={handleToggle}
+                isOpen={isOpen}
+                isFirst={index === 0}
+              />
+            ),
+          )}
         </TransactionsWrapper>
         {moreThanFiveTxs && isOpen && transactionsToDisplay.length < 6 && <SeeMoreContainer onClick={showAllTransactions}><Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>See More</Text></SeeMoreContainer>}
       </MainCardContent>
