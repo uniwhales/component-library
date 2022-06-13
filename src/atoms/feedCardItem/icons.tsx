@@ -95,5 +95,4 @@ export const chainIcons: Readonly<{
   terra: <TerraColor />,
   uniswap: <UniswapV3Color />,
   uniWhales: <UniWhalesColor />,
-
 };
