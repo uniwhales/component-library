@@ -61,7 +61,6 @@ export const FeedCardItem = (
         <XPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token0_amount).toFixed(4)}</Text>
           <div
-            className="token-image"
             style={{
               height: 32,
               width: 32,
@@ -77,7 +76,6 @@ export const FeedCardItem = (
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token1_amount).toFixed(4)}</Text>
           <div
-            className="token-image"
             style={{
               height: 32,
               width: 32,
