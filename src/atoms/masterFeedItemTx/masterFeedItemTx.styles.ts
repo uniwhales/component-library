@@ -13,20 +13,6 @@ export const MasterContainer = Styled.div<Pick<MasterFeedItemTxProps, 'isMulti'>
   };
 `;
 
-export const TransactionWrapper = Styled.div`
-  ${MasterContainer}:first-of-type {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  };
-  ${MasterContainer}:last-of-type {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-  };
-  ${MasterContainer}:nth-child(2) {
-   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
-  };
-`;
-
 export const TxTypeWrapper = Styled.div`
   display: flex;
   align-items: center;

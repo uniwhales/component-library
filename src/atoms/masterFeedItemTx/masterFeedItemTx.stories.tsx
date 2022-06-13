@@ -43,12 +43,9 @@ const Template: ComponentStory<typeof MasterFeedItemTx> = () => {
   return (
     <>
       {
-        fakeData[key].map((tx) => {
-          console.log('TXXX', tx);
-          return (
-            <MasterFeedItemTx data={tx} isOpen={false} isMulti={false} />
-          );
-        })
+        fakeData[key].map((tx) => (
+          <MasterFeedItemTx txData={tx} isOpen={false} isMulti={false} />
+        ))
       }
     </>
   );

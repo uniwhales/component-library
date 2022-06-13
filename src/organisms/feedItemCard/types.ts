@@ -1,4 +1,7 @@
+import { MasterFeedItemTxProps } from '../../atoms/masterFeedItemTx/types';
+
 export interface FeedItemCardProps {
-  children: JSX.Element | JSX.Element[];
+  transactions: MasterFeedItemTxProps[];
   datetime: number;
+  moreThanFiveTxs: boolean;
 }

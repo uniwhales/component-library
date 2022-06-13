@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FeedItemCard } from './feedItemCard';
-import { MasterFeedItemTx } from '../../atoms/masterFeedItemTx/masterFeedItemTx';
 import { mockData } from './mockData';
 
 export default {
@@ -16,18 +15,14 @@ const Template: ComponentStory<typeof FeedItemCard> = () => (
       const txKeys = Object.keys(transactions);
       const firstTxKey = txKeys[0];
       const firstTransactionTime = transactions[firstTxKey][0].timestamp;
+      console.log('Hello', transactions[txKeys]);
       return (
         <FeedItemCard
           datetime={firstTransactionTime}
           key={txKeys[index]}
-        >
-          {Object.values(transactions).map((transaction) => {
-            const hasMulti = transaction.length > 1;
-            return (
-              <MasterFeedItemTx key={transaction.timestamp} isMulti={hasMulti} data={transaction} />
-            );
-          })}
-        </FeedItemCard>
+          transactions={transactions[txKeys[0]]}
+          moreThanFiveTxs={transactions[txKeys[0]].length > 1}
+        />
       );
     })}
   </>
