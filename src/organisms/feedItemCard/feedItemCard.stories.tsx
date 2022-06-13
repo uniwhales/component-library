@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof FeedItemCard> = () => (
           {Object.values(transactions).map((transaction) => {
             const hasMulti = transaction.length > 1;
             return (
-              <MasterFeedItemTx isMulti={hasMulti} data={transaction} />
+              <MasterFeedItemTx key={transaction.timestamp} isMulti={hasMulti} data={transaction} />
             );
           })}
         </FeedItemCard>

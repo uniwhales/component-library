@@ -8,7 +8,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof MasterFeedItemTx>;
 
-const fakeData = [{
+const fakeData = {
   '0xa54ee1791a7d0ef94e3567a95c9ffb19fb07e32e6503b0586dfc75621b0e3420': [
     {
       hash: '0xa54ee1791a7d0ef94e3567a95c9ffb19fb07e32e6503b0586dfc75621b0e3420',
@@ -36,11 +36,23 @@ const fakeData = [{
       chain: 'ethereum',
     },
   ],
-}];
+};
 
-const Template: ComponentStory<typeof MasterFeedItemTx> = () => (
-  <MasterFeedItemTx data={fakeData} isOpen={false} isMulti={false} />
-);
+const Template: ComponentStory<typeof MasterFeedItemTx> = () => {
+  const key = '0xa54ee1791a7d0ef94e3567a95c9ffb19fb07e32e6503b0586dfc75621b0e3420';
+  return (
+    <>
+      {
+        fakeData[key].map((tx) => {
+          console.log('TXXX', tx);
+          return (
+            <MasterFeedItemTx data={tx} isOpen={false} isMulti={false} />
+          );
+        })
+      }
+    </>
+  );
+};
 
 export const MasterFeedItem = Template.bind({});
 

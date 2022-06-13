@@ -56,12 +56,14 @@ export const XPartyContent = Styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 35%;
 `;
 
 export const YPartyContent = Styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+    width: 35%;
 `;
 
 export const HoverItemsContainer = Styled.div`

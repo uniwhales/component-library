@@ -12,7 +12,7 @@ export const mockData = {
           tx_hash: '0x85e477d6f4902c4c9e244719e264cda8a96c52e9b08baf9214e2cada7c91dc96',
           tx_type: 'swap',
           dex: 'UniswapV3',
-          token0_address: '0x4d224452801ACEd8B2F0aebE155379bb5D594381',
+          token0_address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
           token0_name: 'ApeCoin',
           token0_symbol: 'APE',
           token0_amount: 2925.0,
