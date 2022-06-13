@@ -44,7 +44,13 @@ const Template: ComponentStory<typeof MasterFeedItemTx> = () => {
     <>
       {
         fakeData[key].map((tx) => (
-          <MasterFeedItemTx txData={tx} isOpen={false} isMulti={false} />
+          <MasterFeedItemTx
+            handleToggle={() => { }}
+            txData={tx}
+            isOpen={false}
+            isMulti={false}
+            isFirst={false}
+          />
         ))
       }
     </>

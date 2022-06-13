@@ -53,7 +53,7 @@ export const FeedItemCard = (
           </DateTime>
         </FeedCardHeader>
         <TransactionsWrapper>
-          {transactionsToDisplay.map((transaction, index) => (
+          {transactionsToDisplay.map((transaction: any, index: number) => (
             <MasterFeedItemTx
               key={transaction.hash}
               isMulti={transactions.length > 1}

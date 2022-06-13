@@ -32,8 +32,9 @@ export const MasterFeedItemTx = (
 ) => {
   const theme: any = useTheme();
   const [hover, setHover] = useState<boolean>(false);
-  const token0Usd = `($${Number(txData.token0_amount_usd).toFixed(2)})`;
-  const token1Usd = `($${Number(txData.token1_amount_usd).toFixed(2)})`;
+  const token0Usd = `($${txData.token0_amount_usd.toFixed(2)})`;
+  const token1Usd = `($${txData.token1_amount_usd.toFixed(2)})`;
+  console.log('hello', txData);
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
