@@ -85,7 +85,13 @@ export const MasterFeedItemTx = (
         </YPartyContent>
 
       </CenterContentContainer>
-      <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
+      <a
+        href={`https://etherscan.io/tx/${txData.hash}`}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
+      </a>
       <SecondaryActionContainer>
         {hover && !isMulti && (
           <HoverItemsContainer>
