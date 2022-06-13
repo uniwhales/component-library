@@ -4,9 +4,10 @@ import { Theme } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import {
   ChevronDownIcon,
-  LinkIcon, Meatball, OverlappedIcon, TwitterColor,
+  LinkIcon, Meatball, TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
+import { StarIcon } from '../icons/placeholder/StarIcon';
 import { Text } from '../texts/text';
 import {
   CenterContentContainer,
@@ -19,7 +20,10 @@ import {
   ChevronButton,
   IconContainer,
   SecondaryActionContainer,
+  ChainIcon,
+  DexIcon,
 } from './feedCardItem.styles';
+import { chainIcons, dexIcons } from './icons';
 import { FeedCardItemProps } from './types';
 
 export const FeedCardItem = (
@@ -44,7 +48,8 @@ export const FeedCardItem = (
     >
       <TxTypeWrapper>
         <IconContainer>
-          <IconWrapper icon={<OverlappedIcon />} />
+          <ChainIcon><IconWrapper icon={(chainIcons as any)[txData.chain]} height="14px" width="14px" /></ChainIcon>
+          <DexIcon><IconWrapper icon={(dexIcons as any)[txData.dex]} height="28px" width="28px" /></DexIcon>
         </IconContainer>
         <TxTypeContainer>
           <Text size="S-Regular">{txData.tx_type}</Text>

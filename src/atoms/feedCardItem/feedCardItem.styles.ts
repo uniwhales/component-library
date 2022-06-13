@@ -24,6 +24,24 @@ export const IconContainer = Styled.div`
   height: 36px;
   width: 36px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ChainIcon = Styled.div`
+  position: absolute;
+  top: 0;
+  left: 70%;
+  background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  border-radius: 50%;
+  z-index: 10;
+`;
+
+export const DexIcon = Styled.div`
+  position: absolute;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
 `;
 
 export const TxTypeContainer = Styled.div`
