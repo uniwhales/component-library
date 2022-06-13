@@ -32,7 +32,7 @@ export const FeedPageNavBar = ({
           closeMenuOnSelect
           isMulti={false}
         />
-        <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
+        <Text href="TODO-ADD-LINK" size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
           <>
             Following:
             {' '}
