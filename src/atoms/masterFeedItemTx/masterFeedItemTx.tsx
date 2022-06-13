@@ -82,8 +82,9 @@ export const MasterFeedItemTx = (
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
         </YPartyContent>
-        <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
+
       </CenterContentContainer>
+      <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
       <SecondaryActionContainer>
         {hover && !isMulti && (
           <HoverItemsContainer>

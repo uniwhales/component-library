@@ -5,6 +5,7 @@ export const MasterContainer = Styled.div<Pick<MasterFeedItemTxProps, 'isMulti'>
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   margin: ${(props) => (!props.isMulti ? '2px 0' : 0)};
   padding: 8px 16px 8px 16px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
@@ -36,20 +37,22 @@ export const CenterContentContainer = Styled.div`
   align-items: center;
   justify-content: space-between;
   flex: 1;
+  max-width: 650px;
 `;
 
 export const XPartyContent = Styled.div`
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  min-width: 25%;
+  min-width: 40%;
 `;
 
 export const YPartyContent = Styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 25%;
+  min-width: 40%;
 `;
 
 export const HoverItemsContainer = Styled.div`
