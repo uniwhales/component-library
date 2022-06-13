@@ -33,7 +33,8 @@ export const ChainIcon = Styled.div`
   position: absolute;
   top: 0;
   left: 70%;
-  background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  padding: 2px;
+  background-color: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   border-radius: 50%;
   z-index: 10;
 `;
@@ -41,7 +42,8 @@ export const ChainIcon = Styled.div`
 export const DexIcon = Styled.div`
   position: absolute;
   border-radius: 50%;
-  background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  background-color: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  padding: 2px;
 `;
 
 export const TxTypeContainer = Styled.div`

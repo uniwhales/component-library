@@ -7,7 +7,6 @@ import {
   LinkIcon, Meatball, TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
-import { StarIcon } from '../icons/placeholder/StarIcon';
 import { Text } from '../texts/text';
 import {
   CenterContentContainer,
@@ -39,6 +38,8 @@ export const FeedCardItem = (
   const [hover, setHover] = useState<boolean>(false);
   const token0Usd = `($${txData.token0_amount_usd.toFixed(2)})`;
   const token1Usd = `($${txData.token1_amount_usd.toFixed(2)})`;
+  // TODO: Add all tx types here
+  const txTypePreposition = txData.tx_type === 'swap' ? 'to' : 'text';
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
@@ -72,7 +73,7 @@ export const FeedCardItem = (
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
         </XPartyContent>
-        <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>text</Text>
+        <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token1_amount).toFixed(4)}</Text>
           <div
