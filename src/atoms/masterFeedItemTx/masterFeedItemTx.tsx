@@ -35,7 +35,6 @@ export const MasterFeedItemTx = (
   const [hover, setHover] = useState<boolean>(false);
   const token0Usd = `($${txData.token0_amount_usd.toFixed(2)})`;
   const token1Usd = `($${txData.token1_amount_usd.toFixed(2)})`;
-  console.log('GE', txData);
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
