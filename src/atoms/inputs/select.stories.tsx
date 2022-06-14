@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string | undefined>(undefined);
 
   return <Select {...args} onChange={() => setValue(value)} value={value} />;
 };
@@ -22,7 +22,8 @@ Primary.parameters = {
 Primary.args = {
   options: colourOptions,
   isMulti: false,
-  readOnly: true,
+  readOnly: false,
   placeholder: 'DEX filters',
   closeMenuOnSelect: true,
+  isXL: false,
 };
