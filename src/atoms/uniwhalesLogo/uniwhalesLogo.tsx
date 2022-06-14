@@ -8,7 +8,8 @@ const Container = Styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content:center;
+  gap: 2px;
+  justify-content: center;
   cursor: pointer;
 `;
 
@@ -19,7 +20,7 @@ type Props = {
 
 export const UniWhalesLogo = ({ showText, onClick }: Props) => (
   <Container onClick={onClick}>
-    <IconWrapper height="auto" width="56px" icon={<UniWhalesColor />} />
-    {showText && <Text size="H6-Bold">UniWhales</Text>}
+    <IconWrapper height="auto" width="33px" icon={<UniWhalesColor />} />
+    {showText && <Text size="L-Bold">{' UniWhales'}</Text>}
   </Container>
 );
