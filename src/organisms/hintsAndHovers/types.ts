@@ -3,5 +3,5 @@ import { TooltipProps } from 'react-tooltip';
 export type HintsAndHoversProps = {
   id: string
   place?: TooltipProps['place']
-  hint: any
+  hint: string | JSX.Element
 };

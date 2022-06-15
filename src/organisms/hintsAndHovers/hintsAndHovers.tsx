@@ -12,7 +12,7 @@ export const HintsAndHovers: FC<HintsAndHoversProps> = ({ id, place, hint }) => 
     <HintAndHoversWrapper
       data-for={id}
       data-html
-      data-tip={ReactDOMServer.renderToString(hint)}
+      data-tip={typeof hint === 'string' ? hint : ReactDOMServer.renderToString(hint)}
     >
       <IconWrapper icon={<InfoStandard />} />
       <Tooltip
