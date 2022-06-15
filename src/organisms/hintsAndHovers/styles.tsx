@@ -9,5 +9,10 @@ export const HintAndHoversWrapper = Styled.div`
 export const Tooltip = Styled(ReactTooltip)`
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   max-width: 296px;
-  border-radius: 0.5rem;
+
+  .__react_component_tooltip.show {
+    border-radius: 8px;
+  }
+
+  
 `;
