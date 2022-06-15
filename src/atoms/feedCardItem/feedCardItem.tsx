@@ -60,8 +60,8 @@ export const FeedCardItem = (
     >
       <TxTypeWrapper>
         <IconContainer>
-          <ChainIcon><IconWrapper icon={(chainIcons as any)[chain]} height="14px" width="14px" /></ChainIcon>
-          <DexIcon><IconWrapper icon={(dexIcons as any)[dex]} height="28px" width="28px" /></DexIcon>
+          <ChainIcon><IconWrapper icon={chainIcons[chain]} height="14px" width="14px" /></ChainIcon>
+          <DexIcon><IconWrapper icon={dexIcons[dex]} height="28px" width="28px" /></DexIcon>
         </IconContainer>
         <TxTypeContainer>
           <Text size="S-Regular">{txType}</Text>
