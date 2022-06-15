@@ -37,50 +37,59 @@ export const FeedCardItem = (
 ) => {
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
-  const token0Usd = `($${txData.token0_amount_usd.toFixed(2)})`;
-  const token1Usd = `($${txData.token1_amount_usd.toFixed(2)})`;
+  const {
+    hash,
+    chain,
+    dex,
+    tx_type: txType,
+    token0_amount: token0Amount,
+    token0_address: token0Address,
+    token1_amount: token1Amount,
+    token1_address: token1Address,
+  } = txData;
+  const token0Usd = `($${token0Amount.toFixed(2)})`;
+  const token1Usd = `($${token1Amount.toFixed(2)})`;
   // TODO: Add all tx types here
-  const txTypePreposition = txData.tx_type === 'swap' ? 'to' : 'text';
+  const txTypePreposition = txType === 'swap' ? 'to' : 'text';
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txData.hash}
+      key={hash}
       isMulti={isMulti}
     >
-      {console.log('hello')}
       <TxTypeWrapper>
         <IconContainer>
-          <ChainIcon><IconWrapper icon={(chainIcons as any)[txData.chain]} height="14px" width="14px" /></ChainIcon>
-          <DexIcon><IconWrapper icon={(dexIcons as any)[txData.dex]} height="28px" width="28px" /></DexIcon>
+          <ChainIcon><IconWrapper icon={(chainIcons as any)[chain]} height="14px" width="14px" /></ChainIcon>
+          <DexIcon><IconWrapper icon={(dexIcons as any)[dex]} height="28px" width="28px" /></DexIcon>
         </IconContainer>
         <TxTypeContainer>
-          <Text size="S-Regular">{txData.tx_type}</Text>
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{txData.dex}</Text>
+          <Text size="S-Regular">{txType}</Text>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{dex}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContentContainer>
         <XPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token0_amount).toFixed(4)}</Text>
+          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token0Amount).toFixed(4)}</Text>
           <TokenIcon
             baseUrl={LogoUrlBase}
-            tokenAddress={txData.token0_address.toLowerCase()}
+            tokenAddress={token0Address.toLowerCase()}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
         </XPartyContent>
         <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         <YPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token1_amount).toFixed(4)}</Text>
+          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token1Amount).toFixed(4)}</Text>
           <TokenIcon
             baseUrl={LogoUrlBase}
-            tokenAddress={txData.token1_address.toLowerCase()}
+            tokenAddress={token1Address.toLowerCase()}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
         </YPartyContent>
 
       </CenterContentContainer>
       <a
-        href={`https://etherscan.io/tx/${txData.hash}`}
+        href={`https://etherscan.io/tx/${hash}`}
         rel="noreferrer"
         target="_blank"
       >
