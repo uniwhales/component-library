@@ -44,9 +44,10 @@ export const FeedCardItem = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={Math.random()}
+      key={txData.hash}
       isMulti={isMulti}
     >
+      {console.log('hello')}
       <TxTypeWrapper>
         <IconContainer>
           <ChainIcon><IconWrapper icon={(chainIcons as any)[txData.chain]} height="14px" width="14px" /></ChainIcon>

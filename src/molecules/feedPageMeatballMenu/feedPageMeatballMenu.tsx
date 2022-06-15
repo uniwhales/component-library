@@ -44,7 +44,7 @@ export const FeedPageMeatballMenu = ({
           open sea
         </Text>
       </MeatballRow>
-      <MeatballRow onClick={share} git s>
+      <MeatballRow onClick={share}>
         <IconWrapper
           fill={theme.textShades.SHADE_MINUS_2}
           icon={<TelegramStandard />}
