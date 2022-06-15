@@ -21,6 +21,7 @@ import {
   SecondaryActionContainer,
   ChainIcon,
   DexIcon,
+  TokenIcon,
 } from './feedCardItem.styles';
 import { chainIcons, dexIcons } from './icons';
 import { FeedCardItemProps } from './types';
@@ -61,30 +62,18 @@ export const FeedCardItem = (
       <CenterContentContainer>
         <XPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token0_amount).toFixed(4)}</Text>
-          <div
-            style={{
-              height: 32,
-              width: 32,
-              backgroundImage: `url(${LogoUrlBase}${txData.token0_address.toLowerCase()}.jpg)`,
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              borderRadius: '50%',
-            }}
+          <TokenIcon
+            baseUrl={LogoUrlBase}
+            tokenAddress={txData.token0_address.toLowerCase()}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
         </XPartyContent>
         <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(txData.token1_amount).toFixed(4)}</Text>
-          <div
-            style={{
-              height: 32,
-              width: 32,
-              backgroundImage: `url(${LogoUrlBase}${txData.token1_address.toLowerCase()}.jpg)`,
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              borderRadius: '50%',
-            }}
+          <TokenIcon
+            baseUrl={LogoUrlBase}
+            tokenAddress={txData.token1_address.toLowerCase()}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
         </YPartyContent>

@@ -59,25 +59,7 @@ export const dexIcons: Readonly<{
   CurveV2: <CurveColor />,
 };
 
-export const chainIcons: Readonly<{
-  'arbitrum': JSX.Element,
-  'aurora': JSX.Element,
-  'avalanche': JSX.Element,
-  'binance': JSX.Element,
-  'boba': JSX.Element,
-  'cielo': JSX.Element,
-  'curve': JSX.Element,
-  'ethereum': JSX.Element,
-  'fantom': JSX.Element,
-  'metis': JSX.Element,
-  'near': JSX.Element,
-  'optimism': JSX.Element,
-  'polygon': JSX.Element,
-  'sushiswap': JSX.Element,
-  'terra': JSX.Element,
-  'uniswap': JSX.Element,
-  'uniWhales': JSX.Element,
-}> = {
+export const chainIcons = {
   arbitrum: <ArbitrumColor />,
   aurora: <AuroraColor />,
   avalanche: <AvalancheColor />,

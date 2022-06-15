@@ -107,3 +107,12 @@ export const SecondaryActionContainer = Styled.div`
   width: 10%;
   justify-content: flex-end;
 `;
+
+export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
+  height: 32px;
+  width: 32px;
+  background-image: ${({ baseUrl, tokenAddress }) => `url(${baseUrl}${tokenAddress}.jpg)`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+`;
