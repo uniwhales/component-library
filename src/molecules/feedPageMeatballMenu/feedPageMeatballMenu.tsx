@@ -5,16 +5,17 @@ import {
 } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
+import { Theme } from '../../theme';
 import { MeatballContainer, MeatballRow } from './feedPageMeatballMenu.styles';
-import { MeatballMenuProps } from './types';
+import { FeedPageMeatballMenuProps } from './types';
 
 export const FeedPageMeatballMenu = ({
   goToItem, share, openSeaLink,
-}: MeatballMenuProps) => {
-  const theme: any = useTheme();
+}: FeedPageMeatballMenuProps) => {
+  const theme = useTheme() as typeof Theme;
   return (
     <MeatballContainer>
-      <MeatballRow>
+      <MeatballRow onClick={goToItem}>
         <IconWrapper
           fill={theme.textShades.SHADE_MINUS_2}
           icon={<ImageIcon />}
@@ -24,7 +25,6 @@ export const FeedPageMeatballMenu = ({
           height="18px"
           width="18px"
           fill={theme.textShades.SHADE_MINUS_2}
-          onClick={goToItem}
           icon={<LinkIcon />}
           cursor="pointer"
         />
@@ -44,7 +44,7 @@ export const FeedPageMeatballMenu = ({
           open sea
         </Text>
       </MeatballRow>
-      <MeatballRow>
+      <MeatballRow onClick={share} git s>
         <IconWrapper
           fill={theme.textShades.SHADE_MINUS_2}
           icon={<TelegramStandard />}
@@ -54,7 +54,6 @@ export const FeedPageMeatballMenu = ({
           height="18px"
           width="18px"
           fill={theme.textShades.SHADE_MINUS_2}
-          onClick={share}
           icon={<CopyStandard />}
           cursor="pointer"
         />

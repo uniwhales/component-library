@@ -1,6 +1,6 @@
 import { Styled } from '../../theme';
 
-export const MeatballRow = Styled.div`
+export const KebabRow = Styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
@@ -9,20 +9,20 @@ export const MeatballRow = Styled.div`
   cursor: pointer;
 `;
 
-export const MeatballContainer = Styled.div`
+export const KebabContainer = Styled.div`
   display: flex;
   width: fit-content;
   flex-direction: column;
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
-   ${MeatballRow}:nth-child(2n) {
+   ${KebabRow}:nth-child(2n) {
    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
   };
-  ${MeatballRow}:first-child {
+  ${KebabRow}:first-child {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
   };
-  ${MeatballRow}:last-child {
+  ${KebabRow}:last-child {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
   };
