@@ -65,6 +65,12 @@ export * from './generalIcons/filledStyle/DownloadStandard';
 export * from './generalIcons/filledStyle/AllIcon';
 export * from './generalIcons/filledStyle/StarIcon';
 export * from './generalIcons/filledStyle/ImageIcon';
+export * from './generalIcons/filledStyle/AllStandard';
+export * from './generalIcons/filledStyle/CSVDocStandard';
+export * from './generalIcons/filledStyle/GlobeStandard';
+export * from './generalIcons/filledStyle/MinusStandard';
+export * from './generalIcons/filledStyle/TckSquareStandard';
+export * from './generalIcons/filledStyle/WrapStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

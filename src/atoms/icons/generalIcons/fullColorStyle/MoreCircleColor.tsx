@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const moreCircleColor = () => (
+export const MoreCircleColor = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
