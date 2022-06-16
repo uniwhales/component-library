@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof HintsAndHovers>;
 
 const Wrapper = Styled.div`
-  margin-left: 100px;
+  margin-left: 400px;
   margin-top: 100px;
 `;
 
