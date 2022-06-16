@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof FeedCard> = () => (
       return (
         <FeedCard
           datetime={firstTransactionTime}
-          key={txKeys[index]}
+          key={firstTxKey}
           transactions={transactions[txKeys[0]]}
           moreThanFiveTxs={transactions[txKeys[0]].length > 1}
           onPause={() => console.log('onPause')}
