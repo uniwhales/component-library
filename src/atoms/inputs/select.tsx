@@ -125,13 +125,15 @@ const CheckBoxOption = (props:any) => {
 };
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder,
+  options, readOnly, onChange, value, isMulti = true, isCheckBox,
+  placeholder, isDisabled = false,
 }:any) => {
   const theme = useTheme();
   return (
     <StyledSelect
       options={options}
       isMulti={isMulti}
+      isDisabled={isDisabled}
       theme={theme as any}
       isOptionDisabled={() => readOnly}
       isSearchable={false}
