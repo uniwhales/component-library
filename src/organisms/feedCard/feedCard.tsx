@@ -76,7 +76,13 @@ export const FeedCard = (
         </TransactionsWrapper>
         {moreThanFiveTxs && isOpen && transactionsToDisplay.length < 6 && (
           <SeeMoreContainer onClick={showAllTransactions}>
-            <IconWrapper fill={theme.textShades.SHADE_MINUS_2} height="16px" width="16px" icon={<PlusStandard />} />
+            <IconWrapper
+              cursor="pointer"
+              fill={theme.textShades.SHADE_MINUS_2}
+              height="16px"
+              width="16px"
+              icon={<PlusStandard />}
+            />
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Load More</Text>
           </SeeMoreContainer>
         )}

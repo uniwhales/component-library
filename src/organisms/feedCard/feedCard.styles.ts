@@ -52,7 +52,16 @@ export const SeeMoreContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  justify-content: center;
   cursor: pointer;
   padding: 4px 0;
+  width: fit-content;
+  margin: auto;
+  &:hover {
+    p {
+    color: ${(props) => props.theme.colors.primary.UWL_BLUE}
+    }
+    svg {
+      fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+    }
+  }
 `;
