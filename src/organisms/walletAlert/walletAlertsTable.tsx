@@ -9,6 +9,11 @@ import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CrossIcon, EditStandard } from '../../atoms/icons';
 
+export interface BotIdArray {
+  id: number;
+  value: string;
+  label: string;
+}
 export interface WalletAlertsTableProps {
   label?: string;
   wallet: string;
@@ -19,7 +24,9 @@ export interface WalletAlertsTableProps {
   removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
-  filters: any
+  filters: any;
+  botIdArray: BotIdArray[]
+  bot_id: BotIdArray
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
   position: relative;
@@ -77,6 +84,7 @@ const Overlay = Styled.div`
 
 export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
+  bot_id, botIdArray,
 }:WalletAlertsTableProps) => {
   const theme:any = useTheme();
   return (
@@ -98,6 +106,11 @@ export const WalletAlertsTable = ({
             isOn={isActive}
             onClick={() => setIsActive(id, isActive)}
           />
+        </Group>
+      </Section>
+      <Section flex={1}>
+        <Group>
+          <Select readOnly placeholder="Bot ID" options={botIdArray} value={bot_id} />
         </Group>
       </Section>
       <Section flex={1}>
