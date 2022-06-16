@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof FeedCard> = () => (
   <>
-    {mockData.data.map((transactions, index: number) => {
+    {mockData.data.map((transactions) => {
       const txKeys: string[] = Object.keys(transactions);
       const firstTxKey: string = txKeys[0];
       const firstTransactionTime: number = transactions[firstTxKey][0].timestamp;
