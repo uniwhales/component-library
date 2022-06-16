@@ -86,8 +86,9 @@ export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
+  padding: 4px;
   border-radius: 50%;
   cursor: pointer;
   background: ${(props) => (props.isOpen ? props.theme.contrastColor.HIGH_CONTRAST : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};

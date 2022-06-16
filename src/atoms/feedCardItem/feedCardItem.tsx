@@ -78,7 +78,7 @@ export const FeedCardItem = (
         <XPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token0Amount).toFixed(4)}</Text>
           <HintsAndHovers
-            id={token0Address}
+            id={`${token0Address}${hash}`}
             place="top"
             hint={token0Symbol}
             icon={(
@@ -94,7 +94,7 @@ export const FeedCardItem = (
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token1Amount).toFixed(4)}</Text>
           <HintsAndHovers
-            id={token1Address}
+            id={`${token1Address}${hash}`}
             place="top"
             hint={token1Symbol}
             icon={(

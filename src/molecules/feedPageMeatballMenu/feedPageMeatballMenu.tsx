@@ -60,7 +60,7 @@ export const FeedPageMeatballMenu = ({
               fill={theme.textShades.SHADE_MINUS_2}
               icon={<TelegramStandard />}
             />
-            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Go to Item Page</Text>
+            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Share</Text>
             <IconWrapper
               height="18px"
               width="18px"
