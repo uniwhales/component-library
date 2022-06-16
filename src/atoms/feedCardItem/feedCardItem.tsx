@@ -25,6 +25,7 @@ import {
   ChainIcon,
   DexIcon,
   TokenIcon,
+  StyledLink,
 } from './feedCardItem.styles';
 import { chainIcons, dexIcons } from './icons';
 import { FeedCardItemProps } from './types';
@@ -103,18 +104,16 @@ export const FeedCardItem = (
               />
             )}
           />
-
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
         </YPartyContent>
-
       </CenterContentContainer>
-      <a
+      <StyledLink
         href={`https://etherscan.io/tx/${hash}`}
         rel="noreferrer"
         target="_blank"
       >
-        <IconWrapper cursor="pointer" height="16px" width="16px" fill={theme.contrastColor.LOW_CONTRAST} icon={<LinkIcon />} />
-      </a>
+        <LinkIcon />
+      </StyledLink>
       <SecondaryActionContainer>
         {hover && !isMulti && (
           <HoverItemsContainer>
@@ -123,7 +122,6 @@ export const FeedCardItem = (
               share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
               openSeaLink={`https://etherscan.io/tx/${hash}`}
             />
-
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </HoverItemsContainer>
         )}

@@ -98,6 +98,9 @@ export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
     fill: ${(props) => (props.isOpen ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.contrastColor.HIGH_CONTRAST)};
     transform: ${(props) => (props.isOpen ? 'rotateZ(-180deg)' : undefined)};
     transition: all 0.4s;
+      &:hover {
+    fill: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  }
   }
 `;
 
@@ -115,4 +118,16 @@ export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 50%;
+`;
+
+export const StyledLink = Styled.a`
+  cursor: pointer;
+  svg {
+    height: 16px;
+    width: 16px;
+    fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
+    &:hover {
+     fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+    }
+  }
 `;
