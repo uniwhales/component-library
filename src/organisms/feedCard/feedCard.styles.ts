@@ -45,16 +45,14 @@ export const DateTime = Styled.div`
   color: ${(props) => props.theme.colors.primary.WATER_BLUE};
   font-weight: 700;
   font-size: 14px;
-  &:first-child {
-    margin-right: 4px!important;
-  };
-  &:last-child: {
-    margin-left: 4px!important;
-  }
+  gap: 4px;
 `;
 
 export const SeeMoreContainer = Styled.div`
   display: flex;
+  align-items: center;
+  gap: 5px;
   justify-content: center;
   cursor: pointer;
+  padding: 4px 0;
 `;

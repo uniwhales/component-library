@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { Identicon } from '../../atoms/icons';
+import { Identicon, PlusStandard } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { FeedCardItem } from '../../atoms/feedCardItem/feedCardItem';
 import { Text } from '../../atoms/texts/text';
@@ -74,7 +74,12 @@ export const FeedCard = (
             ),
           )}
         </TransactionsWrapper>
-        {moreThanFiveTxs && isOpen && transactionsToDisplay.length < 6 && <SeeMoreContainer onClick={showAllTransactions}><Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>See More</Text></SeeMoreContainer>}
+        {moreThanFiveTxs && isOpen && transactionsToDisplay.length < 6 && (
+          <SeeMoreContainer onClick={showAllTransactions}>
+            <IconWrapper fill={theme.textShades.SHADE_MINUS_2} height="16px" width="16px" icon={<PlusStandard />} />
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Load More</Text>
+          </SeeMoreContainer>
+        )}
       </MainCardContent>
       <FeedPageKebabMenu
         onPause={onPause}
