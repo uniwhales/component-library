@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { HintsAndHovers } from './hintsAndHovers';
 import { Styled } from '../../theme';
+import { Arbitrum } from '../../atoms/icons';
 
 export default {
   title: 'Organisms/HintsAndHovers',
@@ -23,6 +24,22 @@ export const Primary = Template.bind({});
 Primary.args = {
   hint: 'test',
   id: 'primary',
+};
+
+export const Clickable = Template.bind({});
+
+Clickable.args = {
+  hint: 'clickable',
+  id: 'clickable',
+  event: 'click',
+};
+
+export const CustomIcon = Template.bind({});
+
+CustomIcon.args = {
+  hint: 'Custom Icon',
+  id: 'customIcon',
+  icon: <Arbitrum />,
 };
 
 export const Top = Template.bind({});

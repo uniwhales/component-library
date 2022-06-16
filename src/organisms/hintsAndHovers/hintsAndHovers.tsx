@@ -6,7 +6,9 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { HintAndHoversWrapper, Tooltip } from './styles';
 import { HintsAndHoversProps } from './types';
 
-export const HintsAndHovers: FC<HintsAndHoversProps> = ({ id, place, hint }) => {
+export const HintsAndHovers: FC<HintsAndHoversProps> = ({
+  id, place, hint, icon, event,
+}) => {
   const theme: any = useTheme();
   return (
     <HintAndHoversWrapper
@@ -14,12 +16,13 @@ export const HintsAndHovers: FC<HintsAndHoversProps> = ({ id, place, hint }) => 
       data-html
       data-tip={typeof hint === 'string' ? hint : ReactDOMServer.renderToString(hint)}
     >
-      <IconWrapper fill={theme.colors.secondary.TURQUOISE} icon={<InfoStandard />} />
+      <IconWrapper fill={theme.colors.secondary.TURQUOISE} icon={icon || <InfoStandard />} />
       <Tooltip
         backgroundColor={theme.containerAndCardShades.BG_SHADE_PLUS_4}
         textColor={theme.textShades.SHADE_MINUS_3}
         id={id}
         place={place}
+        event={event}
         effect="solid"
         html
       />
