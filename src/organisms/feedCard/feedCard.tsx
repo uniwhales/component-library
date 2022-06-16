@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { Identicon, Kebab } from '../../atoms/icons';
+import { Identicon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { FeedCardItem } from '../../atoms/feedCardItem/feedCardItem';
 import { Text } from '../../atoms/texts/text';
@@ -10,12 +10,16 @@ import {
   FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
 } from './feedCard.styles';
 import { FeedCardProps, Transaction } from './types';
+import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
 
 export const FeedCard = (
   {
     transactions,
     datetime,
     moreThanFiveTxs,
+    onPause,
+    onRemove,
+    onConfigure,
   }: FeedCardProps,
 ) => {
   const theme = useTheme() as typeof Theme;
@@ -72,7 +76,11 @@ export const FeedCard = (
         </TransactionsWrapper>
         {moreThanFiveTxs && isOpen && transactionsToDisplay.length < 6 && <SeeMoreContainer onClick={showAllTransactions}><Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>See More</Text></SeeMoreContainer>}
       </MainCardContent>
-      <IconWrapper cursor="pointer" icon={<Kebab />} />
+      <FeedPageKebabMenu
+        onPause={onPause}
+        onRemove={onRemove}
+        onConfigure={onConfigure}
+      />
     </Wrapper>
   );
 };

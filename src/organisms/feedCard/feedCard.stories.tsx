@@ -21,6 +21,9 @@ const Template: ComponentStory<typeof FeedCard> = () => (
           key={txKeys[index]}
           transactions={transactions[txKeys[0]]}
           moreThanFiveTxs={transactions[txKeys[0]].length > 1}
+          onPause={() => console.log('onPause')}
+          onRemove={() => console.log('onRemove')}
+          onConfigure={() => console.log('onConfigure')}
         />
       );
     })}

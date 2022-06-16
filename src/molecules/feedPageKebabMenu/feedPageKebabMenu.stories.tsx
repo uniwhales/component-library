@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FeedPageKebabMenu } from './feedPageKebabMenu';
+import { Wrapper } from './feedPageKebabMenu.styles';
 
 export default {
   title: 'Molecules/FeedPageKebab',
@@ -15,11 +16,13 @@ export default {
 } as ComponentMeta<typeof FeedPageKebabMenu>;
 
 const Template: ComponentStory<typeof FeedPageKebabMenu> = () => (
-  <FeedPageKebabMenu
-    onPause={() => console.log('onPause')}
-    onRemove={() => console.log('onRemove')}
-    onConfigure={() => console.log('onConfigure')}
-  />
+  <Wrapper>
+    <FeedPageKebabMenu
+      onPause={() => console.log('onPause')}
+      onRemove={() => console.log('onRemove')}
+      onConfigure={() => console.log('onConfigure')}
+    />
+  </Wrapper>
 );
 
 export const FeedPageKebab = Template.bind({});

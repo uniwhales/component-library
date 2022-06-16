@@ -9,4 +9,7 @@ export interface FeedCardProps {
   transactions: Transaction[];
   datetime: number;
   moreThanFiveTxs: boolean;
+  onPause: () => void;
+  onRemove: () => void;
+  onConfigure: () => void;
 }

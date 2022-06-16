@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { HintsAndHovers } from '../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import {
   ChevronDownIcon,
-  LinkIcon, Meatball, TwitterColor,
+  LinkIcon,
+  TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -46,6 +49,8 @@ export const FeedCardItem = (
     token0_address: token0Address,
     token1_amount: token1Amount,
     token1_address: token1Address,
+    token0_symbol: token0Symbol,
+    token1_symbol: token1Symbol,
   } = txData;
   const token0Usd = `($${token0Amount.toFixed(2)})`;
   const token1Usd = `($${token1Amount.toFixed(2)})`;
@@ -71,19 +76,34 @@ export const FeedCardItem = (
       <CenterContentContainer>
         <XPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token0Amount).toFixed(4)}</Text>
-          <TokenIcon
-            baseUrl={LogoUrlBase}
-            tokenAddress={token0Address.toLowerCase()}
+          <HintsAndHovers
+            id={token0Address}
+            place="top"
+            hint={token0Symbol}
+            icon={(
+              <TokenIcon
+                baseUrl={LogoUrlBase}
+                tokenAddress={token0Address.toLowerCase()}
+              />
+            )}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
         </XPartyContent>
         <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         <YPartyContent>
           <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token1Amount).toFixed(4)}</Text>
-          <TokenIcon
-            baseUrl={LogoUrlBase}
-            tokenAddress={token1Address.toLowerCase()}
+          <HintsAndHovers
+            id={token1Address}
+            place="top"
+            hint={token1Symbol}
+            icon={(
+              <TokenIcon
+                baseUrl={LogoUrlBase}
+                tokenAddress={token1Address.toLowerCase()}
+              />
+            )}
           />
+
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
         </YPartyContent>
 
@@ -98,13 +118,22 @@ export const FeedCardItem = (
       <SecondaryActionContainer>
         {hover && !isMulti && (
           <HoverItemsContainer>
-            <IconWrapper cursor="pointer" icon={<Meatball />} />
+            <FeedPageMeatballMenu
+              goToItem={() => console.log('go to item')}
+              share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
+              openSeaLink={`https://etherscan.io/tx/${hash}`}
+            />
+
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </HoverItemsContainer>
         )}
         {hover && isMulti && !isFirst && (
           <HoverItemsContainer>
-            <IconWrapper cursor="pointer" icon={<Meatball />} />
+            <FeedPageMeatballMenu
+              goToItem={() => console.log('go to item')}
+              share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
+              openSeaLink={`https://etherscan.io/tx/${hash}`}
+            />
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </HoverItemsContainer>
         )}
