@@ -9,6 +9,7 @@ export * from './atoms/inputs/select';
 export * from './atoms/tags/tag';
 export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
+export * from './atoms/toggles/themeToggle';
 export * from './atoms/chips/filterChip';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
@@ -22,6 +23,7 @@ export * from './molecules/tokenPoolCard/tokenPoolCard';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
+export * from './organisms/sidebar/sidebar';
 // theme
 export * from './atoms/icons/index';
 export {

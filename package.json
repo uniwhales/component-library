@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "0.0.84-development",
+  "version": "0.0.87-development",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
@@ -29,7 +29,8 @@
     "@storybook/addon-links": "^6.4.18",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.18",
-    "@types/react": "^17.0.38",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
     "@types/react-table": "^7.7.12",
     "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
@@ -43,6 +44,8 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "rollup": "^2.71.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -51,9 +54,7 @@
     "rollup-plugin-uglify": "^6.0.4",
     "sass": "^1.49.7",
     "sass-loader": "^10.2.1",
-    "typescript": "^4.5.5",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "typescript": "^4.5.5"
   },
   "peerDependencies": {
     "react": "^18.1.0",
