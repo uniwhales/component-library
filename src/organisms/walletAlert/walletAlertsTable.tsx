@@ -84,7 +84,7 @@ const Overlay = Styled.div`
 
 export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
-  bot_id, botIdArray,
+  bot_id,
 }:WalletAlertsTableProps) => {
   const theme:any = useTheme();
   return (
@@ -110,7 +110,12 @@ export const WalletAlertsTable = ({
       </Section>
       <Section flex={1}>
         <Group>
-          <Select readOnly placeholder="Bot ID" options={botIdArray} value={bot_id} />
+          <Text size="M-Regular">
+            <>
+              bot #
+              {bot_id?.id}
+            </>
+          </Text>
         </Group>
       </Section>
       <Section flex={1}>
