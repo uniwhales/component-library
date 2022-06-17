@@ -110,9 +110,11 @@ export const WalletAlertsTable = ({
       </Section>
       <Section flex={1}>
         <Group>
+          {bot_id && (
           <Text size="M-Regular">
             {`bot #${bot_id.id}`}
           </Text>
+          )}
         </Group>
       </Section>
       <Section flex={1}>
