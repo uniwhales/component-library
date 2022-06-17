@@ -102,7 +102,7 @@ export const WalletAlertsTable = ({
       </Section>
       <Section flex={1}>
         <Group>
-          <Select readOnly placeholder="Alert Filters" options={chains} value={filters} />
+          <Select isCheckBox readOnly onChange={() => {}} placeholder="Alert Filters" options={chains} value={filters} />
         </Group>
       </Section>
       <Section flex={1}>

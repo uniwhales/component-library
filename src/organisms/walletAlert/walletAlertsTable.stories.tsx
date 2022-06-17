@@ -17,11 +17,17 @@ Primary.args = {
   id: 123,
   isActive: false,
   isLoading: false,
+  filters: [
+    { value: 'one', label: 'one' },
+    { value: 'two', label: 'two' },
+    { value: 'three', label: 'three' },
+  ],
   setIsActive: (e, status) => console.log(e, status),
   chains: [
     { value: 'one', label: 'one' },
     { value: 'two', label: 'two' },
     { value: 'three', label: 'three' },
+    { value: 'four', label: 'four' },
   ],
   editWallet: (id) => console.log(`Edit wallet with id ${id}`),
   removeWallet: (id) => console.log(`Remove wallet with id ${id}`),

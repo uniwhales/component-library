@@ -72,17 +72,19 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontWeight: isFocused ? 'bold' : 'normal',
   }),
   option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly,
+    isSelected, theme, readOnly, isFocused, isMulti, isCheckBox,
   }: StyledProps) => ({
     ...defaultStyles,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
-    background: isSelected ? theme.colors.primary.WATER_BLUE
+    background: isSelected && (!isMulti || (isMulti && !isCheckBox))
+      ? theme.colors.primary.WATER_BLUE
       : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
-      background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+      background: !readOnly && !isSelected
+        ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     },
   }),
   menu: (defaultStyles) => ({
@@ -92,22 +94,25 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   menuList: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    background: theme.containerAndCardShades.SHADE_PLUS_2,
+    background: theme.containerAndCardShades.SHADE_PLUS_1,
     color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
     borderRadius: '0px 0px 10px 10px',
     zIndex: 10,
+    'div:nth-child(2n)': {
+      background: theme.containerAndCardShades.SHADE_PLUS_2,
+    },
   }),
 
 };
 const CheckBoxOption = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox,
+    label, isSelected, isCheckBox,
   } = props;
   return (
     <div>
       <components.Option {...props}>
-        {!readOnly && isCheckBox ? (
+        {isCheckBox ? (
           <>
             <label>
               {label}
@@ -124,16 +129,27 @@ const CheckBoxOption = (props: any) => {
   );
 };
 
+type SelectProps = {
+  options: any,
+  readOnly?: boolean,
+  onChange: (e: any) => void,
+  value: any,
+  isMulti?: boolean,
+  isCheckBox?: boolean,
+  placeholder: string,
+  isXL?: boolean
+};
+
 export const Select = ({
   options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
-}: any) => {
+}: SelectProps) => {
   const theme = useTheme();
   return (
     <StyledSelect
       options={options}
       isMulti={isMulti}
       theme={theme as any}
-      isOptionDisabled={() => readOnly}
+      isOptionDisabled={() => !!readOnly}
       isSearchable={false}
       styles={colourStyles as StylesConfig}
       controlShouldRenderValue={!isMulti}

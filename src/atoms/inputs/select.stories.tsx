@@ -24,6 +24,6 @@ Primary.args = {
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
-  closeMenuOnSelect: true,
+  isCheckBox: false,
   isXL: false,
 };
