@@ -21,6 +21,7 @@ export * from './molecules/tokenPoolCard/tokenPoolCard';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
+export * from './organisms/hintsAndHovers/hintsAndHovers';
 // theme
 export * from './atoms/icons/index';
 export {
