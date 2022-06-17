@@ -4,11 +4,11 @@ import {
   PrimaryChip, SecondaryChip, EditableChip, TertiaryChip,
 } from './chip.styles';
 
-export const Chip = ({ type, children }: ChipProps) => {
+export const Chip = ({ type, children, secondaryTypeBgColor }: ChipProps) => {
   switch (type) {
     case 'secondary':
       return (
-        <SecondaryChip type={type}>
+        <SecondaryChip bgColor={secondaryTypeBgColor} type={type}>
           {children}
         </SecondaryChip>
       );
