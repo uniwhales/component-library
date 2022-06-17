@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof FeedCard> = () => (
     {mockData.data.map((transactions) => {
       const txKeys: string[] = Object.keys(transactions);
       const firstTxKey: string = txKeys[0];
-      const firstTransactionTime: number = transactions[firstTxKey][0].timestamp;
+      const firstTransactionTime: number = Object.values(transactions)[0].timestamp;
       return (
         <FeedCard
           datetime={firstTransactionTime}

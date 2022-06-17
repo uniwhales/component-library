@@ -9,8 +9,9 @@ import { getDate } from '../../utils/getDate';
 import {
   FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
 } from './feedCard.styles';
-import { FeedCardProps, Transaction } from './types';
+import { FeedCardProps } from './types';
 import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
+import { TransactionData } from '../../atoms/feedCardItem/types';
 
 export const FeedCard = (
   {
@@ -25,7 +26,9 @@ export const FeedCard = (
   const theme = useTheme() as typeof Theme;
   const firstItem = transactions[0];
   const firstFiveItems = transactions.slice(0, 5);
-  const [transactionsToDisplay, setTransactionsToDisplay] = useState<Transaction[]>([firstItem]);
+  const [
+    transactionsToDisplay,
+    setTransactionsToDisplay] = useState<TransactionData[]>([firstItem]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
