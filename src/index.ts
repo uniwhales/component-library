@@ -10,6 +10,7 @@ export * from './atoms/tags/tag';
 export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
+// eslint-disable-next-line import/no-cycle
 export * from './atoms/chips/filterChip';
 export * from './atoms/feedCardItem/feedCardItem';
 // molecules
@@ -28,6 +29,11 @@ export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
 export * from './organisms/sidebar/sidebar';
 export * from './organisms/feedCard/feedCard';
+export * from './organisms/hintsAndHovers/hintsAndHovers';
+// eslint-disable-next-line import/no-cycle
+export * from './organisms/actionBar/actionBar';
+export * from './organisms/feedPageNavBar/feedPageNavBar';
+export * from './organisms/feedPageScollableContent/feedPageScrollableContent';
 // theme
 export * from './atoms/icons/index';
 export {
