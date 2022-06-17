@@ -18,7 +18,7 @@ export default {
 const Template: ComponentStory<typeof FeedPageMeatballMenu> = () => (
   <Wrapper>
     <FeedPageMeatballMenu
-      goToItem={() => console.log('go to item')}
+      itemLink="https://opensea.io"
       share={() => console.log('share')}
       openSeaLink="https://opensea.io"
     />

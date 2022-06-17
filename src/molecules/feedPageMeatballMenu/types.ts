@@ -1,5 +1,5 @@
 export interface FeedPageMeatballMenuProps {
-  goToItem: () => void;
+  itemLink: string;
   share: () => void;
   openSeaLink: string;
 }

@@ -11,7 +11,7 @@ import { Container, MeatballContainer, MeatballRow } from './feedPageMeatballMen
 import { FeedPageMeatballMenuProps } from './types';
 
 export const FeedPageMeatballMenu = ({
-  goToItem, share, openSeaLink,
+  itemLink, share, openSeaLink,
 }: FeedPageMeatballMenuProps) => {
   const theme = useTheme() as typeof Theme;
   const [showMenu, setShowMenu] = useState(false);
@@ -26,20 +26,22 @@ export const FeedPageMeatballMenu = ({
       />
       {showMenu && (
         <MeatballContainer>
-          <MeatballRow onClick={goToItem}>
-            <IconWrapper
-              fill={theme.textShades.SHADE_MINUS_2}
-              icon={<ImageIcon />}
-            />
-            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Go to Item Page</Text>
-            <IconWrapper
-              height="18px"
-              width="18px"
-              fill={theme.textShades.SHADE_MINUS_2}
-              icon={<LinkIcon />}
-              cursor="pointer"
-            />
-          </MeatballRow>
+          <a href={itemLink}>
+            <MeatballRow>
+              <IconWrapper
+                fill={theme.textShades.SHADE_MINUS_2}
+                icon={<ImageIcon />}
+              />
+              <Text color={theme.textShades.SHADE_MINUS_2} size="M-Regular">Go to Item Page</Text>
+              <IconWrapper
+                height="18px"
+                width="18px"
+                fill={theme.textShades.SHADE_MINUS_2}
+                icon={<LinkIcon />}
+                cursor="pointer"
+              />
+            </MeatballRow>
+          </a>
           <MeatballRow>
             <IconWrapper
               fill={theme.textShades.SHADE_MINUS_2}

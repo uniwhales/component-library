@@ -118,7 +118,7 @@ export const FeedCardItem = (
         {hover && !isMulti && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
-              goToItem={() => console.log('go to item')}
+              itemLink={`https://etherscan.io/tx/${hash}`}
               share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
               openSeaLink={`https://etherscan.io/tx/${hash}`}
             />
@@ -128,7 +128,7 @@ export const FeedCardItem = (
         {hover && isMulti && !isFirst && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
-              goToItem={() => console.log('go to item')}
+              itemLink={`https://etherscan.io/tx/${hash}`}
               share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
               openSeaLink={`https://etherscan.io/tx/${hash}`}
             />
