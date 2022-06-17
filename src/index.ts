@@ -11,6 +11,7 @@ export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
 export * from './atoms/chips/filterChip';
+export * from './atoms/feedCardItem/feedCardItem';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
@@ -20,10 +21,13 @@ export * from './molecules/txTableList/txTableList';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
 // eslint-disable-next-line import/no-cycle
 export * from './molecules/tokenPoolCard/tokenPoolCard';
+export * from './molecules/feedPageKebabMenu/feedPageKebabMenu';
+export * from './molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
 export * from './organisms/sidebar/sidebar';
+export * from './organisms/feedCard/feedCard';
 // theme
 export * from './atoms/icons/index';
 export {
