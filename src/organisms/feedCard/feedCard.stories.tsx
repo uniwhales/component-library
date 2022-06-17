@@ -12,15 +12,14 @@ export default {
 const Template: ComponentStory<typeof FeedCard> = () => (
   <>
     {mockData.data.map((transactions) => {
-      const txKeys: string[] = Object.keys(transactions);
-      const firstTxKey: string = txKeys[0];
-      const firstTransactionTime: number = Object.values(transactions)[0].timestamp;
+      const firstTxKey: string = Object.values(transactions)[0][0].hash;
+      const firstTransactionTime: number = Object.values(transactions)[0][0].timestamp;
       return (
         <FeedCard
           datetime={firstTransactionTime}
           key={firstTxKey}
-          transactions={transactions[txKeys[0]]}
-          moreThanFiveTxs={transactions[txKeys[0]].length > 1}
+          transactions={Object.values(transactions)[0]}
+          moreThanFiveTxs={Object.values(transactions)[0].length > 1}
           onPause={() => console.log('onPause')}
           onRemove={() => console.log('onRemove')}
           onConfigure={() => console.log('onConfigure')}
