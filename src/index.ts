@@ -12,6 +12,7 @@ export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
 // eslint-disable-next-line import/no-cycle
 export * from './atoms/chips/filterChip';
+export * from './atoms/connectWalletButton/connectWalletButton';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
@@ -29,7 +30,7 @@ export * from './organisms/hintsAndHovers/hintsAndHovers';
 // eslint-disable-next-line import/no-cycle
 export * from './organisms/actionBar/actionBar';
 export * from './organisms/feedPageNavBar/feedPageNavBar';
-export * from './organisms/feedPageScollableContent/feedPageScrollableContent';
+export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 // theme
 export * from './atoms/icons/index';
 export {
