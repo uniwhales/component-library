@@ -36,6 +36,7 @@ export const Modal = ({
         </ModalComponent>
       </ModalWrapper>
     </>,
+    // @ts-ignore
     document.getElementById('modal'),
   );
 };

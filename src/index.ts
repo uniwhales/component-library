@@ -21,6 +21,7 @@ export * from './molecules/txTableList/txTableList';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
 // eslint-disable-next-line import/no-cycle
 export * from './molecules/tokenPoolCard/tokenPoolCard';
+export * from './molecules/modals/modal';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
