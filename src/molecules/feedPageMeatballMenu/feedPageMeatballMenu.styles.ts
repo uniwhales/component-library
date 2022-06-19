@@ -47,3 +47,7 @@ export const MeatballContainer = Styled.div`
     border-bottom-right-radius: 12px;
   };
 `;
+
+export const StyledLink = Styled.a`
+  text-decoration: none;
+`;

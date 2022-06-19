@@ -57,6 +57,13 @@ export const FeedCardItem = (
   const token1Usd = `($${token1Amount.toFixed(2)})`;
   // TODO: Add all tx types here
   const txTypePreposition = txType === 'swap' ? 'to' : 'text';
+  // calculate hover states
+  const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
+  const showChevron = isMulti && isFirst;
+  // Meatball menu items
+  const goToItem = `https://etherscan.io/tx/${hash}`;
+  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
+  const goToOpensea = `https://etherscan.io/tx/${hash}`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
@@ -108,34 +115,24 @@ export const FeedCardItem = (
         </YPartyContent>
       </CenterContentContainer>
       <StyledLink
-        href={`https://etherscan.io/tx/${hash}`}
+        href={goToItem}
         rel="noreferrer"
         target="_blank"
       >
         <LinkIcon />
       </StyledLink>
       <SecondaryActionContainer>
-        {hover && !isMulti && (
+        {showSecondaryActionArea && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
-              itemLink={`https://etherscan.io/tx/${hash}`}
-              share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
-              openSeaLink={`https://etherscan.io/tx/${hash}`}
+              itemLink={goToItem}
+              share={shareTransaction}
+              openSeaLink={goToOpensea}
             />
             <IconWrapper cursor="pointer" icon={<TwitterColor />} />
           </HoverItemsContainer>
         )}
-        {hover && isMulti && !isFirst && (
-          <HoverItemsContainer>
-            <FeedPageMeatballMenu
-              itemLink={`https://etherscan.io/tx/${hash}`}
-              share={() => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`)}
-              openSeaLink={`https://etherscan.io/tx/${hash}`}
-            />
-            <IconWrapper cursor="pointer" icon={<TwitterColor />} />
-          </HoverItemsContainer>
-        )}
-        {isMulti && isFirst && (
+        {showChevron && (
           <ChevronButton isOpen={isOpen}>
             <IconWrapper onClick={handleToggle} cursor="pointer" icon={<ChevronDownIcon />} />
           </ChevronButton>

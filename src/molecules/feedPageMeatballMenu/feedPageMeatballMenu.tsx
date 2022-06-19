@@ -7,7 +7,9 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
 import { Theme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
-import { Container, MeatballContainer, MeatballRow } from './feedPageMeatballMenu.styles';
+import {
+  Container, MeatballContainer, MeatballRow, StyledLink,
+} from './feedPageMeatballMenu.styles';
 import { FeedPageMeatballMenuProps } from './types';
 
 export const FeedPageMeatballMenu = ({
@@ -26,7 +28,11 @@ export const FeedPageMeatballMenu = ({
       />
       {showMenu && (
         <MeatballContainer>
-          <a href={itemLink}>
+          <StyledLink
+            href={itemLink}
+            rel="noreferrer"
+            target="_blank"
+          >
             <MeatballRow>
               <IconWrapper
                 fill={theme.textShades.SHADE_MINUS_2}
@@ -41,7 +47,7 @@ export const FeedPageMeatballMenu = ({
                 cursor="pointer"
               />
             </MeatballRow>
-          </a>
+          </StyledLink>
           <MeatballRow>
             <IconWrapper
               fill={theme.textShades.SHADE_MINUS_2}
