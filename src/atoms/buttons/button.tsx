@@ -163,7 +163,7 @@ const ButtonSecondaryActionInverse = Styled(Button)`
 const ButtonSpecialSmallNormal = Styled(Button)`
   border-radius: 12px;
   border: none;
-  
+
   ${(props) => props.disabled && css`
     opacity: 0.2;
     background: ${props.theme.colors.system.DISABLED};
@@ -173,20 +173,45 @@ const ButtonSpecialSmallNormal = Styled(Button)`
   // active state
   ${(props) => !props.disabled && css`
     cursor: pointer;
-    background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+    background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
 
     &:hover {
-      background: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+      background: ${props.theme.colors.primary.WATER_BLUE};
     };
     &:active {
       background: ${props.theme.colors.system.WHITE};
+      
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
+      }
     };
   `}
 `;
-const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)`
+const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 32px;
+
+  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
+  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 0;
+
+  svg {
+    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
+    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
+  }
 `;
 
+const ButtonSpecialSmallSubtle = Styled(Button)`
+  background: none;
+  border: none;
+
+  &:hover, &:active {
+    color: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+  }
+`;
 export const ButtonAtom:FC<ButtonProps> = ({
   children,
   buttonVariant,
@@ -238,10 +263,18 @@ export const ButtonAtom:FC<ButtonProps> = ({
         </ButtonSpecialSmallNormal>
       );
     case 'special_small_round':
+    case 'special_tiny_round':
+    case 'special_extra_tiny_round':
       return (
-        <ButtonSpecialSmallRound onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSpecialSmallRound buttonVariant={buttonVariant} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSpecialSmallRound>
+      );
+    case 'special_extra_tiny_subtle':
+      return (
+        <ButtonSpecialSmallSubtle>
+          {children}
+        </ButtonSpecialSmallSubtle>
       );
     default:
       return (
