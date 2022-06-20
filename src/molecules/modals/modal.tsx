@@ -8,6 +8,7 @@ import { ModalProps } from './types';
 export const Modal = ({
   show, toggle, children,
 }: ModalProps) => {
+  const portalDiv = document.getElementById('modal') as HTMLElement;
   if (!show) return null;
   return ReactDom.createPortal(
     <>
@@ -16,6 +17,6 @@ export const Modal = ({
         {children}
       </ModalWrapper>
     </>,
-    document.getElementById('modal'),
+    portalDiv,
   );
 };

@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Modal> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <>
-      <button type="button" onClick={() => setShowModal(!showModal)}>{showModal ? 'Close' : 'Open'}</button>
+      <button type="button" onClick={() => setShowModal(!showModal)}>{showModal ? 'Close Modal' : 'Open Modal '}</button>
       <Modal
         show={showModal}
         toggle={() => setShowModal(!showModal)}
