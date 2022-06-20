@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Chip } from './chip';
-import { StarIcon } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
+import { StarIcon } from '../icons/placeholder/StarIcon';
 
 export default {
   title: 'Atoms/Chips',

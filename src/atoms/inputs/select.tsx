@@ -5,8 +5,8 @@ import ReactSelect, {
 import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
 
-const StyledSelect = Styled(ReactSelect)`
-  max-width: 172px;
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
+  max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
   outline: none;
   input{
     width: fit-content;
@@ -31,12 +31,12 @@ interface StyledProps {
   isSelected?: boolean
   menuIsOpen?: boolean
   theme?: any;
-  readOnly?:boolean;
-  isMulti?:boolean;
+  readOnly?: boolean;
+  isMulti?: boolean;
   isCheckBox?: boolean;
 }
 
-const colourStyles:StylesConfig<StyledProps, false> = {
+const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
@@ -100,7 +100,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
 
 };
-const CheckBoxOption = (props:any) => {
+const CheckBoxOption = (props: any) => {
   const {
     label, isSelected, readOnly, isCheckBox,
   } = props;
@@ -118,22 +118,20 @@ const CheckBoxOption = (props:any) => {
           <label>
             {label}
           </label>
-        ) }
+        )}
       </components.Option>
     </div>
   );
 };
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox,
-  placeholder, isDisabled = false,
-}:any) => {
+  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
+}: any) => {
   const theme = useTheme();
   return (
     <StyledSelect
       options={options}
       isMulti={isMulti}
-      isDisabled={isDisabled}
       theme={theme as any}
       isOptionDisabled={() => readOnly}
       isSearchable={false}
@@ -149,6 +147,7 @@ export const Select = ({
       }}
       onChange={(e) => onChange(e)}
       value={value}
+      isXL={isXL}
     />
   );
 };
