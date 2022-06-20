@@ -24,6 +24,7 @@ export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tokenPoolCard/tokenPoolCard';
 export * from './molecules/feedPageKebabMenu/feedPageKebabMenu';
 export * from './molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+export * from './molecules/modals/modal';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
