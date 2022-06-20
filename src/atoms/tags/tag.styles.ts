@@ -8,7 +8,6 @@ export const CustomTag = Styled.div<Pick<TagProps, 'isOn'> & { background: strin
   width: fit-content;
   background: ${(props) => props.background};
   border: ${(props) => props.border};
-  margin: 8px;
   transition: all .3s;
 `;
 

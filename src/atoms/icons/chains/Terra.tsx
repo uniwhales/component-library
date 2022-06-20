@@ -22,7 +22,7 @@ export const Terra = () => (
       y="8"
       maskUnits="userSpaceOnUse"
     >
-      <path fill="#fff" d="M0 8.334h7.5V23H0V8.334z" />
+      <path d="M0 8.334h7.5V23H0V8.334z" />
     </mask>
     <g mask="url(#mask0_1531_111110)">
       <path

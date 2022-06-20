@@ -68,6 +68,9 @@ export * from './generalIcons/filledStyle/GlobeStandard';
 export * from './generalIcons/filledStyle/MinusStandard';
 export * from './generalIcons/filledStyle/TckSquareStandard';
 export * from './generalIcons/filledStyle/WrapStandard';
+export * from './generalIcons/filledStyle/AllIcon';
+export * from './generalIcons/filledStyle/StarIcon';
+export * from './generalIcons/filledStyle/ImageIcon';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
@@ -147,3 +150,4 @@ export { Usdt } from './tokens/USDT';
 export { Weth } from './tokens/WETH';
 // misc
 export { DashedSpinner } from './miscIcons/DashedSpinner';
+export { WalletIcon } from './miscIcons/WalletIcon';

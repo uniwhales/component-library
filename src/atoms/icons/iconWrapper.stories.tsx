@@ -128,6 +128,7 @@ import {
   WalletColor,
   WebinarColor,
   MinusColor,
+  WalletIcon,
 } from '.';
 
 export default {
@@ -211,7 +212,11 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 );
 
 const Template5: ComponentStory<typeof IconWrapper> = () => (
-  <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
+  <>
+    <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
+    <IconWrapper name="Wallet Icon" icon={<WalletIcon />} />
+  </>
+
 );
 const Template6: ComponentStory<typeof IconWrapper> = () => (
   <>
