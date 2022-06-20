@@ -23,6 +23,12 @@ Primary.args = {
     { value: 'two', label: 'two' },
     { value: 'three', label: 'three' },
   ],
+  botIdArray: [
+    { value: '1', label: '1', id: 1 },
+    { value: '2', label: '2', id: 2 },
+    { value: '3', label: '3', id: 3 },
+  ],
+  bot_id: { value: '1', label: '1', id: 1 },
   editWallet: (id) => console.log(`Edit wallet with id ${id}`),
   removeWallet: (id) => console.log(`Remove wallet with id ${id}`),
 };

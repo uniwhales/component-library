@@ -65,7 +65,7 @@ const LinkTemplate: Story<TemplateSizes> = (args) => {
   const { list } = args;
   return (
     <>
-      {list.map((item) => <div><Text key={item} href="test" size={item}>{item}</Text></div>)}
+      {list.map((item) => <div><Text key={item} target="_blank" href="https://www.uniwhales.io" size={item}>{item}</Text></div>)}
     </>
   );
 };
