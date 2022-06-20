@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { CrossIcon } from '../../atoms/icons';
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
-  ModalWrapper, Overlay,
+  CloseSection,
+  ModalContent,
+  ModalWrapper,
+  Overlay,
 } from './modal.styles';
 import { ModalProps } from './types';
 
@@ -14,7 +19,12 @@ export const Modal = ({
     <>
       <Overlay onClick={toggle} />
       <ModalWrapper>
-        {children}
+        <ModalContent>
+          <CloseSection>
+            <IconWrapper cursor="pointer" onClick={toggle} icon={<CrossIcon />} />
+          </CloseSection>
+          {children}
+        </ModalContent>
       </ModalWrapper>
     </>,
     portalDiv,
