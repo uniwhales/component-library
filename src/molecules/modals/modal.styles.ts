@@ -1,4 +1,3 @@
-import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 
 export const Overlay = Styled.div`
@@ -19,7 +18,7 @@ export const ModalWrapper = Styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const ModalComponent = Styled.div`
+export const DummyModalContent = Styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -32,11 +31,4 @@ export const ModalComponent = Styled.div`
   max-width: 430px;
   min-height: 555px;
   box-sizing: border-box;
-`;
-
-export const ModalHeader = Styled(Text)`
-  strong {
-    font-weight: 700;
-    text-decoration: underline;
-  }
 `;

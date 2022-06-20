@@ -1,6 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
+import { ButtonAtom } from '../../atoms/buttons/button';
+import { Text } from '../../atoms/texts/text';
 import { Modal } from './modal';
+import { DummyModalContent } from './modal.styles';
 
 export default {
   title: 'Molecules/Modals',
@@ -16,18 +19,15 @@ const Template: ComponentStory<typeof Modal> = () => {
       <Modal
         show={showModal}
         toggle={() => setShowModal(!showModal)}
-        header={(
-          <>
-            Powered by
-            {' '}
-            <strong>Drip</strong>
-          </>
-        )}
-        title="Approve Token"
-        subtitle="Sign transaction in your wallet to approve token spend"
-        content="You have not done this before. This is only a one time transaction per token."
-        link={{ text: 'Link Text', href: 'https://something.com' }}
-      />
+      >
+        <DummyModalContent>
+          <Text size="H1-Bold">Title</Text>
+          <Text size="M-Regular">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vero doloribus aliquam quaerat? Voluptate veritatis odio reprehenderit dolorum, modi minima labore quas nobis. Reprehenderit minima veritatis quae exercitationem, distinctio sunt.</Text>
+          <ButtonAtom buttonVariant="primary" onClick={() => setShowModal(false)}>
+            close
+          </ButtonAtom>
+        </DummyModalContent>
+      </Modal>
     </>
   );
 };
