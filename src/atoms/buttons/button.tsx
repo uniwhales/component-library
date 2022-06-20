@@ -179,7 +179,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
       background: ${props.theme.colors.primary.WATER_BLUE};
     };
     &:active {
-      background: ${props.theme.colors.system.WHITE};
+      background: ${props.theme.contrastColor.HIGH_CONTRAST};
       
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
