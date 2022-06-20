@@ -43,6 +43,7 @@ export interface TextProps {
   color?: string;
   textDecoration?: string;
   href?: string;
+  target?: string;
 }
 
 const StyledP = Styled.p<{ textType: string, textWeight: string, textDecoration?: string }>`
@@ -75,12 +76,19 @@ const StyledA = Styled.a<{ textType: string, textWeight: string }>`
 `;
 
 export const Text: FC<TextProps> = ({
-  children, size, color, textDecoration, href,
+  children, size, color, textDecoration, href, target,
 }) => {
   const [textType, textWeight] = size.split('-');
   if (href) {
     return (
-      <StyledA textType={textType} textWeight={textWeight} href={href}>{children}</StyledA>
+      <StyledA
+        textType={textType}
+        textWeight={textWeight}
+        href={href}
+        target={target}
+      >
+        {children}
+      </StyledA>
     );
   }
   if ((['L', 'M', 'S', 'XS'].includes(textType))) {
