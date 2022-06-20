@@ -15,23 +15,23 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ContentCard>;
 
-const Template: ComponentStory<typeof ContentCard> = ({
-  releaseDate, contentType, size, coverImgUrl, tags, duration, title, chipText, guestLink, guest,
-}) => (
+const defaultValues = {
+  contentType: ContentType.Article,
+  coverImgUrl: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+  onClick: () => {},
+  releaseDate: 'Nov 31st, 2021',
+  tags: ['LP', 'DEFI', 'metaverse'],
+  title: 'Title of Card on a one liner and Title of Card on a two liner only',
+  chipText: 'Text',
+  duration: '00:10:20',
+  guest: 'Elon Musk',
+  guestLink: 'https://twitter.com/elonmusk',
+  size: 'LnM',
+};
+
+const Template: ComponentStory<typeof ContentCard> = (args) => (
   <Wrapper>
-    <ContentCard
-      contentType={contentType || ContentType.Article}
-      coverImgUrl={coverImgUrl || 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'}
-      onClick={() => {}}
-      releaseDate={releaseDate || 'Nov 31st, 2021'}
-      tags={tags || ['Text', 'Text', 'Text']}
-      title={title || 'Title of Card on a one liner and Title of Card on a two liner only'}
-      chipText={chipText || 'Text'}
-      duration={duration || '00:10:20'}
-      guest={guest || 'Elon Musk'}
-      guestLink={guestLink || 'https://twitter.com/elonmusk'}
-      size={size || 'LnM'}
-    />
+    <ContentCard {...defaultValues} {...args} />
   </Wrapper>
 );
 
