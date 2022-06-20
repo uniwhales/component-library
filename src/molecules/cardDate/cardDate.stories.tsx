@@ -8,8 +8,13 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof CardDate>;
 
-const Template: ComponentStory<typeof CardDate> = ({ date, state }) => (
-  <CardDate date={date || 'Nov 31st, 2021'} state={state || 'Upcoming'} />
+const defaultParams = {
+  date: 'Nov 31st, 2021',
+  state: 'Upcoming',
+};
+
+const Template: ComponentStory<typeof CardDate> = (args) => (
+  <CardDate {...defaultParams} {...args} />
 );
 
 export const CardDateUpcoming = Template.bind({});

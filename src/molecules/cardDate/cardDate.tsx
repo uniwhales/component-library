@@ -10,7 +10,7 @@ export const CardDate: FC<CardDateProps> = ({ state, date }) => {
   return (
     <CardDateContainer>
       <Chip secondaryTypeBgColor={secondaryTypeBgColor} type="secondary">{state}</Chip>
-      <Text size="L-Bold">{date}</Text>
+      <Text size="M-Bold">{date}</Text>
     </CardDateContainer>
   );
 };
