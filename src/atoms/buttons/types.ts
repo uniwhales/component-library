@@ -7,7 +7,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'primary_action'
   | 'secondary_action'
   | 'tiny_action'
-  | 'secondary_action_inverse',
+  | 'secondary_action_inverse'
+  | 'special_small'
+  | 'special_small_round',
   borderRadius?: string,
   disabled?: boolean
   onClick: () => void;

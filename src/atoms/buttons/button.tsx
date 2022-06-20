@@ -141,8 +141,8 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-     opacity: 0.2;
-     background: transparent;
+    opacity: 0.2;
+    background: transparent;
   `}
       // active state
   ${(props) => !props.disabled && css`
@@ -158,6 +158,33 @@ const ButtonSecondaryActionInverse = Styled(Button)`
       }
     };
   `}
+`;
+
+const ButtonSpecialSmallNormal = Styled(Button)`
+  border-radius: 12px;
+  border: none;
+  
+  ${(props) => props.disabled && css`
+    opacity: 0.2;
+    background: ${props.theme.colors.system.DISABLED};
+    border: none;
+  `}
+
+  // active state
+  ${(props) => !props.disabled && css`
+    cursor: pointer;
+    background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+    };
+    &:active {
+      background: ${props.theme.colors.system.WHITE};
+    };
+  `}
+`;
+const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)`
+  border-radius: 32px;
 `;
 
 export const ButtonAtom:FC<ButtonProps> = ({
@@ -203,6 +230,18 @@ export const ButtonAtom:FC<ButtonProps> = ({
         <ButtonSecondaryActionInverse borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSecondaryActionInverse>
+      );
+    case 'special_small':
+      return (
+        <ButtonSpecialSmallNormal onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+          {children}
+        </ButtonSpecialSmallNormal>
+      );
+    case 'special_small_round':
+      return (
+        <ButtonSpecialSmallRound onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+          {children}
+        </ButtonSpecialSmallRound>
       );
     default:
       return (
