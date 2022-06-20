@@ -65,14 +65,14 @@ const StyledHeading = Styled.div<{ textType: string, textWeight: string, textDec
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
 
-const StyledA = Styled.a<{ textType: string, textWeight: string }>`
+const StyledA = Styled.a<{ textType: string, textWeight: string, textDecoration?: string }>`
   padding: 0;
   margin: 0;
   line-height: 24px;
   font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
-  text-decoration: underline;
-  color: ${(props) => props.theme.colors.secondary.TURQUOISE}
+  text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.secondary.TURQUOISE)};
 `;
 
 export const Text: FC<TextProps> = ({
@@ -86,8 +86,11 @@ export const Text: FC<TextProps> = ({
         textWeight={textWeight}
         href={href}
         target={target}
+        textDecoration={textDecoration}
+        color={color}
       >
         {children}
+
       </StyledA>
     );
   }

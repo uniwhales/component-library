@@ -54,6 +54,7 @@ import {
   Weth,
   OxColor, OneInchV3, OneInchV4,
   DashedSpinner,
+  WalletIcon,
 } from '.';
 
 export default {
@@ -137,7 +138,11 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 );
 
 const Template5: ComponentStory<typeof IconWrapper> = () => (
-  <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
+  <>
+    <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
+    <IconWrapper name="Wallet Icon" icon={<WalletIcon />} />
+  </>
+
 );
 
 export const navigationIcons = Template.bind({});
