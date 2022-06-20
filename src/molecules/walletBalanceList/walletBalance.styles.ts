@@ -7,7 +7,7 @@ export const Table = Styled.table`
     text-align: left;
   }
   td {
-    padding: 8px 0;
+    padding: 8px;
     text-align: left!important;
   }
   td:first-child {

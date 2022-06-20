@@ -34,9 +34,8 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'
       content: "";
       display: block;
       border-radius: 50%;
-      width: 10px;
-      height: 10px;
-      margin: 5px;
+      width: 20px;
+      height: 20px;
       background: ${(props) => (props.disabled ? 'none' : props.theme.gradients.primary.BLURPLE)}
     }
   }
@@ -49,9 +48,8 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'
         content: "";
         display: block;
         border-radius: 50%;
-        width: 10px;
-        height: 10px;
-        margin: 5px;
+        width: 20px;
+        height: 20px;
         background: ${props.theme.colors.primary.UWL_BLUE}
       }
     }
