@@ -43,6 +43,7 @@ export interface TextProps {
   color?: string;
   textDecoration?: string;
   href?: string;
+  target?: string;
 }
 
 const StyledP = Styled.p<{ textType: string, textWeight: string, textDecoration?: string }>`
@@ -75,7 +76,7 @@ const StyledA = Styled.a<{ textType: string, textWeight: string, textDecoration?
 `;
 
 export const Text: FC<TextProps> = ({
-  children, size, color, textDecoration, href,
+  children, size, color, textDecoration, href, target,
 }) => {
   const [textType, textWeight] = size.split('-');
   if (href) {
@@ -84,6 +85,7 @@ export const Text: FC<TextProps> = ({
         textType={textType}
         textWeight={textWeight}
         href={href}
+        target={target}
         textDecoration={textDecoration}
         color={color}
       >
