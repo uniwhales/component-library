@@ -5,7 +5,7 @@ export const Card = Styled.div<{ size: ContentCardProps['size'] }>`
     border-radius: 12px;
     box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-    width: ${({ size }) => (size === 'S' ? 321 : 420)}px;
+    width: '100%';
     height: ${({ size }) => (size === 'S' ? 321 : 420)}px;
     padding: 32px;
     cursor: pointer;
@@ -65,16 +65,6 @@ export const MediaTypeIcon = Styled.div<{ contentType: ContentType, size: Conten
     if (contentType === ContentType.Video) return theme.colors.secondary.PURPLE;
     return theme.colors.secondary.FUSCHIA;
   }};
-`;
-
-export const OpenArticleBtn = Styled.div<{ size: ContentCardProps['size'] }>`
-    border-radius: 32px;
-    background-color: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
-    height: ${({ size }) => (size === 'S' ? 24 : 36)}px;
-    width: ${({ size }) => (size === 'S' ? 24 : 36)}px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
 `;
 
 export const TagSection = Styled.div`

@@ -3,13 +3,14 @@ import { useTheme } from 'styled-components';
 import { Theme } from '../../theme';
 import {
   IconWrapper, Text, ArrowRightIcon, Tag, AudioStandard, ArticleStandard, WebinarStandard,
+  ButtonAtom,
 } from '../..';
 import { ContentCardProps, ContentType } from './types';
 import {
   AboutSection,
   AboutSectionLeftSide,
   ArticleCover,
-  Card, CardHeader, CardHeaderLeftSide, MediaTypeIcon, OpenArticleBtn, Spacer, TagSection,
+  Card, CardHeader, CardHeaderLeftSide, MediaTypeIcon, Spacer, TagSection,
 } from './styles';
 import { Chip } from '../../atoms/chips/chip';
 
@@ -44,6 +45,7 @@ export const ContentCard:FC<ContentCardProps> = ({
         <AboutSectionLeftSide>
           <MediaTypeIcon size={size} contentType={contentType}>
             <IconWrapper
+              cursor="pointer"
               width={size === 'S' ? '17px' : '24px'}
               height={size === 'S' ? '17px' : '24px'}
               icon={contentType === ContentType.Article
@@ -56,13 +58,14 @@ export const ContentCard:FC<ContentCardProps> = ({
           {guest && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">with</Text>}
           {guestLink && guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="S-Regular">{guest}</Text>}
         </AboutSectionLeftSide>
-        <OpenArticleBtn size={size} onClick={() => onClick()}>
+        <ButtonAtom buttonVariant="special_small_round" onClick={() => onClick()}>
           <IconWrapper
+            cursor="pointer"
             width={size === 'S' ? '17px' : '24px'}
             height={size === 'S' ? '17px' : '24px'}
             icon={<ArrowRightIcon />}
           />
-        </OpenArticleBtn>
+        </ButtonAtom>
       </AboutSection>
       <TagSection>
         {size !== 'S' && tags.map((t, i) => (
