@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
+import { Text } from '../../atoms/texts/text';
 import { Modal } from './modal';
+import { DummyModalContent } from './modal.styles';
 
 export default {
   title: 'Molecules/Modals',
@@ -12,22 +14,16 @@ const Template: ComponentStory<typeof Modal> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <>
-      <button type="button" onClick={() => setShowModal(!showModal)}>{showModal ? 'Close' : 'Open'}</button>
+      <button type="button" onClick={() => setShowModal(!showModal)}>{showModal ? 'Close Modal' : 'Open Modal '}</button>
       <Modal
         show={showModal}
         toggle={() => setShowModal(!showModal)}
-        header={(
-          <>
-            Powered by
-            {' '}
-            <strong>Drip</strong>
-          </>
-        )}
-        title="Approve Token"
-        subtitle="Sign transaction in your wallet to approve token spend"
-        content="You have not done this before. This is only a one time transaction per token."
-        link={{ text: 'Link Text', href: 'https://something.com' }}
-      />
+      >
+        <DummyModalContent>
+          <Text size="H3-Bold">Title</Text>
+          <Text size="S-Regular">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
+        </DummyModalContent>
+      </Modal>
     </>
   );
 };

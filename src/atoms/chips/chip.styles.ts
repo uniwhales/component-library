@@ -1,4 +1,5 @@
 import { Styled } from '../../theme';
+import { ChipProps } from './types';
 
 const CustomChip = Styled.div<{ type: string }>`
   width: fit-content;
@@ -6,7 +7,7 @@ const CustomChip = Styled.div<{ type: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.colors.system.WHITE}
+  color: ${(props) => props.theme.colors.system.WHITE};
 `;
 
 export const PrimaryChip = Styled(CustomChip)`
@@ -23,7 +24,7 @@ export const PrimaryChip = Styled(CustomChip)`
   }
 `;
 
-export const SecondaryChip = Styled(CustomChip)`
+export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 12px;
   width: fit-content;
   font-size: 14px;
@@ -31,7 +32,7 @@ export const SecondaryChip = Styled(CustomChip)`
   font-weight: 700;
   gap: 8px;
   border-radius: 12px;
-  background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
   svg {
     height: 20px;
     width: 20px;

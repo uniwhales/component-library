@@ -5,8 +5,8 @@ export const NavBar = Styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px 8px 24px;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
-
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
 `;
 
 export const NavContainer = Styled.div`
