@@ -4,7 +4,7 @@ import { AnnouncementCardProps } from './types';
 export const AnnouncementCardContainer = Styled.div<Pick<AnnouncementCardProps, 'width'>>`
     background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
     box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-    width: ${({ width }) => width};
+    width: ${({ width }) => width ?? '100%'};
     border-radius: 12px;
     padding: 32px;
 `;
