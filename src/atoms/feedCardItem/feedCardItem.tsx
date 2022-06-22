@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
-import { HintsAndHovers } from '../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
+import { ButtonAtom } from '../buttons/button';
 import {
   ChevronDownIcon,
   LinkIcon,
@@ -12,13 +12,11 @@ import {
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 import {
-  CenterContentContainer,
   HoverItemsContainer,
   MasterContainer,
   TxTypeContainer,
   TxTypeWrapper,
-  XPartyContent,
-  YPartyContent,
+  XYPartyContent,
   ChevronButton,
   IconContainer,
   SecondaryActionContainer,
@@ -26,6 +24,9 @@ import {
   DexIcon,
   TokenIcon,
   StyledLink,
+  ValueContainer,
+  CenterContent,
+  PrepositionContainer,
 } from './feedCardItem.styles';
 import { chainIcons, dexIcons } from './icons';
 import { FeedCardItemProps } from './types';
@@ -81,47 +82,47 @@ export const FeedCardItem = (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{dex}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
-      <CenterContentContainer>
-        <XPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token0Amount).toFixed(4)}</Text>
-          <HintsAndHovers
-            id={`${token0Address}${hash}`}
-            place="top"
-            hint={token0Symbol}
-            icon={(
-              <TokenIcon
-                baseUrl={LogoUrlBase}
-                tokenAddress={token0Address.toLowerCase()}
-              />
-            )}
+      <CenterContent>
+        <XYPartyContent>
+          <ValueContainer>
+            <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{Number(token0Amount).toFixed(4)}</Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
+          </ValueContainer>
+          <TokenIcon
+            baseUrl={LogoUrlBase}
+            tokenAddress={token0Address.toLowerCase()}
           />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>
-        </XPartyContent>
-        <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
-        <YPartyContent>
-          <Text size="S-Bold" color={theme.colors.primary.UWL_BLUE}>{Number(token1Amount).toFixed(4)}</Text>
-          <HintsAndHovers
-            id={`${token1Address}${hash}`}
-            place="top"
-            hint={token1Symbol}
-            icon={(
-              <TokenIcon
-                baseUrl={LogoUrlBase}
-                tokenAddress={token1Address.toLowerCase()}
-              />
-            )}
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Symbol}</Text>
+        </XYPartyContent>
+        <PrepositionContainer>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
+        </PrepositionContainer>
+        <XYPartyContent>
+          <ValueContainer>
+            <Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{Number(token1Amount).toFixed(4)}</Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
+          </ValueContainer>
+          <TokenIcon
+            baseUrl={LogoUrlBase}
+            tokenAddress={token1Address.toLowerCase()}
           />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>
-        </YPartyContent>
-      </CenterContentContainer>
-      <StyledLink
-        href={goToItem}
-        rel="noreferrer"
-        target="_blank"
-      >
-        <LinkIcon />
-      </StyledLink>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Symbol}</Text>
+        </XYPartyContent>
+        {hover && (
+          <StyledLink
+            href={goToItem}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <LinkIcon />
+          </StyledLink>
+        )}
+      </CenterContent>
+
       <SecondaryActionContainer>
+        {!hover && (
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+        )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
@@ -129,12 +130,15 @@ export const FeedCardItem = (
               share={shareTransaction}
               openSeaLink={goToOpensea}
             />
-            <IconWrapper cursor="pointer" icon={<TwitterColor />} />
+            <ButtonAtom buttonVariant="special_tiny_round" onClick={() => { }}>
+              <IconWrapper cursor="pointer" icon={<TwitterColor />} />
+            </ButtonAtom>
+
           </HoverItemsContainer>
         )}
         {showChevron && (
           <ChevronButton isOpen={isOpen}>
-            <IconWrapper onClick={handleToggle} cursor="pointer" icon={<ChevronDownIcon />} />
+            <IconWrapper height="13px" width="13px" onClick={handleToggle} cursor="pointer" icon={<ChevronDownIcon />} />
           </ChevronButton>
         )}
       </SecondaryActionContainer>

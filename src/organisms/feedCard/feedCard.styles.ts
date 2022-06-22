@@ -1,9 +1,17 @@
 import { MasterContainer } from '../../atoms/feedCardItem/feedCardItem.styles';
 import { Styled } from '../../theme';
 
+export const Container = Styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Wrapper = Styled.div`
   display: flex;
   align-items: flex-start;
+  max-width: 1352px;
 `;
 
 export const TransactionsWrapper = Styled.div`

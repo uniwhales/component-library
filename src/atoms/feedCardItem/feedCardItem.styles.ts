@@ -7,7 +7,7 @@ export const MasterContainer = Styled.div<Pick<FeedCardItemProps, 'isMulti'>>`
   justify-content: space-between;
   gap: 16px;
   margin: ${(props) => (!props.isMulti ? '2px 0' : 0)};
-  padding: 8px 16px 8px 16px;
+  padding: 8px 16px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   &:hover {
     background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
@@ -17,7 +17,7 @@ export const MasterContainer = Styled.div<Pick<FeedCardItemProps, 'isMulti'>>`
 export const TxTypeWrapper = Styled.div`
   display: flex;
   align-items: center;
-  min-width: 10%;
+  width: 164px;
 `;
 
 export const IconContainer = Styled.div`
@@ -49,30 +49,30 @@ export const DexIcon = Styled.div`
 export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  margin-left: 12px;
 `;
 
-export const CenterContentContainer = Styled.div`
+export const CenterContent = Styled.div`
+  width: 563px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  max-width: 650px;
 `;
 
-export const XPartyContent = Styled.div`
+export const XYPartyContent = Styled.div`
   display: flex;
-  justify-content: flex-end;
+  text-align: left;
   align-items: center;
-  gap: 10px;
-  min-width: 40%;
+  width: 185px;
 `;
 
-export const YPartyContent = Styled.div`
+export const PrepositionContainer = Styled.div`
+  margin: 0 50px;
+`;
+
+export const ValueContainer = Styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 40%;
+  flex-direction: column;
+  width: 85px;
 `;
 
 export const HoverItemsContainer = Styled.div`
@@ -86,9 +86,10 @@ export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 24px;
-  width: 24px;
+  height: 16px;
+  width: 16px;
   padding: 4px;
+  margin-left: 4px;
   border-radius: 50%;
   cursor: pointer;
   background: ${(props) => (props.isOpen ? props.theme.contrastColor.HIGH_CONTRAST : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
@@ -108,7 +109,7 @@ export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
 export const SecondaryActionContainer = Styled.div`
   display: flex;
   align-items: center;
-  width: 10%;
+  width: 100px;
   justify-content: flex-end;
 `;
 
@@ -119,13 +120,16 @@ export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 50%;
+  margin-left: 25px;
+  margin-right: 10px;
 `;
 
 export const StyledLink = Styled.a`
+  margin-left: auto;
   cursor: pointer;
   svg {
-    height: 16px;
-    width: 16px;
+    height: 14px;
+    width: 14px;
     fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
     &:hover {
      fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
