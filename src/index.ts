@@ -36,6 +36,9 @@ export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
 export * from './organisms/feedPageNavBar/feedPageNavBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
+export * from './organisms/announcementCard/AnnouncementCard';
+// eslint-disable-next-line import/no-cycle
+export * from './organisms/contentCard/contentCard';
 // theme
 export * from './atoms/icons/index';
 export {
