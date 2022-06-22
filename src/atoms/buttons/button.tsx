@@ -189,6 +189,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
 `;
 const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 32px;
+  cursor: pointer;
 
   width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
   height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
@@ -207,6 +208,7 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant
 const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
+  cursor: pointer;
 
   &:hover, &:active {
     color: ${({ theme }) => theme.colors.primary.WATER_BLUE};
