@@ -14,6 +14,18 @@ export const Wrapper = Styled.div`
   max-width: 1352px;
 `;
 
+export const IdenticonWrapper = Styled.div`
+  margin-top: 8px;
+  background: ${(props) => props.theme.gradients.primary.BLURPLE};
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4}
+`;
+
 export const TransactionsWrapper = Styled.div`
   ${MasterContainer}:first-child {
     border-top-left-radius: 12px;

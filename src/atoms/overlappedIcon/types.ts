@@ -3,5 +3,6 @@ export interface OverlappedIconProps {
   smallSize?: string;
   largeIcon?: JSX.Element;
   largeSize?: string;
-  bgColor?: string
+  bgColor: string;
+  noIcon?: boolean;
 }

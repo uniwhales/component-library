@@ -7,6 +7,7 @@ export const Wrapper = Styled.div`
 export const Container = Styled.div`
   position: relative;
   display: flex;
+  margin-top:8px;
 `;
 
 export const KebabRow = Styled.div`

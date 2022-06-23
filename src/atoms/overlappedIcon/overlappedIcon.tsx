@@ -9,13 +9,17 @@ export const OverlappedIcon = ({
   smallSize = '14px',
   largeIcon = <StarIcon />,
   largeSize = '28px',
+  bgColor,
+  noIcon,
 }: OverlappedIconProps) => (
-  <IconContainer>
-    <SmallIcon>
-      <IconWrapper height={smallSize} width={smallSize} icon={smallIcon} />
-    </SmallIcon>
-    <LargeIcon>
-      <IconWrapper height={largeSize} width={largeSize} icon={largeIcon} />
-    </LargeIcon>
-  </IconContainer>
+  (
+    <IconContainer>
+      <SmallIcon smallSize={smallSize} bgColor={bgColor}>
+        {!noIcon && <IconWrapper icon={smallIcon} />}
+      </SmallIcon>
+      <LargeIcon largeSize={largeSize} bgColor={bgColor}>
+        {!noIcon && <IconWrapper icon={largeIcon} />}
+      </LargeIcon>
+    </IconContainer>
+  )
 );

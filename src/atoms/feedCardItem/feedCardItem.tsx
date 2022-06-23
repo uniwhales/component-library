@@ -1,4 +1,5 @@
 import React from 'react';
+import { IdleTransactionCard } from './idleTransactionCard';
 import { NftTransferCard } from './nftTransferCard';
 import { SwapTransactionCard } from './swapTransactionCard';
 import { TransferTransactionCard } from './transferTransactionCard';
@@ -33,7 +34,7 @@ export const FeedCardItem = (
           handleToggle={handleToggle}
         />
       );
-    case 'nft_transfer':
+    case 'nft_trade':
       return (
         <NftTransferCard
           isMulti={isMulti}
@@ -45,7 +46,7 @@ export const FeedCardItem = (
       );
     default:
       return (
-        <p>hello</p>
+        <IdleTransactionCard />
       );
   }
 };

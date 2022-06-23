@@ -23,15 +23,13 @@ import {
   TxTypeWrapper,
   XYPartyContent,
   ChevronButton,
-  IconContainer,
   SecondaryActionContainer,
-  ChainIcon,
-  DexIcon,
   TokenIcon,
   StyledLink,
   ValueContainer,
   CenterContent,
   PrepositionContainer,
+  IdenticonContainer,
 } from './feedCardItem.styles';
 import { chainIcons } from './icons';
 import { TransferTransactionProps } from './types';
@@ -112,7 +110,9 @@ export const TransferTransactionCard = (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         </PrepositionContainer>
         <XYPartyContent>
-          <IconWrapper icon={<Identicon />} />
+          <IdenticonContainer>
+            <IconWrapper height="20px" width="20px" icon={<Identicon />} />
+          </IdenticonContainer>
 
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>
         </XYPartyContent>

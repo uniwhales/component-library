@@ -129,6 +129,7 @@ import {
   WebinarColor,
   UploadStandard,
   StarIcon,
+  RedCross,
 } from '.';
 
 export default {
@@ -154,6 +155,7 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Link" icon={<LinkIcon />} />
     <IconWrapper name="Notice" icon={<NoticeIcon />} />
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
+    <IconWrapper name="RedCross" icon={<RedCross />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (

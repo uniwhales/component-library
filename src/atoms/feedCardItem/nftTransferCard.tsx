@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { Theme } from '../../theme';
+import { LogoUrlBase } from '../../utils/constants';
 import { ButtonAtom } from '../buttons/button';
 import {
   ChevronDownIcon,
@@ -20,16 +21,14 @@ import {
   TxTypeWrapper,
   XYPartyContent,
   ChevronButton,
-  IconContainer,
   SecondaryActionContainer,
-  ChainIcon,
-  DexIcon,
   StyledLink,
   ValueContainer,
   CenterContent,
   PrepositionContainer,
   NftImage,
   NftValues,
+  TokenIcon,
 } from './feedCardItem.styles';
 import { chainIcons } from './icons';
 import { NftTransferTransactionProps } from './types';
@@ -46,49 +45,55 @@ export const NftTransferCard = (
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
   const {
-    hash,
+    tx_hash: txHash,
     chain,
     wallet,
     to,
     tx_type: txType,
-    token_id: tokenId,
-    contract_type: contractType,
-    fee,
+    marketplace,
+    nft_symbol: nftSymbol,
+    nft_token_id: nftTokenId,
+    from,
     symbol,
+    price,
   } = txData;
   const isBuy = wallet === to;
   // TODO: Add all tx types here
-  const txTypePreposition = txType === 'nft_transfer' ? 'for' : 'text';
+  const txTypePreposition = txType === 'nft_trade' ? 'for' : 'text';
   // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
   // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${hash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
-  const goToOpensea = `https://etherscan.io/tx/${hash}`;
+  const goToItem = `https://etherscan.io/tx/${txHash}`;
+  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${txHash}`);
+  const goToOpensea = `https://etherscan.io/tx/${txHash}`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={hash}
+      key={txHash}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
-        <OverlappedIcon smallIcon={chainIcons[chain]} largeIcon={<StarIcon />} />
+        <OverlappedIcon
+          bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
+          smallIcon={chainIcons[chain]}
+          largeIcon={<StarIcon />}
+        />
         <TxTypeContainer>
-          <Text size="S-Regular">{txType}</Text>
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Platform</Text>
+          <Text size="S-Regular">{isBuy ? 'Buy' : 'Sell'}</Text>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{marketplace}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContent>
         <XYPartyContent>
           <ValueContainer />
           <NftImage>
-            <IconWrapper icon={<ImageIcon />} height="32px" width="32px" />
+            <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
           </NftImage>
           <NftValues>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{contractType.toUpperCase()}</Text>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{tokenId}</Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{nftSymbol}</Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{nftTokenId}</Text>
           </NftValues>
 
         </XYPartyContent>
@@ -97,20 +102,20 @@ export const NftTransferCard = (
         </PrepositionContainer>
         <XYPartyContent>
           <ValueContainer>
-            <Text size="S-Regular" color={isBuy ? theme.textShades.SHADE_MINUS_3 : theme.colors.primary.UWL_BLUE}>
+            <Text size="S-Bold" color={isBuy ? theme.textShades.SHADE_MINUS_3 : theme.colors.primary.UWL_BLUE}>
               <>
                 {isBuy ? '+' : '-'}
-                {fee}
+                {price}
               </>
             </Text>
             <Text size="S-Regular" color={isBuy ? theme.textShades.SHADE_MINUS_2 : theme.colors.primary.UWL_BLUE}>
-              <>
-                {' '}
-                {fee}
-              </>
+              $amount
             </Text>
           </ValueContainer>
-          <IconWrapper height="32px" width="32px" icon={<StarIcon />} />
+          <TokenIcon
+            baseUrl={LogoUrlBase}
+            tokenAddress={from.toLowerCase()}
+          />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
             {symbol}
           </Text>

@@ -7,7 +7,13 @@ import { Text } from '../../atoms/texts/text';
 import { Theme } from '../../theme';
 import { getDate } from '../../utils/getDate';
 import {
-  FeedCardHeader, TransactionsWrapper, MainCardContent, Wrapper, DateTime, SeeMoreContainer,
+  FeedCardHeader,
+  TransactionsWrapper,
+  MainCardContent,
+  Wrapper,
+  DateTime,
+  SeeMoreContainer,
+  IdenticonWrapper,
 } from './feedCard.styles';
 import { FeedCardProps } from './types';
 import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
@@ -46,7 +52,10 @@ export const FeedCard = (
 
   return (
     <Wrapper>
-      <IconWrapper icon={<Identicon />} />
+      <IdenticonWrapper>
+        <IconWrapper height="32px" width="32px" icon={<Identicon />} />
+      </IdenticonWrapper>
+
       <MainCardContent>
         <FeedCardHeader>
           <Text size="M-Regular">Label Name</Text>

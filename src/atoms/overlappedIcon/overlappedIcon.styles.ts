@@ -1,5 +1,4 @@
 import { Styled } from '../../theme';
-import { OverlappedIconProps } from './types';
 
 export const IconContainer = Styled.div`
   height: 36px;
@@ -10,21 +9,37 @@ export const IconContainer = Styled.div`
   align-items: center;
 `;
 
-export const SmallIcon = Styled.div<Pick<OverlappedIconProps, 'bgColor'>>`
+export const SmallIcon = Styled.div<{ bgColor: string, smallSize: string }>`
   position: absolute;
-  top: 0;
-  left: 70%;
+  bottom: 50%;
+  left: 55%;
   padding: 2px;
-  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${(props) => (props.theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 50%;
   border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  svg {
+    height: ${(props) => props.smallSize};
+    width: ${(props) => props.smallSize};
+  };
 `;
 
-export const LargeIcon = Styled.div<Pick<OverlappedIconProps, 'bgColor'>>`
+export const LargeIcon = Styled.div<{ bgColor: string, largeSize: string }>`
   position: absolute;
   border-radius: 50%;
-  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${(props) => (props.bgColor ? props.bgColor : props.theme.containerAndCardShades.SHADE_PLUS_1)};
   padding: 2px;
   border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  svg {
+    height: ${(props) => props.largeSize};
+    width: ${(props) => props.largeSize};
+  };
 `;

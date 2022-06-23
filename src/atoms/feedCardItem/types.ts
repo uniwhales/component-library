@@ -65,26 +65,26 @@ export interface TransferTransactionProps {
 }
 
 export interface NftTransferTransactionData {
+  tx_hash: string;
+  contract: string;
   from: string;
   to: string;
-  tx_hash: string;
-  index: 1,
-  contract_address: string;
-  symbol: string;
-  name: string;
-  contract_type: string;
   tx_type: string;
-  type: string;
-  amount: number;
-  token_id: string;
-  value: number;
-  fee: number;
-  hash: string;
-  timestamp: number;
-  block: number;
+  index: 165,
+  tx_from: string;
+  tx_to: string;
+  marketplace: string;
+  symbol: string;
+  price: 0.55,
+  nft_address: string;
+  nft_token_id: 15959,
+  amount: 1,
+  nft_symbol: string;
+  nft_name: string;
+  action: string;
   wallet: string;
-  from_label: string;
-  to_label: string;
+  timestamp: 1655940705,
+  block: 15010106,
   chain: keyof typeof chainIcons;
 }
 

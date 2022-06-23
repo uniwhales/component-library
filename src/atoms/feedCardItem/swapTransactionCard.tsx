@@ -75,6 +75,7 @@ export const SwapTransactionCard = (
         <OverlappedIcon
           smallIcon={chainIcons[chain]}
           largeIcon={dexIcons[dex]}
+          bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
 
         <TxTypeContainer>

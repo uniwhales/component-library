@@ -87,6 +87,7 @@ export * from './navigationIcons/ChevronLeftIcon';
 export * from './navigationIcons/ChevronRightIcon';
 export * from './navigationIcons/ChevronUpIcon';
 export * from './navigationIcons/RefreshIcon';
+export * from './navigationIcons/RedCross';
 // chains
 export * from './chains/Arbitrum';
 export * from './chains/Avalanche';
@@ -147,5 +148,4 @@ export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { Meatball } from './miscIcons/Meatball';
 export { Kebab } from './miscIcons/Kebab';
 // placeholder
-export { OverlappedIcon } from './placeholder/OverlappedIcon';
 export { Identicon } from './placeholder/Identicon';

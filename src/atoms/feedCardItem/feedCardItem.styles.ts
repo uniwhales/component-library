@@ -1,6 +1,6 @@
 import { Styled } from '../../theme';
 
-export const MasterContainer = Styled.div<{ isMulti: boolean }>`
+export const MasterContainer = Styled.div<{ isMulti?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,32 +17,9 @@ export const TxTypeWrapper = Styled.div`
   display: flex;
   align-items: center;
   width: 164px;
-`;
-
-export const IconContainer = Styled.div`
-  height: 36px;
-  width: 36px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ChainIcon = Styled.div`
-  position: absolute;
-  top: 0;
-  left: 70%;
-  padding: 2px;
-  background-color: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
-  border-radius: 50%;
-  z-index: 10;
-`;
-
-export const DexIcon = Styled.div`
-  position: absolute;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
-  padding: 2px;
+  p {
+    padding-left: 8px;
+  }
 `;
 
 export const TxTypeContainer = Styled.div`
@@ -124,20 +101,7 @@ export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   border-radius: 50%;
   margin-left: 25px;
   margin-right: 10px;
-`;
-
-// nft
-export const NftImage = Styled.div`
-  height: 32px;
-  width: 32px;
-  margin-left: 25px;
-  margin-right: 10px;
-`;
-
-export const NftValues = Styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 85px;
+  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
 `;
 
 export const StyledLink = Styled.a`
@@ -149,6 +113,43 @@ export const StyledLink = Styled.a`
     fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST};
     &:hover {
      fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
-    }
-  }
+    };
+  };
+`;
+
+// Transfer
+export const IdenticonContainer = Styled.div`
+  height: 32px;
+  width: 32px;
+  background: ${(props) => props.theme.gradients.primary.BLURPLE};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+`;
+
+// nft
+export const NftImage = Styled.div`
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  margin-right: 10px;
+`;
+
+export const NftValues = Styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 85px;
+`;
+
+// Idle/Error
+
+export const InfoContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;
