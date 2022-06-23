@@ -3,8 +3,8 @@ import { Styled } from '../../theme';
 import { CarouselProps } from './types';
 
 export const CustomCarousel = Styled(Carousel)<{ borderRadius: CarouselProps['borderRadius'] }>`
-        height: inherit;
     .carousel-slider {
+        height: inherit;
     }
 
     .slider-wrapper {
