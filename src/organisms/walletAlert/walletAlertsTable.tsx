@@ -25,7 +25,6 @@ export interface WalletAlertsTableProps {
   id: number;
   isLoading: boolean;
   filters: any;
-  botIdArray: BotIdArray[]
   bot_id: BotIdArray
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
@@ -40,9 +39,29 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
+  
+  @media screen and (max-width: 1024px) {
+    p{
+      font-size: 14px;
+    }
+    button {
+      padding: 0;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    padding: 5px 10px;
+  }
 `;
 const Section = Styled.div<{ flex?: number }>`
   flex: ${(props) => props.flex || 1};
+`;
+const SectionSelect = Styled(Section)`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
 `;
 const Group = Styled.div`
   display: flex;
@@ -102,13 +121,13 @@ export const WalletAlertsTable = ({
         <Group>
           <ToggleAtom
             size="small"
-            label={isActive ? 'On' : 'Off'}
+            // label={isActive ? 'On' : 'Off'}
             isOn={isActive}
             onClick={() => setIsActive(id, isActive)}
           />
         </Group>
       </Section>
-      <Section flex={1}>
+      <Section>
         <Group>
           {bot_id && (
           <Text size="M-Regular">
@@ -117,11 +136,11 @@ export const WalletAlertsTable = ({
           )}
         </Group>
       </Section>
-      <Section flex={1}>
+      <SectionSelect flex={1}>
         <Group>
           <Select readOnly placeholder="Alert Filters" options={chains} value={filters} />
         </Group>
-      </Section>
+      </SectionSelect>
       <Section flex={1}>
         <ButtonGroup>
           <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
@@ -138,11 +157,8 @@ export const WalletAlertsTable = ({
           </ButtonAtom>
         </ButtonGroup>
         <ButtonGroupMobile>
-          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
-            <>
-              <IconWrapper icon={<EditStandard />} />
-              Edit
-            </>
+          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary_action">
+            <IconWrapper icon={<EditStandard />} />
           </ButtonAtom>
           <ButtonAtom
             onClick={() => removeWallet(id)}
