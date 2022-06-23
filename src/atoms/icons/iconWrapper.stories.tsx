@@ -61,6 +61,10 @@ import {
   SelectedCross,
   RedCross,
   AlertBotStandard,
+  Meatball,
+  Kebab,
+  Identicon,
+  AllIcon,
   AllStandard,
   ArticleStandard,
   AudioStandard,
@@ -75,6 +79,7 @@ import {
   EditStandard,
   GlobeStandard,
   HeartStandard,
+  ImageIcon,
   InfoStandard,
   MediaStandard,
   MinusStandard,
@@ -128,8 +133,9 @@ import {
   WalletColor,
   WebinarColor,
   MinusColor,
-  WalletIcon,
+  StarIcon,
 } from '.';
+import { OverlappedIcon } from './placeholder/OverlappedIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -214,10 +220,15 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 const Template5: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
-    <IconWrapper name="Wallet Icon" icon={<WalletIcon />} />
+    <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
+    <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
+    <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
+    <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
+    <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
+    <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
   </>
-
 );
+
 const Template6: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Arrow Right" icon={<ArrowRightColor />} />
@@ -232,6 +243,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />
     <IconWrapper name="All" icon={<AllStandard />} />
+    <IconWrapper name="All Icon" icon={<AllIcon />} />
     <IconWrapper name="Article" icon={<ArticleStandard />} />
     <IconWrapper name="Audio" icon={<AudioStandard />} />
     <IconWrapper name="Chart" icon={<ChartStandard />} />

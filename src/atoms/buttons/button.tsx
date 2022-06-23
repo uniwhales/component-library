@@ -141,8 +141,8 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-     opacity: 0.2;
-     background: transparent;
+    opacity: 0.2;
+    background: transparent;
   `}
       // active state
   ${(props) => !props.disabled && css`
@@ -160,6 +160,60 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   `}
 `;
 
+const ButtonSpecialSmallNormal = Styled(Button)`
+  border-radius: 12px;
+  border: none;
+
+  ${(props) => props.disabled && css`
+    opacity: 0.2;
+    background: ${props.theme.colors.system.DISABLED};
+    border: none;
+  `}
+
+  // active state
+  ${(props) => !props.disabled && css`
+    cursor: pointer;
+    background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+
+    &:hover {
+      background: ${props.theme.colors.primary.WATER_BLUE};
+    };
+    &:active {
+      background: ${props.theme.contrastColor.HIGH_CONTRAST};
+      
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
+      }
+    };
+  `}
+`;
+const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
+  border-radius: 32px;
+  cursor: pointer;
+
+  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
+  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 0;
+
+  svg {
+    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
+    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
+  }
+`;
+
+const ButtonSpecialSmallSubtle = Styled(Button)`
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover, &:active {
+    color: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+  }
+`;
 export const ButtonAtom:FC<ButtonProps> = ({
   children,
   buttonVariant,
@@ -203,6 +257,26 @@ export const ButtonAtom:FC<ButtonProps> = ({
         <ButtonSecondaryActionInverse borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
           {children}
         </ButtonSecondaryActionInverse>
+      );
+    case 'special_small':
+      return (
+        <ButtonSpecialSmallNormal onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+          {children}
+        </ButtonSpecialSmallNormal>
+      );
+    case 'special_small_round':
+    case 'special_tiny_round':
+    case 'special_extra_tiny_round':
+      return (
+        <ButtonSpecialSmallRound buttonVariant={buttonVariant} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+          {children}
+        </ButtonSpecialSmallRound>
+      );
+    case 'special_extra_tiny_subtle':
+      return (
+        <ButtonSpecialSmallSubtle>
+          {children}
+        </ButtonSpecialSmallSubtle>
       );
     default:
       return (

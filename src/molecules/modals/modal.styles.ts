@@ -1,4 +1,3 @@
-import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 
 export const Overlay = Styled.div`
@@ -19,24 +18,33 @@ export const ModalWrapper = Styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const ModalComponent = Styled.div`
+export const ModalContent = Styled.div`
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  padding: 48px 48px 96px 48px;
+  z-index: 10;
+  border-radius: 12px;
+  box-sizing: border-box;
+  z-index: 10;
+  @media (max-width: 768px) {
+     padding: 12px 12px 24px 12px;
+  }
+`;
+
+export const CloseSection = Styled.div`
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: 768px) {
+     svg {
+      height: 16px;
+      width: 16px;
+     }
+  }
+`;
+
+export const DummyModalContent = Styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
-  padding: 48px 48px 96px 48px;
-  z-index: 10;
-  border-radius: 12px;
-  max-width: 430px;
-  min-height: 555px;
-  box-sizing: border-box;
-`;
-
-export const ModalHeader = Styled(Text)`
-  strong {
-    font-weight: 700;
-    text-decoration: underline;
-  }
 `;

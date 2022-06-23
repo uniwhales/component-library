@@ -1,5 +1,6 @@
 import { addDecorator } from '@storybook/react';
 import themeDecorator from './decorators';
+    
 addDecorator(themeDecorator);
 
 
