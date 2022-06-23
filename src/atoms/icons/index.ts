@@ -71,6 +71,7 @@ export * from './generalIcons/filledStyle/GlobeStandard';
 export * from './generalIcons/filledStyle/MinusStandard';
 export * from './generalIcons/filledStyle/TckSquareStandard';
 export * from './generalIcons/filledStyle/WrapStandard';
+export * from './generalIcons/filledStyle/UploadStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

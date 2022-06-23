@@ -1,7 +1,7 @@
-import { TransactionData } from '../../atoms/feedCardItem/types';
+import { SwapTransactionData } from '../../atoms/feedCardItem/types';
 
 export interface FeedCardProps {
-  transactions: TransactionData[];
+  transactions: SwapTransactionData[];
   datetime: number;
   moreThanFiveTxs: boolean;
   onPause: () => void;

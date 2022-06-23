@@ -127,9 +127,9 @@ import {
   TwitterColor,
   WalletColor,
   WebinarColor,
+  UploadStandard,
+  StarIcon,
 } from '.';
-import { OverlappedIcon } from './placeholder/OverlappedIcon';
-import { StarIcon } from './placeholder/StarIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -216,7 +216,6 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
     <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
     <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
-    <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
   </>
 );
 
@@ -266,6 +265,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wallet Icon" icon={<WalletStandard />} />
     <IconWrapper name="Webinar Icon" icon={<WebinarStandard />} />
     <IconWrapper name="Wrap Icon" icon={<WrapStandard />} />
+    <IconWrapper name="Upload Icon" icon={<UploadStandard />} />
   </>
 );
 

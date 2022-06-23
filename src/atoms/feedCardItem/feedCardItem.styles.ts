@@ -1,7 +1,6 @@
-import { FeedCardItemProps } from './types';
 import { Styled } from '../../theme';
 
-export const MasterContainer = Styled.div<Pick<FeedCardItemProps, 'isMulti'>>`
+export const MasterContainer = Styled.div<{ isMulti: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,7 +61,10 @@ export const XYPartyContent = Styled.div`
   display: flex;
   text-align: left;
   align-items: center;
-  width: 185px;
+  width: 200px;
+  p {
+    padding-left: 8px;
+  }
 `;
 
 export const PrepositionContainer = Styled.div`
@@ -82,7 +84,7 @@ export const HoverItemsContainer = Styled.div`
   gap: 10px;
 `;
 
-export const ChevronButton = Styled.div<Pick<FeedCardItemProps, 'isOpen'>>`
+export const ChevronButton = Styled.div<{ isOpen: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,6 +124,20 @@ export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   border-radius: 50%;
   margin-left: 25px;
   margin-right: 10px;
+`;
+
+// nft
+export const NftImage = Styled.div`
+  height: 32px;
+  width: 32px;
+  margin-left: 25px;
+  margin-right: 10px;
+`;
+
+export const NftValues = Styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 85px;
 `;
 
 export const StyledLink = Styled.a`
