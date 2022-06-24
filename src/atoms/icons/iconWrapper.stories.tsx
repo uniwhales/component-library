@@ -54,10 +54,16 @@ import {
   Weth,
   OxColor, OneInchV3, OneInchV4,
   DashedSpinner,
+  ArrowRightColor,
+  ArrowLeftColor,
+  NoticeColor,
+  SelectedCheck,
+  SelectedCross,
+  RedCross,
+  AlertBotStandard,
   Meatball,
   Kebab,
   Identicon,
-  AlertBotStandard,
   AllIcon,
   AllStandard,
   ArticleStandard,
@@ -113,7 +119,6 @@ import {
   MoreCircleColor,
   NewsColor,
   NotificationColor,
-  Plus1Color,
   Plus2Color,
   PlusColor,
   RocketColor,
@@ -127,9 +132,10 @@ import {
   TwitterColor,
   WalletColor,
   WebinarColor,
+  MinusColor,
+  StarIcon,
 } from '.';
 import { OverlappedIcon } from './placeholder/OverlappedIcon';
-import { StarIcon } from './placeholder/StarIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -217,94 +223,98 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
     <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
     <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
+    <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
+    <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
+    <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
   </>
 );
 
 const Template6: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Star Icon" icon={<StarIcon />} />
-    <IconWrapper name="Identicon" icon={<Identicon />} />
+    <IconWrapper name="Arrow Right" icon={<ArrowRightColor />} />
+    <IconWrapper name="Arrow Left" icon={<ArrowLeftColor />} />
+    <IconWrapper name="Notice" icon={<NoticeColor />} />
+    <IconWrapper name="Selected Check" icon={<SelectedCheck />} />
+    <IconWrapper name="Selected Cross" icon={<SelectedCross />} />
+    <IconWrapper name="Red Cross" icon={<RedCross />} />
   </>
 );
-
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />
+    <IconWrapper name="All" icon={<AllStandard />} />
     <IconWrapper name="All Icon" icon={<AllIcon />} />
-    <IconWrapper name="All Icon" icon={<AllStandard />} />
-    <IconWrapper name="Article Icon" icon={<ArticleStandard />} />
-    <IconWrapper name="Audio Icon" icon={<AudioStandard />} />
-    <IconWrapper name="Chart Icon" icon={<ChartStandard />} />
-    <IconWrapper name="Coin Icon" icon={<CoinStandard />} />
-    <IconWrapper name="Comment Icon" icon={<CommentStandard />} />
-    <IconWrapper name="Copy Icon" icon={<CopyStandard />} />
-    <IconWrapper name="CSVDoc Icon" icon={<CSVDocStandard />} />
-    <IconWrapper name="Dashboard Icon" icon={<DashboardStandard />} />
-    <IconWrapper name="Delete Icon" icon={<DeleteStandard />} />
-    <IconWrapper name="Download Icon" icon={<DownloadStandard />} />
-    <IconWrapper name="Edit Icon" icon={<EditStandard />} />
-    <IconWrapper name="Globe Icon" icon={<GlobeStandard />} />
-    <IconWrapper name="Heart Icon" icon={<HeartStandard />} />
-    <IconWrapper name="Image Icon" icon={<ImageIcon />} />
-    <IconWrapper name="Info Icon" icon={<InfoStandard />} />
-    <IconWrapper name="Media Icon" icon={<MediaStandard />} />
-    <IconWrapper name="Minus Icon" icon={<MinusStandard />} />
-    <IconWrapper name="MoreCircle Icon" icon={<MoreCircleStandard />} />
-    <IconWrapper name="News Icon" icon={<NewsStandard />} />
-    <IconWrapper name="Notification Icon" icon={<NotificationStandard />} />
-    <IconWrapper name="Plus Icon" icon={<PlusStandard />} />
-    <IconWrapper name="Rocket Icon" icon={<RocketStandard />} />
-    <IconWrapper name="Search Icon" icon={<SearchStandard />} />
-    <IconWrapper name="Send Icon" icon={<SendStandard />} />
-    <IconWrapper name="Settings Icon" icon={<SettingsStandard />} />
-    <IconWrapper name="Subscribe Icon" icon={<SubscribeStandard />} />
-    <IconWrapper name="Swap Icon" icon={<SwapStandard />} />
-    <IconWrapper name="TckSquare Icon" icon={<TckSquareStandard />} />
-    <IconWrapper name="Telegram Icon" icon={<TelegramStandard />} />
-    <IconWrapper name="Time Icon" icon={<TimeStandard />} />
-    <IconWrapper name="Twitter Icon" icon={<TwitterStandard />} />
-    <IconWrapper name="Wallet Icon" icon={<WalletStandard />} />
-    <IconWrapper name="Webinar Icon" icon={<WebinarStandard />} />
-    <IconWrapper name="Wrap Icon" icon={<WrapStandard />} />
+    <IconWrapper name="Article" icon={<ArticleStandard />} />
+    <IconWrapper name="Audio" icon={<AudioStandard />} />
+    <IconWrapper name="Chart" icon={<ChartStandard />} />
+    <IconWrapper name="Coin" icon={<CoinStandard />} />
+    <IconWrapper name="Comment" icon={<CommentStandard />} />
+    <IconWrapper name="Copy" icon={<CopyStandard />} />
+    <IconWrapper name="CSVDoc" icon={<CSVDocStandard />} />
+    <IconWrapper name="Dashboard" icon={<DashboardStandard />} />
+    <IconWrapper name="Delete" icon={<DeleteStandard />} />
+    <IconWrapper name="Download" icon={<DownloadStandard />} />
+    <IconWrapper name="Edit" icon={<EditStandard />} />
+    <IconWrapper name="Globe" icon={<GlobeStandard />} />
+    <IconWrapper name="Heart" icon={<HeartStandard />} />
+    <IconWrapper name="Info" icon={<InfoStandard />} />
+    <IconWrapper name="Media" icon={<MediaStandard />} />
+    <IconWrapper name="Minus" icon={<MinusStandard />} />
+    <IconWrapper name="MoreCircle" icon={<MoreCircleStandard />} />
+    <IconWrapper name="News" icon={<NewsStandard />} />
+    <IconWrapper name="Notification" icon={<NotificationStandard />} />
+    <IconWrapper name="Plus" icon={<PlusStandard />} />
+    <IconWrapper name="Rocket" icon={<RocketStandard />} />
+    <IconWrapper name="Search" icon={<SearchStandard />} />
+    <IconWrapper name="Send" icon={<SendStandard />} />
+    <IconWrapper name="Settings" icon={<SettingsStandard />} />
+    <IconWrapper name="Subscribe" icon={<SubscribeStandard />} />
+    <IconWrapper name="Swap" icon={<SwapStandard />} />
+    <IconWrapper name="TckSquare" icon={<TckSquareStandard />} />
+    <IconWrapper name="Telegram" icon={<TelegramStandard />} />
+    <IconWrapper name="Time" icon={<TimeStandard />} />
+    <IconWrapper name="Twitter" icon={<TwitterStandard />} />
+    <IconWrapper name="Wallet" icon={<WalletStandard />} />
+    <IconWrapper name="Webinar" icon={<WebinarStandard />} />
+    <IconWrapper name="Wrap" icon={<WrapStandard />} />
   </>
 );
 
 const Template8: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Alert Bot" icon={<AlertBotColor />} />
-    <IconWrapper name="Article Icon" icon={<ArticleColor />} />
-    <IconWrapper name="Audio Icon" icon={<AudioColor />} />
-    <IconWrapper name="Chart Icon" icon={<ChartColor />} />
-    <IconWrapper name="Check Icon" icon={<Check />} />
-    <IconWrapper name="Coin Icon" icon={<CoinColor />} />
-    <IconWrapper name="Comment Icon" icon={<CommentColor />} />
-    <IconWrapper name="Copy Icon" icon={<CopyColor />} />
-    <IconWrapper name="CSVDoc Icon" icon={<DocColor />} />
-    <IconWrapper name="Dashboard Icon" icon={<DashboardColor />} />
-    <IconWrapper name="Delete Icon" icon={<DeleteColor />} />
-    <IconWrapper name="Edit Icon" icon={<EditColor />} />
-    <IconWrapper name="Globe Icon" icon={<GlobeColor />} />
-    <IconWrapper name="Heart Icon" icon={<HeartColor />} />
-    <IconWrapper name="Image Icon" icon={<ImageIcon />} />
-    <IconWrapper name="Info Icon" icon={<InfoColor />} />
-    <IconWrapper name="Media Icon" icon={<MediaColor />} />
-    <IconWrapper name="MoreCircle Icon" icon={<MoreCircleColor />} />
-    <IconWrapper name="News Icon" icon={<NewsColor />} />
-    <IconWrapper name="Notification Icon" icon={<NotificationColor />} />
-    <IconWrapper name="Plus Icon" icon={<PlusColor />} />
-    <IconWrapper name="Plus1 Icon" icon={<Plus1Color />} />
-    <IconWrapper name="Plus2 Icon" icon={<Plus2Color />} />
-    <IconWrapper name="Rocket Icon" icon={<RocketColor />} />
-    <IconWrapper name="Search Icon" icon={<SearchColor />} />
-    <IconWrapper name="Send Icon" icon={<SendColor />} />
-    <IconWrapper name="Settings Icon" icon={<SettingsColor />} />
-    <IconWrapper name="Subscribe Icon" icon={<SubscribeColor />} />
-    <IconWrapper name="Swap Icon" icon={<SwapColor />} />
-    <IconWrapper name="Telegram Icon" icon={<TelegramColor />} />
-    <IconWrapper name="Time Icon" icon={<TimeColor />} />
-    <IconWrapper name="Twitter Icon" icon={<TwitterColor />} />
-    <IconWrapper name="Wallet Icon" icon={<WalletColor />} />
-    <IconWrapper name="Webinar Icon" icon={<WebinarColor />} />
+    <IconWrapper name="Article" icon={<ArticleColor />} />
+    <IconWrapper name="Audio" icon={<AudioColor />} />
+    <IconWrapper name="Chart" icon={<ChartColor />} />
+    <IconWrapper name="Check" icon={<Check />} />
+    <IconWrapper name="Coin" icon={<CoinColor />} />
+    <IconWrapper name="Comment" icon={<CommentColor />} />
+    <IconWrapper name="Copy" icon={<CopyColor />} />
+    <IconWrapper name="Doc" icon={<DocColor />} />
+    <IconWrapper name="Dashboard" icon={<DashboardColor />} />
+    <IconWrapper name="Delete" icon={<DeleteColor />} />
+    <IconWrapper name="Edit" icon={<EditColor />} />
+    <IconWrapper name="Globe" icon={<GlobeColor />} />
+    <IconWrapper name="Heart" icon={<HeartColor />} />
+    <IconWrapper name="Info" icon={<InfoColor />} />
+    <IconWrapper name="Media" icon={<MediaColor />} />
+    <IconWrapper name="MoreCircle" icon={<MoreCircleColor />} />
+    <IconWrapper name="News" icon={<NewsColor />} />
+    <IconWrapper name="Notification" icon={<NotificationColor />} />
+    <IconWrapper name="Plus" icon={<PlusColor />} />
+    <IconWrapper name="Minus" icon={<MinusColor />} />
+    <IconWrapper name="Plus2" icon={<Plus2Color />} />
+    <IconWrapper name="Rocket" icon={<RocketColor />} />
+    <IconWrapper name="Search" icon={<SearchColor />} />
+    <IconWrapper name="Send" icon={<SendColor />} />
+    <IconWrapper name="Settings" icon={<SettingsColor />} />
+    <IconWrapper name="Subscribe" icon={<SubscribeColor />} />
+    <IconWrapper name="Swap" icon={<SwapColor />} />
+    <IconWrapper name="Telegram" icon={<TelegramColor />} />
+    <IconWrapper name="Time" icon={<TimeColor />} />
+    <IconWrapper name="Twitter" icon={<TwitterColor />} />
+    <IconWrapper name="Wallet" icon={<WalletColor />} />
+    <IconWrapper name="Webinar" icon={<WebinarColor />} />
   </>
 );
 
@@ -313,9 +323,9 @@ export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
 export const tokens = Template4.bind({});
 export const misc = Template5.bind({});
-export const placeholder = Template6.bind({});
-export const generalIcons = Template7.bind({});
-export const generalIconsColor = Template8.bind({});
+export const navigationIconsColor = Template6.bind({});
+export const generalFilledStyle = Template7.bind({});
+export const generalFullColor = Template8.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
