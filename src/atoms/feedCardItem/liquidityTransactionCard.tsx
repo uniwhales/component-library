@@ -6,9 +6,7 @@ import { LogoUrlBase } from '../../utils/constants';
 import { ButtonAtom } from '../buttons/button';
 import {
   ChevronDownIcon,
-  ImageIcon,
   LinkIcon,
-  StarIcon,
   TwitterColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -26,101 +24,92 @@ import {
   ValueContainer,
   CenterContent,
   PrepositionContainer,
-  NftImage,
-  NftValues,
-  TokenIcon,
+  LpOverlappedToken,
+  LpTokenIcon,
 } from './feedCardItem.styles';
-import { chainIcons } from './icons';
-import { NftTransferTransactionProps } from './types';
+import { chainIcons, dexIcons } from './icons';
+import { LpPoolProps } from './types';
 
-export const NftTransferCard = (
+export const LiquidityTransactionCard = (
   {
     isMulti,
     txData,
     handleToggle,
     isOpen,
     isFirst,
-  }: NftTransferTransactionProps,
+  }: LpPoolProps,
 ) => {
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
   const {
-    tx_hash: txHash,
+    hash,
     chain,
-    wallet,
-    to,
-    tx_type: txType,
-    marketplace,
-    nft_symbol: nftSymbol,
-    nft_token_id: nftTokenId,
-    from,
-    symbol,
-    price,
+    dex,
+    token0_address: token0Address,
+    token1_address: token1Address,
+    token0_amount: token0Amount,
+    token1_amount: token1Amount,
+    token1_amount_usd: token1AmountUsd,
+    type,
   } = txData;
-  const isBuy = wallet === to;
+  const isAdd = type === 'add';
   // TODO: Add all tx types here
-  const txTypePreposition = txType === 'nft_trade' ? 'for' : 'text';
+  const txTypePreposition = 'total';
   // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
   // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${txHash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${txHash}`);
-  const goToOpensea = `https://etherscan.io/tx/${txHash}`;
+  const goToItem = `https://etherscan.io/tx/${hash}`;
+  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
+  const goToOpensea = `https://etherscan.io/tx/${hash}`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={hash}
       isMulti={isMulti}
     >
+
       <TxTypeWrapper>
         <OverlappedIcon
-          bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
           smallIcon={chainIcons[chain]}
-          largeIcon={<StarIcon />}
+          largeIcon={dexIcons[dex]}
+          bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
         <TxTypeContainer>
-          <Text size="S-Regular">{isBuy ? 'Buy' : 'Sell'}</Text>
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{marketplace}</Text>
+          <Text size={isAdd ? 'S-Regular' : 'XS-Regular'}>{isAdd ? 'Add Liquidity' : 'Remove Liquidity'}</Text>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{dex}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContent>
         <XYPartyContent>
-          <ValueContainer />
-          <NftImage>
-            <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
-          </NftImage>
-          <NftValues>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{nftSymbol}</Text>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{nftTokenId}</Text>
-          </NftValues>
+          <ValueContainer>
+            <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
+              {token0Amount.toFixed(2)}
+            </Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
+              {token1Amount.toFixed(2)}
+            </Text>
+          </ValueContainer>
+          <LpOverlappedToken>
+            <LpTokenIcon
+              baseUrl={LogoUrlBase}
+              tokenAddress={token0Address.toLowerCase()}
+            />
+            <LpTokenIcon
+              baseUrl={LogoUrlBase}
+              tokenAddress={token1Address.toLowerCase()}
+            />
+          </LpOverlappedToken>
 
         </XYPartyContent>
         <PrepositionContainer>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         </PrepositionContainer>
         <XYPartyContent>
-          <ValueContainer>
-            <Text size="S-Bold" color={isBuy ? theme.textShades.SHADE_MINUS_3 : theme.colors.primary.UWL_BLUE}>
-              <>
-                {isBuy ? '+' : '-'}
-                {price}
-              </>
-            </Text>
-            <Text size="S-Regular" color={isBuy ? theme.textShades.SHADE_MINUS_2 : theme.colors.primary.UWL_BLUE}>
-              $amount
-            </Text>
-          </ValueContainer>
-          <TokenIcon
-            baseUrl={LogoUrlBase}
-            tokenAddress={from.toLowerCase()}
-          />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
-            {symbol}
-          </Text>
-        </XYPartyContent>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`($${token1AmountUsd})`}</Text>
 
+        </XYPartyContent>
         {hover && (
           <StyledLink
             href={goToItem}

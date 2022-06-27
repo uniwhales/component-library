@@ -153,3 +153,26 @@ export const InfoContainer = Styled.div`
   align-items: center;
   gap: 4px;
 `;
+
+// LP
+
+export const LpTokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
+  height: 32px;
+  width: 32px;
+  background-image: ${({ baseUrl, tokenAddress }) => `url(${baseUrl}${tokenAddress}.jpg)`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+`;
+
+export const LpOverlappedToken = Styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 10px;
+    ${LpTokenIcon}:nth-child(2n) {
+      margin-left: -10px;
+      z-index: 10;
+    };
+`;

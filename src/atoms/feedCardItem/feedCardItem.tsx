@@ -1,6 +1,7 @@
 import React from 'react';
 import { IdleTransactionCard } from './idleTransactionCard';
-import { NftTransferCard } from './nftTransferCard';
+import { LiquidityTransactionCard } from './liquidityTransactionCard';
+import { NftTradeCard } from './nftTradeCard';
 import { SwapTransactionCard } from './swapTransactionCard';
 import { TransferTransactionCard } from './transferTransactionCard';
 
@@ -36,7 +37,17 @@ export const FeedCardItem = (
       );
     case 'nft_trade':
       return (
-        <NftTransferCard
+        <NftTradeCard
+          isMulti={isMulti}
+          txData={txData}
+          isOpen={isOpen}
+          isFirst={isFirst}
+          handleToggle={handleToggle}
+        />
+      );
+    case 'lp':
+      return (
+        <LiquidityTransactionCard
           isMulti={isMulti}
           txData={txData}
           isOpen={isOpen}
