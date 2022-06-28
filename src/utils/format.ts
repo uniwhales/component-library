@@ -18,13 +18,16 @@ export const abbreviateNumber = (num: number) => {
   if (num < 1000) {
     return num.toFixed(2);
   }
-  if (num > 999 && num <= 99999.99) {
+  if (num >= 1000 && num <= 99999.99) {
     return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, notation: 'compact', compactDisplay: 'short' }).format(num);
   }
   if (num >= 100000 && num <= 999999.99) {
     return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 5, notation: 'compact', compactDisplay: 'short' }).format(num);
   }
-  if (num >= 1000000) {
+  if (num >= 1000000 && num <= 99999999.99) {
+    return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, notation: 'compact', compactDisplay: 'short' }).format(num);
+  }
+  if (num >= 100000000) {
     return new Intl.NumberFormat('en-US', { maximumSignificantDigits: 5, notation: 'compact', compactDisplay: 'short' }).format(num);
   }
   return num.toFixed(2);

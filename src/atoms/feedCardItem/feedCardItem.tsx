@@ -4,7 +4,9 @@ import { LiquidityTransactionCard } from './transactionTypes/liquidityTransactio
 import { NftTradeCard } from './transactionTypes/nftTradeCard';
 import { SwapTransactionCard } from './transactionTypes/swapTransactionCard';
 import { TransferTransactionCard } from './transactionTypes/transferTransactionCard';
-import { ItemCardProps } from './types';
+import {
+  LpPoolProps, NftTradeProps, SwapTransactionProps, TransferTransactionProps,
+} from './types';
 
 export const FeedCardItem = (
   {
@@ -13,7 +15,7 @@ export const FeedCardItem = (
     handleToggle,
     isOpen,
     isFirst,
-  }: ItemCardProps,
+  }: SwapTransactionProps | TransferTransactionProps | NftTradeProps | LpPoolProps,
 ) => {
   switch (txData.tx_type) {
     case 'swap':

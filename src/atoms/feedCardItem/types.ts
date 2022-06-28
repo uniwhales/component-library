@@ -8,7 +8,7 @@ export interface SwapTransactionData {
   from: string;
   to: string;
   tx_hash: string;
-  tx_type: string;
+  tx_type: 'swap';
   dex: keyof typeof dexIcons;
   token0_address: string;
   token0_name: string;
@@ -26,12 +26,8 @@ export interface SwapTransactionData {
   chain: keyof typeof chainIcons;
 }
 
-export interface SwapTransactionProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface SwapTransactionProps extends ItemCardProps {
   txData: SwapTransactionData;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface TransferTransactionData {
@@ -45,7 +41,7 @@ export interface TransferTransactionData {
   contract_address: string;
   symbol: string;
   name: string;
-  tx_type: string;
+  tx_type: 'transfer';
   type: string;
   hash: string;
   timestamp: number;
@@ -56,12 +52,8 @@ export interface TransferTransactionData {
   chain: keyof typeof chainIcons;
 }
 
-export interface TransferTransactionProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface TransferTransactionProps extends ItemCardProps {
   txData: TransferTransactionData
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface NftTrade {
@@ -69,7 +61,7 @@ export interface NftTrade {
   contract: string;
   from: string;
   to: string;
-  tx_type: string;
+  tx_type: 'nft_trade';
   index: number;
   tx_from: string;
   tx_to: string;
@@ -88,12 +80,8 @@ export interface NftTrade {
   chain: keyof typeof chainIcons;
 }
 
-export interface NftTradeProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface NftTradeProps extends ItemCardProps {
   txData: NftTrade;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface NftTransfer {
@@ -105,7 +93,7 @@ export interface NftTransfer {
   symbol: string;
   name: string;
   contract_type: string;
-  tx_type: string;
+  tx_type: 'nft_transfer';
   type: string;
   amount: number;
   token_id: string;
@@ -120,12 +108,8 @@ export interface NftTransfer {
   chain: keyof typeof chainIcons;
 }
 
-export interface NftTransferProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface NftTransferProps extends ItemCardProps {
   txData: NftTransfer;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface NftMint {
@@ -137,7 +121,7 @@ export interface NftMint {
   symbol: string;
   name: string;
   contract_type: string;
-  tx_type: string;
+  tx_type: ' nft_mint';
   type: string;
   amount: number;
   token_id: string;
@@ -153,12 +137,8 @@ export interface NftMint {
   chain: keyof typeof chainIcons;
 }
 
-export interface NftMintProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface NftMintProps extends ItemCardProps {
   txData: NftMint;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface LpPool {
@@ -168,7 +148,7 @@ export interface LpPool {
   wallet: string;
   from: string;
   tx_hash: string;
-  tx_type: string;
+  tx_type: 'lp';
   type: string;
   token0_address: string;
   token0_name: string;
@@ -187,12 +167,8 @@ export interface LpPool {
   chain: keyof typeof chainIcons;
 }
 
-export interface LpPoolProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface LpPoolProps extends ItemCardProps {
   txData: LpPool;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Reward {
@@ -209,17 +185,13 @@ export interface Reward {
   amount_usd: number;
   price_usd: number;
   dex: keyof typeof dexIcons;
-  tx_type: string
+  tx_type: 'reward'
   index: number;
   chain: string
 }
 
-export interface RewardProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface RewardProps extends ItemCardProps {
   txData: Reward;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Lending {
@@ -236,7 +208,7 @@ export interface Lending {
   amount: number;
   amount_usd: number;
   price_usd: number;
-  tx_type: string;
+  tx_type: 'lending';
   platform: string;
   dex: keyof typeof dexIcons;
   health_factor?: number;
@@ -244,12 +216,9 @@ export interface Lending {
   chain: keyof typeof chainIcons;
 }
 
-export interface LendingProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface LendingProps extends ItemCardProps {
   txData: Lending;
-  handleToggle: () => void;
-  isFirst: boolean;
+
 }
 
 export interface ApproveRevoke {
@@ -263,24 +232,20 @@ export interface ApproveRevoke {
   name: string;
   token_type: string;
   action: string;
-  tx_type: string;
+  tx_type: 'approve_revoke';
   wallet: string;
   chain: keyof typeof chainIcons;
 }
 
-export interface ApproveRevokeProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface ApproveRevokeProps extends ItemCardProps {
   txData: ApproveRevoke;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Wrap {
   hash: string;
   timestamp: number;
   block: number;
-  tx_type: string;
+  tx_type: 'wrap';
   action: string;
   contract_address: string;
   amount: number;
@@ -293,12 +258,8 @@ export interface Wrap {
   chain: keyof typeof chainIcons;
 }
 
-export interface WrapProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface WrapProps extends ItemCardProps {
   txData: Wrap;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Bridge {
@@ -314,19 +275,15 @@ export interface Bridge {
   amount_usd: number;
   symbol: string;
   name: string;
-  tx_type: string;
+  tx_type: 'bridge';
   type: string;
   bridge: string;
   index: number;
   chain: keyof typeof chainIcons;
 }
 
-export interface BridgeProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface BridgeProps extends ItemCardProps {
   txData: Bridge;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Perp {
@@ -337,7 +294,7 @@ export interface Perp {
   from: string;
   to: string;
   tx_hash: string;
-  tx_type: string;
+  tx_type: 'perp';
   dex: keyof typeof dexIcons;
   token0_address: string;
   token0_name: string;
@@ -356,12 +313,8 @@ export interface Perp {
   chain: keyof typeof chainIcons;
 }
 
-export interface PerpProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface PerpProps extends ItemCardProps {
   txData: Perp;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface Option {
@@ -372,7 +325,7 @@ export interface Option {
   from: string;
   to: string;
   tx_hash: string;
-  tx_type: string;
+  tx_type: 'option';
   dex: keyof typeof dexIcons;
   direction: string;
   status: string;
@@ -387,12 +340,8 @@ export interface Option {
   chain: keyof typeof chainIcons;
 }
 
-export interface OptionProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface OptionProps extends ItemCardProps {
   txData: Option;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface NftSweep {
@@ -400,7 +349,7 @@ export interface NftSweep {
   contract: string;
   from: string;
   to: string;
-  tx_type: string;
+  tx_type: 'nft_sweep';
   index: number;
   tx_from: string;
   tx_to: string;
@@ -427,32 +376,13 @@ export interface NftSweep {
   items: any[],
 }
 
-export interface NftSweepProps {
-  isMulti: boolean;
-  isOpen: boolean;
+export interface NftSweepProps extends ItemCardProps {
   txData: NftSweep;
-  handleToggle: () => void;
-  isFirst: boolean;
 }
 
 export interface ItemCardProps {
   isMulti: boolean;
   isOpen: boolean;
-  txData:
-  SwapTransactionData
-  | TransferTransactionData
-  | NftTrade
-  | NftTransfer
-  | NftMint
-  | NftSweep
-  | LpPool
-  | Reward
-  | Lending
-  | ApproveRevoke
-  | Wrap
-  | Bridge
-  | Perp
-  | Option;
   handleToggle: () => void;
   isFirst: boolean;
 }
