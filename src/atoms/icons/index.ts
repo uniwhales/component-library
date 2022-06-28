@@ -1,5 +1,5 @@
 // generalIcons//COLOR
-export * from './generalIcons/fullColorStyle/AlerBotColor';
+export * from './generalIcons/fullColorStyle/AlertBotColor';
 export * from './generalIcons/fullColorStyle/EditColor';
 export * from './generalIcons/fullColorStyle/CoinColor';
 export * from './generalIcons/fullColorStyle/CopyColor';
@@ -10,7 +10,7 @@ export * from './generalIcons/fullColorStyle/ChartColor';
 export * from './generalIcons/fullColorStyle/CommentColor';
 export * from './generalIcons/fullColorStyle/DashboardColor';
 export * from './generalIcons/fullColorStyle/DeleteColor';
-export * from './generalIcons/fullColorStyle/GobeColor';
+export * from './generalIcons/fullColorStyle/GlobeColor';
 export * from './generalIcons/fullColorStyle/HeartColor';
 export * from './generalIcons/fullColorStyle/InfoColor';
 export * from './generalIcons/fullColorStyle/MediaColor';
@@ -18,7 +18,7 @@ export * from './generalIcons/fullColorStyle/MoreCircleColor';
 export * from './generalIcons/fullColorStyle/NewsColor';
 export * from './generalIcons/fullColorStyle/NotificationColor';
 export * from './generalIcons/fullColorStyle/PlusColor';
-export * from './generalIcons/fullColorStyle/Plus1Color';
+export * from './generalIcons/fullColorStyle/MinusColor';
 export * from './generalIcons/fullColorStyle/Plus2Color';
 export * from './generalIcons/fullColorStyle/RocketColor';
 export * from './generalIcons/fullColorStyle/SearchColor';
@@ -62,15 +62,15 @@ export * from './generalIcons/filledStyle/TwitterStandard';
 export * from './generalIcons/filledStyle/WalletStandard';
 export * from './generalIcons/filledStyle/WebinarStandard';
 export * from './generalIcons/filledStyle/DownloadStandard';
-export * from './generalIcons/filledStyle/AllIcon';
-export * from './generalIcons/filledStyle/StarIcon';
-export * from './generalIcons/filledStyle/ImageIcon';
 export * from './generalIcons/filledStyle/AllStandard';
 export * from './generalIcons/filledStyle/CSVDocStandard';
 export * from './generalIcons/filledStyle/GlobeStandard';
 export * from './generalIcons/filledStyle/MinusStandard';
 export * from './generalIcons/filledStyle/TckSquareStandard';
 export * from './generalIcons/filledStyle/WrapStandard';
+export * from './generalIcons/filledStyle/AllIcon';
+export * from './generalIcons/filledStyle/StarIcon';
+export * from './generalIcons/filledStyle/ImageIcon';
 export * from './generalIcons/filledStyle/UploadStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
@@ -87,7 +87,13 @@ export * from './navigationIcons/ChevronLeftIcon';
 export * from './navigationIcons/ChevronRightIcon';
 export * from './navigationIcons/ChevronUpIcon';
 export * from './navigationIcons/RefreshIcon';
-export * from './navigationIcons/RedCross';
+// navigationIconsColor
+export * from './navigationIcons/fullColor/ArrowRightColor';
+export * from './navigationIcons/fullColor/ArrowLeftColor';
+export * from './navigationIcons/fullColor/NoticeColor';
+export * from './navigationIcons/fullColor/SelectedCheck';
+export * from './navigationIcons/fullColor/SelectedCross';
+export * from './navigationIcons/fullColor/RedCross';
 // chains
 export * from './chains/Arbitrum';
 export * from './chains/Avalanche';
