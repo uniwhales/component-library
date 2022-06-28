@@ -10,7 +10,7 @@ import {
   AboutSection,
   AboutSectionLeftSide,
   ArticleCover,
-  Card, CardHeader, CardHeaderLeftSide, MediaTypeIcon, Spacer, TagSection,
+  Card, CardHeader, CardHeaderLeftSide, CardTitle, MediaTypeIcon, Spacer, TagSection,
 } from './styles';
 import { Chip } from '../../atoms/chips/chip';
 
@@ -23,6 +23,7 @@ export const ContentCard:FC<ContentCardProps> = ({
   duration,
   title,
   guest,
+  width,
   tags,
   contentType,
   onTagClick,
@@ -30,7 +31,7 @@ export const ContentCard:FC<ContentCardProps> = ({
 }) => {
   const theme = useTheme() as typeof Theme;
   return (
-    <Card size={size} onClick={() => onClick()}>
+    <Card size={size} width={width} onClick={() => onClick()}>
       <CardHeader>
         <CardHeaderLeftSide>
           {chipText && <Chip type="secondary">{chipText}</Chip>}
@@ -39,7 +40,9 @@ export const ContentCard:FC<ContentCardProps> = ({
         {duration && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{duration}</Text>}
       </CardHeader>
       <Spacer />
-      <Text size={size === 'S' ? 'S-Bold' : 'M-Bold'}>{title}</Text>
+      <CardTitle>
+        <Text size={size === 'S' ? 'S-Bold' : 'M-Bold'}>{title}</Text>
+      </CardTitle>
       <ArticleCover size={size} url={coverImgUrl} />
       <AboutSection>
         <AboutSectionLeftSide>

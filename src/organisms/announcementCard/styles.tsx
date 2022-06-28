@@ -1,9 +1,9 @@
 import { Styled } from '../../theme';
 import { AnnouncementCardProps } from './types';
 
-export const AnnouncementCardContainer = Styled.div<Pick<AnnouncementCardProps, 'width'>>`
+export const AnnouncementCardContainer = Styled.div<Pick<AnnouncementCardProps, 'width'> & { boxShadow: boolean }>`
     background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
-    box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
+    box-shadow: ${({ theme, boxShadow }) => boxShadow && theme.dropShadow.REGULAR};
     width: ${({ width }) => width ?? '100%'};
     border-radius: 12px;
     padding: 32px;

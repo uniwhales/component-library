@@ -4,4 +4,5 @@ export type AnnouncementCardProps = {
   title: string
   purifiedContent: string
   width?: string
+  boxShadow?: boolean
 };
