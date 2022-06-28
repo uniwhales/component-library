@@ -59,7 +59,6 @@ import {
   NoticeColor,
   SelectedCheck,
   SelectedCross,
-  RedCross,
   AlertBotStandard,
   Meatball,
   Kebab,
@@ -132,17 +131,11 @@ import {
   TwitterColor,
   WalletColor,
   WebinarColor,
-<<<<<<< HEAD
   UploadStandard,
   StarIcon,
   RedCross,
+  NftIcon,
 } from '.';
-=======
-  MinusColor,
-  StarIcon,
-} from '.';
-import { OverlappedIcon } from './placeholder/OverlappedIcon';
->>>>>>> 61c619b7f3bcd2672fec8f338c19efd72fb2c0d0
 
 export default {
   title: 'Atoms/Icons',
@@ -230,13 +223,10 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
     <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
     <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
-<<<<<<< HEAD
-=======
-    <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
     <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
     <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
->>>>>>> 61c619b7f3bcd2672fec8f338c19efd72fb2c0d0
+    <IconWrapper name="NFT" icon={<NftIcon />} />
   </>
 );
 
@@ -255,44 +245,6 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />
     <IconWrapper name="All" icon={<AllStandard />} />
     <IconWrapper name="All Icon" icon={<AllIcon />} />
-<<<<<<< HEAD
-    <IconWrapper name="All Icon" icon={<AllStandard />} />
-    <IconWrapper name="Article Icon" icon={<ArticleStandard />} />
-    <IconWrapper name="Audio Icon" icon={<AudioStandard />} />
-    <IconWrapper name="Chart Icon" icon={<ChartStandard />} />
-    <IconWrapper name="Coin Icon" icon={<CoinStandard />} />
-    <IconWrapper name="Comment Icon" icon={<CommentStandard />} />
-    <IconWrapper name="Copy Icon" icon={<CopyStandard />} />
-    <IconWrapper name="CSVDoc Icon" icon={<CSVDocStandard />} />
-    <IconWrapper name="Dashboard Icon" icon={<DashboardStandard />} />
-    <IconWrapper name="Delete Icon" icon={<DeleteStandard />} />
-    <IconWrapper name="Download Icon" icon={<DownloadStandard />} />
-    <IconWrapper name="Edit Icon" icon={<EditStandard />} />
-    <IconWrapper name="Globe Icon" icon={<GlobeStandard />} />
-    <IconWrapper name="Heart Icon" icon={<HeartStandard />} />
-    <IconWrapper name="Image Icon" icon={<ImageIcon />} />
-    <IconWrapper name="Info Icon" icon={<InfoStandard />} />
-    <IconWrapper name="Media Icon" icon={<MediaStandard />} />
-    <IconWrapper name="Minus Icon" icon={<MinusStandard />} />
-    <IconWrapper name="MoreCircle Icon" icon={<MoreCircleStandard />} />
-    <IconWrapper name="News Icon" icon={<NewsStandard />} />
-    <IconWrapper name="Notification Icon" icon={<NotificationStandard />} />
-    <IconWrapper name="Plus Icon" icon={<PlusStandard />} />
-    <IconWrapper name="Rocket Icon" icon={<RocketStandard />} />
-    <IconWrapper name="Search Icon" icon={<SearchStandard />} />
-    <IconWrapper name="Send Icon" icon={<SendStandard />} />
-    <IconWrapper name="Settings Icon" icon={<SettingsStandard />} />
-    <IconWrapper name="Subscribe Icon" icon={<SubscribeStandard />} />
-    <IconWrapper name="Swap Icon" icon={<SwapStandard />} />
-    <IconWrapper name="TckSquare Icon" icon={<TckSquareStandard />} />
-    <IconWrapper name="Telegram Icon" icon={<TelegramStandard />} />
-    <IconWrapper name="Time Icon" icon={<TimeStandard />} />
-    <IconWrapper name="Twitter Icon" icon={<TwitterStandard />} />
-    <IconWrapper name="Wallet Icon" icon={<WalletStandard />} />
-    <IconWrapper name="Webinar Icon" icon={<WebinarStandard />} />
-    <IconWrapper name="Wrap Icon" icon={<WrapStandard />} />
-    <IconWrapper name="Upload Icon" icon={<UploadStandard />} />
-=======
     <IconWrapper name="Article" icon={<ArticleStandard />} />
     <IconWrapper name="Audio" icon={<AudioStandard />} />
     <IconWrapper name="Chart" icon={<ChartStandard />} />
@@ -326,7 +278,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wallet" icon={<WalletStandard />} />
     <IconWrapper name="Webinar" icon={<WebinarStandard />} />
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
->>>>>>> 61c619b7f3bcd2672fec8f338c19efd72fb2c0d0
+    <IconWrapper name="Upload" icon={<UploadStandard />} />
   </>
 );
 
@@ -352,7 +304,6 @@ const Template8: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="News" icon={<NewsColor />} />
     <IconWrapper name="Notification" icon={<NotificationColor />} />
     <IconWrapper name="Plus" icon={<PlusColor />} />
-    <IconWrapper name="Minus" icon={<MinusColor />} />
     <IconWrapper name="Plus2" icon={<Plus2Color />} />
     <IconWrapper name="Rocket" icon={<RocketColor />} />
     <IconWrapper name="Search" icon={<SearchColor />} />

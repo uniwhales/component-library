@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
-import { HintsAndHovers } from '../../organisms/hintsAndHovers/hintsAndHovers';
-import { Theme } from '../../theme';
-import { LogoUrlBase } from '../../utils/constants';
-import { ButtonAtom } from '../buttons/button';
+import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
+import { Theme } from '../../../theme';
+import { LogoUrlBase } from '../../../utils/constants';
+import { abbreviateNumber } from '../../../utils/format';
+import { ButtonAtom } from '../../buttons/button';
 import {
   ChevronDownIcon,
   DownloadStandard,
@@ -12,10 +13,11 @@ import {
   LinkIcon,
   TwitterColor,
   UploadStandard,
-} from '../icons';
-import { IconWrapper } from '../icons/iconWrapper';
-import { OverlappedIcon } from '../overlappedIcon/overlappedIcon';
-import { Text } from '../texts/text';
+} from '../../icons';
+import { IconWrapper } from '../../icons/iconWrapper';
+import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
+import { Text } from '../../texts/text';
+import { dollarPopover } from '../dollarPopover';
 import {
   HoverItemsContainer,
   MasterContainer,
@@ -28,11 +30,12 @@ import {
   StyledLink,
   ValueContainer,
   CenterContent,
-  PrepositionContainer,
   IdenticonContainer,
-} from './feedCardItem.styles';
-import { chainIcons } from './icons';
-import { TransferTransactionProps } from './types';
+  LinkWrapper,
+} from '../feedCardItem.styles';
+import { getFormattedText } from '../helpers/formattedText';
+import { chainIcons } from '../helpers/icons';
+import { TransferTransactionProps } from '../types';
 
 export const TransferTransactionCard = (
   {
@@ -48,19 +51,17 @@ export const TransferTransactionCard = (
   const {
     hash,
     chain,
-    tx_type: txType,
     amount,
     amount_usd: amountUsd,
     to,
-    from,
+    contract_address: contractAddress,
     symbol,
     wallet,
   } = txData;
   const isSend = wallet === to;
-  const formatUsdAmount = `($${amountUsd.toFixed(2)})`;
 
   // TODO: Add all tx types here
-  const txTypePreposition = txType === 'transfer' ? 'to' : 'text';
+  const txTypePreposition = isSend ? 'to' : 'from';
   // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
@@ -92,23 +93,23 @@ export const TransferTransactionCard = (
             <HintsAndHovers
               id={amount.toString()}
               hint={amount.toString()}
-              icon={(<Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{Number(amount).toFixed(4)}</Text>)}
+              icon={(<Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{abbreviateNumber(amount)}</Text>)}
             />
             <HintsAndHovers
               id={amountUsd.toString()}
-              hint={amountUsd.toString()}
-              icon={(<Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{formatUsdAmount}</Text>)}
+              hint={dollarPopover}
+              icon={getFormattedText(amountUsd, 'S-Regular')}
             />
           </ValueContainer>
           <TokenIcon
             baseUrl={LogoUrlBase}
-            tokenAddress={from.toLowerCase()}
+            tokenAddress={contractAddress && contractAddress.toLowerCase()}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{symbol}</Text>
         </XYPartyContent>
-        <PrepositionContainer>
+        <div>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
-        </PrepositionContainer>
+        </div>
         <XYPartyContent>
           <IdenticonContainer>
             <IconWrapper height="20px" width="20px" icon={<Identicon />} />
@@ -116,15 +117,17 @@ export const TransferTransactionCard = (
 
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>
         </XYPartyContent>
-        {hover && (
-          <StyledLink
-            href={goToItem}
-            rel="noreferrer"
-            target="_blank"
-          >
-            <LinkIcon />
-          </StyledLink>
-        )}
+        <LinkWrapper>
+          {hover && (
+            <StyledLink
+              href={goToItem}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LinkIcon />
+            </StyledLink>
+          )}
+        </LinkWrapper>
       </CenterContent>
 
       <SecondaryActionContainer>

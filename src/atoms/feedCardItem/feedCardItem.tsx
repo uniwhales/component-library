@@ -1,9 +1,10 @@
 import React from 'react';
-import { IdleTransactionCard } from './idleTransactionCard';
-import { LiquidityTransactionCard } from './liquidityTransactionCard';
-import { NftTradeCard } from './nftTradeCard';
-import { SwapTransactionCard } from './swapTransactionCard';
-import { TransferTransactionCard } from './transferTransactionCard';
+import { IdleTransactionCard } from './transactionTypes/idleTransactionCard';
+import { LiquidityTransactionCard } from './transactionTypes/liquidityTransactionCard';
+import { NftTradeCard } from './transactionTypes/nftTradeCard';
+import { SwapTransactionCard } from './transactionTypes/swapTransactionCard';
+import { TransferTransactionCard } from './transactionTypes/transferTransactionCard';
+import { ItemCardProps } from './types';
 
 export const FeedCardItem = (
   {
@@ -12,7 +13,7 @@ export const FeedCardItem = (
     handleToggle,
     isOpen,
     isFirst,
-  }: any,
+  }: ItemCardProps,
 ) => {
   switch (txData.tx_type) {
     case 'swap':

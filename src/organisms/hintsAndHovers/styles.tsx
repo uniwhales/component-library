@@ -11,5 +11,6 @@ export const Tooltip = Styled(ReactTooltip)`
   max-width: 296px;
   &.__react_component_tooltip {
     border-radius: 8px;
+    opacity: 1 !important;
   }
 `;

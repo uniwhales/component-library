@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
-import { HintsAndHovers } from '../../organisms/hintsAndHovers/hintsAndHovers';
-import { Theme } from '../../theme';
-import { LogoUrlBase } from '../../utils/constants';
-import { ButtonAtom } from '../buttons/button';
+import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { Theme } from '../../../theme';
+import { LogoUrlBase } from '../../../utils/constants';
+import { ButtonAtom } from '../../buttons/button';
 import {
   ChevronDownIcon,
   LinkIcon,
   TwitterColor,
-} from '../icons';
-import { IconWrapper } from '../icons/iconWrapper';
-import { OverlappedIcon } from '../overlappedIcon/overlappedIcon';
-import { Text } from '../texts/text';
+} from '../../icons';
+import { IconWrapper } from '../../icons/iconWrapper';
+import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
+import { Text } from '../../texts/text';
 import {
   HoverItemsContainer,
   MasterContainer,
@@ -21,23 +20,24 @@ import {
   XYPartyContent,
   ChevronButton,
   SecondaryActionContainer,
-  TokenIcon,
   StyledLink,
   ValueContainer,
   CenterContent,
-  PrepositionContainer,
-} from './feedCardItem.styles';
-import { chainIcons, dexIcons } from './icons';
-import { SwapTransactionProps } from './types';
+  LpOverlappedToken,
+  LpTokenIcon,
+  LinkWrapper,
+} from '../feedCardItem.styles';
+import { chainIcons, dexIcons } from '../helpers/icons';
+import { LpPoolProps } from '../types';
 
-export const SwapTransactionCard = (
+export const LiquidityTransactionCard = (
   {
     isMulti,
     txData,
     handleToggle,
     isOpen,
     isFirst,
-  }: SwapTransactionProps,
+  }: LpPoolProps,
 ) => {
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
@@ -45,18 +45,16 @@ export const SwapTransactionCard = (
     hash,
     chain,
     dex,
-    tx_type: txType,
-    token0_amount: token0Amount,
     token0_address: token0Address,
-    token1_amount: token1Amount,
     token1_address: token1Address,
-    token0_symbol: token0Symbol,
-    token1_symbol: token1Symbol,
+    token0_amount: token0Amount,
+    token1_amount: token1Amount,
+    token1_amount_usd: token1AmountUsd,
+    type,
   } = txData;
-  const token0Usd = `($${token0Amount.toFixed(2)})`;
-  const token1Usd = `($${token1Amount.toFixed(2)})`;
+  const isAdd = type === 'add';
   // TODO: Add all tx types here
-  const txTypePreposition = txType === 'swap' ? 'to' : 'text';
+  const txTypePreposition = 'total';
   // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
@@ -71,69 +69,58 @@ export const SwapTransactionCard = (
       key={hash}
       isMulti={isMulti}
     >
+
       <TxTypeWrapper>
         <OverlappedIcon
           smallIcon={chainIcons[chain]}
           largeIcon={dexIcons[dex]}
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
-
         <TxTypeContainer>
-          <Text size="S-Regular">{txType}</Text>
+          <Text size={isAdd ? 'S-Regular' : 'XS-Regular'}>{isAdd ? 'Add Liquidity' : 'Remove Liquidity'}</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{dex}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContent>
         <XYPartyContent>
           <ValueContainer>
-            <HintsAndHovers
-              id={token0Amount.toString()}
-              hint={token0Amount.toString()}
-              icon={(<Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{Number(token0Amount).toFixed(4)}</Text>)}
-            />
-            <HintsAndHovers
-              id={token0Usd}
-              hint={token0Usd}
-              icon={(<Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Usd}</Text>)}
-            />
+            <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
+              {token0Amount.toFixed(2)}
+            </Text>
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
+              {token1Amount.toFixed(2)}
+            </Text>
           </ValueContainer>
-          <TokenIcon
-            baseUrl={LogoUrlBase}
-            tokenAddress={token0Address.toLowerCase()}
-          />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token0Symbol}</Text>
+          <LpOverlappedToken>
+            <LpTokenIcon
+              baseUrl={LogoUrlBase}
+              tokenAddress={token0Address.toLowerCase()}
+            />
+            <LpTokenIcon
+              baseUrl={LogoUrlBase}
+              tokenAddress={token1Address.toLowerCase()}
+            />
+          </LpOverlappedToken>
+
         </XYPartyContent>
-        <PrepositionContainer>
+        <div>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
-        </PrepositionContainer>
+        </div>
         <XYPartyContent>
-          <ValueContainer>
-            <HintsAndHovers
-              id={token1Amount.toString()}
-              hint={token1Amount.toString()}
-              icon={(<Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{Number(token1Amount).toFixed(4)}</Text>)}
-            />
-            <HintsAndHovers
-              id={token1Usd}
-              hint={token1Usd}
-              icon={(<Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Usd}</Text>)}
-            />
-          </ValueContainer>
-          <TokenIcon
-            baseUrl={LogoUrlBase}
-            tokenAddress={token1Address.toLowerCase()}
-          />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{token1Symbol}</Text>
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`($${token1AmountUsd})`}</Text>
+
         </XYPartyContent>
-        {hover && (
-          <StyledLink
-            href={goToItem}
-            rel="noreferrer"
-            target="_blank"
-          >
-            <LinkIcon />
-          </StyledLink>
-        )}
+        <LinkWrapper>
+          {hover && (
+            <StyledLink
+              href={goToItem}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LinkIcon />
+            </StyledLink>
+          )}
+        </LinkWrapper>
       </CenterContent>
 
       <SecondaryActionContainer>

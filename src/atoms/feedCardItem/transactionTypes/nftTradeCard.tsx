@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { FeedPageMeatballMenu } from '../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
-import { Theme } from '../../theme';
-import { LogoUrlBase } from '../../utils/constants';
-import { ButtonAtom } from '../buttons/button';
+import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { Theme } from '../../../theme';
+import { LogoUrlBase } from '../../../utils/constants';
+import { ButtonAtom } from '../../buttons/button';
 import {
   ChevronDownIcon,
   ImageIcon,
   LinkIcon,
   StarIcon,
   TwitterColor,
-} from '../icons';
-import { IconWrapper } from '../icons/iconWrapper';
-import { OverlappedIcon } from '../overlappedIcon/overlappedIcon';
-import { Text } from '../texts/text';
+} from '../../icons';
+import { IconWrapper } from '../../icons/iconWrapper';
+import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
+import { Text } from '../../texts/text';
 import {
   HoverItemsContainer,
   MasterContainer,
@@ -25,13 +25,13 @@ import {
   StyledLink,
   ValueContainer,
   CenterContent,
-  PrepositionContainer,
   NftImage,
   NftValues,
   TokenIcon,
-} from './feedCardItem.styles';
-import { chainIcons } from './icons';
-import { NftTradeProps } from './types';
+  LinkWrapper,
+} from '../feedCardItem.styles';
+import { chainIcons } from '../helpers/icons';
+import { NftTradeProps } from '../types';
 
 export const NftTradeCard = (
   {
@@ -48,7 +48,6 @@ export const NftTradeCard = (
     tx_hash: txHash,
     chain,
     action,
-    tx_type: txType,
     marketplace,
     nft_symbol: nftSymbol,
     nft_token_id: nftTokenId,
@@ -58,7 +57,7 @@ export const NftTradeCard = (
   } = txData;
   const isBuy = action === 'buy';
   // TODO: Add all tx types here
-  const txTypePreposition = txType === 'nft_trade' ? 'for' : 'text';
+  const txTypePreposition = 'for';
   // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
@@ -96,9 +95,9 @@ export const NftTradeCard = (
           </NftValues>
 
         </XYPartyContent>
-        <PrepositionContainer>
+        <div>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
-        </PrepositionContainer>
+        </div>
         <XYPartyContent>
           <ValueContainer>
             <Text size="S-Bold" color={isBuy ? theme.textShades.SHADE_MINUS_3 : theme.colors.primary.UWL_BLUE}>
@@ -108,7 +107,7 @@ export const NftTradeCard = (
               </>
             </Text>
             <Text size="S-Regular" color={isBuy ? theme.textShades.SHADE_MINUS_2 : theme.colors.primary.UWL_BLUE}>
-              $amount
+              ($amount)
             </Text>
           </ValueContainer>
           <TokenIcon
@@ -120,15 +119,17 @@ export const NftTradeCard = (
           </Text>
         </XYPartyContent>
 
-        {hover && (
-          <StyledLink
-            href={goToItem}
-            rel="noreferrer"
-            target="_blank"
-          >
-            <LinkIcon />
-          </StyledLink>
-        )}
+        <LinkWrapper>
+          {hover && (
+            <StyledLink
+              href={goToItem}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LinkIcon />
+            </StyledLink>
+          )}
+        </LinkWrapper>
       </CenterContent>
 
       <SecondaryActionContainer>

@@ -5,6 +5,7 @@ export const MasterContainer = Styled.div<{ isMulti?: boolean }>`
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  height: 52px;
   margin: ${(props) => (!props.isMulti ? '2px 0' : 0)};
   padding: 8px 16px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
@@ -32,6 +33,7 @@ export const CenterContent = Styled.div`
   width: 563px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const XYPartyContent = Styled.div`
@@ -42,10 +44,6 @@ export const XYPartyContent = Styled.div`
   p {
     padding-left: 8px;
   }
-`;
-
-export const PrepositionContainer = Styled.div`
-  margin: 0 50px;
 `;
 
 export const ValueContainer = Styled.div`
@@ -104,8 +102,11 @@ export const TokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
 `;
 
+export const LinkWrapper = Styled.div`
+  width: 15px;
+`;
+
 export const StyledLink = Styled.a`
-  margin-left: auto;
   cursor: pointer;
   svg {
     height: 14px;

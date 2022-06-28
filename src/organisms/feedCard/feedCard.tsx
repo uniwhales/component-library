@@ -17,7 +17,6 @@ import {
 } from './feedCard.styles';
 import { FeedCardProps } from './types';
 import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
-import { SwapTransactionData } from '../../atoms/feedCardItem/types';
 
 export const FeedCard = (
   {
@@ -34,7 +33,7 @@ export const FeedCard = (
   const firstFiveItems = transactions.slice(0, 5);
   const [
     transactionsToDisplay,
-    setTransactionsToDisplay] = useState<SwapTransactionData[]>([firstItem]);
+    setTransactionsToDisplay] = useState<any>([firstItem]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {

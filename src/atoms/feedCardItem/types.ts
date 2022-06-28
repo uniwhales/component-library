@@ -1,4 +1,4 @@
-import { chainIcons, dexIcons } from './icons';
+import { chainIcons, dexIcons } from './helpers/icons';
 
 export interface SwapTransactionData {
   hash: string;
@@ -391,6 +391,68 @@ export interface OptionProps {
   isMulti: boolean;
   isOpen: boolean;
   txData: Option;
+  handleToggle: () => void;
+  isFirst: boolean;
+}
+
+export interface NftSweep {
+  tx_hash: string;
+  contract: string;
+  from: string;
+  to: string;
+  tx_type: string;
+  index: number;
+  tx_from: string;
+  tx_to: string;
+  marketplace: string;
+  nft_address: string;
+  nft_token_id: number;
+  amount: number;
+  nft_symbol: string;
+  nft_name: string;
+  price: number;
+  symbol: string;
+  action: string;
+  aggregator: string;
+  wallet: string;
+  timestamp: number;
+  block: number;
+  chain: keyof typeof chainIcons;
+  address: string;
+  count: number;
+  price_symbol: string;
+  buyer: string;
+  sellers: string[],
+  tokens: any[],
+  items: any[],
+}
+
+export interface NftSweepProps {
+  isMulti: boolean;
+  isOpen: boolean;
+  txData: NftSweep;
+  handleToggle: () => void;
+  isFirst: boolean;
+}
+
+export interface ItemCardProps {
+  isMulti: boolean;
+  isOpen: boolean;
+  txData:
+  SwapTransactionData
+  | TransferTransactionData
+  | NftTrade
+  | NftTransfer
+  | NftMint
+  | NftSweep
+  | LpPool
+  | Reward
+  | Lending
+  | ApproveRevoke
+  | Wrap
+  | Bridge
+  | Perp
+  | Option;
   handleToggle: () => void;
   isFirst: boolean;
 }
