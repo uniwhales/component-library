@@ -1,4 +1,5 @@
 import React from 'react';
+import { ContractInteractionCard } from './transactionTypes/contractInteractionCard';
 import { IdleTransactionCard } from './transactionTypes/idleTransactionCard';
 import { LiquidityTransactionCard } from './transactionTypes/liquidityTransactionCard';
 import { NftMintCard } from './transactionTypes/nftMintCard';
@@ -6,6 +7,7 @@ import { NftTradeCard } from './transactionTypes/nftTradeCard';
 import { SwapTransactionCard } from './transactionTypes/swapTransactionCard';
 import { TransferTransactionCard } from './transactionTypes/transferTransactionCard';
 import {
+  ContractInteractionProps,
   LpPoolProps, NftMintProps, NftTradeProps, SwapTransactionProps, TransferTransactionProps,
 } from './types';
 
@@ -16,7 +18,13 @@ export const FeedCardItem = (
     handleToggle,
     isOpen,
     isFirst,
-  }: SwapTransactionProps | TransferTransactionProps | NftTradeProps | LpPoolProps | NftMintProps,
+  }:
+    SwapTransactionProps
+    | TransferTransactionProps
+    | NftTradeProps
+    | LpPoolProps
+    | NftMintProps
+    | ContractInteractionProps,
 ) => {
   switch (txData.tx_type) {
     case 'swap':
@@ -52,6 +60,16 @@ export const FeedCardItem = (
     case 'nft_mint':
       return (
         <NftMintCard
+          isMulti={isMulti}
+          txData={txData}
+          isOpen={isOpen}
+          isFirst={isFirst}
+          handleToggle={handleToggle}
+        />
+      );
+    case 'contract_interaction':
+      return (
+        <ContractInteractionCard
           isMulti={isMulti}
           txData={txData}
           isOpen={isOpen}

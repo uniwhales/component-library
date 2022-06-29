@@ -170,6 +170,22 @@ export const mockData = {
       ],
     },
     {
+      '0x0292c5a5aa7f5a3e2303eefd2b185866126fad61e74de9e9ff1bfe5adf6636e8': [
+        {
+          hash: '0x0292c5a5aa7f5a3e2303eefd2b185866126fad61e74de9e9ff1bfe5adf6636e8',
+          timestamp: 1655243638,
+          block: 11791278,
+          tx_type: 'contract_interaction',
+          function: 'Approve',
+          from: '0x4eea7a8ed0bd232777ed22cddc81e4e6f1c09300',
+          contract_address: '0x4200000000000000000000000000000000000042',
+          contract_address_label: '0x420...',
+          wallet: '0x4200000000000000000000000000000000000042',
+          chain: 'optimism',
+        },
+      ],
+    },
+    {
       '0xebff25022015bcc42dcfe4479537fba022aae87adf339e30f859507e673d41b8': [
         {
           hash: '0xebff25022015bcc42dcfe4479537fba022aae87adf339e30f859507e673d41b8',

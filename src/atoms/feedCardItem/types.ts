@@ -371,13 +371,30 @@ export interface NftSweep {
   count: number;
   price_symbol: string;
   buyer: string;
-  sellers: string[],
-  tokens: any[],
-  items: any[],
+  sellers: string[];
+  tokens: any[];
+  items: any[];
 }
 
 export interface NftSweepProps extends ItemCardProps {
   txData: NftSweep;
+}
+
+export interface ContractInteraction {
+  hash: string;
+  timestamp: number;
+  block: number;
+  tx_type: 'contract_interaction';
+  function: string;
+  from: string;
+  contract_address: string;
+  contract_address_label: string;
+  wallet: string;
+  chain: keyof typeof chainIcons;
+}
+
+export interface ContractInteractionProps extends ItemCardProps {
+  txData: ContractInteraction
 }
 
 export interface ItemCardProps {

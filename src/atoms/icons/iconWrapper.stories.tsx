@@ -135,6 +135,7 @@ import {
   StarIcon,
   RedCross,
   NftIcon,
+  Interaction,
 } from '.';
 
 export default {
@@ -279,6 +280,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Webinar" icon={<WebinarStandard />} />
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
     <IconWrapper name="Upload" icon={<UploadStandard />} />
+    <IconWrapper name="Interaction" icon={<Interaction />} />
   </>
 );
 

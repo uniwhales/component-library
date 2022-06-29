@@ -72,6 +72,7 @@ export * from './generalIcons/filledStyle/AllIcon';
 export * from './generalIcons/filledStyle/StarIcon';
 export * from './generalIcons/filledStyle/ImageIcon';
 export * from './generalIcons/filledStyle/UploadStandard';
+export * from './generalIcons/filledStyle/Interaction';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

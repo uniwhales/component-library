@@ -23,6 +23,10 @@ export const TxTypeWrapper = Styled.div`
   }
 `;
 
+export const TxTypeWrapperLong = Styled(TxTypeWrapper)`
+  width: 200px;
+`;
+
 export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
@@ -44,6 +48,10 @@ export const XYPartyContent = Styled.div`
   p {
     padding-left: 8px;
   }
+`;
+
+export const XOnlyContent = Styled(XYPartyContent)`
+  width: fit-content;
 `;
 
 export const ValueContainer = Styled.div`
