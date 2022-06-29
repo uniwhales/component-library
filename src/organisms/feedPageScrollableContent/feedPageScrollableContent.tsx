@@ -6,7 +6,7 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
 import { Theme } from '../../theme';
 import {
-  ScrollableContent, ScrollableSection, FooterSection, ShowNewButton, ButtonTextContainer,
+  ScrollableContent, ScrollableSection, FooterSection, ShowNewButton,
 } from './feedPageScrollableContent.styles';
 import { FeedPageScrollableContentProps } from './types';
 
@@ -28,19 +28,17 @@ export const FeedPageScrollableContent = (
             width="20px"
             icon={<DownloadStandard />}
           />
+          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular"> Show</Text>
+          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Bold">{newUpdates.data.length}</Text>
+          <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">
+            <>
+              {' '}
+              new
+              {' '}
+              {newUpdates.data.length >= 2 ? 'updates' : 'update'}
+            </>
+          </Text>
 
-          <ButtonTextContainer>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular"> Show</Text>
-            <Text size="S-Bold">{newUpdates.data.length}</Text>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">
-              <>
-                {' '}
-                new
-                {' '}
-                {newUpdates.data.length >= 2 ? 'updates' : 'update'}
-              </>
-            </Text>
-          </ButtonTextContainer>
         </ShowNewButton>
       )}
       <ScrollableSection>

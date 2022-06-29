@@ -69,6 +69,7 @@ export const ShowNewButton = Styled.button`
   max-width: 1440px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 4px;
   padding: 4px 16px;
   background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
@@ -78,15 +79,16 @@ export const ShowNewButton = Styled.button`
   border: none;
   margin: 4px 0;
   cursor: pointer;
-    svg {
-    margin-right: 4px;
-    fill: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0}
+  &:hover {
+     p {
+      color: ${(props) => props.theme.colors.primary.UWL_BLUE}
+     };
+     svg {
+     fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+     }
   }
-`;
-
-export const ButtonTextContainer = Styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
+  svg {
+    margin-right: 4px;
+    fill: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  }
 `;
