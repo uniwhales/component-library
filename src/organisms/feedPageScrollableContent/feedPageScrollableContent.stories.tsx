@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FeedPageScrollableContent } from './feedPageScrollableContent';
 import { Text } from '../../atoms/texts/text';
-import { ItemWrapper, Wrapper, LoadMoreContainer } from './feedPageScrollableContent.styles';
+import { ItemWrapper, Wrapper } from './feedPageScrollableContent.styles';
 import { groupTagOptions } from '../feedPageNavBar/mockData';
 import { FeedPageNavBar } from '../feedPageNavBar/feedPageNavBar';
-import { PlusStandard } from '../../atoms/icons';
-import { IconWrapper } from '../../atoms/icons/iconWrapper';
 
 export default {
   title: 'Organisms/FeedPageScrollableContent',
@@ -15,9 +13,12 @@ export default {
 } as ComponentMeta<typeof FeedPageScrollableContent>;
 
 const Template: ComponentStory<typeof FeedPageScrollableContent> = () => {
-  const [updates, setUpdates] = useState<undefined | any[]>(undefined);
+  const fakeData = Array.from(new Array(50), (val, index) => `some string ${index}`);
+  const [data, setData] = useState(fakeData);
+  const [updates, setUpdates] = useState<any>({ data: [], paging: {} });
   const [value, setValue] = useState<string | undefined>(undefined);
   const [account, setAccount] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleSwitch = () => {
     if (account) {
@@ -27,7 +28,18 @@ const Template: ComponentStory<typeof FeedPageScrollableContent> = () => {
     }
   };
 
-  const data = Array.from(new Array(50), (val, index) => `some string ${index}`);
+  const showNew = () => {
+    setData([updates.data, ...data]);
+    if (ref.current) {
+      ref.current.scrollIntoView();
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUpdates({ data: ['test'], paging: {} });
+    }, 1800);
+  }, []);
 
   return (
     <Wrapper>
@@ -44,20 +56,9 @@ const Template: ComponentStory<typeof FeedPageScrollableContent> = () => {
       />
       <FeedPageScrollableContent
         newUpdates={updates && updates}
-        onShowNew={() => setUpdates(undefined)}
+        onShowNew={showNew}
       >
-        <div style={{ width: 1440 }}>
-          {!updates && (
-            <LoadMoreContainer onClick={() => setUpdates(['foo', 'bar', 'baz'])}>
-              <IconWrapper
-                cursor="pointer"
-                height="16px"
-                width="16px"
-                icon={<PlusStandard />}
-              />
-              <Text size="S-Regular">Load More</Text>
-            </LoadMoreContainer>
-          )}
+        <div ref={ref} style={{ width: 1440 }}>
           {data.map((someString) => (
             <ItemWrapper key={someString}>
               <Text size="M-Regular">{someString}</Text>
