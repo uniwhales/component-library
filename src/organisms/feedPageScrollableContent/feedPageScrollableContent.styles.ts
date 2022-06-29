@@ -61,15 +61,34 @@ export const ScrollableContent = Styled.div`
     }
 `;
 
-export const NewUpdateSection = Styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-  margin: 8px 0;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
-  cursor: pointer;
-`;
-
 export const FooterSection = Styled.div`
   padding-top: 24px;
+`;
+
+export const ShowNewButton = Styled.button`
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 16px;
+  background-color: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  width: 100%;
+  margin: auto;
+  border-radius: 12px;
+  border: none;
+  margin: 4px 0;
+  cursor: pointer;
+  &:hover {
+     p {
+      color: ${(props) => props.theme.colors.primary.UWL_BLUE}
+     };
+     svg {
+     fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+     }
+  }
+  svg {
+    margin-right: 4px;
+    fill: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  }
 `;
