@@ -25,6 +25,8 @@ const Template: ComponentStory<typeof FeedCard> = () => (
             return Object.values(transactions).map((tx) => tx[0]);
           case 'nft_trade':
             return Object.values(transactions).map((tx) => tx[0]);
+          case 'nft_mint':
+            return Object.values(transactions).map((tx) => tx[0]);
           case 'lp':
             return Object.values(transactions).map((tx) => tx[0]);
           default:

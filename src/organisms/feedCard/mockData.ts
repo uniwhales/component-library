@@ -1,6 +1,33 @@
 export const mockData = {
   data: [
     {
+      '0xf4890ddf13b306c479b9f36b1d01df4e8a783a15f1725fd23cc3898912ecc9ee': [
+        {
+          tx_hash: '0xf4890ddf13b306c479b9f36b1d01df4e8a783a15f1725fd23cc3898912ecc9ee',
+          contract: '0x00000000006c3852cbef3e08e8df289169ede581',
+          from: '0x0e0849f515b2ecbac96bc7c167d0f47c4eb42f5f',
+          to: '0x0fdb88bd9b3a85ef8382764fcd71d31d14a37ac1',
+          tx_type: 'nft_trade',
+          index: 1031,
+          tx_from: '0x0fdb88bd9b3a85ef8382764fcd71d31d14a37ac1',
+          tx_to: '0x00000000006c3852cbef3e08e8df289169ede581',
+          marketplace: 'OpenSea',
+          symbol: 'WETH',
+          price: 0.85,
+          nft_address: '0x9378368ba6b85c1fba5b131b530f5f5bedf21a18',
+          nft_token_id: 17609,
+          amount: 1,
+          nft_symbol: 'VF2',
+          nft_name: 'VeeFriends Series 2',
+          action: 'sell',
+          wallet: '0x0e0849f515b2ecbac96bc7c167d0f47c4eb42f5f',
+          timestamp: 1656279675,
+          block: 15031025,
+          chain: 'ethereum',
+        },
+      ],
+    },
+    {
       '0xef6bc6ee11a42626a85b25efea95feeece4919fd5f14e7f5009f78e44b2a8f53': [
         {
           from: '0x2faf487a4414fe77e2327f0bf4ae2a264a776ad2',
@@ -139,6 +166,34 @@ export const mockData = {
           from_label: 'FTX Exchange',
           to_label: '0x409...',
           chain: 'ethereum',
+        },
+      ],
+    },
+    {
+      '0xebff25022015bcc42dcfe4479537fba022aae87adf339e30f859507e673d41b8': [
+        {
+          hash: '0xebff25022015bcc42dcfe4479537fba022aae87adf339e30f859507e673d41b8',
+          from: '0x0000000000000000000000000000000000000000',
+          to: '0x3722a8b1e2674fbba7081c84e39a5ce738b8159d',
+          tx_hash: '0xebff25022015bcc42dcfe4479537fba022aae87adf339e30f859507e673d41b8',
+          contract_address: '0x9F471abCddc810E561873b35b8aad7d78e21a48e',
+          symbol: 'OAT',
+          name: 'Galaxy OAT',
+          contract_type: 'default',
+          tx_type: 'nft_mint',
+          type: 'ERC721',
+          amount: 1,
+          token_id: '305726',
+          value: 0.0,
+          fee: 0.00102878,
+          timestamp: 1654699742,
+          block: 18512389,
+          wallet: '0x3722a8b1e2674fbba7081c84e39a5ce738b8159d',
+          value_usd: 0.0,
+          native_token: 'BNB',
+          from_label: 'Black Hole',
+          to_label: '0x372...',
+          chain: 'bsc',
         },
       ],
     },

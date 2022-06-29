@@ -121,7 +121,7 @@ export interface NftMint {
   symbol: string;
   name: string;
   contract_type: string;
-  tx_type: ' nft_mint';
+  tx_type: 'nft_mint';
   type: string;
   amount: number;
   token_id: string;
