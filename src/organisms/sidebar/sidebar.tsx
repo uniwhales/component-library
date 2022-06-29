@@ -33,7 +33,7 @@ export const Sidebar: SidebarComp = ({
   telegramLink,
   twitterLink,
   webappLink,
-  onLogoClick
+  onLogoClick,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultSelectedTab);
@@ -49,7 +49,11 @@ export const Sidebar: SidebarComp = ({
       width={width}
       isExpanded={expanded}
     >
-      <SidebarHeader onLogoClick={() => onLogoClick()} expanded={expanded} setExpanded={setExpanded} />
+      <SidebarHeader
+        onLogoClick={() => onLogoClick()}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
       <SidebarItems>
         {items.map((item) => (
           <NavigationTab
@@ -71,7 +75,7 @@ export const Sidebar: SidebarComp = ({
             tag={pickTag(item, hasAccessGuard, account)}
             expanded={expanded}
             subitems={item.subitems}
-            disabled={item.isDisabled || !!account && !hasAccessGuard(item)}
+            disabled={(item.isDisabled || !!account) && !hasAccessGuard(item)}
             pro={item.pro}
             whale={item.whale}
           />
@@ -83,7 +87,7 @@ export const Sidebar: SidebarComp = ({
             <ButtonAtom
               buttonVariant="primary"
               onClick={() => {
-                onGetUwlClick()
+                onGetUwlClick();
               }}
             >
               <>
@@ -93,7 +97,13 @@ export const Sidebar: SidebarComp = ({
             </ButtonAtom>
           )}
           <SidebarThemeAndShareButtons>
-            {expanded && <RedirectButtons telegramLink={telegramLink} twitterLink={twitterLink} webappLink={webappLink} />}
+            {expanded && (
+              <RedirectButtons
+                telegramLink={telegramLink}
+                twitterLink={twitterLink}
+                webappLink={webappLink}
+              />
+            )}
           </SidebarThemeAndShareButtons>
         </SidebarBottomButtons>
         <SidebarFooter plan={plan} version={version} />

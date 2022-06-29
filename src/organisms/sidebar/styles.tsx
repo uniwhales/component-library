@@ -16,7 +16,13 @@ export const SidebarContainer = Styled.div<{ width: string, isExpanded: boolean 
   position: fixed;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   transition: all linear 0.1s;
-  cursor: ${({ isExpanded }) => isExpanded ? "auto" : "pointer"};
+  cursor: ${({ isExpanded }) => (isExpanded ? 'auto' : 'pointer')};
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+  }
 `;
 
 export const SidebarItems = Styled.ul`
