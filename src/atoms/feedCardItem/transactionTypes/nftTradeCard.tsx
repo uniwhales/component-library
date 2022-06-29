@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
 import { LogoUrlBase } from '../../../utils/constants';
 import { ButtonAtom } from '../../buttons/button';
@@ -8,12 +9,12 @@ import {
   ChevronDownIcon,
   ImageIcon,
   LinkIcon,
-  StarIcon,
   TwitterColor,
 } from '../../icons';
 import { IconWrapper } from '../../icons/iconWrapper';
 import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
 import { Text } from '../../texts/text';
+import { dollarPopover } from '../dollarPopover';
 import {
   HoverItemsContainer,
   MasterContainer,
@@ -30,6 +31,7 @@ import {
   TokenIcon,
   LinkWrapper,
 } from '../feedCardItem.styles';
+import { getFormattedText } from '../helpers/formattedText';
 import { chainIcons } from '../helpers/icons';
 import { NftTradeProps } from '../types';
 
@@ -76,7 +78,7 @@ export const NftTradeCard = (
         <OverlappedIcon
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
           smallIcon={chainIcons[chain]}
-          largeIcon={<StarIcon />}
+          largeIcon={<img alt="platform logo" src={`https://dttz74tuoangs.cloudfront.net/${marketplace}.jpg`} />}
         />
         <TxTypeContainer>
           <Text size="S-Regular">{isBuy ? 'Buy' : 'Sell'}</Text>
@@ -106,9 +108,11 @@ export const NftTradeCard = (
                 {price}
               </>
             </Text>
-            <Text size="S-Regular" color={isBuy ? theme.textShades.SHADE_MINUS_2 : theme.colors.primary.UWL_BLUE}>
-              ($amount)
-            </Text>
+            <HintsAndHovers
+              id="amount"
+              hint={dollarPopover}
+              icon={getFormattedText(9955999, 'S-Regular')}
+            />
           </ValueContainer>
           <TokenIcon
             baseUrl={LogoUrlBase}

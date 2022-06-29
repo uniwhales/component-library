@@ -177,3 +177,9 @@ export const LpOverlappedToken = Styled.div`
       z-index: 10;
     };
 `;
+
+export const Image = Styled.img`
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+`;

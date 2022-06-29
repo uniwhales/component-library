@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
+import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
 import { LogoUrlBase } from '../../../utils/constants';
 import { ButtonAtom } from '../../buttons/button';
@@ -12,6 +13,7 @@ import {
 import { IconWrapper } from '../../icons/iconWrapper';
 import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
 import { Text } from '../../texts/text';
+import { dollarPopover } from '../dollarPopover';
 import {
   HoverItemsContainer,
   MasterContainer,
@@ -26,8 +28,10 @@ import {
   LpOverlappedToken,
   LpTokenIcon,
   LinkWrapper,
+  Image,
 } from '../feedCardItem.styles';
-import { chainIcons, dexIcons } from '../helpers/icons';
+import { getFormattedText } from '../helpers/formattedText';
+import { chainIcons } from '../helpers/icons';
 import { LpPoolProps } from '../types';
 
 export const LiquidityTransactionCard = (
@@ -73,7 +77,7 @@ export const LiquidityTransactionCard = (
       <TxTypeWrapper>
         <OverlappedIcon
           smallIcon={chainIcons[chain]}
-          largeIcon={dexIcons[dex]}
+          largeIcon={<Image alt="dex logo" src={`https://dttz74tuoangs.cloudfront.net/${dex}.jpg`} />}
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
         <TxTypeContainer>
@@ -107,7 +111,11 @@ export const LiquidityTransactionCard = (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         </div>
         <XYPartyContent>
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`($${token1AmountUsd})`}</Text>
+          <HintsAndHovers
+            id={token1AmountUsd.toString()}
+            hint={dollarPopover}
+            icon={getFormattedText(token1AmountUsd, 'S-Regular')}
+          />
 
         </XYPartyContent>
         <LinkWrapper>

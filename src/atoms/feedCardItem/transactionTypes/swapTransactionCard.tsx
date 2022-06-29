@@ -28,9 +28,10 @@ import {
   ValueContainer,
   CenterContent,
   LinkWrapper,
+  Image,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
-import { chainIcons, dexIcons } from '../helpers/icons';
+import { chainIcons } from '../helpers/icons';
 import { SwapTransactionProps } from '../types';
 
 export const SwapTransactionCard = (
@@ -78,7 +79,7 @@ export const SwapTransactionCard = (
       <TxTypeWrapper>
         <OverlappedIcon
           smallIcon={chainIcons[chain]}
-          largeIcon={dexIcons[dex]}
+          largeIcon={<Image alt="dex logo" src={`https://dttz74tuoangs.cloudfront.net/${dex}.jpg`} />}
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
 
