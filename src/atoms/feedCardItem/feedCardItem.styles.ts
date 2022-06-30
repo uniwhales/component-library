@@ -126,18 +126,6 @@ export const StyledLink = Styled.a`
   };
 `;
 
-// Transfer
-export const IdenticonContainer = Styled.div`
-  height: 32px;
-  width: 32px;
-  background: ${(props) => props.theme.gradients.primary.BLURPLE};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
-`;
-
 // nft
 export const NftImage = Styled.div`
   height: 32px;

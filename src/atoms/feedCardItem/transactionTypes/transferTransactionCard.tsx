@@ -9,12 +9,12 @@ import { ButtonAtom } from '../../buttons/button';
 import {
   ChevronDownIcon,
   DownloadStandard,
-  Identicon,
   LinkIcon,
   TwitterColor,
   UploadStandard,
 } from '../../icons';
 import { IconWrapper } from '../../icons/iconWrapper';
+import { IdenticonComponent } from '../../identicon/Identicon';
 import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
 import { Text } from '../../texts/text';
 import { dollarPopover } from '../dollarPopover';
@@ -30,7 +30,6 @@ import {
   StyledLink,
   ValueContainer,
   CenterContent,
-  IdenticonContainer,
   LinkWrapper,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
@@ -110,10 +109,11 @@ export const TransferTransactionCard = (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{txTypePreposition}</Text>
         </div>
         <XYPartyContent>
-          <IdenticonContainer>
-            <IconWrapper height="20px" width="20px" icon={<Identicon />} />
-          </IdenticonContainer>
-
+          <IdenticonComponent
+            containerSize="32px"
+            iconSize={20}
+            id={wallet}
+          />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>
         </XYPartyContent>
         <LinkWrapper>

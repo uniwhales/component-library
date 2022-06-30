@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof FeedCard> = () => (
   <Container>
     {mockData.data.map((transactions) => {
       const txType = Object.values(transactions)[0][0].tx_type;
+      const walletAddress = Object.values(transactions)[0][0].wallet;
       const firstTxKey: string = Object.values(transactions)[0][0].tx_hash;
       const firstTransactionTime: number = Object.values(transactions)[0][0].timestamp;
 
@@ -38,6 +39,7 @@ const Template: ComponentStory<typeof FeedCard> = () => (
       return (
         <FeedCard
           datetime={firstTransactionTime}
+          wallet={walletAddress}
           key={firstTxKey}
           transactions={getTransactions(txType)}
           moreThanFiveTxs={getTransactions(txType).length > 5}

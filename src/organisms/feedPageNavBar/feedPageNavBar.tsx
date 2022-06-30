@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
+import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { NavContainer, NavBar } from './feedPageNavBar.styles';
@@ -51,6 +52,9 @@ export const FeedPageNavBar = ({
           </Text>
         )}
         <ConnectWalletButton onClick={onConnectClick} account={account} />
+        {account && (
+          <IdenticonComponent id={account} containerSize="36px" iconSize={24} />
+        )}
       </NavContainer>
     </NavBar>
   );

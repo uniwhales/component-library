@@ -5,12 +5,12 @@ import { Theme } from '../../../theme';
 import { ButtonAtom } from '../../buttons/button';
 import {
   ChevronDownIcon,
-  Identicon,
   Interaction,
   LinkIcon,
   TwitterColor,
 } from '../../icons';
 import { IconWrapper } from '../../icons/iconWrapper';
+import { IdenticonComponent } from '../../identicon/Identicon';
 import { OverlappedIcon } from '../../overlappedIcon/overlappedIcon';
 import { Text } from '../../texts/text';
 import {
@@ -22,7 +22,6 @@ import {
   SecondaryActionContainer,
   StyledLink,
   CenterContent,
-  IdenticonContainer,
   LinkWrapper,
   XOnlyContent,
 } from '../feedCardItem.styles';
@@ -75,9 +74,11 @@ export const ContractInteractionCard = (
       </TxTypeWrapper>
       <CenterContent>
         <XOnlyContent>
-          <IdenticonContainer>
-            <IconWrapper height="20px" width="20px" icon={<Identicon />} />
-          </IdenticonContainer>
+          <IdenticonComponent
+            containerSize="32px"
+            iconSize={20}
+            id={wallet}
+          />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{wallet}</Text>
         </XOnlyContent>
         <LinkWrapper>

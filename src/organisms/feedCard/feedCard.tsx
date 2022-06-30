@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { Identicon, PlusStandard } from '../../atoms/icons';
+import { PlusStandard } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { FeedCardItem } from '../../atoms/feedCardItem/feedCardItem';
 import { Text } from '../../atoms/texts/text';
@@ -17,6 +17,7 @@ import {
 } from './feedCard.styles';
 import { FeedCardProps } from './types';
 import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
+import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 
 export const FeedCard = (
   {
@@ -26,6 +27,7 @@ export const FeedCard = (
     onPause,
     onRemove,
     onConfigure,
+    wallet,
   }: FeedCardProps,
 ) => {
   const theme = useTheme() as typeof Theme;
@@ -52,7 +54,11 @@ export const FeedCard = (
   return (
     <Wrapper>
       <IdenticonWrapper>
-        <IconWrapper height="32px" width="32px" icon={<Identicon />} />
+        <IdenticonComponent
+          id={wallet}
+          containerSize="48px"
+          iconSize={32}
+        />
       </IdenticonWrapper>
 
       <MainCardContent>
