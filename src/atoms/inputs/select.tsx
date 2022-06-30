@@ -124,16 +124,34 @@ const CheckBoxOption = (props: any) => {
   );
 };
 
+interface Option {
+  value: string,
+  label: string
+}
+
+export interface SelectOption extends Option {}
+
+export interface SelectProps {
+  readOnly?: boolean,
+  value?: string | SelectOption,
+  isMulti?: boolean,
+  isCheckBox?: boolean,
+  placeholder: string,
+  isXL?: boolean,
+  options: SelectOption[],
+  onChange?: (o: any) => void
+}
+
 export const Select = ({
   options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
-}: any) => {
+}: SelectProps) => {
   const theme = useTheme();
   return (
     <StyledSelect
       options={options}
       isMulti={isMulti}
       theme={theme as any}
-      isOptionDisabled={() => readOnly}
+      isOptionDisabled={() => !!readOnly}
       isSearchable={false}
       styles={colourStyles as StylesConfig}
       controlShouldRenderValue={!isMulti}
@@ -145,7 +163,9 @@ export const Select = ({
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
         IndicatorSeparator: () => null,
       }}
-      onChange={(e) => onChange(e)}
+      onChange={(option) => {
+        if (onChange) onChange(option);
+      }}
       value={value}
       isXL={isXL}
     />
