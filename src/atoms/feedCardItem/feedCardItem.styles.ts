@@ -27,6 +27,10 @@ export const TxTypeWrapperLong = Styled(TxTypeWrapper)`
   width: 200px;
 `;
 
+export const GenericTxTypeWrapper = Styled(TxTypeWrapper)`
+  width: 300px;
+`;
+
 export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
@@ -38,6 +42,14 @@ export const CenterContent = Styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const XOnlyCenterContent = Styled(CenterContent)`
+  width: 527px;
+`;
+
+export const GenericCenterContent = Styled(CenterContent)`
+  width: 427px;
 `;
 
 export const XYPartyContent = Styled.div`

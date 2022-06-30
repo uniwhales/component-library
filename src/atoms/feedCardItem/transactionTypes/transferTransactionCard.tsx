@@ -33,6 +33,7 @@ import {
   LinkWrapper,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
+import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
 import { TransferTransactionProps } from '../types';
 
@@ -48,7 +49,7 @@ export const TransferTransactionCard = (
   const theme = useTheme() as typeof Theme;
   const [hover, setHover] = useState<boolean>(false);
   const {
-    hash,
+    tx_hash: txHash,
     chain,
     amount,
     amount_usd: amountUsd,
@@ -59,19 +60,16 @@ export const TransferTransactionCard = (
   } = txData;
   const isSend = wallet === to;
 
-  // TODO: Add all tx types here
   const txTypePreposition = isSend ? 'to' : 'from';
-  // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
-  // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${hash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
+  const goToItem = getTxUrl(txHash, chain);
+  const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(txHash, chain));
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={hash}
+      key={txHash}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
@@ -112,7 +110,7 @@ export const TransferTransactionCard = (
           <IdenticonComponent
             containerSize="32px"
             iconSize={20}
-            id={wallet}
+            id={to}
           />
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>
         </XYPartyContent>

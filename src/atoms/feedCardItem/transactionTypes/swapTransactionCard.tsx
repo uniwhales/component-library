@@ -31,6 +31,7 @@ import {
   Image,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
+import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
 import { SwapTransactionProps } from '../types';
 
@@ -60,14 +61,11 @@ export const SwapTransactionCard = (
     token1_symbol: token1Symbol,
   } = txData;
 
-  // TODO: Add all tx types here
   const txTypePreposition = 'to';
-  // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
-  // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${hash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
+  const goToItem = getTxUrl(hash, chain);
+  const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(hash, chain));
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}

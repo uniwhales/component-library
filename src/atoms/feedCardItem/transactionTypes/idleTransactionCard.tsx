@@ -9,9 +9,9 @@ import {
   MasterContainer,
   TxTypeContainer,
   SecondaryActionContainer,
-  CenterContent,
   InfoContainer,
-  TxTypeWrapper,
+  GenericTxTypeWrapper,
+  GenericCenterContent,
 } from '../feedCardItem.styles';
 
 export const IdleTransactionCard = () => {
@@ -19,7 +19,7 @@ export const IdleTransactionCard = () => {
 
   return (
     <MasterContainer>
-      <TxTypeWrapper>
+      <GenericTxTypeWrapper>
         <OverlappedIcon
           noIcon
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
@@ -30,8 +30,8 @@ export const IdleTransactionCard = () => {
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Loading </Text>
           </InfoContainer>
         </TxTypeContainer>
-      </TxTypeWrapper>
-      <CenterContent />
+      </GenericTxTypeWrapper>
+      <GenericCenterContent />
       <SecondaryActionContainer />
     </MasterContainer>
   );

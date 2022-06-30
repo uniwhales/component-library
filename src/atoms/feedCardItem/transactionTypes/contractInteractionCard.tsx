@@ -17,14 +17,15 @@ import {
   HoverItemsContainer,
   MasterContainer,
   TxTypeContainer,
-  TxTypeWrapper,
   ChevronButton,
   SecondaryActionContainer,
   StyledLink,
-  CenterContent,
   LinkWrapper,
   XOnlyContent,
+  TxTypeWrapperLong,
+  XOnlyCenterContent,
 } from '../feedCardItem.styles';
+import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
 import { ContractInteractionProps } from '../types';
 
@@ -46,12 +47,10 @@ export const ContractInteractionCard = (
     wallet,
   } = txData;
 
-  // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
-  // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${hash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
+  const goToItem = getTxUrl(hash, chain);
+  const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(hash, chain));
 
   return (
     <MasterContainer
@@ -60,7 +59,7 @@ export const ContractInteractionCard = (
       key={hash}
       isMulti={isMulti}
     >
-      <TxTypeWrapper>
+      <TxTypeWrapperLong>
         <OverlappedIcon
           smallIcon={chainIcons[chain]}
           largeIcon={<Interaction />}
@@ -71,8 +70,8 @@ export const ContractInteractionCard = (
           <Text size="S-Regular">{Function}</Text>
           <Text size="XS-Regular">Contract Interaction</Text>
         </TxTypeContainer>
-      </TxTypeWrapper>
-      <CenterContent>
+      </TxTypeWrapperLong>
+      <XOnlyCenterContent>
         <XOnlyContent>
           <IdenticonComponent
             containerSize="32px"
@@ -92,7 +91,7 @@ export const ContractInteractionCard = (
             </StyledLink>
           )}
         </LinkWrapper>
-      </CenterContent>
+      </XOnlyCenterContent>
 
       <SecondaryActionContainer>
         {!hover && (

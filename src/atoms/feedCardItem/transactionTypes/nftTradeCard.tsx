@@ -32,6 +32,7 @@ import {
   LinkWrapper,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
+import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
 import { NftTradeProps } from '../types';
 
@@ -58,14 +59,11 @@ export const NftTradeCard = (
     price,
   } = txData;
   const isBuy = action === 'buy';
-  // TODO: Add all tx types here
   const txTypePreposition = 'for';
-  // calculate hover states
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
-  // Meatball menu items
-  const goToItem = `https://etherscan.io/tx/${txHash}`;
-  const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${txHash}`);
+  const goToItem = getTxUrl(txHash, chain);
+  const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(txHash, chain));
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}

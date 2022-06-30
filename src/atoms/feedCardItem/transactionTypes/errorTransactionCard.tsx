@@ -9,7 +9,9 @@ import {
   MasterContainer,
   TxTypeContainer,
   InfoContainer,
-  TxTypeWrapper,
+  SecondaryActionContainer,
+  GenericTxTypeWrapper,
+  GenericCenterContent,
 } from '../feedCardItem.styles';
 
 export const ErrorTransactionCard = () => {
@@ -17,7 +19,7 @@ export const ErrorTransactionCard = () => {
 
   return (
     <MasterContainer>
-      <TxTypeWrapper>
+      <GenericTxTypeWrapper>
         <OverlappedIcon
           noIcon
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
@@ -28,7 +30,9 @@ export const ErrorTransactionCard = () => {
             <Text size="S-Regular" color={theme.colors.system.RED}>Error loading data</Text>
           </InfoContainer>
         </TxTypeContainer>
-      </TxTypeWrapper>
+      </GenericTxTypeWrapper>
+      <GenericCenterContent />
+      <SecondaryActionContainer />
     </MasterContainer>
   );
 };

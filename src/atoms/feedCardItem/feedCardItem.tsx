@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContractInteractionCard } from './transactionTypes/contractInteractionCard';
-import { IdleTransactionCard } from './transactionTypes/idleTransactionCard';
+import { ErrorTransactionCard } from './transactionTypes/errorTransactionCard';
 import { LiquidityTransactionCard } from './transactionTypes/liquidityTransactionCard';
 import { NftMintCard } from './transactionTypes/nftMintCard';
 import { NftSweepCard } from './transactionTypes/nftSweepCard';
@@ -106,7 +106,7 @@ export const FeedCardItem = (
       );
     default:
       return (
-        <IdleTransactionCard />
+        <ErrorTransactionCard />
       );
   }
 };
