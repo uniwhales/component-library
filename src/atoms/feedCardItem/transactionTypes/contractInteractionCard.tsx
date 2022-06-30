@@ -102,8 +102,8 @@ export const ContractInteractionCard = (
             <FeedPageMeatballMenu
               share={shareTransaction}
             />
-            <ButtonAtom buttonVariant="special_tiny_round" onClick={() => { }}>
-              <IconWrapper cursor="pointer" icon={<TwitterColor />} />
+            <ButtonAtom buttonVariant="tiny_action" onClick={() => { }}>
+              <IconWrapper height="14px" width="14px" cursor="pointer" icon={<TwitterColor />} />
             </ButtonAtom>
 
           </HoverItemsContainer>
