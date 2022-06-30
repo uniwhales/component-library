@@ -11,6 +11,7 @@ export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
 export * from './atoms/carousels/carousel';
+export * from './atoms/card/card';
 // eslint-disable-next-line import/no-cycle
 export * from './atoms/chips/filterChip';
 export * from './atoms/feedCardItem/feedCardItem';

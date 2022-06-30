@@ -1,11 +1,11 @@
 import { Styled } from '../../theme';
 import { ContentCardProps, ContentType } from './types';
 
-export const Card = Styled.div<{ size: ContentCardProps['size'] }>`
+export const Card = Styled.div<{ size: ContentCardProps['size'], width?: string }>`
     border-radius: 12px;
     box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-    width: '100%';
+    width: ${({ width }) => width ?? '100%'};
     height: ${({ size }) => (size === 'S' ? 321 : 420)}px;
     padding: 32px;
     cursor: pointer;
@@ -20,6 +20,10 @@ export const CardHeader = Styled.div`
     justify-content: space-between;
     align-items: center;
     height: 42px;
+`;
+
+export const CardTitle = Styled.div`
+    height: 48px;
 `;
 
 export const CardHeaderLeftSide = Styled.div`
@@ -37,6 +41,7 @@ export const Spacer = Styled.div`
 export const ArticleCover = Styled.div<{ url: string, size: ContentCardProps['size'] }>`
     background: ${({ url }) => `url(${url})`};
     background-size: cover;
+    background-position: center;
     height: ${({ size }) => (size === 'S' ? 176 : 197)}px;
     width: 100%;
     border-radius: 12px;
