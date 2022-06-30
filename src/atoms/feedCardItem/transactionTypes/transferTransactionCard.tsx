@@ -35,6 +35,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { TransferTransactionProps } from '../types';
 
 export const TransferTransactionCard = (
@@ -57,10 +58,12 @@ export const TransferTransactionCard = (
     contract_address: contractAddress,
     symbol,
     wallet,
+    timestamp,
   } = txData;
   const isSend = wallet === to;
 
   const txTypePreposition = isSend ? 'to' : 'from';
+  const txTypeText = isSend ? 'Send' : 'Receive';
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
   const goToItem = getTxUrl(txHash, chain);
@@ -80,7 +83,7 @@ export const TransferTransactionCard = (
           bgColor={theme.gradients.primary.BLURPLE}
         />
         <TxTypeContainer>
-          <Text size="S-Regular">{isSend ? 'Send' : 'Receive'}</Text>
+          <Text size="S-Regular">{txTypeText}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContent>
@@ -112,7 +115,11 @@ export const TransferTransactionCard = (
             iconSize={20}
             id={to}
           />
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>
+          <HintsAndHovers
+            id={to}
+            hint={to}
+            icon={<Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>}
+          />
         </XYPartyContent>
         <LinkWrapper>
           {hover && (
@@ -129,7 +136,7 @@ export const TransferTransactionCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

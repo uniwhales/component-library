@@ -34,6 +34,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { NftTradeProps } from '../types';
 
 export const NftTradeCard = (
@@ -57,9 +58,11 @@ export const NftTradeCard = (
     from,
     symbol,
     price,
+    timestamp,
   } = txData;
   const isBuy = action === 'buy';
   const txTypePreposition = 'for';
+  const txTypeText = isBuy ? 'Buy' : 'Sell';
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
   const goToItem = getTxUrl(txHash, chain);
@@ -78,7 +81,7 @@ export const NftTradeCard = (
           largeIcon={<img alt="platform logo" src={`https://dttz74tuoangs.cloudfront.net/${marketplace}.jpg`} />}
         />
         <TxTypeContainer>
-          <Text size="S-Regular">{isBuy ? 'Buy' : 'Sell'}</Text>
+          <Text size="S-Regular">{txTypeText}</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{marketplace}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
@@ -135,7 +138,7 @@ export const NftTradeCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

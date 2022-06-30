@@ -35,6 +35,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { NftMintProps } from '../types';
 
 export const NftMintCard = (
@@ -57,6 +58,7 @@ export const NftMintCard = (
     value_usd: valueUsd,
     fee,
     native_token: nativeToken,
+    timestamp,
   } = txData;
   const txTypePreposition = 'for';
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
@@ -131,7 +133,7 @@ export const NftMintCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

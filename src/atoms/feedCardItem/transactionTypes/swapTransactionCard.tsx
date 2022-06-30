@@ -33,6 +33,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { SwapTransactionProps } from '../types';
 
 export const SwapTransactionCard = (
@@ -59,6 +60,7 @@ export const SwapTransactionCard = (
     token1_address: token1Address,
     token0_symbol: token0Symbol,
     token1_symbol: token1Symbol,
+    timestamp,
   } = txData;
 
   const txTypePreposition = 'to';
@@ -142,7 +144,7 @@ export const SwapTransactionCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

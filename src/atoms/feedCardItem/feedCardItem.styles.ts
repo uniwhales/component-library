@@ -1,5 +1,6 @@
 import { Styled } from '../../theme';
 
+// Main shared styles
 export const MasterContainer = Styled.div<{ isMulti?: boolean }>`
   display: flex;
   align-items: center;
@@ -23,14 +24,6 @@ export const TxTypeWrapper = Styled.div`
   }
 `;
 
-export const TxTypeWrapperLong = Styled(TxTypeWrapper)`
-  width: 200px;
-`;
-
-export const GenericTxTypeWrapper = Styled(TxTypeWrapper)`
-  width: 300px;
-`;
-
 export const TxTypeContainer = Styled.div`
   display: flex;
   flex-direction: column;
@@ -44,14 +37,6 @@ export const CenterContent = Styled.div`
   justify-content: space-between;
 `;
 
-export const XOnlyCenterContent = Styled(CenterContent)`
-  width: 527px;
-`;
-
-export const GenericCenterContent = Styled(CenterContent)`
-  width: 427px;
-`;
-
 export const XYPartyContent = Styled.div`
   display: flex;
   text-align: left;
@@ -60,10 +45,6 @@ export const XYPartyContent = Styled.div`
   p {
     padding-left: 8px;
   }
-`;
-
-export const XOnlyContent = Styled(XYPartyContent)`
-  width: fit-content;
 `;
 
 export const ValueContainer = Styled.div`
@@ -138,7 +119,13 @@ export const StyledLink = Styled.a`
   };
 `;
 
-// nft
+export const Image = Styled.img`
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+`;
+
+// nft Specific
 export const NftImage = Styled.div`
   height: 32px;
   width: 32px;
@@ -155,15 +142,7 @@ export const NftValues = Styled.div`
   width: 85px;
 `;
 
-// Idle/Error
-
-export const InfoContainer = Styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-`;
-
-// LP
+// LP Specific
 
 export const LpTokenIcon = Styled.div<{ baseUrl: string, tokenAddress: string }>`
   height: 32px;
@@ -186,8 +165,32 @@ export const LpOverlappedToken = Styled.div`
     };
 `;
 
-export const Image = Styled.img`
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
+// Idle/Error Specific
+
+export const InfoContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+export const GenericTxTypeWrapper = Styled(TxTypeWrapper)`
+  width: 300px;
+`;
+
+export const GenericCenterContent = Styled(CenterContent)`
+  width: 427px;
+`;
+
+export const TxTypeWrapperLong = Styled(TxTypeWrapper)`
+  width: 200px;
+`;
+
+// XOnly specific
+
+export const XOnlyCenterContent = Styled(CenterContent)`
+  width: 527px;
+`;
+
+export const XOnlyContent = Styled(XYPartyContent)`
+  width: fit-content;
 `;

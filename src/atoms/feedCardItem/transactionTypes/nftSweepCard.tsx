@@ -35,6 +35,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { NftSweepProps } from '../types';
 
 export const NftSweepCard = (
@@ -52,15 +53,16 @@ export const NftSweepCard = (
     tx_hash: txHash,
     chain,
     action,
-    count,
     marketplace,
     nft_symbol: nftSymbol,
     nft_token_id: nftTokenId,
     from,
     symbol,
     price,
+    timestamp,
   } = txData;
   const isBuy = action === 'buy';
+  const txTypeText = isFirst ? 'Sweep' : 'Buy';
   const txTypePreposition = isFirst ? 'total' : 'for';
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
@@ -82,15 +84,13 @@ export const NftSweepCard = (
           />
         )}
         <TxTypeContainer>
-          <Text size="S-Regular">{isFirst ? 'Sweep' : 'Buy'}</Text>
+          <Text size="S-Regular">{txTypeText}</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{marketplace}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
       <CenterContent>
         <XYPartyContent>
-          <ValueContainer>
-            {isFirst ? '' : count}
-          </ValueContainer>
+          <ValueContainer />
           <NftImage>
             <IconWrapper icon={isFirst ? <NftIcon /> : <ImageIcon />} height="26px" width="26px" />
           </NftImage>
@@ -143,7 +143,7 @@ export const NftSweepCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

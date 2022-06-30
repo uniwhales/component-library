@@ -33,6 +33,7 @@ import {
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { LpPoolProps } from '../types';
 
 export const LiquidityTransactionCard = (
@@ -56,13 +57,18 @@ export const LiquidityTransactionCard = (
     token1_amount: token1Amount,
     token1_amount_usd: token1AmountUsd,
     type,
+    timestamp,
   } = txData;
   const isAdd = type === 'add';
   const txTypePreposition = 'total';
+  const txTypeText = isAdd ? 'Add Liquidity' : 'Remove Liquidity';
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
   const showChevron = isMulti && isFirst;
   const goToItem = getTxUrl(txHash, chain);
   const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(txHash, chain));
+
+  const token0Val = isAdd ? `+ ${token0Amount.toFixed(2)}` : `- ${token0Amount.toFixed(2)}`;
+  const token1Val = isAdd ? `+ ${token0Amount.toFixed(2)}` : `+ ${token1Amount.toFixed(2)}`;
 
   return (
     <MasterContainer
@@ -79,7 +85,7 @@ export const LiquidityTransactionCard = (
           bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
         />
         <TxTypeContainer>
-          <Text size={isAdd ? 'S-Regular' : 'XS-Regular'}>{isAdd ? 'Add Liquidity' : 'Remove Liquidity'}</Text>
+          <Text size={isAdd ? 'S-Regular' : 'XS-Regular'}>{txTypeText}</Text>
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{dex}</Text>
         </TxTypeContainer>
       </TxTypeWrapper>
@@ -87,10 +93,10 @@ export const LiquidityTransactionCard = (
         <XYPartyContent>
           <ValueContainer>
             <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
-              {token0Amount.toFixed(2)}
+              {token0Val}
             </Text>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
-              {token1Amount.toFixed(2)}
+            <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
+              {token1Val}
             </Text>
           </ValueContainer>
           <LpOverlappedToken>
@@ -131,7 +137,7 @@ export const LiquidityTransactionCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>

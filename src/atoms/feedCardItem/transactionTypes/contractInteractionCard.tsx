@@ -27,6 +27,7 @@ import {
 } from '../feedCardItem.styles';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
+import { timeSince } from '../helpers/timeSince';
 import { ContractInteractionProps } from '../types';
 
 export const ContractInteractionCard = (
@@ -45,6 +46,7 @@ export const ContractInteractionCard = (
     chain,
     function: Function,
     wallet,
+    timestamp,
   } = txData;
 
   const showSecondaryActionArea = (hover && !isMulti) || (hover && isMulti && !isFirst);
@@ -95,7 +97,7 @@ export const ContractInteractionCard = (
 
       <SecondaryActionContainer>
         {!hover && (
-          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>00 min ago</Text>
+          <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_1}>{timeSince(timestamp)}</Text>
         )}
         {showSecondaryActionArea && (
           <HoverItemsContainer>
