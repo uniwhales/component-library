@@ -360,20 +360,23 @@ export interface NftSweep {
   nft_symbol: string;
   nft_name: string;
   price: number;
+  price_usd: number;
   symbol: string;
   action: string;
   aggregator: string;
   wallet: string;
   timestamp: number;
   block: number;
+  profit: number;
+  previous_tx: {};
   chain: keyof typeof chainIcons;
   address: string;
   count: number;
   price_symbol: string;
   buyer: string;
   sellers: string[];
-  tokens: any[];
-  items: any[];
+  tokens: string[];
+  items: NftTrade[];
 }
 
 export interface NftSweepProps extends ItemCardProps {

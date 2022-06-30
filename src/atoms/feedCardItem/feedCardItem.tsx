@@ -3,12 +3,18 @@ import { ContractInteractionCard } from './transactionTypes/contractInteractionC
 import { IdleTransactionCard } from './transactionTypes/idleTransactionCard';
 import { LiquidityTransactionCard } from './transactionTypes/liquidityTransactionCard';
 import { NftMintCard } from './transactionTypes/nftMintCard';
+import { NftSweepCard } from './transactionTypes/nftSweepCard';
 import { NftTradeCard } from './transactionTypes/nftTradeCard';
 import { SwapTransactionCard } from './transactionTypes/swapTransactionCard';
 import { TransferTransactionCard } from './transactionTypes/transferTransactionCard';
 import {
   ContractInteractionProps,
-  LpPoolProps, NftMintProps, NftTradeProps, SwapTransactionProps, TransferTransactionProps,
+  LpPoolProps,
+  NftMintProps,
+  NftSweepProps,
+  NftTradeProps,
+  SwapTransactionProps,
+  TransferTransactionProps,
 } from './types';
 
 export const FeedCardItem = (
@@ -20,6 +26,7 @@ export const FeedCardItem = (
     isFirst,
   }:
     SwapTransactionProps
+    | NftSweepProps
     | TransferTransactionProps
     | NftTradeProps
     | LpPoolProps
@@ -50,6 +57,16 @@ export const FeedCardItem = (
     case 'nft_trade':
       return (
         <NftTradeCard
+          isMulti={isMulti}
+          txData={txData}
+          isOpen={isOpen}
+          isFirst={isFirst}
+          handleToggle={handleToggle}
+        />
+      );
+    case 'nft_sweep':
+      return (
+        <NftSweepCard
           isMulti={isMulti}
           txData={txData}
           isOpen={isOpen}
