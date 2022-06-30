@@ -6,9 +6,9 @@ import {
 import { AnnouncementCardProps } from './types';
 
 export const AnnouncementCard: FC<AnnouncementCardProps> = ({
-  coverUrl, releaseDate, title, purifiedContent, width,
+  coverUrl, releaseDate, title, purifiedContent, width, boxShadow = true,
 }) => (
-  <AnnouncementCardContainer width={width}>
+  <AnnouncementCardContainer boxShadow={boxShadow} width={width}>
     <Cover coverUrl={coverUrl} />
     <Content>
       <Text size="S-Bold">{releaseDate}</Text>

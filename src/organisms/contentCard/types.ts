@@ -16,4 +16,5 @@ export type ContentCardProps = {
   guest?: string
   chipText?: string
   onTagClick?: (tag: string) => void
+  width?: string
 };

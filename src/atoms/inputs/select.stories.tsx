@@ -10,9 +10,9 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => {
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<any>(undefined);
 
-  return <Select {...args} onChange={() => setValue(value)} value={value} />;
+  return <Select {...args} onChange={(v) => setValue(v)} value={value} />;
 };
 export const Primary = Template.bind({});
 
@@ -24,6 +24,5 @@ Primary.args = {
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
-  closeMenuOnSelect: true,
   isXL: false,
 };

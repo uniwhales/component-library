@@ -16,5 +16,5 @@ export interface ActionBarProps {
   chainHandler: (e:ChainsInterface) => void;
   setChip: (e:number) => void;
   chipValue: number;
-  chainValue:ChainsInterface
+  chainValue: ChainsInterface
 }

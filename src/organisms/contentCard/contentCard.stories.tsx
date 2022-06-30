@@ -42,3 +42,7 @@ export const ContentCardS = Template.bind({});
 ContentCardS.args = {
   size: 'S',
 };
+export const ContentCardSSingleLineTitle = Template.bind({});
+ContentCardSSingleLineTitle.args = {
+  title: 'Title of Card on a one liner',
+};
