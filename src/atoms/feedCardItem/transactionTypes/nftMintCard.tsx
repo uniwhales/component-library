@@ -64,7 +64,6 @@ export const NftMintCard = (
   // Meatball menu items
   const goToItem = `https://etherscan.io/tx/${txHash}`;
   const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${txHash}`);
-  const goToOpensea = `https://etherscan.io/tx/${txHash}`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
@@ -76,7 +75,8 @@ export const NftMintCard = (
         <OverlappedIcon
           bgColor={theme.gradients.primary.BLURPLE}
           smallIcon={chainIcons[chain]}
-          largeIcon={<PlusStandard />}
+          largeSize="20px"
+          largeIcon={<IconWrapper icon={<PlusStandard />} />}
         />
         <TxTypeContainer>
           <Text size="S-Regular">NFT Mint</Text>
@@ -137,9 +137,7 @@ export const NftMintCard = (
         {showSecondaryActionArea && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
-              itemLink={goToItem}
               share={shareTransaction}
-              openSeaLink={goToOpensea}
             />
             <ButtonAtom buttonVariant="special_tiny_round" onClick={() => { }}>
               <IconWrapper cursor="pointer" icon={<TwitterColor />} />

@@ -68,7 +68,6 @@ export const TransferTransactionCard = (
   // Meatball menu items
   const goToItem = `https://etherscan.io/tx/${hash}`;
   const shareTransaction = () => navigator.clipboard.writeText(`https://etherscan.io/tx/${hash}`);
-  const goToOpensea = `https://etherscan.io/tx/${hash}`;
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
@@ -137,9 +136,7 @@ export const TransferTransactionCard = (
         {showSecondaryActionArea && (
           <HoverItemsContainer>
             <FeedPageMeatballMenu
-              itemLink={goToItem}
               share={shareTransaction}
-              openSeaLink={goToOpensea}
             />
             <ButtonAtom buttonVariant="special_tiny_round" onClick={() => { }}>
               <IconWrapper cursor="pointer" icon={<TwitterColor />} />

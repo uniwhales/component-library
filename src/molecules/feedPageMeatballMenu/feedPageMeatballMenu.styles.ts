@@ -13,14 +13,20 @@ export const Container = Styled.div`
 
 export const MeatballRow = Styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
-  padding: 8px;
+  padding: 16px;
   cursor: pointer;
     &:hover {
       background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
     };
+`;
+
+export const IconWithText = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
 `;
 
 export const MeatballContainer = Styled.div`
