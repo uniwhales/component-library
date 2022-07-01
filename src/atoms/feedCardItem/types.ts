@@ -406,3 +406,20 @@ export interface ItemCardProps {
   handleToggle: () => void;
   isFirst: boolean;
 }
+
+export type TransactionData =
+  SwapTransactionData
+  | TransferTransactionData
+  | NftTrade
+  | NftTransfer
+  | NftMint
+  | LpPool
+  | Reward
+  | Lending
+  | ApproveRevoke
+  | Wrap
+  | Bridge
+  | Perp
+  | Option
+  | NftSweep
+  | ContractInteraction;

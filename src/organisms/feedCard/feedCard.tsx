@@ -18,6 +18,7 @@ import {
 import { FeedCardProps } from './types';
 import { FeedPageKebabMenu } from '../../molecules/feedPageKebabMenu/feedPageKebabMenu';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
+import { TransactionData } from '../../atoms/feedCardItem/types';
 
 export const FeedCard = (
   {
@@ -35,7 +36,7 @@ export const FeedCard = (
   const firstFiveItems = transactions.slice(0, 5);
   const [
     transactionsToDisplay,
-    setTransactionsToDisplay] = useState<any>([firstItem]);
+    setTransactionsToDisplay] = useState<TransactionData[]>([firstItem]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
