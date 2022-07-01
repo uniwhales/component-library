@@ -1,16 +1,9 @@
 import React from 'react';
 
 export const Identicon = () => (
-  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="18" cy="18" r="17" fill="url(#paint0_linear_5961_523165)" stroke="#191B20" strokeWidth="2" />
-    <path d="M17.5 21C12.9157 21 9 21.6974 9 24.4872C9 27.2779 12.8913 28 17.5 28C22.0843 28 26 27.3036 26 24.5128C26 21.7221 22.1098 21 17.5 21Z" fill="#F8F9FF" />
-    <path d="M17.5 19C20.5535 19 23 16.5524 23 13.5C23 10.4476 20.5535 8 17.5 8C14.4476 8 12 10.4476 12 13.5C12 16.5524 14.4476 19 17.5 19Z" fill="#F8F9FF" />
-    <defs>
-      <linearGradient id="paint0_linear_5961_523165" x1="18" y1="0" x2="18" y2="36" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#509CF4" />
-        <stop offset="1" stopColor="#4A00E0" />
-      </linearGradient>
-    </defs>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.3333 20C9.22096 20 4 20.9299 4 24.6496C4 28.3706 9.18836 29.3333 15.3333 29.3333C21.4457 29.3333 26.6667 28.4048 26.6667 24.6838C26.6667 20.9627 21.4797 20 15.3333 20Z" fill="#F8F9FF" />
+    <path d="M15.3333 17.3333C19.4046 17.3333 22.6667 14.0699 22.6667 9.99996C22.6667 5.93004 19.4046 2.66663 15.3333 2.66663C11.2634 2.66663 8 5.93004 8 9.99996C8 14.0699 11.2634 17.3333 15.3333 17.3333Z" fill="#F8F9FF" />
   </svg>
 
 );

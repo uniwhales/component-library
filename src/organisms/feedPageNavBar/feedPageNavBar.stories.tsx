@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof FeedPageNavBar> = (args) => {
   return (
     <FeedPageNavBar
       {...args}
-      label="Alert Feed"
+      label="Feed"
       selectValue={value}
       selectOnChange={() => setValue(value)}
       account={account}

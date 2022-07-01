@@ -28,7 +28,7 @@ import {
   UniswapV2Color,
   UniswapV3Color,
   UniWhalesColor,
-} from '../icons';
+} from '../../icons';
 
 export const dexIcons: Readonly<{
   '0x': JSX.Element,

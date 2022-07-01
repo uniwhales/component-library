@@ -71,12 +71,8 @@ export * from './generalIcons/filledStyle/WrapStandard';
 export * from './generalIcons/filledStyle/AllIcon';
 export * from './generalIcons/filledStyle/StarIcon';
 export * from './generalIcons/filledStyle/ImageIcon';
-export * from './generalIcons/filledStyle/AllStandard';
-export * from './generalIcons/filledStyle/CSVDocStandard';
-export * from './generalIcons/filledStyle/GlobeStandard';
-export * from './generalIcons/filledStyle/MinusStandard';
-export * from './generalIcons/filledStyle/TckSquareStandard';
-export * from './generalIcons/filledStyle/WrapStandard';
+export * from './generalIcons/filledStyle/UploadStandard';
+export * from './generalIcons/filledStyle/Interaction';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
@@ -158,6 +154,6 @@ export { Weth } from './tokens/WETH';
 export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { Meatball } from './miscIcons/Meatball';
 export { Kebab } from './miscIcons/Kebab';
+export { NftIcon } from './miscIcons/NftIcon';
 // placeholder
-export { OverlappedIcon } from './placeholder/OverlappedIcon';
 export { Identicon } from './placeholder/Identicon';

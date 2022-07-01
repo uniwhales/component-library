@@ -59,7 +59,6 @@ import {
   NoticeColor,
   SelectedCheck,
   SelectedCross,
-  RedCross,
   AlertBotStandard,
   Meatball,
   Kebab,
@@ -132,10 +131,12 @@ import {
   TwitterColor,
   WalletColor,
   WebinarColor,
-  MinusColor,
+  UploadStandard,
   StarIcon,
+  RedCross,
+  NftIcon,
+  Interaction,
 } from '.';
-import { OverlappedIcon } from './placeholder/OverlappedIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -160,6 +161,7 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Link" icon={<LinkIcon />} />
     <IconWrapper name="Notice" icon={<NoticeIcon />} />
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
+    <IconWrapper name="RedCross" icon={<RedCross />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
@@ -222,10 +224,10 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
     <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
     <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
-    <IconWrapper name="Overlapped Icon" icon={<OverlappedIcon />} cursor="pointer" />
     <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
     <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
+    <IconWrapper name="NFT" icon={<NftIcon />} />
   </>
 );
 
@@ -277,6 +279,8 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wallet" icon={<WalletStandard />} />
     <IconWrapper name="Webinar" icon={<WebinarStandard />} />
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
+    <IconWrapper name="Upload" icon={<UploadStandard />} />
+    <IconWrapper name="Interaction" icon={<Interaction />} />
   </>
 );
 
@@ -302,7 +306,6 @@ const Template8: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="News" icon={<NewsColor />} />
     <IconWrapper name="Notification" icon={<NotificationColor />} />
     <IconWrapper name="Plus" icon={<PlusColor />} />
-    <IconWrapper name="Minus" icon={<MinusColor />} />
     <IconWrapper name="Plus2" icon={<Plus2Color />} />
     <IconWrapper name="Rocket" icon={<RocketColor />} />
     <IconWrapper name="Search" icon={<SearchColor />} />
