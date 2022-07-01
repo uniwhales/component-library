@@ -1,4 +1,5 @@
 import React from 'react';
+import { feedCardItemText } from './text';
 
 export const dollarPopover = (
   <div style={{
@@ -15,32 +16,31 @@ export const dollarPopover = (
       color: '#DD8442',
     }}
     >
-      🦐 $100k-$249k volume (#shrimp)
+      {feedCardItemText.dollarPopover.shrimp}
     </p>
     <p style={{
       marginBottom: 4,
       color: '#0993EC',
     }}
     >
-      🐟 $250k-$499k (#fish)
+      {feedCardItemText.dollarPopover.fish}
     </p>
     <p style={{
       marginBottom: 4,
       color: '#B769DC',
     }}
     >
-      🐬 $500k-$999k (#dolphin)
+      {feedCardItemText.dollarPopover.dolphin}
     </p>
     <p style={{
       marginBottom: 4,
       color: '#E4599C',
     }}
     >
-      🐋 = $1m+ (#whale)
+      {feedCardItemText.dollarPopover.whale}
     </p>
     <p>
-      {`Standard ${'<'}
-      $100k`}
+      {feedCardItemText.dollarPopover.standard}
     </p>
   </div>
 );
