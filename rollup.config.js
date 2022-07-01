@@ -5,7 +5,7 @@ import copy from 'rollup-plugin-copy';
 import postcss from 'rollup-plugin-postcss';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from "rollup-plugin-typescript2";
-import { uglify } from "rollup-plugin-uglify";
+import { terser } from "rollup-plugin-terser";
 import { babel } from '@rollup/plugin-babel';
 
 export default {
@@ -28,7 +28,7 @@ export default {
                 { src: ['src/fonts/'], dest: 'dist' },
             ]
         }),
-        uglify(),
+        terser(),
         babel({
             exclude:'/node_modules/**',
             babelHelpers: 'bundled'
