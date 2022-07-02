@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ActionBar, ChainsInterface, FilterInterface } from './actionBar';
+import { ActionBar } from './actionBar';
 import { CoinStandard } from '../../atoms/icons';
+import { ChainsInterface } from './types';
 
 const chainsArray:any = [
   { id: 0, value: 'one', label: 'one' },

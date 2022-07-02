@@ -1,6 +1,5 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
 import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
@@ -18,13 +17,13 @@ export interface WalletAlertsTableProps {
   label?: string;
   wallet: string;
   isActive: boolean;
-  setIsActive: (wallet: number, status: boolean) => any;
-  chains: any;
+  setIsActive: (wallet: number, status: boolean) => void;
+  chains: never;
   editWallet: (id: number) => void;
   removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
-  filters: any;
+  filters: never;
   bot_id: BotIdArray
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
@@ -105,7 +104,7 @@ export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
   bot_id,
 }:WalletAlertsTableProps) => {
-  const theme:any = useTheme();
+  const theme = localTheme();
   return (
     <Wrapper isLoading={isLoading}>
       {isLoading && <Overlay />}

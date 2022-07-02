@@ -39,5 +39,5 @@ export * from './organisms/contentCard/contentCard';
 // theme
 export * from './atoms/icons/index';
 export {
-  Theme, LightTheme, DarkTheme, Styled,
+  Theme, LightTheme, DarkTheme, Styled, localTheme,
 } from './theme';

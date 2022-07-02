@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
-import { useTheme } from 'styled-components';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
 import { CheckboxSize, getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
 import { Check } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -64,7 +63,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   size,
   onClick,
 }) => {
-  const theme: any = useTheme();
+  const theme = localTheme();
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
 

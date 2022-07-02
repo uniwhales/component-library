@@ -1,17 +1,11 @@
-import baseStyled, { ThemedStyledInterface, createGlobalStyle } from 'styled-components';
-// import PoppinsRegular from './fonts/Poppins-Regular.ttf';
-// import PoppinsSemiBold from './fonts/Poppins-SemiBold.ttf';
-// import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf';
-// import OpenSansRegular from './fonts/OpenSans-Regular.ttf';
-// import OpenSansBold from './fonts/OpenSans-Bold.ttf';
-// import LeagueSpartanBold from './fonts/LeagueSpartan-Bold.otf';
+import baseStyled, { ThemedStyledInterface, createGlobalStyle, useTheme } from 'styled-components';
 
-const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
-const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
-const OpenSansSemiBold = require('./fonts/OpenSans-SemiBold.ttf');
-const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
-const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
-const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
+// const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
+// const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
+// const OpenSansSemiBold = require('./fonts/OpenSans-SemiBold.ttf');
+// const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
+// const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
+// const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
 const DarkTheme = {
   textShades: {
@@ -111,47 +105,16 @@ LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;
 DarkTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.BLACK}`;
 
 const { colors, gradients } = Theme;
-
+const localTheme = () => useTheme() as typeof Theme;
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Poppins';
-    src: url(${PoppinsRegular}) format('truetype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansRegular}) format('truetype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansSemiBold}) format('truetype');
-    font-weight: 600;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansBold}) format('truetype');
-    font-weight: 700;
-  }
-  @font-face {
-    font-family: 'League Spartan';
-    src: url(${LeagueSpartanBold}) format('opentype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Poppins';
-    src: url(${PoppinsSemiBold}) format('truetype');
-    font-weight: 600;
-  }
-
   html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
     font-family: Poppins,sans-serif;
   }
 `;
 
 export {
-  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme,
+  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme, localTheme,
 };
 export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;

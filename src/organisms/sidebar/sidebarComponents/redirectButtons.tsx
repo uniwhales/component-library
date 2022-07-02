@@ -12,7 +12,7 @@ const Container = Styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   svg {
-    fill: ${({theme}) => theme.colors.primary.WATER_BLUE}
+    fill: ${({ theme }) => theme.colors.primary.WATER_BLUE}
   }
 `;
 
@@ -34,15 +34,15 @@ export const RedirectButtons: FC<RedirectButtonsProps> = ({
 }) => (
   <Container>
     <a href={webappLink}>
-      <IconWrapper cursor='pointer' icon={<GlobeStandard />} />
+      <IconWrapper cursor="pointer" icon={<GlobeStandard />} />
     </a>
     <Spacer />
     <a href={telegramLink}>
-      <IconWrapper cursor='pointer' icon={<TelegramStandard />} />
+      <IconWrapper cursor="pointer" icon={<TelegramStandard />} />
     </a>
     <Spacer />
     <a href={twitterLink}>
-      <IconWrapper cursor='pointer' icon={<TwitterStandard />} />
+      <IconWrapper cursor="pointer" icon={<TwitterStandard />} />
     </a>
   </Container>
 );

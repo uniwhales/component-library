@@ -59,7 +59,7 @@ export const NavigationTab: NavigationTabComp = ({
           if (subitems) setItemsExpanded(!itemsExpanded);
           if (!subitems && onClick) onClick({ path, pro, whale });
           if (!expanded) setExpanded(true);
-          if (expanded && isHighlighted && !subitems) setExpanded(false)
+          if (expanded && isHighlighted && !subitems) setExpanded(false);
           if (!disabled && !subitems) setSelectedTab(id);
         }}
       >

@@ -25,13 +25,13 @@ export const FeedCardItem = (
     isOpen,
     isFirst,
   }:
-    SwapTransactionProps
-    | NftSweepProps
-    | TransferTransactionProps
-    | NftTradeProps
-    | LpPoolProps
-    | NftMintProps
-    | ContractInteractionProps,
+  SwapTransactionProps
+  | NftSweepProps
+  | TransferTransactionProps
+  | NftTradeProps
+  | LpPoolProps
+  | NftMintProps
+  | ContractInteractionProps,
 ) => {
   switch (txData.tx_type) {
     case 'swap':
