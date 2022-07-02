@@ -2,9 +2,12 @@ import React, { FC } from 'react';
 import { useTheme } from 'styled-components';
 import { Theme } from '../../theme';
 import {
-  IconWrapper, Text, ArrowRightIcon, Tag, AudioStandard, ArticleStandard, WebinarStandard,
-  ButtonAtom,
-} from '../..';
+  ArrowRightIcon, AudioStandard, ArticleStandard, WebinarStandard,
+} from '../../atoms/icons';
+import { Text } from '../../atoms/texts/text';
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { ButtonAtom } from '../../atoms/buttons/button';
+import { Tag } from '../../atoms/tags/tag';
 import { ContentCardProps, ContentType } from './types';
 import {
   AboutSection,
