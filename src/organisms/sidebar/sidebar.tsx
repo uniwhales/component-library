@@ -34,6 +34,7 @@ export const Sidebar: SidebarComp = ({
   twitterLink,
   webappLink,
   onLogoClick,
+  onClick,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultSelectedTab);
@@ -66,6 +67,8 @@ export const Sidebar: SidebarComp = ({
             onClick={({ path }) => {
               if (!expanded && !item.subitems && path) {
                 setExpanded(true);
+              } else if (onClick) {
+                onClick(item);
               }
             }}
             selectedTab={selectedTab}
