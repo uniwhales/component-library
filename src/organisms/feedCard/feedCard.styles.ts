@@ -12,6 +12,7 @@ export const Wrapper = Styled.div`
   display: flex;
   align-items: flex-start;
   max-width: 1352px;
+  margin: auto;
 `;
 
 export const IdenticonWrapper = Styled.div`

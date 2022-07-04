@@ -126,7 +126,7 @@ export const Image = Styled.img`
 `;
 
 // nft Specific
-export const NftImage = Styled.div`
+export const NftImageContainer = Styled.div`
   height: 32px;
   width: 32px;
   display: flex;
@@ -134,6 +134,13 @@ export const NftImage = Styled.div`
   align-items: center;
   margin-left: 60px;
   margin-right: 10px;
+`;
+
+export const NftImage = Styled.img`
+  height: 32px;
+  width: 32px;
+  display: flex;
+  border-radius: 50%;
 `;
 
 export const NftValues = Styled.div`

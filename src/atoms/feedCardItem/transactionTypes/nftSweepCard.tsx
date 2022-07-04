@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -9,7 +10,6 @@ import {
   ChevronDownIcon,
   ImageIcon,
   LinkIcon,
-  NftIcon,
   TwitterColor,
 } from '../../icons';
 import { IconWrapper } from '../../icons/iconWrapper';
@@ -31,6 +31,7 @@ import {
   NftValues,
   TokenIcon,
   LinkWrapper,
+  NftImageContainer,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
@@ -60,6 +61,8 @@ export const NftSweepCard = (
     symbol,
     price,
     timestamp,
+    aggregator,
+    thumbnail,
   } = txData;
   const isBuy = action === 'buy';
   const txTypeText = isFirst ? 'Sweep' : 'Buy';
@@ -72,7 +75,7 @@ export const NftSweepCard = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
@@ -80,7 +83,7 @@ export const NftSweepCard = (
           <OverlappedIcon
             bgColor={theme.containerAndCardShades.SHADE_PLUS_2}
             smallIcon={chainIcons[chain]}
-            largeIcon={<img alt="platform logo" src={`https://dttz74tuoangs.cloudfront.net/${marketplace}.jpg`} />}
+            largeIcon={<img alt="platform logo" src={`https://dttz74tuoangs.cloudfront.net/${aggregator}.jpg`} />}
           />
         )}
         <TxTypeContainer>
@@ -91,9 +94,11 @@ export const NftSweepCard = (
       <CenterContent>
         <XYPartyContent>
           <ValueContainer />
-          <NftImage>
-            <IconWrapper icon={isFirst ? <NftIcon /> : <ImageIcon />} height="26px" width="26px" />
-          </NftImage>
+          {thumbnail !== null ? <NftImage src={thumbnail} alt={nftSymbol} /> : (
+            <NftImageContainer>
+              <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
+            </NftImageContainer>
+          )}
           <NftValues>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{nftSymbol}</Text>
             {!isFirst && (
@@ -114,7 +119,7 @@ export const NftSweepCard = (
               </>
             </Text>
             <HintsAndHovers
-              id="amount"
+              id={uuidv4()}
               hint={dollarPopover}
               icon={getFormattedText(9955999, 'S-Regular')}
             />

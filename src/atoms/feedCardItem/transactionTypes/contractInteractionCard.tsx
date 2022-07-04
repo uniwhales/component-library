@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { Theme } from '../../../theme';
 import { ButtonAtom } from '../../buttons/button';
@@ -58,7 +59,7 @@ export const ContractInteractionCard = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={hash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
       <TxTypeWrapperLong>
