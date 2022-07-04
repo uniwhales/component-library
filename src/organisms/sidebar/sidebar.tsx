@@ -24,7 +24,6 @@ enum SidebarWidth {
 
 export const Sidebar: SidebarComp = ({
   account,
-  plan,
   items,
   version,
   defaultSelectedTab,
@@ -109,7 +108,7 @@ export const Sidebar: SidebarComp = ({
             )}
           </SidebarThemeAndShareButtons>
         </SidebarBottomButtons>
-        <SidebarFooter plan={plan} version={version} />
+        <SidebarFooter version={version} />
       </SidebarBottom>
     </SidebarContainer>
   );
