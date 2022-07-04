@@ -1,4 +1,4 @@
-import { Dispatch } from 'react';
+import { Dispatch, ReactElement } from 'react';
 
 export type HasAccessGuard = <ID>(item: SidebarElement<ID>) => boolean;
 
@@ -6,7 +6,7 @@ export type SidebarElement<ID> = {
   id: ID
   name: string
   to?: string
-  icon?: JSX.Element
+  icon?: ReactElement
   pro?: boolean
   whale?: boolean
   path?: string
@@ -18,7 +18,7 @@ export type SidebarElement<ID> = {
 export type NavigationTabProps<ID> = {
   setExpanded: Dispatch<boolean>
   id: ID
-  icon?: JSX.Element
+  icon?: ReactElement
   name: string
   path?: string
   lvl?: number
@@ -37,4 +37,4 @@ export type NavigationTabProps<ID> = {
   hasAccessGuard: HasAccessGuard
 };
 
-export type NavigationTabComp = <ID>(props: NavigationTabProps<ID>) => JSX.Element;
+export type NavigationTabComp = <ID>(props: NavigationTabProps<ID>) => ReactElement;
