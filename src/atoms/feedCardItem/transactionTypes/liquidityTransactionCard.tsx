@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -53,9 +54,13 @@ export const LiquidityTransactionCard = (
     dex,
     token0_address: token0Address,
     token1_address: token1Address,
+    token2_address: token2Address,
     token0_amount: token0Amount,
     token1_amount: token1Amount,
+    token2_amount: token2Amount,
+    token0_amount_usd: token0AmountUsd,
     token1_amount_usd: token1AmountUsd,
+    token2_amount_usd: token2AmountUsd,
     type,
     timestamp,
   } = txData;
@@ -68,13 +73,23 @@ export const LiquidityTransactionCard = (
   const shareTransaction = () => navigator.clipboard.writeText(getTxUrl(txHash, chain));
 
   const token0Val = isAdd ? `+ ${token0Amount.toFixed(2)}` : `- ${token0Amount.toFixed(2)}`;
-  const token1Val = isAdd ? `+ ${token0Amount.toFixed(2)}` : `+ ${token1Amount.toFixed(2)}`;
+  const token1Val = isAdd ? `+ ${token1Amount?.toFixed(2)}` : `+ ${token1Amount?.toFixed(2)}`;
+  const token2Val = isAdd ? `+ ${token2Amount?.toFixed(2)}` : `+ ${token2Amount?.toFixed(2)}`;
+
+  const getTotal = () => {
+    if (token1AmountUsd && token2AmountUsd) {
+      return token0Amount + token1AmountUsd + token2AmountUsd;
+    } if (token1AmountUsd && !token2AmountUsd) {
+      return token0AmountUsd + token1AmountUsd;
+    }
+    return token0AmountUsd;
+  };
 
   return (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
 
@@ -95,19 +110,34 @@ export const LiquidityTransactionCard = (
             <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
               {token0Val}
             </Text>
-            <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
-              {token1Val}
-            </Text>
+            {token1Amount && (
+              <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
+                {token1Val}
+              </Text>
+            )}
+            {token2Amount && (
+              <Text size="S-Bold" color={isAdd ? theme.colors.system.GREEN : theme.colors.system.RED}>
+                {token2Val}
+              </Text>
+            )}
           </ValueContainer>
           <LpOverlappedToken>
             <LpTokenIcon
               baseUrl={LogoUrlBase}
               tokenAddress={token0Address.toLowerCase()}
             />
-            <LpTokenIcon
-              baseUrl={LogoUrlBase}
-              tokenAddress={token1Address.toLowerCase()}
-            />
+            {token1Address && (
+              <LpTokenIcon
+                baseUrl={LogoUrlBase}
+                tokenAddress={token1Address.toLowerCase()}
+              />
+            )}
+            {token2Address && (
+              <LpTokenIcon
+                baseUrl={LogoUrlBase}
+                tokenAddress={token2Address.toLowerCase()}
+              />
+            )}
           </LpOverlappedToken>
 
         </XYPartyContent>
@@ -116,9 +146,9 @@ export const LiquidityTransactionCard = (
         </div>
         <XYPartyContent>
           <HintsAndHovers
-            id={token1AmountUsd.toString()}
+            id={uuidv4()}
             hint={dollarPopover}
-            icon={getFormattedText(token1AmountUsd, 'S-Regular')}
+            icon={getFormattedText(getTotal(), 'S-Regular')}
           />
 
         </XYPartyContent>

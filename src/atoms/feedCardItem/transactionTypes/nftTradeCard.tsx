@@ -92,11 +92,10 @@ export const NftTradeCard = (
       <CenterContent>
         <XYPartyContent>
           <ValueContainer />
-          {thumbnail !== null ? <NftImage src={thumbnail} alt={nftSymbol} /> : (
-            <NftImageContainer>
-              <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
-            </NftImageContainer>
-          )}
+          <NftImageContainer>
+            {thumbnail !== null ? <NftImage src={thumbnail} alt={nftSymbol} />
+              : <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />}
+          </NftImageContainer>
 
           <NftValues>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{nftSymbol}</Text>
@@ -118,7 +117,7 @@ export const NftTradeCard = (
             <HintsAndHovers
               id={uuidv4()}
               hint={dollarPopover}
-              icon={getFormattedText(12345, 'S-Regular')}
+              icon={getFormattedText(priceUsd || 123, 'S-Regular')}
             />
           </ValueContainer>
           <TokenIcon

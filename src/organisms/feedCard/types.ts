@@ -1,13 +1,14 @@
 import {
-  NftTrade, LpPool, SwapTransactionData, TransferTransactionData,
+  TransactionData,
 } from '../../atoms/feedCardItem/types';
 
 export interface FeedCardProps {
-  transactions: SwapTransactionData[] | TransferTransactionData[] | NftTrade[] | LpPool[];
+  transactions: TransactionData[];
   datetime: number;
   moreThanFiveTxs: boolean;
   wallet: string;
   onPause: () => void;
   onRemove: () => void;
   onConfigure: () => void;
+  label: string;
 }
