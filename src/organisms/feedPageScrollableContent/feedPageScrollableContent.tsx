@@ -12,7 +12,7 @@ import { FeedPageScrollableContentProps } from './types';
 
 export const FeedPageScrollableContent = (
   {
-    children, newUpdates, onShowNew,
+    children, newUpdates, onShowNew, offset,
   }: FeedPageScrollableContentProps,
 ) => {
   const theme = useTheme() as typeof Theme;
@@ -42,7 +42,7 @@ export const FeedPageScrollableContent = (
         </ShowNewButton>
       )}
       <ScrollableSection>
-        <ScrollableContent>
+        <ScrollableContent offset={offset}>
           {children}
           <FooterSection>
             <Footer />

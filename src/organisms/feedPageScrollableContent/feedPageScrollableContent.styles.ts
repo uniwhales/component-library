@@ -3,9 +3,14 @@ import { Styled } from '../../theme';
 export const Wrapper = Styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
+`;
+
+export const HeaderWrapper = Styled.div`
+  position: sticky;
+  top: 0;
 `;
 
 export const ItemWrapper = Styled.div`
@@ -48,11 +53,11 @@ export const ScrollableSection = Styled.div`
   margin: 0 auto;
 `;
 
-export const ScrollableContent = Styled.div`
+export const ScrollableContent = Styled.div<{ offset?: string }>`
   display: flex;
   flex-direction: column;
   margin-top: 8px;
-  height: calc(100vh - 74px);
+  height: calc(100vh - ${({ offset }) => (offset || '74px')});
   overflow: scroll;
   overflow-style: none;
   gap: 8px;
