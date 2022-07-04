@@ -22,7 +22,12 @@ export type NavigationTabProps<ID> = {
   name: string
   path?: string
   lvl?: number
-  onClick?: (props: { path?: string, pro?: boolean, whale?: boolean }) => void
+  onClick?: (props: {
+    path?: string,
+    pro?: boolean,
+    whale?: boolean,
+    subitems?: SidebarElement<ID>[]
+  }) => void
   expanded: boolean
   tag?: string
   disabled?: boolean

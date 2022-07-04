@@ -57,7 +57,11 @@ export const NavigationTab: NavigationTabComp = ({
         onClick={(e) => {
           e.stopPropagation();
           if (subitems) setItemsExpanded(!itemsExpanded);
-          if (!subitems && onClick) onClick({ path, pro, whale });
+          if (!subitems && onClick) {
+            onClick({
+              path, pro, whale, subitems,
+            });
+          }
           if (!expanded) setExpanded(true);
           if (expanded && isHighlighted && !subitems) setExpanded(false);
           if (!disabled && !subitems) setSelectedTab(id);
@@ -87,6 +91,10 @@ export const NavigationTab: NavigationTabComp = ({
             && subitems.map((si) => (
               <NavigationTab
                 {...si}
+                /* Marcin:
+                  react doesn't recognize that enum can be a key so i need to cast to string
+                */
+                key={si.id as string}
                 hasAccessGuard={hasAccessGuard}
                 account={account}
                 setExpanded={setExpanded}
@@ -101,6 +109,7 @@ export const NavigationTab: NavigationTabComp = ({
                 tag={pickTag(si, hasAccessGuard, account)}
                 pro={si.pro}
                 whale={si.whale}
+                path={si.path}
               />
             ))}
       </NavigationUl>

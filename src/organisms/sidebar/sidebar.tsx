@@ -57,17 +57,21 @@ export const Sidebar: SidebarComp = ({
       <SidebarItems>
         {items.map((item) => (
           <NavigationTab
+            /* Marcin: react doesn't recognize that enum can be a key so i need to cast to string */
+            key={item.id as string}
             hasAccessGuard={hasAccessGuard}
             account={account}
             setExpanded={setExpanded}
             width={width}
             id={item.id}
             icon={item.icon}
-            onClick={({ path }) => {
-              if (!expanded && !item.subitems && path) {
+            onClick={({
+              path, pro, whale, subitems,
+            }) => {
+              if (!expanded && !subitems && path) {
                 setExpanded(true);
               } else if (onClick) {
-                onClick(item);
+                onClick({ path, pro, whale });
               }
             }}
             selectedTab={selectedTab}
