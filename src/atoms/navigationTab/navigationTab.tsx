@@ -94,7 +94,7 @@ export const NavigationTab: NavigationTabComp = ({
                 /* Marcin:
                   react doesn't recognize that enum can be a key so i need to cast to string
                 */
-                key={si.id as string}
+                key={si.id as unknown as string}
                 hasAccessGuard={hasAccessGuard}
                 account={account}
                 setExpanded={setExpanded}
