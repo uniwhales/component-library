@@ -3,6 +3,7 @@ import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
+import { ChainsInterface } from '../../organisms/actionBar/types';
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
@@ -139,7 +140,7 @@ export interface SelectProps {
   placeholder: string,
   isXL?: boolean,
   options: Option[],
-  onChange?: (o: SelectOption) => void
+  onChange?: (o: ChainsInterface) => void
 }
 
 export const Select = ({
