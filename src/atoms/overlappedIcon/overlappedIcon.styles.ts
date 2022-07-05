@@ -42,4 +42,8 @@ export const LargeIcon = Styled.div<{ bgColor: string, largeSize: string }>`
     height: ${(props) => props.largeSize};
     width: ${(props) => props.largeSize};
   };
+    img {
+    height: ${(props) => props.largeSize};
+    width: ${(props) => props.largeSize};
+  };
 `;

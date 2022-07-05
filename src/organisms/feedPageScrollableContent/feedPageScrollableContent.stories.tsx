@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { FeedPageScrollableContent } from './feedPageScrollableContent';
 import { Text } from '../../atoms/texts/text';
-import { ItemWrapper, Wrapper } from './feedPageScrollableContent.styles';
+import { HeaderWrapper, ItemWrapper, Wrapper } from './feedPageScrollableContent.styles';
 import { groupTagOptions } from '../feedPageNavBar/mockData';
 import { FeedPageNavBar } from '../feedPageNavBar/feedPageNavBar';
 
@@ -43,17 +43,19 @@ const Template: ComponentStory<typeof FeedPageScrollableContent> = () => {
 
   return (
     <Wrapper>
-      <FeedPageNavBar
-        label="Alert Feed"
-        selectValue={value}
-        selectOnChange={() => setValue(value)}
-        account={account}
-        onConnectClick={handleSwitch}
-        plan="Whale"
-        following={1000}
-        selectPlaceholder="Select Group Tags"
-        selectOptions={groupTagOptions}
-      />
+      <HeaderWrapper>
+        <FeedPageNavBar
+          label="Alert Feed"
+          selectValue={value}
+          selectOnChange={() => setValue(value)}
+          account={account}
+          onConnectClick={handleSwitch}
+          plan="Whale"
+          following={1000}
+          selectPlaceholder="Select Group Tags"
+          selectOptions={groupTagOptions}
+        />
+      </HeaderWrapper>
       <FeedPageScrollableContent
         newUpdates={updates && updates}
         onShowNew={showNew}

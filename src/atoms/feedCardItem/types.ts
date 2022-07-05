@@ -78,6 +78,9 @@ export interface NftTrade {
   timestamp: number;
   block: number;
   chain: keyof typeof chainIcons;
+  price_usd: number;
+  thumbnail: string;
+  image: string;
 }
 
 export interface NftTradeProps extends ItemCardProps {
@@ -156,12 +159,18 @@ export interface LpPool {
   token0_amount: number;
   token0_amount_usd: number;
   token0_price_usd: number;
-  token1_address: string;
-  token1_name: string;
-  token1_symbol: string;
-  token1_amount: number;
-  token1_amount_usd: number;
-  token1_price_usd: number;
+  token1_address?: string;
+  token1_name?: string;
+  token1_symbol?: string;
+  token1_amount?: number;
+  token1_amount_usd?: number;
+  token1_price_usd?: number;
+  token2_address?: string;
+  token2_name?: string;
+  token2_symbol?: string;
+  token2_amount?: number;
+  token2_amount_usd?: number;
+  token2_price_usd?: number;
   dex: keyof typeof dexIcons;
   index: number;
   chain: keyof typeof chainIcons;
@@ -377,6 +386,8 @@ export interface NftSweep {
   sellers: string[];
   tokens: string[];
   items: NftTrade[];
+  thumbnail: string;
+  image: string;
 }
 
 export interface NftSweepProps extends ItemCardProps {
@@ -405,6 +416,7 @@ export interface ItemCardProps {
   isOpen: boolean;
   handleToggle: () => void;
   isFirst: boolean;
+  txData: TransactionData;
 }
 
 export type TransactionData =
@@ -423,3 +435,11 @@ export type TransactionData =
   | Option
   | NftSweep
   | ContractInteraction;
+
+export interface FeedCardItemProps {
+  isMulti: boolean;
+  isOpen: boolean;
+  handleToggle: () => void;
+  isFirst: boolean;
+  txData: TransactionData[]
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { PlusStandard } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { FeedCardItem } from '../../atoms/feedCardItem/feedCardItem';
@@ -29,6 +30,7 @@ export const FeedCard = (
     onRemove,
     onConfigure,
     wallet,
+    label,
   }: FeedCardProps,
 ) => {
   const theme = useTheme() as typeof Theme;
@@ -64,7 +66,7 @@ export const FeedCard = (
 
       <MainCardContent>
         <FeedCardHeader>
-          <Text size="M-Regular">Label Name</Text>
+          <Text size="M-Regular">{label}</Text>
           <DateTime>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>
               {getDate(datetime).date}
@@ -78,17 +80,19 @@ export const FeedCard = (
         <TransactionsWrapper>
           {transactionsToDisplay.map(
             (
-              transaction: any,
+              txs: TransactionData,
               index: number,
             ) => (
+
               <FeedCardItem
-                key={transaction.hash}
+                key={uuidv4()}
                 isMulti={transactions.length > 1}
-                txData={transaction}
+                txData={txs}
                 handleToggle={handleToggle}
                 isOpen={isOpen}
                 isFirst={index === 0}
               />
+
             ),
           )}
         </TransactionsWrapper>

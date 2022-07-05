@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -31,6 +32,7 @@ import {
   NftValues,
   TokenIcon,
   LinkWrapper,
+  NftImageContainer,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
@@ -69,7 +71,7 @@ export const NftMintCard = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
@@ -86,9 +88,9 @@ export const NftMintCard = (
       <CenterContent>
         <XYPartyContent>
           <ValueContainer />
-          <NftImage>
+          <NftImageContainer>
             <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
-          </NftImage>
+          </NftImageContainer>
           <NftValues>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{symbol}</Text>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{nftTokenId}</Text>
@@ -104,7 +106,7 @@ export const NftMintCard = (
               {fee}
             </Text>
             <HintsAndHovers
-              id={valueUsd.toString()}
+              id={uuidv4()}
               hint={dollarPopover}
               icon={getFormattedText(valueUsd, 'S-Regular')}
             />

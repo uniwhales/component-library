@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -72,7 +73,7 @@ export const TransferTransactionCard = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
@@ -90,12 +91,12 @@ export const TransferTransactionCard = (
         <XYPartyContent>
           <ValueContainer>
             <HintsAndHovers
-              id={amount.toString()}
+              id={uuidv4()}
               hint={amount.toString()}
               icon={(<Text size="S-Bold" color={theme.textShades.SHADE_MINUS_3}>{abbreviateNumber(amount)}</Text>)}
             />
             <HintsAndHovers
-              id={amountUsd.toString()}
+              id={uuidv4()}
               hint={dollarPopover}
               icon={getFormattedText(amountUsd, 'S-Regular')}
             />
@@ -116,7 +117,7 @@ export const TransferTransactionCard = (
             id={to}
           />
           <HintsAndHovers
-            id={to}
+            id={uuidv4()}
             hint={to}
             icon={<Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{`${to.slice(0, 4)}...${to.slice(to.length - 4)}`}</Text>}
           />

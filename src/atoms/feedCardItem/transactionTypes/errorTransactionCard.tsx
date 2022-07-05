@@ -14,9 +14,8 @@ import {
   GenericCenterContent,
 } from '../feedCardItem.styles';
 
-export const ErrorTransactionCard = () => {
+export const ErrorTransactionCard = ({ txData }: any) => {
   const theme = useTheme() as typeof Theme;
-
   return (
     <MasterContainer>
       <GenericTxTypeWrapper>
@@ -27,7 +26,7 @@ export const ErrorTransactionCard = () => {
         <TxTypeContainer>
           <InfoContainer>
             <IconWrapper icon={<RedCross />} />
-            <Text size="S-Regular" color={theme.colors.system.RED}>Error loading data</Text>
+            <Text size="S-Regular" color={theme.colors.system.RED}>{txData.tx_type}</Text>
           </InfoContainer>
         </TxTypeContainer>
       </GenericTxTypeWrapper>

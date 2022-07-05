@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -30,6 +31,7 @@ import {
   NftValues,
   TokenIcon,
   LinkWrapper,
+  NftImageContainer,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
 import { getTxUrl } from '../helpers/getTxUrl';
@@ -55,10 +57,12 @@ export const NftTradeCard = (
     marketplace,
     nft_symbol: nftSymbol,
     nft_token_id: nftTokenId,
+    price_usd: priceUsd,
     from,
     symbol,
     price,
     timestamp,
+    thumbnail,
   } = txData;
   const isBuy = action === 'buy';
   const txTypePreposition = 'for';
@@ -71,7 +75,7 @@ export const NftTradeCard = (
     <MasterContainer
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      key={txHash}
+      key={uuidv4()}
       isMulti={isMulti}
     >
       <TxTypeWrapper>
@@ -88,9 +92,11 @@ export const NftTradeCard = (
       <CenterContent>
         <XYPartyContent>
           <ValueContainer />
-          <NftImage>
-            <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />
-          </NftImage>
+          <NftImageContainer>
+            {thumbnail !== null ? <NftImage src={thumbnail} alt={nftSymbol} />
+              : <IconWrapper icon={<ImageIcon />} height="26px" width="26px" />}
+          </NftImageContainer>
+
           <NftValues>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_3}>{nftSymbol}</Text>
             <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>{nftTokenId}</Text>
@@ -108,11 +114,13 @@ export const NftTradeCard = (
                 {price}
               </>
             </Text>
-            <HintsAndHovers
-              id="amount"
-              hint={dollarPopover}
-              icon={getFormattedText(9955999, 'S-Regular')}
-            />
+            {priceUsd && (
+              <HintsAndHovers
+                id={uuidv4()}
+                hint={dollarPopover}
+                icon={getFormattedText(priceUsd, 'S-Regular')}
+              />
+            )}
           </ValueContainer>
           <TokenIcon
             baseUrl={LogoUrlBase}

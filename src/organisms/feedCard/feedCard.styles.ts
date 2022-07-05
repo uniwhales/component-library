@@ -11,7 +11,8 @@ export const Container = Styled.div`
 export const Wrapper = Styled.div`
   display: flex;
   align-items: flex-start;
-  max-width: 1352px;
+  max-width: 992px;
+  margin: auto;
 `;
 
 export const IdenticonWrapper = Styled.div`
