@@ -31,7 +31,7 @@ export const ActionBar = ({
         options={chains}
         isMulti={false}
         value={chainValue}
-        onChange={chainHandler}
+        onChange={(e) => chainHandler(e as any)}
         placeholder={ActionBarTexts.Select.placeholder}
       />
     </ActionChains>

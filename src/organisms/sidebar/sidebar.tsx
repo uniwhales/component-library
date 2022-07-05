@@ -24,7 +24,6 @@ enum SidebarWidth {
 
 export const Sidebar: SidebarComp = ({
   account,
-  plan,
   items,
   version,
   defaultSelectedTab,
@@ -34,6 +33,7 @@ export const Sidebar: SidebarComp = ({
   twitterLink,
   webappLink,
   onLogoClick,
+  onClick,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultSelectedTab);
@@ -57,15 +57,21 @@ export const Sidebar: SidebarComp = ({
       <SidebarItems>
         {items.map((item) => (
           <NavigationTab
+            /* Marcin: react doesn't recognize that enum can be a key so i need to cast to string */
+            key={item.id as unknown as string}
             hasAccessGuard={hasAccessGuard}
             account={account}
             setExpanded={setExpanded}
             width={width}
             id={item.id}
             icon={item.icon}
-            onClick={({ path }) => {
-              if (!expanded && !item.subitems && path) {
+            onClick={({
+              path, pro, whale, subitems,
+            }) => {
+              if (!expanded && !subitems && path) {
                 setExpanded(true);
+              } else if (onClick) {
+                onClick({ path, pro, whale });
               }
             }}
             selectedTab={selectedTab}
@@ -106,7 +112,7 @@ export const Sidebar: SidebarComp = ({
             )}
           </SidebarThemeAndShareButtons>
         </SidebarBottomButtons>
-        <SidebarFooter plan={plan} version={version} />
+        <SidebarFooter version={version} />
       </SidebarBottom>
     </SidebarContainer>
   );

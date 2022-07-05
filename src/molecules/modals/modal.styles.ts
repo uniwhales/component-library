@@ -24,7 +24,6 @@ export const ModalContent = Styled.div`
   z-index: 10;
   border-radius: 12px;
   box-sizing: border-box;
-  z-index: 10;
   @media (max-width: 768px) {
      padding: 12px 12px 24px 12px;
   }

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { useTheme } from 'styled-components';
 import { Text } from '../../../atoms/texts/text';
-import { Styled } from '../../../theme';
+import { Styled, localTheme } from '../../../theme';
 
 const Container = Styled.div`
   height: 100px;
@@ -22,12 +21,11 @@ const Spacer = Styled.div`
 `;
 
 export type SidebarFooterProps = {
-  plan: string
   version: string
 };
 
-export const SidebarFooter: FC<SidebarFooterProps> = ({ plan, version }) => {
-  const theme: any = useTheme()
+export const SidebarFooter: FC<SidebarFooterProps> = ({ version }) => {
+  const theme = localTheme();
   return (
     <Container>
       <Spacer />
@@ -35,5 +33,5 @@ export const SidebarFooter: FC<SidebarFooterProps> = ({ plan, version }) => {
         {`v ${version} `}
       </Text>
     </Container>
-  )
+  );
 };

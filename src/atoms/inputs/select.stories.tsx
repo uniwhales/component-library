@@ -9,9 +9,13 @@ export default {
   },
 } as ComponentMeta<typeof Select>;
 
+interface SelectProps {
+  label: string;
+  value: string;
+  id?: number;
+}
 const Template: ComponentStory<typeof Select> = (args) => {
-  const [value, setValue] = useState<any>(undefined);
-
+  const [value, setValue] = useState<SelectProps>();
   return <Select {...args} onChange={(v) => setValue(v)} value={value} />;
 };
 export const Primary = Template.bind({});

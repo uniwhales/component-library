@@ -2,8 +2,8 @@ import React from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
-import { useTheme } from 'styled-components';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
+import { ChainsInterface } from '../../organisms/actionBar/types';
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
@@ -14,7 +14,6 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
 `;
 
 export const colourOptions = [
-  { value: 'Oceanrwerewrwerwerwerwerwe  rewrw', label: '423 rewrw' },
   { value: 'blue blue', label: 'Blue Blue' },
   { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },
@@ -30,7 +29,7 @@ interface StyledProps {
   isFocused?: boolean
   isSelected?: boolean
   menuIsOpen?: boolean
-  theme?: any;
+  theme: any;
   readOnly?: boolean;
   isMulti?: boolean;
   isCheckBox?: boolean;
@@ -100,7 +99,8 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 
 };
-const CheckBoxOption = (props: any) => {
+
+const CheckBoxOption = (props:any) => {
   const {
     label, isSelected, readOnly, isCheckBox,
   } = props;
@@ -126,7 +126,8 @@ const CheckBoxOption = (props: any) => {
 
 interface Option {
   value: string,
-  label: string
+  label: string,
+  id?: number;
 }
 
 export interface SelectOption extends Option {}
@@ -138,19 +139,19 @@ export interface SelectProps {
   isCheckBox?: boolean,
   placeholder: string,
   isXL?: boolean,
-  options: SelectOption[],
-  onChange?: (o: any) => void
+  options: Option[],
+  onChange?: (o: ChainsInterface) => void
 }
 
 export const Select = ({
   options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
 }: SelectProps) => {
-  const theme = useTheme();
+  const theme = localTheme();
   return (
     <StyledSelect
       options={options}
       isMulti={isMulti}
-      theme={theme as any}
+      theme={theme}
       isOptionDisabled={() => !!readOnly}
       isSearchable={false}
       styles={colourStyles as StylesConfig}
@@ -164,7 +165,9 @@ export const Select = ({
         IndicatorSeparator: () => null,
       }}
       onChange={(option) => {
-        if (onChange) onChange(option);
+        if (onChange) { // @ts-ignore
+          onChange(option);
+        }
       }}
       value={value}
       isXL={isXL}

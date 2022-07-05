@@ -42,7 +42,12 @@ export enum HyperLinkVariation {
 }
 
 export interface TextProps {
-  children: React.ReactChild;
+  children:
+  | JSX.Element
+  | JSX.Element[]
+  | string
+  | string[]
+  | number;
   size: BodySizes | HeaderSizes;
   color?: string;
   textDecoration?: string;

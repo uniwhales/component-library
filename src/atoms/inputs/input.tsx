@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
@@ -7,7 +7,7 @@ export interface InputsProps {
   type: 'text' | 'number';
   placeholder?: string;
   value?:string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   label?:string;
   disabled?:boolean;
   isError?:string;

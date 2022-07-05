@@ -108,7 +108,7 @@ export const Input = Styled.input<Pick<SliderProps, 'value'>>`
 export const MaxButton = Styled.button<Pick<SliderProps, 'value'>>`
   padding: 4px 12px;
   margin-left: 8px;
-  gap 8px;
+  gap: 8px;
   border-radius: 12px;
   background: ${(props) => (props.value === 100
     ? props.theme.textShades.SHADE_MINUS_3

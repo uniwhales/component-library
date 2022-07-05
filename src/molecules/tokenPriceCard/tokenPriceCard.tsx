@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
-// eslint-disable-next-line import/no-cycle
 import {
   ArrowDownIcon,
-  ArrowUpIcon, LinkIcon, Text, HeartStandard,
-} from '../..';
+  ArrowUpIcon, LinkIcon, HeartStandard,
+} from '../../atoms/icons';
+import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import { formatter } from '../../utils/format';

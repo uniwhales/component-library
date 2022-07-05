@@ -28,15 +28,15 @@ export const NavigationUl = Styled.ul`
 
 export const IconContainer = Styled.div<{ isExpanded: boolean, isDisabled: boolean, isHighlighted: boolean }>`
   width: ${({ isExpanded }) => (isExpanded ? '13px' : '90%')};
-  margin: ${({ isExpanded }) => isExpanded ? '0px 7px 0px 17px' : '0px 0px 0px 28px'};
+  margin: ${({ isExpanded }) => (isExpanded ? '0px 7px 0px 17px' : '0px 0px 0px 28px')};
   svg {
     cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
-    fill: ${({ isHighlighted, theme }) => isHighlighted ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1 }
+    fill: ${({ isHighlighted, theme }) => (isHighlighted ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)}
   }
 
   :hover {
     svg {
-      fill: ${({ isHighlighted, theme }) => isHighlighted ? theme.colors.primary.WATER_BLUE : theme.textShades.SHADE_MINUS_3 }
+      fill: ${({ isHighlighted, theme }) => (isHighlighted ? theme.colors.primary.WATER_BLUE : theme.textShades.SHADE_MINUS_3)}
     }
   }
 `;

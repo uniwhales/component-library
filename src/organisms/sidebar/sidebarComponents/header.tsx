@@ -27,7 +27,7 @@ export const SidebarHeader: FC<SidebarHeaderProps> = ({ expanded, setExpanded, o
   <Container>
     <UniWhalesLogo onClick={onLogoClick} showText={expanded} />
     {expanded && (
-      <ButtonAtom buttonVariant='secondary_action' onClick={() => setExpanded(!expanded)} >
+      <ButtonAtom buttonVariant="secondary_action" onClick={() => setExpanded(!expanded)}>
         <IconWrapper icon={<ArrowLeftSquareIcon />} />
       </ButtonAtom>
     )}

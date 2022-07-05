@@ -19,7 +19,10 @@ export const shouldHighlight = <ID>(item: Pick<SidebarElement<ID>, 'subitems' | 
       .some((si: SidebarElement<ID>) => shouldHighlight<ID>(si, selectedTab));
   }
   if (item.path) {
-    return window.location.href.includes(item.path) || item.id === selectedTab;
+    return (
+      window.location.pathname.toLowerCase().trim() === item.path.toLowerCase().trim()
+      || (window.location.pathname.toLowerCase().trim() === '/' && item.id === selectedTab) // specifically for newsdesk on page load
+    );
   }
 
   return false;

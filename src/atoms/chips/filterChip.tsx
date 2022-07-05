@@ -1,13 +1,17 @@
-import React, { ReactChild } from 'react';
-import { css } from 'styled-components';
+import React from 'react';
 import { Styled } from '../../theme';
-import { IconWrapper, Text } from '../../index';
+import { Text } from '../texts/text';
+import { IconWrapper } from '../icons/iconWrapper';
 
 export interface FilterChipProps {
-  children: ReactChild;
+  children:
+  | JSX.Element
+  | JSX.Element[]
+  | string
+  | string[];
   icon: JSX.Element;
   isOn: boolean;
-  onClick: (e:any) => void;
+  onClick: (e:unknown) => void;
   id: number;
 }
 const Wrapper = Styled.div<{ isOn: boolean }>`
