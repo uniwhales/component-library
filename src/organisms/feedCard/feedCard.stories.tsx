@@ -14,43 +14,20 @@ export default {
 const Template: ComponentStory<typeof FeedCard> = () => (
   <Container>
     {mockData.data.map((item) => (
-      Object.values(item.transactions).map((transactions) => {
-        console.log('hello', transactions);
-        return (
-          <FeedCard
-            label={item.label}
-            datetime={transactions[0].timestamp}
-            wallet={item.wallet}
-            key={uuidv4()}
-            transactions={transactions}
-            moreThanFiveTxs={transactions.length > 5}
-            onPause={() => console.log('onPause')}
-            onRemove={() => console.log('onRemove')}
-            onConfigure={() => console.log('onConfigure')}
-          />
-        );
-      })
+      Object.values(item.transactions).map((transactions) => (
+        <FeedCard
+          label={item.label}
+          datetime={transactions[0].timestamp}
+          wallet={item.wallet}
+          key={uuidv4()}
+          transactions={transactions}
+          moreThanFiveTxs={transactions.length > 5}
+          onPause={() => console.log('onPause')}
+          onRemove={() => console.log('onRemove')}
+          onConfigure={() => console.log('onConfigure')}
+        />
+      ))
     ))}
-    {/* {mockData.data.map((item) => {
-      const txs = Object.values(item.transactions);
-      const firstTransactionTime: number = txs[0][0].timestamp;
-      txs.map((card) => {
-        console.log('hello', card);
-        return (
-          <FeedCard
-            label={item.label}
-            datetime={firstTransactionTime}
-            wallet={item.wallet}
-            key={uuidv4()}
-            transactions={txs}
-            moreThanFiveTxs={txs.length > 5}
-            onPause={() => console.log('onPause')}
-            onRemove={() => console.log('onRemove')}
-            onConfigure={() => console.log('onConfigure')}
-          />
-        );
-      });
-    })} */}
   </Container>
 );
 

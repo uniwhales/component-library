@@ -8,13 +8,7 @@ import { NftTradeCard } from './transactionTypes/nftTradeCard';
 import { SwapTransactionCard } from './transactionTypes/swapTransactionCard';
 import { TransferTransactionCard } from './transactionTypes/transferTransactionCard';
 import {
-  ContractInteractionProps,
-  LpPoolProps,
-  NftMintProps,
-  NftSweepProps,
-  NftTradeProps,
-  SwapTransactionProps,
-  TransferTransactionProps,
+  ItemCardProps,
 } from './types';
 
 export const FeedCardItem = (
@@ -24,14 +18,7 @@ export const FeedCardItem = (
     handleToggle,
     isOpen,
     isFirst,
-  }:
-    SwapTransactionProps
-    | NftSweepProps
-    | TransferTransactionProps
-    | NftTradeProps
-    | LpPoolProps
-    | NftMintProps
-    | ContractInteractionProps,
+  }: ItemCardProps,
 ) => {
   switch (txData.tx_type) {
     case 'swap':
@@ -106,7 +93,7 @@ export const FeedCardItem = (
       );
     default:
       return (
-        <ErrorTransactionCard />
+        <ErrorTransactionCard txData={txData} />
       );
   }
 };

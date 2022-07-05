@@ -416,6 +416,7 @@ export interface ItemCardProps {
   isOpen: boolean;
   handleToggle: () => void;
   isFirst: boolean;
+  txData: TransactionData;
 }
 
 export type TransactionData =
