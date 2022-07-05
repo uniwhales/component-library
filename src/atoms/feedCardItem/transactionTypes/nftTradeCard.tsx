@@ -114,11 +114,13 @@ export const NftTradeCard = (
                 {price}
               </>
             </Text>
-            <HintsAndHovers
-              id={uuidv4()}
-              hint={dollarPopover}
-              icon={getFormattedText(priceUsd || 123, 'S-Regular')}
-            />
+            {priceUsd && (
+              <HintsAndHovers
+                id={uuidv4()}
+                hint={dollarPopover}
+                icon={getFormattedText(priceUsd, 'S-Regular')}
+              />
+            )}
           </ValueContainer>
           <TokenIcon
             baseUrl={LogoUrlBase}
