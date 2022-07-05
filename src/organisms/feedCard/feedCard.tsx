@@ -80,7 +80,7 @@ export const FeedCard = (
         <TransactionsWrapper>
           {transactionsToDisplay.map(
             (
-              txs: any,
+              txs: TransactionData,
               index: number,
             ) => (
 

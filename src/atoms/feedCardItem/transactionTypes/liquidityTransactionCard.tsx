@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useTheme } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { useTheme } from 'styled-components';
 import { FeedPageMeatballMenu } from '../../../molecules/feedPageMeatballMenu/feedPageMeatballMenu';
 import { HintsAndHovers } from '../../../organisms/hintsAndHovers/hintsAndHovers';
 import { Theme } from '../../../theme';
@@ -32,6 +32,7 @@ import {
   Image,
 } from '../feedCardItem.styles';
 import { getFormattedText } from '../helpers/formattedText';
+import { getTotal } from '../helpers/getTotal';
 import { getTxUrl } from '../helpers/getTxUrl';
 import { chainIcons } from '../helpers/icons';
 import { timeSince } from '../helpers/timeSince';
@@ -75,15 +76,6 @@ export const LiquidityTransactionCard = (
   const token0Val = isAdd ? `+ ${token0Amount.toFixed(2)}` : `- ${token0Amount.toFixed(2)}`;
   const token1Val = isAdd ? `+ ${token1Amount?.toFixed(2)}` : `+ ${token1Amount?.toFixed(2)}`;
   const token2Val = isAdd ? `+ ${token2Amount?.toFixed(2)}` : `+ ${token2Amount?.toFixed(2)}`;
-
-  const getTotal = () => {
-    if (token1AmountUsd && token2AmountUsd) {
-      return token0Amount + token1AmountUsd + token2AmountUsd;
-    } if (token1AmountUsd && !token2AmountUsd) {
-      return token0AmountUsd + token1AmountUsd;
-    }
-    return token0AmountUsd;
-  };
 
   return (
     <MasterContainer
@@ -148,7 +140,7 @@ export const LiquidityTransactionCard = (
           <HintsAndHovers
             id={uuidv4()}
             hint={dollarPopover}
-            icon={getFormattedText(getTotal(), 'S-Regular')}
+            icon={getFormattedText(getTotal(token0AmountUsd, token1AmountUsd, token2AmountUsd), 'S-Regular')}
           />
 
         </XYPartyContent>
