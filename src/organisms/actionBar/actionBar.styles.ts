@@ -12,4 +12,9 @@ export const ActionTags = Styled.div`
   display: flex;
   gap: 24px;
 `;
+export const SelectWrapper = Styled.div`
+  display: flex;
+  gap: 8px;
+`;
 export const ActionChains = Styled.div``;
+export const ActionTypes = Styled.div``;
