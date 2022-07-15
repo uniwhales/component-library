@@ -4,7 +4,7 @@ import { FilterChip } from '../../atoms/chips/filterChip';
 import {
   ActionChains, ActionTags, ActionTypes, SelectWrapper, Wrapper,
 } from './actionBar.styles';
-import { ActionBarProps } from './types';
+import { ActionBarProps, TypesInterface } from './types';
 
 const ActionBarTexts = {
   Select: {
@@ -35,7 +35,7 @@ export const ActionBar = ({
           options={types}
           isMulti
           value={typeValue}
-          onChange={(e) => typeHandler(e as any)}
+          onChange={(e: TypesInterface) => typeHandler(e)}
           placeholder={ActionBarTexts.Select.typePlaceholder}
           isCheckBox
         />
