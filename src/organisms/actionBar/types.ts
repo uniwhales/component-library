@@ -4,6 +4,13 @@ export interface ChainsInterface {
   label: string;
   isSelected?: boolean;
 }
+
+export interface TypesInterface {
+  id: number;
+  value: string;
+  label: string;
+  isSelected?: boolean;
+}
 export interface FilterInterface {
   id: number;
   value: string;
@@ -11,10 +18,13 @@ export interface FilterInterface {
   icon: JSX.Element;
 }
 export interface ActionBarProps {
-  filters:FilterInterface[]
-  chains:ChainsInterface[];
-  chainHandler: (e:ChainsInterface) => void;
-  setChip: (e:number) => void;
+  filters: FilterInterface[]
+  chains: ChainsInterface[];
+  chainHandler: (e: ChainsInterface) => void;
+  types: TypesInterface[];
+  typeHandler: (e: TypesInterface) => void;
+  setChip: (e: number) => void;
   chipValue: number;
-  chainValue: ChainsInterface
+  chainValue: ChainsInterface;
+  typeValue: TypesInterface;
 }
