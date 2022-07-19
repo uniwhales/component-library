@@ -19,7 +19,7 @@ const customViewports = {
     },
   },
   '1280px': {
-    name: '1280px width ',
+    name: '1280px width',
     styles: {
       width: '1281px',
       height: '800px',
