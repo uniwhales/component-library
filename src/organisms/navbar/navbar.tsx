@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { useTheme } from 'styled-components';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
 import { ArrowLeftIcon, Identicon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
+import { localTheme } from '../../theme';
 import {
   NavbarAvatar, NavbarContainer, NavbarLeftSide, NavbarRightSide,
 } from './styles';
@@ -18,8 +18,7 @@ export const Navbar: FC<NavbarProps> = ({
   account,
   onWalletConnectClick,
 }) => {
-  const theme: any = useTheme();
-
+  const theme = localTheme();
   return (
     <NavbarContainer>
       <NavbarLeftSide onClick={() => onBackButtonClick()}>
@@ -33,8 +32,7 @@ export const Navbar: FC<NavbarProps> = ({
         {rightSideChildren}
         <Text color={theme.textShades.SHADE_MINUS_1} size="M-Regular">
           <>
-            Plan:
-            {' '}
+            {'Plan: '}
             {plan}
           </>
         </Text>
