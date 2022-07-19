@@ -33,6 +33,8 @@ export * from './generalIcons/fullColorStyle/WalletColor';
 export * from './generalIcons/fullColorStyle/WebinarColor';
 export * from './generalIcons/fullColorStyle/Check';
 // generalIcons//STANDARD
+export * from './generalIcons/filledStyle/Feed';
+export * from './generalIcons/filledStyle/Fire';
 export * from './generalIcons/filledStyle/AlertBotStandard';
 export * from './generalIcons/filledStyle/EditStandard';
 export * from './generalIcons/filledStyle/CoinStandard';

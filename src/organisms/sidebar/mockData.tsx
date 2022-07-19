@@ -13,6 +13,8 @@ import {
   WalletStandard,
   NewsStandard,
   DashboardStandard,
+  Fire as FireIcon,
+  Feed as FeedIcon,
 } from '../../atoms/icons';
 import { SidebarElement } from '../../atoms/navigationTab/types';
 
@@ -25,6 +27,8 @@ export enum Plans {
 export enum SidebarItemID {
   Account = 'Account',
   Newsdesk = 'Newsdesk',
+  Discover = 'Discover',
+  Feed = 'Feed',
   Tools = 'Tools',
   Ethereum = 'Ethereum',
   Binance = 'Binance',
@@ -62,6 +66,8 @@ export enum SidebarItemID {
 export enum DashboardNames {
   Newsdesk = 'Newsdesk',
   Ethereum = 'Ethereum',
+  Discover = 'Discover',
+  Feed = 'Feed',
   Tools = 'Tools',
   Transactions = 'Transactions',
   // NewTokens = 'New Tokens',
@@ -90,6 +96,19 @@ export const sidebarItems: SidebarElement<any>[] = [
     name: DashboardNames.Newsdesk,
     icon: <NewsStandard />,
     path: '/newsdesk',
+  },
+  {
+    id: SidebarItemID.Discover,
+    name: DashboardNames.Discover,
+    icon: <FireIcon />,
+    subitems: [
+      {
+        id: SidebarItemID.Feed,
+        name: DashboardNames.Feed,
+        icon: <FeedIcon />,
+        path: '/feed',
+      },
+    ],
   },
   {
     id: SidebarItemID.Tools,
@@ -221,26 +240,20 @@ export const sidebarItems: SidebarElement<any>[] = [
         ],
       },
       {
-        id: SidebarItemID.Favorites,
-        name: DashboardNames.Favorites,
-        icon: <HeartColor />,
-        pro: true,
-        path: '/favorites',
-      },
-    ],
-  },
-  {
-    id: SidebarItemID.Alerts,
-    name: DashboardNames.Alerts,
-    icon: <AlertBotStandard />,
-    subitems: [
-      {
         id: SidebarItemID.WalletAlerts,
         name: DashboardNames.WalletAlerts,
         icon: <WalletStandard />,
         path: '/wallet-alerts',
         pro: true,
       },
+      {
+        id: SidebarItemID.Favorites,
+        name: DashboardNames.Favorites,
+        icon: <HeartColor />,
+        pro: true,
+        path: '/favorites',
+      },
+
     ],
   },
 ];
