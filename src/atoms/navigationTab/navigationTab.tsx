@@ -74,7 +74,7 @@ export const NavigationTab: NavigationTabComp = ({
           isExpanded={expanded}
         >
           {icon && (
-            <IconWrapper width={expanded ? '16px' : '24px'} icon={icon} />
+            <IconWrapper width={expanded ? '16px' : '24px'} height={expanded ? '16px' : '24px'} icon={icon} />
           )}
         </IconContainer>
         {expanded && <NavigationTabName tag={tag}><Text size="S-Regular">{name}</Text></NavigationTabName>}

@@ -32,8 +32,8 @@ export * from './organisms/sidebar/sidebar';
 export * from './organisms/feedCard/feedCard';
 export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
-export * from './organisms/feedPageNavBar/feedPageNavBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
+export * from './organisms/navbar/navbar';
 export * from './organisms/announcementCard/AnnouncementCard';
 export * from './organisms/contentCard/contentCard';
 // theme

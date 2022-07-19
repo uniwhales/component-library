@@ -136,6 +136,8 @@ import {
   RedCross,
   NftIcon,
   Interaction,
+  Fire,
+  Feed,
 } from '.';
 
 export default {
@@ -243,6 +245,8 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="Feed" icon={<Feed />} />
+    <IconWrapper name="Fire" icon={<Fire />} />
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />
     <IconWrapper name="All" icon={<AllStandard />} />
     <IconWrapper name="All Icon" icon={<AllIcon />} />
