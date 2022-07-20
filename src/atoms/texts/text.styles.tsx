@@ -1,17 +1,17 @@
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import {
-  FONTWEIGHT, H_FONTSIZE, H_LINE_HEIGHT, P_FONTSIZE,
+  FONTWEIGHT, H_FONTSIZE, H_LINE_HEIGHT, P_FONTSIZE, P_LINE_HEIGHT,
 } from './textGenerator';
 import { HyperLinkStyle, HyperLinkVariation } from './types';
 
 export const StyledP = Styled.p<{ textType: string, textWeight: string, textDecoration?: string }>`
   font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
-  font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
+  font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   padding: 0;
   margin: 0;
   color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_MINUS_3)};
-  line-height: 24px;
+  line-height: ${(props) => P_LINE_HEIGHT[props.textType as keyof typeof P_LINE_HEIGHT]}px;
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
 export const StyledHeading = Styled.div<{ textType: string, textWeight: string, textDecoration?: string }>`
@@ -20,7 +20,7 @@ export const StyledHeading = Styled.div<{ textType: string, textWeight: string, 
   line-height: ${(props) => H_LINE_HEIGHT[props.textType as keyof typeof H_LINE_HEIGHT]}px;
   color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_MINUS_3)};
   font-size: ${(props) => H_FONTSIZE[props.textType as keyof typeof H_FONTSIZE]}px;
-  font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};;
+  font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
   `;
 

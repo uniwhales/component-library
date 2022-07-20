@@ -35,6 +35,9 @@ const bodySizes: BodySizes[] = [
   'XS-Regular',
   'XS-Semibold',
   'XS-Bold',
+  'XXS-Regular',
+  'XXS-Semibold',
+  'XXS-Bold',
 ];
 const hyperLinks: HyperLinkVariation[] = [
   HyperLinkVariation.Default,

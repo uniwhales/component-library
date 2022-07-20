@@ -36,6 +36,11 @@ export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 export * from './organisms/navbar/navbar';
 export * from './organisms/announcementCard/AnnouncementCard';
 export * from './organisms/contentCard/contentCard';
+// layouts
+export * from './layouts/brochure/brochureLayout.styles';
+export * from './layouts/tools/toolingLayout.styles';
+export * from './layouts/breakpoints';
+
 // theme
 export * from './atoms/icons/index';
 export {
