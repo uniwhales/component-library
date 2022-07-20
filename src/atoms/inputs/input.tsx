@@ -17,7 +17,7 @@ const InputWrapper = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 5px;
+  gap: 2px;
   p{
     margin: 0;
   }
@@ -42,9 +42,9 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.2' : 1)};
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  height: 48px;
+  height: 38px;
   border-radius: 12px;
-  padding: 12px 24px;
+  padding: 8px 24px;
   z-index: 1;
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};

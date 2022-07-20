@@ -4,9 +4,11 @@ import { Styled } from '../../theme';
 import { ButtonProps, GenericStylingProps } from './types';
 
 const Button = Styled.button<GenericStylingProps>`
+  transition: 0.3s;
   font-size: 14px;
-  line-height: 24px;
-  padding: 12px;
+  line-height: 20px;
+  padding: 8px 12px;
+  height: 40px;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -21,6 +23,8 @@ const Button = Styled.button<GenericStylingProps>`
     gap: 5px;
   }
   svg {
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
@@ -107,8 +111,14 @@ const ButtonTertiary = Styled(Button)`
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonPrimary)``;
+const ButtonPrimaryAction = Styled(ButtonPrimary)`
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+`;
 const ButtonSecondaryAction = Styled(Button)`
+  width: 40px;
+  height: 40px;
   svg {
     fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
   }
