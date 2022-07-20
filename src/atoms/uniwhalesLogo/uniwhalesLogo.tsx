@@ -11,6 +11,9 @@ const Container = Styled.div`
   gap: 2px;
   justify-content: center;
   cursor: pointer;
+  @media (max-width: 1024px) {
+    justify-content: flex-start;
+  }
 `;
 
 type Props = {

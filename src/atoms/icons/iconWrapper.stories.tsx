@@ -138,6 +138,7 @@ import {
   Interaction,
   Fire,
   Feed,
+  Menu,
 } from '.';
 
 export default {
@@ -245,6 +246,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="Menu" icon={<Menu />} />
     <IconWrapper name="Feed" icon={<Feed />} />
     <IconWrapper name="Fire" icon={<Fire />} />
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />

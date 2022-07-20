@@ -7,13 +7,17 @@ import { Styled } from '../../../theme';
 
 const Container = Styled.div`
   display: flex;
-  
   grid-area: header;
   justify-items: center;
   padding: 24px 14px;
   height: 50px;
   svg {
     cursor: pointer;
+  }
+  @media (max-width: 1024px) {
+    button {
+      display: none;
+    }
   }
 `;
 

@@ -89,7 +89,6 @@ export enum DashboardNames {
   PriceAlerts = 'Price Alerts',
   Alerts = 'Alerts',
 }
-
 export const sidebarItems: SidebarElement<any>[] = [
   {
     id: SidebarItemID.Newsdesk,
