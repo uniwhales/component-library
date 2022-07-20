@@ -117,6 +117,8 @@ const ButtonPrimaryAction = Styled(ButtonPrimary)`
   padding: 10px;
 `;
 const ButtonSecondaryAction = Styled(Button)`
+  width: 40px;
+  height: 40px;
   svg {
     fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
   }
