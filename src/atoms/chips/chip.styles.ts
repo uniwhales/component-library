@@ -12,9 +12,6 @@ const CustomChip = Styled.div<{ type: string }>`
 
 export const PrimaryChip = Styled(CustomChip)`
   padding: 4px 12px;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 700;
   gap: 8px;
   border-radius: 40px;
   background: ${(props) => props.theme.gradients.primary.BLURPLE};
@@ -27,9 +24,6 @@ export const PrimaryChip = Styled(CustomChip)`
 export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 12px;
   width: fit-content;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 700;
   gap: 8px;
   border-radius: 12px;
   background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
@@ -43,10 +37,7 @@ export const EditableChip = Styled(CustomChip)`
   padding: 4px 12px;
   width: fit-content;
   min-width: 50px;
-  font-size: 14px;
   transition: all .3s;
-  line-height: 18px;
-  font-weight: 400;
   border-radius: 12px;
   gap: 8px;
   background: ${(props) => props.theme.colors.primary.DARK_BLUE};
@@ -60,9 +51,6 @@ export const EditableChip = Styled(CustomChip)`
 
 export const TertiaryChip = Styled(CustomChip)`
   padding: 4px 6px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 700;
   gap: 2px;
   border-radius: 12px;
   background: ${(props) => props.theme.colors.primary.UWL_BLUE};
