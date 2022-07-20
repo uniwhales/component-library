@@ -57,7 +57,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     padding: '0 10px 0 10px',
     boxShadow: 'none',
     borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
-    height: '48px',
+    height: '40px',
     svg: {
       transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
     },
