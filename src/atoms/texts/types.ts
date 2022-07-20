@@ -10,7 +10,10 @@ export type BodySizes =
   | 'S-Bold'
   | 'XS-Regular'
   | 'XS-Semibold'
-  | 'XS-Bold';
+  | 'XS-Bold'
+  | 'XXS-Regular'
+  | 'XXS-Semibold'
+  | 'XXS-Bold';
 export type HeaderSizes =
   'H1-Regular' |
   'H1-Semibold'

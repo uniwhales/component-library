@@ -1,12 +1,13 @@
 import { Styled } from '../../theme';
 
-export const CardDateContainer = Styled.div`
+export const CardDateContainer = Styled.div<{ size?: 'S' | 'L' }>`
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-    border-radius: 12px 12px 0 0;
-    width: 252px;
-    height: 72px;
+    border-radius: 12px;
+    width: fit-content;
+    height: ${({ size }) => (size === 'S' ? '34px' : '48px')};
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
+    padding: 0 8px;
 `;
