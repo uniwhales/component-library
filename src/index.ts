@@ -15,6 +15,7 @@ export * from './atoms/card/card';
 export * from './atoms/chips/filterChip';
 export * from './atoms/feedCardItem/feedCardItem';
 export * from './atoms/connectWalletButton/connectWalletButton';
+export * from './atoms/common/flex';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
@@ -32,6 +33,7 @@ export * from './organisms/sidebar/sidebar';
 export * from './organisms/feedCard/feedCard';
 export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
+export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 export * from './organisms/navbar/navbar';
 export * from './organisms/announcementCard/AnnouncementCard';
