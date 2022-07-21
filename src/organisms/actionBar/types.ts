@@ -1,3 +1,5 @@
+import { CardProps } from '../../atoms/card/types';
+
 export interface ChainsInterface {
   id: number;
   value: string;
@@ -27,4 +29,9 @@ export interface ActionBarProps {
   chipValue: number;
   chainValue: ChainsInterface;
   typeValue: TypesInterface;
+}
+
+export interface MobileRHSActionBarProps extends CardProps {
+  left: JSX.Element | string
+  right: JSX.Element | string
 }
