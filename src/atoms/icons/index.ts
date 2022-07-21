@@ -75,6 +75,11 @@ export * from './generalIcons/filledStyle/StarIcon';
 export * from './generalIcons/filledStyle/ImageIcon';
 export * from './generalIcons/filledStyle/UploadStandard';
 export * from './generalIcons/filledStyle/Interaction';
+export * from './generalIcons/filledStyle/Announcements';
+export * from './generalIcons/filledStyle/Suitcase';
+export * from './generalIcons/filledStyle/SettingsBars';
+export * from './generalIcons/filledStyle/Sonar';
+export * from './generalIcons/filledStyle/Microscope';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
