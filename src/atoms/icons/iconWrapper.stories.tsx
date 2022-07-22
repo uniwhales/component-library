@@ -138,6 +138,11 @@ import {
   Interaction,
   Fire,
   Feed,
+  Announcements,
+  SettingsBars,
+  Microscope,
+  Sonar,
+  Suitcase,
 } from '.';
 
 export default {
@@ -284,7 +289,11 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Webinar" icon={<WebinarStandard />} />
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
     <IconWrapper name="Upload" icon={<UploadStandard />} />
-    <IconWrapper name="Interaction" icon={<Interaction />} />
+    <IconWrapper name="Announcements" icon={<Announcements />} />
+    <IconWrapper name="Settings Bars" icon={<SettingsBars />} />
+    <IconWrapper name="Microscope" icon={<Microscope />} />
+    <IconWrapper name="Sonar" icon={<Sonar />} />
+    <IconWrapper name="Suitcase" icon={<Suitcase />} />
   </>
 );
 
