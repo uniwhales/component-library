@@ -1,9 +1,10 @@
 import React from 'react';
+import { CSSProperties } from 'styled-components';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
 import { IconWrapper } from '../icons/iconWrapper';
 
-export interface FilterChipProps {
+export type FilterChipProps = {
   children:
   | JSX.Element
   | JSX.Element[]
@@ -13,9 +14,10 @@ export interface FilterChipProps {
   isOn: boolean;
   onClick: (e:unknown) => void;
   id: number;
-}
-const Wrapper = Styled.div<{ isOn: boolean }>`
-  max-width: fit-content;
+} & Pick<CSSProperties, 'width'>;
+const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
+  max-width: ${({ width }) => width ?? 'fit-content'};
+  width: ${({ width }) => width};
   min-width: 79px;
   box-sizing: border-box;
   background: ${({ isOn, theme }) => (isOn
@@ -52,9 +54,9 @@ const Content = Styled.div`
 `;
 
 export const FilterChip = ({
-  children, icon, isOn, onClick, id,
+  children, icon, isOn, onClick, id, width,
 }:FilterChipProps) => (
-  <Wrapper isOn={isOn} onClick={() => onClick(id)}>
+  <Wrapper isOn={isOn} onClick={() => onClick(id)} width={width}>
     <Content>
       <IconWrapper icon={icon} />
       <Text size="S-Regular">{children}</Text>

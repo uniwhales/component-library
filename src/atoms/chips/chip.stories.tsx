@@ -33,8 +33,10 @@ const Template: ComponentStory<typeof Chip> = (args) => {
   return <Chip {...args}>{children}</Chip>;
 };
 export const Primary = Template.bind({});
+export const PrimaryCustomWidth = Template.bind({});
 export const Secondary = Template.bind({});
 export const Tertiary = Template.bind({});
+export const TertiaryCustomWidth = Template.bind({});
 export const Editable = Template.bind({});
 
 Primary.parameters = {
@@ -44,12 +46,22 @@ Primary.args = {
   type: 'primary',
   children: WithIcon(),
 };
+PrimaryCustomWidth.args = {
+  type: 'primary',
+  width: '200px',
+  children: WithIcon(),
+};
 Secondary.args = {
   type: 'secondary',
   children: WithIcon(),
 };
 Tertiary.args = {
   type: 'tertiary',
+  children: WithIcon(),
+};
+TertiaryCustomWidth.args = {
+  type: 'tertiary',
+  width: '400px',
   children: WithIcon(),
 };
 Editable.args = {

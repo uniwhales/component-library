@@ -7,7 +7,7 @@ import {
 } from './tag.styles';
 
 export const Tag = ({
-  children, isOn, onClick, tabIndex,
+  children, isOn, onClick, tabIndex, width,
 }: TagProps) => {
   const theme: any = useTheme();
   const textColour = isOn ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3;
@@ -23,6 +23,7 @@ export const Tag = ({
 
   return (
     <CustomTag
+      width={width}
       onClick={onClick}
       key={tabIndex}
       isOn={isOn}
