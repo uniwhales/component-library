@@ -30,7 +30,7 @@ const Wrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 500px;
+  max-width: 900px;
   gap: 24px;
 `;
 export default {
@@ -39,16 +39,17 @@ export default {
 
 } as ComponentMeta<typeof FilterChip>;
 
-const Template: ComponentStory<typeof FilterChip> = () => {
+const Template: ComponentStory<typeof FilterChip> = (props) => {
   const [selectFilter, setSelectFilter] = useState<number>();
   return (
     <Wrapper>
       {filtersArray
         .map((chip: Filter) => (
           <FilterChip
-            onClick={setSelectFilter}
-            isOn={selectFilter === chip.id}
             {...chip}
+            {...props}
+            onClick={(v: any) => setSelectFilter(v)}
+            isOn={selectFilter === chip.id}
           >
             {chip.label}
           </FilterChip>
@@ -57,3 +58,8 @@ const Template: ComponentStory<typeof FilterChip> = () => {
   );
 };
 export const Primary = Template.bind({});
+export const PrimaryCustomWidth = Template.bind({});
+
+PrimaryCustomWidth.args = {
+  width: '25%',
+};

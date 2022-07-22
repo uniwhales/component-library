@@ -36,7 +36,11 @@ const Template: ComponentStory<typeof Tag> = (args) => (
   </Wrapper>
 );
 export const ContentTags = Template.bind({});
+export const ContentTagsCustomWidth = Template.bind({});
 
 ContentTags.parameters = {
   backgrounds: { default: 'dark' },
+};
+ContentTagsCustomWidth.args = {
+  width: '400px',
 };
