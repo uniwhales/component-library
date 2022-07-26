@@ -1,11 +1,13 @@
 export const P_FONTSIZE = Object.freeze({
-  XXS: 8,
+  XXXS: 8,
+  XXS: 10,
   XS: 12,
   S: 14,
   M: 16,
   L: 18,
 });
 export const P_LINE_HEIGHT = Object.freeze({
+  XXXS: 12,
   XXS: 12,
   XS: 16,
   S: 20,
