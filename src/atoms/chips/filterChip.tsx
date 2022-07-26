@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { CSSProperties } from 'styled-components';
 import { Styled } from '../../theme';
-import { Text } from '../texts/text';
 import { IconWrapper } from '../icons/iconWrapper';
 
 export type FilterChipProps = {
@@ -12,7 +11,7 @@ export type FilterChipProps = {
   | string[];
   icon: JSX.Element;
   isOn: boolean;
-  onClick: (e:unknown) => void;
+  onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
   id: number;
 } & Pick<CSSProperties, 'width'>;
 const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
@@ -56,10 +55,10 @@ const Content = Styled.div`
 export const FilterChip = ({
   children, icon, isOn, onClick, id, width,
 }:FilterChipProps) => (
-  <Wrapper isOn={isOn} onClick={() => onClick(id)} width={width}>
+  <Wrapper isOn={isOn} onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)} width={width}>
     <Content>
-      <IconWrapper icon={icon} />
-      <Text size="S-Regular">{children}</Text>
+      <IconWrapper cursor="pointer" icon={icon} />
+      {children}
     </Content>
   </Wrapper>
 );
