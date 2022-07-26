@@ -36,12 +36,13 @@ export * from './organisms/actionBar/actionBar';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 export * from './organisms/navbar/navbar';
-export * from './organisms/announcementCard/AnnouncementCard';
 export * from './organisms/contentCard/contentCard';
 // layouts
 export * from './layouts/brochure/brochureLayout.styles';
 export * from './layouts/tools/toolingLayout.styles';
 export * from './layouts/breakpoints';
+// hooks
+export * from './hooks/useBreakpoint';
 
 // theme
 export * from './atoms/icons/index';
