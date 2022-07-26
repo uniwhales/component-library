@@ -62,7 +62,7 @@ export const ContentCard:FC<ContentCardProps> = ({
             />
           </MediaTypeIcon>
           {guest && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">with</Text>}
-          {guestLink && guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="S-Regular">{guest}</Text>}
+          {guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="S-Regular">{guest}</Text>}
         </AboutSectionLeftSide>
         <ButtonAtom buttonVariant="special_small_round" onClick={() => onClick()}>
           <IconWrapper

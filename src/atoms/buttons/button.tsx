@@ -15,6 +15,7 @@ const Button = Styled.button<GenericStylingProps>`
   font-weight: 700;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
+  justify-content: center;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   .button__group {
     display: flex;

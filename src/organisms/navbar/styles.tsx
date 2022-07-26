@@ -7,7 +7,8 @@ const FlexBase = Styled.div`
 
 export const NavbarContainer = Styled(FlexBase)`
   height: 36px;
-  
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
