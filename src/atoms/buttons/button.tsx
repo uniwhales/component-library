@@ -190,7 +190,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
     };
     &:active {
       background: ${props.theme.contrastColor.HIGH_CONTRAST};
-      
+
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
       }
@@ -201,11 +201,11 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant
   border-radius: 32px;
   cursor: pointer;
 
-  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
-  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '24px' : '36px')};
-  
+  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
+  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
+
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   padding: 0;
 
