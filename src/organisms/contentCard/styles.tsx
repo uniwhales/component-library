@@ -56,7 +56,7 @@ export const AboutSection = Styled.div`
 export const AboutSectionLeftSide = Styled.div`
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
 `;
 export const MediaTypeIcon = Styled.div<{ contentType: ContentType, size: ContentCardProps['size'] }>`
     display: flex;
