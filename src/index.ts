@@ -37,6 +37,7 @@ export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 export * from './organisms/navbar/navbar';
 export * from './organisms/contentCard/contentCard';
+export * from './organisms/contentCard/types';
 // layouts
 export * from './layouts/brochure/brochureLayout.styles';
 export * from './layouts/tools/toolingLayout.styles';
@@ -46,6 +47,11 @@ export * from './hooks/useBreakpoint';
 
 // theme
 export * from './atoms/icons/index';
+
+// utils
+export * from './utils/shortenAddress';
+export * from './utils/format';
+
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,
 } from './theme';
