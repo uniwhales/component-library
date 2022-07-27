@@ -80,6 +80,7 @@ export * from './generalIcons/filledStyle/Suitcase';
 export * from './generalIcons/filledStyle/SettingsBars';
 export * from './generalIcons/filledStyle/Sonar';
 export * from './generalIcons/filledStyle/Microscope';
+export * from './generalIcons/filledStyle/Collection';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

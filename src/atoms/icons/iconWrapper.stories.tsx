@@ -135,7 +135,6 @@ import {
   StarIcon,
   RedCross,
   NftIcon,
-  Interaction,
   Fire,
   Feed,
   Announcements,
@@ -144,6 +143,7 @@ import {
   Sonar,
   Suitcase,
 } from '.';
+import { Collection } from './generalIcons/filledStyle/Collection';
 
 export default {
   title: 'Atoms/Icons',
@@ -294,6 +294,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Microscope" icon={<Microscope />} />
     <IconWrapper name="Sonar" icon={<Sonar />} />
     <IconWrapper name="Suitcase" icon={<Suitcase />} />
+    <IconWrapper name="Collection" icon={<Collection />} />
   </>
 );
 

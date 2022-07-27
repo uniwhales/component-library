@@ -13,6 +13,7 @@ export const NavbarContainer = Styled(FlexBase)`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   padding: 16px 24px;
+  z-index: 9999999;
 `;
 
 export const NavbarLeftSide = Styled(FlexBase)`
