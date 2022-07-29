@@ -64,7 +64,7 @@ export const ContentCard:FC<ContentCardProps> = ({
           {guest && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">with</Text>}
           {guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="S-Regular">{guest}</Text>}
         </AboutSectionLeftSide>
-        <ButtonAtom buttonVariant="special_small_round" onClick={() => onClick()}>
+        <ButtonAtom buttonVariant="special_tiny_round" onClick={() => onClick()}>
           <IconWrapper
             cursor="pointer"
             width={size === 'S' ? '17px' : '24px'}
