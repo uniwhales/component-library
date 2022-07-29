@@ -1,6 +1,7 @@
-import { CSSProperties } from 'styled-components';
+import { css, CSSProperties } from 'styled-components';
 import { TagProps } from './types';
 import { Styled, Theme } from '../../theme';
+import { tablet, WidthBreakpoints } from '../../layouts/breakpoints';
 
 export type CustomTagProps = Pick<TagProps, 'isOn' | 'tabIndex'> & Pick<CSSProperties, 'width'>;
 
@@ -23,12 +24,14 @@ export const CustomTag = Styled.div<CustomTagProps>`
   text-align: center;
   border: ${({ tabIndex }) => BackgroundAndBorderColors[tabIndex].border};
   
-  &:hover {
-    background: ${({ isOn, tabIndex }) => (isOn ? 'none' : BackgroundAndBorderColors[tabIndex].background)};
-    
-    & > *  {
-      color: ${({ theme, isOn }) => (isOn ? theme.textShades.SHADE_MINUS_3 : theme.colors.system.WHITE)};
-    }
+  @media screen and (min-width: ${WidthBreakpoints.SmallDesktop.bottom}px) {
+    &:hover {
+        background: ${({ isOn, tabIndex }) => (isOn ? 'none' : BackgroundAndBorderColors[tabIndex].background)};
+        
+        & > *  {
+          color: ${({ isOn, theme }) => (isOn ? theme.textShades.SHADE_MINUS_3 : theme.colors.system.WHITE)};
+        }
+      }
   }
 `;
 
