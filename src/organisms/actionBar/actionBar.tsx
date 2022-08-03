@@ -5,6 +5,7 @@ import {
   ActionChains, ActionTags, ActionTypes, SelectWrapper, Wrapper,
 } from './actionBar.styles';
 import { ActionBarProps, TypesInterface } from './types';
+import { Text } from '../../atoms/texts/text';
 
 const ActionBarTexts = {
   Select: {
@@ -25,7 +26,7 @@ export const ActionBar = ({
           isOn={chipValue === chip.id}
           {...chip}
         >
-          {chip.label}
+          <Text size="S-Regular">{chip.label}</Text>
         </FilterChip>
       ))}
     </ActionTags>
