@@ -9,7 +9,7 @@ export type FilterChipProps = {
   | JSX.Element[]
   | string
   | string[];
-  icon: JSX.Element;
+  icon?: JSX.Element;
   isOn: boolean;
   onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
   id: number;
@@ -57,7 +57,7 @@ export const FilterChip = ({
 }:FilterChipProps) => (
   <Wrapper isOn={isOn} onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)} width={width}>
     <Content>
-      <IconWrapper cursor="pointer" icon={icon} />
+      {icon && <IconWrapper cursor="pointer" icon={icon} />}
       {children}
     </Content>
   </Wrapper>
