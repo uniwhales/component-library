@@ -139,12 +139,25 @@ export interface SelectProps {
   isCheckBox?: boolean,
   placeholder: string,
   isXL?: boolean,
+  isSearchable?: boolean,
+  isClearable?: boolean;
+  controlShouldRenderValue?: boolean,
   options: Option[],
   onChange?: (o: ChainsInterface) => void
 }
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
+  options,
+  readOnly,
+  onChange,
+  value,
+  isMulti = true,
+  isCheckBox,
+  placeholder,
+  isXL = false,
+  isSearchable = false,
+  isClearable = false,
+  controlShouldRenderValue = false,
 }: SelectProps) => {
   const theme = localTheme();
   return (
@@ -153,10 +166,10 @@ export const Select = ({
       isMulti={isMulti}
       theme={theme}
       isOptionDisabled={() => !!readOnly}
-      isSearchable={false}
+      isSearchable={isSearchable}
       styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={!isMulti}
-      isClearable={false}
+      controlShouldRenderValue={controlShouldRenderValue}
+      isClearable={isClearable}
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect={!isMulti}
       hideSelectedOptions={false}
