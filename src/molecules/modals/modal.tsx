@@ -3,7 +3,8 @@ import ReactDom from 'react-dom';
 import { CrossIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
-  CloseSection,
+
+  IconWrapperAbsolute,
   ModalContent,
   ModalWrapper,
   Overlay,
@@ -19,9 +20,9 @@ export const Modal = ({
       <Overlay onClick={toggle} />
       <ModalWrapper>
         <ModalContent>
-          <CloseSection>
+          <IconWrapperAbsolute>
             <IconWrapper cursor="pointer" onClick={toggle} icon={<CrossIcon />} />
-          </CloseSection>
+          </IconWrapperAbsolute>
           {children}
         </ModalContent>
       </ModalWrapper>
