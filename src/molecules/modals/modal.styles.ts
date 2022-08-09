@@ -21,19 +21,19 @@ export const ModalWrapper = Styled.div`
 
 export const ModalContent = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
-  padding: 24px 48px;
+  padding: 24px;
   z-index: 10;
   border-radius: 12px;
   box-sizing: border-box;
     @media (max-width: 768px) {
-     padding: 12px 24px;
+     padding: 12px;
   }
 `;
 export const IconWrapperAbsolute = Styled.div`
   position: absolute;
-  right: 10px;
+  right: 18px;
   z-index: 10;
-  top: 10px;
+  top: 18px;
   padding: 3px;
 `;
 

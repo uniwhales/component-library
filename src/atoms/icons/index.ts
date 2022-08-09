@@ -81,6 +81,9 @@ export * from './generalIcons/filledStyle/SettingsBars';
 export * from './generalIcons/filledStyle/Sonar';
 export * from './generalIcons/filledStyle/Microscope';
 export * from './generalIcons/filledStyle/Collection';
+export * from './generalIcons/filledStyle/BundleStandard';
+export * from './generalIcons/filledStyle/UnfollowStandard';
+export * from './generalIcons/filledStyle/NotificationOff';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

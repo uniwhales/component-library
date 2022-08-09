@@ -21,7 +21,13 @@ export const Modal = ({
       <ModalWrapper>
         <ModalContent>
           <IconWrapperAbsolute>
-            <IconWrapper cursor="pointer" onClick={toggle} icon={<CrossIcon />} />
+            <IconWrapper
+              height="14px"
+              width="14px"
+              cursor="pointer"
+              onClick={toggle}
+              icon={<CrossIcon />}
+            />
           </IconWrapperAbsolute>
           {children}
         </ModalContent>

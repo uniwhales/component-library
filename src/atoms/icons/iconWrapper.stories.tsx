@@ -142,6 +142,9 @@ import {
   Microscope,
   Sonar,
   Suitcase,
+  BundleStandard,
+  UnfollowStandard,
+  NotificationOff,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 
@@ -295,6 +298,9 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Sonar" icon={<Sonar />} />
     <IconWrapper name="Suitcase" icon={<Suitcase />} />
     <IconWrapper name="Collection" icon={<Collection />} />
+    <IconWrapper name="Bundle" icon={<BundleStandard />} />
+    <IconWrapper name="Unfollow" icon={<UnfollowStandard />} />
+    <IconWrapper name="Notification Off" icon={<NotificationOff />} />
   </>
 );
 
