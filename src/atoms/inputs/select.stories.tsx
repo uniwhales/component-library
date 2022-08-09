@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { colourOptions, Select } from './select';
+import { colourOptions, Placeholder, Select } from './select';
+import { IconWrapper } from '../icons/iconWrapper';
+import { SettingsBars } from '../icons';
+import { Text } from '../texts/text';
 
 export default {
   title: 'Atoms/Select',
@@ -19,6 +22,7 @@ const Template: ComponentStory<typeof Select> = (args) => {
   return <Select {...args} onChange={(v) => setValue(v)} value={value} />;
 };
 export const Primary = Template.bind({});
+export const SearchableSelect = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
@@ -28,6 +32,22 @@ Primary.args = {
   isMulti: true,
   readOnly: false,
   placeholder: 'DEX filters',
+  isXL: false,
+};
+
+SearchableSelect.parameters = {
+  backgrounds: { default: 'dark' },
+};
+SearchableSelect.args = {
+  options: colourOptions,
+  isMulti: true,
+  readOnly: false,
+  showChips: true,
+  placeholder:
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
   isXL: true,
   isClearable: true,
   isSearchable: true,

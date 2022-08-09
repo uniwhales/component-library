@@ -13,6 +13,12 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   }
 `;
 
+export const Placeholder = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
 export const colourOptions = [
   { value: 'blue blue', label: 'Blue Blue' },
   { value: 'purple', label: 'Purple' },
@@ -38,7 +44,13 @@ interface StyledProps {
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    p: {
+      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+    svg: {
+      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
   }),
   dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
@@ -47,7 +59,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     },
   }),
-  control: (defaultStyles, { isFocused, menuIsOpen, theme }: StyledProps) => ({
+  control: (defaultStyles, {
+    isFocused, menuIsOpen, theme,
+  }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
     background: isFocused
@@ -90,6 +104,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     borderRadius: 0,
   }),
   menuList: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
     background: theme.containerAndCardShades.SHADE_PLUS_2,
     color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
@@ -98,7 +113,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    backgroundColor: '#23293B',
+    backgroundColor: theme.containerAndCardShades.SHADE_PLUS_1,
     color: 'white',
     borderRadius: '12px',
     border: '1px solid white',
@@ -117,7 +132,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    backgroundColor: '#0846B5',
+    backgroundColor: theme.colors.primary.DARK_BLUE,
     borderRadius: '50%',
     padding: '2px',
   }),
@@ -161,12 +176,13 @@ export interface SelectProps {
   value?: string | SelectOption,
   isMulti?: boolean,
   isCheckBox?: boolean,
-  placeholder: string,
+  placeholder: string | JSX.Element,
   isXL?: boolean,
   options: Option[],
   onChange?: (o: ChainsInterface) => void,
   isClearable?: boolean,
   isSearchable?: boolean,
+  showChips?: boolean,
 }
 
 export const Select = ({
@@ -178,6 +194,7 @@ export const Select = ({
   isXL = false,
   isClearable = false,
   isSearchable = false,
+  showChips = false,
 }: SelectProps) => {
   const theme = localTheme();
   return (
@@ -188,7 +205,7 @@ export const Select = ({
       isOptionDisabled={() => !!readOnly}
       isSearchable={isSearchable}
       styles={colourStyles as StylesConfig}
-      controlShouldRenderValue
+      controlShouldRenderValue={showChips}
       isClearable={isClearable}
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect={!isMulti}
