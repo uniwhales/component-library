@@ -25,8 +25,10 @@ Primary.parameters = {
 };
 Primary.args = {
   options: colourOptions,
-  isMulti: false,
+  isMulti: true,
   readOnly: false,
   placeholder: 'DEX filters',
-  isXL: false,
+  isXL: true,
+  isClearable: true,
+  isSearchable: true,
 };

@@ -90,12 +90,36 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     borderRadius: 0,
   }),
   menuList: (defaultStyles, { theme }: StyledProps) => ({
-    ...defaultStyles,
     background: theme.containerAndCardShades.SHADE_PLUS_2,
     color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
     borderRadius: '0px 0px 10px 10px',
     zIndex: 10,
+  }),
+  multiValue: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    backgroundColor: '#23293B',
+    color: 'white',
+    borderRadius: '12px',
+    border: '1px solid white',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    padding: '4px 8px',
+    fontSize: '12px',
+    lineHeight: '16px',
+    fontWeight: 400,
+  }),
+  multiValueLabel: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    color: theme.colors.primary.GREEN,
+  }),
+  multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    backgroundColor: '#0846B5',
+    borderRadius: '50%',
+    padding: '2px',
   }),
 
 };
@@ -140,11 +164,20 @@ export interface SelectProps {
   placeholder: string,
   isXL?: boolean,
   options: Option[],
-  onChange?: (o: ChainsInterface) => void
+  onChange?: (o: ChainsInterface) => void,
+  isClearable?: boolean,
+  isSearchable?: boolean,
 }
 
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
+  options,
+  readOnly,
+  onChange,
+  value, isMulti = true,
+  isCheckBox, placeholder,
+  isXL = false,
+  isClearable = false,
+  isSearchable = false,
 }: SelectProps) => {
   const theme = localTheme();
   return (
@@ -153,10 +186,10 @@ export const Select = ({
       isMulti={isMulti}
       theme={theme}
       isOptionDisabled={() => !!readOnly}
-      isSearchable={false}
+      isSearchable={isSearchable}
       styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={!isMulti}
-      isClearable={false}
+      controlShouldRenderValue
+      isClearable={isClearable}
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect={!isMulti}
       hideSelectedOptions={false}
