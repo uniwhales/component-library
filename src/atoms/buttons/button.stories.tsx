@@ -94,7 +94,7 @@ SecondaryActionInverse.args = {
 };
 
 SpacialSmallNormal.args = {
-  children: 'Special small',
+  children: WithIcon(),
   buttonVariant: 'special_small',
 };
 SpacialSmallRound.args = {
