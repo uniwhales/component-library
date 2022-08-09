@@ -10,6 +10,7 @@ type CheckboxStyledProps = {
   selected: boolean;
   disabled: boolean;
   size: CheckboxSize;
+  rounded?: boolean;
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
@@ -34,7 +35,7 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
 
     return props.theme.colors.primary.WATER_BLUE;
   }};
-  border-radius: 4px;
+  border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
   background-color: ${(props) => {
     if (!props.selected) return props.theme.colors.system.WHITE;
     if (props.disabled && props.selected) {
@@ -55,6 +56,7 @@ export interface CheckboxProps {
   selected: boolean;
   size: CheckboxSize;
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  rounded?: boolean;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -62,6 +64,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   selected,
   size,
   onClick,
+  rounded = false,
 }) => {
   const theme = localTheme();
   const [focus, setFocus] = useState<boolean>(false);
@@ -69,6 +72,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
   return (
     <CheckboxStyled
+      rounded={rounded}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       onMouseEnter={() => setHover(true)}
