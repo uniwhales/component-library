@@ -198,6 +198,8 @@ const ButtonSpecialSmallNormal = Styled(Button)`
       background: ${props.theme.contrastColor.HIGH_CONTRAST};
 
       svg {
+        width: 17px;
+        height: 17px;
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
       }
     };
