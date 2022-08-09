@@ -175,6 +175,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
   border-radius: 12px;
   border: none;
   padding: 4px 12px;
+  height: auto;
   line-height: 18px;
   font-weight: 400;
 
