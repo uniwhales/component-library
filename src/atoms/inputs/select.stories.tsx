@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { colourOptions, Placeholder, Select } from './select';
+import {
+  colourOptions, groupExample, Placeholder, Select,
+} from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import { SettingsBars } from '../icons';
 import { Text } from '../texts/text';
@@ -40,7 +42,7 @@ SearchableSelect.parameters = {
   backgrounds: { default: 'dark' },
 };
 SearchableSelect.args = {
-  options: colourOptions,
+  options: groupExample,
   isMulti: true,
   readOnly: false,
   showValue: true,

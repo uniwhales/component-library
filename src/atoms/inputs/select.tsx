@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import ReactSelect, {
+  ClearIndicatorProps,
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
 import { ChainsInterface } from '../../organisms/actionBar/types';
 import { StarIcon } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
+import { Text } from '../texts/text';
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
@@ -35,15 +37,28 @@ const OptionContainer = Styled.div`
 `;
 
 export const colourOptions = [
-  { value: 'blue blue', label: 'Blue Blue', icon: <StarIcon /> },
-  { value: 'purple', label: 'Purple', icon: <StarIcon /> },
+  { value: 'blue blue', label: 'Blue Blue' },
+  { value: 'purple', label: 'Purple' },
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow', icon: <StarIcon /> },
+  { value: 'yellow', label: 'Yellow' },
   { value: 'green', label: 'Green' },
   { value: 'forest', label: 'Forest' },
   { value: 'slate', label: 'Slate' },
   { value: 'silver', label: 'Silver' },
+];
+
+export const optionWithIcon = [{ value: 'blue blue', label: 'Blue Blue', icon: <StarIcon /> },
+  { value: 'purple', label: 'Purple', icon: <StarIcon /> },
+  { value: 'yellow', label: 'Yellow', icon: <StarIcon /> },
+];
+
+export const groupExample = [
+  {
+    label: 'With Icons',
+    options: optionWithIcon,
+  },
+  { label: 'Without Icon', options: colourOptions },
 ];
 
 interface StyledProps {
@@ -185,12 +200,39 @@ interface Option {
   id?: number;
 }
 
+interface GroupOptionInterface {
+  label: string;
+  options: Option[]
+}
+
 const getOptionLabel = ({ label, icon }: Option) => (
   <OptionContainer>
     {icon && <IconWrapper icon={icon} />}
     <span>{label}</span>
   </OptionContainer>
 );
+
+const CustomClearText = () => {
+  const theme = localTheme();
+  return (
+    <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Clear Filters</Text>
+  );
+};
+
+const ClearIndicator = (props: ClearIndicatorProps) => {
+  const {
+    children = <CustomClearText />,
+    innerProps: { ref, ...restInnerProps },
+  } = props;
+  return (
+    <div
+      {...restInnerProps}
+      ref={ref}
+    >
+      <div style={{ padding: '0px 5px' }}>{children}</div>
+    </div>
+  );
+};
 
 export interface SelectOption extends Option {}
 
@@ -201,7 +243,7 @@ export interface SelectProps {
   isCheckBox?: boolean,
   placeholder: string | JSX.Element,
   isXL?: boolean,
-  options: Option[],
+  options: Option[] | GroupOptionInterface[],
   onChange?: (o: ChainsInterface) => void,
   isClearable?: boolean,
   isSearchable?: boolean,
@@ -221,30 +263,34 @@ export const Select = ({
 }: SelectProps) => {
   const theme = localTheme();
   return (
-    <StyledSelect
-      options={options}
-      isMulti={isMulti}
-      theme={theme}
-      isOptionDisabled={() => !!readOnly}
-      isSearchable={isSearchable}
-      styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={showValue}
-      isClearable={isClearable}
-      placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect={!isMulti}
-      hideSelectedOptions={false}
-      components={{
-        Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
-        IndicatorSeparator: () => null,
-      }}
-      onChange={(option) => {
-        if (onChange) { // @ts-ignore
-          onChange(option);
-        }
-      }}
-      value={value}
-      isXL={isXL}
-      getOptionLabel={getOptionLabel as any}
-    />
+    <>
+      {' '}
+      <StyledSelect
+        options={options}
+        isMulti={isMulti}
+        theme={theme}
+        isOptionDisabled={() => !!readOnly}
+        isSearchable={isSearchable}
+        styles={colourStyles as StylesConfig}
+        controlShouldRenderValue={showValue}
+        isClearable={isClearable}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        closeMenuOnSelect={!isMulti}
+        hideSelectedOptions={false}
+        components={{
+          Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
+          IndicatorSeparator: () => null,
+          ClearIndicator,
+        }}
+        onChange={(option) => {
+          if (onChange) { // @ts-ignore
+            onChange(option);
+          }
+        }}
+        value={value}
+        isXL={isXL}
+        getOptionLabel={getOptionLabel as any}
+      />
+    </>
   );
 };
