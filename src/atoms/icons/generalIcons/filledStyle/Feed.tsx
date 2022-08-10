@@ -22,7 +22,7 @@ export const Feed = () => (
       />
     </mask>
     <g mask="url(#mask0_8094_72474)">
-      <path fill="#BBBCCE" d="M0 0.4H17.333V17.732999999999997H0z" />
+      <path d="M0 0.4H17.333V17.732999999999997H0z" />
     </g>
   </svg>
 );

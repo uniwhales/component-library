@@ -84,6 +84,9 @@ export * from './generalIcons/filledStyle/Collection';
 export * from './generalIcons/filledStyle/BundleStandard';
 export * from './generalIcons/filledStyle/UnfollowStandard';
 export * from './generalIcons/filledStyle/NotificationOff';
+export * from './generalIcons/filledStyle/BridgeStandard';
+export * from './generalIcons/filledStyle/TrendingStandard';
+export * from './generalIcons/filledStyle/TransactionsStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
@@ -99,6 +102,7 @@ export * from './navigationIcons/ChevronLeftIcon';
 export * from './navigationIcons/ChevronRightIcon';
 export * from './navigationIcons/ChevronUpIcon';
 export * from './navigationIcons/RefreshIcon';
+export * from './navigationIcons/HamburgerIcon';
 // navigationIconsColor
 export * from './navigationIcons/fullColor/ArrowRightColor';
 export * from './navigationIcons/fullColor/ArrowLeftColor';
