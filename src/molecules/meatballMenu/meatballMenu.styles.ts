@@ -1,7 +1,7 @@
 import { Styled } from '../../theme';
 
 export const Wrapper = Styled.div`
-  margin-left: 200px;
+  margin-left: 140px;
 `;
 
 export const Container = Styled.div`
@@ -11,22 +11,17 @@ export const Container = Styled.div`
   width: fit-content;
 `;
 
-export const MeatballRow = Styled.div`
+export const MeatballRow = Styled.a`
+  text-decoration: none;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
-  padding: 16px;
+  padding: 8px;
+  gap: 6px;
   cursor: pointer;
     &:hover {
       background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
     };
-`;
-
-export const IconWithText = Styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
 `;
 
 export const MeatballContainer = Styled.div`
@@ -34,7 +29,7 @@ export const MeatballContainer = Styled.div`
   top: 100%;
   transform: translate(-60%, 5%);
   display: flex;
-  min-width: 240px;
+  width: 140px;
   flex-direction: column;
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};

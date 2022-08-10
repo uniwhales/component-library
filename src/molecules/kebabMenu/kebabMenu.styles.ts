@@ -4,6 +4,16 @@ export const Wrapper = Styled.div`
   margin-left: 200px;
 `;
 
+export const KebabWrapper = Styled.div`
+  margin-top: 8px;
+  margin-left: 8px;
+  &:hover {
+    svg {
+      fill: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+    }
+  }
+`;
+
 export const Container = Styled.div`
   position: relative;
   display: flex;
@@ -26,7 +36,7 @@ export const KebabContainer = Styled.div`
   position: absolute;
   right: 100%;
   display: flex;
-  min-width: 170px;
+  width: 140px;
   flex-direction: column;
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
