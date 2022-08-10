@@ -29,10 +29,11 @@ Primary.parameters = {
 };
 Primary.args = {
   options: colourOptions,
-  isMulti: true,
+  isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
+  showValue: true,
 };
 
 SearchableSelect.parameters = {
@@ -42,7 +43,7 @@ SearchableSelect.args = {
   options: colourOptions,
   isMulti: true,
   readOnly: false,
-  showChips: true,
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />

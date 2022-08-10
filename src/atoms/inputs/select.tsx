@@ -4,6 +4,8 @@ import ReactSelect, {
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
 import { ChainsInterface } from '../../organisms/actionBar/types';
+import { StarIcon } from '../icons';
+import { IconWrapper } from '../icons/iconWrapper';
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
@@ -19,12 +21,25 @@ export const Placeholder = Styled.div`
   gap: 6px;
 `;
 
+const OptionWrapper = Styled.div`
+  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  &:nth-of-type(2n) {
+    background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  };
+`;
+
+const OptionContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
 export const colourOptions = [
-  { value: 'blue blue', label: 'Blue Blue' },
-  { value: 'purple', label: 'Purple' },
+  { value: 'blue blue', label: 'Blue Blue', icon: <StarIcon /> },
+  { value: 'purple', label: 'Purple', icon: <StarIcon /> },
   { value: 'red', label: 'Red' },
   { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow' },
+  { value: 'yellow', label: 'Yellow', icon: <StarIcon /> },
   { value: 'green', label: 'Green' },
   { value: 'forest', label: 'Forest' },
   { value: 'slate', label: 'Slate' },
@@ -114,7 +129,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
     backgroundColor: theme.containerAndCardShades.SHADE_PLUS_1,
-    color: 'white',
+    color: theme.textShades.SHADE_MINUS_3,
     borderRadius: '12px',
     border: '1px solid white',
     display: 'flex',
@@ -144,7 +159,7 @@ const CheckBoxOption = (props:any) => {
     label, isSelected, readOnly, isCheckBox,
   } = props;
   return (
-    <div>
+    <OptionWrapper>
       <components.Option {...props}>
         {!readOnly && isCheckBox ? (
           <>
@@ -159,15 +174,23 @@ const CheckBoxOption = (props:any) => {
           </label>
         )}
       </components.Option>
-    </div>
+    </OptionWrapper>
   );
 };
 
 interface Option {
   value: string,
   label: string,
+  icon?: JSX.Element,
   id?: number;
 }
+
+const getOptionLabel = ({ label, icon }: Option) => (
+  <OptionContainer>
+    {icon && <IconWrapper icon={icon} />}
+    <span>{label}</span>
+  </OptionContainer>
+);
 
 export interface SelectOption extends Option {}
 
@@ -182,7 +205,7 @@ export interface SelectProps {
   onChange?: (o: ChainsInterface) => void,
   isClearable?: boolean,
   isSearchable?: boolean,
-  showChips?: boolean,
+  showValue?: boolean,
 }
 
 export const Select = ({
@@ -194,7 +217,7 @@ export const Select = ({
   isXL = false,
   isClearable = false,
   isSearchable = false,
-  showChips = false,
+  showValue = false,
 }: SelectProps) => {
   const theme = localTheme();
   return (
@@ -205,7 +228,7 @@ export const Select = ({
       isOptionDisabled={() => !!readOnly}
       isSearchable={isSearchable}
       styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={showChips}
+      controlShouldRenderValue={showValue}
       isClearable={isClearable}
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect={!isMulti}
@@ -221,6 +244,7 @@ export const Select = ({
       }}
       value={value}
       isXL={isXL}
+      getOptionLabel={getOptionLabel as any}
     />
   );
 };
