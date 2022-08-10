@@ -68,7 +68,7 @@ import {
   ArticleStandard,
   AudioStandard,
   ChartStandard,
-  CoinStandard,
+  // CoinStandard,
   CommentStandard,
   CopyStandard,
   CSVDocStandard,
@@ -266,7 +266,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Article" icon={<ArticleStandard />} />
     <IconWrapper name="Audio" icon={<AudioStandard />} />
     <IconWrapper name="Chart" icon={<ChartStandard />} />
-    <IconWrapper name="Coin" icon={<CoinStandard />} />
+    {/* <IconWrapper name="Coin" icon={<CoinStandard />} /> */}
     <IconWrapper name="Comment" icon={<CommentStandard />} />
     <IconWrapper name="Copy" icon={<CopyStandard />} />
     <IconWrapper name="CSVDoc" icon={<CSVDocStandard />} />

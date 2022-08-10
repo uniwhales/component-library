@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CoinStandard = () => (
+export const c = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
