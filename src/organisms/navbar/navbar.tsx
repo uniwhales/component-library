@@ -17,11 +17,10 @@ export const Navbar: FC<NavbarProps> = ({
   rightSideChildren,
   account,
   onWalletConnectClick,
-  zIndex,
 }) => {
   const theme = localTheme();
   return (
-    <NavbarContainer zIndex={zIndex}>
+    <NavbarContainer>
       <NavbarLeftSide onClick={() => onBackButtonClick()}>
         <IconWrapper icon={<ArrowLeftIcon />} cursor="pointer" />
         <Text size="H6-Regular">
