@@ -11,6 +11,7 @@ export const MeatballMenu = ({
   items,
   showMenu,
   setShowMenu,
+  width,
 }: MeatballMenuProps) => {
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setShowMenu(false));
@@ -23,7 +24,7 @@ export const MeatballMenu = ({
         <Meatball />
       </ButtonAtom>
       {showMenu && (
-      <MeatballContainer onMouseLeave={() => setShowMenu(false)}>
+      <MeatballContainer width={width} onMouseLeave={() => setShowMenu(false)}>
         {items.map((item: Item) => (
           <MeatballRow key={item.key}>
             {item.content}

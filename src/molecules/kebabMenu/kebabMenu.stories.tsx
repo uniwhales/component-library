@@ -5,7 +5,7 @@ import { Wrapper } from './kebabMenu.styles';
 import { Text } from '../../atoms/texts/text';
 
 export default {
-  title: 'Molecules/FeedPageKebab',
+  title: 'Molecules/KebabMenu',
   component: KebabMenu,
   argTypes: {
     type: {

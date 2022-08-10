@@ -9,4 +9,5 @@ export interface MeatballMenuProps {
   showMenu: boolean;
   setShowMenu: Dispatch<SetStateAction<boolean>>;
   items: Item[];
+  width?: string;
 }

@@ -1,7 +1,7 @@
 import { Styled } from '../../theme';
 
 export const Wrapper = Styled.div`
-  margin-left: 140px;
+  margin-left: 350px;
 `;
 
 export const Container = Styled.div`
@@ -24,12 +24,12 @@ export const MeatballRow = Styled.a`
     };
 `;
 
-export const MeatballContainer = Styled.div`
+export const MeatballContainer = Styled.div<{ width?: string }>`
   position: absolute;
   top: 100%;
   transform: translate(-60%, 5%);
   display: flex;
-  width: 140px;
+  width: ${({ width }) => width || '140px'};
   flex-direction: column;
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};

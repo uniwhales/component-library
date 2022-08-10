@@ -11,6 +11,7 @@ export const KebabMenu = ({
   items,
   showMenu,
   setShowMenu,
+  width,
 }: KebabMenuProps) => {
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setShowMenu(false));
@@ -24,7 +25,7 @@ export const KebabMenu = ({
         />
       </KebabWrapper>
       {showMenu && (
-        <KebabContainer onMouseLeave={() => setShowMenu(false)}>
+        <KebabContainer width={width} onMouseLeave={() => setShowMenu(false)}>
           {items.map((item: Item) => (
             <KebabRow key={item.key}>
               {item.content}

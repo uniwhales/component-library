@@ -32,11 +32,11 @@ export const KebabRow = Styled.div`
   };
 `;
 
-export const KebabContainer = Styled.div`
+export const KebabContainer = Styled.div<{ width?: string }>`
   position: absolute;
   right: 100%;
   display: flex;
-  width: 140px;
+  width: ${({ width }) => width || '140px'};
   flex-direction: column;
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
