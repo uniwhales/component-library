@@ -27,7 +27,7 @@ export const Primary = Template.bind({});
 export const SearchableSelect = Template.bind({});
 
 Primary.parameters = {
-  backgrounds: { default: 'dark' },
+  backgrounds: { default: 'dark theme' },
 };
 Primary.args = {
   options: colourOptions,
@@ -39,7 +39,7 @@ Primary.args = {
 };
 
 SearchableSelect.parameters = {
-  backgrounds: { default: 'dark' },
+  backgrounds: { default: 'dark theme' },
 };
 SearchableSelect.args = {
   options: groupExample,

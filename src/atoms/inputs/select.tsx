@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components, StylesConfig,
@@ -11,6 +11,7 @@ import { Text } from '../texts/text';
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
+  width: 100%;
   outline: none;
   input{
     width: fit-content;
@@ -155,6 +156,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 400,
+    svg: {
+      transform: 'unset',
+    },
   }),
   multiValueLabel: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
@@ -165,6 +169,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     backgroundColor: theme.colors.primary.DARK_BLUE,
     borderRadius: '50%',
     padding: '2px',
+    svg: {
+      fill: theme.colors.system.WHITE,
+    },
   }),
 
 };
@@ -212,24 +219,18 @@ const getOptionLabel = ({ label, icon }: Option) => (
   </OptionContainer>
 );
 
-const CustomClearText = () => {
-  const theme = localTheme();
-  return (
-    <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_2}>Clear Filters</Text>
-  );
-};
-
 const ClearIndicator = (props: ClearIndicatorProps) => {
   const {
-    children = <CustomClearText />,
     innerProps: { ref, ...restInnerProps },
+    selectProps,
   } = props;
+  const theme = localTheme();
   return (
     <div
       {...restInnerProps}
       ref={ref}
     >
-      <div style={{ padding: '0px 5px' }}>{children}</div>
+      <div style={{ padding: '0px 5px' }}><Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>Clear Filters</Text></div>
     </div>
   );
 };

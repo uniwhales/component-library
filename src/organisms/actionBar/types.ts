@@ -21,14 +21,11 @@ export interface FilterInterface {
 }
 export interface ActionBarProps {
   filters: FilterInterface[]
-  chains: ChainsInterface[];
-  chainHandler: (e: ChainsInterface) => void;
-  types: TypesInterface[];
-  typeHandler: (e: TypesInterface) => void;
+  selectHandler: (e: TypesInterface) => void;
+  selectValue: TypesInterface;
   setChip: (e: number) => void;
   chipValue: number;
-  chainValue: ChainsInterface;
-  typeValue: TypesInterface;
+  selectOptions: TypesInterface;
 }
 
 export interface MobileRHSActionBarProps extends CardProps {

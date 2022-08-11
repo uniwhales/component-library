@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ActionBar } from './actionBar';
 import { CoinStandard } from '../../atoms/icons';
-import { ChainsInterface, TypesInterface } from './types';
+import { TypesInterface } from './types';
+import { groupExample } from '../../atoms/inputs/select';
 
-const chainsArray: any = [
-  { id: 0, value: 'one', label: 'one' },
-  { id: 1, value: 'two', label: 'two' },
-  { id: 2, value: 'three', label: 'three' },
-];
-const typesArray: any = [
-  { id: 0, value: 'transfer', label: 'Transfer' },
-  { id: 1, value: 'swap', label: 'Swap' },
-  { id: 2, value: 'lp', label: 'LPs' },
-];
 const filtersArray: any = [
   {
     id: 0, value: 'all', label: 'All', icon: <CoinStandard />,
@@ -35,22 +26,17 @@ export default {
 } as ComponentMeta<typeof ActionBar>;
 
 const Template: ComponentStory<typeof ActionBar> = (args) => {
-  const { chains, filters, types } = args;
-  const [chainValue, setSelectedChain] = useState<ChainsInterface>();
-  const [typeValue, setSelectedType] = useState<TypesInterface>();
+  const { filters } = args;
   const [chipValue, setChip] = useState<number>();
+  const [selectValue, setSelectedValue] = useState<TypesInterface>();
   return (
     <ActionBar
       chipValue={chipValue as number}
       setChip={setChip}
-      chainHandler={setSelectedChain}
-      chainValue={chainValue as ChainsInterface}
-      chains={chains}
       filters={filters}
-      types={types}
-      typeHandler={setSelectedType}
-      typeValue={typeValue as TypesInterface}
-
+      selectValue={selectValue as TypesInterface}
+      selectHandler={setSelectedValue}
+      selectOptions={groupExample}
     />
   );
 };
@@ -58,7 +44,5 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
 export const Primary = Template.bind({});
 
 Primary.args = {
-  chains: chainsArray,
   filters: filtersArray,
-  types: typesArray,
 };
