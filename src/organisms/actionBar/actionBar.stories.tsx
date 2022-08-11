@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
   const { filters } = args;
   const [chipValue, setChip] = useState<number>();
   const [selectValue, setSelectedValue] = useState<TypesInterface>();
+  console.log('hellooo', selectValue);
   return (
     <ActionBar
       chipValue={chipValue as number}

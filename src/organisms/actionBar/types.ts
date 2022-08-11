@@ -1,5 +1,17 @@
 import { CardProps } from '../../atoms/card/types';
 
+export interface Option {
+  value: string,
+  label: string,
+  icon?: JSX.Element,
+  id?: number;
+}
+
+export interface GroupOptionInterface {
+  label: string;
+  options: Option[]
+}
+
 export interface ChainsInterface {
   id: number;
   value: string;
@@ -11,6 +23,7 @@ export interface TypesInterface {
   id: number;
   value: string;
   label: string;
+  icon?: JSX.Element;
   isSelected?: boolean;
 }
 export interface FilterInterface {
@@ -25,7 +38,7 @@ export interface ActionBarProps {
   selectValue: TypesInterface;
   setChip: (e: number) => void;
   chipValue: number;
-  selectOptions: TypesInterface;
+  selectOptions: GroupOptionInterface[] | Option[];
 }
 
 export interface MobileRHSActionBarProps extends CardProps {

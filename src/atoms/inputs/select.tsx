@@ -5,9 +5,49 @@ import ReactSelect, {
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
 import { ChainsInterface } from '../../organisms/actionBar/types';
-import { StarIcon } from '../icons';
+import {
+  AvalancheColor, BinanceColor, EthereumColor, FantomColor,
+} from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
+
+interface Option {
+  value: string,
+  label: string,
+  icon?: JSX.Element,
+  id?: number;
+}
+
+interface GroupOptionInterface {
+  label: string;
+  options: Option[]
+}
+
+export interface SelectOption extends Option {}
+
+export interface SelectProps {
+  readOnly?: boolean,
+  value?: string | SelectOption,
+  isMulti?: boolean,
+  isCheckBox?: boolean,
+  placeholder: string | JSX.Element,
+  isXL?: boolean,
+  options: Option[] | GroupOptionInterface[],
+  onChange?: (o: ChainsInterface) => void,
+  isClearable?: boolean,
+  isSearchable?: boolean,
+  showValue?: boolean,
+}
+
+interface StyledProps {
+  isFocused?: boolean
+  isSelected?: boolean
+  menuIsOpen?: boolean
+  theme: any;
+  readOnly?: boolean;
+  isMulti?: boolean;
+  isCheckBox?: boolean;
+}
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
@@ -36,41 +76,6 @@ const OptionContainer = Styled.div`
   align-items: center;
   gap: 4px;
 `;
-
-export const colourOptions = [
-  { value: 'blue blue', label: 'Blue Blue' },
-  { value: 'purple', label: 'Purple' },
-  { value: 'red', label: 'Red' },
-  { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow' },
-  { value: 'green', label: 'Green' },
-  { value: 'forest', label: 'Forest' },
-  { value: 'slate', label: 'Slate' },
-  { value: 'silver', label: 'Silver' },
-];
-
-export const optionWithIcon = [{ value: 'blue blue', label: 'Blue Blue', icon: <StarIcon /> },
-  { value: 'purple', label: 'Purple', icon: <StarIcon /> },
-  { value: 'yellow', label: 'Yellow', icon: <StarIcon /> },
-];
-
-export const groupExample = [
-  {
-    label: 'With Icons',
-    options: optionWithIcon,
-  },
-  { label: 'Without Icon', options: colourOptions },
-];
-
-interface StyledProps {
-  isFocused?: boolean
-  isSelected?: boolean
-  menuIsOpen?: boolean
-  theme: any;
-  readOnly?: boolean;
-  isMulti?: boolean;
-  isCheckBox?: boolean;
-}
 
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
@@ -177,6 +182,45 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 };
 
+export const colourOptions = [
+  { value: 'blue blue', label: 'Blue Blue' },
+  { value: 'purple', label: 'Purple' },
+  { value: 'red', label: 'Red' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'yellow', label: 'Yellow' },
+  { value: 'green', label: 'Green' },
+  { value: 'forest', label: 'Forest' },
+  { value: 'slate', label: 'Slate' },
+  { value: 'silver', label: 'Silver' },
+];
+
+export const chainOptions = [
+  { value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} /> },
+  { value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} /> },
+  { value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} /> },
+  { value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} /> },
+];
+
+export const txOptions = [
+  { value: 'swap', label: 'Swaps' },
+  { value: 'lp', label: 'LPs' },
+  { value: 'nft_trade', label: 'NFT Trade' },
+  { value: 'nft_transfer', label: 'NFT Transfer' },
+  { value: 'nft_mint', label: 'NFT Mint' },
+  { value: 'reward', label: 'Reward' },
+  { value: 'option', label: 'Option' },
+  { value: 'bridge', label: 'Bridge' },
+  { value: 'flashloan', label: 'Flashloan' },
+];
+
+export const groupExample = [
+  {
+    label: 'Chains',
+    options: chainOptions,
+  },
+  { label: 'Tx Types', options: txOptions },
+];
+
 const CheckBoxOption = (props:any) => {
   const {
     label, isSelected, readOnly, isCheckBox,
@@ -201,18 +245,6 @@ const CheckBoxOption = (props:any) => {
   );
 };
 
-interface Option {
-  value: string,
-  label: string,
-  icon?: JSX.Element,
-  id?: number;
-}
-
-interface GroupOptionInterface {
-  label: string;
-  options: Option[]
-}
-
 const getOptionLabel = ({ label, icon }: Option) => (
   <OptionContainer>
     {icon && <IconWrapper icon={icon} />}
@@ -235,22 +267,6 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
     </div>
   );
 };
-
-export interface SelectOption extends Option {}
-
-export interface SelectProps {
-  readOnly?: boolean,
-  value?: string | SelectOption,
-  isMulti?: boolean,
-  isCheckBox?: boolean,
-  placeholder: string | JSX.Element,
-  isXL?: boolean,
-  options: Option[] | GroupOptionInterface[],
-  onChange?: (o: ChainsInterface) => void,
-  isClearable?: boolean,
-  isSearchable?: boolean,
-  showValue?: boolean,
-}
 
 export const Select = ({
   options,
