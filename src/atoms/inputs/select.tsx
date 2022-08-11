@@ -170,6 +170,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     borderRadius: '50%',
     padding: '2px',
     svg: {
+      transform: 'unset',
       fill: theme.colors.system.WHITE,
     },
   }),
