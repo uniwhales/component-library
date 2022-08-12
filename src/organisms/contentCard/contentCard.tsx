@@ -52,6 +52,7 @@ export const ContentCard:FC<ContentCardProps> = ({
           <MediaTypeIcon size={size} contentType={contentType}>
             <IconWrapper
               cursor="pointer"
+              fill={theme.colors.system.WHITE}
               width={size === 'S' ? '17px' : '24px'}
               height={size === 'S' ? '17px' : '24px'}
               icon={contentType === ContentType.Article
