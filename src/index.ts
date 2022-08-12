@@ -13,6 +13,7 @@ export * from './atoms/toggles/themeToggle';
 export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/chips/filterChip';
+export * from './atoms/chips/chip';
 export * from './atoms/feedCardItem/feedCardItem';
 export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
@@ -52,6 +53,7 @@ export * from './atoms/icons/index';
 // utils
 export * from './utils/shortenAddress';
 export * from './utils/format';
+export * from './utils/useClickOutside';
 
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,
