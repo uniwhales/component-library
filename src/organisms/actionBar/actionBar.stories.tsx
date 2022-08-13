@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ActionBar } from './actionBar';
 import { CoinStandard } from '../../atoms/icons';
-import { TypesInterface } from './types';
+import { SelectedInterface } from './types';
 import { groupExample } from '../../atoms/inputs/select';
 
 const filtersArray: any = [
@@ -28,13 +28,13 @@ export default {
 const Template: ComponentStory<typeof ActionBar> = (args) => {
   const { filters } = args;
   const [chipValue, setChip] = useState<number>();
-  const [selectValue, setSelectedValue] = useState<TypesInterface>();
+  const [selectValue, setSelectedValue] = useState<SelectedInterface>();
   return (
     <ActionBar
       chipValue={chipValue as number}
       setChip={setChip}
       filters={filters}
-      selectValue={selectValue as TypesInterface}
+      selectValue={selectValue as SelectedInterface}
       selectHandler={setSelectedValue}
       selectOptions={groupExample}
     />

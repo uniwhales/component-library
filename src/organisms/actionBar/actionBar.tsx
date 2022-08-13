@@ -4,7 +4,7 @@ import { FilterChip } from '../../atoms/chips/filterChip';
 import {
   ActionTags, SelectWrapper, Wrapper,
 } from './actionBar.styles';
-import { ActionBarProps, TypesInterface } from './types';
+import { ActionBarProps, SelectedInterface } from './types';
 import { Text } from '../../atoms/texts/text';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { SettingsBars } from '../../atoms/icons';
@@ -28,7 +28,7 @@ export const ActionBar = ({
     <SelectWrapper>
       <Select
         value={selectValue}
-        onChange={(e: TypesInterface) => selectHandler(e)}
+        onChange={(e: SelectedInterface) => selectHandler(e)}
         options={selectOptions}
         isMulti
         isSearchable

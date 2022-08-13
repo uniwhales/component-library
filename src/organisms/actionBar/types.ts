@@ -19,10 +19,11 @@ export interface ChainsInterface {
   isSelected?: boolean;
 }
 
-export interface TypesInterface {
+export interface SelectedInterface {
   id: number;
   value: string;
   label: string;
+  icon?: JSX.Element;
   isSelected?: boolean;
 }
 export interface FilterInterface {
@@ -33,8 +34,8 @@ export interface FilterInterface {
 }
 export interface ActionBarProps {
   filters: FilterInterface[]
-  selectHandler: (e: TypesInterface) => void;
-  selectValue: TypesInterface;
+  selectHandler: (e: SelectedInterface) => void;
+  selectValue: SelectedInterface;
   setChip: (e: number) => void;
   chipValue: number;
   selectOptions: GroupOptionInterface[] | Option[];
