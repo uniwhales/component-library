@@ -195,22 +195,30 @@ export const colourOptions = [
 ];
 
 export const chainOptions = [
-  { value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} /> },
-  { value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} /> },
-  { value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} /> },
-  { value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} /> },
+  {
+    id: 1, value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} />,
+  },
+  {
+    id: 2, value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} />,
+  },
+  {
+    id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />,
+  },
+  {
+    id: 4, value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} />,
+  },
 ];
 
 export const txOptions = [
-  { value: 'swap', label: 'Swaps' },
-  { value: 'lp', label: 'LPs' },
-  { value: 'nft_trade', label: 'NFT Trade' },
-  { value: 'nft_transfer', label: 'NFT Transfer' },
-  { value: 'nft_mint', label: 'NFT Mint' },
-  { value: 'reward', label: 'Reward' },
-  { value: 'option', label: 'Option' },
-  { value: 'bridge', label: 'Bridge' },
-  { value: 'flashloan', label: 'Flashloan' },
+  { id: 1, value: 'swap', label: 'Swaps' },
+  { id: 2, value: 'lp', label: 'LPs' },
+  { id: 3, value: 'nft_trade', label: 'NFT Trade' },
+  { id: 4, value: 'nft_transfer', label: 'NFT Transfer' },
+  { id: 5, value: 'nft_mint', label: 'NFT Mint' },
+  { id: 6, value: 'reward', label: 'Reward' },
+  { id: 7, value: 'option', label: 'Option' },
+  { id: 8, value: 'bridge', label: 'Bridge' },
+  { id: 9, value: 'flashloan', label: 'Flashloan' },
 ];
 
 export const groupExample = [

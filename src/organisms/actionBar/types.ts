@@ -4,7 +4,7 @@ export interface Option {
   value: string,
   label: string,
   icon?: JSX.Element,
-  id?: number;
+  id: number;
 }
 
 export interface GroupOptionInterface {
@@ -23,7 +23,6 @@ export interface TypesInterface {
   id: number;
   value: string;
   label: string;
-  icon?: JSX.Element;
   isSelected?: boolean;
 }
 export interface FilterInterface {
