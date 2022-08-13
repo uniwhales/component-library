@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
+import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 
 export interface InputsProps {
@@ -12,6 +13,8 @@ export interface InputsProps {
   disabled?:boolean;
   isError?:string;
   min?:string;
+  withIcon?:boolean;
+  icon?: JSX.Element;
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -36,7 +39,7 @@ const InputUserMessage = Styled.div`
     color: ${(props) => props.theme.colors.system.RED};
   }
 `;
-const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string }>`
+const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string, withIcon?:boolean }>`
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -44,7 +47,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 38px;
   border-radius: 12px;
-  padding: 8px 24px;
+  padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 32px' : '8px 24px')};
   z-index: 1;
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
@@ -79,8 +82,18 @@ const InputLabel = Styled.label<{ focus: boolean, hover:boolean, disabled?: bool
   `}
 `;
 
+export const InputContainer = Styled.div`
+  position: relative;
+  svg {
+      position:absolute;
+      left:0;
+      top:0;
+      padding:10px 10px;
+  }
+`;
+
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError, min,
+  type, placeholder, value, onChange, label, disabled, isError, min, withIcon = false, icon,
 }:InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -95,18 +108,23 @@ export const Input = ({
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <InputStyled
-          min={min}
-          isError={isError}
-          disabled={disabled}
-          focus={focus}
-          value={value}
-          onChange={onChange}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder || 'Placeholder'}
-          type={type}
-        />
+        <InputContainer>
+          {withIcon && <IconWrapper icon={icon} />}
+          <InputStyled
+            min={min}
+            isError={isError}
+            disabled={disabled}
+            focus={focus}
+            value={value}
+            onChange={onChange}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder || 'Placeholder'}
+            type={type}
+            withIcon={withIcon}
+          />
+        </InputContainer>
+
       </BorderWrapper>
       {isError && (
       <InputUserMessage>

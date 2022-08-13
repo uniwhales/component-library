@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 
 const FlexBase = Styled.div`
@@ -13,7 +15,11 @@ export const NavbarContainer = Styled(FlexBase)`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   padding: 16px 24px;
-  z-index: 9999998;
+  z-index: 9999997;
+  
+  ${tablet(css`
+    z-index: 9999998;
+  `)}
 `;
 
 export const NavbarLeftSide = Styled(FlexBase)`

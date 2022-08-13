@@ -174,6 +174,10 @@ const ButtonSecondaryActionInverse = Styled(Button)`
 const ButtonSpecialSmallNormal = Styled(Button)`
   border-radius: 12px;
   border: none;
+  padding: 4px 12px;
+  height: auto;
+  line-height: 18px;
+  font-weight: 400;
 
   ${(props) => props.disabled && css`
     opacity: 0.2;
@@ -188,11 +192,14 @@ const ButtonSpecialSmallNormal = Styled(Button)`
 
     &:hover {
       background: ${props.theme.colors.primary.WATER_BLUE};
+      font-weight: 700;
     };
     &:active {
       background: ${props.theme.contrastColor.HIGH_CONTRAST};
 
       svg {
+        width: 17px;
+        height: 17px;
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
       }
     };

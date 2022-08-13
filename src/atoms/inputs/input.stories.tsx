@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './input';
+import { StarIcon } from '../icons';
 
 export default {
   title: 'Atoms/Inputs',
@@ -10,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = ({
-  disabled, isError, type,
+  disabled, isError, type, withIcon, icon,
 }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
@@ -24,14 +25,26 @@ const Template: ComponentStory<typeof Input> = ({
       label="Login"
       onChange={(e) => onChangeInput(e.target.value)}
       type={type}
+      withIcon={withIcon}
+      icon={icon}
     />
   );
 };
 export const Primary = Template.bind({});
+export const WithIcon = Template.bind({});
 
 Primary.args = {
 };
 
 Primary.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+WithIcon.args = {
+  withIcon: true,
+  icon: <StarIcon />,
+};
+
+WithIcon.parameters = {
   backgrounds: { default: 'dark' },
 };

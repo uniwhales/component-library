@@ -16,6 +16,7 @@ const Template: ComponentStory<typeof Checkbox> = (props) => {
 };
 
 export const Primary = Template.bind({});
+export const Rounded = Template.bind({});
 
 Primary.args = {
   disabled: false,
@@ -23,5 +24,15 @@ Primary.args = {
 };
 
 Primary.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+Rounded.args = {
+  disabled: false,
+  size: CheckboxSize.Big,
+  rounded: true,
+};
+
+Rounded.parameters = {
   backgrounds: { default: 'dark' },
 };

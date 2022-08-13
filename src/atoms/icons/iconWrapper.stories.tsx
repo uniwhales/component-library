@@ -142,6 +142,13 @@ import {
   Microscope,
   Sonar,
   Suitcase,
+  BundleStandard,
+  UnfollowStandard,
+  NotificationOff,
+  TrendingStandard,
+  BridgeStandard,
+  TransactionsStandard,
+  HamburgerIcon,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 
@@ -169,6 +176,7 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Notice" icon={<NoticeIcon />} />
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
     <IconWrapper name="RedCross" icon={<RedCross />} />
+    <IconWrapper name="Hamburger" icon={<HamburgerIcon />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
@@ -295,6 +303,12 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Sonar" icon={<Sonar />} />
     <IconWrapper name="Suitcase" icon={<Suitcase />} />
     <IconWrapper name="Collection" icon={<Collection />} />
+    <IconWrapper name="Bundle" icon={<BundleStandard />} />
+    <IconWrapper name="Unfollow" icon={<UnfollowStandard />} />
+    <IconWrapper name="Notification Off" icon={<NotificationOff />} />
+    <IconWrapper name="Treding" icon={<TrendingStandard />} />
+    <IconWrapper name="Bridge" icon={<BridgeStandard />} />
+    <IconWrapper name="Transactions" icon={<TransactionsStandard />} />
   </>
 );
 
