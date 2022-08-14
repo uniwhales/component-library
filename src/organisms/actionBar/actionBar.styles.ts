@@ -5,7 +5,7 @@ export const Wrapper = Styled.div`
   border-radius: 12px;
   padding: 12px 24px;
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
 `;
 export const ActionTags = Styled.div`
@@ -15,6 +15,7 @@ export const ActionTags = Styled.div`
 export const SelectWrapper = Styled.div`
   display: flex;
   gap: 8px;
+  width: 100%;
 `;
 export const ActionChains = Styled.div``;
 export const ActionTypes = Styled.div``;
