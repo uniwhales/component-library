@@ -1,21 +1,16 @@
 import React from 'react';
-import { Select } from '../../atoms/inputs/select';
+import { Placeholder, Select } from '../../atoms/inputs/select';
 import { FilterChip } from '../../atoms/chips/filterChip';
 import {
-  ActionChains, ActionTags, ActionTypes, SelectWrapper, Wrapper,
+  ActionTags, SelectWrapper, Wrapper,
 } from './actionBar.styles';
-import { ActionBarProps, TypesInterface } from './types';
+import { ActionBarProps, SelectedInterface } from './types';
 import { Text } from '../../atoms/texts/text';
-
-const ActionBarTexts = {
-  Select: {
-    placeholder: 'All Chains',
-    typePlaceholder: 'Alert Filters',
-  },
-};
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { SettingsBars } from '../../atoms/icons';
 
 export const ActionBar = ({
-  filters, chains, chainHandler, setChip, chipValue, chainValue, types, typeHandler, typeValue,
+  filters, setChip, chipValue, selectValue, selectHandler, selectOptions,
 }: ActionBarProps) => (
   <Wrapper>
     <ActionTags>
@@ -31,25 +26,22 @@ export const ActionBar = ({
       ))}
     </ActionTags>
     <SelectWrapper>
-      <ActionTypes>
-        <Select
-          options={types}
-          isMulti
-          value={typeValue}
-          onChange={(e: TypesInterface) => typeHandler(e)}
-          placeholder={ActionBarTexts.Select.typePlaceholder}
-          isCheckBox
-        />
-      </ActionTypes>
-      <ActionChains>
-        <Select
-          options={chains}
-          isMulti={false}
-          value={chainValue}
-          onChange={(e) => chainHandler(e as any)}
-          placeholder={ActionBarTexts.Select.placeholder}
-        />
-      </ActionChains>
+      <Select
+        value={selectValue}
+        onChange={(e: SelectedInterface) => selectHandler(e)}
+        options={selectOptions}
+        isMulti
+        isSearchable
+        isXL
+        showValue
+        isClearable
+        placeholder={(
+          <Placeholder>
+            <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+            <Text size="S-Regular">Filter Tx types and Chains</Text>
+          </Placeholder>
+)}
+      />
     </SelectWrapper>
   </Wrapper>
 );

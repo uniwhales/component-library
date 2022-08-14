@@ -1,29 +1,43 @@
 import React from 'react';
 import ReactSelect, {
+  ClearIndicatorProps,
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
 import { ChainsInterface } from '../../organisms/actionBar/types';
+import {
+  AvalancheColor, BinanceColor, EthereumColor, FantomColor,
+} from '../icons';
+import { IconWrapper } from '../icons/iconWrapper';
+import { Text } from '../texts/text';
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
-  max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
-  outline: none;
-  input{
-    width: fit-content;
-  }
-`;
+interface Option {
+  value: string,
+  label: string,
+  icon?: JSX.Element,
+  id?: number;
+}
 
-export const colourOptions = [
-  { value: 'blue blue', label: 'Blue Blue' },
-  { value: 'purple', label: 'Purple' },
-  { value: 'red', label: 'Red' },
-  { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow' },
-  { value: 'green', label: 'Green' },
-  { value: 'forest', label: 'Forest' },
-  { value: 'slate', label: 'Slate' },
-  { value: 'silver', label: 'Silver' },
-];
+interface GroupOptionInterface {
+  label: string;
+  options: Option[]
+}
+
+export interface SelectOption extends Option {}
+
+export interface SelectProps {
+  readOnly?: boolean,
+  value?: string | SelectOption,
+  isMulti?: boolean,
+  isCheckBox?: boolean,
+  placeholder: string | JSX.Element,
+  isXL?: boolean,
+  options: Option[] | GroupOptionInterface[],
+  onChange?: (o: ChainsInterface) => void,
+  isClearable?: boolean,
+  isSearchable?: boolean,
+  showValue?: boolean,
+}
 
 interface StyledProps {
   isFocused?: boolean
@@ -35,10 +49,44 @@ interface StyledProps {
   isCheckBox?: boolean;
 }
 
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
+  max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
+  width: 100%;
+  outline: none;
+  input{
+    width: fit-content;
+  }
+`;
+
+export const Placeholder = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+const OptionWrapper = Styled.div`
+  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  &:nth-of-type(2n) {
+    background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  };
+`;
+
+const OptionContainer = Styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    p: {
+      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+    svg: {
+      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
   }),
   dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
@@ -47,7 +95,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     },
   }),
-  control: (defaultStyles, { isFocused, menuIsOpen, theme }: StyledProps) => ({
+  control: (defaultStyles, {
+    isFocused, menuIsOpen, theme,
+  }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
     background: isFocused
@@ -97,15 +147,94 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     borderRadius: '0px 0px 10px 10px',
     zIndex: 10,
   }),
+  multiValue: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    backgroundColor: theme.containerAndCardShades.SHADE_PLUS_1,
+    color: theme.textShades.SHADE_MINUS_3,
+    borderRadius: '12px',
+    border: '1px solid white',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    padding: '4px 8px',
+    fontSize: '12px',
+    lineHeight: '16px',
+    fontWeight: 400,
+    svg: {
+      transform: 'unset',
+    },
+  }),
+  multiValueLabel: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    color: theme.colors.primary.GREEN,
+  }),
+  multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
+    ...defaultStyles,
+    backgroundColor: theme.colors.primary.DARK_BLUE,
+    borderRadius: '50%',
+    padding: '2px',
+    svg: {
+      transform: 'unset',
+      fill: theme.colors.system.WHITE,
+    },
+  }),
 
 };
+
+export const colourOptions = [
+  { value: 'blue blue', label: 'Blue Blue' },
+  { value: 'purple', label: 'Purple' },
+  { value: 'red', label: 'Red' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'yellow', label: 'Yellow' },
+  { value: 'green', label: 'Green' },
+  { value: 'forest', label: 'Forest' },
+  { value: 'slate', label: 'Slate' },
+  { value: 'silver', label: 'Silver' },
+];
+
+export const chainOptions = [
+  {
+    id: 1, value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} />,
+  },
+  {
+    id: 2, value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} />,
+  },
+  {
+    id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />,
+  },
+  {
+    id: 4, value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} />,
+  },
+];
+
+export const txOptions = [
+  { id: 1, value: 'swap', label: 'Swaps' },
+  { id: 2, value: 'lp', label: 'LPs' },
+  { id: 3, value: 'nft_trade', label: 'NFT Trade' },
+  { id: 4, value: 'nft_transfer', label: 'NFT Transfer' },
+  { id: 5, value: 'nft_mint', label: 'NFT Mint' },
+  { id: 6, value: 'reward', label: 'Reward' },
+  { id: 7, value: 'option', label: 'Option' },
+  { id: 8, value: 'bridge', label: 'Bridge' },
+  { id: 9, value: 'flashloan', label: 'Flashloan' },
+];
+
+export const groupExample = [
+  {
+    label: 'Chains',
+    options: chainOptions,
+  },
+  { label: 'Tx Types', options: txOptions },
+];
 
 const CheckBoxOption = (props:any) => {
   const {
     label, isSelected, readOnly, isCheckBox,
   } = props;
   return (
-    <div>
+    <OptionWrapper>
       <components.Option {...props}>
         {!readOnly && isCheckBox ? (
           <>
@@ -120,57 +249,74 @@ const CheckBoxOption = (props:any) => {
           </label>
         )}
       </components.Option>
+    </OptionWrapper>
+  );
+};
+
+const getOptionLabel = ({ label, icon }: Option) => (
+  <OptionContainer>
+    {icon && <IconWrapper icon={icon} />}
+    <span>{label}</span>
+  </OptionContainer>
+);
+
+const ClearIndicator = (props: ClearIndicatorProps) => {
+  const {
+    innerProps: { ref, ...restInnerProps },
+    selectProps,
+  } = props;
+  const theme = localTheme();
+  return (
+    <div
+      {...restInnerProps}
+      ref={ref}
+    >
+      <div style={{ padding: '0px 5px' }}><Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>Clear Filters</Text></div>
     </div>
   );
 };
 
-interface Option {
-  value: string,
-  label: string,
-  id?: number;
-}
-
-export interface SelectOption extends Option {}
-
-export interface SelectProps {
-  readOnly?: boolean,
-  value?: string | SelectOption,
-  isMulti?: boolean,
-  isCheckBox?: boolean,
-  placeholder: string,
-  isXL?: boolean,
-  options: Option[],
-  onChange?: (o: ChainsInterface) => void
-}
-
 export const Select = ({
-  options, readOnly, onChange, value, isMulti = true, isCheckBox, placeholder, isXL = false,
+  options,
+  readOnly,
+  onChange,
+  value, isMulti = true,
+  isCheckBox, placeholder,
+  isXL = false,
+  isClearable = false,
+  isSearchable = false,
+  showValue = false,
 }: SelectProps) => {
   const theme = localTheme();
   return (
-    <StyledSelect
-      options={options}
-      isMulti={isMulti}
-      theme={theme}
-      isOptionDisabled={() => !!readOnly}
-      isSearchable={false}
-      styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={!isMulti}
-      isClearable={false}
-      placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect={!isMulti}
-      hideSelectedOptions={false}
-      components={{
-        Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
-        IndicatorSeparator: () => null,
-      }}
-      onChange={(option) => {
-        if (onChange) { // @ts-ignore
-          onChange(option);
-        }
-      }}
-      value={value}
-      isXL={isXL}
-    />
+    <>
+      {' '}
+      <StyledSelect
+        options={options}
+        isMulti={isMulti}
+        theme={theme}
+        isOptionDisabled={() => !!readOnly}
+        isSearchable={isSearchable}
+        styles={colourStyles as StylesConfig}
+        controlShouldRenderValue={showValue}
+        isClearable={isClearable}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        closeMenuOnSelect={!isMulti}
+        hideSelectedOptions={false}
+        components={{
+          Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
+          IndicatorSeparator: () => null,
+          ClearIndicator,
+        }}
+        onChange={(option) => {
+          if (onChange) { // @ts-ignore
+            onChange(option);
+          }
+        }}
+        value={value}
+        isXL={isXL}
+        getOptionLabel={getOptionLabel as any}
+      />
+    </>
   );
 };

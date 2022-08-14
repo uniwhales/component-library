@@ -93,6 +93,9 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       // Required to target the placeholder
       '.react-select__placeholder': {
         color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
       },
     },
   }),
