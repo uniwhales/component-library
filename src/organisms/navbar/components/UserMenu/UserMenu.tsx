@@ -14,7 +14,7 @@ export const UserMenu: FC<UserMenuProps> = ({
   return (
     <NavbarUserMenu isMenuOpen={isMenuOpen}>
       {account && <Text size="M-Regular">{shortenAddressTo11Chars(account)}</Text>}
-      {account && <Line length="108px" />}
+      {account && <Line length="88px" />}
       {account && plan && (
         <Text color={textShades.SHADE_MINUS_1} size="M-Regular">
           <>

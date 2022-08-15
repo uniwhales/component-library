@@ -3,7 +3,7 @@ import { tablet } from '../../../../layouts/breakpoints';
 import { Styled } from '../../../../theme';
 
 export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
-  display: flex;
+  display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 8px;
   display: flex;
@@ -20,13 +20,12 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
   transition: visibility 0s, opacity 0.4s ease-in-out;
   position: absolute;
-  
-  ${tablet(css`
-    position: initial;
+
+  ${tablet(css<{ isMenuOpen: boolean }>`
+    ${({ isMenuOpen }) => isMenuOpen && 'position: inherit'};
     background-color: transparent;
     padding: 0 24px 24px 24px;
     border-radius: none;
-    height: max-content;
     width: 100%;
     box-shadow: none;
   `)}
