@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Styled } from '../../theme';
 import { Navbar } from './navbar';
@@ -21,13 +21,25 @@ const Wrapper = Styled.div`
 
 const Template: ComponentStory<typeof Navbar> = (
   args,
-) => (
-  <Wrapper>
-    <Navbar
-      {...args}
-    />
-  </Wrapper>
-);
+) => {
+  const [account, setAccount] = useState<undefined | null | string>(null);
+  const handleSwitch = () => {
+    if (account) {
+      setAccount(null);
+    } else {
+      setAccount('0x32c2FE388ABbB3e678D44DF6a0471086D705316a');
+    }
+  };
+  return (
+    <Wrapper>
+      <Navbar
+        {...args}
+        account={account}
+        onWalletConnectClick={() => handleSwitch()}
+      />
+    </Wrapper>
+  );
+};
 export const Newsdesk = Template.bind({});
 export const FeedPage = Template.bind({});
 
