@@ -24,10 +24,10 @@ export interface SelectGroupOption {
 
 export interface SelectOption extends Option {}
 
-export interface SelectProps<T = 'single' | 'multi'> {
-  onSelectChange?: (o: T extends 'single' ? SelectOption : SelectGroupOption) => void,
-  selectOptions: T extends 'single' ? SelectOption[] : SelectGroupOption[],
-  selectValue?: T extends 'single' ? SelectOption : SelectGroupOption,
+export interface SelectProps<T = 'single' | 'multi' | 'group'> {
+  onSelectChange?: (o: T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : SelectGroupOption) => void,
+  selectOptions: T extends 'group' ? SelectGroupOption[] : SelectOption[],
+  selectValue?: T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : SelectGroupOption,
   readOnly?: boolean,
   isMulti?: boolean,
   isCheckBox?: boolean,
@@ -275,12 +275,16 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
       {...restInnerProps}
       ref={ref}
     >
-      <div style={{ padding: '0px 5px' }}><Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>Clear Filters</Text></div>
+      <div style={{ padding: '0px 5px' }}>
+        <Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
+          Clear Filters
+        </Text>
+      </div>
     </div>
   );
 };
 
-export type SelectVariation = 'single' | 'multi';
+export type SelectVariation = 'single' | 'multi' | 'group';
 
 export const Select = <T extends SelectVariation>({
   selectOptions,
@@ -314,14 +318,14 @@ export const Select = <T extends SelectVariation>({
           IndicatorSeparator: () => null,
           ClearIndicator,
         }}
-        onChange={(option: any) => {
+        onChange={(option) => {
           if (!onSelectChange) return;
           /*
             When providing variation of select
             we restrict the option to be either single or group option type
             therefor we can safely assume type here is right
           */
-          onSelectChange(option as T extends 'single' ? SelectOption : SelectGroupOption);
+          onSelectChange(option as T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : SelectGroupOption);
         }}
         value={selectValue}
         isXL={isXL}
