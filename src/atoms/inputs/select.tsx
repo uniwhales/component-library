@@ -9,13 +9,12 @@ import {
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
-import { isSelectSingleOption } from './typeguards';
 
 export interface Option {
   value: string,
   label: string,
   id: number;
-  icon?: Element,
+  icon?: JSX.Element,
   isSelected?: boolean;
 }
 export interface SelectGroupOption {
@@ -50,7 +49,7 @@ interface StyledProps {
 }
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
-  max-width: ${(props) => (props.isXL ? 'unset' : '172px')};
+  max-width: ${(props) => (props.isXL ? '100%' : '172px')};
   width: 100%;
   outline: none;
   input{
