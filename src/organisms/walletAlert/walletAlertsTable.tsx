@@ -1,7 +1,7 @@
 import React from 'react';
 import { localTheme, Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
-import { Select } from '../../atoms/inputs/select';
+import { Select, SelectOption } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
@@ -18,12 +18,12 @@ export interface WalletAlertsTableProps {
   wallet: string;
   isActive: boolean;
   setIsActive: (wallet: number, status: boolean) => void;
-  chains: never;
+  chains: SelectOption[];
   editWallet: (id: number) => void;
   removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
-  filters: never;
+  filters: SelectOption[];
   bot_id: BotIdArray
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
@@ -137,7 +137,7 @@ export const WalletAlertsTable = ({
       </Section>
       <SectionSelect flex={1}>
         <Group>
-          <Select readOnly placeholder="Alert Filters" options={chains} value={filters} />
+          <Select<'multi'> readOnly placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
         </Group>
       </SectionSelect>
       <Section flex={1}>
