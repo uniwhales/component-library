@@ -12,10 +12,3 @@ export const ActionTags = Styled.div`
   display: flex;
   gap: 24px;
 `;
-export const SelectWrapper = Styled.div`
-  display: flex;
-  gap: 8px;
-  width: 100%;
-`;
-export const ActionChains = Styled.div``;
-export const ActionTypes = Styled.div``;

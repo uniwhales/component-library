@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
-  colourOptions, groupExample, Placeholder, Select,
+  colourOptions, groupExample, Placeholder, Select, SelectGroupOption, SelectOption, SelectProps,
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import { SettingsBars } from '../icons';
@@ -14,23 +14,22 @@ export default {
   },
 } as ComponentMeta<typeof Select>;
 
-interface SelectProps {
-  label: string;
-  value: string;
-  id?: number;
-}
-const Template: ComponentStory<typeof Select> = (args) => {
-  const [value, setValue] = useState<SelectProps>();
-  return <Select {...args} onChange={(v) => setValue(v)} value={value} />;
+const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
+  const [value, setValue] = useState<SelectOption>();
+  return <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-export const Primary = Template.bind({});
-export const SearchableSelect = Template.bind({});
+const TemplateGroup: ComponentStory<typeof Select<'multi'>> = (args) => {
+  const [value, setValue] = useState<SelectGroupOption>();
+  return <Select<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+};
+export const Primary = TemplateSingle.bind({});
+export const SearchableSelect = TemplateGroup.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 Primary.args = {
-  options: colourOptions,
+  selectOptions: colourOptions,
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
@@ -42,7 +41,7 @@ SearchableSelect.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 SearchableSelect.args = {
-  options: groupExample,
+  selectOptions: groupExample,
   isMulti: true,
   readOnly: false,
   showValue: true,
