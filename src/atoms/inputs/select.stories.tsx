@@ -21,6 +21,7 @@ interface SelectProps {
 }
 const Template: ComponentStory<typeof Select> = (args) => {
   const [value, setValue] = useState<SelectProps>();
+  console.debug(value);
   return <Select {...args} onChange={(v) => setValue(v)} value={value} />;
 };
 export const Primary = Template.bind({});

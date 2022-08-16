@@ -62,6 +62,11 @@ export const Placeholder = Styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+  div {
+    svg {
+      transform: unset;
+    }
+  }
 `;
 
 const OptionWrapper = Styled.div`
@@ -110,12 +115,6 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     height: '40px',
     svg: {
       transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
-    },
-    '&:hover': {
-      border: `1px solid ${theme.colors.primary.UWL_BLUE}`,
-      svg: {
-        fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
-      },
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
@@ -175,11 +174,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     borderRadius: '50%',
     padding: '2px',
     svg: {
-      transform: 'unset',
       fill: theme.colors.system.WHITE,
     },
   }),
-
+  valueContainer: (defaultStyles) => ({
+    ...defaultStyles,
+    flexWrap: 'nowrap',
+    overflow: 'hidden',
+  }),
 };
 
 export const colourOptions = [

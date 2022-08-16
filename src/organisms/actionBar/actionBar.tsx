@@ -2,7 +2,7 @@ import React from 'react';
 import { Placeholder, Select } from '../../atoms/inputs/select';
 import { FilterChip } from '../../atoms/chips/filterChip';
 import {
-  ActionTags, SelectWrapper, Wrapper,
+  ActionTags, Wrapper,
 } from './actionBar.styles';
 import { ActionBarProps, SelectedInterface } from './types';
 import { Text } from '../../atoms/texts/text';
@@ -25,23 +25,23 @@ export const ActionBar = ({
         </FilterChip>
       ))}
     </ActionTags>
-    <SelectWrapper>
-      <Select
-        value={selectValue}
-        onChange={(e: SelectedInterface) => selectHandler(e)}
-        options={selectOptions}
-        isMulti
-        isSearchable
-        isXL
-        showValue
-        isClearable
-        placeholder={(
-          <Placeholder>
-            <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-            <Text size="S-Regular">Filter Tx types and Chains</Text>
-          </Placeholder>
+
+    <Select
+      value={selectValue}
+      onChange={(e: SelectedInterface) => selectHandler(e)}
+      options={selectOptions}
+      isMulti
+      isSearchable
+      isXL
+      showValue
+      isClearable
+      placeholder={(
+        <Placeholder>
+          <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+          <Text size="S-Regular">Filter Tx types and Chains</Text>
+        </Placeholder>
 )}
-      />
-    </SelectWrapper>
+    />
+
   </Wrapper>
 );
