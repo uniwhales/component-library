@@ -8,17 +8,19 @@ import { ConnectButtonProps } from './types';
 export const ConnectWalletButton: FC<ConnectButtonProps> = ({
   onClick, account,
 }) => {
-  const [text, setText] = useState<string>('');
-  const textToDisplay = () => (account ? `${account.slice(0, 4)}...${account.slice(account.length - 4)}` : 'Connect');
-  useEffect(() => setText(textToDisplay()), [account]);
+  const [text, setText] = useState<string>('Connect');
+
+  useEffect(() => {
+    setText(account ? 'Disconnect' : 'Connect');
+  }, [account]);
+
   return (
     <ConnectButton
       onClick={onClick}
-      onMouseEnter={() => setText(account ? 'Disconnect' : 'Connect')}
-      onMouseLeave={() => setText(textToDisplay())}
       account={account}
+      isConnected={!!account}
     >
-      <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />
+      {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
       <Text size="S-Bold">{text}</Text>
     </ConnectButton>
   );

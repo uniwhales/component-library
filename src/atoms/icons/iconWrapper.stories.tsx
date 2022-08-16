@@ -151,6 +151,8 @@ import {
   HamburgerIcon,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
+import { VerticalDots } from './navigationIcons/VerticalDots';
+import { HorizontalDots } from './navigationIcons/HorizontalDots';
 
 export default {
   title: 'Atoms/Icons',
@@ -177,6 +179,8 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
     <IconWrapper name="RedCross" icon={<RedCross />} />
     <IconWrapper name="Hamburger" icon={<HamburgerIcon />} />
+    <IconWrapper name="Horizontal Dots" icon={<HorizontalDots />} />
+    <IconWrapper name="Vertical Dots" icon={<VerticalDots />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
