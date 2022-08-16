@@ -21,6 +21,7 @@ export const ActionBar = <T extends SelectVariation>({
           isOn={chipFilterValue === chip.id}
           id={chip.id}
         >
+          <IconWrapper icon={chip.icon} />
           <Text size="S-Regular">{chip.label}</Text>
         </FilterChip>
       ))}
