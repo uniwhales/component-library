@@ -164,10 +164,6 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       transform: 'unset',
     },
   }),
-  multiValueLabel: (defaultStyles, { theme }: StyledProps) => ({
-    ...defaultStyles,
-    color: theme.colors.primary.GREEN,
-  }),
   multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
     backgroundColor: theme.colors.primary.DARK_BLUE,
@@ -179,8 +175,15 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   valueContainer: (defaultStyles) => ({
     ...defaultStyles,
+    display: '-webkit-box',
     flexWrap: 'nowrap',
-    overflow: 'hidden',
+    overflow: 'scroll',
+    whiteSpace: 'nowrap',
+    '&::-webkit-scrollbar': {
+      '-webkit-appearance': ' none',
+      width: 0,
+      height: 0,
+    },
   }),
 };
 
