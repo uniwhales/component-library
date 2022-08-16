@@ -4,6 +4,8 @@ import NiceModal, { useModal } from '@ebay/nice-modal-react';
 import { ButtonAtom } from '../buttons/button';
 import { ExampleModal } from './modalModel';
 import { ModalMockDataLatestAnnouncements } from './mockData';
+import { BrochureLayout } from '../../layouts/brochure/brochureLayout.styles';
+import { Navbar } from '../../organisms/navbar/navbar';
 
 export default {
   title: 'Atoms/Modal',
@@ -13,9 +15,14 @@ const Proxy = () => {
   const Example = useModal(ExampleModal);
 
   return (
-    <ButtonAtom buttonVariant="primary" onClick={() => Example.show({ latest: ModalMockDataLatestAnnouncements })}>
-      Open Modal
-    </ButtonAtom>
+    <>
+      <Navbar onBackButtonClick={() => {}} onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
+      <BrochureLayout>
+        <ButtonAtom buttonVariant="primary" onClick={() => Example.show({ latest: ModalMockDataLatestAnnouncements })}>
+          Open Modal
+        </ButtonAtom>
+      </BrochureLayout>
+    </>
   );
 };
 

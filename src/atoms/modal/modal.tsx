@@ -15,7 +15,7 @@ export const Overlay = Styled.div`
   top: 0;
   position: fixed;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
 `;
 
 export const ModalContainer = Styled.div`
@@ -30,14 +30,15 @@ export const ModalContainer = Styled.div`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<{ height?: CSSProperties['height'], maxWidth?: CSSProperties['maxWidth'], }>`
+export const ModalBody = Styled(Card)<{ height?: CSSProperties['height'], maxWidth?: CSSProperties['maxWidth'] }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 4px; 
   max-width: ${({ maxWidth }) => maxWidth ?? '600px'};
   height: ${({ height }) => height ?? '62vh'};
-  
+  box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
+  max-height: 600px;
   ${phone(css`
     width: 80vw;
   `)}
