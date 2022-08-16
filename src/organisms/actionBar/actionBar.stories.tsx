@@ -26,14 +26,14 @@ export default {
 } as ComponentMeta<typeof ActionBar>;
 
 const Template: ComponentStory<typeof ActionBar> = (args) => {
-  const { filters } = args;
+  const { chipFilters: filters } = args;
   const [chipValue, setChip] = useState<number>();
   const [selectValue, setSelectedValue] = useState<SelectedInterface>();
   return (
     <ActionBar
-      chipValue={chipValue as number}
-      setChip={setChip}
-      filters={filters}
+      chipFilterValue={chipValue as number}
+      setChipFilter={setChip}
+      chipFilters={filters}
       selectValue={selectValue as SelectedInterface}
       selectHandler={setSelectedValue}
       selectOptions={groupExample}
@@ -44,5 +44,5 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
 export const Primary = Template.bind({});
 
 Primary.args = {
-  filters: filtersArray,
+  chipFilters: filtersArray,
 };

@@ -1,39 +1,39 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
-import { ChainsInterface } from '../../organisms/actionBar/types';
 import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
+import { isSelectSingleOption } from './typeguards';
 
-interface Option {
+export interface Option {
   value: string,
   label: string,
-  icon?: JSX.Element,
-  id?: number;
+  id: number;
+  icon?: Element,
+  isSelected?: boolean;
 }
-
-interface GroupOptionInterface {
+export interface SelectGroupOption {
   label: string;
   options: Option[]
 }
 
 export interface SelectOption extends Option {}
 
-export interface SelectProps {
+export interface SelectProps<T = 'single' | 'multi'> {
+  onSelectChange?: (o: T extends 'single' ? SelectOption : SelectGroupOption) => void,
+  selectOptions: T extends 'single' ? SelectOption[] : SelectGroupOption[],
+  selectValue?: T extends 'single' ? SelectOption : SelectGroupOption,
   readOnly?: boolean,
-  value?: string | SelectOption,
   isMulti?: boolean,
   isCheckBox?: boolean,
-  placeholder: string | JSX.Element,
+  placeholder: string | ReactNode,
   isXL?: boolean,
-  options: Option[] | GroupOptionInterface[],
-  onChange?: (o: ChainsInterface) => void,
   isClearable?: boolean,
   isSearchable?: boolean,
   showValue?: boolean,
@@ -188,15 +188,15 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 };
 
 export const colourOptions = [
-  { value: 'blue blue', label: 'Blue Blue' },
-  { value: 'purple', label: 'Purple' },
-  { value: 'red', label: 'Red' },
-  { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow' },
-  { value: 'green', label: 'Green' },
-  { value: 'forest', label: 'Forest' },
-  { value: 'slate', label: 'Slate' },
-  { value: 'silver', label: 'Silver' },
+  { id: 0, value: 'blue blue', label: 'Blue' },
+  { id: 1, value: 'purple', label: 'Purple' },
+  { id: 2, value: 'red', label: 'Red' },
+  { id: 3, value: 'orange', label: 'Orange' },
+  { id: 4, value: 'yellow', label: 'Yellow' },
+  { id: 5, value: 'green', label: 'Green' },
+  { id: 6, value: 'forest', label: 'Forest' },
+  { id: 7, value: 'slate', label: 'Slate' },
+  { id: 8, value: 'silver', label: 'Silver' },
 ];
 
 export const chainOptions = [
@@ -281,23 +281,25 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
   );
 };
 
-export const Select = ({
-  options,
+export type SelectVariation = 'single' | 'multi';
+
+export const Select = <T extends SelectVariation>({
+  selectOptions,
   readOnly,
-  onChange,
-  value, isMulti = true,
+  onSelectChange,
+  selectValue, isMulti = true,
   isCheckBox, placeholder,
   isXL = false,
   isClearable = false,
   isSearchable = false,
   showValue = false,
-}: SelectProps) => {
+}: SelectProps<T>) => {
   const theme = localTheme();
   return (
     <>
       {' '}
       <StyledSelect
-        options={options}
+        options={selectOptions}
         isMulti={isMulti}
         theme={theme}
         isOptionDisabled={() => !!readOnly}
@@ -313,12 +315,16 @@ export const Select = ({
           IndicatorSeparator: () => null,
           ClearIndicator,
         }}
-        onChange={(option) => {
-          if (onChange) { // @ts-ignore
-            onChange(option);
-          }
+        onChange={(option: any) => {
+          if (!onSelectChange) return;
+          /*
+            When providing variation of select
+            we restrict the option to be either single or group option type
+            therefor we can safely assume type here is right
+          */
+          onSelectChange(option as T extends 'single' ? SelectOption : SelectGroupOption);
         }}
-        value={value}
+        value={selectValue}
         isXL={isXL}
         getOptionLabel={getOptionLabel as any}
       />
