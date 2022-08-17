@@ -137,7 +137,7 @@ export const WalletAlertsTable = ({
       </Section>
       <SectionSelect flex={1}>
         <Group>
-          <Select<'multi'> readOnly placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
+          <Select<'multi'> readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
         </Group>
       </SectionSelect>
       <Section flex={1}>
