@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import { DeviceWidth } from '../../hooks/useBreakpoint';
 import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 
@@ -20,7 +19,7 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
   padding: 16px 24px;
   z-index: 9999997;
   gap: 24px;
-  
+
   ${tablet(css<{ isMenuOpen?: boolean }>`
     border-radius: ${({ isMenuOpen }) => (isMenuOpen ? '0px 0px 12px 12px' : 'none')};
     z-index: 9999998;
@@ -48,34 +47,7 @@ export const NavbarRightSide = Styled(FlexBase)`
   gap: 16px;
 `;
 
-export const NavbarAvatar = Styled.div`
-  border-radius: 50%;
-  background: ${({ theme }) => theme.gradients.primary.BLURPLE};
-  height: 42px;
-  width: 42px;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  cursor: pointer;
-  /* On mobile we do not have hover effects   */
-  @media (min-width: ${DeviceWidth.tablet}) {
-    :hover {
-      height: 38px;
-      width: 38px;
-      border: 2px solid #F8F9FF;
-      background: ${({ theme }) => theme.gradients.primary.BLURPLE_HIGHLIGHTED};
-    }
-  }
-  
-  ${tablet(css`
-    :active {
-      height: 38px;
-      width: 38px;
-      border: 2px solid #F8F9FF;
-      background: ${({ theme }) => theme.gradients.primary.BLURPLE_HIGHLIGHTED};
-    }
-  `)};
-`;
+export const IdenticonContainer = Styled.div``;
 
 export const NavbarDesktopMenu = Styled.div`
   ${tablet(css`
