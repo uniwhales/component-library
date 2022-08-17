@@ -120,7 +120,6 @@ export const WalletAlertsTable = ({
         <Group>
           <ToggleAtom
             size="small"
-            // label={isActive ? 'On' : 'Off'}
             isOn={isActive}
             onClick={() => setIsActive(id, isActive)}
           />
