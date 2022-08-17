@@ -23,11 +23,6 @@ Primary.args = {
     { id: 1, value: 'two', label: 'two' },
     { id: 2, value: 'three', label: 'three' },
   ],
-  botIdArray: [
-    { value: '1', label: '1', id: 1 },
-    { value: '2', label: '2', id: 2 },
-    { value: '3', label: '3', id: 3 },
-  ],
   filters: [
     { id: 0, value: 'one', label: 'one' },
     { id: 1, value: 'two', label: 'two' },
