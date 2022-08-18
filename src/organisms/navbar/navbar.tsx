@@ -61,6 +61,7 @@ export const Navbar: FC<NavbarProps> = ({
                   id={account}
                   containerSize="44px"
                   iconSize={30}
+                  hasInteraction
                 />
               </IdenticonContainer>
             )}
