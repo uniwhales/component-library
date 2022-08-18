@@ -1,14 +1,16 @@
 import React, { FC, useState } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
-import { ArrowLeftIcon, Identicon } from '../../atoms/icons';
+import { ArrowLeftIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { HorizontalDots } from '../../atoms/icons/navigationIcons/HorizontalDots';
+import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
-  NavbarAvatar, NavbarContainer,
+  IdenticonContainer,
+  NavbarContainer,
   NavbarDesktopMenu, NavbarLeftSide, NavbarMainContent, NavbarRightSide,
 } from './styles';
 import { NavbarProps } from './types';
@@ -54,9 +56,13 @@ export const Navbar: FC<NavbarProps> = ({
               )
             }
             {account && (
-              <NavbarAvatar onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
-                <IconWrapper cursor="pointer" icon={<Identicon />} />
-              </NavbarAvatar>
+              <IdenticonContainer onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
+                <IdenticonComponent
+                  id={account}
+                  containerSize="44px"
+                  iconSize={30}
+                />
+              </IdenticonContainer>
             )}
           </NavbarRightSide>
         </NavbarMainContent>

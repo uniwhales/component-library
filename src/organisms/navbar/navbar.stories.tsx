@@ -61,10 +61,10 @@ FeedPage.args = {
   leftSideChildren: (
     <FeedLeftSideChildren>
       <Select
-        options={groupTagOptions}
+        selectOptions={groupTagOptions}
         placeholder="Select Group Tags"
-        onChange={() => {}}
-        value={groupTagOptions[0]}
+        onSelectChange={() => {}}
+        selectValue={groupTagOptions[0]}
         isXL
         readOnly={false}
         isMulti={false}

@@ -13,9 +13,19 @@ const Template: ComponentStory<typeof IdenticonComponent> = (props) => (
 );
 
 export const Primary = Template.bind({});
+export const NoInteraction = Template.bind({});
 
 Primary.args = {
   id: 'someRandomString',
   containerSize: '48px',
   iconSize: 32,
+  hasInteraction: true,
+  onClick: () => console.log('Clicked'),
+};
+
+NoInteraction.args = {
+  id: 'someRandomString',
+  containerSize: '48px',
+  iconSize: 32,
+  hasInteraction: false,
 };
