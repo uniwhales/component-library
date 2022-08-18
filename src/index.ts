@@ -17,6 +17,7 @@ export * from './atoms/chips/chip';
 export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
 export * from './atoms/identicon/Identicon';
+export * from './atoms/modal/modal';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
