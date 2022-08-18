@@ -68,7 +68,7 @@ const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   return <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
-  const [value, setValue] = useState<SelectGroupOption>();
+  const [value, setValue] = useState<SelectOption>();
   return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
@@ -76,7 +76,7 @@ const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
   return <Select<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) => {
-  const [value, setValue] = useState<SelectGroupOption[]>();
+  const [value, setValue] = useState<SelectOption[]>();
   return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 export const Primary = TemplateSingle.bind({});

@@ -22,8 +22,8 @@ export interface SelectGroupOption {
 export interface SelectOption extends Option {}
 
 export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
-export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectGroupOption
-  : SelectGroupOption[];
+export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
+  : SelectOption[];
 export type SelectOptions<T extends SelectVariation> = T extends 'single' ? SelectOption[] : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectGroupOption[]
   : SelectGroupOption[];
 
