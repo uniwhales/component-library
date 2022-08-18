@@ -3,4 +3,5 @@ export interface IdenticonProps {
   iconSize: number;
   id: string;
   hasInteraction: boolean;
+  onClick?: () => void;
 }

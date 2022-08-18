@@ -20,6 +20,7 @@ Primary.args = {
   containerSize: '48px',
   iconSize: 32,
   hasInteraction: true,
+  onClick: () => console.log('Clicked'),
 };
 
 NoInteraction.args = {
