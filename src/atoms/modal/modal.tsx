@@ -7,16 +7,7 @@ import { Card } from '../card/card';
 import { SettingsBars } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Row } from '../common/flex';
-
-export const Overlay = Styled.div`
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: fixed;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.25);
-`;
+import { Overlay } from '../common/overlay';
 
 export const ModalContainer = Styled.div`
   position: absolute;

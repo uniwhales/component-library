@@ -51,6 +51,7 @@ export const NavigationTab: NavigationTabComp = ({
     <>
       <NavigationLi
         width={width}
+        isExpanded={expanded}
         isHighlighted={isHighlighted}
         isDisabled={!!disabled}
         lvl={lvl}

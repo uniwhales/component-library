@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 import { Styled } from '../../theme';
 
 export interface ThemeToggleProps {
   isOn: boolean;
-  onClick: () => void;
+  onClick: ChangeEventHandler<HTMLInputElement>;
 }
 const Wrapper = Styled.div`
   display: flex;

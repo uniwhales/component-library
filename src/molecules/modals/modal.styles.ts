@@ -1,16 +1,5 @@
 import { Styled } from '../../theme';
 
-export const Overlay = Styled.div`
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: fixed;
-  background: black;
-  opacity: 0.6;
-    z-index: 10000000;
-`;
-
 export const ModalWrapper = Styled.div`
   position: fixed;
   top: 50%;

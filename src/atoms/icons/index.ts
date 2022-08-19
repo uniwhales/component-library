@@ -32,6 +32,7 @@ export * from './generalIcons/fullColorStyle/TwitterColor';
 export * from './generalIcons/fullColorStyle/WalletColor';
 export * from './generalIcons/fullColorStyle/WebinarColor';
 export * from './generalIcons/fullColorStyle/Check';
+export * from './generalIcons/fullColorStyle/UniwhalesColor';
 // generalIcons//STANDARD
 export * from './generalIcons/filledStyle/Feed';
 export * from './generalIcons/filledStyle/Fire';
@@ -87,6 +88,7 @@ export * from './generalIcons/filledStyle/NotificationOff';
 export * from './generalIcons/filledStyle/BridgeStandard';
 export * from './generalIcons/filledStyle/TrendingStandard';
 export * from './generalIcons/filledStyle/TransactionsStandard';
+export * from './generalIcons/filledStyle/UniwhalesStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

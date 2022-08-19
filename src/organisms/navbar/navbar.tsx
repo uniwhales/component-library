@@ -32,7 +32,7 @@ export const Navbar: FC<NavbarProps> = ({
         <NavbarMainContent>
           <NavbarLeftSide onClick={() => onBackButtonClick()}>
             <IconWrapper icon={<ArrowLeftIcon />} cursor="pointer" />
-            <Text size="H6-Regular">
+            <Text size="M-Regular">
               {pageName}
             </Text>
             {leftSideChildren}

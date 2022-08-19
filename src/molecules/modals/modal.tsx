@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Overlay } from '../../atoms/common/overlay';
 import { CrossIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
-
   IconWrapperAbsolute,
   ModalContent,
   ModalWrapper,
-  Overlay,
 } from './modal.styles';
 import { ModalProps } from './types';
 
