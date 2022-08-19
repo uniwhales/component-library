@@ -178,6 +178,10 @@ const ButtonSpecialSmallNormal = Styled(Button)`
   height: auto;
   line-height: 18px;
   font-weight: 400;
+  svg {
+    width: 16px;
+    height: 16px;
+  };
 
   ${(props) => props.disabled && css`
     opacity: 0.2;
@@ -198,8 +202,6 @@ const ButtonSpecialSmallNormal = Styled(Button)`
       background: ${props.theme.contrastColor.HIGH_CONTRAST};
 
       svg {
-        width: 17px;
-        height: 17px;
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
       }
     };
