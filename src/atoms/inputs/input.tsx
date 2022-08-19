@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 
@@ -13,7 +13,6 @@ export interface InputsProps {
   disabled?:boolean;
   isError?:string;
   min?:string;
-  withIcon?:boolean;
   icon?: JSX.Element;
 }
 const InputWrapper = Styled.div`
@@ -39,7 +38,7 @@ const InputUserMessage = Styled.div`
     color: ${(props) => props.theme.colors.system.RED};
   }
 `;
-const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string, withIcon?:boolean }>`
+const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:string, withIcon:boolean }>`
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -47,7 +46,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 38px;
   border-radius: 12px;
-  padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 32px' : '8px 24px')};
+    padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 32px' : '8px 24px')};
   z-index: 1;
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
@@ -93,11 +92,11 @@ export const InputContainer = Styled.div`
 `;
 
 export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError, min, withIcon = false, icon,
+  type, placeholder, value, onChange, label, disabled, isError, min, icon,
 }:InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
-
+  const theme = localTheme();
   return (
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
@@ -109,7 +108,7 @@ export const Input = ({
         onMouseLeave={() => setHover(false)}
       >
         <InputContainer>
-          {withIcon && <IconWrapper icon={icon} />}
+          {!!icon && <IconWrapper fill={theme.textShades.SHADE_MINUS_2} icon={icon} />}
           <InputStyled
             min={min}
             isError={isError}
@@ -121,7 +120,7 @@ export const Input = ({
             onBlur={() => setFocus(false)}
             placeholder={placeholder || 'Placeholder'}
             type={type}
-            withIcon={withIcon}
+            withIcon={!!icon}
           />
         </InputContainer>
 
