@@ -88,13 +88,13 @@ export const InputContainer = Styled.div`
       left:0;
       top:0;
       padding:9px 9px;
-      fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST}!important;
+      fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
       height: 20px;
       width: 20px;
   }
   &:hover {
     svg {
-      fill: ${({ theme }) => theme.contrastColor.HIGH_CONTRAST}!important;
+      fill: ${({ theme }) => theme.contrastColor.HIGH_CONTRAST};
     }
   }
 `;

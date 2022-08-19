@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './input';
-import { SearchStandard, StarIcon } from '../icons';
+import { SearchStandard } from '../icons';
 
 export default {
   title: 'Atoms/Inputs',
