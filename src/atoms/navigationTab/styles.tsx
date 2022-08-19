@@ -3,7 +3,7 @@ import { Styled } from '../../theme';
 import { SidebarElement } from './types';
 
 export const NavigationLi = Styled.li<{
-  width: CSSProperties['width'], isHighlighted: boolean, isDisabled: boolean
+  width: CSSProperties['width'], isHighlighted: boolean, isDisabled: boolean, isExpanded: boolean
   lvl: number
 }>`
   display: flex;
@@ -16,7 +16,7 @@ export const NavigationLi = Styled.li<{
   background-color: ${({ lvl, theme }) => (lvl === 0 ? theme.containerAndCardShades.SHADE_PLUS_3 : lvl === 1 ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
   opacity: ${({ isDisabled, isHighlighted }) => (isHighlighted ? 1 : !isDisabled ? 0.75 : 0.5)};
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
-
+  padding-bottom: ${({ isExpanded }) => (isExpanded ? '0' : '24px')};
   :hover {
     opacity: 1;
   }

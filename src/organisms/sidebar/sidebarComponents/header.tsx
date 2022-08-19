@@ -7,7 +7,7 @@ import { Styled } from '../../../theme';
 
 const Container = Styled.div`
   display: flex;
-  
+  align-items: center;
   grid-area: header;
   justify-items: center;
   padding: 24px 14px;

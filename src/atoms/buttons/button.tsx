@@ -26,7 +26,7 @@ const Button = Styled.button<GenericStylingProps>`
   svg {
     width: 20px;
     height: 20px;
-    cursor: pointer;
+    cursor: pointer!important;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;

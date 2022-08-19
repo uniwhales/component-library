@@ -22,7 +22,6 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
 
   ${tablet(css<{ isMenuOpen?: boolean }>`
     border-radius: ${({ isMenuOpen }) => (isMenuOpen ? '0px 0px 12px 12px' : 'none')};
-    z-index: 9999998;
   `)}
 `;
 

@@ -8,13 +8,14 @@ const IconComponent = Styled.div<IconWrapperProps>`
   width: ${(props) => props.width};
   display: flex;
   align-items: center;
+  transition: width 0.3s;
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
     fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
     stroke: ${(props) => props.stroke};
     cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')}
-}
+  }
 `;
 
 export const IconWrapper: React.FC<IconWrapperProps> = ({
