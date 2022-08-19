@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './input';
-import { StarIcon } from '../icons';
+import { SearchStandard, StarIcon } from '../icons';
 
 export default {
   title: 'Atoms/Inputs',
@@ -40,7 +40,7 @@ Primary.parameters = {
 };
 
 WithIcon.args = {
-  icon: <StarIcon />,
+  icon: <SearchStandard />,
 };
 
 WithIcon.parameters = {
