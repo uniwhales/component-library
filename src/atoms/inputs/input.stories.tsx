@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = ({
-  disabled, isError, type, withIcon, icon,
+  disabled, isError, type, icon,
 }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
@@ -25,7 +25,6 @@ const Template: ComponentStory<typeof Input> = ({
       label="Login"
       onChange={(e) => onChangeInput(e.target.value)}
       type={type}
-      withIcon={withIcon}
       icon={icon}
     />
   );
@@ -41,7 +40,6 @@ Primary.parameters = {
 };
 
 WithIcon.args = {
-  withIcon: true,
   icon: <StarIcon />,
 };
 
