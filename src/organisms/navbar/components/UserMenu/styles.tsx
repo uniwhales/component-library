@@ -32,7 +32,3 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
     box-shadow: none;
   `)}
 `;
-
-export const Address = Styled.div`
-  cursor: copy;
-`;
