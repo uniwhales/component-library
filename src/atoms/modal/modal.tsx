@@ -7,6 +7,7 @@ import { SettingsBars } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Row } from '../common/flex';
 import { ModalBaseProps } from './types';
+import { Overlay } from '../common/overlay';
 
 export const ModalContainer = Styled.div`
   position: absolute;

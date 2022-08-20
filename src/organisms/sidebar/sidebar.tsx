@@ -1,4 +1,5 @@
 import React, {
+  useEffect,
   useRef, useState,
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
@@ -41,11 +42,13 @@ export const Sidebar: SidebarComp = ({
 
   useClickOutside(clickRef, () => setExpanded(false));
 
+  useEffect(() => { setExpanded(false); }, []);
+
   const width = expanded ? SidebarWidth.Expanded : SidebarWidth.Collapsed;
   return (
     <SidebarContainer
       ref={clickRef}
-      onClick={() => { if (!expanded) setExpanded(true); }}
+      onClick={() => { setExpanded(!expanded); }}
       width={width}
       isExpanded={expanded}
     >

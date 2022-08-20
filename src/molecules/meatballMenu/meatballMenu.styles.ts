@@ -47,6 +47,7 @@ export const MeatballContainer = Styled.div<{ width?: string }>`
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
   };
+  z-index: 1;
 `;
 
 export const StyledLink = Styled.a`

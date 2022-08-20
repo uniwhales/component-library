@@ -8,6 +8,7 @@ import baseStyled, { ThemedStyledInterface, createGlobalStyle, useTheme } from '
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
 const DarkTheme = {
+  OVERLAY: 'rgba(17,17,17,0.50)',
   textShades: {
     SHADE_MINUS_3: '#F8F9FF',
     SHADE_MINUS_2: '#BBBCCE',
@@ -34,6 +35,7 @@ const DarkTheme = {
 };
 
 const LightTheme = {
+  OVERLAY: 'rgba(255,255,255,0.50)',
   textShades: {
     SHADE_MINUS_3: '#1F2128',
     SHADE_MINUS_2: '#575761',

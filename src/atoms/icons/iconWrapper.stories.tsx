@@ -148,7 +148,7 @@ import {
   TrendingStandard,
   BridgeStandard,
   TransactionsStandard,
-  HamburgerIcon,
+  HamburgerIcon, ProfileStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
@@ -262,6 +262,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="Profile" icon={<ProfileStandard />} />
     <IconWrapper name="Feed" icon={<Feed />} />
     <IconWrapper name="Fire" icon={<Fire />} />
     <IconWrapper name="Alert Bot" icon={<AlertBotStandard />} />
