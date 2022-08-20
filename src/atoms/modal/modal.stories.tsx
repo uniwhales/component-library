@@ -9,7 +9,7 @@ import { Navbar } from '../../organisms/navbar/navbar';
 
 export default {
   title: 'Atoms/Modal',
-} as ComponentMeta<any>;
+} as ComponentMeta<typeof ExampleModal>;
 
 const Proxy = () => {
   const Example = useModal(ExampleModal);
@@ -18,7 +18,13 @@ const Proxy = () => {
     <>
       <Navbar onBackButtonClick={() => {}} onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
       <BrochureLayout>
-        <ButtonAtom buttonVariant="primary" onClick={() => Example.show({ latest: ModalMockDataLatestAnnouncements })}>
+        <ButtonAtom
+          buttonVariant="primary"
+          onClick={() => Example.show({
+            latest: ModalMockDataLatestAnnouncements,
+            closeFn: () => Example.remove(),
+          })}
+        >
           Open Modal
         </ButtonAtom>
       </BrochureLayout>
@@ -26,7 +32,7 @@ const Proxy = () => {
   );
 };
 
-const Template: ComponentStory<any> = () => (
+const Template: ComponentStory<typeof ExampleModal> = () => (
   <NiceModal.Provider>
     <Proxy />
   </NiceModal.Provider>

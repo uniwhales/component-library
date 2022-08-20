@@ -1,6 +1,8 @@
+import { MouseEventHandler } from 'react';
+
 export interface IconWrapperProps {
   icon?: JSX.Element;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   height?: string;
   width?: string;
   fill?: string;
