@@ -3,6 +3,7 @@ import React from 'react';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
 import { ModalBase } from './modal';
+import { ExampleModalProps } from './types';
 
 const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
     background-color: transparent;
@@ -45,21 +46,18 @@ const AnnouncementText = Styled.div`
     font-size: 14px;
 `;
 
-type ExampleModalProps = {
-  latest: any[];
-};
-export const exampleModal = ({ latest }: ExampleModalProps) => (
-  <ModalBase>
+export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
+  <ModalBase closeFn={closeFn}>
     <LatestAnnouncementsList height="100%" gap="48px">
       {latest.map(({
         image, title, text, datetime,
-      }: any) => (
+      }) => (
         <AnnouncementCardContainerMobile key={datetime}>
           <Cover coverUrl={image} />
           <Content>
             <Text size="S-Bold">{datetime}</Text>
             <Text size="L-Regular">{title}</Text>
-            <AnnouncementText dangerouslySetInnerHTML={{ __html: text }} />
+            <AnnouncementText dangerouslySetInnerHTML={{ __html: text ?? '' }} />
           </Content>
         </AnnouncementCardContainerMobile>
       ))}
@@ -67,4 +65,4 @@ export const exampleModal = ({ latest }: ExampleModalProps) => (
   </ModalBase>
 );
 
-export const ExampleModal = create<ExampleModalProps>(exampleModal);
+export const ExampleModal = create(exampleModal);
