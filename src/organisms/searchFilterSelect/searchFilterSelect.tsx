@@ -132,7 +132,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     paddingBottom: 0,
     paddingTop: 0,
     borderRadius: '0px 0px 12px 12px',
-    zIndex: 10,
+    zIndex: props.theme.zIndex.SAFE_LAYER,
     '> :nth-of-type(2n)': {
       background: props.theme.containerAndCardShades.SHADE_PLUS_1,
       '&:hover': {

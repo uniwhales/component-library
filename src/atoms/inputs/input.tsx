@@ -46,8 +46,8 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 38px;
   border-radius: 12px;
-  padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 38px' : '8px 24px')};
-  z-index: 1;
+    padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 38px' : '8px 24px')};
+    z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};

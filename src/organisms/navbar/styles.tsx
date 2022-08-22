@@ -17,7 +17,7 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   padding: 16px 24px;
-  z-index: 9999997;
+  z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   gap: 24px;
 
   ${tablet(css<{ isMenuOpen?: boolean }>`

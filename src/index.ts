@@ -18,6 +18,7 @@ export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
 export * from './atoms/identicon/Identicon';
 export * from './atoms/modal/modal';
+export * from './atoms/uniwhalesLogo/uniwhalesLogo';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
@@ -31,7 +32,6 @@ export * from './molecules/modals/modal';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
-export * from './organisms/sidebar/sidebar';
 export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
 export * from './organisms/actionBar/mobileRHSActionBar';
@@ -53,6 +53,7 @@ export * from './atoms/icons/index';
 export * from './utils/shortenAddress';
 export * from './utils/format';
 export * from './utils/useClickOutside';
+export * from './utils/constants';
 
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,

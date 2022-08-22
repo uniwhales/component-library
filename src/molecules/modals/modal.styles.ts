@@ -5,23 +5,22 @@ export const ModalWrapper = Styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-    z-index: 100000000;
+  z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
 export const ModalContent = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   padding: 24px;
-  z-index: 10;
   border-radius: 12px;
   box-sizing: border-box;
-    @media (max-width: 768px) {
-     padding: 12px;
+  @media (max-width: 768px) {
+    padding: 12px;
   }
 `;
 export const IconWrapperAbsolute = Styled.div`
   position: absolute;
   right: 18px;
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   top: 18px;
   padding: 3px;
 `;

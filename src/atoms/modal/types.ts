@@ -1,4 +1,5 @@
 import { MouseEventHandler, ReactElement } from 'react';
+import { CSSProperties } from 'styled-components';
 
 export interface ModalData {
   id?: number;
@@ -8,11 +9,15 @@ export interface ModalData {
   image: string;
 }
 
+export type ModalCardProps = {
+  height: string;
+} & Pick<CSSProperties, | 'maxWidth' | 'maxHeight'>;
+
 export type ModalBaseProps = {
-  closeFn: MouseEventHandler<HTMLDivElement>
+  closeFn?: MouseEventHandler<HTMLDivElement>
   children: ReactElement
   icon?: ReactElement
-};
+} & ModalCardProps;
 export type ExampleModalProps = {
   latest: ModalData[];
 } & Pick<ModalBaseProps, 'closeFn'>;

@@ -40,6 +40,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
       p {
         color: ${({ theme }) => theme.colors.system.WHITE};
       };
+      border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.system.GREEN}`)};
       background: ${({ theme, isConnected }) => (isConnected ? theme.colors.system.RED : theme.colors.system.GREEN)};
     }
   `)};

@@ -15,7 +15,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'special_extra_tiny_subtle'
   borderRadius?: string,
   disabled?: boolean
-  onClick: () => void;
 }
 
 export type GenericStylingProps = Partial<Pick<ButtonProps, 'borderRadius'>>;

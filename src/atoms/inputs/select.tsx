@@ -146,7 +146,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
     borderRadius: '0px 0px 10px 10px',
-    zIndex: 10,
+    zIndex: theme.zIndex.SAFE_LAYER,
   }),
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
