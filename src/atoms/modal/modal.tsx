@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from 'react';
+import React, { FC } from 'react';
 import { css, CSSProperties } from 'styled-components';
 import { Styled } from '../../theme';
 import { phone } from '../../layouts/breakpoints';
@@ -41,13 +41,13 @@ const CloseButton = Styled(Row)`
 
 export const ModalBase: FC<ModalBaseProps> = ({ children, closeFn, icon }) => (
   <Overlay
-    onClick={(e: MouseEvent<HTMLDivElement>) => {
+    onClick={(e) => {
       e.stopPropagation();
-      closeFn(e);
+      if (closeFn) closeFn(e);
     }}
   >
     <ModalContainer>
-      <ModalBody onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()} noHover>
+      <ModalBody onClick={(e) => e.stopPropagation()} noHover>
         <CloseButton>
           <IconWrapper cursor="pointer" icon={icon ?? <SettingsBars />} onClick={closeFn} />
         </CloseButton>

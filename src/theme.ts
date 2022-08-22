@@ -1,4 +1,5 @@
 import baseStyled, { ThemedStyledInterface, createGlobalStyle, useTheme } from 'styled-components';
+import { ZIndex } from './utils/constants';
 
 // const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
 // const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
@@ -101,6 +102,7 @@ const Theme = {
       LAVENDAR: 'linear-gradient(180deg, #1DD1A1 0%, rgba(29, 209, 161, 0) 100%)',
     },
   },
+  zIndex: ZIndex,
 };
 
 LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;

@@ -21,7 +21,7 @@ export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'disabled'>>`
 `;
 export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'>>`
   opacity: 0;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   border-radius: 50%;
   width: 20px;
   height: 20px;

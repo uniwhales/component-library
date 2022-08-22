@@ -17,7 +17,7 @@ export const SmallIcon = Styled.div<{ bgColor: string, smallSize: string }>`
   background: ${(props) => (props.theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 50%;
   border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   display: flex;
   justify-content: center;
   height: 20px;

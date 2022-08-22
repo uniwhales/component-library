@@ -94,7 +94,7 @@ const ButtonGroupMobile = Styled.div`
 const Overlay = Styled.div`
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.OVERLAY};
   top: 0;
   left: 0;
   position: absolute;
@@ -128,9 +128,9 @@ export const WalletAlertsTable = ({
       <Section>
         <Group>
           {bot_id && (
-          <Text size="M-Regular">
-            {`bot #${bot_id.id}`}
-          </Text>
+            <Text size="M-Regular">
+              {`bot #${bot_id.id}`}
+            </Text>
           )}
         </Group>
       </Section>

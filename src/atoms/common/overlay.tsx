@@ -1,4 +1,4 @@
-import { Styled } from "../../theme";
+import { Styled } from '../../theme';
 
 export const Overlay = Styled.div`
   width: 100%;
@@ -6,6 +6,6 @@ export const Overlay = Styled.div`
   left: 0;
   top: 0;
   position: fixed;
-  z-index: 100;
-  background: ${({theme}) => theme.OVERLAY};
+  z-index: ${({ theme }) => theme.zIndex.OVERLAY};
+  background: ${({ theme }) => theme.OVERLAY};
 `;

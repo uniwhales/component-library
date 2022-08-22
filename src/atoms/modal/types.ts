@@ -9,7 +9,7 @@ export interface ModalData {
 }
 
 export type ModalBaseProps = {
-  closeFn: MouseEventHandler<HTMLDivElement>
+  closeFn?: MouseEventHandler<HTMLDivElement>
   children: ReactElement
   icon?: ReactElement
 };
