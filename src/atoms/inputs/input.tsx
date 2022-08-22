@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { css } from 'styled-components';
-import { localTheme, Styled } from '../../theme';
+import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 
@@ -46,8 +46,8 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 38px;
   border-radius: 12px;
-    padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 32px' : '8px 24px')};
-  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
+    padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 38px' : '8px 24px')};
+    z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
@@ -87,7 +87,15 @@ export const InputContainer = Styled.div`
       position:absolute;
       left:0;
       top:0;
-      padding:10px 10px;
+      padding:9px 9px;
+      fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
+      height: 20px;
+      width: 20px;
+  }
+  &:hover {
+    svg {
+      fill: ${({ theme }) => theme.contrastColor.HIGH_CONTRAST};
+    }
   }
 `;
 
@@ -96,7 +104,6 @@ export const Input = ({
 }:InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
-  const theme = localTheme();
   return (
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
@@ -108,7 +115,7 @@ export const Input = ({
         onMouseLeave={() => setHover(false)}
       >
         <InputContainer>
-          {!!icon && <IconWrapper fill={theme.textShades.SHADE_MINUS_2} icon={icon} />}
+          {!!icon && <IconWrapper icon={icon} />}
           <InputStyled
             min={min}
             isError={isError}
