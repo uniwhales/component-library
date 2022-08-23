@@ -10,6 +10,6 @@ export default {
 
 const Template: ComponentStory<typeof UniWhalesLogo> = (args) => {
   const [showText, setShowText] = useState(true);
-  return <UniWhalesLogo {...args} showText={showText} onClick={() => setShowText(!showText)} />;
+  return <UniWhalesLogo {...args} showText={showText} containerWidth="max-content" onClick={() => setShowText(!showText)} />;
 };
 export const Standard = Template.bind({});

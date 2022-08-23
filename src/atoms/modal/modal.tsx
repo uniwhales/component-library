@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { phone } from '../../layouts/breakpoints';
+import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 import { CrossIcon } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -28,16 +28,24 @@ export const ModalBody = Styled(Card)<ModalCardProps>`
   gap: 4px; 
   max-width: ${({ maxWidth }) => maxWidth ?? '600px'};
   height: ${({ height }) => height ?? '62vh'};
-  max-height: ${({ maxHeight }) => maxHeight ?? '62vh'};
+  max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-  max-height: 600px;
+
+  ${tablet(css`
+    max-width: calc(100vw - 208px);
+  `)}
+
   ${phone(css`
-    width: 80vw;
+    width: 100vw;
+    max-height: 600px;
   `)}
 `;
 
 const CloseButton = Styled(Row)`
   flex-flow: row-reverse;
+  position: absolute;
+  right: 17px;
+  top: 17px;
 `;
 
 export const ModalBase: FC<ModalBaseProps> = ({
@@ -58,7 +66,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
         noHover
       >
         <CloseButton>
-          <IconWrapper cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
+          <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
         </CloseButton>
         {children}
       </ModalBody>
