@@ -19,7 +19,7 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   gap: 24px;
-
+  margin-bottom: 24px;
   ${tablet(css<{ isMenuOpen?: boolean }>`
     border-radius: ${({ isMenuOpen }) => (isMenuOpen ? '0px 0px 12px 12px' : 'none')};
   `)}

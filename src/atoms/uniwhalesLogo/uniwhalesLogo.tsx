@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { UniWhalesColor, UniwhalesColor, UniwhalesStandard } from '../icons';
 
-const Container = Styled.div<{ showText?: boolean }>`
-  width: 100%;
+const Container = Styled.div<{ showText?: boolean, width: CSSProperties['width'] }>`
+  width: ${({ width }) => width ?? '100%'};
   display: flex;
   align-items: center;
   gap: 5px;
@@ -16,17 +16,19 @@ type Props = {
   showText?: boolean
   onClick?: () => void,
   night?: boolean
+  width?: string
+  containerWidth?: CSSProperties['width']
 };
 
 export const UniWhalesLogo = ({
-  showText, onClick, night,
+  showText, onClick, night, width, containerWidth,
 }: Props) => {
   const logoSize = showText ? '33px' : '44px';
 
   return (
-    <Container showText={showText} onClick={onClick}>
+    <Container width={containerWidth} showText={showText} onClick={onClick}>
       <IconWrapper height={logoSize} width={logoSize} icon={<UniWhalesColor />} />
-      {showText && <IconWrapper width="92px" icon={night ? <UniwhalesStandard /> : <UniwhalesColor />} />}
+      {showText && <IconWrapper width={width ?? '92px'} icon={night ? <UniwhalesStandard /> : <UniwhalesColor />} />}
     </Container>
   );
 };
