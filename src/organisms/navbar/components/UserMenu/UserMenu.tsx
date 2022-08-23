@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, {
+  FC,
+} from 'react';
 import { ConnectWalletButton } from '../../../../atoms/connectWalletButton/connectWalletButton';
 import { Line } from '../../../../atoms/Lines/lines';
 import { Text } from '../../../../atoms/texts/text';
@@ -11,6 +13,7 @@ export const UserMenu: FC<UserMenuProps> = ({
   account, plan, onWalletConnectClick, isMenuOpen,
 }) => {
   const { textShades } = localTheme();
+
   return (
     <NavbarUserMenu isMenuOpen={isMenuOpen}>
       {account && <CopyToClipBoard walletCut text={account} id={account} />}

@@ -58,6 +58,7 @@ Newsdesk.args = {
 FeedPage.args = {
   pageName: 'Feed',
   plan: 'Pro',
+  onBackButtonClick: () => console.debug('Click back'),
   leftSideChildren: (
     <FeedLeftSideChildren>
       <Select

@@ -52,6 +52,6 @@ export const NavbarDesktopMenu = Styled.div`
   ${tablet(css`
     display: none;
   `)}
-
-
 `;
+
+export const NavigateBackContainer = Styled(FlexBase)``;

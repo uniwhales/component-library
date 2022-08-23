@@ -11,7 +11,7 @@ import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
   NavbarContainer,
-  NavbarDesktopMenu, NavbarLeftSide, NavbarMainContent, NavbarRightSide,
+  NavbarDesktopMenu, NavbarLeftSide, NavbarMainContent, NavbarRightSide, NavigateBackContainer,
 } from './styles';
 import { NavbarProps } from './types';
 
@@ -26,15 +26,18 @@ export const Navbar: FC<NavbarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
+
   return (
     <>
       <NavbarContainer isMenuOpen={isMenuOpen}>
         <NavbarMainContent>
-          <NavbarLeftSide onClick={() => onBackButtonClick()}>
-            <IconWrapper icon={<ArrowLeftIcon />} cursor="pointer" />
-            <Text size="M-Regular">
-              {pageName}
-            </Text>
+          <NavbarLeftSide>
+            <NavigateBackContainer onClick={() => onBackButtonClick()}>
+              <IconWrapper icon={<ArrowLeftIcon />} cursor="pointer" />
+              <Text size="M-Regular">
+                {pageName}
+              </Text>
+            </NavigateBackContainer>
             {leftSideChildren}
           </NavbarLeftSide>
           <NavbarRightSide>
@@ -55,6 +58,7 @@ export const Navbar: FC<NavbarProps> = ({
                 </ButtonAtom>
               )
             }
+
             {account && (
               <IdenticonContainer onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
                 <IdenticonComponent
@@ -72,8 +76,8 @@ export const Navbar: FC<NavbarProps> = ({
           onWalletConnectClick={() => {
             onWalletConnectClick();
             /*
-                When user disconnects his wallet and we are on desktop i close the menu
-              */
+              When user disconnects his wallet and we are on desktop i close the menu
+            */
             if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
           }}
           plan={plan}
