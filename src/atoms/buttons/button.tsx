@@ -196,7 +196,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
 
     &:hover {
       background: ${props.theme.colors.primary.WATER_BLUE};
-      font-weight: 700;
+      //font-weight: 700; it this implementation does not work
     };
     &:active {
       background: ${props.theme.contrastColor.HIGH_CONTRAST};

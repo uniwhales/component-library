@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "0.0.143-development",
+  "version": "0.0.144-development",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
