@@ -15,22 +15,20 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   top: 84px;
   padding: 14px;
   border-radius: 12px;
-  visibility: ${({ isMenuOpen }) => (isMenuOpen ? 'visible' : 'hidden')};
-  opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
-  transition: visibility 0s, opacity 0.4s ease-in-out;
   position: absolute;
   max-width: 160px;
+  transition: all 800ms ease-in-out;
   
   ${tablet(css<{ isMenuOpen: boolean }>`
-    ${({ isMenuOpen }) => isMenuOpen && 'position: inherit'};
+    position: unset;
     background-color: transparent;
-    padding: 0 24px 24px 24px;
-    max-width: 100%;
     border-radius: none;
     box-shadow: none;
     top: unset;
-    bottom: 0;
-    right: 0;
+    bottom: 14px;
+    right: 14px;
     justify-content: flex-end;
+    width: 100%;
+    max-width: unset;
   `)}
 `;
