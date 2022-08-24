@@ -26,7 +26,6 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
       onClick={onClick}
       isConnected={!!account}
       transitionState={text === 'Connected'}
-      text={text}
     >
       {(!account || text === 'Connected') && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
       <Text size="S-Bold">{text}</Text>

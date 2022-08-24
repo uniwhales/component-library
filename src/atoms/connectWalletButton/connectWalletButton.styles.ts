@@ -3,7 +3,7 @@ import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 import { ConnectButtonProps } from './types';
 
-export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: boolean, text: string, transitionState: boolean }>`
+export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: boolean, transitionState: boolean }>`
   svg {
     cursor: pointer;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
@@ -27,6 +27,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
     gap: 5px;
   };
   
+  /* Allow hover actions only when not in transition state to avoid glitchy behavior */
   ${({ transitionState, isConnected, theme }) => !transitionState && css`
     &:hover {
       p {
@@ -49,7 +50,6 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
     };
     background: ${({ theme }) => theme.colors.system.GREEN};
     border: ${({ theme }) => `2px solid ${theme.colors.system.GREEN}`};
-  
   `}
   
   ${tablet(css<{ isConnected: boolean }>`

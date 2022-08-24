@@ -6,10 +6,22 @@ import { ExampleModal } from './modalModel';
 import { ModalMockDataLatestAnnouncements } from './mockData';
 import { BrochureLayout } from '../../layouts/brochure/brochureLayout.styles';
 import { Navbar } from '../../organisms/navbar/navbar';
+import { Styled } from '../../theme';
+
+const list = Array.from(Array(20).keys());
 
 export default {
   title: 'Atoms/Modal',
 } as ComponentMeta<typeof ExampleModal>;
+
+const Placeholder = Styled.div`
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+`;
 
 const Proxy = () => {
   const Example = useModal(ExampleModal);
@@ -27,6 +39,7 @@ const Proxy = () => {
         >
           Open Modal
         </ButtonAtom>
+        {list.map(() => <Placeholder />)}
       </BrochureLayout>
     </>
   );
