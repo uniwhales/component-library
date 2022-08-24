@@ -16,7 +16,6 @@ export default {
 } as ComponentMeta<typeof Navbar>;
 
 const Wrapper = Styled.div`
-  width: 95vw;
 `;
 
 const Template: ComponentStory<typeof Navbar> = (

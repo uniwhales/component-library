@@ -11,7 +11,8 @@ import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
   NavbarContainer,
-  NavbarDesktopMenu, NavbarLeftSide, NavbarMainContent, NavbarRightSide, NavigateBackContainer,
+  NavbarDesktopMenu,
+  NavbarLeftSide, NavbarMainContent, NavbarRightSide, NavigateBackContainer,
 } from './styles';
 import { NavbarProps } from './types';
 
@@ -23,13 +24,18 @@ export const Navbar: FC<NavbarProps> = ({
   rightSideChildren,
   account,
   onWalletConnectClick,
+  bottomSpacing = true,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
 
   return (
     <>
-      <NavbarContainer isMenuOpen={isMenuOpen}>
+      <NavbarContainer
+        bottomSpacing={bottomSpacing}
+        isMenuOpen={isMenuOpen}
+        account={account}
+      >
         <NavbarMainContent>
           <NavbarLeftSide>
             <NavigateBackContainer onClick={() => onBackButtonClick()}>

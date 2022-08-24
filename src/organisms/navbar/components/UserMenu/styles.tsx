@@ -6,7 +6,6 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 8px;
-  display: flex;
   align-items: flex-end;
   padding: 24px;
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
@@ -28,7 +27,10 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
     padding: 0 24px 24px 24px;
     max-width: 100%;
     border-radius: none;
-    width: 100%;
     box-shadow: none;
+    top: unset;
+    bottom: 0;
+    right: 0;
+    justify-content: flex-end;
   `)}
 `;

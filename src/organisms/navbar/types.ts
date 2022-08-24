@@ -8,4 +8,5 @@ export interface NavbarProps {
   rightSideChildren?: JSX.Element;
   onWalletConnectClick: ConnectButtonProps['onClick'];
   account?: ConnectButtonProps['account']
+  bottomSpacing?: boolean
 }

@@ -7,7 +7,7 @@ const FlexBase = Styled.div`
   align-items: center;
 `;
 
-export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
+export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean }>`
   position: sticky;
   top: 0;
   right: 0;
@@ -19,8 +19,13 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean }>`
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   gap: 24px;
-  margin-bottom: 24px;
-  ${tablet(css<{ isMenuOpen?: boolean }>`
+  margin-bottom: ${({ bottomSpacing }) => bottomSpacing && '24px'};
+
+  ${tablet(css<{ isMenuOpen?: boolean, account?: string | null }>`
+    gap: 0;
+    justify-content: flex-start;
+    max-height: ${({ isMenuOpen, account }) => (!isMenuOpen ? '104px' : account ? '239px' : '164px')};
+    transition: max-height 200ms ease-in-out;
     border-radius: ${({ isMenuOpen }) => (isMenuOpen ? '0px 0px 12px 12px' : 'none')};
   `)}
 `;
@@ -34,6 +39,7 @@ export const NavbarMainContent = Styled.div`
 
   ${tablet(css<{ isMenuOpen?: boolean }>`
     height: 104px;
+    min-height: 104px;
   `)}
 `;
 
