@@ -16,7 +16,6 @@ export default {
 } as ComponentMeta<typeof Navbar>;
 
 const Wrapper = Styled.div`
-  width: 95vw;
 `;
 
 const Template: ComponentStory<typeof Navbar> = (
@@ -58,6 +57,7 @@ Newsdesk.args = {
 FeedPage.args = {
   pageName: 'Feed',
   plan: 'Pro',
+  onBackButtonClick: () => console.debug('Click back'),
   leftSideChildren: (
     <FeedLeftSideChildren>
       <Select

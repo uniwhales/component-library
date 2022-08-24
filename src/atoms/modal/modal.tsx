@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { phone, tablet } from '../../layouts/breakpoints';
@@ -50,26 +50,35 @@ const CloseButton = Styled(Row)`
 
 export const ModalBase: FC<ModalBaseProps> = ({
   children, closeFn, icon, height, maxHeight, maxWidth,
-}) => (
-  <Overlay
-    onClick={(e) => {
-      e.stopPropagation();
-      if (closeFn) closeFn(e);
-    }}
-  >
-    <ModalContainer>
-      <ModalBody
-        height={height}
-        maxHeight={maxHeight}
-        maxWidth={maxWidth}
-        onClick={(e) => e.stopPropagation()}
-        noHover
-      >
-        <CloseButton>
-          <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
-        </CloseButton>
-        {children}
-      </ModalBody>
-    </ModalContainer>
-  </Overlay>
-);
+}) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  return (
+    <Overlay
+      onClick={(e) => {
+        e.stopPropagation();
+        if (closeFn) closeFn(e);
+      }}
+    >
+      <ModalContainer>
+        <ModalBody
+          height={height}
+          maxHeight={maxHeight}
+          maxWidth={maxWidth}
+          onClick={(e) => e.stopPropagation()}
+          noHover
+        >
+          <CloseButton>
+            <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
+          </CloseButton>
+          {children}
+        </ModalBody>
+      </ModalContainer>
+    </Overlay>
+  );
+};

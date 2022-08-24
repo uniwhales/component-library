@@ -14,7 +14,7 @@ const Container = Styled.div<{ showText?: boolean, width: CSSProperties['width']
 
 type Props = {
   showText?: boolean
-  onClick?: () => void,
+  onClick?: () => void
   night?: boolean
   width?: string
   containerWidth?: CSSProperties['width']

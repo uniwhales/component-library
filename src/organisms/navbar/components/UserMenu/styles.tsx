@@ -6,7 +6,6 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 8px;
-  display: flex;
   align-items: flex-end;
   padding: 24px;
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
@@ -16,19 +15,20 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   top: 84px;
   padding: 14px;
   border-radius: 12px;
-  visibility: ${({ isMenuOpen }) => (isMenuOpen ? 'visible' : 'hidden')};
-  opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
-  transition: visibility 0s, opacity 0.4s ease-in-out;
   position: absolute;
   max-width: 160px;
+  transition: all 800ms ease-in-out;
   
   ${tablet(css<{ isMenuOpen: boolean }>`
-    ${({ isMenuOpen }) => isMenuOpen && 'position: inherit'};
+    position: unset;
     background-color: transparent;
-    padding: 0 24px 24px 24px;
-    max-width: 100%;
     border-radius: none;
-    width: 100%;
     box-shadow: none;
+    top: unset;
+    bottom: 14px;
+    right: 14px;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: unset;
   `)}
 `;
