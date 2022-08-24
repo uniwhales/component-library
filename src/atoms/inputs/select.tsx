@@ -180,6 +180,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     display: '-webkit-box',
     flexWrap: 'nowrap',
     overflow: 'scroll',
+    scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
       '-webkit-appearance': ' none',
