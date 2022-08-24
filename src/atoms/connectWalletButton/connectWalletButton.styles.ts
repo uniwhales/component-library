@@ -3,7 +3,7 @@ import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 import { ConnectButtonProps } from './types';
 
-export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: boolean }>`
+export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: boolean, text: string, transitionState: boolean }>`
   svg {
     cursor: pointer;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
@@ -18,22 +18,39 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
   background-color: ${() => 'transparent'};
   border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.primary.UWL_BLUE}`)};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  transition: color 300ms, fill 300ms, background 300ms ease-in-out;
+  
   .button__group {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
   };
-  &:hover {
+  
+  ${({ transitionState, isConnected, theme }) => !transitionState && css`
+    &:hover {
+      p {
+        color: ${isConnected ? theme.colors.system.RED : theme.colors.system.WHITE};
+      };
+      svg {
+        fill: ${theme.colors.system.WHITE};
+      };
+      background: ${isConnected ? 'transparent' : theme.colors.system.GREEN};
+      border: ${isConnected ? 'none' : `2px solid ${theme.colors.system.GREEN}`};
+    }
+  `}
+
+  ${({ transitionState }) => transitionState && css`
     p {
-      color: ${({ theme, isConnected }) => (isConnected ? theme.colors.system.RED : theme.colors.system.WHITE)};
+      color: ${({ theme }) => theme.colors.system.WHITE};
     };
     svg {
       fill: ${({ theme }) => theme.colors.system.WHITE};
     };
-    background: ${({ theme, isConnected }) => (isConnected ? 'transparent' : theme.colors.system.GREEN)};
-    border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.system.GREEN}`)};
-  }
+    background: ${({ theme }) => theme.colors.system.GREEN};
+    border: ${({ theme }) => `2px solid ${theme.colors.system.GREEN}`};
+  
+  `}
   
   ${tablet(css<{ isConnected: boolean }>`
     &:active {
