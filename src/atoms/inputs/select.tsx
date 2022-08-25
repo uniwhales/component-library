@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import ReactSelect, {
-  ClearIndicatorProps,
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
@@ -39,6 +38,7 @@ export interface SelectProps<T extends SelectVariation> {
   isClearable?: boolean,
   isSearchable?: boolean,
   showValue?: boolean,
+  clearButtonText?: string,
 }
 
 interface StyledProps {
@@ -221,10 +221,11 @@ const getOptionLabel = ({ label, icon }: Option) => (
   </OptionContainer>
 );
 
-const ClearIndicator = (props: ClearIndicatorProps) => {
+const ClearIndicator = (props: any) => {
   const {
     innerProps: { ref, ...restInnerProps },
     selectProps,
+    clearButtonText,
   } = props;
   const theme = localTheme();
   return (
@@ -234,7 +235,7 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
     >
       <div style={{ padding: '0px 5px' }}>
         <Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
-          Clear
+          {clearButtonText}
         </Text>
       </div>
     </div>
@@ -251,6 +252,7 @@ export const Select = <T extends SelectVariation>({
   isClearable = false,
   isSearchable = false,
   showValue = false,
+  clearButtonText = 'Clear',
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -269,7 +271,7 @@ export const Select = <T extends SelectVariation>({
       components={{
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
         IndicatorSeparator: () => null,
-        ClearIndicator,
+        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText }),
       }}
       onChange={(option) => {
         if (!onSelectChange) return;

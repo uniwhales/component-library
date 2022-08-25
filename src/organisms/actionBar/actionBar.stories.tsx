@@ -27,11 +27,11 @@ export default {
 
 const Template: ComponentStory<typeof ActionBar> = (args) => {
   const { chipFilters: filters } = args;
-  const [chipValue, setChip] = useState<number>();
+  const [chipValue, setChip] = useState<number>(0);
   const [selectValue, setSelectedValue] = useState<SelectOption[]>([]);
   return (
     <ActionBar<'multi-group'>
-      chipFilterValue={chipValue as number}
+      chipFilterValue={chipValue}
       setChipFilter={setChip}
       chipFilters={filters}
       selectValue={selectValue}
