@@ -234,7 +234,7 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
     >
       <div style={{ padding: '0px 5px' }}>
         <Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
-          Clear Filters
+          Clear
         </Text>
       </div>
     </div>

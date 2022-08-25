@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ActionBar } from './actionBar';
 import { CoinStandard } from '../../atoms/icons';
-import { groupExample, SelectGroupOption } from '../../atoms/inputs/select';
+import { SelectOption } from '../../atoms/inputs/select';
+import { GroupExample } from '../../atoms/inputs/select.stories';
 
 const filtersArray: any = [
   {
@@ -27,15 +28,15 @@ export default {
 const Template: ComponentStory<typeof ActionBar> = (args) => {
   const { chipFilters: filters } = args;
   const [chipValue, setChip] = useState<number>();
-  const [selectValue, setSelectedValue] = useState<SelectGroupOption>();
+  const [selectValue, setSelectedValue] = useState<SelectOption[]>([]);
   return (
-    <ActionBar<'group'>
+    <ActionBar<'multi-group'>
       chipFilterValue={chipValue as number}
       setChipFilter={setChip}
       chipFilters={filters}
       selectValue={selectValue}
       onSelectChange={setSelectedValue}
-      selectOptions={groupExample}
+      selectOptions={GroupExample}
     />
   );
 };
