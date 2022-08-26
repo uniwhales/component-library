@@ -32,7 +32,7 @@ export const ModalBody = Styled(Card)<ModalCardProps>`
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
 
   ${tablet(css`
-    max-width: calc(100vw - 208px);
+    max-width: calc(100vw - 100px);
   `)}
 
   ${phone(css`
