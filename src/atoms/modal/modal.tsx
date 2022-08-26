@@ -25,7 +25,7 @@ export const ModalBody = Styled(Card)<ModalCardProps>`
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 4px; 
+  gap: 4px;
   max-width: ${({ maxWidth }) => maxWidth ?? '600px'};
   height: ${({ height }) => height ?? '62vh'};
   max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
@@ -49,7 +49,7 @@ const CloseButton = Styled(Row)`
 `;
 
 export const ModalBase: FC<ModalBaseProps> = ({
-  children, closeFn, icon, height, maxHeight, maxWidth,
+  children, closeFn, icon, height, maxHeight, maxWidth, noCloseIcon,
 }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -73,9 +73,11 @@ export const ModalBase: FC<ModalBaseProps> = ({
           onClick={(e) => e.stopPropagation()}
           noHover
         >
+          {!noCloseIcon && (
           <CloseButton>
             <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
           </CloseButton>
+          )}
           {children}
         </ModalBody>
       </ModalContainer>

@@ -10,14 +10,19 @@ export interface ModalData {
 }
 
 export type ModalCardProps = {
-  height: string;
+  height?: string;
 } & Pick<CSSProperties, | 'maxWidth' | 'maxHeight'>;
 
 export type ModalBaseProps = {
   closeFn?: MouseEventHandler<HTMLDivElement>
   children: ReactElement
   icon?: ReactElement
+  noCloseIcon?: boolean;
 } & ModalCardProps;
 export type ExampleModalProps = {
   latest: ModalData[];
+} & Pick<ModalBaseProps, 'closeFn'>;
+
+export type NoIconModalProps = {
+  placeholderText: string;
 } & Pick<ModalBaseProps, 'closeFn'>;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
 import { ModalBase } from './modal';
-import { ExampleModalProps } from './types';
+import { ExampleModalProps, NoIconModalProps } from './types';
 
 const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
     background-color: transparent;
@@ -14,7 +14,7 @@ const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
     border-radius: 12px;
     background:inherit;
     overflow-y: auto;
-    gap: ${({ gap }) => gap}; 
+    gap: ${({ gap }) => gap};
 `;
 
 const AnnouncementCardContainerMobile = Styled.div`
@@ -64,5 +64,20 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
     </LatestAnnouncementsList>
   </ModalBase>
 );
+
+export const noIconModal = ({ placeholderText, closeFn }: NoIconModalProps) => (
+  <ModalBase
+    closeFn={closeFn}
+    noCloseIcon
+    height="auto"
+  >
+    <>
+      <Text size="L-Bold">No Close Icon</Text>
+      <Text size="S-Regular">{placeholderText}</Text>
+    </>
+  </ModalBase>
+);
+
+export const NoIconModal = create(noIconModal);
 
 export const ExampleModal = create(exampleModal);
