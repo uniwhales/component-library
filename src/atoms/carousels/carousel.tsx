@@ -11,6 +11,8 @@ export const Carousel: FC<CarouselProps> = ({ children, onChange, borderRadius }
     onChange={(i) => {
       onChange(i);
     }}
+    preventMovementUntilSwipeScrollTolerance
+    swipeScrollTolerance={60}
   >
     {children}
   </CustomCarousel>

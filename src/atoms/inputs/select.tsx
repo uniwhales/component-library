@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import ReactSelect, {
-  ClearIndicatorProps,
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
@@ -39,6 +38,7 @@ export interface SelectProps<T extends SelectVariation> {
   isClearable?: boolean,
   isSearchable?: boolean,
   showValue?: boolean,
+  clearButtonText?: string,
 }
 
 interface StyledProps {
@@ -82,6 +82,12 @@ const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
+`;
+
+const ClearButtonContainer = Styled.div`
+  cursor: pointer;
+  padding: 0 5px;
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
@@ -117,6 +123,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     height: '40px',
     svg: {
       transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
+      cursor: 'pointer',
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
@@ -128,6 +135,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    cursor: 'pointer',
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.WATER_BLUE
       : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -162,6 +170,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 400,
+    cursor: 'pointer',
     svg: {
       transform: 'unset',
     },
@@ -180,6 +189,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     display: '-webkit-box',
     flexWrap: 'nowrap',
     overflow: 'scroll',
+    scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
       '-webkit-appearance': ' none',
@@ -220,22 +230,26 @@ const getOptionLabel = ({ label, icon }: Option) => (
   </OptionContainer>
 );
 
-const ClearIndicator = (props: ClearIndicatorProps) => {
+const ClearIndicator = (props: any) => {
   const {
     innerProps: { ref, ...restInnerProps },
     selectProps,
+    clearButtonText,
   } = props;
   const theme = localTheme();
+  const [hover, setHover] = useState(false);
   return (
     <div
       {...restInnerProps}
       ref={ref}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <div style={{ padding: '0px 5px' }}>
-        <Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
-          Clear Filters
+      <ClearButtonContainer>
+        <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.WATER_BLUE : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
+          {clearButtonText}
         </Text>
-      </div>
+      </ClearButtonContainer>
     </div>
   );
 };
@@ -250,6 +264,7 @@ export const Select = <T extends SelectVariation>({
   isClearable = false,
   isSearchable = false,
   showValue = false,
+  clearButtonText = 'Clear',
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -268,7 +283,7 @@ export const Select = <T extends SelectVariation>({
       components={{
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
         IndicatorSeparator: () => null,
-        ClearIndicator,
+        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText }),
       }}
       onChange={(option) => {
         if (!onSelectChange) return;

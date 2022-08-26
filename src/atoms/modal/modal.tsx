@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { phone, tablet } from '../../layouts/breakpoints';
@@ -32,7 +32,7 @@ export const ModalBody = Styled(Card)<ModalCardProps>`
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
 
   ${tablet(css`
-    max-width: calc(100vw - 208px);
+    max-width: calc(100vw - 100px);
   `)}
 
   ${phone(css`
@@ -50,28 +50,37 @@ const CloseButton = Styled(Row)`
 
 export const ModalBase: FC<ModalBaseProps> = ({
   children, closeFn, icon, height, maxHeight, maxWidth, noCloseIcon,
-}) => (
-  <Overlay
-    onClick={(e) => {
-      e.stopPropagation();
-      if (closeFn) closeFn(e);
-    }}
-  >
-    <ModalContainer>
-      <ModalBody
-        height={height}
-        maxHeight={maxHeight}
-        maxWidth={maxWidth}
-        onClick={(e) => e.stopPropagation()}
-        noHover
-      >
-        {!noCloseIcon && (
+}) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  return (
+    <Overlay
+      onClick={(e) => {
+        e.stopPropagation();
+        if (closeFn) closeFn(e);
+      }}
+    >
+      <ModalContainer>
+        <ModalBody
+          height={height}
+          maxHeight={maxHeight}
+          maxWidth={maxWidth}
+          onClick={(e) => e.stopPropagation()}
+          noHover
+        >
+          {!noCloseIcon && (
           <CloseButton>
             <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
           </CloseButton>
-        )}
-        {children}
-      </ModalBody>
-    </ModalContainer>
-  </Overlay>
-);
+          )}
+          {children}
+        </ModalBody>
+      </ModalContainer>
+    </Overlay>
+  );
+};

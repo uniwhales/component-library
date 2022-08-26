@@ -11,16 +11,23 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
   const [text, setText] = useState<string>('Connect');
 
   useEffect(() => {
-    setText(account ? 'Disconnect' : 'Connect');
+    if (!account) {
+      setText('Connect');
+      return () => {};
+    }
+
+    setText('Connected');
+    const update = setTimeout(() => setText(account ? 'Disconnect' : 'Connect'), 1000);
+    return () => clearTimeout(update);
   }, [account]);
 
   return (
     <ConnectButton
       onClick={onClick}
-      account={account}
       isConnected={!!account}
+      transitionState={text === 'Connected'}
     >
-      {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
+      {(!account || text === 'Connected') && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
       <Text size="S-Bold">{text}</Text>
     </ConnectButton>
   );
