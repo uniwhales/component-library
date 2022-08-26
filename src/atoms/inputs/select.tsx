@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
@@ -82,6 +82,12 @@ const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
+`;
+
+const ClearButtonContainer = Styled.div`
+  cursor: pointer;
+  padding: 0 5px;
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
@@ -117,6 +123,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     height: '40px',
     svg: {
       transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
+      cursor: 'pointer',
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
@@ -128,6 +135,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    cursor: 'pointer',
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.WATER_BLUE
       : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -162,6 +170,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 400,
+    cursor: 'pointer',
     svg: {
       transform: 'unset',
     },
@@ -228,16 +237,19 @@ const ClearIndicator = (props: any) => {
     clearButtonText,
   } = props;
   const theme = localTheme();
+  const [hover, setHover] = useState(false);
   return (
     <div
       {...restInnerProps}
       ref={ref}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <div style={{ padding: '0px 5px' }}>
-        <Text size="S-Regular" color={selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
+      <ClearButtonContainer>
+        <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.WATER_BLUE : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
           {clearButtonText}
         </Text>
-      </div>
+      </ClearButtonContainer>
     </div>
   );
 };
