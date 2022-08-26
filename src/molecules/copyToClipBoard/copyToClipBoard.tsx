@@ -39,7 +39,7 @@ export const CopyToClipBoard = ({ text = '0xF592602a9454162760A68E77ceA826e4386C
   };
   return (
     <Wrapper>
-      <Text color={theme.textShades.SHADE_MINUS_1} size="M-Regular">{walletCut ? shortenAddressTo11Chars(text) : text }</Text>
+      <Text color={theme.textShades.SHADE_MINUS_1} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : text }</Text>
       <div data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper cursor="pointer" width="17px" height="17px" fill={theme.textShades.SHADE_MINUS_1} onClick={copyText} icon={<CopyStandard />} />
