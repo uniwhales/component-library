@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, MouseEventHandler } from 'react';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { UniWhalesColor, UniwhalesColor, UniwhalesStandard } from '../icons';
@@ -14,7 +14,7 @@ const Container = Styled.div<{ showText?: boolean, width: CSSProperties['width']
 
 type Props = {
   showText?: boolean
-  onClick?: () => void
+  onClick?: MouseEventHandler<HTMLDivElement>
   night?: boolean
   width?: string
   containerWidth?: CSSProperties['width']
