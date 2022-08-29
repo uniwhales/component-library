@@ -54,6 +54,7 @@ export * from './utils/shortenAddress';
 export * from './utils/format';
 export * from './utils/useClickOutside';
 export * from './utils/constants';
+export * from './utils/getSize';
 
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,
