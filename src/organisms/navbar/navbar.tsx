@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
 import { ArrowLeftIcon } from '../../atoms/icons';
@@ -7,6 +7,7 @@ import { HorizontalDots } from '../../atoms/icons/navigationIcons/HorizontalDots
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
+import { useClickOutside } from '../../utils/useClickOutside';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
@@ -28,9 +29,10 @@ export const Navbar: FC<NavbarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
-
+  const clickRef = useRef(null);
+  useClickOutside(clickRef, () => setIsMenuOpen(false));
   return (
-    <>
+    <div ref={clickRef}>
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
@@ -91,6 +93,6 @@ export const Navbar: FC<NavbarProps> = ({
         />
       </NavbarContainer>
       <NavbarDesktopMenu />
-    </>
+    </div>
   );
 };
