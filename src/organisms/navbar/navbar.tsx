@@ -37,7 +37,6 @@ export const Navbar: FC<NavbarProps> = ({
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
-
       >
         <NavbarMainContent>
           <NavbarLeftSide>
@@ -69,7 +68,10 @@ export const Navbar: FC<NavbarProps> = ({
             }
 
             {account && (
-              <IdenticonContainer ref={clickRef} onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
+              <IdenticonContainer
+                ref={clickRef}
+                onClick={() => { setIsMenuOpen(!isMenuOpen); }}
+              >
                 <IdenticonComponent
                   id={account}
                   containerSize="44px"
