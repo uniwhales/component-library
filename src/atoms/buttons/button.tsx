@@ -40,13 +40,13 @@ const ButtonPrimary = Styled(Button)`
   // active state
   ${(props) => !props.disabled && css`
       cursor: pointer;
-      background: ${props.theme.gradients.primary.BLURPLE};
+      background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
       border: none;
       &:hover {
-        background: ${props.theme.gradients.primary.BLURPLE_HIGHLIGHTED};
+        background: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
       };
       &:active {
-       background: ${props.theme.gradients.primary.BLURPLE};
+       background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
       };
   `}
 `;
@@ -195,7 +195,7 @@ const ButtonSpecialSmallNormal = Styled(Button)`
     background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
 
     &:hover {
-      background: ${props.theme.colors.primary.WATER_BLUE};
+      background: ${props.theme.colors.primary.MANGO};
       //font-weight: 700; it this implementation does not work
     };
     &:active {
@@ -231,7 +231,7 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
   cursor: pointer;
 
   &:hover, &:active {
-    color: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+    color: ${({ theme }) => theme.colors.primary.MANGO};
   }
 `;
 export const ButtonAtom:FC<ButtonProps> = ({

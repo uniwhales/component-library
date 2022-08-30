@@ -36,7 +36,7 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'
       border-radius: 50%;
       width: 20px;
       height: 20px;
-      background: ${(props) => (props.disabled ? 'none' : props.theme.gradients.primary.BLURPLE)}
+      background: ${(props) => (props.disabled ? 'none' : props.theme.gradients.primary.MAIN_BLUE_GRADIENT)}
     }
   }
   ${(props) => props.selected

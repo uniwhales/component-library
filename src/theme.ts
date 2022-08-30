@@ -24,7 +24,7 @@ const DarkTheme = {
   },
   contrastColor: {
     HIGH_CONTRAST: '#F8F9FF',
-    LOW_CONTRAST: '#BBBCCE',
+    LOW_CONTRAST: '#6A7382',
   },
   inverseContrastColor: {
     INVERSE_HIGH_CONTRAST: '#F8F9FF',
@@ -43,15 +43,15 @@ const LightTheme = {
     SHADE_MINUS_1: '#797A84',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#D1DAFF',
+    NEUTRAL_SHADE_0: '#E2ECFF',
     SHADE_PLUS_1: '#FFFFFF',
-    SHADE_PLUS_2: '#FDFDFF',
-    SHADE_PLUS_3: '#F9FAFF',
-    BG_SHADE_PLUS_4: '#EFF1F8',
+    SHADE_PLUS_2: '#F7F8FA',
+    SHADE_PLUS_3: '#F0F1F5',
+    BG_SHADE_PLUS_4: '#E2E4EB',
   },
   contrastColor: {
-    HIGH_CONTRAST: '#355DFF',
-    LOW_CONTRAST: '#0993EC',
+    HIGH_CONTRAST: '#1FA7F4',
+    LOW_CONTRAST: '#80C6E4',
   },
   inverseContrastColor: {
     INVERSE_HIGH_CONTRAST: '#355DFF',
@@ -66,15 +66,15 @@ const Theme = {
   ...DarkTheme,
   colors: {
     primary: {
-      UWL_BLUE: '#355DFF',
-      WATER_BLUE: '#2979FE',
-      DARK_BLUE: '#0846B5',
+      UWL_BLUE: '#1FA7F4',
+      MANGO: '#CBAA00',
+      DARK_BLUE: '#142A63',
     },
     secondary: {
-      TURQUOISE: '#0993EC',
-      FUSCHIA: '#E4599C',
+      TEAL: '#01C5E0',
+      CANARY: '#CED225',
       TANGY: '#DD8442',
-      PURPLE: '#B769DC',
+      SKY: '#2A5ABA',
     },
     system: {
       RED: '#FF6B6B',
@@ -88,18 +88,21 @@ const Theme = {
   },
   gradients: {
     primary: {
-      BLURPLE: 'linear-gradient(180deg, #2D75E2 0%, #4A00E0 100%)',
-      BLURPLE_FLIPPED: 'linear-gradient(180deg, #4A00E0 0%, #2D75E2 94.73%)',
-      BLURPLE_HIGHLIGHTED: 'linear-gradient(180deg, #509CF4 0%, #4A00E0 100%)',
+      MAIN_BLUE_GRADIENT: 'linear-gradient(180deg, #5AD7F9 0%, #255296 100%)',
+      MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #4A00E0 0%, #2D75E2 94.73%)',
+      MAIN_HIGHLIGHT_GRADIENT: 'linear-gradient(180deg, #255296 0%, #95E6FF 100%)',
     },
     secondary: {
-      TURQUOISE: 'linear-gradient(0deg, rgba(9, 147, 236, 0) 21.81%, rgba(9, 147, 236, 0.1) 70.37%)',
-      FUSCHIA: 'linear-gradient(0deg, rgba(241, 2, 117, 0) 20.52%, rgba(241, 2, 117, 0.1) 123.83%)',
-      TANGY: 'linear-gradient(0deg, rgba(221, 132, 66, 0) -1.31%, rgba(221, 132, 66, 0.1) 80.31%) ',
+      TEAL: 'linear-gradient(180deg, #OlAAEO 0%, #COFBFF 100%)',
+      CANARY: 'linear-gradient(180deg, #DB9COO 0%, #EEFF41 100%)',
+      TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
+      SKY: 'linear-gradient(180deg, #2D467F 0%, #489BFC 100%)',
+
     },
     system: {
       CHALK_DUST: 'linear-gradient(180deg, #FF6B6B 0%, rgba(255, 107, 107, 0) 100%)',
       LAVENDAR: 'linear-gradient(180deg, #1DD1A1 0%, rgba(29, 209, 161, 0) 100%)',
+      GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
     },
   },
   zIndex: ZIndex,

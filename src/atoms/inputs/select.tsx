@@ -114,7 +114,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     boxSizing: 'border-box',
     background: isFocused
-      ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
+      ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',
     padding: '0 10px 0 10px',
@@ -137,7 +137,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     justifyContent: 'space-between',
     cursor: 'pointer',
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
-    background: isSelected ? theme.colors.primary.WATER_BLUE
+    background: isSelected ? theme.colors.primary.MANGO
       : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
       background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -246,7 +246,7 @@ const ClearIndicator = (props: any) => {
       onMouseLeave={() => setHover(false)}
     >
       <ClearButtonContainer>
-        <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.WATER_BLUE : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
+        <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.MANGO : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
           {clearButtonText}
         </Text>
       </ClearButtonContainer>

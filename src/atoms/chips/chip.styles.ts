@@ -15,7 +15,7 @@ export const PrimaryChip = Styled(CustomChip)`
   padding: 4px 12px;
   gap: 8px;
   border-radius: 40px;
-  background: ${(props) => props.theme.gradients.primary.BLURPLE};
+  background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   svg {
     height: 20px;
     width: 20px;
@@ -45,7 +45,7 @@ export const EditableChip = Styled(CustomChip)`
   border: ${(props) => `1px solid ${props.theme.textShades.SHADE_MINUS_2}
 `};
   &:hover {
-    background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+    background: ${(props) => props.theme.colors.primary.MANGO};
     font-weight: 700;
   }
 `;

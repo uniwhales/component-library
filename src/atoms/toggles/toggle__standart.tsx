@@ -46,11 +46,11 @@ const FakeInput = Styled.input<{ size:any }>`
   width: 0;
   height: 0;
   :checked + ${Toggle} {
-    background: ${(props) => props.theme.gradients.primary.BLURPLE};
+    background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   }
   :hover + ${Toggle} {
     background: ${(props) => (props.defaultChecked
-    ? props.theme.gradients.primary.BLURPLE_HIGHLIGHTED
+    ? props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT
     : 'rgba(41, 121, 254, 0.5);')};
   }
   :checked + ${Toggle}:before {

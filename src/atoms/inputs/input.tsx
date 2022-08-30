@@ -30,7 +30,7 @@ const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, isError?:
   box-sizing: border-box;
   background: ${(props) => props.isError && props.theme.colors.system.RED};
   ${({ focus, disabled, isError }) => focus && !disabled && !isError && css`
-    background: ${(props) => props.theme.gradients.primary.BLURPLE};
+    background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   `}
 `;
 const InputUserMessage = Styled.div`

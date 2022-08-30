@@ -7,10 +7,10 @@ export type CustomTagProps = Pick<TagProps, 'isOn' | 'tabIndex'> & Pick<CSSPrope
 
 const BackgroundAndBorderColors = [
   { background: Theme.colors.primary.UWL_BLUE, border: `1px solid ${Theme.colors.primary.UWL_BLUE}` },
-  { background: Theme.colors.secondary.PURPLE, border: `1px solid ${Theme.colors.secondary.PURPLE}` },
+  { background: Theme.colors.secondary.SKY, border: `1px solid ${Theme.colors.secondary.SKY}` },
   { background: Theme.colors.secondary.TANGY, border: `1px solid ${Theme.colors.secondary.TANGY}` },
-  { background: Theme.colors.secondary.FUSCHIA, border: `1px solid ${Theme.colors.secondary.FUSCHIA}` },
-  { background: Theme.colors.primary.WATER_BLUE, border: `1px solid ${Theme.colors.primary.WATER_BLUE}` },
+  { background: Theme.colors.secondary.CANARY, border: `1px solid ${Theme.colors.secondary.CANARY}` },
+  { background: Theme.colors.primary.MANGO, border: `1px solid ${Theme.colors.primary.MANGO}` },
   { background: Theme.colors.primary.DARK_BLUE, border: `1px solid ${Theme.colors.primary.DARK_BLUE}` },
 ];
 
@@ -23,11 +23,11 @@ export const CustomTag = Styled.div<CustomTagProps>`
   transition: all .3s;
   text-align: center;
   border: ${({ tabIndex }) => BackgroundAndBorderColors[tabIndex].border};
-  
+
   @media screen and (min-width: ${WidthBreakpoints.SmallDesktop.bottom}px) {
     &:hover {
         background: ${({ isOn, tabIndex }) => (isOn ? 'none' : BackgroundAndBorderColors[tabIndex].background)};
-        
+
         & > *  {
           color: ${({ isOn, theme }) => (isOn ? theme.textShades.SHADE_MINUS_3 : theme.colors.system.WHITE)};
         }

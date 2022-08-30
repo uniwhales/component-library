@@ -44,10 +44,10 @@ const bodySizes: BodySizes[] = [
 ];
 const hyperLinks: HyperLinkVariation[] = [
   HyperLinkVariation.Default,
-  HyperLinkVariation.Fuschia,
-  HyperLinkVariation.Purple,
+  HyperLinkVariation.Canary,
+  HyperLinkVariation.Sky,
   HyperLinkVariation.Tangy,
-  HyperLinkVariation.Turquoise,
+  HyperLinkVariation.Teal,
   HyperLinkVariation.Inverse,
   HyperLinkVariation.InverseNoLine,
 

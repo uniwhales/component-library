@@ -9,10 +9,10 @@ export const NavigationLi = Styled.li<{
   display: flex;
   align-items: center;
   list-style-type: none;
-  
+
   height: 48px;
   width: ${({ width }) => width};
-  
+
   background-color: ${({ lvl, theme }) => (lvl === 0 ? theme.containerAndCardShades.SHADE_PLUS_3 : lvl === 1 ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
   opacity: ${({ isDisabled, isHighlighted }) => (isHighlighted ? 1 : !isDisabled ? 0.75 : 0.5)};
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
@@ -36,7 +36,7 @@ export const IconContainer = Styled.div<{ isExpanded: boolean, isDisabled: boole
 
   :hover {
     svg {
-      fill: ${({ isHighlighted, theme }) => (isHighlighted ? theme.colors.primary.WATER_BLUE : theme.textShades.SHADE_MINUS_3)}
+      fill: ${({ isHighlighted, theme }) => (isHighlighted ? theme.colors.primary.MANGO : theme.textShades.SHADE_MINUS_3)}
     }
   }
 `;

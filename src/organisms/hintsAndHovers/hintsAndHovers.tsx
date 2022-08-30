@@ -16,7 +16,7 @@ export const HintsAndHovers: FC<HintsAndHoversProps> = ({
       data-html
       data-tip={typeof hint === 'string' ? hint : ReactDOMServer.renderToString(hint)}
     >
-      <IconWrapper fill={theme.colors.secondary.TURQUOISE} icon={icon || <InfoStandard />} />
+      <IconWrapper fill={theme.colors.secondary.TEAL} icon={icon || <InfoStandard />} />
       <Tooltip
         backgroundColor={theme.containerAndCardShades.BG_SHADE_PLUS_4}
         textColor={theme.textShades.SHADE_MINUS_3}

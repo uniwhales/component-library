@@ -67,7 +67,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     boxSizing: 'border-box',
     background: selectProps.menuIsOpen || isFocused
-      ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
+      ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: '1px solid transparent',
     outline: 'none',
     boxShadow: 'none',
@@ -111,7 +111,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       fill: isSelected && theme.colors.system.WHITE,
     },
     paddingLeft: 8,
-    background: isSelected ? `${theme.colors.primary.WATER_BLUE}!important`
+    background: isSelected ? `${theme.colors.primary.MANGO}!important`
       : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
       background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,

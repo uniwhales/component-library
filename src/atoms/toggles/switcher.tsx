@@ -32,7 +32,7 @@ const Toggle = Styled.span<SwitcherProps>`
     background: ${(props) => !props.disabled && props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
     :before {
       box-shadow: ${(props) => !props.disabled && props.theme.dropShadow.REGULAR};
-      background: ${(props) => !props.disabled && props.theme.gradients.primary.BLURPLE_HIGHLIGHTED};
+      background: ${(props) => !props.disabled && props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
     }
   }
 
@@ -42,7 +42,7 @@ const Toggle = Styled.span<SwitcherProps>`
     height: 100%;
     width: 50%;
     bottom: 0;
-    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.gradients.primary.BLURPLE)};
+    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.gradients.primary.MAIN_BLUE_GRADIENT)};
     transition: 0.4s;
     border-radius: 4px;
     transform: ${(props) => {

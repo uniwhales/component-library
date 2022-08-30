@@ -67,8 +67,8 @@ export const MediaTypeIcon = Styled.div<{ contentType: ContentType, size: Conten
     width: ${({ size }) => (size === 'S' ? 24 : 36)}px;
     background-color: ${({ contentType, theme }) => {
     if (contentType === ContentType.Article) return theme.colors.secondary.TANGY;
-    if (contentType === ContentType.Video) return theme.colors.secondary.PURPLE;
-    return theme.colors.secondary.FUSCHIA;
+    if (contentType === ContentType.Video) return theme.colors.secondary.SKY;
+    return theme.colors.secondary.CANARY;
   }};
 `;
 

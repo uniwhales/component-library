@@ -33,16 +33,16 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
       return 'transparent';
     }
 
-    return props.theme.colors.primary.WATER_BLUE;
+    return props.theme.colors.primary.MANGO;
   }};
   border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
   background-color: ${(props) => {
     if (!props.selected) return props.theme.colors.system.WHITE;
     if (props.disabled && props.selected) {
-      return props.theme.colors.secondary.TURQUOISE;
+      return props.theme.colors.secondary.TEAL;
     }
 
-    return props.theme.colors.primary.WATER_BLUE;
+    return props.theme.colors.primary.MANGO;
   }};
   opacity: ${(props) => props.disabled && !props.selected && '0.7'};
   cursor: pointer;
@@ -93,7 +93,7 @@ export const Checkbox: FC<CheckboxProps> = ({
           stroke={
             selected
               ? theme.colors.system.WHITE
-              : theme.colors.primary.WATER_BLUE
+              : theme.colors.primary.MANGO
           }
           fill="none"
           icon={<Check />}

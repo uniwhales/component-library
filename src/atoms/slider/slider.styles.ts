@@ -25,7 +25,7 @@ const trackFill = css<Pick<SliderProps, 'value'>>`
 
 const fill = css`
   height: 8px;
-  background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+  background: ${(props) => props.theme.colors.primary.MANGO};
   border-radius: 12px;
 `;
 
@@ -39,7 +39,7 @@ const thumb = css<Pick<SliderProps, 'value'>>`
     ? props.theme.colors.system.WHITE
     : props.value === 0
       ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0
-      : props.theme.colors.primary.WATER_BLUE)};
+      : props.theme.colors.primary.MANGO)};
   &:hover {
     background: ${(props) => props.theme.colors.system.WHITE};
   }
