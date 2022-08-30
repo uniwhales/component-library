@@ -100,8 +100,6 @@ const Theme = {
 
     },
     system: {
-      CHALK_DUST: 'linear-gradient(180deg, #FF6B6B 0%, rgba(255, 107, 107, 0) 100%)',
-      LAVENDAR: 'linear-gradient(180deg, #1DD1A1 0%, rgba(29, 209, 161, 0) 100%)',
       GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
     },
   },
