@@ -29,6 +29,8 @@ export * from './molecules/tokenPoolCard/tokenPoolCard';
 export * from './molecules/kebabMenu/kebabMenu';
 export * from './molecules/meatballMenu/meatballMenu';
 export * from './molecules/modals/modal';
+export * from './molecules/stickyActionBar/stickyActionBar';
+export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
@@ -54,6 +56,7 @@ export * from './utils/shortenAddress';
 export * from './utils/format';
 export * from './utils/useClickOutside';
 export * from './utils/constants';
+export * from './utils/getSize';
 
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,
