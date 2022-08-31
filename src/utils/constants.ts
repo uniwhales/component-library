@@ -6,6 +6,7 @@ export enum ZIndex {
   OVERLAY,
   MODAL,
   NAVBAR,
+  USER_MENU,
   SIDEBAR,
   TOOLTIP,
 }
