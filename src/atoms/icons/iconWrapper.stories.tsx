@@ -153,6 +153,16 @@ import {
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
 import { HorizontalDots } from './navigationIcons/HorizontalDots';
+import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
+import { DogechainColor } from './chains/fullColorStyle/DogechainColor';
+import { ApproveIcon } from './feed/ApproveIcon';
+import { BridgeIcon } from './feed/BridgeIcon';
+import { Call } from './feed/Call';
+import { LpIcon } from './feed/LpIcon';
+import { NftTradeIcon } from './feed/NftTradeIcon';
+import { RevokeIcon } from './feed/RevokeIcon';
+import { SwapIcon } from './feed/SwapIcon';
+import { Unknown } from './feed/Unknown';
 
 export default {
   title: 'Atoms/Icons',
@@ -224,6 +234,8 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wallet Connect" icon={<WalletConnectColor />} />
     <IconWrapper name="Uniwhales" icon={<UniWhalesColor />} />
     <IconWrapper name="0x" icon={<OxColor />} />
+    <IconWrapper name="evmos" icon={<EvmosColor />} />
+    <IconWrapper name="dogechain" icon={<DogechainColor />} />
   </>
 );
 
@@ -354,6 +366,20 @@ const Template8: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template9: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper name="Approve" icon={<ApproveIcon />} />
+    <IconWrapper name="Bridge" icon={<BridgeIcon />} />
+    <IconWrapper name="Call" icon={<Call />} />
+    <IconWrapper name="LP" icon={<LpIcon />} />
+    <IconWrapper name="NFT Trade" icon={<NftTradeIcon />} />
+    <IconWrapper name="Revoke" icon={<RevokeIcon />} />
+    <IconWrapper name="Swap" icon={<SwapIcon />} />
+    <IconWrapper name="Unknown" icon={<Unknown />} />
+
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
@@ -362,6 +388,7 @@ export const misc = Template5.bind({});
 export const navigationIconsColor = Template6.bind({});
 export const generalFilledStyle = Template7.bind({});
 export const generalFullColor = Template8.bind({});
+export const feedIcons = Template9.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
