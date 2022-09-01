@@ -15,7 +15,7 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?
   flex-direction: column;
   justify-content: center;
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-  box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
+  box-shadow: ${({ theme, bottomSpacing }) => bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   gap: 24px;
