@@ -23,7 +23,7 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   height: ${(props) => (getCheckboxSize(props.size))};
   border: 2px solid ${(props) => {
     if (props.hover && !props.selected && !props.disabled) {
-      return props.theme.textShades.SHADE_MINUS_2;
+      return props.theme.colors.secondary.TEAL;
     }
 
     if (
@@ -37,9 +37,9 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   }};
   border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
   background-color: ${(props) => {
-    if (!props.selected) return props.theme.colors.system.WHITE;
+    if (!props.selected) return 'transparent';
     if (props.disabled && props.selected) {
-      return props.theme.colors.secondary.TEAL;
+      return props.theme.colors.system.GREEN;
     }
 
     return props.theme.colors.primary.MANGO;
@@ -92,7 +92,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         <IconWrapper
           stroke={
             selected
-              ? theme.colors.system.WHITE
+              ? theme.colors.primary.DARK_BLUE
               : theme.colors.primary.MANGO
           }
           fill="none"

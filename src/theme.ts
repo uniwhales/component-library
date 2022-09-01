@@ -26,10 +26,6 @@ const DarkTheme = {
     HIGH_CONTRAST: '#F8F9FF',
     LOW_CONTRAST: '#6A7382',
   },
-  inverseContrastColor: {
-    INVERSE_HIGH_CONTRAST: '#F8F9FF',
-    INVERSE_LOW_CONTRAST: '#BBBCCE',
-  },
   dropShadow: {
     REGULAR: '',
   },
@@ -52,10 +48,6 @@ const LightTheme = {
   contrastColor: {
     HIGH_CONTRAST: '#1FA7F4',
     LOW_CONTRAST: '#80C6E4',
-  },
-  inverseContrastColor: {
-    INVERSE_HIGH_CONTRAST: '#355DFF',
-    INVERSE_LOW_CONTRAST: '#0993EC',
   },
   dropShadow: {
     REGULAR: '',

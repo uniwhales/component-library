@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
-  Placeholder, Select, SelectGroupOption, SelectOption,
+  Placeholder, Select, SelectOption,
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {

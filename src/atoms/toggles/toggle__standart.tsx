@@ -36,7 +36,7 @@ const Toggle = Styled.span<{ size: string }>`
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
-    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => props.theme.colors.primary.MANGO};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -45,13 +45,11 @@ const FakeInput = Styled.input<{ size:any }>`
   opacity: 0;
   width: 0;
   height: 0;
+  :hover + ${Toggle} {
+    background: ${(props) => props.theme.colors.secondary.SKY};
+  }
   :checked + ${Toggle} {
     background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-  }
-  :hover + ${Toggle} {
-    background: ${(props) => (props.defaultChecked
-    ? props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT
-    : 'rgba(41, 121, 254, 0.5);')};
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
