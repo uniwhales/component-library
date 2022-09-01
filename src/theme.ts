@@ -58,7 +58,7 @@ const Theme = {
   ...DarkTheme,
   colors: {
     primary: {
-      UWL_BLUE: '#1FA7F4',
+      MAIN_BLUE: '#1FA7F4',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
     },

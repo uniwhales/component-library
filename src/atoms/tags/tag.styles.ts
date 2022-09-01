@@ -6,7 +6,7 @@ import { tablet, WidthBreakpoints } from '../../layouts/breakpoints';
 export type CustomTagProps = Pick<TagProps, 'isOn' | 'tabIndex'> & Pick<CSSProperties, 'width'>;
 
 const BackgroundAndBorderColors = [
-  { background: Theme.colors.primary.UWL_BLUE, border: `1px solid ${Theme.colors.primary.UWL_BLUE}` },
+  { background: Theme.colors.primary.MAIN_BLUE, border: `1px solid ${Theme.colors.primary.MAIN_BLUE}` },
   { background: Theme.colors.secondary.SKY, border: `1px solid ${Theme.colors.secondary.SKY}` },
   { background: Theme.colors.secondary.TANGY, border: `1px solid ${Theme.colors.secondary.TANGY}` },
   { background: Theme.colors.secondary.CANARY, border: `1px solid ${Theme.colors.secondary.CANARY}` },

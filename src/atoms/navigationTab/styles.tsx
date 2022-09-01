@@ -45,7 +45,7 @@ export const HighlightMark = Styled.div<{ isActive: boolean, lvl: number }>`
   height: 100%;
   width: 4px;
   border: none;
-  background-color: ${({ isActive, theme, lvl }) => isActive && (lvl >= 2 ? theme.contrastColor.HIGH_CONTRAST : lvl === 1 ? theme.colors.primary.DARK_BLUE : theme.colors.primary.UWL_BLUE)};
+  background-color: ${({ isActive, theme, lvl }) => isActive && (lvl >= 2 ? theme.contrastColor.HIGH_CONTRAST : lvl === 1 ? theme.colors.primary.DARK_BLUE : theme.colors.primary.MAIN_BLUE)};
   border-radius: ${({ isActive }) => isActive && '0 12px 12px 0'};
 `;
 

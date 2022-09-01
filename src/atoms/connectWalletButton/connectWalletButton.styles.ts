@@ -16,17 +16,17 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
   font-family: inherit;
   height: 40px;
   background-color: ${() => 'transparent'};
-  border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.primary.UWL_BLUE}`)};
+  border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   transition: color 300ms, fill 300ms, background 300ms ease-in-out;
-  
+
   .button__group {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
   };
-  
+
   /* Allow hover actions only when not in transition state to avoid glitchy behavior */
   ${({ transitionState, isConnected, theme }) => !transitionState && css`
     &:hover {
@@ -51,7 +51,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
     background: ${({ theme }) => theme.colors.system.GREEN};
     border: ${({ theme }) => `2px solid ${theme.colors.system.GREEN}`};
   `}
-  
+
   ${tablet(css<{ isConnected: boolean }>`
     &:active {
       p {

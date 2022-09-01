@@ -29,7 +29,7 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'
   cursor: pointer;
   &:hover ~ ${RadioButtonLabel} {
     background: transparent;
-    border: ${(props) => (props.disabled ? `2px solid ${props.theme.colors.primary.DARK_BLUE}` : `2px solid ${props.theme.colors.primary.UWL_BLUE}`)};
+    border: ${(props) => (props.disabled ? `2px solid ${props.theme.colors.primary.DARK_BLUE}` : `2px solid ${props.theme.colors.primary.MAIN_BLUE}`)};
     &::after {
       content: "";
       display: block;
@@ -50,7 +50,7 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'
         border-radius: 50%;
         width: 20px;
         height: 20px;
-        background: ${props.theme.colors.primary.UWL_BLUE}
+        background: ${props.theme.colors.primary.MAIN_BLUE}
       }
     }
   `}

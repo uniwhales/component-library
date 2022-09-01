@@ -17,8 +17,8 @@ export const PrimaryChip = Styled(CustomChip)`
   border-radius: 40px;
   background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   svg {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
   }
 `;
 
@@ -29,8 +29,8 @@ export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryT
   border-radius: 12px;
   background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
   svg {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
   }
 `;
 
@@ -54,12 +54,14 @@ export const TertiaryChip = Styled(CustomChip)`
   padding: 4px 6px;
   gap: 2px;
   border-radius: 12px;
-  background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+  background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
+  font-size: 10px;
+  text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   }
   svg {
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 `;

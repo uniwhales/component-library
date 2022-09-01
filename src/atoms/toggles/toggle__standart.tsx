@@ -50,6 +50,9 @@ const FakeInput = Styled.input<{ size:any }>`
   }
   :checked + ${Toggle} {
     background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    &:hover {
+      background: ${(props) => props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+    }
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});

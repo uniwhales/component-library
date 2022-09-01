@@ -32,12 +32,15 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
     ) {
       return 'transparent';
     }
+    if (props.disabled) {
+      return props.theme.textShades.SHADE_MINUS_1;
+    }
 
     return props.theme.colors.primary.MANGO;
   }};
   border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
   background-color: ${(props) => {
-    if (!props.selected) return 'transparent';
+    if (!props.selected) return props.theme.containerAndCardShades.SHADE_PLUS_1;
     if (props.disabled && props.selected) {
       return props.theme.colors.system.GREEN;
     }
@@ -91,9 +94,10 @@ export const Checkbox: FC<CheckboxProps> = ({
       {((hover && !disabled) || selected) && (
         <IconWrapper
           stroke={
-            selected
-              ? theme.colors.primary.DARK_BLUE
-              : theme.colors.primary.MANGO
+            disabled ? theme.colors.system.WHITE
+              : selected
+                ? theme.colors.primary.DARK_BLUE
+                : theme.colors.primary.MANGO
           }
           fill="none"
           icon={<Check />}

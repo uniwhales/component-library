@@ -53,7 +53,7 @@ const ButtonPrimary = Styled(Button)`
 const ButtonSecondary = Styled(Button)`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   svg {
-    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   // disabled state
   ${(props) => props.disabled && css`
@@ -65,17 +65,17 @@ const ButtonSecondary = Styled(Button)`
   // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
-    border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
+    border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
     &:hover {
       color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.UWL_BLUE};
+      background: ${props.theme.colors.primary.MAIN_BLUE};
       svg {
         fill: ${props.theme.colors.system.WHITE}!important;
       }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.UWL_BLUE};
+      background: ${props.theme.colors.primary.MAIN_BLUE};
       svg {
         fill: ${props.theme.colors.system.WHITE}!important;
       }
@@ -84,7 +84,7 @@ const ButtonSecondary = Styled(Button)`
 `;
 const ButtonTertiary = Styled(Button)`
   svg {
-    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   ${(props) => props.disabled && css`
      background: ${props.theme.colors.system.DISABLED};
@@ -97,15 +97,15 @@ const ButtonTertiary = Styled(Button)`
     background-color: transparent;
     border: 1px solid ${props.theme.textShades.SHADE_MINUS_3};
     &:hover {
-       border: 1px solid ${props.theme.colors.primary.UWL_BLUE};
-       // color: ${props.theme.colors.primary.UWL_BLUE};
+       border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
+       // color: ${props.theme.colors.primary.MAIN_BLUE};
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
     &:active {
       color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.UWL_BLUE};
+      background: ${props.theme.colors.primary.MAIN_BLUE};
       svg {
         fill: ${props.theme.colors.system.WHITE}!important;
       }
@@ -121,7 +121,7 @@ const ButtonSecondaryAction = Styled(Button)`
   width: 40px;
   height: 40px;
   svg {
-    fill: ${(props) => props.theme.contrastColor.HIGH_CONTRAST}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   border: none;
   // disabled state
@@ -134,12 +134,12 @@ const ButtonSecondaryAction = Styled(Button)`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
     &:active {
       svg {
-        fill: ${props.theme.colors.primary.UWL_BLUE}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
   `}
@@ -147,7 +147,7 @@ const ButtonSecondaryAction = Styled(Button)`
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
 const ButtonSecondaryActionInverse = Styled(Button)`
   svg {
-    fill: ${(props) => props.theme.colors.primary.UWL_BLUE}!important;
+    fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}!important;
   }
   border: none;
   // disabled state
@@ -178,9 +178,11 @@ const ButtonSpecialSmallNormal = Styled(Button)`
   height: auto;
   line-height: 18px;
   font-weight: 400;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
   svg {
     width: 16px;
     height: 16px;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
   };
 
   ${(props) => props.disabled && css`
@@ -194,15 +196,20 @@ const ButtonSpecialSmallNormal = Styled(Button)`
     cursor: pointer;
     background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
 
-    &:hover {
+   &:hover {
       background: ${props.theme.colors.primary.MANGO};
+      color: ${props.theme.colors.primary.DARK_BLUE}!important;
       //font-weight: 700; it this implementation does not work
+      svg {
+        fill: ${props.theme.colors.primary.DARK_BLUE}!important;
+      }
     };
     &:active {
-      background: ${props.theme.contrastColor.HIGH_CONTRAST};
+      background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+      color: ${props.theme.colors.primary.MAIN_BLUE}!important;
 
       svg {
-        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_3}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
   `}
@@ -229,9 +236,10 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
   cursor: pointer;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
 
   &:hover, &:active {
-    color: ${({ theme }) => theme.colors.primary.MANGO};
+    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
   }
 `;
 export const ButtonAtom:FC<ButtonProps> = ({

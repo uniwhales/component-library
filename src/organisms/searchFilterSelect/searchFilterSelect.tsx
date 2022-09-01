@@ -86,7 +86,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     height: '50px',
     '&:hover': {
       color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
-      border: isFocused ? '' : `1px solid ${theme.colors.primary.UWL_BLUE}`,
+      border: isFocused ? '' : `1px solid ${theme.colors.primary.MAIN_BLUE}`,
       svg: {
         fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
       },

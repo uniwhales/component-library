@@ -31,10 +31,10 @@ const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
     background: ${(props) => props.theme.colors.primary.MANGO};
     font-weight: 700;
     svg {
-      fill: white;
+      fill: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     }
     p {
-      color: ${(props) => props.theme.colors.system.WHITE};
+      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     }
   }
 `;
