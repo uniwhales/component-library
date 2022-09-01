@@ -1,4 +1,6 @@
+import { MouseEventHandler } from 'react';
+
 export interface ConnectButtonProps {
   account?: string | null;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLDivElement>;
 }
