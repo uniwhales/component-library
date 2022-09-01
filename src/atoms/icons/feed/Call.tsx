@@ -32,7 +32,7 @@ export const Call = () => (
       />
     </mask>
     <g mask="url(#mask0_6803_353298)">
-      <path fill="#fff" d="M0 0H21.667V21.667H0z" />
+      <path d="M0 0H21.667V21.667H0z" />
     </g>
   </svg>
 );

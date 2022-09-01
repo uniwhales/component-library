@@ -24,7 +24,7 @@ export const LpIcon = () => (
       />
     </mask>
     <g mask="url(#mask0_9866_491096)">
-      <path fill="#fff" d="M0 0H21.667V21.667H0z" />
+      <path d="M0 0H21.667V21.667H0z" />
     </g>
   </svg>
 );

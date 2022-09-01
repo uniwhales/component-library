@@ -25,7 +25,7 @@ export const SwapIcon = () => (
       />
     </mask>
     <g mask="url(#mask0_9866_491034)">
-      <path fill="#fff" d="M0 0H21.667V21.667H0z" />
+      <path d="M0 0H21.667V21.667H0z" />
     </g>
   </svg>
 
