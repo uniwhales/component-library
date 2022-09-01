@@ -12,6 +12,7 @@ export interface Option {
   id: number;
   icon?: JSX.Element,
   isSelected?: boolean;
+  order?: number;
 }
 export interface SelectGroupOption {
   label: string;
@@ -192,9 +193,8 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
-      '-webkit-appearance': ' none',
-      width: 0,
-      height: 0,
+      display: ' none',
+      scrollbarWidth: 'none',
     },
   }),
 };
