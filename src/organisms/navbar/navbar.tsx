@@ -82,6 +82,8 @@ export const Navbar: FC<NavbarProps> = ({
             )}
           </NavbarRightSide>
         </NavbarMainContent>
+        {/* On Tablet and smaller we show the menu inside expanded navbar */}
+        {breakpoint <= Breakpoints.Tablet && (
         <UserMenu
           isMenuOpen={isMenuOpen}
           onWalletConnectClick={() => {
@@ -94,8 +96,24 @@ export const Navbar: FC<NavbarProps> = ({
           plan={plan}
           account={account}
         />
+        )}
       </NavbarContainer>
       <NavbarDesktopMenu />
+      {/* On Desktop we show the menu outside of navbar */}
+      {breakpoint > Breakpoints.Tablet && (
+        <UserMenu
+          isMenuOpen={isMenuOpen}
+          onWalletConnectClick={() => {
+            onWalletConnectClick();
+            /*
+                When user disconnects his wallet and we are on desktop i close the menu
+              */
+            if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
+          }}
+          plan={plan}
+          account={account}
+        />
+      )}
     </>
   );
 };
