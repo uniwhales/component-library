@@ -155,13 +155,14 @@ export * from './chains/fullColorStyle/TerraColor';
 export * from './chains/fullColorStyle/WalletConnectColor';
 export * from './chains/fullColorStyle/UniWhalesColor';
 export * from './chains/fullColorStyle/0xColor';
-
 export * from './chains/fullColorStyle/OneInchV3';
 export * from './chains/fullColorStyle/OneInchV4';
 export * from './chains/fullColorStyle/BalancerColor';
 export * from './chains/fullColorStyle/BancorColor';
 export * from './chains/fullColorStyle/ParaSwapV4';
 export * from './chains/fullColorStyle/ParaSwapV5';
+export * from './chains/fullColorStyle/EvmosColor';
+export * from './chains/fullColorStyle/DogechainColor';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
@@ -175,3 +176,12 @@ export { Kebab } from './miscIcons/Kebab';
 export { NftIcon } from './miscIcons/NftIcon';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
+// feed
+export * from './feed/ApproveIcon';
+export * from './feed/BridgeIcon';
+export * from './feed/Call';
+export * from './feed/LpIcon';
+export * from './feed/NftTradeIcon';
+export * from './feed/RevokeIcon';
+export * from './feed/SwapIcon';
+export * from './feed/Unknown';
