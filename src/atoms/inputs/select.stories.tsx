@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
-  Placeholder, Select, SelectGroupOption, SelectOption,
+  Placeholder, Select, SelectOption,
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
@@ -22,29 +22,47 @@ export const ColourOptions = [
 ];
 
 export const TxOptions = [
-  { id: 1, value: 'swap', label: 'Swaps' },
-  { id: 2, value: 'lp', label: 'LPs' },
-  { id: 3, value: 'nft_trade', label: 'NFT Trade' },
-  { id: 4, value: 'nft_transfer', label: 'NFT Transfer' },
-  { id: 5, value: 'nft_mint', label: 'NFT Mint' },
-  { id: 6, value: 'reward', label: 'Reward' },
-  { id: 7, value: 'option', label: 'Option' },
-  { id: 8, value: 'bridge', label: 'Bridge' },
-  { id: 9, value: 'flashloan', label: 'Flashloan' },
-];
+  {
+    id: 1, value: 'swap', label: 'Swaps', order: 1,
+  },
+  {
+    id: 2, value: 'lp', label: 'LPs', order: 2,
+  },
+  {
+    id: 3, value: 'nft_trade', label: 'NFT Trade', order: 3,
+  },
+  {
+    id: 4, value: 'nft_transfer', label: 'NFT Transfer', order: 4,
+  },
+  {
+    id: 5, value: 'nft_mint', label: 'NFT Mint', order: 5,
+  },
+  {
+    id: 6, value: 'reward', label: 'Reward', order: 6,
+  },
+  {
+    id: 7, value: 'option', label: 'Option', order: 7,
+  },
+  {
+    id: 8, value: 'bridge', label: 'Bridge', order: 8,
+  },
+  {
+    id: 9, value: 'flashloan', label: 'Flashloan', order: 9,
+  },
+].sort((a, b) => b.order! - a.order!);
 
 export const ChainOptions = [
   {
-    id: 1, value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} />,
+    id: 1, value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} />, order: 1,
   },
   {
-    id: 2, value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} />,
+    id: 2, value: 'fantom', label: 'Fantom', icon: <IconWrapper height="16px" width="16px" icon={<FantomColor />} />, order: 2,
   },
   {
-    id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />,
+    id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />, order: 3,
   },
   {
-    id: 4, value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} />,
+    id: 4, value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} />, order: 4,
   },
 ];
 
