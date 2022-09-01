@@ -63,7 +63,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
     }
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     ${({ focus, disabled, isError }) => !focus && !disabled && !isError && css`
-      border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
+      border: 1px solid ${(props) => props.theme.colors.primary.MANGO};
   `}
   }
 `;
