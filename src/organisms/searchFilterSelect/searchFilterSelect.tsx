@@ -52,7 +52,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   },
   dropdownIndicator: (defaultStyles, { isFocused, theme, selectProps }: StyledProps) => ({
     ...defaultStyles,
-    fontSize: '1rem',
+    padding: 4,
     svg: {
       transition: 'all 0.4s',
       fill: isFocused || selectProps.menuIsOpen
@@ -83,7 +83,6 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     },
     fontWeight: isFocused || hasValue ? 'bold' : 'normal',
-    height: '50px',
     '&:hover': {
       color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
       border: isFocused ? '' : `1px solid ${theme.colors.primary.UWL_BLUE}`,

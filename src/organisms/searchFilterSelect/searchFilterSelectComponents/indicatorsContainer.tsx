@@ -12,9 +12,7 @@ const DropdownIndicator = (props: any) => {
   return options.length > 0 ? <components.DropdownIndicator {...props} /> : null;
 };
 
-const IndicatorsContainerWrapper = Styled(components.IndicatorsContainer)`
-    height: 48px;
-  `;
+const IndicatorsContainerWrapper = Styled(components.IndicatorsContainer)``;
 
 export const IndicatorsContainer = (
   props: any,

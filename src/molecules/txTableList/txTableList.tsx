@@ -38,6 +38,7 @@ export interface TransactionInterface {
 }
 
 const Table = Styled.table`
+  height: fit-content;
   table-layout: auto;
   width: 100%;
   td {
