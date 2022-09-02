@@ -81,7 +81,7 @@ const Theme = {
   gradients: {
     primary: {
       MAIN_BLUE_GRADIENT: 'linear-gradient(180deg, #5AD7F9 0%, #255296 100%)',
-      MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #4A00E0 0%, #2D75E2 94.73%)',
+      MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #255296 0%, #5AD7F9 100%)',
       MAIN_HIGHLIGHT_GRADIENT: 'linear-gradient(180deg, #255296 0%, #95E6FF 100%)',
     },
     secondary: {
