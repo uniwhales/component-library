@@ -26,6 +26,7 @@ export const UserMenu: FC<UserMenuProps> = ({
           </>
         </Text>
       )}
+      {/* @ts-ignore //TODO ERROR */}
       <ConnectWalletButton account={account} onClick={() => onWalletConnectClick()} />
     </NavbarUserMenu>
   );

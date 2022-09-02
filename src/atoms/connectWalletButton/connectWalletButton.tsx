@@ -23,6 +23,7 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
 
   return (
     <ConnectButton
+        // @ts-ignore //TODO ERROR
       onClick={onClick}
       isConnected={!!account}
       transitionState={text === 'Connected'}

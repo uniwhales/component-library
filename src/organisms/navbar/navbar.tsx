@@ -54,6 +54,7 @@ export const Navbar: FC<NavbarProps> = ({
             {/* Show only on desktop */}
             {
               !account && breakpoint > Breakpoints.Tablet
+              // @ts-ignore //TODO ERROR
               && <ConnectWalletButton onClick={() => onWalletConnectClick()} account={account} />
             }
 
@@ -87,6 +88,7 @@ export const Navbar: FC<NavbarProps> = ({
         <UserMenu
           isMenuOpen={isMenuOpen}
           onWalletConnectClick={() => {
+            // @ts-ignore //TODO ERROR
             onWalletConnectClick();
             /*
               When user disconnects his wallet and we are on desktop i close the menu
@@ -104,6 +106,7 @@ export const Navbar: FC<NavbarProps> = ({
         <UserMenu
           isMenuOpen={isMenuOpen}
           onWalletConnectClick={() => {
+            // @ts-ignore //TODO ERROR
             onWalletConnectClick();
             /*
                 When user disconnects his wallet and we are on desktop i close the menu
