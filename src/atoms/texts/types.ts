@@ -40,10 +40,10 @@ export type HeaderSizes =
 
 export enum HyperLinkVariation {
   Default = 'Default',
-  Purple = 'Purple',
+  Sky = 'Sky',
   Tangy = 'Tangy',
-  Turquoise = 'Turquoise',
-  Fuschia = 'Fuschia',
+  Teal = 'Teal',
+  Canary = 'Canary',
   Inverse = 'Inverse',
   InverseNoLine = 'InverseNoLine',
 }

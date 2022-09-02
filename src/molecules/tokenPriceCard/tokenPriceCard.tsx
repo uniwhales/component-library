@@ -92,7 +92,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
             key={index}
             cursor="pointer"
             fill={(isFavorite && !isHighlighted) || (!isFavorite && isHighlighted)
-              ? theme.colors.primary.UWL_BLUE
+              ? theme.colors.primary.MAIN_BLUE
               : (isFavorite && isHighlighted) || (!isFavorite && !isHighlighted)
                 ? theme.textShades.SHADE_MINUS_1
                 : theme.textShades.SHADE_MINUS_1}

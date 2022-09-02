@@ -30,31 +30,31 @@ export const StyledA = Styled.a<{ textType: string, textWeight: string, textDeco
   line-height: 24px;
   font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
-  color: ${(props) => (props.color ? props.color : props.theme.colors.secondary.TURQUOISE)};
+  color: ${(props) => (props.color ? props.color : props.theme.colors.secondary.TEAL)};
   text-decoration-thickness: 2px;
-  
+
   ${({ theme }) => {
     const HYPER_STYLE: HyperLinkStyle = {
       [HyperLinkVariation.Default]: {
         color: {
-          idle: theme.colors.primary.WATER_BLUE,
+          idle: theme.colors.primary.MANGO,
           hover: theme.textShades.SHADE_MINUS_3,
           pressed: theme.textShades.SHADE_MINUS_3,
         },
         underline: {
-          idle: theme.colors.primary.WATER_BLUE,
+          idle: theme.colors.primary.MANGO,
           hover: theme.textShades.SHADE_MINUS_3,
-          pressed: theme.colors.primary.WATER_BLUE,
+          pressed: theme.colors.primary.MANGO,
         },
       },
-      [HyperLinkVariation.Purple]: {
+      [HyperLinkVariation.Sky]: {
         color: {
           idle: theme.textShades.SHADE_MINUS_3,
         },
         underline: {
-          idle: theme.colors.secondary.PURPLE,
-          hover: theme.colors.secondary.PURPLE,
-          pressed: theme.colors.primary.WATER_BLUE,
+          idle: theme.colors.secondary.SKY,
+          hover: theme.colors.secondary.SKY,
+          pressed: theme.colors.primary.MANGO,
         },
       },
       [HyperLinkVariation.Tangy]: {
@@ -64,46 +64,46 @@ export const StyledA = Styled.a<{ textType: string, textWeight: string, textDeco
         underline: {
           idle: theme.colors.secondary.TANGY,
           hover: theme.colors.secondary.TANGY,
-          pressed: theme.colors.primary.WATER_BLUE,
+          pressed: theme.colors.primary.MANGO,
         },
       },
-      [HyperLinkVariation.Turquoise]: {
+      [HyperLinkVariation.Teal]: {
         color: {
           idle: theme.textShades.SHADE_MINUS_3,
         },
         underline: {
-          idle: theme.colors.secondary.TURQUOISE,
-          hover: theme.colors.secondary.TURQUOISE,
-          pressed: theme.colors.primary.WATER_BLUE,
+          idle: theme.colors.secondary.TEAL,
+          hover: theme.colors.secondary.TEAL,
+          pressed: theme.colors.primary.MANGO,
         },
       },
-      [HyperLinkVariation.Fuschia]: {
+      [HyperLinkVariation.Canary]: {
         color: {
           idle: theme.textShades.SHADE_MINUS_3,
         },
         underline: {
-          idle: theme.colors.secondary.FUSCHIA,
-          hover: theme.colors.secondary.FUSCHIA,
-          pressed: theme.colors.primary.WATER_BLUE,
+          idle: theme.colors.secondary.CANARY,
+          hover: theme.colors.secondary.CANARY,
+          pressed: theme.colors.primary.MANGO,
         },
       },
       [HyperLinkVariation.Inverse]: {
         color: {
           idle: theme.contrastColor.LOW_CONTRAST,
           hover: theme.contrastColor.HIGH_CONTRAST,
-          pressed: theme.colors.primary.WATER_BLUE,
+          pressed: theme.colors.primary.MANGO,
         },
         underline: {
           idle: theme.contrastColor.LOW_CONTRAST,
           hover: theme.contrastColor.HIGH_CONTRAST,
-          pressed: theme.colors.primary.WATER_BLUE,
+          pressed: theme.colors.primary.MANGO,
         },
       },
       [HyperLinkVariation.InverseNoLine]: {
         color: {
           idle: theme.contrastColor.LOW_CONTRAST,
           hover: theme.contrastColor.HIGH_CONTRAST,
-          pressed: theme.colors.primary.WATER_BLUE,
+          pressed: theme.colors.primary.MANGO,
         },
       },
     };

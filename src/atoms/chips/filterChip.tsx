@@ -28,13 +28,13 @@ const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+    background: ${(props) => props.theme.colors.primary.MANGO};
     font-weight: 700;
     svg {
-      fill: white;
+      fill: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     }
     p {
-      color: ${(props) => props.theme.colors.system.WHITE};
+      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     }
   }
 `;

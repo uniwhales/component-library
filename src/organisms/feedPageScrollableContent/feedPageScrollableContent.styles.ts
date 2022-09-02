@@ -38,10 +38,10 @@ export const LoadMoreContainer = Styled.div`
   }
   &:hover {
     p {
-    color: ${(props) => props.theme.colors.primary.UWL_BLUE}
+    color: ${(props) => props.theme.colors.primary.MAIN_BLUE}
     }
     svg {
-      fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+      fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}
     }
   }
 `;
@@ -86,10 +86,10 @@ export const ShowNewButton = Styled.button`
   cursor: pointer;
   &:hover {
      p {
-      color: ${(props) => props.theme.colors.primary.UWL_BLUE}
+      color: ${(props) => props.theme.colors.primary.MAIN_BLUE}
      };
      svg {
-     fill: ${(props) => props.theme.colors.primary.UWL_BLUE}
+     fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}
      }
   }
   svg {

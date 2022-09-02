@@ -24,7 +24,7 @@ export const WalletBalanceColumns = (
           <IconWrapper icon={<row.tokenIcon />} />
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.tokenDetails.token}
@@ -38,7 +38,7 @@ export const WalletBalanceColumns = (
         <Section>
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
@@ -52,7 +52,7 @@ export const WalletBalanceColumns = (
         <Section>
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}
@@ -85,7 +85,7 @@ export const WalletBalanceColumns = (
           <IconWrapper icon={<row.tokenDetails.token />} />
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.tokenDetails.token}
@@ -99,7 +99,7 @@ export const WalletBalanceColumns = (
         <Section>
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.balance}
@@ -113,7 +113,7 @@ export const WalletBalanceColumns = (
         <Section>
           <Text
             color={selectedRow === row.tokenDetails.token
-              ? theme.colors.secondary.TURQUOISE : theme.textShades.SHADE_MINUS_2}
+              ? theme.colors.secondary.TEAL : theme.textShades.SHADE_MINUS_2}
             size={selectedRow === row.tokenDetails.token ? 'S-Bold' : 'S-Regular'}
           >
             {row.wrappedBalance}

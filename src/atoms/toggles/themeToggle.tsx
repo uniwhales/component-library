@@ -44,13 +44,13 @@ const FakeInput = Styled.input`
   height: 0;
 
   :hover + ${Toggle} {
-    background: ${({ theme }) => theme.gradients.primary.BLURPLE_HIGHLIGHTED};
+    background: ${({ theme }) => theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
   }
-  
+
   :hover:checked + ${Toggle}:before {
-    background: ${({ theme }) => theme.gradients.primary.BLURPLE_HIGHLIGHTED};
+    background: ${({ theme }) => theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
   }
-  
+
   :checked + ${Toggle}:before {
     transform: translateX(22px);
     background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};

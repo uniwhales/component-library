@@ -9,7 +9,7 @@ export const KebabWrapper = Styled.div`
   margin-left: 8px;
   &:hover {
     svg {
-      fill: ${({ theme }) => theme.colors.primary.WATER_BLUE};
+      fill: ${({ theme }) => theme.colors.primary.MANGO};
     }
   }
 `;
