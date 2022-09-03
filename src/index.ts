@@ -19,6 +19,8 @@ export * from './atoms/common/flex';
 export * from './atoms/identicon/Identicon';
 export * from './atoms/modal/modal';
 export * from './atoms/uniwhalesLogo/uniwhalesLogo';
+export * from './atoms/cieloLogo/CieloLogo';
+export * from './atoms/footer/Footer';
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
