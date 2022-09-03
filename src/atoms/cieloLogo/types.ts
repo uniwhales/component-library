@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 
 export type LogoProps = {
-  onClick?: MouseEventHandler<HTMLDivElement>
-  night?: boolean
+  night: boolean;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   noText?: boolean;
 };
