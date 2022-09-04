@@ -12,7 +12,7 @@ const Child = ({ elem, noHover }: ChildProps) => (
   typeof elem === 'string' ? <Text size="M-Regular">{elem}</Text> : <IconWrapper cursor={noHover ? '' : 'pointer'} icon={elem} />);
 
 export const StickyActionBar: FC<StickyActionBarProps> = ({
-  icon, left, right, withTransform, index, cardProps, rootMargin = 24,
+  icon, left, right, withTransform, index, cardProps, rootMargin = 24, mt,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isOnEdge = useScreenEdge({ rect: 'top', ref, rootMargin });
@@ -32,7 +32,7 @@ export const StickyActionBar: FC<StickyActionBarProps> = ({
         </>
       )}
       {icon && withTransform && isOnEdge && (
-        <ButtonWrapper index={index}>
+        <ButtonWrapper index={index} mt={mt}>
           <ButtonAtom buttonVariant="secondary_action"><IconWrapper icon={icon} cursor="pointer" /></ButtonAtom>
         </ButtonWrapper>
       )}

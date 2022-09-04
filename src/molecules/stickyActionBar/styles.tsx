@@ -19,7 +19,8 @@ export const StickyActionBarWrapper = Styled(Card)<StickyActionBarWrapperProps>`
   `}
 `;
 
-export const ButtonWrapper = Styled.div<Pick<StickyActionBarProps, 'index'>>`
+export const ButtonWrapper = Styled.div<Pick<StickyActionBarProps, 'index' | 'mt'>>`
   position: sticky;
-  margin-right: ${({ index }) => (index && index > 1) ? (index * 48) : 0}px;
+  margin-right: ${({ index }) => (index && (index > 1) ? (index * 48) : 0)}px;
+  margin-top: ${({ mt }) => mt};
 `;

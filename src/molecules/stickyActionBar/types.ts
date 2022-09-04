@@ -7,6 +7,7 @@ export type StickyActionBarProps = {
   right?: JSX.Element
   index?: number
   cardProps?: CardProps
+  mt:string
   rootMargin?: number
 };
 

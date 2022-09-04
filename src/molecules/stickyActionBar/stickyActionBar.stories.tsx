@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { Feed, NewsStandard, SettingsBars } from '../../atoms/icons';
+import { NewsStandard, SettingsBars } from '../../atoms/icons';
 import { Checkbox } from '../../atoms/inputs/checkbox';
 import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
