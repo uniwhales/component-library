@@ -39,14 +39,14 @@ const LightTheme = {
     SHADE_MINUS_1: '#797A84',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#E2ECFF',
+    NEUTRAL_SHADE_0: '#C1E1FF',
     SHADE_PLUS_1: '#FFFFFF',
     SHADE_PLUS_2: '#F7F8FA',
     SHADE_PLUS_3: '#F0F1F5',
     BG_SHADE_PLUS_4: '#E2E4EB',
   },
   contrastColor: {
-    HIGH_CONTRAST: '#1FA7F4',
+    HIGH_CONTRAST: '#1D86E8',
     LOW_CONTRAST: '#80C6E4',
   },
   dropShadow: {
@@ -58,7 +58,7 @@ const Theme = {
   ...DarkTheme,
   colors: {
     primary: {
-      MAIN_BLUE: '#1FA7F4',
+      MAIN_BLUE: '#1D86E8',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
     },
