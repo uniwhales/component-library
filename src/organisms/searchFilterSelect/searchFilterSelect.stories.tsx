@@ -59,14 +59,12 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
   const {
     isLoading: argIsLoading,
     options: argOptions,
-    isContractSearch: argsIsContractSearch,
     isDropdownDisabled: argsIsDropdownDisabled,
   } = args;
   const [value, setValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [options, setOptions] = useState<any[]>([]);
-  const [isContractSearch, setIsContractSearch] = useState<boolean>(true);
 
   return (
     <SearchFilterSelect
@@ -88,15 +86,10 @@ const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
       onSubmit={(e) => {
         setValue(e);
       }}
-      leftSwitchText="Token"
-      rightSwitchText="Wallet Address"
       label="Explorer"
       value={value}
       inputValue={inputValue}
       isLoading={argIsLoading === undefined ? isLoading : argIsLoading}
-      isContractSearch={argsIsContractSearch === undefined
-        ? isContractSearch : argsIsContractSearch}
-      onSwitch={() => setIsContractSearch(!isContractSearch)}
       placeholder="Search Token"
       isDropdownDisabled={argsIsDropdownDisabled}
     />

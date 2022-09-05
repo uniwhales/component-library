@@ -14,13 +14,13 @@ import { LoadingMessage } from './searchFilterSelectComponents/loadingMessage';
 import { IndicatorsContainer } from './searchFilterSelectComponents/indicatorsContainer';
 
 const StyledSelect = Styled(ReactSelect)<{
-  label?: string
+  label?: string,
   isContractSearch?: boolean,
-  onSwitch: () => void
-  onSubmit: (e: any) => void
-  rightSwitchText: string,
-  leftSwitchText: string,
-  isDropdownDisabled?: boolean
+  onSwitch?: () => void,
+  onSubmit: (e: any) => void,
+  rightSwitchText?: string,
+  leftSwitchText?: string,
+  isDropdownDisabled?: boolean,
 }>`
   width: 450px;
   outline: none;
@@ -178,10 +178,10 @@ type Props<T extends OptionBase> = {
   isLoading: boolean
   label?: string
   isContractSearch?: boolean,
-  onSwitch: () => void
+  onSwitch?: () => void
   onSubmit: (e: T) => void
-  leftSwitchText:string
-  rightSwitchText:string
+  leftSwitchText?:string
+  rightSwitchText?:string
   isDropdownDisabled?: boolean
 };
 
