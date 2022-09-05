@@ -7,6 +7,7 @@ import { HorizontalDots } from '../../atoms/icons/navigationIcons/HorizontalDots
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
+import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
@@ -27,6 +28,7 @@ export const Navbar: FC<NavbarProps> = ({
   onWalletConnectClick,
   bottomSpacing = true,
 }) => {
+  const theme = localTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
   const clickRef = useRef(null);
@@ -41,7 +43,7 @@ export const Navbar: FC<NavbarProps> = ({
         <NavbarMainContent>
           <NavbarLeftSide>
             <NavigateBackContainer onClick={() => onBackButtonClick()}>
-              <IconWrapper icon={<ArrowLeftIcon />} cursor="pointer" />
+              <IconWrapper fill={theme.textShades.SHADE_MINUS_3} icon={<ArrowLeftIcon />} cursor="pointer" />
               <Text size="M-Regular">
                 {pageName}
               </Text>

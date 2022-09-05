@@ -33,9 +33,13 @@ const Button = Styled.button<GenericStylingProps>`
 const ButtonPrimary = Styled(Button)`
   // disabled state
   ${(props) => props.disabled && css`
-      opacity: 0.2;
-      background: ${props.theme.colors.system.DISABLED};
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      color: ${props.theme.textShades.SHADE_MINUS_1};
       border: none;
+
+      svg {
+        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+      }
   `}
   // active state
   ${(props) => !props.disabled && css`
@@ -57,9 +61,12 @@ const ButtonSecondary = Styled(Button)`
   }
   // disabled state
   ${(props) => props.disabled && css`
-     opacity: 0.2;
-     background: ${props.theme.colors.system.DISABLED};
-     border: none;
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_1};
+    border: none;
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+    }
   `}
 
   // active state
@@ -86,10 +93,11 @@ const ButtonTertiary = Styled(Button)`
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
+  // disabled state
   ${(props) => props.disabled && css`
-     background: ${props.theme.colors.system.DISABLED};
-     opacity: 0.2;
-     border: none;
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      color: ${props.theme.textShades.SHADE_MINUS_1};
+      border: none;
   `};
   // active state
   ${(props) => !props.disabled && css`
@@ -126,8 +134,9 @@ const ButtonSecondaryAction = Styled(Button)`
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-     opacity: 0.2;
-     background: transparent;
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_1};
+    border: none;
   `}
   // active state
   ${(props) => !props.disabled && css`
@@ -152,8 +161,9 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-    opacity: 0.2;
-    background: transparent;
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_1};
+    border: none;
   `}
       // active state
   ${(props) => !props.disabled && css`
@@ -186,8 +196,8 @@ const ButtonSpecialSmallNormal = Styled(Button)`
   };
 
   ${(props) => props.disabled && css`
-    opacity: 0.2;
-    background: ${props.theme.colors.system.DISABLED};
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
   `}
 
