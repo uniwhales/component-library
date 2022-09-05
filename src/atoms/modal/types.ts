@@ -14,7 +14,7 @@ export type ModalCardProps = {
 } & Pick<CSSProperties, | 'maxWidth' | 'maxHeight'>;
 
 export type ModalBaseProps = {
-  closeFn?: MouseEventHandler<HTMLDivElement>
+  closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   children: ReactElement
   icon?: ReactElement
   noCloseIcon?: boolean;
