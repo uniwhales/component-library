@@ -1,5 +1,4 @@
-import { keyframes } from 'styled-components';
-import { Styled } from '../../theme';
+import { css, keyframes } from 'styled-components';
 
 export const keyframeFadeInTop = keyframes`
   from {
@@ -9,11 +8,19 @@ export const keyframeFadeInTop = keyframes`
   to { 
     opacity: 1;
   }
+  `;
+export const FadeInTop = css`animation: ${keyframeFadeInTop} 0.3s ease-in-out`;
+export const keyframeFadeOutTop = keyframes`
+  from {
+    opacity: 1;
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 `;
 
-export const FadeInTop = Styled.div`
-  animation: ${keyframeFadeInTop} 2s linear;
-`;
+export const FadeOutTop = css`animation: ${keyframeFadeOutTop} 0.3s ease-in-out`;
 
 export const keyframeFadeIn = keyframes`
   from {
@@ -24,9 +31,7 @@ export const keyframeFadeIn = keyframes`
   }
 `;
 
-export const FadeIn = Styled.div`
-  animation: ${keyframeFadeIn} 2s ease-in;
-`;
+export const FadeIn = css`animation: ${keyframeFadeIn} 2s ease-in-out`;
 
 export const keyframeFadePopUp = keyframes`
   from {
@@ -42,6 +47,4 @@ export const keyframeFadePopUp = keyframes`
   }
 `;
 
-export const FadePopUp = Styled.div`
-  animation: ${keyframeFadePopUp} 0.3s ease-in;
-`;
+export const FadePopUp = css`animation: ${keyframeFadePopUp} 0.3s ease-in`;

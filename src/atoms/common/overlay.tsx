@@ -1,6 +1,8 @@
 import { Styled } from '../../theme';
+import { FadeIn } from '../animations/fades';
 
 export const Overlay = Styled.div`
+  ${FadeIn};
   width: 100%;
   height: 100%;
   left: 0;

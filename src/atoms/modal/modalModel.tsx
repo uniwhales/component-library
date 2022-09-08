@@ -25,14 +25,14 @@ const AnnouncementCardContainerMobile = Styled.div`
 `;
 
 const Cover = Styled.div<{ coverUrl: string }>`
-    background: ${({ coverUrl }) => `url(${coverUrl})`};
-    height: 115px;
-    width: 233px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background: ${({ coverUrl }) => `url(${coverUrl})`};
+  height: 115px;
+  width: 233px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 const Content = Styled.div`

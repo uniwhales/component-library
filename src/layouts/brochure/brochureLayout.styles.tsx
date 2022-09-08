@@ -6,6 +6,7 @@ export const BrochureLayout = Styled.div`
   flex-direction: column;
   display: flex;
   gap: 16px;
+  padding-top: 58px;
   
   div:nth-of-type(1) {
     height: 148px;
