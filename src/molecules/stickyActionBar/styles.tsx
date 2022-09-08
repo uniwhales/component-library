@@ -21,7 +21,7 @@ export const StickyActionBarWrapper = Styled(Card)<StickyActionBarWrapperProps>`
 `;
 
 export const ButtonWrapper = Styled.div <Pick<StickyActionBarProps, 'index' | 'mt'> & Pick<StickyActionBarWrapperProps, 'isOnEdge'>>`
-  animation: ${({ isOnEdge }) => `${keyframeFadePopUp} cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s ${isOnEdge ? 'forwards' : 'backwards'}`};
+  animation: ${({ isOnEdge }) => css`${keyframeFadePopUp} cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s ${isOnEdge ? 'forwards' : 'backwards'}`};
   position: sticky;
   margin-right: ${({ index }) => (index && (index > 1) ? (index * 48) : 0)}px;
   margin-top: ${({ mt }) => mt};
