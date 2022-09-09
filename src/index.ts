@@ -32,6 +32,7 @@ export * from './molecules/kebabMenu/kebabMenu';
 export * from './molecules/meatballMenu/meatballMenu';
 export * from './molecules/modals/modal';
 export * from './molecules/stickyActionBar/stickyActionBar';
+export * from './molecules/tooltip/TooltipComponent';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
