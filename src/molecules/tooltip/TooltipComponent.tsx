@@ -19,11 +19,11 @@ export const TooltipComponent = ({
       // allowPointerEvents={allowPointerEvents}
       styles={{
         arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
-        // body: {
-        //   backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-        //   color: theme.textShades.SHADE_MINUS_2,
-        //   boxShadow: theme.dropShadow.REGULAR,
-        // },
+        tooltip: {
+          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
+          color: theme.textShades.SHADE_MINUS_2,
+          boxShadow: theme.dropShadow.REGULAR,
+        },
       }}
     >
       {children}
