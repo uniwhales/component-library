@@ -49,7 +49,7 @@ const Template2: ComponentStory<typeof PopoverComponent> = () => {
       opened={open}
       target={(
         <div
-          onMouseEnter={() => setOpen(false)}
+          onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
           style={{ width: 'fit-content', margin: 50 }}
         >
