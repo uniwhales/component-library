@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { BodySizes, HeaderSizes, Text } from './text';
+import { Text } from './text';
+import { BodySizes, HeaderSizes, HyperLinkVariation } from './types';
 
 const headerSizes: HeaderSizes[] = ['H1-Regular',
   'H1-Semibold',
@@ -34,6 +35,22 @@ const bodySizes: BodySizes[] = [
   'XS-Regular',
   'XS-Semibold',
   'XS-Bold',
+  'XXS-Regular',
+  'XXS-Semibold',
+  'XXS-Bold',
+  'XXXS-Regular',
+  'XXXS-Semibold',
+  'XXXS-Bold',
+];
+const hyperLinks: HyperLinkVariation[] = [
+  HyperLinkVariation.Default,
+  HyperLinkVariation.Canary,
+  HyperLinkVariation.Sky,
+  HyperLinkVariation.Tangy,
+  HyperLinkVariation.Teal,
+  HyperLinkVariation.Inverse,
+  HyperLinkVariation.InverseNoLine,
+
 ];
 
 interface TemplateSizes {
@@ -65,13 +82,27 @@ const LinkTemplate: Story<TemplateSizes> = (args) => {
   const { list } = args;
   return (
     <>
-      {list.map((item) => <div><Text key={item} href="test" size={item}>{item}</Text></div>)}
+      {list.map((item) => (
+        <div>
+          {hyperLinks.map((h) => (
+            <div>
+              <Text key={item} hyperLinkVariation={h} target="_blank" href="https://www.uniwhales.io" size={item}>
+                <>
+                  {item}
+                  {' '}
+                  {h}
+                </>
+              </Text>
+            </div>
+          ))}
+        </div>
+      ))}
     </>
   );
 };
 export const HeadingsAndTitles = Template.bind({});
 export const BodyText = Template.bind({});
-export const Link = LinkTemplate.bind({});
+export const LinkS = LinkTemplate.bind({});
 
 BodyText.args = {
   list: bodySizes,
@@ -79,10 +110,10 @@ BodyText.args = {
 HeadingsAndTitles.args = {
   list: headerSizes,
 };
-Link.args = {
+LinkS.args = {
   list: bodySizes,
 };
-Link.parameters = {
+LinkS.parameters = {
   backgrounds: { default: 'dark' },
 };
 HeadingsAndTitles.parameters = {

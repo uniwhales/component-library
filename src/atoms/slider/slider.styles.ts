@@ -25,7 +25,7 @@ const trackFill = css<Pick<SliderProps, 'value'>>`
 
 const fill = css`
   height: 8px;
-  background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+  background: ${(props) => props.theme.colors.primary.MANGO};
   border-radius: 12px;
 `;
 
@@ -39,7 +39,7 @@ const thumb = css<Pick<SliderProps, 'value'>>`
     ? props.theme.colors.system.WHITE
     : props.value === 0
       ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0
-      : props.theme.colors.primary.WATER_BLUE)};
+      : props.theme.colors.primary.MANGO)};
   &:hover {
     background: ${(props) => props.theme.colors.system.WHITE};
   }
@@ -108,7 +108,7 @@ export const Input = Styled.input<Pick<SliderProps, 'value'>>`
 export const MaxButton = Styled.button<Pick<SliderProps, 'value'>>`
   padding: 4px 12px;
   margin-left: 8px;
-  gap 8px;
+  gap: 8px;
   border-radius: 12px;
   background: ${(props) => (props.value === 100
     ? props.theme.textShades.SHADE_MINUS_3

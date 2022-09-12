@@ -1,19 +1,15 @@
-import baseStyled, { ThemedStyledInterface, createGlobalStyle } from 'styled-components';
-// import PoppinsRegular from './fonts/Poppins-Regular.ttf';
-// import PoppinsSemiBold from './fonts/Poppins-SemiBold.ttf';
-// import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf';
-// import OpenSansRegular from './fonts/OpenSans-Regular.ttf';
-// import OpenSansBold from './fonts/OpenSans-Bold.ttf';
-// import LeagueSpartanBold from './fonts/LeagueSpartan-Bold.otf';
+import baseStyled, { ThemedStyledInterface, createGlobalStyle, useTheme } from 'styled-components';
+import { ZIndex } from './utils/constants';
 
-const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
-const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
-const OpenSansSemiBold = require('./fonts/OpenSans-SemiBold.ttf');
-const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
-const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
-const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
+// const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
+// const PoppinsSemiBold = require('./fonts/Poppins-SemiBold.ttf');
+// const OpenSansSemiBold = require('./fonts/OpenSans-SemiBold.ttf');
+// const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
+// const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
+// const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
 const DarkTheme = {
+  OVERLAY: 'rgba(17,17,17,0.50)',
   textShades: {
     SHADE_MINUS_3: '#F8F9FF',
     SHADE_MINUS_2: '#BBBCCE',
@@ -28,11 +24,7 @@ const DarkTheme = {
   },
   contrastColor: {
     HIGH_CONTRAST: '#F8F9FF',
-    LOW_CONTRAST: '#BBBCCE',
-  },
-  inverseContrastColor: {
-    INVERSE_HIGH_CONTRAST: '#F8F9FF',
-    INVERSE_LOW_CONTRAST: '#BBBCCE',
+    LOW_CONTRAST: '#6A7382',
   },
   dropShadow: {
     REGULAR: '',
@@ -40,25 +32,22 @@ const DarkTheme = {
 };
 
 const LightTheme = {
+  OVERLAY: 'rgba(255,255,255,0.50)',
   textShades: {
     SHADE_MINUS_3: '#1F2128',
     SHADE_MINUS_2: '#575761',
     SHADE_MINUS_1: '#797A84',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#D1DAFF',
+    NEUTRAL_SHADE_0: '#C1E1FF',
     SHADE_PLUS_1: '#FFFFFF',
-    SHADE_PLUS_2: '#FDFDFF',
-    SHADE_PLUS_3: '#F9FAFF',
-    BG_SHADE_PLUS_4: '#EFF1F8',
+    SHADE_PLUS_2: '#F7F8FA',
+    SHADE_PLUS_3: '#F0F1F5',
+    BG_SHADE_PLUS_4: '#E2E4EB',
   },
   contrastColor: {
-    HIGH_CONTRAST: '#355DFF',
-    LOW_CONTRAST: '#0993EC',
-  },
-  inverseContrastColor: {
-    INVERSE_HIGH_CONTRAST: '#355DFF',
-    INVERSE_LOW_CONTRAST: '#0993EC',
+    HIGH_CONTRAST: '#1D86E8',
+    LOW_CONTRAST: '#80C6E4',
   },
   dropShadow: {
     REGULAR: '',
@@ -69,15 +58,15 @@ const Theme = {
   ...DarkTheme,
   colors: {
     primary: {
-      UWL_BLUE: '#355DFF',
-      WATER_BLUE: '#2979FE',
-      DARK_BLUE: '#0846B5',
+      MAIN_BLUE: '#1D86E8',
+      MANGO: '#CBAA00',
+      DARK_BLUE: '#142A63',
     },
     secondary: {
-      TURQUOISE: '#0993EC',
-      FUSCHIA: '#E4599C',
+      TEAL: '#01C5E0',
+      CANARY: '#CED225',
       TANGY: '#DD8442',
-      PURPLE: '#B769DC',
+      SKY: '#2A5ABA',
     },
     system: {
       RED: '#FF6B6B',
@@ -91,67 +80,38 @@ const Theme = {
   },
   gradients: {
     primary: {
-      BLURPLE: 'linear-gradient(180deg, #2D75E2 0%, #4A00E0 100%)',
-      BLURPLE_FLIPPED: 'linear-gradient(180deg, #4A00E0 0%, #2D75E2 94.73%)',
-      BLURPLE_HIGHLIGHTED: 'linear-gradient(180deg, #509CF4 0%, #4A00E0 100%)',
+      MAIN_BLUE_GRADIENT: 'linear-gradient(180deg, #5AD7F9 0%, #255296 100%)',
+      MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #255296 0%, #5AD7F9 100%)',
+      MAIN_HIGHLIGHT_GRADIENT: 'linear-gradient(180deg, #255296 0%, #95E6FF 100%)',
     },
     secondary: {
-      TURQUOISE: 'linear-gradient(0deg, rgba(9, 147, 236, 0) 21.81%, rgba(9, 147, 236, 0.1) 70.37%)',
-      FUSCHIA: 'linear-gradient(0deg, rgba(241, 2, 117, 0) 20.52%, rgba(241, 2, 117, 0.1) 123.83%)',
-      TANGY: 'linear-gradient(0deg, rgba(221, 132, 66, 0) -1.31%, rgba(221, 132, 66, 0.1) 80.31%) ',
+      TEAL: 'linear-gradient(180deg, #OlAAEO 0%, #COFBFF 100%)',
+      CANARY: 'linear-gradient(180deg, #DB9COO 0%, #EEFF41 100%)',
+      TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
+      SKY: 'linear-gradient(180deg, #2D467F 0%, #489BFC 100%)',
+
     },
     system: {
-      CHALK_DUST: 'linear-gradient(180deg, #FF6B6B 0%, rgba(255, 107, 107, 0) 100%)',
-      LAVENDAR: 'linear-gradient(180deg, #1DD1A1 0%, rgba(29, 209, 161, 0) 100%)',
+      GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
     },
   },
+  zIndex: ZIndex,
 };
 
 LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;
 DarkTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.BLACK}`;
 
 const { colors, gradients } = Theme;
-
+const localTheme = () => useTheme() as typeof Theme;
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Poppins';
-    src: url(${PoppinsRegular}) format('truetype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansRegular}) format('truetype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansSemiBold}) format('truetype');
-    font-weight: 600;
-  }
-  @font-face {
-    font-family: 'Open Sans';
-    src: url(${OpenSansBold}) format('truetype');
-    font-weight: 700;
-  }
-  @font-face {
-    font-family: 'League Spartan';
-    src: url(${LeagueSpartanBold}) format('opentype');
-    font-weight: normal;
-  }
-  @font-face {
-    font-family: 'Poppins';
-    src: url(${PoppinsSemiBold}) format('truetype');
-    font-weight: 600;
-  }
-
   html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
     font-family: Poppins,sans-serif;
   }
 `;
 
 export {
-  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme,
+  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme, localTheme,
 };
 export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;

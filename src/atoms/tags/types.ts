@@ -1,8 +1,11 @@
-import { ReactChild } from 'react';
+import { MouseEvent, ReactChild } from 'react';
+import { CSSProperties } from 'styled-components';
+import { TextProps } from '../texts/types';
 
-export interface TagProps {
+export type TagProps = {
   children: ReactChild
   isOn: boolean;
   tabIndex: number;
-  onClick: () => void;
-}
+  onClick: (e: MouseEvent<HTMLElement>) => void;
+  fontSize?: TextProps['size'];
+} & Pick<CSSProperties, 'width'>;

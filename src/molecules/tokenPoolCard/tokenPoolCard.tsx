@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useTheme } from 'styled-components';
 import { Styled } from '../../theme';
-// eslint-disable-next-line import/no-cycle
-import { IconWrapper, LinkIcon, Text } from '../..';
+import { LinkIcon } from '../../atoms/icons';
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { Text } from '../../atoms/texts/text';
 import { formatter } from '../../utils/format';
 import { dexIcons } from '../txTableList/txTableColumns';
 
@@ -28,7 +29,6 @@ const Wrapper = Styled.div`
   border-radius: 12px;
   transition: all .2s;
   max-width: 500px;
-  //height: 144px;
   width: 100%;
   padding: 24px 24px;
   box-sizing: border-box;

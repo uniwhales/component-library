@@ -46,6 +46,12 @@ export const PrimaryAction = Template.bind({});
 export const SecondaryAction = Template.bind({});
 export const TinyAction = Template.bind({});
 export const SecondaryActionInverse = Template.bind({});
+export const SpacialSmallNormal = Template.bind({});
+export const SpacialSmallNormalWithIcon = Template.bind({});
+export const SpacialSmallRound = Template.bind({});
+export const SpacialTinyRound = Template.bind({});
+export const SpecialExtraTinyRound = Template.bind({});
+export const SpecialSmallSubtleRound = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -86,4 +92,28 @@ TinyAction.args = {
 SecondaryActionInverse.args = {
   children: WithIcon(false),
   buttonVariant: 'secondary_action_inverse',
+};
+SpacialSmallNormal.args = {
+  children: 'Special Small',
+  buttonVariant: 'special_small',
+};
+SpacialSmallNormalWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'special_small',
+};
+SpacialSmallRound.args = {
+  children: WithIcon(false),
+  buttonVariant: 'special_small_round',
+};
+SpacialTinyRound.args = {
+  children: WithIcon(false),
+  buttonVariant: 'special_tiny_round',
+};
+SpecialExtraTinyRound.args = {
+  children: WithIcon(false),
+  buttonVariant: 'special_extra_tiny_round',
+};
+SpecialSmallSubtleRound.args = {
+  children: 'Test',
+  buttonVariant: 'special_extra_tiny_subtle',
 };

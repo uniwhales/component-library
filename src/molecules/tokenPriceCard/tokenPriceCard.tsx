@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
-// eslint-disable-next-line import/no-cycle
 import {
   ArrowDownIcon,
-  ArrowUpIcon, LinkIcon, Text, HeartStandard,
-} from '../..';
+  ArrowUpIcon, LinkIcon, HeartStandard,
+} from '../../atoms/icons';
+import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { LogoUrlBase } from '../../utils/constants';
 import { formatter } from '../../utils/format';
@@ -92,7 +92,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
             key={index}
             cursor="pointer"
             fill={(isFavorite && !isHighlighted) || (!isFavorite && isHighlighted)
-              ? theme.colors.primary.UWL_BLUE
+              ? theme.colors.primary.MAIN_BLUE
               : (isFavorite && isHighlighted) || (!isFavorite && !isHighlighted)
                 ? theme.textShades.SHADE_MINUS_1
                 : theme.textShades.SHADE_MINUS_1}

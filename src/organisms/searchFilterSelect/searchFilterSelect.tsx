@@ -14,13 +14,13 @@ import { LoadingMessage } from './searchFilterSelectComponents/loadingMessage';
 import { IndicatorsContainer } from './searchFilterSelectComponents/indicatorsContainer';
 
 const StyledSelect = Styled(ReactSelect)<{
-  label?: string
+  label?: string,
   isContractSearch?: boolean,
-  onSwitch: () => void
-  onSubmit: (e: any) => void
-  rightSwitchText: string,
-  leftSwitchText: string,
-  isDropdownDisabled?: boolean
+  onSwitch?: () => void,
+  onSubmit: (e: any) => void,
+  rightSwitchText?: string,
+  leftSwitchText?: string,
+  isDropdownDisabled?: boolean,
 }>`
   width: 450px;
   outline: none;
@@ -52,7 +52,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   },
   dropdownIndicator: (defaultStyles, { isFocused, theme, selectProps }: StyledProps) => ({
     ...defaultStyles,
-    fontSize: '1rem',
+    padding: 4,
     svg: {
       transition: 'all 0.4s',
       fill: isFocused || selectProps.menuIsOpen
@@ -67,7 +67,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     boxSizing: 'border-box',
     background: selectProps.menuIsOpen || isFocused
-      ? theme.gradients.primary.BLURPLE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
+      ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: '1px solid transparent',
     outline: 'none',
     boxShadow: 'none',
@@ -83,16 +83,18 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       fontWeight: selectProps.menuIsOpen || selectProps.inputValue.length > 0 ? 'bold' : 'normal',
     },
     fontWeight: isFocused || hasValue ? 'bold' : 'normal',
-    height: '50px',
     '&:hover': {
       color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
-      border: isFocused ? '' : `1px solid ${theme.colors.primary.UWL_BLUE}`,
+      border: isFocused ? '' : `1px solid ${theme.colors.primary.MAIN_BLUE}`,
       svg: {
         fill: !isFocused ? theme.contrastColor.HIGH_CONTRAST : undefined,
       },
       // Required to target the placeholder
       '.react-select__placeholder': {
         color: !isFocused && theme.contrastColor.HIGH_CONTRAST,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
       },
     },
   }),
@@ -108,7 +110,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
       fill: isSelected && theme.colors.system.WHITE,
     },
     paddingLeft: 8,
-    background: isSelected ? `${theme.colors.primary.WATER_BLUE}!important`
+    background: isSelected ? `${theme.colors.primary.MANGO}!important`
       : isFocused ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
     '&:hover': {
       background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
@@ -129,7 +131,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     paddingBottom: 0,
     paddingTop: 0,
     borderRadius: '0px 0px 12px 12px',
-    zIndex: 10,
+    zIndex: props.theme.zIndex.SAFE_LAYER,
     '> :nth-of-type(2n)': {
       background: props.theme.containerAndCardShades.SHADE_PLUS_1,
       '&:hover': {
@@ -176,10 +178,10 @@ type Props<T extends OptionBase> = {
   isLoading: boolean
   label?: string
   isContractSearch?: boolean,
-  onSwitch: () => void
+  onSwitch?: () => void
   onSubmit: (e: T) => void
-  leftSwitchText:string
-  rightSwitchText:string
+  leftSwitchText?:string
+  rightSwitchText?:string
   isDropdownDisabled?: boolean
 };
 

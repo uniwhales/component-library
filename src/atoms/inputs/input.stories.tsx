@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './input';
+import { SearchStandard } from '../icons';
 
 export default {
   title: 'Atoms/Inputs',
@@ -10,19 +11,38 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = ({
-  disabled, isError, type,
+  disabled, isError, type, icon,
 }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
-  return <Input value={localValue} disabled={disabled} isError={isError} label="Login" onChange={(e:any) => onChangeInput(e.target.value)} type={type} />;
+  return (
+    <Input
+      value={localValue}
+      disabled={disabled}
+      isError={isError}
+      label="Login"
+      onChange={(e) => onChangeInput(e.target.value)}
+      type={type}
+      icon={icon}
+    />
+  );
 };
 export const Primary = Template.bind({});
+export const WithIcon = Template.bind({});
 
 Primary.args = {
 };
 
 Primary.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+WithIcon.args = {
+  icon: <SearchStandard />,
+};
+
+WithIcon.parameters = {
   backgrounds: { default: 'dark' },
 };

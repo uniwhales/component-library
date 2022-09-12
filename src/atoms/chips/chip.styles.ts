@@ -1,40 +1,36 @@
+import { CSSProperties } from 'styled-components';
 import { Styled } from '../../theme';
+import { ChipProps } from './types';
 
-const CustomChip = Styled.div<{ type: string }>`
-  width: fit-content;
+const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width'>>`
+  width: ${({ width }) => width ?? 'fit-content'};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.colors.system.WHITE}
+  color: ${(props) => props.theme.colors.system.WHITE};
 `;
 
 export const PrimaryChip = Styled(CustomChip)`
   padding: 4px 12px;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 700;
   gap: 8px;
   border-radius: 40px;
-  background: ${(props) => props.theme.gradients.primary.BLURPLE};
+  background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   svg {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
   }
 `;
 
-export const SecondaryChip = Styled(CustomChip)`
+export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 12px;
   width: fit-content;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 700;
   gap: 8px;
   border-radius: 12px;
-  background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
   svg {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
   }
 `;
 
@@ -42,34 +38,30 @@ export const EditableChip = Styled(CustomChip)`
   padding: 4px 12px;
   width: fit-content;
   min-width: 50px;
-  font-size: 14px;
   transition: all .3s;
-  line-height: 18px;
-  font-weight: 400;
   border-radius: 12px;
   gap: 8px;
   background: ${(props) => props.theme.colors.primary.DARK_BLUE};
   border: ${(props) => `1px solid ${props.theme.textShades.SHADE_MINUS_2}
 `};
   &:hover {
-    background: ${(props) => props.theme.colors.primary.WATER_BLUE};
+    background: ${(props) => props.theme.colors.primary.MANGO};
     font-weight: 700;
   }
 `;
 
 export const TertiaryChip = Styled(CustomChip)`
   padding: 4px 6px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 700;
   gap: 2px;
   border-radius: 12px;
-  background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+  background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
+  font-size: 10px;
+  text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   }
   svg {
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
   }
 `;

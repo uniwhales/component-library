@@ -7,6 +7,7 @@ export interface ToggleProps {
   onClick?: () => void;
   label?:string
   size?: 'standard' | 'small'
+  disabled?: boolean;
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -20,14 +21,14 @@ const Switcher = Styled.label<{ size: string }>`
   width: ${(props) => (props.size === 'small' ? 32 : 48)}px;
   height: ${(props) => (props.size === 'small' ? 16 : 24)}px;
 `;
-const Toggle = Styled.span<{ size: string }>`
+const Toggle = Styled.span<{ size: string, disabled: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 34px;
   :before {
     position: absolute;
@@ -36,7 +37,7 @@ const Toggle = Styled.span<{ size: string }>`
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
-    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.colors.secondary.SKY)};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -45,26 +46,27 @@ const FakeInput = Styled.input<{ size:any }>`
   opacity: 0;
   width: 0;
   height: 0;
-  :checked + ${Toggle} {
-    background: ${(props) => props.theme.gradients.primary.BLURPLE};
-  }
   :hover + ${Toggle} {
-    background: ${(props) => (props.defaultChecked
-    ? props.theme.gradients.primary.BLURPLE_HIGHLIGHTED
-    : 'rgba(41, 121, 254, 0.5);')};
+    background: ${(props) => props.theme.colors.primary.DARK_BLUE};
+  }
+  :checked + ${Toggle} {
+    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.gradients.primary.MAIN_BLUE_GRADIENT)};
+    &:hover {
+      background: ${(props) => props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+    }
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
-    background: ${(props) => props.theme.colors.system.WHITE};
+    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.colors.system.WHITE)};
   }
 `;
 export const ToggleAtom = ({
-  isOn, onClick, label, size = 'standard',
+  isOn, onClick, label, size = 'standard', disabled,
 }:ToggleProps) => (
   <Wrapper>
     <Switcher size={size}>
-      <FakeInput size={size} type="checkbox" defaultChecked={isOn} onChange={onClick} />
-      <Toggle size={size} />
+      <FakeInput disabled={disabled} size={size} type="checkbox" defaultChecked={isOn} onChange={onClick} />
+      <Toggle disabled={!!disabled} size={size} />
     </Switcher>
     {label && <Text size="M-Regular">{label}</Text>}
   </Wrapper>

@@ -1,41 +1,37 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { DashedSpinner } from '../../atoms/icons';
+import { Overlay } from '../../atoms/common/overlay';
+import { CrossIcon } from '../../atoms/icons';
+import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
-  ModalWrapper, Overlay, ModalComponent, ModalHeader,
+  IconWrapperAbsolute,
+  ModalContent,
+  ModalWrapper,
 } from './modal.styles';
-import { Text } from '../../atoms/texts/text';
 import { ModalProps } from './types';
 
 export const Modal = ({
-  show, toggle, header, title, subtitle, content, link,
+  show, toggle, children,
 }: ModalProps) => {
   if (!show) return null;
   return ReactDom.createPortal(
     <>
       <Overlay onClick={toggle} />
       <ModalWrapper>
-        <ModalComponent>
-          <ModalHeader size="M-Regular">
-            {header}
-          </ModalHeader>
-          <Text size="H3-Regular">{title}</Text>
-          <DashedSpinner />
-          {subtitle && (<Text size="H5-Regular">{subtitle}</Text>)}
-          <Text size="M-Regular">
-            {content}
-          </Text>
-          {link && (
-            <Text
-              href={link.href}
-              size="M-Regular"
-            >
-              {link.text}
-            </Text>
-          )}
-        </ModalComponent>
+        <ModalContent>
+          <IconWrapperAbsolute>
+            <IconWrapper
+              height="14px"
+              width="14px"
+              cursor="pointer"
+              onClick={toggle}
+              icon={<CrossIcon />}
+            />
+          </IconWrapperAbsolute>
+          {children}
+        </ModalContent>
       </ModalWrapper>
     </>,
-    document.getElementById('modal'),
+    document.getElementById('modal') as HTMLElement,
   );
 };

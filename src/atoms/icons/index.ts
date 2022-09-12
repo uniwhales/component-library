@@ -1,5 +1,5 @@
 // generalIcons//COLOR
-export * from './generalIcons/fullColorStyle/AlerBotColor';
+export * from './generalIcons/fullColorStyle/AlertBotColor';
 export * from './generalIcons/fullColorStyle/EditColor';
 export * from './generalIcons/fullColorStyle/CoinColor';
 export * from './generalIcons/fullColorStyle/CopyColor';
@@ -10,7 +10,7 @@ export * from './generalIcons/fullColorStyle/ChartColor';
 export * from './generalIcons/fullColorStyle/CommentColor';
 export * from './generalIcons/fullColorStyle/DashboardColor';
 export * from './generalIcons/fullColorStyle/DeleteColor';
-export * from './generalIcons/fullColorStyle/GobeColor';
+export * from './generalIcons/fullColorStyle/GlobeColor';
 export * from './generalIcons/fullColorStyle/HeartColor';
 export * from './generalIcons/fullColorStyle/InfoColor';
 export * from './generalIcons/fullColorStyle/MediaColor';
@@ -18,7 +18,7 @@ export * from './generalIcons/fullColorStyle/MoreCircleColor';
 export * from './generalIcons/fullColorStyle/NewsColor';
 export * from './generalIcons/fullColorStyle/NotificationColor';
 export * from './generalIcons/fullColorStyle/PlusColor';
-export * from './generalIcons/fullColorStyle/Plus1Color';
+export * from './generalIcons/fullColorStyle/MinusColor';
 export * from './generalIcons/fullColorStyle/Plus2Color';
 export * from './generalIcons/fullColorStyle/RocketColor';
 export * from './generalIcons/fullColorStyle/SearchColor';
@@ -32,7 +32,11 @@ export * from './generalIcons/fullColorStyle/TwitterColor';
 export * from './generalIcons/fullColorStyle/WalletColor';
 export * from './generalIcons/fullColorStyle/WebinarColor';
 export * from './generalIcons/fullColorStyle/Check';
+export * from './generalIcons/fullColorStyle/UniwhalesColor';
 // generalIcons//STANDARD
+export * from './generalIcons/filledStyle/ProfileStandart';
+export * from './generalIcons/filledStyle/Feed';
+export * from './generalIcons/filledStyle/Fire';
 export * from './generalIcons/filledStyle/AlertBotStandard';
 export * from './generalIcons/filledStyle/EditStandard';
 export * from './generalIcons/filledStyle/CoinStandard';
@@ -62,6 +66,30 @@ export * from './generalIcons/filledStyle/TwitterStandard';
 export * from './generalIcons/filledStyle/WalletStandard';
 export * from './generalIcons/filledStyle/WebinarStandard';
 export * from './generalIcons/filledStyle/DownloadStandard';
+export * from './generalIcons/filledStyle/AllStandard';
+export * from './generalIcons/filledStyle/CSVDocStandard';
+export * from './generalIcons/filledStyle/GlobeStandard';
+export * from './generalIcons/filledStyle/MinusStandard';
+export * from './generalIcons/filledStyle/TckSquareStandard';
+export * from './generalIcons/filledStyle/WrapStandard';
+export * from './generalIcons/filledStyle/AllIcon';
+export * from './generalIcons/filledStyle/StarIcon';
+export * from './generalIcons/filledStyle/ImageIcon';
+export * from './generalIcons/filledStyle/UploadStandard';
+export * from './generalIcons/filledStyle/Interaction';
+export * from './generalIcons/filledStyle/Announcements';
+export * from './generalIcons/filledStyle/Suitcase';
+export * from './generalIcons/filledStyle/SettingsBars';
+export * from './generalIcons/filledStyle/Sonar';
+export * from './generalIcons/filledStyle/Microscope';
+export * from './generalIcons/filledStyle/Collection';
+export * from './generalIcons/filledStyle/BundleStandard';
+export * from './generalIcons/filledStyle/UnfollowStandard';
+export * from './generalIcons/filledStyle/NotificationOff';
+export * from './generalIcons/filledStyle/BridgeStandard';
+export * from './generalIcons/filledStyle/TrendingStandard';
+export * from './generalIcons/filledStyle/TransactionsStandard';
+export * from './generalIcons/filledStyle/UniwhalesStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
@@ -77,6 +105,14 @@ export * from './navigationIcons/ChevronLeftIcon';
 export * from './navigationIcons/ChevronRightIcon';
 export * from './navigationIcons/ChevronUpIcon';
 export * from './navigationIcons/RefreshIcon';
+export * from './navigationIcons/HamburgerIcon';
+// navigationIconsColor
+export * from './navigationIcons/fullColor/ArrowRightColor';
+export * from './navigationIcons/fullColor/ArrowLeftColor';
+export * from './navigationIcons/fullColor/NoticeColor';
+export * from './navigationIcons/fullColor/SelectedCheck';
+export * from './navigationIcons/fullColor/SelectedCross';
+export * from './navigationIcons/fullColor/RedCross';
 // chains
 export * from './chains/Arbitrum';
 export * from './chains/Avalanche';
@@ -119,13 +155,14 @@ export * from './chains/fullColorStyle/TerraColor';
 export * from './chains/fullColorStyle/WalletConnectColor';
 export * from './chains/fullColorStyle/UniWhalesColor';
 export * from './chains/fullColorStyle/0xColor';
-
 export * from './chains/fullColorStyle/OneInchV3';
 export * from './chains/fullColorStyle/OneInchV4';
 export * from './chains/fullColorStyle/BalancerColor';
 export * from './chains/fullColorStyle/BancorColor';
 export * from './chains/fullColorStyle/ParaSwapV4';
 export * from './chains/fullColorStyle/ParaSwapV5';
+export * from './chains/fullColorStyle/EvmosColor';
+export * from './chains/fullColorStyle/DogechainColor';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
@@ -134,3 +171,17 @@ export { Usdt } from './tokens/USDT';
 export { Weth } from './tokens/WETH';
 // misc
 export { DashedSpinner } from './miscIcons/DashedSpinner';
+export { Meatball } from './miscIcons/Meatball';
+export { Kebab } from './miscIcons/Kebab';
+export { NftIcon } from './miscIcons/NftIcon';
+// placeholder
+export { Identicon } from './placeholder/Identicon';
+// feed
+export * from './feed/ApproveIcon';
+export * from './feed/BridgeIcon';
+export * from './feed/Call';
+export * from './feed/LpIcon';
+export * from './feed/NftTradeIcon';
+export * from './feed/RevokeIcon';
+export * from './feed/SwapIcon';
+export * from './feed/Unknown';

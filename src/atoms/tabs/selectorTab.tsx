@@ -40,8 +40,8 @@ const SelectorTab = Styled.div<SelectorTabProps>`
   :hover {
     transition: all 0.4s;
     color: ${(props) => props.theme.colors.system.WHITE};
-    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
-    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
+    border: 1px solid ${(props) => props.theme.colors.primary.MAIN_BLUE};
     font-weight: bold;
     svg {
       transition: all 0.4s;
@@ -50,8 +50,8 @@ const SelectorTab = Styled.div<SelectorTabProps>`
   }
   ${({ isHighlighted }) => isHighlighted && css`
     color: ${(props) => props.theme.colors.system.WHITE};
-    background: ${(props) => props.theme.colors.primary.UWL_BLUE};
-    border: 1px solid ${(props) => props.theme.colors.primary.UWL_BLUE};
+    background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
+    border: 1px solid ${(props) => props.theme.colors.primary.MAIN_BLUE};
     font-weight: bold;
     svg {
       transition: all 0.4s;

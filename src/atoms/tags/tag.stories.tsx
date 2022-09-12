@@ -21,12 +21,15 @@ const Template: ComponentStory<typeof Tag> = (args) => (
   <Wrapper>
     {mockData.map((item, index) => {
       const [isActive, setIsActive] = useState<boolean>(false);
+
       return (
         <Tag
           {...args}
           key={item}
           isOn={isActive}
-          onClick={() => setIsActive(!isActive)}
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
           tabIndex={index}
         >
           {item}
@@ -36,7 +39,16 @@ const Template: ComponentStory<typeof Tag> = (args) => (
   </Wrapper>
 );
 export const ContentTags = Template.bind({});
+export const ContentTagsCustomWidth = Template.bind({});
+export const CustomFontSize = Template.bind({});
 
 ContentTags.parameters = {
   backgrounds: { default: 'dark' },
+};
+ContentTagsCustomWidth.args = {
+  width: '400px',
+};
+
+CustomFontSize.args = {
+  fontSize: 'H4-Bold',
 };

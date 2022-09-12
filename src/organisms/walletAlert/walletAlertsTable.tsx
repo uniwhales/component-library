@@ -1,8 +1,7 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
-import { Select } from '../../atoms/inputs/select';
+import { Select, SelectOption } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
@@ -18,14 +17,13 @@ export interface WalletAlertsTableProps {
   label?: string;
   wallet: string;
   isActive: boolean;
-  setIsActive: (wallet: number, status: boolean) => any;
-  chains: any;
+  setIsActive: (wallet: number, status: boolean) => void;
+  chains: SelectOption[];
   editWallet: (id: number) => void;
   removeWallet: (id: number) => void;
   id: number;
   isLoading: boolean;
-  filters: any;
-  botIdArray: BotIdArray[]
+  filters: SelectOption[];
   bot_id: BotIdArray
 }
 const Wrapper = Styled.div<{ isLoading: boolean }>`
@@ -40,9 +38,29 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
+  
+  @media screen and (max-width: 1024px) {
+    p{
+      font-size: 14px;
+    }
+    button {
+      padding: 0;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    padding: 5px 10px;
+  }
 `;
 const Section = Styled.div<{ flex?: number }>`
   flex: ${(props) => props.flex || 1};
+`;
+const SectionSelect = Styled(Section)`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
 `;
 const Group = Styled.div`
   display: flex;
@@ -76,7 +94,7 @@ const ButtonGroupMobile = Styled.div`
 const Overlay = Styled.div`
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zIndex.OVERLAY};
   top: 0;
   left: 0;
   position: absolute;
@@ -86,7 +104,7 @@ export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
   bot_id,
 }:WalletAlertsTableProps) => {
-  const theme:any = useTheme();
+  const theme = localTheme();
   return (
     <Wrapper isLoading={isLoading}>
       {isLoading && <Overlay />}
@@ -102,26 +120,25 @@ export const WalletAlertsTable = ({
         <Group>
           <ToggleAtom
             size="small"
-            label={isActive ? 'On' : 'Off'}
             isOn={isActive}
             onClick={() => setIsActive(id, isActive)}
           />
         </Group>
       </Section>
-      <Section flex={1}>
+      <Section>
         <Group>
           {bot_id && (
-          <Text size="M-Regular">
-            {`bot #${bot_id.id}`}
-          </Text>
+            <Text size="M-Regular">
+              {`bot #${bot_id.id}`}
+            </Text>
           )}
         </Group>
       </Section>
-      <Section flex={1}>
+      <SectionSelect flex={1}>
         <Group>
-          <Select readOnly placeholder="Alert Filters" options={chains} value={filters} />
+          <Select<'multi'> readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
         </Group>
-      </Section>
+      </SectionSelect>
       <Section flex={1}>
         <ButtonGroup>
           <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
@@ -138,11 +155,8 @@ export const WalletAlertsTable = ({
           </ButtonAtom>
         </ButtonGroup>
         <ButtonGroupMobile>
-          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
-            <>
-              <IconWrapper icon={<EditStandard />} />
-              Edit
-            </>
+          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary_action">
+            <IconWrapper icon={<EditStandard />} />
           </ButtonAtom>
           <ButtonAtom
             onClick={() => removeWallet(id)}

@@ -17,7 +17,7 @@ const Wrapper = Styled.div`
   display: flex;
 `;
 
-export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:SelectorTabsProps) => {
+export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }: SelectorTabsProps) => {
   const menu = tabs.map((item, i) => (
     <SelectorTabAtom
       setActiveTab={() => setActiveTab(item)}
@@ -28,6 +28,7 @@ export const SelectorTabsMolecules = ({ tabs, activeTab, setActiveTab }:Selector
       {item.label}
     </SelectorTabAtom>
   ));
+
   return (
     <Wrapper>
       {menu}

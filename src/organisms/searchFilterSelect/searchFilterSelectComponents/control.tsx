@@ -22,6 +22,8 @@ export const Control = (props: any) => {
     onSwitch, isContractSearch, label, leftSwitchText, rightSwitchText,
   } = selectProps;
 
+  if (!leftSwitchText || !rightSwitchText) return <components.Control {...props} />;
+
   return (
     <>
       <ControlHeaderContainer>

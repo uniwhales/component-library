@@ -1,12 +1,20 @@
-export const P_FONTSIZE:Readonly<{ S: number; XS: number; L: number; M: number }> = Object.freeze({
+export const P_FONTSIZE = Object.freeze({
+  XXXS: 8,
+  XXS: 10,
   XS: 12,
   S: 14,
   M: 16,
   L: 18,
 });
-export const H_FONTSIZE:Readonly<{
-  H1: number; H2: number; H3:number;
-  H4: number; H5: number; H6: number }> = Object.freeze({
+export const P_LINE_HEIGHT = Object.freeze({
+  XXXS: 12,
+  XXS: 12,
+  XS: 16,
+  S: 20,
+  M: 20,
+  L: 24,
+});
+export const H_FONTSIZE = Object.freeze({
   H1: 44,
   H2: 40,
   H3: 32,
@@ -14,9 +22,7 @@ export const H_FONTSIZE:Readonly<{
   H5: 20,
   H6: 18,
 });
-export const H_LINE_HEIGHT:Readonly<{
-  H1: number; H2: number; H3:number;
-  H4: number; H5: number; H6: number }> = Object.freeze({
+export const H_LINE_HEIGHT = Object.freeze({
   H1: 54,
   H2: 54,
   H3: 44,
@@ -25,8 +31,7 @@ export const H_LINE_HEIGHT:Readonly<{
   H6: 24,
 });
 
-export const FONTWEIGHT:Readonly<{ Semibold:
-number; Bold: number; Regular: number;light:number }> = Object.freeze({
+export const FONTWEIGHT = Object.freeze({
   Semibold: 600,
   Bold: 700,
   Regular: 400,

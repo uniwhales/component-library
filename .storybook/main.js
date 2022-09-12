@@ -16,13 +16,12 @@ module.exports = {
     return config;
   },
   "stories": [
-    "../src/intro/**/*.stories.mdx",
     "../src/atoms/**/*.stories.mdx",
     "../src/molecules/**/*.stories.mdx",
     "../src/atoms/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/molecules/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/organisms/**/*.stories.@(js|jsx|ts|tsx)",
-
+    "../src/layouts/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   "addons": [
     "@storybook/addon-controls",
