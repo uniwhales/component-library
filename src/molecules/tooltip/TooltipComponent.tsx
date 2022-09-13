@@ -16,13 +16,11 @@ export const TooltipComponent = ({
       closeDelay={300}
       arrowSize={arrowSize}
       opened={opened}
-      // allowPointerEvents={allowPointerEvents}
       styles={{
         arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
         tooltip: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
           color: theme.textShades.SHADE_MINUS_2,
-          boxShadow: theme.dropShadow.REGULAR,
         },
       }}
     >

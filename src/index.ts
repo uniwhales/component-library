@@ -34,6 +34,7 @@ export * from './molecules/modals/modal';
 export * from './molecules/stickyActionBar/stickyActionBar';
 export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/popover/PopoverComponent';
+export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
