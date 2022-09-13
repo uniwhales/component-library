@@ -16,11 +16,13 @@ export const PopoverComponent = ({
       radius={8}
       shadow="md"
       closeOnClickOutside
+      closeOnEscape
       styles={{
-        arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
+        arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4, border: 'none' },
         dropdown: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
           color: theme.textShades.SHADE_MINUS_2,
+          border: 'none',
         },
       }}
     >

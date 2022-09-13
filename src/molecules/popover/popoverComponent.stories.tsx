@@ -44,13 +44,19 @@ const Template: ComponentStory<typeof PopoverComponent> = () => (
 
 const Template2: ComponentStory<typeof PopoverComponent> = () => {
   const [open, setOpen] = useState(false);
+
+  const delayClose = () => {
+    setTimeout(() => {
+      setOpen(false);
+    }, 300);
+  };
   return (
     <PopoverComponent
       opened={open}
       target={(
         <div
           onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
+          onMouseLeave={delayClose}
           style={{ width: 'fit-content', margin: 50 }}
         >
           <ButtonAtom
