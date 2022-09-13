@@ -50,6 +50,7 @@ const Template2: ComponentStory<typeof PopoverComponent> = () => {
       setOpen(false);
     }, 300);
   };
+
   return (
     <PopoverComponent
       opened={open}
@@ -68,7 +69,7 @@ const Template2: ComponentStory<typeof PopoverComponent> = () => {
         </div>
 )}
       content={(
-        <div>
+        <div onMouseEnter={() => setOpen(true)} onMouseLeave={delayClose}>
           <Text size="S-Regular">Popover content</Text>
           <ButtonAtom buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
         </div>
