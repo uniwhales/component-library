@@ -13,6 +13,7 @@ const Button = Styled.button<GenericStylingProps>`
   gap: 4px;
   align-items: center;
   font-weight: 700;
+  font-family: Poppins, sans-serif;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
   justify-content: center;
