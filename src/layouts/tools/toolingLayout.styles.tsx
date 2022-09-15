@@ -7,6 +7,7 @@ export const ToolingLayoutOne = Styled.div<{ single?: boolean }>`
   min-width: 360px;
   margin: 0 auto;
   display: grid;
+  padding-top: 58px;
   gap: 25px;
   grid-template-columns: ${({ single }) => (single ? '' : 'minmax(500px, 1109px) minmax(331px, 450px)')};
   

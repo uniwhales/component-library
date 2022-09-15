@@ -11,25 +11,23 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   width: 160px;
-  right: 24px;
-  top: 84px;
+  right: 16px;
+  top: 62px;
   padding: 14px;
   border-radius: 12px;
-  position: absolute;
+  position: fixed;
   max-width: 160px;
   transition: all 800ms ease-in-out;
   z-index: ${({ theme }) => theme.zIndex.USER_MENU};
 
   ${tablet(css<{ isMenuOpen: boolean }>`
+    padding: 8px;
     position: unset;
     background-color: transparent;
     border-radius: none;
     box-shadow: none;
-    top: unset;
-    bottom: 14px;
-    right: 14px;
     justify-content: flex-end;
-    width: 100%;
+    width: calc(100vw - 32px);
     max-width: unset;
   `)}
 `;

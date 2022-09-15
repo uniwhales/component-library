@@ -18,6 +18,12 @@ export default {
 const Wrapper = Styled.div`
 `;
 
+const Dummy = Styled.div`
+  width: 100%;
+  height: 400px;
+  background-color: rgb(0, 0 ,0, 0.5);
+`;
+
 const Template: ComponentStory<typeof Navbar> = (
   args,
 ) => {
@@ -36,6 +42,18 @@ const Template: ComponentStory<typeof Navbar> = (
         account={account}
         onWalletConnectClick={() => handleSwitch()}
       />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
+      <Dummy />
     </Wrapper>
   );
 };
