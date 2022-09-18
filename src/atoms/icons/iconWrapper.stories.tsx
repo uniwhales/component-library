@@ -149,6 +149,7 @@ import {
   BridgeStandard,
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
+  DynamicList,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
@@ -326,6 +327,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Treding" icon={<TrendingStandard />} />
     <IconWrapper name="Bridge" icon={<BridgeStandard />} />
     <IconWrapper name="Transactions" icon={<TransactionsStandard />} />
+    <IconWrapper name="Dynamic List" icon={<DynamicList />} />
   </>
 );
 

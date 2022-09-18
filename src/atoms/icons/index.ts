@@ -90,6 +90,7 @@ export * from './generalIcons/filledStyle/BridgeStandard';
 export * from './generalIcons/filledStyle/TrendingStandard';
 export * from './generalIcons/filledStyle/TransactionsStandard';
 export * from './generalIcons/filledStyle/UniwhalesStandard';
+export * from './generalIcons/filledStyle/DynamicList';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
