@@ -34,7 +34,7 @@ export const Navbar: FC<NavbarProps> = ({
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsMenuOpen(false));
   return (
-    <>
+    <div ref={clickRef}>
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
@@ -71,7 +71,6 @@ export const Navbar: FC<NavbarProps> = ({
 
             {account && (
               <IdenticonContainer
-                ref={clickRef}
                 onClick={() => { setIsMenuOpen(!isMenuOpen); }}
               >
                 <IdenticonComponent
@@ -116,6 +115,6 @@ export const Navbar: FC<NavbarProps> = ({
           account={account}
         />
       )}
-    </>
+    </div>
   );
 };
