@@ -20,7 +20,7 @@ export const NavbarContainer = Styled(FlexBase)<NavbarContainerProps>`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme, bottomSpacing }) => bottomSpacing && theme.dropShadow.REGULAR};
   margin-bottom: ${({ bottomSpacing }) => bottomSpacing && '24px'};
-
+  width: 100vw;
   ${tablet(css<Pick<NavbarContainerProps, 'account' | 'isMenuOpen' | 'direction'>>`
     top: ${({ direction }) => (direction === 'up' ? 0 : '-400px')};
     transform: ${({ direction }) => (direction === 'up' ? 'scale(1)' : 'scale(0.8)')};
@@ -37,6 +37,7 @@ export const NavbarMainContent = Styled.div`
   height: 42px;
   width: calc(100vw - 120px);
   padding: 8px;
+  padding-left: 88px;
   
   ${tablet(css<{ isMenuOpen?: boolean }>`
     height: 56px;
