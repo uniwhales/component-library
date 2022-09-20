@@ -12,12 +12,10 @@ export const NavbarContainer = Styled(FlexBase)<NavbarContainerProps>`
   position: fixed;
   display: flex;
   top: 0;
-  left: 0;
+  right: 0;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  width: 100%;
-  
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   box-shadow: ${({ theme, bottomSpacing }) => bottomSpacing && theme.dropShadow.REGULAR};
@@ -37,7 +35,7 @@ export const NavbarMainContent = Styled.div`
   display: flex;
   justify-content: space-between;
   height: 42px;
-  width: calc(100vw - 32px);
+  width: calc(100vw - 120px);
   padding: 8px;
   
   ${tablet(css<{ isMenuOpen?: boolean }>`
