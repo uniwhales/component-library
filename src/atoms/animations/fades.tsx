@@ -31,7 +31,18 @@ export const keyframeFadeIn = keyframes`
   }
 `;
 
-export const FadeIn = css`animation: ${keyframeFadeIn} 2s ease-in-out`;
+export const FadeIn = css`animation: ${keyframeFadeIn} 0.3s ease-in-out`;
+
+export const keyframeFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to { 
+    opacity: 0; 
+  }
+`;
+
+export const FadeOut = css`animation: ${keyframeFadeOut} 0.3s ease-in-out`;
 
 export const keyframeFadePopUp = keyframes`
   from {

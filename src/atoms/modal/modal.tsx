@@ -10,7 +10,9 @@ import { IconWrapper } from '../icons/iconWrapper';
 import { Row } from '../common/flex';
 import { ModalBaseProps, ModalCardProps } from './types';
 import { Overlay } from '../common/overlay';
-import { FadeInTop, FadeOutTop } from '../animations/fades';
+import {
+  FadeIn, FadeInTop, FadeOut, FadeOutTop,
+} from '../animations/fades';
 
 export const ModalContainer = Styled.div`
   position: absolute;
@@ -33,6 +35,7 @@ export const ModalBody = Styled(Card)<ModalCardProps & { replay: boolean }>`
   height: ${({ height }) => height ?? '62vh'};
   max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
+  ${({ replay }) => (replay ? FadeOut : FadeIn)};
   
   ${tablet(css<{ replay: boolean }>`
     ${({ replay }) => (replay ? FadeOutTop : FadeInTop)};
