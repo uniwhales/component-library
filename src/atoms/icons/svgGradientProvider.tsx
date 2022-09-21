@@ -1,22 +1,5 @@
-import React, { FC } from 'react';
-import { localTheme, SvgGradients } from '../theme';
-
-export const SvgGradientProvider: FC<any> = ({ children }) => {
-  const theme = localTheme();
-
-  return (
-    <>
-      <defs>
-
-        <linearGradient id={theme.gradients.svg.GREEN} x1=".5" x2=".5" y2="1">
-          <stop stopColor="#1DD1A1" />
-          <stop offset="1" stopColor="#CEFF41" />
-        </linearGradient>
-      </defs>
-      {children}
-    </>
-  );
-};
+import React, from 'react';
+import { SvgGradients } from '../../theme';
 
 const GradientLookup: { [key in SvgGradients]: { first: string, second: string } } = {
   [SvgGradients.CANARY]: {
