@@ -8,6 +8,17 @@ import { ZIndex } from './utils/constants';
 // const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
+enum SvgGradients {
+  'MAIN_BLUE_GRADIENT' = 'MAIN_BLUE_GRADIENT',
+  'MAIN_BLUE_GRADIENT_FLIPPED' = 'MAIN_BLUE_GRADIENT_FLIPPED',
+  'MAIN_HIGHLIGHT_GRADIENT' = 'MAIN_HIGHLIGHT_GRADIENT',
+  'TEAL' = 'TEAL',
+  'CANARY' = 'CANARY',
+  'TANGY' = 'TANGY',
+  'SKY' = 'SKY',
+  'GREEN' = 'GREEN',
+}
+
 const DarkTheme = {
   OVERLAY: 'rgba(17,17,17,0.50)',
   textShades: {
@@ -79,6 +90,7 @@ const Theme = {
     },
   },
   gradients: {
+    svg: SvgGradients,
     primary: {
       MAIN_BLUE_GRADIENT: 'linear-gradient(180deg, #5AD7F9 0%, #255296 100%)',
       MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #255296 0%, #5AD7F9 100%)',
@@ -112,6 +124,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export {
-  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme, localTheme,
+  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme, localTheme, SvgGradients,
 };
 export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;
