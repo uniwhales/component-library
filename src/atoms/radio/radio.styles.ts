@@ -1,5 +1,4 @@
 import { Styled } from '../../theme';
-import { getRadioSize } from '../../utils/getSize';
 import { RadioProps } from './types';
 
 export const Item = Styled.div`
@@ -20,7 +19,7 @@ export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'disabled'>>`
   background: transparent;
   border: ${(props) => (props.disabled ? `2px solid ${props.theme.textShades.SHADE_MINUS_1}` : `2px solid ${props.theme.textShades.SHADE_MINUS_3}`)};
 `;
-export const RadioButton = Styled.input<Pick<RadioProps, 'size' | 'disabled' | 'selected'>>`
+export const RadioButton = Styled.input<Pick<RadioProps, 'disabled' | 'selected'>>`
   opacity: 0;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   border-radius: 50%;
@@ -41,7 +40,7 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'size' | 'disabled' | '
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: ${({ disabled }) => (disabled ? 'none' : theme.gradients.primary.MAIN_BLUE_GRADIENT)}
+      background: ${({ disabled, theme }) => (disabled ? 'none' : theme.gradients.primary.MAIN_BLUE_GRADIENT)}
     }
   }
   ${({ selected, disabled, theme }) => selected
