@@ -12,7 +12,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   svg {
     height: ${(props) => props.height};
     width: ${(props) => props.width};
-    fill: ${(props) => props.fill || props.theme.contrastColor.HIGH_CONTRAST};
+    fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')}
   }
@@ -27,6 +27,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   stroke,
   cursor,
   name,
+  gradient,
   onMouseEnter,
   onMouseLeave,
 }) => (
@@ -39,13 +40,12 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       fill={fill}
       stroke={stroke}
       name={name}
+      gradient={gradient}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
     >
       {icon && icon}
-
     </IconComponent>
     {name && <Text size="S-Regular">{name}</Text>}
   </>
-
 );

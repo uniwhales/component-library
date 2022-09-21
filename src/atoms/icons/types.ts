@@ -3,10 +3,11 @@ import { SvgGradients } from '../../theme';
 
 export interface IconWrapperProps {
   icon?: JSX.Element;
+  gradient?: SvgGradients
   onClick?: MouseEventHandler<HTMLDivElement>;
   height?: string;
   width?: string;
-  fill?: string | SvgGradients;
+  fill?: string;
   stroke?: string;
   cursor?: string;
   name?: string;

@@ -1,10 +1,10 @@
-import React, from 'react';
+import React from 'react';
 import { SvgGradients } from '../../theme';
 
 const GradientLookup: { [key in SvgGradients]: { first: string, second: string } } = {
   [SvgGradients.CANARY]: {
-    first: '#DB9C00',
-    second: '#EEFF41',
+    first: '#EEFF41',
+    second: '#DB9C00',
   },
   [SvgGradients.MAIN_BLUE_GRADIENT]: {
     first: '#5AD7F9',

@@ -164,6 +164,7 @@ import { NftTradeIcon } from './feed/NftTradeIcon';
 import { RevokeIcon } from './feed/RevokeIcon';
 import { SwapIcon } from './feed/SwapIcon';
 import { Unknown } from './feed/Unknown';
+import { SvgGradients } from '../../theme';
 
 export default {
   title: 'Atoms/Icons',
@@ -378,8 +379,11 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Revoke" icon={<RevokeIcon />} />
     <IconWrapper name="Swap" icon={<SwapIcon />} />
     <IconWrapper name="Unknown" icon={<Unknown />} />
-
   </>
+);
+
+const Template10: ComponentStory<typeof IconWrapper> = () => (
+  <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
 );
 
 export const navigationIcons = Template.bind({});
@@ -391,6 +395,7 @@ export const navigationIconsColor = Template6.bind({});
 export const generalFilledStyle = Template7.bind({});
 export const generalFullColor = Template8.bind({});
 export const feedIcons = Template9.bind({});
+export const gradientIcons = Template10.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
