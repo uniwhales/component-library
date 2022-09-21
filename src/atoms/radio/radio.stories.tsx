@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Radio } from './radio';
-import { RadioSize } from '../../utils/getSize';
+import { Wrapper } from './radio.styles';
 
 export default {
   title: 'Atoms/Radio',
@@ -13,10 +13,10 @@ export default {
 const dummyData = [{ label: 'Radio One', disabled: false }, { label: 'Radio Two', disabled: false }, { label: 'Radio Three', disabled: false }, { label: 'Disabled Radio', disabled: true }];
 
 const Template: ComponentStory<typeof Radio> = () => {
-  const [selected, setSelected] = useState<null | string>(null);
+  const [selected, setSelected] = useState<null | string>();
 
   return (
-    <div>
+    <Wrapper>
       {dummyData.map((item) => (
         <Radio
           key={item.label}
@@ -26,10 +26,10 @@ const Template: ComponentStory<typeof Radio> = () => {
           disabled={item.disabled}
           selected={selected === item.label}
           onClick={(e) => setSelected(e.target.value)}
-          size={RadioSize.Small}
+          isLarge
         />
       ))}
-    </div>
+    </Wrapper>
   );
 };
 
