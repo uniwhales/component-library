@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Radio } from './radio';
+import { RadioSize } from '../../utils/getSize';
 
 export default {
   title: 'Atoms/Radio',
@@ -25,6 +26,7 @@ const Template: ComponentStory<typeof Radio> = () => {
           disabled={item.disabled}
           selected={selected === item.label}
           onClick={(e) => setSelected(e.target.value)}
+          size={RadioSize.Small}
         />
       ))}
     </div>

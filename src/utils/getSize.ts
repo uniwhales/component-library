@@ -20,3 +20,17 @@ export const getCheckboxSize = (size: CheckboxSize) => {
       return '20px';
   }
 };
+
+export enum RadioSize {
+  'Big' = 'Big',
+  'Small' = 'Small',
+}
+
+export const getRadioSize = (size: RadioSize) => {
+  switch (size) {
+    case 'Big':
+      return '20px';
+    default:
+      return '16px';
+  }
+};
