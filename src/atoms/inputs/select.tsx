@@ -40,6 +40,7 @@ export interface SelectProps<T extends SelectVariation> {
   isSearchable?: boolean,
   showValue?: boolean,
   clearButtonText?: string,
+  handleClearValue?: () => void;
 }
 
 interface StyledProps {
@@ -90,6 +91,8 @@ const ClearButtonContainer = Styled.div`
   cursor: pointer;
   padding: 0 5px;
 `;
+
+const ClearWrapper = Styled.div``;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
@@ -234,25 +237,27 @@ const getOptionLabel = ({ label, icon }: Option) => (
 
 const ClearIndicator = (props: any) => {
   const {
-    innerProps: { ref, ...restInnerProps },
+    innerProps: { ref },
     selectProps,
     clearButtonText,
+    handleClearValue,
   } = props;
   const theme = localTheme();
   const [hover, setHover] = useState(false);
+
   return (
-    <div
-      {...restInnerProps}
+    <ClearWrapper
       ref={ref}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onClick={handleClearValue}
     >
       <ClearButtonContainer>
         <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.MAIN_BLUE : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
           {clearButtonText}
         </Text>
       </ClearButtonContainer>
-    </div>
+    </ClearWrapper>
   );
 };
 
@@ -267,6 +272,7 @@ export const Select = <T extends SelectVariation>({
   isSearchable = false,
   showValue = false,
   clearButtonText = 'Clear',
+  handleClearValue,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -285,7 +291,7 @@ export const Select = <T extends SelectVariation>({
       components={{
         Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
         IndicatorSeparator: () => null,
-        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText }),
+        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
       }}
       onChange={(option) => {
         if (!onSelectChange) return;
