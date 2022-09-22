@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { Card } from '../../atoms/card/card';
+import { keyframeFadePopUp } from '../../atoms/animations/fades';
 import { Styled } from '../../theme';
 import { StickyActionBarProps, StickyActionBarWrapperProps } from './types';
 
@@ -19,7 +20,8 @@ export const StickyActionBarWrapper = Styled(Card)<StickyActionBarWrapperProps>`
   `}
 `;
 
-export const ButtonWrapper = Styled.div<Pick<StickyActionBarProps, 'index' | 'mt'>>`
+export const ButtonWrapper = Styled.div <Pick<StickyActionBarProps, 'index' | 'mt'> & Pick<StickyActionBarWrapperProps, 'isOnEdge'>>`
+  animation: ${({ isOnEdge }) => css`${keyframeFadePopUp} cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s ${isOnEdge ? 'forwards' : 'backwards'}`};
   position: sticky;
   margin-right: ${({ index }) => (index && (index > 1) ? (index * 48) : 0)}px;
   margin-top: ${({ mt }) => mt};

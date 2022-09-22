@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Radio } from './radio';
+import { Wrapper } from './radio.styles';
 
 export default {
   title: 'Atoms/Radio',
@@ -15,7 +16,7 @@ const Template: ComponentStory<typeof Radio> = () => {
   const [selected, setSelected] = useState<null | string>(null);
 
   return (
-    <div>
+    <Wrapper>
       {dummyData.map((item) => (
         <Radio
           key={item.label}
@@ -25,9 +26,10 @@ const Template: ComponentStory<typeof Radio> = () => {
           disabled={item.disabled}
           selected={selected === item.label}
           onClick={(e) => setSelected(e.target.value)}
+          isLarge
         />
       ))}
-    </div>
+    </Wrapper>
   );
 };
 

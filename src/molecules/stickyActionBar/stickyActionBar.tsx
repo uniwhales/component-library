@@ -1,4 +1,7 @@
-import React, { FC, useRef } from 'react';
+import React, {
+  FC, useRef,
+} from 'react';
+import { FadePopUp } from '../../atoms/animations/fades';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
@@ -16,6 +19,7 @@ export const StickyActionBar: FC<StickyActionBarProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isOnEdge = useScreenEdge({ rect: 'top', ref, rootMargin });
+
   return (
     <StickyActionBarWrapper
       {...cardProps}
@@ -32,9 +36,9 @@ export const StickyActionBar: FC<StickyActionBarProps> = ({
         </>
       )}
       {icon && withTransform && isOnEdge && (
-        <ButtonWrapper index={index} mt={mt}>
-          <ButtonAtom buttonVariant="secondary_action"><IconWrapper icon={icon} cursor="pointer" /></ButtonAtom>
-        </ButtonWrapper>
+      <ButtonWrapper isOnEdge={isOnEdge} index={index} mt={mt}>
+        <ButtonAtom buttonVariant="secondary_action"><IconWrapper icon={icon} cursor="pointer" /></ButtonAtom>
+      </ButtonWrapper>
       )}
     </StickyActionBarWrapper>
   );

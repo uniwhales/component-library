@@ -1,4 +1,6 @@
-import React, { FC, useEffect } from 'react';
+import React, {
+  FC, useEffect, useState,
+} from 'react';
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { phone, tablet } from '../../layouts/breakpoints';
@@ -8,6 +10,9 @@ import { IconWrapper } from '../icons/iconWrapper';
 import { Row } from '../common/flex';
 import { ModalBaseProps, ModalCardProps } from './types';
 import { Overlay } from '../common/overlay';
+import {
+  FadeIn, FadeInTop, FadeOut, FadeOutTop,
+} from '../animations/fades';
 
 export const ModalContainer = Styled.div`
   position: absolute;
@@ -21,7 +26,7 @@ export const ModalContainer = Styled.div`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<ModalCardProps>`
+export const ModalBody = Styled(Card)<ModalCardProps & { replay: boolean }>`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -30,8 +35,10 @@ export const ModalBody = Styled(Card)<ModalCardProps>`
   height: ${({ height }) => height ?? '62vh'};
   max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-
-  ${tablet(css`
+  ${({ replay }) => (replay ? FadeOut : FadeIn)};
+  
+  ${tablet(css<{ replay: boolean }>`
+    ${({ replay }) => (replay ? FadeOutTop : FadeInTop)};
     max-width: calc(100vw - 100px);
   `)}
 
@@ -51,20 +58,26 @@ const CloseButton = Styled(Row)`
 export const ModalBase: FC<ModalBaseProps> = ({
   children, closeFn, icon, height, maxHeight, maxWidth, noCloseIcon,
 }) => {
+  const [replay, setReplay] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    console.debug(replay);
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, []);
 
   return (
-    <Overlay
-      onClick={(e) => {
-        e.stopPropagation();
-        if (closeFn) closeFn(e);
-      }}
-    >
+    <>
+      <Overlay
+        onClick={(e) => {
+          e.stopPropagation();
+          if (!closeFn) return;
+          setReplay(true);
+          setTimeout(() => closeFn(e), 150);
+        }}
+      />
       <ModalContainer>
         <ModalBody
           height={height}
@@ -72,15 +85,25 @@ export const ModalBase: FC<ModalBaseProps> = ({
           maxWidth={maxWidth}
           onClick={(e) => e.stopPropagation()}
           noHover
+          replay={replay}
         >
           {!noCloseIcon && (
-          <CloseButton>
-            <IconWrapper width="15px" cursor="pointer" icon={icon ?? <CrossIcon />} onClick={closeFn} />
-          </CloseButton>
+            <CloseButton>
+              <IconWrapper
+                width="15px"
+                cursor="pointer"
+                icon={icon ?? <CrossIcon />}
+                onClick={(e) => {
+                  if (!closeFn) return;
+                  setReplay(true);
+                  setTimeout(() => closeFn(e), 150);
+                }}
+              />
+            </CloseButton>
           )}
           {children}
         </ModalBody>
       </ModalContainer>
-    </Overlay>
+    </>
   );
 };
