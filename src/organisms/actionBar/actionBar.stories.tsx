@@ -31,7 +31,6 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
   const [selectValue, setSelectedValue] = useState<SelectOption[]>([]);
 
   const handleClearValue = () => {
-    console.log('custom function');
     setSelectedValue([]);
   };
   return (
