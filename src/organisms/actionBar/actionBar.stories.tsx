@@ -29,6 +29,10 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
   const { chipFilters: filters } = args;
   const [chipValue, setChip] = useState<number>(0);
   const [selectValue, setSelectedValue] = useState<SelectOption[]>([]);
+
+  const handleClearValue = () => {
+    setSelectedValue([]);
+  };
   return (
     <ActionBar<'multi-group'>
       chipFilterValue={chipValue}
@@ -37,6 +41,7 @@ const Template: ComponentStory<typeof ActionBar> = (args) => {
       selectValue={selectValue}
       onSelectChange={setSelectedValue}
       selectOptions={GroupExample}
+      handleClearValue={handleClearValue}
     />
   );
 };

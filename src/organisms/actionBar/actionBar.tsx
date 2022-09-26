@@ -10,7 +10,13 @@ import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { SettingsBars } from '../../atoms/icons';
 
 export const ActionBar = <T extends SelectVariation>({
-  chipFilters, setChipFilter, chipFilterValue, selectValue, onSelectChange, selectOptions,
+  chipFilters,
+  setChipFilter,
+  chipFilterValue,
+  selectValue,
+  onSelectChange,
+  selectOptions,
+  handleClearValue,
 }: ActionBarProps<T>) => (
   <Wrapper>
     <ActionTags>
@@ -31,6 +37,7 @@ export const ActionBar = <T extends SelectVariation>({
         selectValue={selectValue}
         onSelectChange={(e) => onSelectChange && onSelectChange(e)}
         selectOptions={selectOptions}
+        handleClearValue={handleClearValue}
         isMulti
         isSearchable
         isXL
