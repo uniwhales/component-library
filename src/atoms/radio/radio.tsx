@@ -27,7 +27,6 @@ export const Radio = ({
             onClick={onClick}
             disabled={disabled}
             isLarge={!!isLarge}
-            defaultChecked={selected}
           />
           <RadioButtonLabel isLarge={isLarge} disabled={disabled} />
         </Container>
