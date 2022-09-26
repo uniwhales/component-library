@@ -21,12 +21,13 @@ export const Radio = ({
         <Container>
           <RadioButton
             type="radio"
+            checked={selected}
             name={name}
             value={value}
-            selected={selected}
             onClick={onClick}
             disabled={disabled}
-            isLarge={isLarge}
+            isLarge={!!isLarge}
+            defaultChecked={selected}
           />
           <RadioButtonLabel isLarge={isLarge} disabled={disabled} />
         </Container>

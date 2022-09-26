@@ -27,7 +27,7 @@ export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'isLarge' | 'disab
   background: transparent;
   border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.textShades.SHADE_MINUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_3}`)};
 `;
-export const RadioButton = Styled.input<Pick<RadioProps, 'isLarge' | 'disabled' | 'selected'>>`
+export const RadioButton = Styled.input<{ isLarge: boolean }>`
   opacity: 0;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   border-radius: 50%;
@@ -52,12 +52,11 @@ export const RadioButton = Styled.input<Pick<RadioProps, 'isLarge' | 'disabled' 
     }
   }
   ${({
-    selected, disabled, theme, isLarge,
-  }) => selected
-    && `
+    disabled, theme, isLarge,
+  }) => `
     &:checked + ${RadioButtonLabel} {
       background: transparent;
-      border: 2px solid ${theme.colors.primary.MANGO};
+      border: 2px solid ${disabled ? theme.textShades.SHADE_MINUS_1 : theme.colors.primary.MANGO};
       &::after {
         content: "";
         display: block;

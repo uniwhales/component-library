@@ -13,7 +13,7 @@ export default {
 const dummyData = [{ label: 'Radio One', disabled: false }, { label: 'Radio Two', disabled: false }, { label: 'Radio Three', disabled: false }, { label: 'Disabled Radio', disabled: true }];
 
 const Template: ComponentStory<typeof Radio> = () => {
-  const [selected, setSelected] = useState<null | string>(null);
+  const [selected, setSelected] = useState<null | string>('Radio Two');
 
   return (
     <Wrapper>
