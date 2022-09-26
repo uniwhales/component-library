@@ -15,10 +15,11 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   top: 94px;
   padding: 14px;
   border-radius: 12px;
-  position: absolute;
+  position: fixed;
   max-width: 160px;
   transition: all 800ms ease-in-out;
   z-index: ${({ theme }) => theme.zIndex.USER_MENU};
+
   ${tablet(css<{ isMenuOpen: boolean }>`
     position: unset;
     background-color: transparent;

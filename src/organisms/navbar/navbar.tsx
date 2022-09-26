@@ -11,7 +11,6 @@ import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
-import { useScrollDirection } from '../../utils/useOnSwipe';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
@@ -37,14 +36,12 @@ export const Navbar: FC<NavbarProps> = ({
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsMenuOpen(false));
 
-  const direction = useScrollDirection(130);
   return (
     <>
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
-        direction={direction}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
