@@ -71,21 +71,21 @@ const ButtonSecondary = Styled(Button)`
   `}
 
   // active state
-  ${(props) => !props.disabled && css`
+  ${({ theme, disabled }) => !disabled && css`
     background-color: transparent;
-    border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
+    border: 1px solid ${theme.colors.primary.MANGO};
     &:hover {
-      color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.MAIN_BLUE};
+      color: ${theme.colors.primary.DARK_BLUE};
+      background: ${theme.colors.primary.MANGO};
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${theme.colors.primary.DARK_BLUE}!important;
       }
     };
     &:active {
-      color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.MAIN_BLUE};
+      color: ${theme.colors.primary.DARK_BLUE};
+      background: ${theme.colors.primary.MANGO};
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${theme.colors.primary.DARK_BLUE}!important;
       }
     };
   `}
