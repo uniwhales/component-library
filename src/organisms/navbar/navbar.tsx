@@ -118,6 +118,6 @@ export const Navbar: FC<NavbarProps> = ({
       />
       )}
       <NavbarDesktopMenu />
-    </>
+    </div>
   );
 };
