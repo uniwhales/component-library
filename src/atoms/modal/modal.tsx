@@ -12,7 +12,7 @@ import { ModalBaseProps, ModalCardProps } from './types';
 import { Overlay } from '../common/overlay';
 
 export const ModalContainer = Styled.div`
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   left: 0;
