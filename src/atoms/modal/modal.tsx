@@ -70,15 +70,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
 
   return (
     <>
-      <Overlay
-        onClick={(e) => {
-          e.stopPropagation();
-          if (!closeFn) return;
-          setReplay(true);
-          setTimeout(() => closeFn(e), 150);
-        }}
-      />
-      <ModalContainer>
+      <Overlay />
+      <ModalContainer onClick={(e) => {
+        e.stopPropagation();
+        if (!closeFn) return;
+        setReplay(true);
+        setTimeout(() => closeFn(e), 150);
+      }}
+      >
         <ModalBody
           height={height}
           maxHeight={maxHeight}
