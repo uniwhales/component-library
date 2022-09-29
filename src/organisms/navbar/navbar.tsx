@@ -102,22 +102,22 @@ export const Navbar: FC<NavbarProps> = ({
         />
         )}
       </NavbarContainer>
-      <NavbarDesktopMenu />
       {/* On Desktop we show the menu outside of navbar */}
       {breakpoint > Breakpoints.Tablet && (
-        <UserMenu
-          isMenuOpen={isMenuOpen}
-          onWalletConnectClick={(e) => {
-            onWalletConnectClick(e);
-            /*
+      <UserMenu
+        isMenuOpen={isMenuOpen}
+        onWalletConnectClick={(e) => {
+          onWalletConnectClick(e);
+          /*
               When user disconnects his wallet and we are on desktop i close the menu
             */
-            if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
-          }}
-          plan={plan}
-          account={account}
-        />
+          if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
+        }}
+        plan={plan}
+        account={account}
+      />
       )}
-    </div>
+      <NavbarDesktopMenu />
+    </>
   );
 };
