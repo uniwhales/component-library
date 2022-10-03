@@ -1,5 +1,5 @@
 import React, {
-  FC, useRef, useState,
+  FC, useState,
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
@@ -10,8 +10,6 @@ import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 import { localTheme } from '../../theme';
-import { useClickOutside } from '../../utils/useClickOutside';
-import { useScrollDirection } from '../../utils/useOnSwipe';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
@@ -34,17 +32,13 @@ export const Navbar: FC<NavbarProps> = ({
   const theme = localTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
-  const clickRef = useRef(null);
-  useClickOutside(clickRef, () => setIsMenuOpen(false));
 
-  const direction = useScrollDirection(130);
   return (
     <>
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
-        direction={direction}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
@@ -77,7 +71,6 @@ export const Navbar: FC<NavbarProps> = ({
 
             {account && (
               <IdenticonContainer
-                ref={clickRef}
                 onClick={() => { setIsMenuOpen(!isMenuOpen); }}
               >
                 <IdenticonComponent
@@ -106,22 +99,22 @@ export const Navbar: FC<NavbarProps> = ({
         />
         )}
       </NavbarContainer>
-      <NavbarDesktopMenu />
       {/* On Desktop we show the menu outside of navbar */}
       {breakpoint > Breakpoints.Tablet && (
-        <UserMenu
-          isMenuOpen={isMenuOpen}
-          onWalletConnectClick={(e) => {
-            onWalletConnectClick(e);
-            /*
+      <UserMenu
+        isMenuOpen={isMenuOpen}
+        onWalletConnectClick={(e) => {
+          onWalletConnectClick(e);
+          /*
               When user disconnects his wallet and we are on desktop i close the menu
             */
-            if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
-          }}
-          plan={plan}
-          account={account}
-        />
+          if (account && breakpoint > Breakpoints.Tablet) setIsMenuOpen(false);
+        }}
+        plan={plan}
+        account={account}
+      />
       )}
+      <NavbarDesktopMenu />
     </>
   );
 };

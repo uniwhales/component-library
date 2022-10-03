@@ -10,12 +10,9 @@ import { IconWrapper } from '../icons/iconWrapper';
 import { Row } from '../common/flex';
 import { ModalBaseProps, ModalCardProps } from './types';
 import { Overlay } from '../common/overlay';
-import {
-  FadeIn, FadeInTop, FadeOut, FadeOutTop,
-} from '../animations/fades';
 
 export const ModalContainer = Styled.div`
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   left: 0;
@@ -35,10 +32,8 @@ export const ModalBody = Styled(Card)<ModalCardProps & { replay: boolean }>`
   height: ${({ height }) => height ?? '62vh'};
   max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-  ${({ replay }) => (replay ? FadeOut : FadeIn)};
   
   ${tablet(css<{ replay: boolean }>`
-    ${({ replay }) => (replay ? FadeOutTop : FadeInTop)};
     max-width: calc(100vw - 100px);
   `)}
 
@@ -70,15 +65,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
 
   return (
     <>
-      <Overlay
-        onClick={(e) => {
-          e.stopPropagation();
-          if (!closeFn) return;
-          setReplay(true);
-          setTimeout(() => closeFn(e), 150);
-        }}
-      />
-      <ModalContainer>
+      <Overlay />
+      <ModalContainer onClick={(e) => {
+        e.stopPropagation();
+        if (!closeFn) return;
+        setReplay(true);
+        setTimeout(() => closeFn(e), 150);
+      }}
+      >
         <ModalBody
           height={height}
           maxHeight={maxHeight}
