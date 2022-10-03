@@ -65,7 +65,7 @@ export const ToggleAtom = ({
 }:ToggleProps) => (
   <Wrapper>
     <Switcher size={size}>
-      <FakeInput disabled={disabled} size={size} type="checkbox" defaultChecked={isOn} onChange={onClick} />
+      <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
       <Toggle disabled={!!disabled} size={size} />
     </Switcher>
     {label && <Text size="M-Regular">{label}</Text>}
