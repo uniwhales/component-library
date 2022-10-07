@@ -98,7 +98,7 @@ const Theme = {
     },
     secondary: {
       TEAL: 'linear-gradient(180deg, #OlAAEO 0%, #COFBFF 100%)',
-      CANARY: 'linear-gradient(180deg, ##EEFF41 0%, #DB9C00 100%)',
+      CANARY: 'linear-gradient(180deg, #EEFF41 0%, #DB9C00 100%)',
       TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
       SKY: 'linear-gradient(180deg, #489BFC 0%, #2D467F 100%)',
 
