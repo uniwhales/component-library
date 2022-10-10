@@ -4,8 +4,14 @@ import { Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 
+const InputPatterns = {
+  number: /^-?\d*\.?\d*$/,
+  int: /^[0-9]*$/,
+  nan: /^([^0-9]*)$/,
+};
+
 export interface InputsProps {
-  type: 'text' | 'number';
+  type: 'text' | 'number' | 'tel';
   placeholder?: string;
   value?:string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -14,6 +20,7 @@ export interface InputsProps {
   isError?:string;
   min?:string;
   icon?: JSX.Element;
+  pattern?: keyof typeof InputPatterns
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -46,8 +53,8 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, isError?:
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 38px;
   border-radius: 12px;
-    padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 38px' : '8px 24px')};
-    z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
+  padding: ${({ withIcon }) => (withIcon ? '8px 24px 8px 38px' : '8px 24px')};
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: 1px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
@@ -99,8 +106,18 @@ export const InputContainer = Styled.div`
   }
 `;
 
-export const Input = ({
-  type, placeholder, value, onChange, label, disabled, isError, min, icon,
+export /**
+ * @Don't use number patterns with number type, use tel + any number pattern
+ * @date 10/10/2022 - 9:52:23 AM
+ *
+ * @param {InputsProps} {
+  type, placeholder, value, onChange, label, disabled, isError, min, icon, pattern,
+
+}
+ * @returns {*}
+ */
+const Input = ({
+  type, placeholder, value, onChange, label, disabled, isError, min, icon, pattern,
 }:InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -122,7 +139,10 @@ export const Input = ({
             disabled={disabled}
             focus={focus}
             value={value}
-            onChange={onChange}
+            onChange={(e) => {
+              if (pattern && !InputPatterns[pattern].test(e.target.value)) return;
+              onChange(e);
+            }}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             placeholder={placeholder || 'Placeholder'}
