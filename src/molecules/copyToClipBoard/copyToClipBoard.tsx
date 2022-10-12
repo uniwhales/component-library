@@ -16,7 +16,7 @@ export interface CopyToClipBoardProps {
   id: string;
   color?:string;
   shortText?: string;
-  icon: JSX.Element
+  icon?: JSX.Element
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
