@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CopyToClipBoard } from './copyToClipBoard';
+import { Share } from '../../atoms/icons/generalIcons/filledStyle/Share';
 
 export default {
   title: 'Molecules/CopyToClipBoard',
@@ -11,7 +12,12 @@ export default {
 
 const Template: ComponentStory<typeof CopyToClipBoard> = (args) => <CopyToClipBoard {...args} />;
 export const Primary = Template.bind({});
+export const Secondary = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
+};
+
+Secondary.args = {
+  icon: <Share />,
 };

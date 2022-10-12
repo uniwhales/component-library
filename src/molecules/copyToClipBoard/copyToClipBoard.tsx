@@ -16,6 +16,7 @@ export interface CopyToClipBoardProps {
   id: string;
   color?:string;
   shortText?: string;
+  icon: JSX.Element
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
@@ -28,7 +29,7 @@ const Wrapper = Styled.div`
 `;
 
 export const CopyToClipBoard = ({
-  text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText,
+  text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText, icon,
 }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
 
@@ -47,7 +48,7 @@ export const CopyToClipBoard = ({
       <Text color={color} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
       <div data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={copyText} icon={<CopyStandard />} />
+        <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={copyText} icon={icon ?? <CopyStandard />} />
       </div>
     </Wrapper>
   );
