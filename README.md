@@ -34,6 +34,7 @@ $ npm i
 $ npm run storybook
 ```
 
+
 ### To publish
 
 After all changes merge, and build are ready to be publish, change version of package.
@@ -54,3 +55,9 @@ patch
 2. you up the minor version when you add functionality in a backward-compatible manner
 3. you up the patch version when you make backward-compatible bug fixes
 ```
+
+### Publishing on develop
+
+When performing any type of change it might be useful to be able to properly test it on frontend.
+Publish it first under `X.X.X-dev-<issue>-<iteration>`
+Then install it that version on your branch on cielo-app to test. 
