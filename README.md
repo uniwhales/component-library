@@ -56,6 +56,11 @@ patch
 3. you up the patch version when you make backward-compatible bug fixes
 ```
 
+To publish you need to run:
+
+>npm run build
+>npm publish
+
 ### Publishing on develop
 
 When performing any type of change it might be useful to be able to properly test it on frontend.
