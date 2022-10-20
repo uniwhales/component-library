@@ -59,6 +59,7 @@ patch
 To publish you need to run:
 
 >npm run build
+
 >npm publish
 
 ### Publishing on develop
