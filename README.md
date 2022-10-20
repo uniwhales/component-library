@@ -59,5 +59,7 @@ patch
 ### Publishing on develop
 
 When performing any type of change it might be useful to be able to properly test it on frontend.
+
 Publish it first under `X.X.X-dev-<issue>-<iteration>`
+
 Then install it that version on your branch on cielo-app to test. 
