@@ -149,7 +149,7 @@ import {
   BridgeStandard,
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
-  DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color,
+  DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color, WatchStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
@@ -281,6 +281,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="Profile" icon={<WatchStandard />} />
     <IconWrapper name="Profile" icon={<ProfileStandard />} />
     <IconWrapper name="Feed" icon={<Feed />} />
     <IconWrapper name="Fire" icon={<Fire />} />
