@@ -149,7 +149,7 @@ import {
   BridgeStandard,
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
-  DynamicList,
+  DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
@@ -211,6 +211,11 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template3: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="X2Y2" icon={<X2Y2Color />} />
+    <IconWrapper name="Opensea" icon={<OpenseaColor />} />
+    <IconWrapper name="LooksRare" icon={<LooksRareColor />} />
+    <IconWrapper name="Genie" icon={<GenieColor />} />
+    <IconWrapper name="Gem" icon={<GemColor />} />
     <IconWrapper name="Aurora" icon={<AuroraColor />} />
     <IconWrapper name="UniswapV2" icon={<UniswapV2Color />} />
     <IconWrapper name="UniswapV3" icon={<UniswapV3Color />} />
