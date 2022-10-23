@@ -28,6 +28,7 @@ export const Navbar: FC<NavbarProps> = ({
   account,
   onWalletConnectClick,
   bottomSpacing = true,
+  bgColor = true,
 }) => {
   const theme = localTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,6 +40,7 @@ export const Navbar: FC<NavbarProps> = ({
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
+        bgColor={bgColor}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
