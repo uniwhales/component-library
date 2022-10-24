@@ -1,5 +1,5 @@
 import React, {
-  FC, useRef, useState,
+  FC, useEffect, useRef, useState,
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
@@ -36,12 +36,25 @@ export const Navbar: FC<NavbarProps> = ({
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsMenuOpen(false));
 
+  const handleScroll = () => {
+    if (!isMenuOpen) return;
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
   return (
-    <div ref={clickRef}>
+    <div
+      ref={clickRef}
+    >
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
+        onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
