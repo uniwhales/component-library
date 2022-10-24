@@ -165,6 +165,7 @@ import { RevokeIcon } from './feed/RevokeIcon';
 import { SwapIcon } from './feed/SwapIcon';
 import { Unknown } from './feed/Unknown';
 import { SvgGradients } from '../../theme';
+import { GnosisColor } from './chains/fullColorStyle/GnosisColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -243,6 +244,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="0x" icon={<OxColor />} />
     <IconWrapper name="evmos" icon={<EvmosColor />} />
     <IconWrapper name="dogechain" icon={<DogechainColor />} />
+    <IconWrapper name="gnosis" icon={<GnosisColor />} />
   </>
 );
 
