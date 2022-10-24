@@ -9,6 +9,7 @@ const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width'>>`
   align-items: center;
   justify-content: center;
   color: ${(props) => props.theme.colors.system.WHITE};
+  transition: width 0.45s ease;
 `;
 
 export const PrimaryChip = Styled(CustomChip)`

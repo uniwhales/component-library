@@ -19,6 +19,7 @@ export interface CopyToClipBoardProps {
   icon?: JSX.Element;
   linkIcon?:JSX.Element;
   link?: string;
+  hoverColor?: string;
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
@@ -31,9 +32,11 @@ const Wrapper = Styled.div`
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText, icon,
-  linkIcon, link,
+  linkIcon, link, hoverColor,
 }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
+  const [currentColor, setCurrentColor] = useState(color);
+  const [currentLinkColor, setCurrentLinkColor] = useState(color);
 
   const copyText = () => {
     setCopy(true);
@@ -52,9 +55,37 @@ export const CopyToClipBoard = ({
       <Text color={color} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
       <div data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={copyText} icon={icon ?? <CopyStandard />} />
+        <IconWrapper
+          onMouseEnter={() => {
+            if (hoverColor) setCurrentColor(hoverColor);
+          }}
+          onMouseLeave={() => {
+            if (hoverColor) setCurrentColor(color);
+          }}
+          cursor="pointer"
+          width="17px"
+          height="17px"
+          fill={currentColor}
+          onClick={copyText}
+          icon={icon ?? <CopyStandard />}
+        />
       </div>
-      {link && <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={openLink} icon={linkIcon ?? <LinkIcon />} />}
+      {link && (
+      <IconWrapper
+        onMouseEnter={() => {
+          if (hoverColor) setCurrentLinkColor(hoverColor);
+        }}
+        onMouseLeave={() => {
+          if (hoverColor) setCurrentLinkColor(color);
+        }}
+        cursor="pointer"
+        width="17px"
+        height="17px"
+        fill={currentLinkColor}
+        onClick={openLink}
+        icon={linkIcon ?? <LinkIcon />}
+      />
+      )}
     </Wrapper>
   );
 };

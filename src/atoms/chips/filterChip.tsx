@@ -15,8 +15,7 @@ export type FilterChipProps = {
   id: number;
 } & Pick<CSSProperties, 'width'>;
 const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
-  max-width: ${({ width }) => width ?? 'fit-content'};
-  width: ${({ width }) => width};
+  width: ${({ width }) => width ?? 'fit-content'};
   min-width: 79px;
   box-sizing: border-box;
   background: ${({ isOn, theme }) => (isOn
@@ -27,6 +26,8 @@ const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  path { transition: fill .45s ease; }
+  transition: background .45s ease, width .45s ease;
   &:hover {
     background: ${(props) => props.theme.colors.primary.MANGO};
     font-weight: 700;

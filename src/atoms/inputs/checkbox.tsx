@@ -14,6 +14,7 @@ type CheckboxStyledProps = {
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
+  transition: background-color 0.45s ease, border 0.45s ease; 
   svg {
     height: ${(props) => (getCheckboxSvgSize(props.size))};
     width: ${(props) => (getCheckboxSvgSize(props.size))};

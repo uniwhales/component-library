@@ -44,15 +44,37 @@ const ButtonPrimary = Styled(Button)`
   `}
   // active state
   ${(props) => !props.disabled && css`
-      cursor: pointer;
-      background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-      border: none;
-      &:hover {
-        background: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
-      };
-      &:active {
-       background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-      };
+    position: relative;
+    cursor: pointer;
+    border: none;
+    opacity: 0.9;
+    background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    z-index: 1;
+    &:before {
+      border-radius: 12px;
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+      z-index: -1;
+      transition: opacity 0.25s linear;
+      opacity: 0;
+    }
+    &:hover {
+      opacity: 1;
+      &:before {
+        opacity: 1;
+      }
+    } 
+    &:active: {
+      opacity: 1;
+      &:before {
+        opacity: 1;
+      }
+    }
   `}
 `;
 const ButtonSecondary = Styled(Button)`
@@ -62,6 +84,7 @@ const ButtonSecondary = Styled(Button)`
   }
   // disabled state
   ${(props) => props.disabled && css`
+    transition: background 0.45s ease;  
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
@@ -92,6 +115,7 @@ const ButtonSecondary = Styled(Button)`
 `;
 const ButtonTertiary = Styled(Button)`
   svg {
+    path {transition: fill 0.45s ease;}
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   // disabled state
@@ -129,6 +153,7 @@ const ButtonPrimaryAction = Styled(ButtonPrimary)`
 const ButtonSecondaryAction = Styled(Button)`
   width: 40px;
   height: 40px;
+  path {transition: fill 0.45s ease;}
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
