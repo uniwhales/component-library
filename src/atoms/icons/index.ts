@@ -34,6 +34,7 @@ export * from './generalIcons/fullColorStyle/WebinarColor';
 export * from './generalIcons/fullColorStyle/Check';
 export * from './generalIcons/fullColorStyle/UniwhalesColor';
 // generalIcons//STANDARD
+export * from './generalIcons/filledStyle/WatchStandard';
 export * from './generalIcons/filledStyle/ProfileStandart';
 export * from './generalIcons/filledStyle/Feed';
 export * from './generalIcons/filledStyle/Fire';
@@ -134,6 +135,11 @@ export * from './chains/Boba';
 export * from './chains/Aurora';
 export * from './chains/Metis';
 // chains color
+export * from './chains/fullColorStyle/X2Y2Color';
+export * from './chains/fullColorStyle/OpenseaColor';
+export * from './chains/fullColorStyle/LooksRareColor';
+export * from './chains/fullColorStyle/GenieColor';
+export * from './chains/fullColorStyle/GemColor';
 export * from './chains/fullColorStyle/AuroraColor';
 export * from './chains/fullColorStyle/UniswapV2Color';
 export * from './chains/fullColorStyle/UniswapV3Color';
