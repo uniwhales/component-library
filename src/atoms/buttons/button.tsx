@@ -49,7 +49,7 @@ const ButtonPrimary = Styled(Button)`
     border: none;
     opacity: 0.9;
     background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-    z-index: 1;
+    z-index: ${props.theme.zIndex.CSS};
     &:before {
       border-radius: 12px;
       position: absolute;
