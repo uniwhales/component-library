@@ -93,6 +93,7 @@ export * from './generalIcons/filledStyle/TransactionsStandard';
 export * from './generalIcons/filledStyle/UniwhalesStandard';
 export * from './generalIcons/filledStyle/DynamicList';
 export * from './generalIcons/filledStyle/Share';
+export * from './generalIcons/filledStyle/Hide';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
