@@ -60,5 +60,3 @@ export const NavbarDesktopMenu = Styled.div`
     display: none;
   `)}
 `;
-
-export const NavigateBackContainer = Styled(FlexBase)``;

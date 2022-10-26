@@ -15,7 +15,7 @@ import {
   IdenticonContainer,
   NavbarContainer,
   NavbarDesktopMenu,
-  NavbarLeftSide, NavbarMainContent, NavbarRightSide, NavigateBackContainer,
+  NavbarLeftSide, NavbarMainContent, NavbarRightSide,
 } from './styles';
 import { NavbarProps } from './types';
 
@@ -44,12 +44,14 @@ export const Navbar: FC<NavbarProps> = ({
       >
         <NavbarMainContent>
           <NavbarLeftSide>
-            <NavigateBackContainer onClick={() => onBackButtonClick()}>
-              <IconWrapper fill={theme.textShades.SHADE_MINUS_3} icon={<ArrowLeftIcon />} cursor="pointer" />
-              <Text size="M-Regular">
-                {pageName}
-              </Text>
-            </NavigateBackContainer>
+            <ButtonAtom buttonVariant="secondary_action" onClick={() => onBackButtonClick()}>
+              <>
+                <IconWrapper fill={theme.textShades.SHADE_MINUS_3} icon={<ArrowLeftIcon />} cursor="pointer" />
+                <Text size="M-Regular">
+                  {pageName}
+                </Text>
+              </>
+            </ButtonAtom>
             {leftSideChildren}
           </NavbarLeftSide>
           <NavbarRightSide>

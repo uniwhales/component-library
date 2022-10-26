@@ -151,7 +151,7 @@ const ButtonPrimaryAction = Styled(ButtonPrimary)`
   padding: 10px;
 `;
 const ButtonSecondaryAction = Styled(Button)`
-  width: 40px;
+  width: max-content;
   height: 40px;
   path {transition: fill 0.45s ease;}
   svg {
