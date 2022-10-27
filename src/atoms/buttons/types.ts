@@ -1,5 +1,6 @@
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactChild;
+  width: string;
   buttonVariant:
   'primary'
   | 'secondary'

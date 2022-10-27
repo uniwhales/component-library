@@ -397,16 +397,16 @@ const Template10: ComponentStory<typeof IconWrapper> = () => (
 
 const Template11: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Ethereum" icon={<Ethereum />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Polygon" icon={<Polygon />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Fantom" icon={<Fantom />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Arbitrum" icon={<Arbitrum />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Avalanche" icon={<Avalanche />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Optimism" icon={<Optimism />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Binance" icon={<Binance />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Boba" icon={<Boba />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Aurora" icon={<Aurora />} />
-    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Metis" icon={<Metis />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Ethereum" icon={<Ethereum />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Polygon" icon={<Polygon />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Fantom" icon={<Fantom />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Arbitrum" icon={<Arbitrum />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Avalanche" icon={<Avalanche />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Optimism" icon={<Optimism />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Binance" icon={<Binance />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Boba" icon={<Boba />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Aurora" icon={<Aurora />} />
+    <IconWrapper width="25px" height="25px" href="1231321" name="Metis" icon={<Metis />} />
   </>
 );
 

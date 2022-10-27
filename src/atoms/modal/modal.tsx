@@ -7,7 +7,6 @@ import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 import { CrossIcon } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
-import { Row } from '../common/flex';
 import { ModalBaseProps, ModalCardProps } from './types';
 import { Overlay } from '../common/overlay';
 
@@ -43,11 +42,10 @@ export const ModalBody = Styled(Card)<ModalCardProps & { replay: boolean }>`
   `)}
 `;
 
-const CloseButton = Styled(Row)`
-  flex-flow: row-reverse;
+const CloseButton = Styled.div`
+  top: 0;
+  right: -30px;
   position: absolute;
-  right: 17px;
-  top: 17px;
 `;
 
 export const ModalBase: FC<ModalBaseProps> = ({
@@ -57,7 +55,6 @@ export const ModalBase: FC<ModalBaseProps> = ({
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    console.debug(replay);
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -82,18 +79,17 @@ export const ModalBase: FC<ModalBaseProps> = ({
           replay={replay}
         >
           {!noCloseIcon && (
-            <CloseButton>
-              <IconWrapper
-                width="15px"
-                cursor="pointer"
-                icon={icon ?? <CrossIcon />}
-                onClick={(e) => {
-                  if (!closeFn) return;
-                  setReplay(true);
-                  setTimeout(() => closeFn(e), 150);
-                }}
-              />
-            </CloseButton>
+          <CloseButton>
+            <IconWrapper
+              onClick={(e) => {
+                if (!closeFn) return;
+                setReplay(true);
+                setTimeout(() => closeFn(e), 150);
+              }}
+              cursor="pointer"
+              icon={icon ?? <CrossIcon />}
+            />
+          </CloseButton>
           )}
           {children}
         </ModalBody>
