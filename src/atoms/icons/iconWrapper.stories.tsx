@@ -395,6 +395,21 @@ const Template10: ComponentStory<typeof IconWrapper> = () => (
   <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
 );
 
+const Template11: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Ethereum" icon={<Ethereum />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Polygon" icon={<Polygon />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Fantom" icon={<Fantom />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Arbitrum" icon={<Arbitrum />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Avalanche" icon={<Avalanche />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Optimism" icon={<Optimism />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Binance" icon={<Binance />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Boba" icon={<Boba />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Aurora" icon={<Aurora />} />
+    <IconWrapper width="25px" height="25px" background="black" href="1231321" name="Metis" icon={<Metis />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
@@ -405,6 +420,7 @@ export const generalFilledStyle = Template7.bind({});
 export const generalFullColor = Template8.bind({});
 export const feedIcons = Template9.bind({});
 export const gradientIcons = Template10.bind({});
+export const hrefIcons = Template11.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

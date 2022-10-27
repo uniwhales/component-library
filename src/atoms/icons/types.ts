@@ -2,6 +2,7 @@ import { MouseEventHandler } from 'react';
 import { SvgGradients } from '../../theme';
 
 export interface IconWrapperProps {
+  background?: string;
   icon?: JSX.Element;
   gradient?: SvgGradients
   onClick?: MouseEventHandler<HTMLDivElement>;
@@ -13,4 +14,5 @@ export interface IconWrapperProps {
   name?: string;
   onMouseEnter?: () => void
   onMouseLeave?: () => void
+  href?: string;
 }
