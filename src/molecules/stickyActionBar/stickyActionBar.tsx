@@ -1,7 +1,6 @@
 import React, {
   FC, useRef,
 } from 'react';
-import { FadePopUp } from '../../atoms/animations/fades';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Text } from '../../atoms/texts/text';
