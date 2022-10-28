@@ -94,6 +94,8 @@ export * from './generalIcons/filledStyle/UniwhalesStandard';
 export * from './generalIcons/filledStyle/DynamicList';
 export * from './generalIcons/filledStyle/Share';
 export * from './generalIcons/filledStyle/Hide';
+export * from './generalIcons/filledStyle/HoldersStandard';
+export * from './generalIcons/filledStyle/ActivityStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
