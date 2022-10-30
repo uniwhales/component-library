@@ -44,12 +44,20 @@ export const Navbar: FC<NavbarProps> = ({
       >
         <NavbarMainContent>
           <NavbarLeftSide>
-            <ButtonAtom buttonVariant="secondary_action" onClick={() => onBackButtonClick()}>
+            <ButtonAtom buttonVariant="special_small_round" onClick={() => onBackButtonClick()}>
               <>
-                <IconWrapper fill={theme.textShades.SHADE_MINUS_3} icon={<ArrowLeftIcon />} cursor="pointer" />
-                <Text size="M-Regular">
-                  {pageName}
-                </Text>
+                <IconWrapper
+                  fill={theme.textShades.SHADE_MINUS_3}
+                  height="21px"
+                  width="21px"
+                  icon={<ArrowLeftIcon />}
+                  cursor="pointer"
+                />
+                {pageName && (
+                  <Text size="M-Regular">
+                    {pageName}
+                  </Text>
+                )}
               </>
             </ButtonAtom>
             {leftSideChildren}
