@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof CopyToClipBoard> = (args) => <CopyToClipBo
 export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
 export const Hover = Template.bind({});
+export const BackgroundHover = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
@@ -27,4 +28,11 @@ Secondary.args = {
 Hover.args = {
   hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
+};
+
+BackgroundHover.args = {
+  icon: <Share />,
+  hoverColor: Theme.colors.primary.MANGO,
+  link: 'sdad',
+  background: true,
 };
