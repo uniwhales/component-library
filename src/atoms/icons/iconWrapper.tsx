@@ -61,7 +61,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   onMouseLeave,
   href,
 }) => (href ? (
-  <Outer href={href}>
+  <Outer target="_blank" href={href}>
     <AnchorIconComponent
       href={href}
       cursor={cursor}
