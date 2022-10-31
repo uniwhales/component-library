@@ -44,7 +44,7 @@ export const Navbar: FC<NavbarProps> = ({
       >
         <NavbarMainContent>
           <NavbarLeftSide>
-            <ButtonAtom buttonVariant="special_small_round" onClick={() => onBackButtonClick()}>
+            <ButtonAtom buttonVariant="secondary_action" onClick={() => onBackButtonClick()}>
               <>
                 <IconWrapper
                   fill={theme.textShades.SHADE_MINUS_3}
