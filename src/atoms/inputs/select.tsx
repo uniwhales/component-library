@@ -41,6 +41,7 @@ export interface SelectProps<T extends SelectVariation> {
   showValue?: boolean,
   clearButtonText?: string,
   handleClearValue?: () => void;
+  maxMenuHeight?: number;
 }
 
 interface StyledProps {
@@ -274,6 +275,7 @@ export const Select = <T extends SelectVariation>({
   showValue = false,
   clearButtonText = 'Clear',
   handleClearValue,
+  maxMenuHeight,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -306,6 +308,7 @@ export const Select = <T extends SelectVariation>({
       value={selectValue}
       isXL={isXL}
       getOptionLabel={getOptionLabel as any}
+      maxMenuHeight={maxMenuHeight}
     />
   );
 };

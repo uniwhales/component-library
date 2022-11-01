@@ -101,6 +101,7 @@ export const Primary = TemplateSingle.bind({});
 export const SingleGroupSearchSelect = TemplateGroup.bind({});
 export const MultiSelect = TemplateMulti.bind({});
 export const MultiGroupSelect = TemplateMultiGroup.bind({});
+export const CustomMenuHeight = TemplateMulti.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark theme' },
@@ -130,6 +131,21 @@ MultiSelect.args = {
   isXL: true,
   isClearable: false,
   isSearchable: false,
+};
+CustomMenuHeight.args = {
+  selectOptions: ColourOptions,
+  isMulti: true,
+  readOnly: false,
+  showValue: true,
+  placeholder:
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
+  isXL: true,
+  isClearable: false,
+  isSearchable: false,
+  maxMenuHeight: 100,
 };
 SingleGroupSearchSelect.parameters = {
   backgrounds: { default: 'dark theme' },
