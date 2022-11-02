@@ -42,11 +42,9 @@ const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {
   return (
     <ButtonAtom
       onMouseEnter={() => {
-        console.debug('sda;lksd;alkd;alksd;a');
         setText('testing');
       }}
       onMouseLeave={() => {
-        console.debug('11111111111111111111');
         setText('test');
       }}
       {...args}

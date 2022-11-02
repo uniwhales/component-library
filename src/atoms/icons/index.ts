@@ -96,6 +96,8 @@ export * from './generalIcons/filledStyle/Share';
 export * from './generalIcons/filledStyle/Hide';
 export * from './generalIcons/filledStyle/HoldersStandard';
 export * from './generalIcons/filledStyle/ActivityStandard';
+export * from './generalIcons/filledStyle/LoadError';
+export * from './generalIcons/filledStyle/FetchError';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';

@@ -150,7 +150,7 @@ import {
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
   DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color, WatchStandard, Hide,
-  HoldersStandard, ActivityStandard,
+  HoldersStandard, ActivityStandard, LoadError, FetchError,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { VerticalDots } from './navigationIcons/VerticalDots';
@@ -284,7 +284,9 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Watch" icon={<Hide />} />
+    <IconWrapper name="Fetch Error" icon={<Hide />} />
+    <IconWrapper name="Load Error" icon={<LoadError />} />
+    <IconWrapper name="Hide" icon={<FetchError />} />
     <IconWrapper name="Watch" icon={<WatchStandard />} />
     <IconWrapper name="Profile" icon={<ProfileStandard />} />
     <IconWrapper name="Feed" icon={<Feed />} />
