@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ButtonAtom } from './button';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -36,6 +36,23 @@ const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
 };
+
+const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {
+  const [text, setText] = useState('test');
+  return (
+    <ButtonAtom
+      onMouseEnter={() => {
+        setText('testing');
+      }}
+      onMouseLeave={() => {
+        setText('test');
+      }}
+      {...args}
+    >
+      {text}
+    </ButtonAtom>
+  );
+};
 export const Primary = Template.bind({});
 export const PrimaryWithIcon = Template.bind({});
 export const Secondary = Template.bind({});
@@ -52,6 +69,7 @@ export const SpacialSmallRound = Template.bind({});
 export const SpacialTinyRound = Template.bind({});
 export const SpecialExtraTinyRound = Template.bind({});
 export const SpecialSmallSubtleRound = Template.bind({});
+export const SecondaryWithHoverEffect = TemplateHover.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -116,4 +134,8 @@ SpecialExtraTinyRound.args = {
 SpecialSmallSubtleRound.args = {
   children: 'Test',
   buttonVariant: 'special_extra_tiny_subtle',
+};
+SecondaryWithHoverEffect.args = {
+  buttonVariant: 'secondary',
+  width: '100px',
 };

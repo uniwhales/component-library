@@ -18,7 +18,9 @@ export interface CopyToClipBoardProps {
   shortText?: string;
   icon?: JSX.Element;
   linkIcon?:JSX.Element;
+  background?: boolean
   link?: string;
+  hoverColor?: string;
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
@@ -29,11 +31,26 @@ const Wrapper = Styled.div`
   align-items: center;
   gap: 5px;
 `;
+const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
+  border-radius: 36px;
+  background-color: ${({ theme, background }) => background && theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  padding: 4px;
+  &:hover {
+    background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
+  }
+`;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText, icon,
   linkIcon, link,
+  /*
+    When hoverColor is provided without background only the icon highlights
+    When hoverColor is provided with background only the background highlights
+  */
+  hoverColor, background,
 }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
+  const [currentColor, setCurrentColor] = useState(color);
+  const [currentLinkColor, setCurrentLinkColor] = useState(color);
 
   const copyText = () => {
     setCopy(true);
@@ -50,11 +67,41 @@ export const CopyToClipBoard = ({
   return (
     <Wrapper>
       <Text color={color} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
-      <div data-for={id} data-tip="Copy to clipboard">
+      <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={copyText} icon={icon ?? <CopyStandard />} />
-      </div>
-      {link && <IconWrapper cursor="pointer" width="17px" height="17px" fill={color} onClick={openLink} icon={linkIcon ?? <LinkIcon />} />}
+        <IconWrapper
+          onMouseEnter={() => {
+            if (hoverColor && !background) setCurrentColor(hoverColor);
+          }}
+          onMouseLeave={() => {
+            if (hoverColor && !background) setCurrentColor(color);
+          }}
+          cursor="pointer"
+          width="17px"
+          height="17px"
+          fill={currentColor}
+          onClick={copyText}
+          icon={icon ?? <CopyStandard />}
+        />
+      </Background>
+      {link && (
+        <Background hoverColor={hoverColor} background={background}>
+          <IconWrapper
+            onMouseEnter={() => {
+              if (hoverColor && !background) setCurrentLinkColor(hoverColor);
+            }}
+            onMouseLeave={() => {
+              if (hoverColor && !background) setCurrentLinkColor(color);
+            }}
+            cursor="pointer"
+            width="17px"
+            height="17px"
+            fill={currentLinkColor}
+            onClick={openLink}
+            icon={linkIcon ?? <LinkIcon />}
+          />
+        </Background>
+      )}
     </Wrapper>
   );
 };

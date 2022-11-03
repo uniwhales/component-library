@@ -138,6 +138,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }: StyledProps) => ({
     ...defaultStyles,
     display: 'flex',
+    transition: 'background 0.1s ease',
     alignItems: 'center',
     justifyContent: 'space-between',
     cursor: 'pointer',

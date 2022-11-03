@@ -31,7 +31,8 @@ const Button = Styled.button<GenericStylingProps>`
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
-const ButtonPrimary = Styled(Button)`
+const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
@@ -44,24 +45,48 @@ const ButtonPrimary = Styled(Button)`
   `}
   // active state
   ${(props) => !props.disabled && css`
-      cursor: pointer;
-      background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-      border: none;
-      &:hover {
-        background: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
-      };
-      &:active {
-       background: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-      };
+    position: relative;
+    cursor: pointer;
+    border: none;
+    opacity: 0.9;
+    background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    z-index: ${props.theme.zIndex.CSS};
+    &:before {
+      border-radius: 12px;
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+      z-index: -1;
+      transition: opacity 0.25s linear;
+      opacity: 0;
+    }
+    &:hover {
+      opacity: 1;
+      &:before {
+        opacity: 1;
+      }
+    } 
+    &:active: {
+      opacity: 1;
+      &:before {
+        opacity: 1;
+      }
+    }
   `}
 `;
-const ButtonSecondary = Styled(Button)`
+const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  width: ${({ width }) => width};
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   // disabled state
   ${(props) => props.disabled && css`
+    transition: background 0.45s ease;  
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
@@ -90,8 +115,10 @@ const ButtonSecondary = Styled(Button)`
     };
   `}
 `;
-const ButtonTertiary = Styled(Button)`
+const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
   svg {
+    path {transition: fill 0.45s ease;}
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
   // disabled state
@@ -121,14 +148,15 @@ const ButtonTertiary = Styled(Button)`
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonPrimary)`
-  width: 40px;
+const ButtonPrimaryAction = Styled(ButtonPrimary)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width ?? '40px'};
   height: 40px;
   padding: 10px;
 `;
-const ButtonSecondaryAction = Styled(Button)`
-  width: 40px;
+const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width ?? 'max-content'};
   height: 40px;
+  path {transition: fill 0.45s ease;}
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
@@ -155,7 +183,8 @@ const ButtonSecondaryAction = Styled(Button)`
   `}
 `;
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button)`
+const ButtonSecondaryActionInverse = Styled(Button)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
   svg {
     fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}!important;
   }
@@ -182,7 +211,8 @@ const ButtonSecondaryActionInverse = Styled(Button)`
   `}
 `;
 
-const ButtonSpecialSmallNormal = Styled(Button)`
+const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
   border-radius: 12px;
   border: none;
   padding: 4px 12px;
@@ -259,47 +289,105 @@ export const ButtonAtom:FC<ButtonProps> = ({
   disabled = false,
   onClick,
   borderRadius,
+  onMouseEnter,
+  onMouseLeave,
+  width,
 }) => {
   switch (buttonVariant) {
     case 'secondary':
       return (
-        <ButtonSecondary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondary
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonSecondary>
       );
     case 'tertiary':
       return (
-        <ButtonTertiary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonTertiary
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonTertiary>
       );
     case 'primary_action':
       return (
-        <ButtonPrimaryAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonPrimaryAction
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonPrimaryAction>
       );
     case 'secondary_action':
       return (
-        <ButtonSecondaryAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondaryAction
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonSecondaryAction>
       );
     case 'tiny_action':
       return (
-        <ButtonTinyAction borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonTinyAction
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonTinyAction>
       );
     case 'secondary_action_inverse':
       return (
-        <ButtonSecondaryActionInverse borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSecondaryActionInverse
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonSecondaryActionInverse>
       );
     case 'special_small':
       return (
-        <ButtonSpecialSmallNormal onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSpecialSmallNormal
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonSpecialSmallNormal>
       );
@@ -307,7 +395,15 @@ export const ButtonAtom:FC<ButtonProps> = ({
     case 'special_tiny_round':
     case 'special_extra_tiny_round':
       return (
-        <ButtonSpecialSmallRound buttonVariant={buttonVariant} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonSpecialSmallRound
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          buttonVariant={buttonVariant}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonSpecialSmallRound>
       );
@@ -319,7 +415,15 @@ export const ButtonAtom:FC<ButtonProps> = ({
       );
     default:
       return (
-        <ButtonPrimary borderRadius={borderRadius} onClick={!disabled ? onClick : () => {}} disabled={disabled} type="button">
+        <ButtonPrimary
+          width={width}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          borderRadius={borderRadius}
+          onClick={!disabled ? onClick : () => {}}
+          disabled={disabled}
+          type="button"
+        >
           {children}
         </ButtonPrimary>
       );

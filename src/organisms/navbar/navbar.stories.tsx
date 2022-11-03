@@ -59,6 +59,7 @@ const Template: ComponentStory<typeof Navbar> = (
 };
 export const Newsdesk = Template.bind({});
 export const FeedPage = Template.bind({});
+export const CollectionPage = Template.bind({});
 
 const FeedLeftSideChildren = Styled.div`
   display: flex;
@@ -103,4 +104,9 @@ FeedPage.args = {
     selected
     size={CheckboxSize.Small}
   />,
+};
+
+CollectionPage.args = {
+  pageName: '',
+  bgColor: false,
 };
