@@ -48,10 +48,9 @@ export const Navbar: FC<NavbarProps> = ({
   });
 
   return (
-    <div
-      ref={clickRef}
-    >
+    <>
       <NavbarContainer
+        ref={clickRef}
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
@@ -143,6 +142,6 @@ export const Navbar: FC<NavbarProps> = ({
       />
       )}
       <NavbarDesktopMenu />
-    </div>
+    </>
   );
 };
