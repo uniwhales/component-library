@@ -167,6 +167,7 @@ import { SwapIcon } from './feed/SwapIcon';
 import { Unknown } from './feed/Unknown';
 import { SvgGradients } from '../../theme';
 import { GnosisColor } from './chains/fullColorStyle/GnosisColor';
+import { NftSidebarStandard } from './generalIcons/filledStyle/NftSidebarStandard';
 
 export default {
   title: 'Atoms/Icons',
@@ -343,6 +344,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Dynamic List" icon={<DynamicList />} />
     <IconWrapper name="Holders Standard" icon={<HoldersStandard />} />
     <IconWrapper name="Activity Standard" icon={<ActivityStandard />} />
+    <IconWrapper name="NFT Sidebar" icon={<NftSidebarStandard />} />
   </>
 );
 
