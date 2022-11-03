@@ -46,7 +46,6 @@ export const NavbarMainContent = Styled.div`
 
 export const NavbarLeftSide = Styled(FlexBase)`
   gap: 6px;
-  cursor: pointer;
 `;
 
 export const NavbarRightSide = Styled(FlexBase)`
