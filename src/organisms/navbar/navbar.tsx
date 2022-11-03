@@ -1,5 +1,5 @@
 import React, {
-  FC, useState,
+  FC, useEffect, useRef, useState,
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
@@ -10,6 +10,7 @@ import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 import { localTheme } from '../../theme';
+import { useClickOutside } from '../../utils/useClickOutside';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
   IdenticonContainer,
@@ -33,13 +34,28 @@ export const Navbar: FC<NavbarProps> = ({
   const theme = localTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
+  const clickRef = useRef(null);
+  useClickOutside(clickRef, () => setIsMenuOpen(false));
+
+  const handleScroll = () => {
+    if (!isMenuOpen) return;
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
   return (
-    <>
+    <div
+      ref={clickRef}
+    >
       <NavbarContainer
         bottomSpacing={bottomSpacing}
         isMenuOpen={isMenuOpen}
         account={account}
+        onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
         bgColor={bgColor}
       >
         <NavbarMainContent>
@@ -117,6 +133,6 @@ export const Navbar: FC<NavbarProps> = ({
       />
       )}
       <NavbarDesktopMenu />
-    </>
+    </div>
   );
 };
