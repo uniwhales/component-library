@@ -13,6 +13,7 @@ export const ModalContent = Styled.div`
   padding: 24px;
   border-radius: 12px;
   box-sizing: border-box;
+  box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   @media (max-width: 768px) {
     padding: 12px;
   }

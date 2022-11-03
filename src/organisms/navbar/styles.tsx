@@ -14,12 +14,14 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   background-color: ${({ theme, bgColor }) => (bgColor && theme.containerAndCardShades.SHADE_PLUS_3)};
   box-shadow: ${({ theme, bottomSpacing }) => bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
   gap: 24px;
   margin-bottom: ${({ bottomSpacing }) => bottomSpacing && '24px'};
+
   ${tablet(css<{ isMenuOpen?: boolean, account?: string | null }>`
     gap: 0;
     justify-content: flex-start;
@@ -35,6 +37,7 @@ export const NavbarMainContent = Styled.div`
   justify-content: space-between;
   width: 100%;
   height: 42px;
+
   ${tablet(css<{ isMenuOpen?: boolean }>`
     height: 104px;
     min-height: 104px;
