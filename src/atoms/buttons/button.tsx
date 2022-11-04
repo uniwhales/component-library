@@ -69,7 +69,7 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
       &:before {
         opacity: 1;
       }
-    } 
+    }
     &:active: {
       opacity: 1;
       &:before {
@@ -86,7 +86,7 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   }
   // disabled state
   ${(props) => props.disabled && css`
-    transition: background 0.45s ease;  
+    transition: background 0.45s ease;
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
@@ -219,17 +219,20 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
   height: auto;
   line-height: 18px;
   font-weight: 400;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   svg {
     width: 16px;
     height: 16px;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
   };
-
+  // disabled
   ${(props) => props.disabled && css`
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+    }
   `}
 
   // active state
@@ -278,10 +281,41 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
   border: none;
   cursor: pointer;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
-
-  &:hover, &:active {
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+  };
+    &:hover, &:active {
     color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
+    svg {
+      fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
+    };
   }
+`;
+const ButtonIconOnly = Styled(ButtonSpecialSmallNormal)`
+  background: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  svg {
+    width: 16px;
+    height: 16px;
+  };
+  // disabled
+  /* ${(props) => props.disabled && css`
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+    border: none;
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+    }
+  `} */
+  // active state
+  ${(props) => !props.disabled && css`
+    &:active {
+      background: none;
+    };
+  `}
 `;
 export const ButtonAtom:FC<ButtonProps> = ({
   children,
@@ -412,6 +446,12 @@ export const ButtonAtom:FC<ButtonProps> = ({
         <ButtonSpecialSmallSubtle>
           {children}
         </ButtonSpecialSmallSubtle>
+      );
+    case 'icon_only':
+      return (
+        <ButtonIconOnly>
+          {children}
+        </ButtonIconOnly>
       );
     default:
       return (
