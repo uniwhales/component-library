@@ -14,4 +14,5 @@ export interface IconWrapperProps {
   onMouseEnter?: () => void
   onMouseLeave?: () => void
   href?: string;
+  disabled?: boolean;
 }

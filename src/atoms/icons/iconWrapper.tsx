@@ -14,7 +14,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
     width: ${(props) => props.width};
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
-    cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')}
+    cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')};
   }
 `;
 
@@ -26,6 +26,7 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
   justify-content: center;
   transition: width 0.3s;
   border-radius: 100px;
+
   :hover {
     background: linear-gradient(0deg, #1DD1A1 0%, #CEFF41 100%);
   }
@@ -35,7 +36,8 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor: pointer;
-  }
+  };
+
 `;
 
 const Border = Styled.div<Pick<IconWrapperProps, 'href' | 'height' | 'width'>>`
@@ -45,7 +47,10 @@ const Border = Styled.div<Pick<IconWrapperProps, 'href' | 'height' | 'width'>>`
   border-radius: 100px;
 `;
 
-const Outer = Styled.a``;
+const Outer = Styled.a<Pick<IconWrapperProps, 'disabled'>>`
+  ${({ disabled }) => disabled && 'pointer-events: none'};
+  ${({ disabled }) => disabled && 'cursor: default'};
+`;
 
 export const IconWrapper: React.FC<IconWrapperProps> = ({
   onClick,
@@ -60,12 +65,15 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   onMouseEnter,
   onMouseLeave,
   href,
+  disabled,
 }) => (href ? (
-  <Outer target="_blank" href={href}>
+  <Outer disabled={disabled} target="_blank" href={href}>
     <AnchorIconComponent
       href={href}
       cursor={cursor}
-      onClick={onClick}
+      onClick={(e) => {
+        if (!disabled && onClick) onClick(e);
+      }}
       height={height}
       width={width}
       fill={fill}
@@ -84,14 +92,17 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
 ) : (
   <>
     <IconComponent
+      onClick={(e) => {
+        if (!disabled && onClick) onClick(e);
+      }}
       cursor={cursor}
-      onClick={onClick}
       height={height}
       width={width}
       fill={fill}
       stroke={stroke}
       name={name}
       gradient={gradient}
+      disabled={disabled}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
     >
