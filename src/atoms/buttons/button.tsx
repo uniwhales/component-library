@@ -70,7 +70,7 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
         opacity: 1;
       }
     }
-    &:active: {
+    &:active {
       opacity: 1;
       &:before {
         opacity: 1;
@@ -293,27 +293,38 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
     };
   }
 `;
-const ButtonIconOnly = Styled(ButtonSpecialSmallNormal)`
+const ButtonIconOnly = Styled(Button)`
   background: none;
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  border: none;
   svg {
     width: 16px;
     height: 16px;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
   };
   // disabled
-  /* ${(props) => props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
-    border: none;
+  ${(props) => props.disabled && css`
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
     }
-  `} */
+  `}
   // active state
   ${(props) => !props.disabled && css`
+    background: none;
+   &:hover {
+      background: ${props.theme.colors.primary.MANGO};
+      svg {
+        fill: ${props.theme.colors.primary.DARK_BLUE}!important;
+      }
+    };
     &:active {
-      background: none;
+      background:none;
+      svg {
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
+      }
     };
   `}
 `;
@@ -449,7 +460,11 @@ export const ButtonAtom:FC<ButtonProps> = ({
       );
     case 'icon_only':
       return (
-        <ButtonIconOnly>
+        <ButtonIconOnly
+          disabled={disabled}
+          onClick={!disabled ? onClick : () => {}}
+          type="button"
+        >
           {children}
         </ButtonIconOnly>
       );
