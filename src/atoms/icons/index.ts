@@ -98,6 +98,7 @@ export * from './generalIcons/filledStyle/HoldersStandard';
 export * from './generalIcons/filledStyle/ActivityStandard';
 export * from './generalIcons/filledStyle/LoadError';
 export * from './generalIcons/filledStyle/FetchError';
+export * from './generalIcons/filledStyle/NftSidebarStandard';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
