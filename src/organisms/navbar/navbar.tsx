@@ -129,7 +129,6 @@ export const Navbar: FC<NavbarProps> = ({
       {/* On Desktop we show the menu outside of navbar */}
       {breakpoint > Breakpoints.Tablet && (
       <UserMenu
-        ref={clickRef}
         isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {
           onWalletConnectClick(e);
