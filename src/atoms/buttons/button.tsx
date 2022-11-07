@@ -228,7 +228,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // disabled
   ${(props) => props.disabled && css`
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_1}!important;
     border: none;
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
@@ -292,6 +292,15 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
       fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
     };
   }
+    // disabled
+  ${(props) => props.disabled && css`
+    &:hover {
+      color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+      svg {
+        fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+      };
+    }
+  `}
 `;
 const ButtonIconOnly = Styled(Button)`
   background: none;
@@ -454,7 +463,11 @@ export const ButtonAtom:FC<ButtonProps> = ({
       );
     case 'special_extra_tiny_subtle':
       return (
-        <ButtonSpecialSmallSubtle>
+        <ButtonSpecialSmallSubtle
+          disabled={disabled}
+          onClick={!disabled ? onClick : () => {}}
+          type="button"
+        >
           {children}
         </ButtonSpecialSmallSubtle>
       );
