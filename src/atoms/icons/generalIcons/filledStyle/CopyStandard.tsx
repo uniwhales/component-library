@@ -3,6 +3,10 @@ import React from 'react';
 export const CopyStandard = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    fill="none"
+    viewBox="0 0 25 25"
   >
     <path
       d="M22 10h-9c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h9c1.7 0 3-1.3 3-3v-9c0-1.7-1.3-3-3-3z"
