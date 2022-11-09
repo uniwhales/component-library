@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Chip } from './chip';
 import { IconWrapper } from '../icons/iconWrapper';
-import { StarIcon } from '../icons/placeholder/StarIcon';
+import { StarIcon } from '../icons';
 
 export default {
   title: 'Atoms/Chips',
@@ -21,9 +21,9 @@ export default {
   },
 } as ComponentMeta<typeof Chip>;
 
-const WithIcon = (isText = true) => (
+const WithIcon = (isText = true, iconSize = '16px') => (
   <>
-    <IconWrapper icon={<StarIcon />} />
+    <IconWrapper height={iconSize} width={iconSize} icon={<StarIcon />} />
     {isText && 'With Icon'}
   </>
 );
@@ -57,7 +57,7 @@ Secondary.args = {
 };
 Tertiary.args = {
   type: 'tertiary',
-  children: WithIcon(),
+  children: WithIcon(true, '12px'),
 };
 TertiaryCustomWidth.args = {
   type: 'tertiary',

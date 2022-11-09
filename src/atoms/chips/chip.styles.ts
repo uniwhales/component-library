@@ -17,10 +17,6 @@ export const PrimaryChip = Styled(CustomChip)`
   gap: 8px;
   border-radius: 40px;
   background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-  svg {
-    height: 16px;
-    width: 16px;
-  }
 `;
 
 export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
@@ -29,10 +25,6 @@ export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryT
   gap: 8px;
   border-radius: 12px;
   background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
-  svg {
-    height: 16px;
-    width: 16px;
-  }
 `;
 
 export const EditableChip = Styled(CustomChip)`
@@ -60,9 +52,5 @@ export const TertiaryChip = Styled(CustomChip)`
   text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
-  }
-  svg {
-    height: 12px;
-    width: 12px;
   }
 `;

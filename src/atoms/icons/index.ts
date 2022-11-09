@@ -184,6 +184,8 @@ export { Doge } from './tokens/DOGE';
 export { Usdc } from './tokens/USDC';
 export { Usdt } from './tokens/USDT';
 export { Weth } from './tokens/WETH';
+export { Gmx } from './tokens/GMX';
+export { Lyra } from './tokens/LYRA';
 // misc
 export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { Meatball } from './miscIcons/Meatball';
@@ -200,3 +202,4 @@ export * from './feed/NftTradeIcon';
 export * from './feed/RevokeIcon';
 export * from './feed/SwapIcon';
 export * from './feed/Unknown';
+export * from './feed/Sweep';

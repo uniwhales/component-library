@@ -3,14 +3,13 @@ import React from 'react';
 export const AllIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
+    width="100%"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
   >
     <path
       fillRule="evenodd"
-      d="M2.5 17.5h5.625v-5.625H2.5V17.5zm9.375-9.375H17.5V2.5h-5.625v5.625zm0 9.375H17.5v-5.625h-5.625V17.5zM2.5 8.125h5.625V2.5H2.5v5.625z"
+      d="M3 21h6.75v-6.75H3V21zM14.25 9.75H21V3h-6.75v6.75zm0 11.25H21v-6.75h-6.75V21zM3 9.75h6.75V3H3v6.75z"
       clipRule="evenodd"
     />
   </svg>
