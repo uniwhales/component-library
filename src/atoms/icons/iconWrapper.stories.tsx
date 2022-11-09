@@ -257,7 +257,6 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="USDT" icon={<Usdt />} />
     <IconWrapper name="GMX" icon={<Gmx />} />
     <IconWrapper name="Lyra" icon={<Lyra />} />
-    <IconWrapper name="Interaction" icon={<Interaction />} />
   </>
 );
 
@@ -344,6 +343,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Holders Standard" icon={<HoldersStandard />} />
     <IconWrapper name="Activity Standard" icon={<ActivityStandard />} />
     <IconWrapper name="NFT Sidebar" icon={<NftSidebarStandard />} />
+    <IconWrapper name="Interaction" icon={<Interaction />} />
   </>
 );
 
