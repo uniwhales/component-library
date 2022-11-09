@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CopyToClipBoard } from './copyToClipBoard';
 import { Share } from '../../atoms/icons/generalIcons/filledStyle/Share';
 import { Theme } from '../../theme';
+import { CopyStandard } from '../../atoms/icons';
 
 export default {
   title: 'Molecules/CopyToClipBoard',
@@ -31,7 +32,7 @@ Hover.args = {
 };
 
 BackgroundHover.args = {
-  icon: <Share />,
+  icon: <CopyStandard />,
   hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
   background: true,
