@@ -147,14 +147,10 @@ export /**
   onChange,
   label,
   disabled,
-  isError,
   min,
   icon,
   pattern,
-  isRequired,
-  isValid,
-  isInvalid
-
+  inputState,
 }
  * @returns {*}
  */
