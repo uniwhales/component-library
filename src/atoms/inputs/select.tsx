@@ -1,8 +1,9 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
 import { localTheme, Styled } from '../../theme';
+import { useClickOutside } from '../../utils/useClickOutside';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 
@@ -53,6 +54,8 @@ interface StyledProps {
   isMulti?: boolean;
   isCheckBox?: boolean;
 }
+
+const SelectWrapper = Styled.div``;
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
   max-width: ${(props) => (props.isXL ? '100%' : '172px')};
@@ -278,37 +281,47 @@ export const Select = <T extends SelectVariation>({
   maxMenuHeight,
 }: SelectProps<T>) => {
   const theme = localTheme();
+  const [visible, setVisible] = useState(false);
+
+  const clickRef = useRef(null);
+  useClickOutside(clickRef, () => setVisible(false));
+
   return (
-    <StyledSelect
-      options={selectOptions}
-      isMulti={isMulti}
-      theme={theme}
-      isOptionDisabled={() => !!readOnly}
-      isSearchable={isSearchable}
-      styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={showValue}
-      isClearable={isClearable}
-      placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect={!isMulti}
-      hideSelectedOptions={false}
-      components={{
-        Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
-        IndicatorSeparator: () => null,
-        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
-      }}
-      onChange={(option) => {
-        if (!onSelectChange) return;
-        /*
+    <SelectWrapper ref={clickRef} onClick={() => setVisible(!visible)}>
+      <StyledSelect
+        menuIsOpen={visible}
+        options={selectOptions}
+        isMulti={isMulti}
+        theme={theme}
+        isOptionDisabled={() => !!readOnly}
+        isSearchable={isSearchable}
+        styles={colourStyles as StylesConfig}
+        controlShouldRenderValue={showValue}
+        isClearable={isClearable}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        closeMenuOnSelect={!isMulti}
+        hideSelectedOptions={false}
+        components={{
+          Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
+          IndicatorSeparator: () => null,
+          ClearIndicator: (props) => ClearIndicator(
+            { ...props, clearButtonText, handleClearValue },
+          ),
+        }}
+        onChange={(option) => {
+          if (!onSelectChange) return;
+          /*
             When providing variation of select
             we restrict the option to be either single or group option type
             therefor we can safely assume type here is right
           */
-        onSelectChange(option as SelectVal<T>);
-      }}
-      value={selectValue}
-      isXL={isXL}
-      getOptionLabel={getOptionLabel as any}
-      maxMenuHeight={maxMenuHeight}
-    />
+          onSelectChange(option as SelectVal<T>);
+        }}
+        value={selectValue}
+        isXL={isXL}
+        getOptionLabel={getOptionLabel as any}
+        maxMenuHeight={maxMenuHeight}
+      />
+    </SelectWrapper>
   );
 };
