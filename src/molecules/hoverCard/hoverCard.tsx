@@ -16,7 +16,7 @@ export const HoverCardComponent = ({
     radius={8}
     position={position}
     withArrow
-    closeDelay={300}
+    closeDelay={50}
     arrowSize={arrowSize}
   >
     <HoverCard.Target>
