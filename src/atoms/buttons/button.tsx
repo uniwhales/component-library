@@ -27,7 +27,7 @@ const Button = Styled.button<GenericStylingProps>`
   svg {
     width: 20px;
     height: 20px;
-    cursor: pointer!important;
+    cursor: ${(props) => (props.disabled ? 'default' : 'pointer')}!important;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
@@ -219,7 +219,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
   height: auto;
   line-height: 18px;
   font-weight: 400;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   svg {
     width: 16px;
     height: 16px;
@@ -228,7 +228,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // disabled
   ${(props) => props.disabled && css`
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1}!important;
+    color: ${props.theme.textShades.SHADE_MINUS_1};
     border: none;
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
@@ -242,7 +242,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
 
    &:hover {
       background: ${props.theme.colors.primary.MANGO};
-      color: ${props.theme.colors.primary.DARK_BLUE}!important;
+      color: ${props.theme.colors.primary.DARK_BLUE};
       //font-weight: 700; it this implementation does not work
       svg {
         fill: ${props.theme.colors.primary.DARK_BLUE}!important;
@@ -250,7 +250,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
     };
     &:active {
       background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
-      color: ${props.theme.colors.primary.MAIN_BLUE}!important;
+      color: ${props.theme.colors.primary.MAIN_BLUE};
 
       svg {
         fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
@@ -280,27 +280,27 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
   svg {
     width: 16px;
     height: 16px;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
   };
+  // disabled
+  ${(props) => props.disabled && css`
+    color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+    svg {
+      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+    };
+  `}
+  ${({ disabled }) => !disabled && css`
     &:hover, &:active {
-    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
+    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE};
     svg {
       fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
     };
   }
-    // disabled
-  ${(props) => props.disabled && css`
-    &:hover {
-      color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
-      svg {
-        fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
-      };
-    }
-  `}
+  `};
 `;
 const ButtonIconOnly = Styled(Button)`
   background: none;
