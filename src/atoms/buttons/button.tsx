@@ -46,7 +46,6 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // active state
   ${(props) => !props.disabled && css`
     position: relative;
-    cursor: pointer;
     border: none;
     opacity: 0.9;
     background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
@@ -237,7 +236,6 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
 
   // active state
   ${(props) => !props.disabled && css`
-    cursor: pointer;
     background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
 
    &:hover {
@@ -260,8 +258,6 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
 `;
 const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 32px;
-  cursor: pointer;
-
   width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
   height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
 
@@ -279,7 +275,6 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant
 const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
-  cursor: pointer;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
   svg {
     width: 16px;
