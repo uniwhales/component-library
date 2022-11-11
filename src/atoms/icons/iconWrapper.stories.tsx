@@ -417,6 +417,13 @@ const Template11: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template12: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper width="25px" disabled height="25px" href="1231321" name="Href disabled" icon={<Ethereum />} />
+    <IconWrapper width="25px" disabled height="25px" name="Non href disabled" icon={<Ethereum />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
@@ -428,6 +435,7 @@ export const generalFullColor = Template8.bind({});
 export const feedIcons = Template9.bind({});
 export const gradientIcons = Template10.bind({});
 export const hrefIcons = Template11.bind({});
+export const otherIcons = Template12.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

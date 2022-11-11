@@ -8,6 +8,7 @@ import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
+import { ButtonAtom } from '../buttons/button';
 
 export const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -83,7 +84,12 @@ export default {
 
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
-  return <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+  return (
+    <>
+      <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+      <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
+    </>
+  );
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();

@@ -36,6 +36,7 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
   background-color: ${({ theme, background }) => background && theme.containerAndCardShades.NEUTRAL_SHADE_0};
   padding: 4px;
   &:hover {
+    cursor: pointer;
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
@@ -77,8 +78,8 @@ export const CopyToClipBoard = ({
             if (hoverColor && !background) setCurrentColor(color);
           }}
           cursor="pointer"
-          width="17px"
-          height="17px"
+          width="12px"
+          height="12px"
           fill={currentColor}
           onClick={copyText}
           icon={icon ?? <CopyStandard />}
@@ -94,8 +95,8 @@ export const CopyToClipBoard = ({
               if (hoverColor && !background) setCurrentLinkColor(color);
             }}
             cursor="pointer"
-            width="17px"
-            height="17px"
+            width="12px"
+            height="12px"
             fill={currentLinkColor}
             onClick={openLink}
             icon={linkIcon ?? <LinkIcon />}

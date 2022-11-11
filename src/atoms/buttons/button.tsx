@@ -49,7 +49,7 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
     border: none;
     opacity: 0.9;
     background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
-    z-index: ${props.theme.zIndex.CSS};
+    z-index: ${props.theme.zIndex.BACKDROP};
     &:before {
       border-radius: 12px;
       position: absolute;
@@ -57,9 +57,9 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
       top: 0;
       right: 0;
       bottom: 0;
+      z-index: -1;
       left: 0;
       background-image: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
-      z-index: -1;
       transition: opacity 0.25s linear;
       opacity: 0;
     }
