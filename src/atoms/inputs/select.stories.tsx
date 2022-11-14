@@ -10,7 +10,7 @@ import {
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
 
-export const ColourOptions = [
+const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
   { id: 1, value: 'purple', label: 'Purple' },
   { id: 2, value: 'red', label: 'Red' },
@@ -22,7 +22,11 @@ export const ColourOptions = [
   { id: 8, value: 'silver', label: 'Silver' },
 ];
 
-export const TxOptions = [
+const LongOptions = [
+  { id: 0, value: 'testtttttttttttttttttttttt', label: 'testtttttttttttttttttttttttesttttttttttttttttttttttt' },
+  { id: 1, value: 'TestTestTestTest TestTestTestTest', label: 'TestTestTestTest TestTestTestTest' },
+];
+const TxOptions = [
   {
     id: 1, value: 'swap', label: 'Swaps', order: 1,
   },
@@ -52,7 +56,7 @@ export const TxOptions = [
   },
 ].sort((a, b) => b.order! - a.order!);
 
-export const ChainOptions = [
+const ChainOptions = [
   {
     id: 1, value: 'ethereum', label: 'Ethereum', icon: <IconWrapper height="16px" width="16px" icon={<EthereumColor />} />, order: 1,
   },
@@ -67,7 +71,7 @@ export const ChainOptions = [
   },
 ];
 
-export const GroupExample = [
+const GroupExample = [
   {
     label: 'Chains',
     options: ChainOptions,
@@ -104,6 +108,7 @@ const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) 
   return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 export const Primary = TemplateSingle.bind({});
+export const LongOption = TemplateSingle.bind({});
 export const SingleGroupSearchSelect = TemplateGroup.bind({});
 export const MultiSelect = TemplateMulti.bind({});
 export const MultiGroupSelect = TemplateMultiGroup.bind({});
@@ -117,6 +122,15 @@ Primary.args = {
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
+  isXL: false,
+  showValue: true,
+};
+
+LongOption.args = {
+  selectOptions: LongOptions,
+  isMulti: false,
+  readOnly: false,
+  placeholder: 'Long',
   isXL: false,
   showValue: true,
 };
@@ -157,7 +171,7 @@ SingleGroupSearchSelect.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 SingleGroupSearchSelect.args = {
-  selectOptions: GroupExample,
+  options: GroupExample,
   isMulti: false,
   readOnly: false,
   showValue: true,

@@ -137,6 +137,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     isFocused, isSelected, theme, readOnly,
   }: StyledProps) => ({
     ...defaultStyles,
+    wordBreak: 'break-all',
     display: 'flex',
     transition: 'background 0.1s ease',
     alignItems: 'center',
