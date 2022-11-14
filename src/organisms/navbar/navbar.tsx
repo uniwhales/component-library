@@ -5,7 +5,7 @@ import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
 import { ArrowLeftIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
-import { HorizontalDots } from '../../atoms/icons/navigationIcons/HorizontalDots';
+import { HorizontalDots } from '../../atoms/icons/navigationIcons/Meatball';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';

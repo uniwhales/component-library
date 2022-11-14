@@ -146,11 +146,11 @@ import {
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
   DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color, WatchStandard, Hide,
-  HoldersStandard, ActivityStandard, LoadError, FetchError, Interaction,
+  HoldersStandard, ActivityStandard, LoadError,
+  FetchError, Interaction, FloatingClose, Kebab, Meatball, UniswapGenFilled, UniswapV3Filled,
+  UniswapV2Filled,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
-import { VerticalDots } from './navigationIcons/VerticalDots';
-import { HorizontalDots } from './navigationIcons/HorizontalDots';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
 import { DogechainColor } from './chains/fullColorStyle/DogechainColor';
 import { ApproveIcon } from './feed/ApproveIcon';
@@ -193,8 +193,12 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
     <IconWrapper name="RedCross" icon={<RedCross />} />
     <IconWrapper name="Hamburger" icon={<HamburgerIcon />} />
-    <IconWrapper name="Horizontal Dots" icon={<HorizontalDots />} />
-    <IconWrapper name="Vertical Dots" icon={<VerticalDots />} />
+    <IconWrapper name="Meatball" icon={<Meatball />} />
+    <IconWrapper name="Kebab" icon={<Kebab />} />
+    <IconWrapper name="Floating Close" icon={<FloatingClose />} />
+    <IconWrapper name="Load Error" icon={<LoadError />} />
+    <IconWrapper name="Load Error" icon={<LoadError />} />
+    <IconWrapper name="Hide" icon={<FetchError />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
@@ -262,8 +266,6 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
 
 const Template5: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Meatball Icon" icon={<HorizontalDots />} cursor="pointer" />
-    <IconWrapper name="Kebab Icon" icon={<VerticalDots />} cursor="pointer" />
     <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
     <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
@@ -283,9 +285,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Fetch Error" icon={<Hide />} />
-    <IconWrapper name="Load Error" icon={<LoadError />} />
-    <IconWrapper name="Hide" icon={<FetchError />} />
+    <IconWrapper name="Hide" icon={<Hide />} />
     <IconWrapper name="Watch" icon={<WatchStandard />} />
     <IconWrapper name="Profile" icon={<ProfileStandard />} />
     <IconWrapper name="Feed" icon={<Feed />} />
@@ -417,8 +417,17 @@ const Template11: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template12: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper name="Uniswap Gen" icon={<UniswapGenFilled />} />
+    <IconWrapper name="Uniswap V3" icon={<UniswapV3Filled />} />
+    <IconWrapper name="Uniswap V2" icon={<UniswapV2Filled />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
+export const chainsFilled = Template12.bind({});
 export const chainsIconsColor = Template3.bind({});
 export const tokens = Template4.bind({});
 export const misc = Template5.bind({});

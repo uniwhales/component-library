@@ -115,6 +115,8 @@ export * from './navigationIcons/ChevronRightIcon';
 export * from './navigationIcons/ChevronUpIcon';
 export * from './navigationIcons/RefreshIcon';
 export * from './navigationIcons/HamburgerIcon';
+export * from './navigationIcons/Meatball';
+export * from './navigationIcons/Kebab';
 // navigationIconsColor
 export * from './navigationIcons/fullColor/ArrowRightColor';
 export * from './navigationIcons/fullColor/ArrowLeftColor';
@@ -122,6 +124,7 @@ export * from './navigationIcons/fullColor/NoticeColor';
 export * from './navigationIcons/fullColor/SelectedCheck';
 export * from './navigationIcons/fullColor/SelectedCross';
 export * from './navigationIcons/fullColor/RedCross';
+export * from './navigationIcons/FloatingClose';
 // chains
 export * from './chains/Arbitrum';
 export * from './chains/Avalanche';
@@ -140,6 +143,19 @@ export * from './chains/UniWhales';
 export * from './chains/Boba';
 export * from './chains/Aurora';
 export * from './chains/Metis';
+// Chains filled
+export * from './chains/filledStyles/UniswapGenFilled';
+export * from './chains/filledStyles/UniswapV3Filled';
+export * from './chains/filledStyles/UniswapV2Filled';
+export * from './chains/filledStyles/BalencerFilled';
+export * from './chains/filledStyles/BancorFilled';
+export * from './chains/filledStyles/CurveFilled';
+export * from './chains/filledStyles/DogecoinFilled';
+export * from './chains/filledStyles/EvmosFilled';
+export * from './chains/filledStyles/OneInchV2Filled';
+export * from './chains/filledStyles/OneInchV3Filled';
+export * from './chains/filledStyles/ZeroXFilled';
+
 // chains color
 export * from './chains/fullColorStyle/X2Y2Color';
 export * from './chains/fullColorStyle/OpenseaColor';
@@ -188,8 +204,6 @@ export { Gmx } from './tokens/GMX';
 export { Lyra } from './tokens/LYRA';
 // misc
 export { DashedSpinner } from './miscIcons/DashedSpinner';
-export { Meatball } from './miscIcons/Meatball';
-export { Kebab } from './miscIcons/Kebab';
 export { NftIcon } from './miscIcons/NftIcon';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
