@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const OneInchV2 = () => (
+export const OneInchV2Filled = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="100%"

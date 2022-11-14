@@ -129,7 +129,6 @@ import {
   WebinarColor,
   UploadStandard,
   StarIcon,
-  RedCross,
   NftIcon,
   Fire,
   Feed,
@@ -148,7 +147,10 @@ import {
   DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color, WatchStandard, Hide,
   HoldersStandard, ActivityStandard, LoadError,
   FetchError, Interaction, FloatingClose, Kebab, Meatball, UniswapGenFilled, UniswapV3Filled,
-  UniswapV2Filled,
+  UniswapV2Filled, NearFilled, MagicLinkFilled, UniwhalesFilled, CieloFilled, SushiswapFilled,
+  CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
+  BalencerFilled, EvmosFilled, BancorFilled, RedCross,
+  CrownStandard, ShareLinkStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -191,14 +193,13 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Link" icon={<LinkIcon />} />
     <IconWrapper name="Notice" icon={<NoticeIcon />} />
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
-    <IconWrapper name="RedCross" icon={<RedCross />} />
     <IconWrapper name="Hamburger" icon={<HamburgerIcon />} />
     <IconWrapper name="Meatball" icon={<Meatball />} />
     <IconWrapper name="Kebab" icon={<Kebab />} />
     <IconWrapper name="Floating Close" icon={<FloatingClose />} />
     <IconWrapper name="Load Error" icon={<LoadError />} />
-    <IconWrapper name="Load Error" icon={<LoadError />} />
-    <IconWrapper name="Hide" icon={<FetchError />} />
+    <IconWrapper name="Fetch Error" icon={<FetchError />} />
+    <IconWrapper name="Filter" icon={<SettingsBars />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
@@ -213,6 +214,22 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Boba" icon={<Boba />} />
     <IconWrapper name="Aurora" icon={<Aurora />} />
     <IconWrapper name="Metis" icon={<Metis />} />
+    <IconWrapper name="Balencer" icon={<BalencerFilled />} />
+    <IconWrapper name="Bancor" icon={<BancorFilled />} />
+    <IconWrapper name="Cielo" icon={<CieloFilled />} />
+    <IconWrapper name="Curve" icon={<CurveFilled />} />
+    <IconWrapper name="Dogecoin" icon={<DogecoinFilled />} />
+    <IconWrapper name="Evmos" icon={<EvmosFilled />} />
+    <IconWrapper name="Magic Link" icon={<MagicLinkFilled />} />
+    <IconWrapper name="Near" icon={<NearFilled />} />
+    <IconWrapper name="OneInchV2" icon={<OneInchV2Filled />} />
+    <IconWrapper name="OneInchV3" icon={<OneInchV3Filled />} />
+    <IconWrapper name="Sushiswap" icon={<SushiswapFilled />} />
+    <IconWrapper name="Uniswap Gen" icon={<UniswapGenFilled />} />
+    <IconWrapper name="Uniswap V3" icon={<UniswapV3Filled />} />
+    <IconWrapper name="Uniswap V2" icon={<UniswapV2Filled />} />
+    <IconWrapper name="Uniwhales" icon={<UniwhalesFilled />} />
+    <IconWrapper name="0x" icon={<ZeroXFilled />} />
   </>
 );
 const Template3: ComponentStory<typeof IconWrapper> = () => (
@@ -328,7 +345,6 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
     <IconWrapper name="Upload" icon={<UploadStandard />} />
     <IconWrapper name="Announcements" icon={<Announcements />} />
-    <IconWrapper name="Settings Bars" icon={<SettingsBars />} />
     <IconWrapper name="Microscope" icon={<Microscope />} />
     <IconWrapper name="Sonar" icon={<Sonar />} />
     <IconWrapper name="Suitcase" icon={<Suitcase />} />
@@ -336,7 +352,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Bundle" icon={<BundleStandard />} />
     <IconWrapper name="Unfollow" icon={<UnfollowStandard />} />
     <IconWrapper name="Notification Off" icon={<NotificationOff />} />
-    <IconWrapper name="Treding" icon={<TrendingStandard />} />
+    <IconWrapper name="Trending" icon={<TrendingStandard />} />
     <IconWrapper name="Bridge" icon={<BridgeStandard />} />
     <IconWrapper name="Transactions" icon={<TransactionsStandard />} />
     <IconWrapper name="Dynamic List" icon={<DynamicList />} />
@@ -344,6 +360,11 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Activity Standard" icon={<ActivityStandard />} />
     <IconWrapper name="NFT Sidebar" icon={<NftSidebarStandard />} />
     <IconWrapper name="Interaction" icon={<Interaction />} />
+    <IconWrapper name="Sweep" icon={<Sweep />} />
+    <IconWrapper name="Crown" icon={<CrownStandard />} />
+    <IconWrapper name="Share Link" icon={<ShareLinkStandard />} />
+    <IconWrapper name="Approve" icon={<ApproveIcon />} />
+    <IconWrapper name="Revoke" icon={<RevokeIcon />} />
   </>
 );
 
@@ -399,7 +420,10 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
 );
 
 const Template10: ComponentStory<typeof IconWrapper> = () => (
-  <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
+  <>
+    <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
+    <IconWrapper gradient={SvgGradients.MAIN_BLUE_GRADIENT} name="Creator" icon={<CrownStandard />} />
+  </>
 );
 
 const Template11: ComponentStory<typeof IconWrapper> = () => (
@@ -417,17 +441,8 @@ const Template11: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template12: ComponentStory<typeof IconWrapper> = () => (
-  <>
-    <IconWrapper name="Uniswap Gen" icon={<UniswapGenFilled />} />
-    <IconWrapper name="Uniswap V3" icon={<UniswapV3Filled />} />
-    <IconWrapper name="Uniswap V2" icon={<UniswapV2Filled />} />
-  </>
-);
-
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
-export const chainsFilled = Template12.bind({});
 export const chainsIconsColor = Template3.bind({});
 export const tokens = Template4.bind({});
 export const misc = Template5.bind({});
