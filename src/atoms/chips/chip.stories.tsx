@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Chip } from './chip';
 import { IconWrapper } from '../icons/iconWrapper';
 import { StarIcon } from '../icons';
+import { localTheme } from '../../theme';
 
 export default {
   title: 'Atoms/Chips',
@@ -21,12 +22,20 @@ export default {
   },
 } as ComponentMeta<typeof Chip>;
 
-const WithIcon = (isText = true, iconSize = '16px') => (
-  <>
-    <IconWrapper height={iconSize} width={iconSize} icon={<StarIcon />} />
-    {isText && 'With Icon'}
-  </>
-);
+const WithIcon = (isText = true, iconSize = '16px') => {
+  const theme = localTheme();
+  return (
+    <>
+      <IconWrapper
+        fill={theme.colors.system.WHITE}
+        height={iconSize}
+        width={iconSize}
+        icon={<StarIcon />}
+      />
+      {isText && 'With Icon'}
+    </>
+  );
+};
 
 const Template: ComponentStory<typeof Chip> = (args) => {
   const { children } = args;
