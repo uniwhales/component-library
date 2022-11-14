@@ -52,6 +52,7 @@ interface StyledProps {
   readOnly?: boolean;
   isMulti?: boolean;
   isCheckBox?: boolean;
+  label?: string;
 }
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
@@ -134,10 +135,10 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontWeight: isFocused ? 'bold' : 'normal',
   }),
   option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly,
+    isFocused, isSelected, theme, readOnly, label,
   }: StyledProps) => ({
     ...defaultStyles,
-    wordBreak: 'break-all',
+    overflowWrap: label && label.includes(' ') ? 'break-word' : 'anywhere',
     display: 'flex',
     transition: 'background 0.1s ease',
     alignItems: 'center',
@@ -209,11 +210,12 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const CheckBoxOption = (props:any) => {
   const {
-    label, isSelected, readOnly, isCheckBox,
+    label, isSelected, readOnly, isCheckBox, data,
   } = props;
+
   return (
     <OptionWrapper>
-      <components.Option {...props}>
+      <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
             <label>

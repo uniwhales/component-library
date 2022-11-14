@@ -25,6 +25,7 @@ const ColourOptions = [
 const LongOptions = [
   { id: 0, value: 'testtttttttttttttttttttttt', label: 'testtttttttttttttttttttttttesttttttttttttttttttttttt' },
   { id: 1, value: 'TestTestTestTest TestTestTestTest', label: 'TestTestTestTest TestTestTestTest' },
+  { id: 1, value: 'TABTABTABTABTAB TABTABTABTABTAB', label: 'TABTABTABTABTAB TABTABTABTABTAB' },
 ];
 const TxOptions = [
   {
@@ -171,7 +172,7 @@ SingleGroupSearchSelect.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 SingleGroupSearchSelect.args = {
-  options: GroupExample,
+  selectOptions: GroupExample,
   isMulti: false,
   readOnly: false,
   showValue: true,
