@@ -54,7 +54,8 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon:
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.2' : 1)};
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  height: 38px;
+  height: 40px;
+  line-height:24px;
   border-radius: 12px;
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
