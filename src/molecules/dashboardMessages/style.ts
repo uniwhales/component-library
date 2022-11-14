@@ -16,4 +16,5 @@ export const Container = Styled(Column)`
   justify-content: center;
   align-items: center;
   text-align: center;
+  box-sizing: border-box;
 `;

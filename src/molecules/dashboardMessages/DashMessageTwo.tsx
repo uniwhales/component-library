@@ -19,7 +19,7 @@ export const DashMessageTwo = ({
     <Container>
       <CieloLogo night={night} />
       <Text color={textShades.SHADE_MINUS_2} size="H5-Regular">{title}</Text>
-      <Text size="M-Regular" color={textShades.SHADE_MINUS_2}>{message}</Text>
+      <Text size="S-Regular" color={textShades.SHADE_MINUS_2}>{message}</Text>
       <ButtonAtom buttonVariant="secondary" onClick={onClick}>
         <>
           {buttonIcon && buttonIcon}
