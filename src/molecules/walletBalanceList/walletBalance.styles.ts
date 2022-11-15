@@ -58,12 +58,7 @@ export const SelectSection = Styled.div`
   gap: 4px;
 `;
 
-export const InUseSection = Styled.div`
-  svg {
-    height: 25px;
-    width: 25px;
-  }
-`;
+export const InUseSection = Styled.div``;
 
 export const WrapButtonSection = Styled.div`
   display: flex;
@@ -72,8 +67,6 @@ export const WrapButtonSection = Styled.div`
   }
   svg {
     cursor: pointer;
-    height: 25px;
-    width: 25px
   }
 `;
 

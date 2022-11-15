@@ -22,10 +22,6 @@ export const SmallIcon = Styled.div<{ bgColor: string, smallSize: string }>`
   justify-content: center;
   height: 20px;
   width: 20px;
-  svg {
-    height: ${(props) => props.smallSize};
-    width: ${(props) => props.smallSize};
-  };
 `;
 
 export const LargeIcon = Styled.div<{ bgColor: string, largeSize: string }>`
@@ -38,10 +34,6 @@ export const LargeIcon = Styled.div<{ bgColor: string, largeSize: string }>`
   justify-content: center;
   height: 32px;
   width: 32px;
-  svg {
-    height: ${(props) => props.largeSize};
-    width: ${(props) => props.largeSize};
-  };
     img {
     height: ${(props) => props.largeSize};
     width: ${(props) => props.largeSize};

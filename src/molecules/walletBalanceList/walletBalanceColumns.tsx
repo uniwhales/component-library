@@ -128,7 +128,7 @@ export const WalletBalanceColumns = (
         if (!renderIcon) return null;
         return (
           <InUseSection>
-            <IconWrapper icon={<SelectedCheck />} />
+            <IconWrapper height="25px" width="25px" icon={<SelectedCheck />} />
           </InUseSection>
         );
       },
@@ -138,10 +138,14 @@ export const WalletBalanceColumns = (
       accessor: (row: TableItem) => (
         <WrapButtonSection>
           <IconWrapper
+            height="25px"
+            width="25px"
             onClick={() => setSelectedRow(row.tokenDetails.token)}
             icon={<Plus2Color />}
           />
           <IconWrapper
+            height="25px"
+            width="25px"
             onClick={() => setSelectedRow(row.tokenDetails.token)}
             icon={<MinusColor />}
           />
