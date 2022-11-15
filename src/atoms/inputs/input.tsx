@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { css } from 'styled-components';
-import { localTheme, Styled } from '../../theme';
+import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -37,13 +37,23 @@ const InputWrapper = Styled.div`
     margin: 0;
   }
 `;
+
+const getBackgroundColor = (theme: typeof Theme, status:string) => {
+  const lookup = {
+    error: theme.colors.system.RED,
+    invalid: theme.colors.system.RED,
+    exception: theme.colors.system.AMBER,
+  };
+  if (status === 'error' || status === 'invalid' || status === 'exception') {
+    return lookup[status];
+  }
+  return theme.containerAndCardShades.BG_SHADE_PLUS_4;
+};
 const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, inputState:InputState }>`
   border-radius: 12px;
   padding: 1px;
   box-sizing: border-box;
-  background: ${({
-    theme, inputState,
-  }) => ((inputState.status === 'error' || inputState.status === 'invalid') ? theme.colors.system.RED : inputState.status === 'exception' ? theme.colors.system.AMBER : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  background: ${({ theme, inputState }) => getBackgroundColor(theme, inputState.status)};
   ${({ focus, disabled }) => focus && !disabled && css`
     background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
   `}
