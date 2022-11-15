@@ -48,20 +48,16 @@ import {
   WalletConnectColor,
   UniWhalesColor,
   Dai,
-  Doge,
   Usdc,
   Usdt,
   Weth,
   OxColor, OneInchV3, OneInchV4,
-  DashedSpinner,
   ArrowRightColor,
   ArrowLeftColor,
   NoticeColor,
   SelectedCheck,
   SelectedCross,
   AlertBotStandard,
-  Meatball,
-  Kebab,
   Identicon,
   AllIcon,
   AllStandard,
@@ -133,7 +129,6 @@ import {
   WebinarColor,
   UploadStandard,
   StarIcon,
-  RedCross,
   NftIcon,
   Fire,
   Feed,
@@ -150,11 +145,14 @@ import {
   TransactionsStandard,
   HamburgerIcon, ProfileStandard,
   DynamicList, GemColor, GenieColor, LooksRareColor, OpenseaColor, X2Y2Color, WatchStandard, Hide,
-  HoldersStandard, ActivityStandard, LoadError, FetchError,
+  HoldersStandard, ActivityStandard, LoadError,
+  FetchError, Interaction, FloatingClose, Kebab, Meatball, UniswapGenFilled, UniswapV3Filled,
+  UniswapV2Filled, NearFilled, MagicLinkFilled, UniwhalesFilled, CieloFilled, SushiswapFilled,
+  CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
+  BalencerFilled, EvmosFilled, BancorFilled, RedCross,
+  CrownStandard, ShareLinkStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
-import { VerticalDots } from './navigationIcons/VerticalDots';
-import { HorizontalDots } from './navigationIcons/HorizontalDots';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
 import { DogechainColor } from './chains/fullColorStyle/DogechainColor';
 import { ApproveIcon } from './feed/ApproveIcon';
@@ -164,10 +162,13 @@ import { LpIcon } from './feed/LpIcon';
 import { NftTradeIcon } from './feed/NftTradeIcon';
 import { RevokeIcon } from './feed/RevokeIcon';
 import { SwapIcon } from './feed/SwapIcon';
+import { Sweep } from './feed/Sweep';
 import { Unknown } from './feed/Unknown';
 import { SvgGradients } from '../../theme';
 import { GnosisColor } from './chains/fullColorStyle/GnosisColor';
 import { NftSidebarStandard } from './generalIcons/filledStyle/NftSidebarStandard';
+import { Gmx } from './tokens/GMX';
+import { Lyra } from './tokens/LYRA';
 
 export default {
   title: 'Atoms/Icons',
@@ -192,10 +193,13 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Link" icon={<LinkIcon />} />
     <IconWrapper name="Notice" icon={<NoticeIcon />} />
     <IconWrapper name="Refresh" icon={<RefreshIcon />} />
-    <IconWrapper name="RedCross" icon={<RedCross />} />
     <IconWrapper name="Hamburger" icon={<HamburgerIcon />} />
-    <IconWrapper name="Horizontal Dots" icon={<HorizontalDots />} />
-    <IconWrapper name="Vertical Dots" icon={<VerticalDots />} />
+    <IconWrapper name="Meatball" icon={<Meatball />} />
+    <IconWrapper name="Kebab" icon={<Kebab />} />
+    <IconWrapper name="Floating Close" icon={<FloatingClose />} />
+    <IconWrapper name="Load Error" icon={<LoadError />} />
+    <IconWrapper name="Fetch Error" icon={<FetchError />} />
+    <IconWrapper name="Filter" icon={<SettingsBars />} />
   </>
 );
 const Template2: ComponentStory<typeof IconWrapper> = () => (
@@ -210,6 +214,22 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Boba" icon={<Boba />} />
     <IconWrapper name="Aurora" icon={<Aurora />} />
     <IconWrapper name="Metis" icon={<Metis />} />
+    <IconWrapper name="Balencer" icon={<BalencerFilled />} />
+    <IconWrapper name="Bancor" icon={<BancorFilled />} />
+    <IconWrapper name="Cielo" icon={<CieloFilled />} />
+    <IconWrapper name="Curve" icon={<CurveFilled />} />
+    <IconWrapper name="Dogecoin" icon={<DogecoinFilled />} />
+    <IconWrapper name="Evmos" icon={<EvmosFilled />} />
+    <IconWrapper name="Magic Link" icon={<MagicLinkFilled />} />
+    <IconWrapper name="Near" icon={<NearFilled />} />
+    <IconWrapper name="OneInchV2" icon={<OneInchV2Filled />} />
+    <IconWrapper name="OneInchV3" icon={<OneInchV3Filled />} />
+    <IconWrapper name="Sushiswap" icon={<SushiswapFilled />} />
+    <IconWrapper name="Uniswap Gen" icon={<UniswapGenFilled />} />
+    <IconWrapper name="Uniswap V3" icon={<UniswapV3Filled />} />
+    <IconWrapper name="Uniswap V2" icon={<UniswapV2Filled />} />
+    <IconWrapper name="Uniwhales" icon={<UniwhalesFilled />} />
+    <IconWrapper name="0x" icon={<ZeroXFilled />} />
   </>
 );
 const Template3: ComponentStory<typeof IconWrapper> = () => (
@@ -254,18 +274,15 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="Weth" icon={<Weth />} />
     <IconWrapper name="Dai" icon={<Dai />} />
-    <IconWrapper name="Doge" icon={<Doge />} />
     <IconWrapper name="USDC" icon={<Usdc />} />
     <IconWrapper name="USDT" icon={<Usdt />} />
-
+    <IconWrapper name="GMX" icon={<Gmx />} />
+    <IconWrapper name="Lyra" icon={<Lyra />} />
   </>
 );
 
 const Template5: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Modal Icon" icon={<DashedSpinner />} />
-    <IconWrapper name="Meatball Icon" icon={<Meatball />} cursor="pointer" />
-    <IconWrapper name="Kebab Icon" icon={<Kebab />} cursor="pointer" />
     <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
     <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
@@ -285,9 +302,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper name="Fetch Error" icon={<Hide />} />
-    <IconWrapper name="Load Error" icon={<LoadError />} />
-    <IconWrapper name="Hide" icon={<FetchError />} />
+    <IconWrapper name="Hide" icon={<Hide />} />
     <IconWrapper name="Watch" icon={<WatchStandard />} />
     <IconWrapper name="Profile" icon={<ProfileStandard />} />
     <IconWrapper name="Feed" icon={<Feed />} />
@@ -330,7 +345,6 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Wrap" icon={<WrapStandard />} />
     <IconWrapper name="Upload" icon={<UploadStandard />} />
     <IconWrapper name="Announcements" icon={<Announcements />} />
-    <IconWrapper name="Settings Bars" icon={<SettingsBars />} />
     <IconWrapper name="Microscope" icon={<Microscope />} />
     <IconWrapper name="Sonar" icon={<Sonar />} />
     <IconWrapper name="Suitcase" icon={<Suitcase />} />
@@ -338,13 +352,19 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Bundle" icon={<BundleStandard />} />
     <IconWrapper name="Unfollow" icon={<UnfollowStandard />} />
     <IconWrapper name="Notification Off" icon={<NotificationOff />} />
-    <IconWrapper name="Treding" icon={<TrendingStandard />} />
+    <IconWrapper name="Trending" icon={<TrendingStandard />} />
     <IconWrapper name="Bridge" icon={<BridgeStandard />} />
     <IconWrapper name="Transactions" icon={<TransactionsStandard />} />
     <IconWrapper name="Dynamic List" icon={<DynamicList />} />
     <IconWrapper name="Holders Standard" icon={<HoldersStandard />} />
     <IconWrapper name="Activity Standard" icon={<ActivityStandard />} />
     <IconWrapper name="NFT Sidebar" icon={<NftSidebarStandard />} />
+    <IconWrapper name="Interaction" icon={<Interaction />} />
+    <IconWrapper name="Sweep" icon={<Sweep />} />
+    <IconWrapper name="Crown" icon={<CrownStandard />} />
+    <IconWrapper name="Share Link" icon={<ShareLinkStandard />} />
+    <IconWrapper name="Approve" icon={<ApproveIcon />} />
+    <IconWrapper name="Revoke" icon={<RevokeIcon />} />
   </>
 );
 
@@ -394,26 +414,30 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="NFT Trade" icon={<NftTradeIcon />} />
     <IconWrapper name="Revoke" icon={<RevokeIcon />} />
     <IconWrapper name="Swap" icon={<SwapIcon />} />
+    <IconWrapper name="Sweep" icon={<Sweep />} />
     <IconWrapper name="Unknown" icon={<Unknown />} />
   </>
 );
 
 const Template10: ComponentStory<typeof IconWrapper> = () => (
-  <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
+  <>
+    <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
+    <IconWrapper gradient={SvgGradients.MAIN_BLUE_GRADIENT} name="Creator" icon={<CrownStandard />} />
+  </>
 );
 
 const Template11: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper width="25px" height="25px" href="1231321" name="Ethereum" icon={<Ethereum />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Polygon" icon={<Polygon />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Fantom" icon={<Fantom />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Arbitrum" icon={<Arbitrum />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Avalanche" icon={<Avalanche />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Optimism" icon={<Optimism />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Binance" icon={<Binance />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Boba" icon={<Boba />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Aurora" icon={<Aurora />} />
-    <IconWrapper width="25px" height="25px" href="1231321" name="Metis" icon={<Metis />} />
+    <IconWrapper href="1231321" name="Ethereum" icon={<Ethereum />} />
+    <IconWrapper href="1231321" name="Polygon" icon={<Polygon />} />
+    <IconWrapper href="1231321" name="Fantom" icon={<Fantom />} />
+    <IconWrapper href="1231321" name="Arbitrum" icon={<Arbitrum />} />
+    <IconWrapper href="1231321" name="Avalanche" icon={<Avalanche />} />
+    <IconWrapper href="1231321" name="Optimism" icon={<Optimism />} />
+    <IconWrapper href="1231321" name="Binance" icon={<Binance />} />
+    <IconWrapper href="1231321" name="Boba" icon={<Boba />} />
+    <IconWrapper href="1231321" name="Aurora" icon={<Aurora />} />
+    <IconWrapper href="1231321" name="Metis" icon={<Metis />} />
   </>
 );
 

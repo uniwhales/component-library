@@ -5,7 +5,7 @@ import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
 import { ArrowLeftIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
-import { HorizontalDots } from '../../atoms/icons/navigationIcons/HorizontalDots';
+import { Meatball } from '../../atoms/icons/navigationIcons/Meatball';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
@@ -91,7 +91,7 @@ export const Navbar: FC<NavbarProps> = ({
               !account && breakpoint <= Breakpoints.Tablet
               && (
                 <ButtonAtom buttonVariant="special_small_round" onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
-                  <IconWrapper cursor="pointer" icon={<HorizontalDots />} />
+                  <IconWrapper cursor="pointer" icon={<Meatball />} />
                 </ButtonAtom>
               )
             }
