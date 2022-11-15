@@ -10,8 +10,6 @@ const IconComponent = Styled.div<IconWrapperProps>`
   align-items: center;
   transition: width 0.3s;
   svg {
-    height: ${(props) => props.height};
-    width: ${(props) => props.width};
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')};
@@ -31,8 +29,6 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
     background: linear-gradient(0deg, #1DD1A1 0%, #CEFF41 100%);
   }
   svg {
-    height: ${(props) => props.height};
-    width: ${(props) => props.width};
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor: pointer;
@@ -54,8 +50,8 @@ const Outer = Styled.a<Pick<IconWrapperProps, 'disabled'>>`
 
 export const IconWrapper: React.FC<IconWrapperProps> = ({
   onClick,
-  height,
-  width,
+  height = '24px',
+  width = '24px',
   fill,
   icon,
   stroke,

@@ -14,10 +14,8 @@ type CheckboxStyledProps = {
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
-  transition: background-color 0.45s ease, border 0.45s ease; 
+  transition: background-color 0.45s ease, border 0.45s ease;
   svg {
-    height: ${(props) => (getCheckboxSvgSize(props.size))};
-    width: ${(props) => (getCheckboxSvgSize(props.size))};
     cursor: pointer;
   }
   width: ${(props) => (getCheckboxSize(props.size))};
@@ -94,6 +92,8 @@ export const Checkbox: FC<CheckboxProps> = ({
     >
       {((hover && !disabled) || selected) && (
         <IconWrapper
+          height={getCheckboxSvgSize(size)}
+          width={getCheckboxSvgSize(size)}
           stroke={
             disabled ? theme.colors.system.WHITE
               : selected

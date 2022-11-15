@@ -92,9 +92,8 @@ export const InputContainer = Styled.div`
   position: relative;
   svg {
       position:absolute;
-      left:0;
-      top:0;
-      padding:9px 9px;
+      left: 10px;
+      top: 32px;
       fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
       height: 20px;
       width: 20px;
