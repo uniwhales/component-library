@@ -45,11 +45,16 @@ export const CloseButton = Styled.div`
   top: 0;
   right: -30px;
   position: absolute;
+  background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
-    svg {
-      fill:${({ theme }) => theme.colors.primary.MANGO};
-    };
-  };
+     background:${({ theme }) => theme.colors.primary.MANGO};
+  }
 `;
 
 export const ModalHeaderContainer = Styled.div`

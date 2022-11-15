@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { localTheme } from '../../theme';
 
-import { CrossIcon } from '../icons';
+import { FloatingClose } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { ModalBaseProps } from './types';
 import { Overlay } from '../common/overlay';
@@ -58,7 +58,10 @@ export const ModalBase: FC<ModalBaseProps> = ({
                   setTimeout(() => closeFn(e), 150);
                 }}
                 cursor="pointer"
-                icon={<CrossIcon />}
+                icon={<FloatingClose />}
+                fill={theme.contrastColor.HIGH_CONTRAST}
+                height="18px"
+                width="18px"
               />
             </CloseButton>
             <ModalHeaderContainer>
