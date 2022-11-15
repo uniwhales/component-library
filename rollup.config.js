@@ -6,7 +6,9 @@ import postcss from 'rollup-plugin-postcss';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from "rollup-plugin-typescript2";
 import { terser } from "rollup-plugin-terser";
+import filesize from 'rollup-plugin-filesize';
 import { babel } from '@rollup/plugin-babel';
+import del from 'rollup-plugin-delete';
 
 export default {
     input: "./src/index.ts",
@@ -23,6 +25,7 @@ export default {
         resolve({preferBuiltins: true, browser: true}),
         typescript(),
         postcss({}),
+        filesize(),
         copy({
             targets: [
                 { src: ['src/fonts/'], dest: 'dist' },
@@ -30,8 +33,9 @@ export default {
         }),
         terser(),
         babel({
-            exclude:'/node_modules/**',
+            exclude:'/node_modules',
             babelHelpers: 'bundled'
         }),
+        del({ targets: 'dist/*' })
     ]
 }
