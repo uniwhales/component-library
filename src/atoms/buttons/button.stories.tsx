@@ -32,6 +32,12 @@ const WithIcon = (isText = true) => (
     {isText && 'With Icon'}
   </>
 );
+const WithIconR = (isText = true) => (
+  <>
+    {isText && 'With IconR'}
+    <IconWrapper icon={<DashboardStandard />} />
+  </>
+);
 const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
@@ -68,8 +74,11 @@ export const SpacialSmallNormalWithIcon = Template.bind({});
 export const SpacialSmallRound = Template.bind({});
 export const SpacialTinyRound = Template.bind({});
 export const SpecialExtraTinyRound = Template.bind({});
-export const SpecialSmallSubtleRound = Template.bind({});
+export const SpecialSmallSubtle = Template.bind({});
+export const SpecialSmallSubtleWithIcon = Template.bind({});
+export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
+export const IconOnly = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -131,11 +140,23 @@ SpecialExtraTinyRound.args = {
   children: WithIcon(false),
   buttonVariant: 'special_extra_tiny_round',
 };
-SpecialSmallSubtleRound.args = {
+SpecialSmallSubtle.args = {
   children: 'Test',
+  buttonVariant: 'special_extra_tiny_subtle',
+};
+SpecialSmallSubtleWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'special_extra_tiny_subtle',
+};
+SpecialSmallSubtleWithIconR.args = {
+  children: WithIconR(),
   buttonVariant: 'special_extra_tiny_subtle',
 };
 SecondaryWithHoverEffect.args = {
   buttonVariant: 'secondary',
   width: '100px',
+};
+IconOnly.args = {
+  children: <IconWrapper icon={<DashboardStandard />} />,
+  buttonVariant: 'icon_only',
 };
