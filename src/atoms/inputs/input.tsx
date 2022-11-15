@@ -38,7 +38,7 @@ const InputWrapper = Styled.div`
   }
 `;
 
-const getBackgroundColor = (theme: typeof Theme, status:string) => {
+const getBackgroundColor = (theme: typeof Theme, status:InputState['status']) => {
   const lookup = {
     error: theme.colors.system.RED,
     invalid: theme.colors.system.RED,
@@ -180,6 +180,31 @@ const Input = ({
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const theme = localTheme();
+
+  const getMoreDetailsTextColor = (status:InputState['status']) => {
+    const lookup = {
+      valid: theme.colors.system.GREEN,
+      exception: theme.colors.system.AMBER,
+      help: theme.colors.primary.MAIN_BLUE,
+    };
+    if (status === 'exception' || status === 'help' || status === 'valid') {
+      return lookup[status];
+    }
+    return theme.colors.system.RED;
+  };
+
+  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+  <MoreDetailContainer
+    inputState={inputState}
+  >
+    <Text
+      color={getMoreDetailsTextColor(inputState.status)}
+      size="XS-Regular"
+    >
+      {inputState.message}
+    </Text>
+  </MoreDetailContainer>
+  );
   return (
     <InputWrapper>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
@@ -212,21 +237,7 @@ const Input = ({
             withIcon={!!icon}
           />
           {inputState.status === 'valid' && <RightSideIcon><IconWrapper icon={<SelectedCheck />} /></RightSideIcon>}
-          {!focus && (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
-          <MoreDetailContainer
-            inputState={inputState}
-          >
-            <Text
-              color={inputState.status === 'exception' ? theme.colors.system.AMBER
-                : inputState.status === 'help' ? theme.colors.primary.MAIN_BLUE
-                  : inputState.status === 'valid' ? theme.colors.system.GREEN
-                    : theme.colors.system.RED}
-              size="XS-Regular"
-            >
-              {inputState.message}
-            </Text>
-          </MoreDetailContainer>
-          )}
+          {!focus && moreDetailsContainer}
         </InputContainer>
       </BorderWrapper>
     </InputWrapper>
