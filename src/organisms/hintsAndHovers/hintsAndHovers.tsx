@@ -24,6 +24,7 @@ export const HintsAndHovers: FC<HintsAndHoversProps> = ({
         place={place}
         event={event}
         effect="solid"
+        delayHide={50}
         html
       />
     </HintAndHoversWrapper>

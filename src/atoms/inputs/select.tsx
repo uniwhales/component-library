@@ -53,6 +53,7 @@ interface StyledProps {
   readOnly?: boolean;
   isMulti?: boolean;
   isCheckBox?: boolean;
+  label?: string;
   isDisabled?: boolean;
 }
 
@@ -146,9 +147,10 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
   }),
   option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly,
+    isFocused, isSelected, theme, readOnly, label,
   }: StyledProps) => ({
     ...defaultStyles,
+    overflowWrap: label && label.includes(' ') ? 'break-word' : 'anywhere',
     display: 'flex',
     transition: 'background 0.1s ease',
     alignItems: 'center',
@@ -220,11 +222,12 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const CheckBoxOption = (props:any) => {
   const {
-    label, isSelected, readOnly, isCheckBox,
+    label, isSelected, readOnly, isCheckBox, data,
   } = props;
+
   return (
     <OptionWrapper>
-      <components.Option {...props}>
+      <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
             <label>
