@@ -111,11 +111,9 @@ const LeftSideIcon = Styled.div`
   position:absolute;
   left: 0;
   top:0;
+  padding:9px 9px;
    svg {
-      padding:9px 9px;
       fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
-      height: 20px;
-      width: 20px;
   }
   &:hover {
     svg {
@@ -127,11 +125,9 @@ const RightSideIcon = Styled.div`
   position: absolute;
   right: 0;
   top:0;
+  padding:9px 9px;
    svg {
-      padding:9px 9px;
       fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
-      height: 20px;
-      width: 20px;
   }
   &:hover {
     svg {
@@ -217,8 +213,8 @@ const Input = ({
       >
         <InputContainer>
           <LeftSideIcon>
-            {!!icon && inputState.status !== 'invalid' && (<IconWrapper icon={icon} />)}
-            {inputState.status === 'invalid' && !focus && (<IconWrapper icon={<RedCross />} />)}
+            {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" icon={icon} />)}
+            {inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
           </LeftSideIcon>
           <InputStyled
             inputState={inputState}
@@ -236,7 +232,7 @@ const Input = ({
             type={type}
             withIcon={!!icon}
           />
-          {inputState.status === 'valid' && <RightSideIcon><IconWrapper icon={<SelectedCheck />} /></RightSideIcon>}
+          {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
           {!focus && moreDetailsContainer}
         </InputContainer>
       </BorderWrapper>
