@@ -65,7 +65,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
               />
             </CloseButton>
             <ModalHeaderContainer>
-              <IconWrapper height="26px" width="26px" icon={headerIcon} />
+              {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
               <Text
                 size="L-Regular"
                 color={theme.textShades.SHADE_MINUS_3}
