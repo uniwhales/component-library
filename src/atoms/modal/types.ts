@@ -13,7 +13,7 @@ export interface ModalData {
 export type ModalBaseProps = {
   mainContent: ReactElement
   headerText: string
-  headerIcon: ReactElement
+  headerIcon?: ReactElement
   modalVariant: 'single' | 'double'
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalContent?: ReactElement
