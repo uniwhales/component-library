@@ -42,6 +42,7 @@ export interface SelectProps<T extends SelectVariation> {
   clearButtonText?: string,
   handleClearValue?: () => void;
   maxMenuHeight?: number;
+  isDisabled?: boolean;
 }
 
 interface StyledProps {
@@ -53,6 +54,7 @@ interface StyledProps {
   isMulti?: boolean;
   isCheckBox?: boolean;
   label?: string;
+  isDisabled?: boolean;
 }
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
@@ -115,13 +117,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
   }),
   control: (defaultStyles, {
-    isFocused, menuIsOpen, theme,
+    isFocused, menuIsOpen, theme, isDisabled,
   }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
+    cursor: 'pointer',
     background: isFocused
       ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
+    border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',
     padding: '0 10px 0 10px',
     boxShadow: 'none',
@@ -133,6 +136,15 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
+    '&:hover': {
+      div: {
+        color: theme.contrastColor.HIGH_CONTRAST,
+      },
+      svg: {
+        fill: theme.contrastColor.HIGH_CONTRAST,
+      },
+      border: isFocused ? 'none' : `1px solid ${theme.colors.primary.MANGO}`,
+    },
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly, label,
@@ -279,10 +291,12 @@ export const Select = <T extends SelectVariation>({
   clearButtonText = 'Clear',
   handleClearValue,
   maxMenuHeight,
+  isDisabled = false,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
     <StyledSelect
+      isDisabled={isDisabled}
       options={selectOptions}
       isMulti={isMulti}
       theme={theme}
