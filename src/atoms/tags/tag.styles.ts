@@ -1,7 +1,7 @@
-import { css, CSSProperties } from 'styled-components';
+import { CSSProperties } from 'styled-components';
 import { TagProps } from './types';
 import { Styled, Theme } from '../../theme';
-import { tablet, WidthBreakpoints } from '../../layouts/breakpoints';
+import { WidthBreakpoints } from '../../layouts/breakpoints';
 
 export type CustomTagProps = Pick<TagProps, 'isOn' | 'tabIndex'> & Pick<CSSProperties, 'width'>;
 
