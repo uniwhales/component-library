@@ -6,6 +6,7 @@ import {
 } from '../icons';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
+import { FilterChipVariant } from './types';
 
 interface Filter {
   id: number;
@@ -89,13 +90,17 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
     </Wrapper>
   );
 };
-export const Primary = Template.bind({});
-export const PrimaryCustomWidth = Template.bind({});
-export const PrimaryNewsdesk = Template.bind({});
+export const Basic = Template.bind({});
+export const BasicCustomWidth = Template.bind({});
+export const BasicNewsdesk = Template.bind({});
+export const PrimaryColor = Template.bind({});
+export const SecondaryColor = Template.bind({});
 
-Primary.args = { id: 0 };
-PrimaryCustomWidth.args = {
+Basic.args = { id: 0 };
+BasicCustomWidth.args = {
   width: '25%',
   id: 0,
 };
-PrimaryNewsdesk.args = { id: 1 };
+BasicNewsdesk.args = { id: 1 };
+PrimaryColor.args = { variation: FilterChipVariant.Primary }
+SecondaryColor.args = { variation: FilterChipVariant.Secondary }
