@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
+import { Column, Row } from '../common/flex';
 import { Styled } from '../../theme';
 import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
-import { Row } from '../common/flex';
 
 export const ModalContainer = Styled.div`
   position: fixed;
@@ -16,12 +16,12 @@ export const ModalContainer = Styled.div`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', showAdditionalContent?: boolean }>`
+export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double' }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 6px;
-  width: ${({ modalVariant, showAdditionalContent }) => (showAdditionalContent && modalVariant === 'double' ? '748px' : '360px')};
+  max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
   max-height: 480px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
@@ -79,4 +79,8 @@ export const ExtraContentRow = Styled(Row)`
   cursor: pointer;
   padding: 12px 0;
   gap: 8px;
+`;
+
+export const ModalColumn = Styled(Column)`
+  width: 360px;
 `;
