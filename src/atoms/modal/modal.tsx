@@ -13,20 +13,16 @@ import {
   ModalContainer,
   ModalHeaderContainer,
   CloseButton,
-  ModalContentContainer,
   HeaderAndIconContainer,
 } from './styles';
-import { Column } from '../common/flex';
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
-  mainContent,
-  additionalContent,
   headerText,
   headerIcon,
   modalVariant,
-  showAdditionalContent,
   additionalTinyAction,
+  modalContent,
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
@@ -52,7 +48,6 @@ export const ModalBase: FC<ModalBaseProps> = ({
           onClick={(e) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}
-          showAdditionalContent={showAdditionalContent}
         >
           <>
             <CloseButton>
@@ -81,13 +76,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
             </ModalHeaderContainer>
-            <ModalContentContainer>
-              <Column>
-                {mainContent}
-              </Column>
-              {showAdditionalContent && <Column>{additionalContent}</Column>}
-            </ModalContentContainer>
-
+            {modalContent}
           </>
         </ModalBody>
       </ModalContainer>

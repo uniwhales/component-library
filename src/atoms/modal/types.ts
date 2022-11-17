@@ -11,13 +11,11 @@ export interface ModalData {
 }
 
 export type ModalBaseProps = {
-  mainContent: ReactElement
   headerText: string
   headerIcon?: ReactElement
   modalVariant: 'single' | 'double'
+  modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
-  additionalContent?: ReactElement
-  showAdditionalContent?: boolean
   additionalTinyAction?: ReactElement
 };
 export type ExampleModalProps = {
