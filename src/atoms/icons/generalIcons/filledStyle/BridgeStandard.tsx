@@ -1,7 +1,13 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const BridgeStandard = () => (
   <svg width="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       d="M11.1094 6.70555C11.1094 6.18944 10.6854 5.77163 10.1616 5.77163L5.58283 5.51416C4.91532 5.51416 4.3749 6.04783 4.3749 6.70555C4.3749 7.36328 4.91532 7.89577 5.58283 7.89577L10.1616 7.63947C10.6854 7.63947 11.1094 7.22167 11.1094 6.70555Z"
     />

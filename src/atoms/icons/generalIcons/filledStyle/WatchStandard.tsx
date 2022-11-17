@@ -1,4 +1,6 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const WatchStandard = () => (
   <svg
@@ -7,6 +9,10 @@ export const WatchStandard = () => (
     fill="none"
     viewBox="0 0 20 20"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <mask
       id="mask0_11478_221202"
       style={{ maskType: 'alpha' }}

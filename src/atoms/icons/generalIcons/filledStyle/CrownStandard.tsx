@@ -10,6 +10,9 @@ export const CrownStandard = () => (
     viewBox="0 0 24 24"
   >
     {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       d="M19.569 16.929H4.431c-.791 0-1.432.713-1.432 1.594v1.788c0 .88.64 1.594 1.432 1.594h15.136c.791 0 1.432-.714 1.432-1.594v-1.788c0-.88-.64-1.594-1.431-1.594z"
     />

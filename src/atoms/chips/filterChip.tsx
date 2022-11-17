@@ -1,65 +1,66 @@
-import React, { MouseEvent } from 'react';
-import { CSSProperties } from 'styled-components';
-import { Styled } from '../../theme';
+import React, { MouseEvent, useState } from 'react';
+import { localTheme } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
-
-export type FilterChipProps = {
-  children:
-  | JSX.Element
-  | JSX.Element[]
-  | string
-  | string[];
-  icon?: JSX.Element;
-  isOn: boolean;
-  onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
-  id: number;
-} & Pick<CSSProperties, 'width'>;
-const Wrapper = Styled.div<{ isOn: boolean } & Pick<CSSProperties, 'width'>>`
-  width: ${({ width }) => width ?? 'fit-content'};
-  min-width: 79px;
-  box-sizing: border-box;
-  background: ${({ isOn, theme }) => (isOn
-    ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : theme.containerAndCardShades.SHADE_PLUS_2)};
-  padding: 4px 12px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  path { transition: fill .45s ease; }
-  transition: background .45s ease, width .45s ease;
-  &:hover {
-    background: ${(props) => props.theme.colors.primary.MANGO};
-    font-weight: 700;
-    svg {
-      fill: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-    }
-    p {
-      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-    }
-  }
-`;
-const Content = Styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  svg {
-    height: 20px;
-    width: 20px;
-  }
-  p{
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-  }
-`;
+import {
+  ColourFilterChipContent,
+  ColourFilterChipWrapper, FilterChipContent, FilterChipWrapper,
+} from './filterChip.styles';
+import { FilterChipProps, FilterChipVariation } from './types';
 
 export const FilterChip = ({
-  children, icon, isOn, onClick, id, width,
-}:FilterChipProps) => (
-  <Wrapper isOn={isOn} onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)} width={width}>
-    <Content>
-      {icon && <IconWrapper cursor="pointer" icon={icon} />}
-      {children}
-    </Content>
-  </Wrapper>
-);
+  children, icon, isOn, onClick, id, width, variant = FilterChipVariation.Basic,
+  disabled,
+}: FilterChipProps) => {
+  const { gradients, containerAndCardShades } = localTheme();
+  const [hover, setHover] = useState(false);
+
+  if (variant !== FilterChipVariation.Basic) {
+    const gradient = hover || isOn
+      ? undefined
+      : variant === FilterChipVariation.Primary
+        ? gradients.svg.TEAL
+        : gradients.svg.CANARY;
+    const fill = !hover && isOn ? containerAndCardShades.BG_SHADE_PLUS_4 : undefined;
+    return (
+      <ColourFilterChipWrapper
+        disabled={disabled}
+        variant={variant}
+        isOn={isOn}
+        onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+        width={width}
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+      >
+        <ColourFilterChipContent variant={variant} isOn={isOn}>
+          {icon && (
+          <IconWrapper
+            fill={fill}
+            gradient={gradient}
+            cursor={disabled ? 'default' : 'pointer'}
+            icon={icon}
+          />
+          )}
+          {children}
+        </ColourFilterChipContent>
+      </ColourFilterChipWrapper>
+    );
+  }
+
+  return (
+    <FilterChipWrapper
+      disabled={disabled}
+      isOn={isOn}
+      onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+      width={width}
+    >
+      <FilterChipContent>
+        {icon && <IconWrapper cursor={disabled ? 'default' : 'pointer'} icon={icon} />}
+        {children}
+      </FilterChipContent>
+    </FilterChipWrapper>
+  );
+};

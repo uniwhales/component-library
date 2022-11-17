@@ -1,4 +1,6 @@
 import React from 'react';
+import { SvgGradients } from '../../../theme';
+import { SvgLinearGradient } from '../svgGradientProvider';
 
 export const ArrowUpIcon = () => (
   <svg
@@ -6,6 +8,10 @@ export const ArrowUpIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
+    {SvgLinearGradient(SvgGradients.CANARY)}
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
     <path
       fillRule="evenodd"
       d="M12 20a.723.723 0 01-.72-.727V4.727c0-.401.323-.727.72-.727.398 0 .72.326.72.727v14.546A.723.723 0 0112 20z"
