@@ -1,9 +1,10 @@
 import { create } from '@ebay/nice-modal-react';
 import React, { useState } from 'react';
 import { localTheme, Styled } from '../../theme';
+import { ButtonAtom } from '../buttons/button';
 import { Column } from '../common/flex';
 import {
-  ArrowLeftIcon, ArrowRightIcon, StarIcon,
+  ArrowLeftIcon, ArrowRightIcon, ProfileStandard, StarIcon,
 } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -107,6 +108,15 @@ export const doubleModalExample = ({
     </Column>
   );
 
+  const additionalTinyAction = (
+    <ButtonAtom buttonVariant="special_small">
+      <>
+        <IconWrapper icon={<ProfileStandard />} />
+        View Profile
+      </>
+    </ButtonAtom>
+  );
+
   return (
     <ModalBase
       closeFn={closeFn}
@@ -116,6 +126,7 @@ export const doubleModalExample = ({
       mainContent={mainContent}
       additionalContent={additionalContent}
       showAdditionalContent={showMore}
+      additionalTinyAction={additionalTinyAction}
     />
   );
 };

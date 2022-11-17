@@ -61,6 +61,11 @@ export const ModalHeaderContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+  justify-content: space-between;
+`;
+
+export const HeaderAndIconContainer = Styled(Row)`
+  gap: 8px;
 `;
 
 export const ModalContentContainer = Styled.div`
