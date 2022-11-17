@@ -18,6 +18,7 @@ export type ModalBaseProps = {
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalContent?: ReactElement
   showAdditionalContent?: boolean
+  additionalTinyAction?: ReactElement
 };
 export type ExampleModalProps = {
   latest: ModalData[];

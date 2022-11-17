@@ -9,7 +9,12 @@ import { ModalBaseProps } from './types';
 import { Overlay } from '../common/overlay';
 import { Text } from '../texts/text';
 import {
-  ModalBody, ModalContainer, ModalHeaderContainer, CloseButton, ModalContentContainer,
+  ModalBody,
+  ModalContainer,
+  ModalHeaderContainer,
+  CloseButton,
+  ModalContentContainer,
+  HeaderAndIconContainer,
 } from './styles';
 import { Column } from '../common/flex';
 
@@ -21,7 +26,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
   headerIcon,
   modalVariant,
   showAdditionalContent,
-
+  additionalTinyAction,
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
@@ -65,13 +70,16 @@ export const ModalBase: FC<ModalBaseProps> = ({
               />
             </CloseButton>
             <ModalHeaderContainer>
-              {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
-              <Text
-                size="L-Regular"
-                color={theme.textShades.SHADE_MINUS_3}
-              >
-                {headerText}
-              </Text>
+              <HeaderAndIconContainer>
+                {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
+                <Text
+                  size="L-Regular"
+                  color={theme.textShades.SHADE_MINUS_3}
+                >
+                  {headerText}
+                </Text>
+              </HeaderAndIconContainer>
+              {additionalTinyAction && additionalTinyAction}
             </ModalHeaderContainer>
             <ModalContentContainer>
               <Column>
