@@ -94,6 +94,7 @@ export const Basic = Template.bind({});
 export const BasicCustomWidth = Template.bind({});
 export const BasicNewsdesk = Template.bind({});
 export const Primary = Template.bind({});
+export const PrimaryDisabled = Template.bind({});
 export const Secondary = Template.bind({});
 
 Basic.args = { id: 0 };
@@ -110,3 +111,8 @@ Secondary.args = {
   variant: FilterChipVariation.Secondary,
   id: 0,
 };
+PrimaryDisabled.args = {
+  variant: FilterChipVariation.Primary,
+  id: 1,
+  disabled: true,
+}

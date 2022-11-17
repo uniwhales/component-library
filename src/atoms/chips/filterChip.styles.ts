@@ -53,16 +53,14 @@ export const ColourFilterChipWrapper = Styled.div<Props & Pick<FilterChipProps, 
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  
+  cursor: pointer;  
   :hover {
     background: ${({
-    disabled, theme, variant,
-  }) => (!disabled
-       && variant === FilterChipVariation.Primary
+    theme, variant,
+  }) => variant === FilterChipVariation.Primary
     ? theme.gradients.secondary.TEAL
     : theme.gradients.secondary.CANARY
-  )};
+    };
   }
 `;
 
@@ -95,5 +93,22 @@ export const ColourFilterChipContent = Styled.div<Props & Pick<FilterChipProps, 
       color: ${({ theme, isOn }) => isOn && theme.textShades.SHADE_MINUS_3};
     }
     background: ${({ isOn, theme }) => (isOn && theme.containerAndCardShades.SHADE_PLUS_2)};
+  }
+`;
+
+export const DisabledChip = Styled.div<Pick<Props, 'width'>>`
+  width: ${({ width }) => width ?? 'fit-content'};
+  min-width: 79px;
+  box-sizing: border-box;
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: default;
+  p {
+    color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
   }
 `;

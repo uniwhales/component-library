@@ -3,7 +3,7 @@ import { localTheme } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
   ColourFilterChipContent,
-  ColourFilterChipWrapper, FilterChipContent, FilterChipWrapper,
+  ColourFilterChipWrapper, DisabledChip, FilterChipContent, FilterChipWrapper,
 } from './filterChip.styles';
 import { FilterChipProps, FilterChipVariation } from './types';
 
@@ -11,9 +11,22 @@ export const FilterChip = ({
   children, icon, isOn, onClick, id, width, variant = FilterChipVariation.Basic,
   disabled,
 }: FilterChipProps) => {
-  const { gradients, containerAndCardShades } = localTheme();
+  const { gradients, containerAndCardShades, textShades } = localTheme();
   const [hover, setHover] = useState(false);
-
+  if (disabled) {
+    return (
+      <DisabledChip>
+           {icon && (
+            <IconWrapper
+              fill={textShades.SHADE_MINUS_1}
+              cursor={'default'}
+              icon={icon}
+            />
+          )}
+          {children}
+      </DisabledChip>
+    )
+  }
   if (variant !== FilterChipVariation.Basic) {
     const gradient = hover || isOn
       ? undefined
