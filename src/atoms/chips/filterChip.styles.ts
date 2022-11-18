@@ -10,7 +10,7 @@ export const FilterChipWrapper = Styled.div<Props>`
   box-sizing: border-box;
   background: ${({ isOn, theme }) => (isOn
     ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : theme.containerAndCardShades.SHADE_PLUS_2)};
-  padding: 0px 12px;
+  padding: 1px 12px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -70,8 +70,8 @@ export const ColourFilterChipContent = Styled.div<Props & Pick<FilterChipProps, 
   justify-content: center;
   border-radius: 12px;
   width: 100%;
-  // -2 padding because of parent
-  padding: 2px 10px;
+  // 1 padding because of parent
+  padding: 1px 10px;
   gap: 4px;
   path { transition: fill .45s ease; }
   svg {
@@ -101,7 +101,7 @@ export const DisabledChip = Styled.div<Pick<Props, 'width'>>`
   min-width: 79px;
   box-sizing: border-box;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-  padding: 0px 12px;
+  padding: 1px 12px;
   border-radius: 12px;
   display: flex;
   align-items: center;
