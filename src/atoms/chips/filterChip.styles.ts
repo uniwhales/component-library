@@ -108,6 +108,7 @@ export const DisabledChip = Styled.div<Pick<Props, 'width'>>`
   justify-content: center;
   gap: 4px;
   cursor: default;
+  /* Forcing important because we need to override the text color in all cases */
   p {
     color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
   }
