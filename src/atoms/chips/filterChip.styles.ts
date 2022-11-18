@@ -10,7 +10,7 @@ export const FilterChipWrapper = Styled.div<Props>`
   box-sizing: border-box;
   background: ${({ isOn, theme }) => (isOn
     ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : theme.containerAndCardShades.SHADE_PLUS_2)};
-  padding: 4px 12px;
+  padding: 0px 12px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@ export const DisabledChip = Styled.div<Pick<Props, 'width'>>`
   min-width: 79px;
   box-sizing: border-box;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
-  padding: 4px 12px;
+  padding: 0px 12px;
   border-radius: 12px;
   display: flex;
   align-items: center;
