@@ -17,6 +17,7 @@ export type ModalBaseProps = {
   modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalTinyAction?: ReactElement
+  maxWidth?: string
 };
 export type ExampleModalProps = {
   latest: ModalData[];

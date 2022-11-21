@@ -23,6 +23,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
   modalVariant,
   additionalTinyAction,
   modalContent,
+  maxWidth,
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
@@ -48,6 +49,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
           onClick={(e) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}
+          maxWidth={maxWidth}
           noHover
         >
           <>
