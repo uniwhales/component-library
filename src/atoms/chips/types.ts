@@ -26,5 +26,5 @@ export type FilterChipProps = {
   isOn: boolean;
   onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
   id: number;
-  variant: FilterChipVariation
+  variant?: FilterChipVariation
 } & Pick<CSSProperties, 'width'>;
