@@ -247,7 +247,7 @@ const CheckBoxOption = (props:any) => {
 
 const getOptionLabel = ({ label, icon }: Option) => (
   <OptionContainer>
-    {icon && <IconWrapper icon={icon} />}
+    {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
     <span>{label}</span>
   </OptionContainer>
 );
