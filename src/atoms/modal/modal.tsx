@@ -67,12 +67,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
-                <Text
-                  size="L-Regular"
-                  color={theme.textShades.SHADE_MINUS_3}
-                >
-                  {headerText}
-                </Text>
+                {headerText && (
+                  <Text
+                    size="L-Regular"
+                    color={theme.textShades.SHADE_MINUS_3}
+                  >
+                    {headerText}
+                  </Text>
+                )}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
             </ModalHeaderContainer>

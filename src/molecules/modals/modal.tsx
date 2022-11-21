@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { Overlay } from '../../atoms/common/overlay';
 import { FloatingClose } from '../../atoms/icons';
@@ -23,6 +23,14 @@ export const Modal = ({
 }: ModalProps) => {
   if (!show) return null;
   const theme = localTheme();
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return ReactDom.createPortal(
     <>
       <Overlay onClick={toggle} />
@@ -46,12 +54,14 @@ export const Modal = ({
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
-                <Text
-                  size="L-Regular"
-                  color={theme.textShades.SHADE_MINUS_3}
-                >
-                  {headerText}
-                </Text>
+                {headerText && (
+                  <Text
+                    size="L-Regular"
+                    color={theme.textShades.SHADE_MINUS_3}
+                  >
+                    {headerText}
+                  </Text>
+                )}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
             </ModalHeaderContainer>

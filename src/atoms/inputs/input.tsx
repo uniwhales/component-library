@@ -26,7 +26,7 @@ export interface InputsProps {
   min?: string;
   icon?: JSX.Element;
   pattern?: keyof typeof InputPatterns
-  inputState: InputState;
+  inputState?: InputState;
 }
 const InputWrapper = Styled.div`
   display: flex;
@@ -171,7 +171,7 @@ const Input = ({
   min,
   icon,
   pattern,
-  inputState,
+  inputState = { message: '', status: 'default' },
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
