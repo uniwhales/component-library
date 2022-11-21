@@ -5,8 +5,6 @@ import { Navbar } from './navbar';
 import { Text } from '../../atoms/texts/text';
 import { Checkbox } from '../../atoms/inputs/checkbox';
 import { CheckboxSize } from '../../utils/getSize';
-import { Select } from '../../atoms/inputs/select';
-import { groupTagOptions } from './mockData';
 import { Input } from '../../atoms/inputs/input';
 import { StarIcon } from '../../atoms/icons';
 

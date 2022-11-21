@@ -1,4 +1,6 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const TelegramStandard = () => (
   <svg
@@ -7,6 +9,10 @@ export const TelegramStandard = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <g clipPath="url(#clip0_99_7698)">
       <path
         d="M8.475 13.663l-.357 5.026c.511 0 .733-.22.998-.484l2.397-2.29 4.966 3.637c.911.507 1.553.24 1.798-.838l3.26-15.275.001-.001c.289-1.346-.487-1.873-1.374-1.543L1.003 9.231C-.305 9.74-.285 10.468.78 10.798l4.9 1.524 11.378-7.12c.535-.355 1.022-.158.622.196l-9.205 8.265z"

@@ -1,4 +1,6 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const CopyStandard = () => (
   <svg
@@ -7,6 +9,10 @@ export const CopyStandard = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       d="M18.545 8.727h-7.363c-1.391 0-2.455 1.064-2.455 2.455v7.364c0 1.39 1.064 2.454 2.455 2.454h7.363C19.936 21 21 19.936 21 18.546v-7.364c0-1.391-1.064-2.455-2.455-2.455z"
     />

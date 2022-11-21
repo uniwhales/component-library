@@ -7,7 +7,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "bl": "rollup -c",
-    "lint": "npx eslint . --ext .tsx,.ts"
+    "lint": "npx eslint . --ext .tsx,.ts --fix"
   },
   "keywords": [
     "react",
