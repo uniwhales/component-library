@@ -48,6 +48,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
           onClick={(e) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}
+          noHover
         >
           <>
             <CloseButton>

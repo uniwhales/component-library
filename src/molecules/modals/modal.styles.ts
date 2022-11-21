@@ -22,10 +22,6 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
 
-  &:hover {
-    background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
-  };
-
   ${tablet(css`
     max-width: calc(100vw - 100px);
   `)}

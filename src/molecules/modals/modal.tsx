@@ -37,6 +37,7 @@ export const Modal = ({
       <ModalWrapper>
         <ModalContent
           modalVariant={modalVariant}
+          noHover
         >
           <>
             <CloseButton>

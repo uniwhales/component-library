@@ -16,20 +16,16 @@ export const ModalContainer = Styled.div`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double' }>`
+export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
+  max-width: ${({ modalVariant, maxWidth }) => (maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
   max-height: 480px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
-
-  &:hover {
-    background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
-  };
 
   ${tablet(css<{ replay: boolean }>`
     max-width: calc(100vw - 100px);

@@ -5,6 +5,7 @@ import {
   ArrowLeftIcon, ArrowRightIcon, ProfileStandard, StarIcon,
 } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
+import { Input } from '../../atoms/inputs/input';
 import { ExtraContentRow, ModalColumn, ModalContentContainer } from '../../atoms/modal/styles';
 import { Text } from '../../atoms/texts/text';
 import { Modal } from './modal';
@@ -32,6 +33,12 @@ const Template: ComponentStory<typeof Modal> = () => {
         modalContent={(
           <DummyModalContent>
             <Text size="S-Regular">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
+            <Input
+              value="afadf"
+              label="fdfsa"
+              type="text"
+              onChange={(e) => console.log(e)}
+            />
           </DummyModalContent>
         )}
       />
