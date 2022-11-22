@@ -8,6 +8,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   width: ${(props) => props.width};
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: width 0.3s;
   svg {
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};

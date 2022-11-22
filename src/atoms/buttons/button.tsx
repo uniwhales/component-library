@@ -118,7 +118,7 @@ const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
     path {transition: fill 0.45s ease;}
-    fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
+    fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST}!important;
   }
   // disabled state
   ${(props) => props.disabled && css`
@@ -128,14 +128,14 @@ const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   `};
   // active state
   ${(props) => !props.disabled && css`
-    color: ${props.theme.textShades.SHADE_MINUS_3};
+    color: ${props.theme.contrastColor.LOW_CONTRAST};
     background-color: transparent;
-    border: 1px solid ${props.theme.textShades.SHADE_MINUS_3};
+    border: none;
     &:hover {
        border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
-       // color: ${props.theme.colors.primary.MAIN_BLUE};
+       color: ${props.theme.contrastColor.HIGH_CONTRAST};
       svg {
-        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
+        fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
       }
     };
     &:active {
