@@ -32,6 +32,9 @@ const WithIcon = (isText = true) => (
     {isText && 'With Icon'}
   </>
 );
+const IconNoText = () => (
+  <IconWrapper icon={<DashboardStandard />} />
+);
 const WithIconR = (isText = true) => (
   <>
     {isText && 'With IconR'}
@@ -65,6 +68,7 @@ export const Secondary = Template.bind({});
 export const SecondaryWithIcon = Template.bind({});
 export const Tertiary = Template.bind({});
 export const TertiaryWithIcon = Template.bind({});
+export const TertiaryIconOnly = Template.bind({});
 export const PrimaryAction = Template.bind({});
 export const SecondaryAction = Template.bind({});
 export const TinyAction = Template.bind({});
@@ -78,7 +82,6 @@ export const SpecialSmallSubtle = Template.bind({});
 export const SpecialSmallSubtleWithIcon = Template.bind({});
 export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
-export const IconOnly = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -102,6 +105,10 @@ Tertiary.args = {
 };
 TertiaryWithIcon.args = {
   children: WithIcon(),
+  buttonVariant: 'tertiary',
+};
+TertiaryIconOnly.args = {
+  children: IconNoText(),
   buttonVariant: 'tertiary',
 };
 PrimaryAction.args = {
@@ -155,8 +162,4 @@ SpecialSmallSubtleWithIconR.args = {
 SecondaryWithHoverEffect.args = {
   buttonVariant: 'secondary',
   width: '100px',
-};
-IconOnly.args = {
-  children: <IconWrapper icon={<DashboardStandard />} />,
-  buttonVariant: 'icon_only',
 };
