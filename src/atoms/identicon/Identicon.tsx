@@ -4,13 +4,15 @@ import { Container } from './Identicon.styles';
 import { IdenticonProps } from './types';
 
 export const IdenticonComponent = ({
-  containerSize, iconSize, id, hasInteraction, onClick,
+  size, id, hasInteraction, onClick, href, target,
 }: IdenticonProps) => (
   <Container
+    size={size}
     hasInteraction={hasInteraction}
-    containerSize={containerSize}
     onClick={onClick}
+    href={href}
+    target={target}
   >
-    <Identicon count={5} string={id} size={iconSize} />
+    <Identicon count={5} string={id} size={size === 'big' ? 22 : 12} />
   </Container>
 );
