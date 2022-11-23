@@ -4,7 +4,6 @@ import { Styled } from '../../theme';
 import { Navbar } from './navbar';
 import { Text } from '../../atoms/texts/text';
 import { Checkbox } from '../../atoms/inputs/checkbox';
-import { CheckboxSize } from '../../utils/getSize';
 import { Input } from '../../atoms/inputs/input';
 import { StarIcon } from '../../atoms/icons';
 
@@ -99,7 +98,7 @@ FeedPage.args = {
     disabled={false}
     onClick={() => {}}
     selected
-    size={CheckboxSize.Small}
+    size="small"
   />,
 };
 
