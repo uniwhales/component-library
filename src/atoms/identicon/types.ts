@@ -1,4 +1,6 @@
+import { ReactElement } from 'react';
 import { IconWrapperProps } from '../icons/types';
+import { CheckboxProps } from '../inputs/checkbox';
 
 export type IdenticonProps = {
   size: 'big' | 'small';
@@ -14,3 +16,9 @@ export type MarkedIdenticonProps = {
   preload?: () => void;
   identicon: Omit<IdenticonProps, 'size'>
 } & Pick<IdenticonProps, 'size'>;
+
+export type SelectableMarkedIdenticonProps = {
+  checkbox: Omit<CheckboxProps, 'rounded' | 'size'>
+  markedIdenticon: MarkedIdenticonProps
+  text?: ReactElement
+};

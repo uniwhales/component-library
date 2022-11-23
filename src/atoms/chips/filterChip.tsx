@@ -16,16 +16,16 @@ export const FilterChip = ({
   if (disabled) {
     return (
       <DisabledChip>
-           {icon && (
-            <IconWrapper
-              fill={textShades.SHADE_MINUS_1}
-              cursor={'default'}
-              icon={icon}
-            />
-          )}
-          {children}
+        {icon && (
+        <IconWrapper
+          fill={textShades.SHADE_MINUS_1}
+          cursor="default"
+          icon={icon}
+        />
+        )}
+        {children}
       </DisabledChip>
-    )
+    );
   }
   if (variant !== FilterChipVariation.Basic) {
     const gradient = hover || isOn

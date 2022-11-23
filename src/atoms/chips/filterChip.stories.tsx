@@ -115,4 +115,4 @@ PrimaryDisabled.args = {
   variant: FilterChipVariation.Primary,
   id: 1,
   disabled: true,
-}
+};

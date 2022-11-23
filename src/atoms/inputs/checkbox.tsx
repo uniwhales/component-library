@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { localTheme, Styled } from '../../theme';
-import { CheckboxSize, getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
+import { getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
 import { Check } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 
@@ -9,7 +9,7 @@ type CheckboxStyledProps = {
   hover: boolean;
   selected: boolean;
   disabled: boolean;
-  size: CheckboxSize;
+  size: 'small' | 'big';
   rounded?: boolean;
 };
 
@@ -53,13 +53,13 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   align-items: center;
 `;
 
-export interface CheckboxProps {
+export type CheckboxProps = {
   disabled: boolean;
   selected: boolean;
-  size: CheckboxSize;
+  size: 'small' | 'big';
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
   rounded?: boolean;
-}
+};
 
 export const Checkbox: FC<CheckboxProps> = ({
   disabled,
