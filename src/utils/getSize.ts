@@ -1,4 +1,4 @@
-export const getCheckboxSvgSize = (size: CheckboxSize) => {
+export const getCheckboxSvgSize = (size: 'big' | 'small') => {
   switch (size) {
     case 'big':
       return '20px';
@@ -7,7 +7,7 @@ export const getCheckboxSvgSize = (size: CheckboxSize) => {
   }
 };
 
-export const getCheckboxSize = (size: CheckboxSize) => {
+export const getCheckboxSize = (size: 'big' | 'small') => {
   switch (size) {
     case 'big':
       return '24px';
