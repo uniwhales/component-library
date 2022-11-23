@@ -8,8 +8,11 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof CieloLogo>;
 
-const Template: ComponentStory<typeof CieloLogo> = (args) => (
-  <CieloLogo {...args} />
-);
+const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
+  const isDark = globals.backgrounds?.value === '#191B20';
+  return (
+    <CieloLogo night={isDark} />
+  );
+};
 
 export const Standard = Template.bind({});
