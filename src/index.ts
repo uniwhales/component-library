@@ -23,6 +23,9 @@ export * from './atoms/cieloLogo/CieloLogo';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
+export * from './atoms/identicon/MarkedIdenticon';
+export * from './atoms/identicon/SelectMarkedIdenticon';
+
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
