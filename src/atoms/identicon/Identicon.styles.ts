@@ -38,7 +38,7 @@ export const IdenticonMarkWrapper = Styled.div`
   gap: 10px;
 `;
 
-export const WalletAvatar = Styled.a`
+export const WalletAvatar = Styled.div`
 `;
 
 export const Mark = Styled.div<Pick<MarkedIdenticonProps, 'size'>>`
