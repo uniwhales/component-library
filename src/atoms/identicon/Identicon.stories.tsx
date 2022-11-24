@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { IdenticonComponent } from './Identicon';
 import { MarkedIdenticon } from './MarkedIdenticon';
 import { CrownStandard, DynamicList } from '../icons';
-import { SvgGradients, Theme } from '../../theme';
+import { Styled, SvgGradients, Theme } from '../../theme';
 import { SelectableMarkedIdenticon } from './SelectMarkedIdenticon';
 import { Text } from '../texts/text';
 
@@ -12,7 +12,29 @@ export default {
   component: IdenticonComponent,
   argTypes: {},
 } as ComponentMeta<typeof IdenticonComponent>;
-
+export const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
+  padding: 8px 16px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 12px;
+  align-items: center;
+  gap: 8px;
+  width: ${({ $isMintersTab }) => ($isMintersTab ? '840px' : '100%')};
+  box-sizing: border-box;
+  :hover {
+    p {
+      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+    }
+    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+  }
+  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  :nth-child(2n) {
+    :hover {
+      background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+    }
+    background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
+  }
+`;
 const Template: ComponentStory<typeof IdenticonComponent> = (props) => (
   <IdenticonComponent {...props} />
 );
@@ -22,15 +44,18 @@ const MarkTemplate: ComponentStory<typeof MarkedIdenticon> = (props) => (
 const SelectableMarkTemplate: ComponentStory<typeof SelectableMarkedIdenticon> = (props) => {
   const [checked, setChecked] = useState(false);
   return (
-    <SelectableMarkedIdenticon
-      {...props}
-      checkbox={{
-        // eslint-disable-next-line
-        ...props.checkbox,
-        selected: checked,
-        onClick: () => setChecked(!checked),
-      }}
-    />
+    <WalletWrapper>
+
+      <SelectableMarkedIdenticon
+        {...props}
+        checkbox={{
+          // eslint-disable-next-line
+          ...props.checkbox,
+          selected: checked,
+          onClick: () => setChecked(!checked),
+        }}
+      />
+    </WalletWrapper>
   );
 };
 export const Primary = Template.bind({});
@@ -67,7 +92,7 @@ WithTealMarkBig.args = {
     gradient: SvgGradients.TEAL,
     icon: <CrownStandard />,
   },
-  preload: () => {
+  onMouseEnter: () => {
     console.debug('preload called');
   },
 };
@@ -94,7 +119,7 @@ WithSelectableCanaryMarkSmall.args = {
         console.debug('click');
       },
     },
-    preload: () => {
+    onMouseEnter: () => {
       console.debug('preload called');
     },
   },

@@ -7,19 +7,19 @@ import {
 import { MarkedIdenticonProps } from './types';
 
 export const MarkedIdenticon = ({
-  preload, markIcon, size, identicon,
+  markIcon, size, identicon, onMouseEnter,
 }: MarkedIdenticonProps) => {
   const iconSize = size === 'big' ? '12px' : '8px';
   return (
     <IdenticonMarkWrapper
-      onMouseEnter={() => {
-        if (preload) preload();
-      }}
+      onMouseEnter={() => onMouseEnter && onMouseEnter()}
     >
       <WalletAvatar>
-        <Mark size={size}>
-          <IconWrapper height={iconSize} width={iconSize} {...markIcon} />
-        </Mark>
+        {markIcon && (
+          <Mark size={size}>
+            <IconWrapper height={iconSize} width={iconSize} {...markIcon} />
+          </Mark>
+        )}
         <IdenticonComponent size={size} {...identicon} />
       </WalletAvatar>
     </IdenticonMarkWrapper>

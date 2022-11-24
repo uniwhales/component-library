@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 import { DeviceWidth } from '../../hooks/useBreakpoint';
 import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
-import { Row } from '../common/flex';
 import { IdenticonProps, MarkedIdenticonProps } from './types';
 
 export const Container = Styled.a<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
@@ -46,13 +45,17 @@ export const Mark = Styled.div<Pick<MarkedIdenticonProps, 'size'>>`
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   position: absolute;
   border-radius: 36px;
-  width: ${({ size }) => (size === 'big' ? '12px' : '8px')};
-  height: ${({ size }) => (size === 'big' ? '12px' : '8px')};
+  width: ${({ size }) => (size === 'big' ? '13px' : '8px')};
+  height: ${({ size }) => (size === 'big' ? '13px' : '8px')};
   border: ${({ theme }) => `2px solid  ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const SelectableMarkedIdenticonWrapper = Styled(Row)`
+export const SelectableMarkedIdenticonWrapper = Styled.div`
   gap: 8px;
   align-items: center;
+  display: flex;
 `;

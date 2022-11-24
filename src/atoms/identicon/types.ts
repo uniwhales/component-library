@@ -9,11 +9,12 @@ export type IdenticonProps = {
   onClick?: () => void;
   href?: string;
   target?: string;
+  onMouseEnter?: () => void;
 };
 
 export type MarkedIdenticonProps = {
-  markIcon: Omit<IconWrapperProps, 'height' | 'width'>
-  preload?: () => void;
+  markIcon?: Omit<IconWrapperProps, 'height' | 'width'>
+  onMouseEnter?: () => void;
   identicon: Omit<IdenticonProps, 'size'>
 } & Pick<IdenticonProps, 'size'>;
 
