@@ -57,5 +57,5 @@ export const Mark = Styled.div<Pick<MarkedIdenticonProps, 'size'>>`
 export const SelectableMarkedIdenticonWrapper = Styled.div`
   gap: 8px;
   align-items: center;
-  display: flex;
+  display: contents;
 `;

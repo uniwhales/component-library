@@ -7,15 +7,17 @@ import { MarkedIdenticon } from './MarkedIdenticon';
 import { SelectableMarkedIdenticonProps } from './types';
 
 export const SelectableMarkedIdenticon = ({
-  checkbox, markedIdenticon, text,
+  checkbox, markedIdenticon, text, showCheckbox,
 }: SelectableMarkedIdenticonProps) => (
   <SelectableMarkedIdenticonWrapper>
     <>
-      <Checkbox
-        rounded
-        size="small"
-        {...checkbox}
-      />
+      {showCheckbox && (
+        <Checkbox
+          rounded
+          size="small"
+          {...checkbox}
+        />
+      )}
       <MarkedIdenticon {...markedIdenticon} />
       {text && text}
     </>

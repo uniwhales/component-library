@@ -22,4 +22,5 @@ export type SelectableMarkedIdenticonProps = {
   checkbox: Omit<CheckboxProps, 'rounded' | 'size'>
   markedIdenticon: MarkedIdenticonProps
   text?: ReactElement
+  showCheckbox?: boolean
 };
