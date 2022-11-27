@@ -1,6 +1,7 @@
 import {
   MouseEventHandler, ReactElement,
 } from 'react';
+import { IconWrapper } from '../icons/iconWrapper';
 
 export interface ModalData {
   id?: number;
@@ -12,7 +13,7 @@ export interface ModalData {
 
 export type ModalBaseProps = {
   headerText?: string
-  headerIcon?: ReactElement
+  HeaderIcon?: typeof IconWrapper
   modalVariant: 'single' | 'double'
   modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>

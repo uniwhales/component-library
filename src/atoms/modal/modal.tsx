@@ -19,7 +19,7 @@ import {
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
   headerText,
-  headerIcon,
+  HeaderIcon,
   modalVariant,
   additionalTinyAction,
   modalContent,
@@ -69,7 +69,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
             </CloseButton>
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
-                {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
+                {HeaderIcon && <HeaderIcon height="26px" width="26px" />}
                 {headerText && (
                   <Text
                     size="L-Regular"
