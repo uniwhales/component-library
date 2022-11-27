@@ -13,7 +13,6 @@ import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
-  IdenticonContainer,
   NavbarContainer,
   NavbarDesktopMenu,
   NavbarLeftSide, NavbarMainContent, NavbarRightSide,
@@ -97,16 +96,12 @@ export const Navbar: FC<NavbarProps> = ({
             }
 
             {account && (
-              <IdenticonContainer
-                onClick={() => { setIsMenuOpen(!isMenuOpen); }}
-              >
-                <IdenticonComponent
-                  id={account}
-                  containerSize="44px"
-                  iconSize={30}
-                  hasInteraction
-                />
-              </IdenticonContainer>
+            <IdenticonComponent
+              id={account}
+              hasInteraction
+              size="big"
+              onClick={() => { setIsMenuOpen(!isMenuOpen); }}
+            />
             )}
           </NavbarRightSide>
         </NavbarMainContent>

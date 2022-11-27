@@ -57,10 +57,10 @@ export const ColourFilterChipWrapper = Styled.div<Props & Pick<FilterChipProps, 
   :hover {
     background: ${({
     theme, variant,
-  }) => variant === FilterChipVariation.Primary
+  }) => (variant === FilterChipVariation.Primary
     ? theme.gradients.secondary.TEAL
-    : theme.gradients.secondary.CANARY
-    };
+    : theme.gradients.secondary.CANARY)
+};
   }
 `;
 
