@@ -59,6 +59,7 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
     closeFn={closeFn}
     headerText="Modal Header"
     headerIcon={<StarIcon />}
+    headerIconGradient={localTheme().gradients.svg.CANARY}
     modalVariant="single"
     modalContent={(
       <LatestAnnouncementsList height="100%" gap="48px">
@@ -89,6 +90,7 @@ export const doubleModalExample = ({
       closeFn={closeFn}
       headerText="Double Modal"
       headerIcon={<StarIcon />}
+      headerIconFill={theme.colors.primary.DARK_BLUE}
       modalVariant="double"
       additionalTinyAction={(
         <ButtonAtom buttonVariant="special_small">

@@ -1,7 +1,7 @@
 import {
   MouseEventHandler, ReactElement,
 } from 'react';
-import { IconWrapper } from '../icons/iconWrapper';
+import { SvgGradients } from '../../theme';
 
 export interface ModalData {
   id?: number;
@@ -13,7 +13,9 @@ export interface ModalData {
 
 export type ModalBaseProps = {
   headerText?: string
-  HeaderIcon?: typeof IconWrapper
+  headerIcon?: ReactElement
+  headerIconFill?: string
+  headerIconGradient?: SvgGradients
   modalVariant: 'single' | 'double'
   modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
