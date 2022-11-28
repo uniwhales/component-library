@@ -13,6 +13,7 @@ export const RevokeIcon = () => (
     {SvgLinearGradient(SvgGradients.SKY)}
     {SvgLinearGradient(SvgGradients.TEAL)}
     {SvgLinearGradient(SvgGradients.CANARY)}
+    {SvgLinearGradient(SvgGradients.TANGY)}
     <mask
       id="mask0_9867_491479"
       style={{ maskType: 'alpha' }}
