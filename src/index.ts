@@ -4,6 +4,7 @@ export * from './atoms/icons/iconWrapper';
 export * from './atoms/inputs/input';
 export * from './atoms/tabs/selectorTab';
 export * from './atoms/texts/text';
+export { HyperLinkVariation } from './atoms/texts/types';
 export * from './atoms/toggles/toggle__standart';
 export * from './atoms/inputs/select';
 export * from './atoms/tags/tag';
