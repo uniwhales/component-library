@@ -13,6 +13,7 @@ export * from './atoms/toggles/themeToggle';
 export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/chips/filterChip';
+export * from './atoms/chips/types';
 export * from './atoms/chips/chip';
 export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
