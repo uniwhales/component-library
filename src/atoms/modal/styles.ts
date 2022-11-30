@@ -10,7 +10,7 @@ export const ModalContainer = Styled.div`
   width: 100%;
   left: 0;
   top: 0;
-  z-index: 101;
+  z-index: ${({ theme }) => theme.zIndex.MODAL};
   display: flex;
   align-items: center;
   justify-content: center;
