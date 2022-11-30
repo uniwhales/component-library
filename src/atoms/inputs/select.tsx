@@ -20,7 +20,7 @@ export interface SelectGroupOption {
   options: Option[]
 }
 
-export interface SelectOption extends Option { }
+export interface SelectOption extends Option {}
 
 export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
 export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
@@ -223,7 +223,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 };
 
-const CheckBoxOption = (props: any) => {
+const CheckBoxOption = (props:any) => {
   const {
     label, isSelected, readOnly, isCheckBox, data,
   } = props;
