@@ -1,3 +1,6 @@
+import { css } from 'styled-components';
+import { Card } from '../../atoms/card/card';
+import { phone, tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 
 export const ModalWrapper = Styled.div`
@@ -8,15 +11,25 @@ export const ModalWrapper = Styled.div`
   z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
-export const ModalContent = Styled.div`
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
-  padding: 24px;
-  border-radius: 12px;
-  box-sizing: border-box;
+export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 6px;
+  max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
+  max-height: 480px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-  @media (max-width: 768px) {
-    padding: 12px;
-  }
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  text-align: left;
+
+  ${tablet(css`
+    max-width: calc(100vw - 100px);
+  `)}
+
+  ${phone(css`
+    width: 100vw;
+    max-height: 600px;
+  `)}
 `;
 export const IconWrapperAbsolute = Styled.div`
   position: absolute;

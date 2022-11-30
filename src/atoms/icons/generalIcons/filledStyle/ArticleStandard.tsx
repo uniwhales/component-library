@@ -1,13 +1,18 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const ArticleStandard = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="100%"
     fill="none"
     viewBox="0 0 24 24"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       d="M16.584 2.567a.477.477 0 00-.821.334v2.637c0 1.106.91 2.016 2.017 2.016.697.008 1.665.01 2.487.008a.477.477 0 00.343-.808l-4.026-4.187z"
     />

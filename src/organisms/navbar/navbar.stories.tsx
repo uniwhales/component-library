@@ -4,9 +4,8 @@ import { Styled } from '../../theme';
 import { Navbar } from './navbar';
 import { Text } from '../../atoms/texts/text';
 import { Checkbox } from '../../atoms/inputs/checkbox';
-import { CheckboxSize } from '../../utils/getSize';
-import { Select } from '../../atoms/inputs/select';
-import { groupTagOptions } from './mockData';
+import { Input } from '../../atoms/inputs/input';
+import { StarIcon } from '../../atoms/icons';
 
 export default {
   title: 'Organisms/Navbar',
@@ -79,14 +78,11 @@ FeedPage.args = {
   onBackButtonClick: () => console.debug('Click back'),
   leftSideChildren: (
     <FeedLeftSideChildren>
-      <Select
-        selectOptions={groupTagOptions}
-        placeholder="Select Group Tags"
-        onSelectChange={() => {}}
-        selectValue={groupTagOptions[0]}
-        isXL
-        readOnly={false}
-        isMulti={false}
+      <Input
+        icon={<StarIcon />}
+        inputState={{ message: '', status: 'default' }}
+        onChange={(e) => console.log(e)}
+        type="text"
       />
       <Text href="TODO-ADD-LINK" size="S-Regular">
         <>
@@ -102,7 +98,7 @@ FeedPage.args = {
     disabled={false}
     onClick={() => {}}
     selected
-    size={CheckboxSize.Small}
+    size="small"
   />,
 };
 

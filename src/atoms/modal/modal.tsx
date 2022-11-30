@@ -1,57 +1,32 @@
 import React, {
   FC, useEffect, useState,
 } from 'react';
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
-import { phone, tablet } from '../../layouts/breakpoints';
-import { Card } from '../card/card';
-import { CrossIcon } from '../icons';
+import { localTheme } from '../../theme';
+
+import { FloatingClose } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
-import { ModalBaseProps, ModalCardProps } from './types';
+import { ModalBaseProps } from './types';
 import { Overlay } from '../common/overlay';
-
-export const ModalContainer = Styled.div`
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 101;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ModalBody = Styled(Card)<ModalCardProps & { replay: boolean }>`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  gap: 4px;
-  max-width: ${({ maxWidth }) => maxWidth ?? '600px'};
-  height: ${({ height }) => height ?? '62vh'};
-  max-height: ${({ maxHeight }) => maxHeight ?? '600px'};
-  box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-  
-  ${tablet(css<{ replay: boolean }>`
-    max-width: calc(100vw - 100px);
-  `)}
-
-  ${phone(css`
-    width: 100vw;
-    max-height: 600px;
-  `)}
-`;
-
-const CloseButton = Styled.div`
-  top: 0;
-  right: -30px;
-  position: absolute;
-`;
+import { Text } from '../texts/text';
+import {
+  ModalBody,
+  ModalContainer,
+  ModalHeaderContainer,
+  CloseButton,
+  HeaderAndIconContainer,
+} from './styles';
 
 export const ModalBase: FC<ModalBaseProps> = ({
-  children, closeFn, icon, height, maxHeight, maxWidth, noCloseIcon,
+  closeFn,
+  headerText,
+  headerIcon,
+  modalVariant,
+  additionalTinyAction,
+  modalContent,
+  maxWidth,
 }) => {
   const [replay, setReplay] = useState(false);
+  const theme = localTheme();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -71,27 +46,43 @@ export const ModalBase: FC<ModalBaseProps> = ({
       }}
       >
         <ModalBody
-          height={height}
-          maxHeight={maxHeight}
-          maxWidth={maxWidth}
           onClick={(e) => e.stopPropagation()}
-          noHover
           replay={replay}
+          modalVariant={modalVariant}
+          maxWidth={maxWidth}
+          noHover
         >
-          {!noCloseIcon && (
-          <CloseButton>
-            <IconWrapper
-              onClick={(e) => {
-                if (!closeFn) return;
-                setReplay(true);
-                setTimeout(() => closeFn(e), 150);
-              }}
-              cursor="pointer"
-              icon={icon ?? <CrossIcon />}
-            />
-          </CloseButton>
-          )}
-          {children}
+          <>
+            <CloseButton>
+              <IconWrapper
+                onClick={(e) => {
+                  if (!closeFn) return;
+                  setReplay(true);
+                  setTimeout(() => closeFn(e), 150);
+                }}
+                cursor="pointer"
+                icon={<FloatingClose />}
+                fill={theme.contrastColor.HIGH_CONTRAST}
+                height="18px"
+                width="18px"
+              />
+            </CloseButton>
+            <ModalHeaderContainer>
+              <HeaderAndIconContainer>
+                {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
+                {headerText && (
+                  <Text
+                    size="L-Regular"
+                    color={theme.textShades.SHADE_MINUS_3}
+                  >
+                    {headerText}
+                  </Text>
+                )}
+              </HeaderAndIconContainer>
+              {additionalTinyAction && additionalTinyAction}
+            </ModalHeaderContainer>
+            {modalContent}
+          </>
         </ModalBody>
       </ModalContainer>
     </>

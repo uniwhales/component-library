@@ -1,13 +1,19 @@
 import React from 'react';
+import { SvgGradients } from '../../../theme';
+import { SvgLinearGradient } from '../svgGradientProvider';
 
 export const RevokeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
+    width="100%"
     fill="none"
     viewBox="0 0 20 20"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
+    {SvgLinearGradient(SvgGradients.TANGY)}
     <mask
       id="mask0_9867_491479"
       style={{ maskType: 'alpha' }}

@@ -11,7 +11,7 @@ export const Container = Styled.div`
   width: fit-content;
 `;
 
-export const MeatballRow = Styled.a`
+export const MeatballRow = Styled.div`
   text-decoration: none;
   display: flex;
   align-items: center;

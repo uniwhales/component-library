@@ -20,7 +20,7 @@ export interface SelectGroupOption {
   options: Option[]
 }
 
-export interface SelectOption extends Option {}
+export interface SelectOption extends Option { }
 
 export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
 export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
@@ -43,6 +43,7 @@ export interface SelectProps<T extends SelectVariation> {
   clearButtonText?: string,
   handleClearValue?: () => void;
   maxMenuHeight?: number;
+  isDisabled?: boolean;
 }
 
 interface StyledProps {
@@ -53,6 +54,8 @@ interface StyledProps {
   readOnly?: boolean;
   isMulti?: boolean;
   isCheckBox?: boolean;
+  label?: string;
+  isDisabled?: boolean;
 }
 
 const SelectWrapper = Styled.div``;
@@ -117,13 +120,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
   }),
   control: (defaultStyles, {
-    isFocused, menuIsOpen, theme,
+    isFocused, menuIsOpen, theme, isDisabled,
   }: StyledProps) => ({
     ...defaultStyles,
     boxSizing: 'border-box',
+    cursor: 'pointer',
     background: isFocused
       ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
+    border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',
     padding: '0 10px 0 10px',
     boxShadow: 'none',
@@ -135,11 +139,21 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
+    '&:hover': {
+      div: {
+        color: theme.contrastColor.HIGH_CONTRAST,
+      },
+      svg: {
+        fill: theme.contrastColor.HIGH_CONTRAST,
+      },
+      border: isFocused ? 'none' : `1px solid ${theme.colors.primary.MANGO}`,
+    },
   }),
   option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly,
+    isFocused, isSelected, theme, readOnly, label,
   }: StyledProps) => ({
     ...defaultStyles,
+    overflowWrap: label && label.includes(' ') ? 'break-word' : 'anywhere',
     display: 'flex',
     transition: 'background 0.1s ease',
     alignItems: 'center',
@@ -209,13 +223,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 };
 
-const CheckBoxOption = (props:any) => {
+const CheckBoxOption = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox,
+    label, isSelected, readOnly, isCheckBox, data,
   } = props;
+
   return (
     <OptionWrapper>
-      <components.Option {...props}>
+      <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
             <label>
@@ -235,7 +250,7 @@ const CheckBoxOption = (props:any) => {
 
 const getOptionLabel = ({ label, icon }: Option) => (
   <OptionContainer>
-    {icon && <IconWrapper icon={icon} />}
+    {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
     <span>{label}</span>
   </OptionContainer>
 );
@@ -279,6 +294,7 @@ export const Select = <T extends SelectVariation>({
   clearButtonText = 'Clear',
   handleClearValue,
   maxMenuHeight,
+  isDisabled = false,
 }: SelectProps<T>) => {
   const theme = localTheme();
   const [visible, setVisible] = useState(false);
@@ -290,6 +306,7 @@ export const Select = <T extends SelectVariation>({
     <SelectWrapper ref={clickRef} onClick={() => setVisible(!visible)}>
       <StyledSelect
         menuIsOpen={visible}
+        isDisabled={isDisabled}
         options={selectOptions}
         isMulti={isMulti}
         theme={theme}
@@ -311,10 +328,10 @@ export const Select = <T extends SelectVariation>({
         onChange={(option) => {
           if (!onSelectChange) return;
           /*
-            When providing variation of select
-            we restrict the option to be either single or group option type
-            therefor we can safely assume type here is right
-          */
+              When providing variation of select
+              we restrict the option to be either single or group option type
+              therefore we can safely assume type here is right
+            */
           onSelectChange(option as SelectVal<T>);
         }}
         value={selectValue}

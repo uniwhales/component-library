@@ -1,13 +1,17 @@
 import React from 'react';
+import { SvgGradients } from '../../../theme';
+import { SvgLinearGradient } from '../svgGradientProvider';
 
 export const ArrowDownIcon = () => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="100%"
     fill="none"
     viewBox="0 0 24 24"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       fillRule="evenodd"
       d="M12.274 4a.75.75 0 01.75.75v15a.75.75 0 01-1.5 0v-15a.75.75 0 01.75-.75z"

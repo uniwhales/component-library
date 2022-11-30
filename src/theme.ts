@@ -97,7 +97,7 @@ const Theme = {
       MAIN_HIGHLIGHT_GRADIENT: 'linear-gradient(180deg, #255296 0%, #95E6FF 100%)',
     },
     secondary: {
-      TEAL: 'linear-gradient(180deg, #OlAAEO 0%, #COFBFF 100%)',
+      TEAL: 'linear-gradient(180deg, #01AAE0 0%, #C0FBFF 100%)',
       CANARY: 'linear-gradient(180deg, #EEFF41 0%, #DB9C00 100%)',
       TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
       SKY: 'linear-gradient(180deg, #489BFC 0%, #2D467F 100%)',

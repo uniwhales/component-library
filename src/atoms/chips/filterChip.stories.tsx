@@ -6,6 +6,7 @@ import {
 } from '../icons';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
+import { FilterChipVariation } from './types';
 
 interface Filter {
   id: number;
@@ -32,27 +33,27 @@ const newsdeskStories: any[] = [
   {
     label: 'All',
     icon: <AllIcon />,
-    id: 'all',
+    id: 0,
   },
   {
     label: 'Social Sonar',
     icon: <Sonar />,
-    id: 'sonar',
+    id: 1,
   },
   {
     label: 'VC Deals',
     icon: <Suitcase />,
-    id: 'vcdeals',
+    id: 2,
   },
   {
     label: 'Latest Research',
     icon: <Microscope />,
-    id: 'research',
+    id: 3,
   },
   {
     label: 'Webinars',
     icon: <WebinarStandard />,
-    id: 'webinars',
+    id: 4,
   },
 ];
 const Wrapper = Styled.div`
@@ -78,9 +79,9 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
       {DataPresets[id]
         .map((chip: Filter) => (
           <FilterChip
-            {...chip}
             {...props}
-            onClick={(_id) => setSelectFilter(_id)}
+            {...chip}
+            onClick={() => setSelectFilter(chip.id)}
             isOn={selectFilter === chip.id}
           >
             <Text size="XS-Bold">{chip.label}</Text>
@@ -89,13 +90,29 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
     </Wrapper>
   );
 };
+export const Basic = Template.bind({});
+export const BasicCustomWidth = Template.bind({});
+export const BasicNewsdesk = Template.bind({});
 export const Primary = Template.bind({});
-export const PrimaryCustomWidth = Template.bind({});
-export const PrimaryNewsdesk = Template.bind({});
+export const PrimaryDisabled = Template.bind({});
+export const Secondary = Template.bind({});
 
-Primary.args = { id: 0 };
-PrimaryCustomWidth.args = {
+Basic.args = { id: 0 };
+BasicCustomWidth.args = {
   width: '25%',
   id: 0,
 };
-PrimaryNewsdesk.args = { id: 1 };
+BasicNewsdesk.args = { id: 1 };
+Primary.args = {
+  variant: FilterChipVariation.Primary,
+  id: 1,
+};
+Secondary.args = {
+  variant: FilterChipVariation.Secondary,
+  id: 0,
+};
+PrimaryDisabled.args = {
+  variant: FilterChipVariation.Primary,
+  id: 1,
+  disabled: true,
+};

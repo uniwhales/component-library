@@ -1,5 +1,6 @@
-import { MouseEventHandler, ReactElement } from 'react';
-import { CSSProperties } from 'styled-components';
+import {
+  MouseEventHandler, ReactElement,
+} from 'react';
 
 export interface ModalData {
   id?: number;
@@ -9,20 +10,19 @@ export interface ModalData {
   image: string;
 }
 
-export type ModalCardProps = {
-  height?: string;
-} & Pick<CSSProperties, | 'maxWidth' | 'maxHeight'>;
-
 export type ModalBaseProps = {
+  headerText?: string
+  headerIcon?: ReactElement
+  modalVariant: 'single' | 'double'
+  modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
-  children: ReactElement
-  icon?: ReactElement
-  noCloseIcon?: boolean;
-} & ModalCardProps;
+  additionalTinyAction?: ReactElement
+  maxWidth?: string
+};
 export type ExampleModalProps = {
   latest: ModalData[];
 } & Pick<ModalBaseProps, 'closeFn'>;
 
-export type NoIconModalProps = {
+export type DoubleModalProps = {
   placeholderText: string;
 } & Pick<ModalBaseProps, 'closeFn'>;

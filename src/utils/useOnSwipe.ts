@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const useScrollDirection = (threshold: number = 100) => {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');

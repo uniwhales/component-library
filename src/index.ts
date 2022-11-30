@@ -13,6 +13,7 @@ export * from './atoms/toggles/themeToggle';
 export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/chips/filterChip';
+export * from './atoms/chips/types';
 export * from './atoms/chips/chip';
 export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
@@ -22,6 +23,10 @@ export * from './atoms/uniwhalesLogo/uniwhalesLogo';
 export * from './atoms/cieloLogo/CieloLogo';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
+export * from './atoms/socialButtonGroup/SocialButtonGroup';
+export * from './atoms/identicon/MarkedIdenticon';
+export * from './atoms/identicon/SelectMarkedIdenticon';
+
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
@@ -37,6 +42,8 @@ export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/popover/PopoverComponent';
 export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
+export * from './molecules/dashboardMessages/DashMessageOne';
+export * from './molecules/dashboardMessages/DashMessageTwo';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';

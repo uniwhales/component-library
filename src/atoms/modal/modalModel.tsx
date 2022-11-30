@@ -1,9 +1,17 @@
 import { create } from '@ebay/nice-modal-react';
-import React from 'react';
-import { Styled } from '../../theme';
+import React, { useState } from 'react';
+import { localTheme, Styled } from '../../theme';
+import { ButtonAtom } from '../buttons/button';
+import {
+  ArrowLeftIcon, ArrowRightIcon, ProfileStandard, StarIcon,
+} from '../icons';
+import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 import { ModalBase } from './modal';
-import { ExampleModalProps, NoIconModalProps } from './types';
+import { ExtraContentRow, ModalColumn, ModalContentContainer } from './styles';
+import {
+  DoubleModalProps, ExampleModalProps,
+} from './types';
 
 const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
     background-color: transparent;
@@ -47,37 +55,74 @@ const AnnouncementText = Styled.div`
 `;
 
 export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
-  <ModalBase closeFn={closeFn}>
-    <LatestAnnouncementsList height="100%" gap="48px">
-      {latest.map(({
-        image, title, text, datetime,
-      }) => (
-        <AnnouncementCardContainerMobile key={datetime}>
-          <Cover coverUrl={image} />
-          <Content>
-            <Text size="S-Bold">{datetime}</Text>
-            <Text size="L-Regular">{title}</Text>
-            <AnnouncementText dangerouslySetInnerHTML={{ __html: text ?? '' }} />
-          </Content>
-        </AnnouncementCardContainerMobile>
-      ))}
-    </LatestAnnouncementsList>
-  </ModalBase>
-);
-
-export const noIconModal = ({ placeholderText, closeFn }: NoIconModalProps) => (
   <ModalBase
     closeFn={closeFn}
-    noCloseIcon
-    height="auto"
-  >
-    <>
-      <Text size="L-Bold">No Close Icon</Text>
-      <Text size="S-Regular">{placeholderText}</Text>
-    </>
-  </ModalBase>
+    headerText="Modal Header"
+    headerIcon={<StarIcon />}
+    modalVariant="single"
+    modalContent={(
+      <LatestAnnouncementsList height="100%" gap="48px">
+        {latest.map(({
+          image, title, text, datetime,
+        }) => (
+          <AnnouncementCardContainerMobile key={datetime}>
+            <Cover coverUrl={image} />
+            <Content>
+              <Text size="S-Bold">{datetime}</Text>
+              <Text size="L-Regular">{title}</Text>
+              <AnnouncementText dangerouslySetInnerHTML={{ __html: text ?? '' }} />
+            </Content>
+          </AnnouncementCardContainerMobile>
+        ))}
+      </LatestAnnouncementsList>
+    )}
+  />
 );
 
-export const NoIconModal = create(noIconModal);
+export const doubleModalExample = ({
+  closeFn, placeholderText,
+}: DoubleModalProps) => {
+  const [showMore, setShowMore] = useState(false);
+  const theme = localTheme();
+  return (
+    <ModalBase
+      closeFn={closeFn}
+      headerText="Double Modal"
+      headerIcon={<StarIcon />}
+      modalVariant="double"
+      additionalTinyAction={(
+        <ButtonAtom buttonVariant="special_small">
+          <>
+            <IconWrapper icon={<ProfileStandard />} />
+            View Profile
+          </>
+        </ButtonAtom>
+      )}
+      modalContent={(
+        <ModalContentContainer>
+          <ModalColumn>
+            <Text size="S-Regular">{placeholderText}</Text>
+            <ExtraContentRow onClick={() => setShowMore(!showMore)}>
+              <Text color={theme.colors.primary.MAIN_BLUE} size="XS-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+              <IconWrapper
+                fill={theme.colors.primary.MAIN_BLUE}
+                height="12px"
+                width="12px"
+                icon={!showMore ? <ArrowRightIcon /> : <ArrowLeftIcon />}
+              />
+            </ExtraContentRow>
+          </ModalColumn>
+          {showMore && (
+            <ModalColumn>
+              {' '}
+              <Text size="S-Regular">{placeholderText}</Text>
+            </ModalColumn>
+          )}
+        </ModalContentContainer>
+      )}
+    />
+  );
+};
 
+export const DoubleModalExample = create(doubleModalExample);
 export const ExampleModal = create(exampleModal);

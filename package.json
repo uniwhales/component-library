@@ -1,13 +1,13 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "1.0.27",
+  "version": "1.0.47",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "bl": "rollup -c",
-    "lint": "npx eslint . --ext .tsx,.ts"
+    "lint": "npx eslint . --ext .tsx,.ts --fix"
   },
   "keywords": [
     "react",
@@ -50,6 +50,8 @@
     "react-dom": "^18.2.0",
     "rollup": "^2.71.1",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-filesize": "^9.1.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",

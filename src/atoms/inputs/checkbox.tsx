@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { localTheme, Styled } from '../../theme';
-import { CheckboxSize, getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
+import { getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
 import { Check } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 
@@ -9,15 +9,13 @@ type CheckboxStyledProps = {
   hover: boolean;
   selected: boolean;
   disabled: boolean;
-  size: CheckboxSize;
+  size: 'small' | 'big';
   rounded?: boolean;
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
-  transition: background-color 0.45s ease, border 0.45s ease; 
+  transition: background-color 0.45s ease, border 0.45s ease;
   svg {
-    height: ${(props) => (getCheckboxSvgSize(props.size))};
-    width: ${(props) => (getCheckboxSvgSize(props.size))};
     cursor: pointer;
   }
   width: ${(props) => (getCheckboxSize(props.size))};
@@ -55,13 +53,13 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   align-items: center;
 `;
 
-export interface CheckboxProps {
+export type CheckboxProps = {
   disabled: boolean;
   selected: boolean;
-  size: CheckboxSize;
+  size: 'small' | 'big';
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
   rounded?: boolean;
-}
+};
 
 export const Checkbox: FC<CheckboxProps> = ({
   disabled,
@@ -94,6 +92,8 @@ export const Checkbox: FC<CheckboxProps> = ({
     >
       {((hover && !disabled) || selected) && (
         <IconWrapper
+          height={getCheckboxSvgSize(size)}
+          width={getCheckboxSvgSize(size)}
           stroke={
             disabled ? theme.colors.system.WHITE
               : selected

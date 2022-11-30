@@ -32,6 +32,15 @@ const WithIcon = (isText = true) => (
     {isText && 'With Icon'}
   </>
 );
+const IconNoText = () => (
+  <IconWrapper icon={<DashboardStandard />} />
+);
+const WithIconR = (isText = true) => (
+  <>
+    {isText && 'With IconR'}
+    <IconWrapper icon={<DashboardStandard />} />
+  </>
+);
 const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   const { children } = args;
   return <ButtonAtom {...args}>{children}</ButtonAtom>;
@@ -59,6 +68,7 @@ export const Secondary = Template.bind({});
 export const SecondaryWithIcon = Template.bind({});
 export const Tertiary = Template.bind({});
 export const TertiaryWithIcon = Template.bind({});
+export const TertiaryIconOnly = Template.bind({});
 export const PrimaryAction = Template.bind({});
 export const SecondaryAction = Template.bind({});
 export const TinyAction = Template.bind({});
@@ -68,7 +78,9 @@ export const SpacialSmallNormalWithIcon = Template.bind({});
 export const SpacialSmallRound = Template.bind({});
 export const SpacialTinyRound = Template.bind({});
 export const SpecialExtraTinyRound = Template.bind({});
-export const SpecialSmallSubtleRound = Template.bind({});
+export const SpecialSmallSubtle = Template.bind({});
+export const SpecialSmallSubtleWithIcon = Template.bind({});
+export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
 
 PrimaryWithIcon.args = {
@@ -93,6 +105,10 @@ Tertiary.args = {
 };
 TertiaryWithIcon.args = {
   children: WithIcon(),
+  buttonVariant: 'tertiary',
+};
+TertiaryIconOnly.args = {
+  children: IconNoText(),
   buttonVariant: 'tertiary',
 };
 PrimaryAction.args = {
@@ -131,8 +147,16 @@ SpecialExtraTinyRound.args = {
   children: WithIcon(false),
   buttonVariant: 'special_extra_tiny_round',
 };
-SpecialSmallSubtleRound.args = {
+SpecialSmallSubtle.args = {
   children: 'Test',
+  buttonVariant: 'special_extra_tiny_subtle',
+};
+SpecialSmallSubtleWithIcon.args = {
+  children: WithIcon(),
+  buttonVariant: 'special_extra_tiny_subtle',
+};
+SpecialSmallSubtleWithIconR.args = {
+  children: WithIconR(),
   buttonVariant: 'special_extra_tiny_subtle',
 };
 SecondaryWithHoverEffect.args = {

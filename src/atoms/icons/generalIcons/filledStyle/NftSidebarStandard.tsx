@@ -1,13 +1,18 @@
 import React from 'react';
+import { SvgGradients } from '../../../../theme';
+import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const NftSidebarStandard = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="25"
-    height="24"
+    width="100%"
     fill="none"
     viewBox="0 0 25 24"
   >
+    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
+    {SvgLinearGradient(SvgGradients.SKY)}
+    {SvgLinearGradient(SvgGradients.TEAL)}
+    {SvgLinearGradient(SvgGradients.CANARY)}
     <mask
       id="mask0_12025_254443"
       style={{ maskType: 'alpha' }}
