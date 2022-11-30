@@ -297,8 +297,10 @@ export const Select = <T extends SelectVariation>({
   isDisabled = false,
 }: SelectProps<T>) => {
   const theme = localTheme();
+  // Piece os state to manually override the menuIsOpen prop
   const [visible, setVisible] = useState(false);
 
+  // now we manually override the menuIsOpen we must handle closing by clicking outside also
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setVisible(false));
 
