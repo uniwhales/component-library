@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
+import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -222,7 +223,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const CheckBoxOption = (props:any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data,
+    label, isSelected, readOnly, isCheckBox, data, onSelectChange,
   } = props;
 
   return (
@@ -233,7 +234,13 @@ const CheckBoxOption = (props:any) => {
             <label>
               {label}
             </label>
-            <input type="checkbox" checked={isSelected} onChange={() => null} />
+            <Checkbox
+              selected={isSelected}
+              onClick={onSelectChange}
+              disabled={false}
+              rounded
+              size="small"
+            />
           </>
         ) : (
           <label>
@@ -309,7 +316,9 @@ export const Select = <T extends SelectVariation>({
       closeMenuOnSelect={!isMulti}
       hideSelectedOptions={false}
       components={{
-        Option: (props) => CheckBoxOption({ ...props, readOnly, isCheckBox }),
+        Option: (props) => CheckBoxOption({
+          ...props, readOnly, isCheckBox, onSelectChange,
+        }),
         IndicatorSeparator: () => null,
         ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
       }}
