@@ -169,6 +169,7 @@ import { GnosisColor } from './chains/fullColorStyle/GnosisColor';
 import { NftSidebarStandard } from './generalIcons/filledStyle/NftSidebarStandard';
 import { Gmx } from './tokens/GMX';
 import { Lyra } from './tokens/LYRA';
+import { Blur } from './chains/Blur';
 
 export default {
   title: 'Atoms/Icons',
@@ -267,6 +268,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="evmos" icon={<EvmosColor />} />
     <IconWrapper name="dogechain" icon={<DogechainColor />} />
     <IconWrapper name="gnosis" icon={<GnosisColor />} />
+    <IconWrapper name="blur" icon={<Blur />} />
   </>
 );
 
