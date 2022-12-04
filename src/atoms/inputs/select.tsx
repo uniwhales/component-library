@@ -223,7 +223,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const CheckBoxOption = (props:any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, onSelectChange,
+    label, isSelected, readOnly, isCheckBox, data,
   } = props;
 
   return (
@@ -236,10 +236,11 @@ const CheckBoxOption = (props:any) => {
             </label>
             <Checkbox
               selected={isSelected}
-              onClick={onSelectChange}
+              onClick={() => {}}
               disabled={false}
               rounded
               size="small"
+              selectCheck
             />
           </>
         ) : (
@@ -317,7 +318,7 @@ export const Select = <T extends SelectVariation>({
       hideSelectedOptions={false}
       components={{
         Option: (props) => CheckBoxOption({
-          ...props, readOnly, isCheckBox, onSelectChange,
+          ...props, readOnly, isCheckBox,
         }),
         IndicatorSeparator: () => null,
         ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
