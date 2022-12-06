@@ -161,6 +161,7 @@ export * from './chains/MagicLinkFilled';
 export * from './chains/UniwhalesFilled';
 export * from './chains/CieloFilled';
 export * from './chains/SushiswapFilled';
+export * from './chains/Blur';
 // chains color
 export * from './chains/fullColorStyle/X2Y2Color';
 export * from './chains/fullColorStyle/OpenseaColor';
