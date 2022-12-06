@@ -24,7 +24,8 @@ export const Radio = ({
             checked={selected}
             name={name}
             value={value}
-            onChange={onClick}
+            onClick={onClick}
+            onChange={() => {}}
             disabled={disabled}
             isLarge={!!isLarge}
           />
