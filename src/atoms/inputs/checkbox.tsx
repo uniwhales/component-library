@@ -59,6 +59,7 @@ export type CheckboxProps = {
   size: 'small' | 'big';
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
   rounded?: boolean;
+  selectCheck?:boolean
 };
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -67,6 +68,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   size,
   onClick,
   rounded = false,
+  selectCheck = false,
 }) => {
   const theme = localTheme();
   const [focus, setFocus] = useState<boolean>(false);
@@ -84,9 +86,8 @@ export const Checkbox: FC<CheckboxProps> = ({
       disabled={disabled}
       selected={selected}
       size={size}
-      onClick={(e) => {
+      onClick={selectCheck ? onClick : (e) => {
         e.stopPropagation();
-
         if (!disabled) onClick(e);
       }}
     >
