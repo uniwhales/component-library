@@ -6,13 +6,14 @@ import { CrownStandard, DynamicList } from '../icons';
 import { Styled, SvgGradients, Theme } from '../../theme';
 import { SelectableMarkedIdenticon } from './SelectMarkedIdenticon';
 import { Text } from '../texts/text';
+import { IdentMark } from './IdentMark';
 
 export default {
   title: 'Atoms/Identicon',
   component: IdenticonComponent,
   argTypes: {},
 } as ComponentMeta<typeof IdenticonComponent>;
-export const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
+const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
   padding: 8px 16px;
   display: flex;
   cursor: pointer;
@@ -41,6 +42,9 @@ const Template: ComponentStory<typeof IdenticonComponent> = (props) => (
 const MarkTemplate: ComponentStory<typeof MarkedIdenticon> = (props) => (
   <MarkedIdenticon {...props} />
 );
+const IdentMarkTemplate: ComponentStory<typeof IdentMark> = (props) => (
+  <IdentMark {...props} />
+);
 const SelectableMarkTemplate: ComponentStory<typeof SelectableMarkedIdenticon> = (props) => {
   const [checked, setChecked] = useState(false);
   return (
@@ -63,6 +67,7 @@ export const NoInteraction = Template.bind({});
 export const WithTealMarkBig = MarkTemplate.bind({});
 export const WithCanaryMarkSmall = MarkTemplate.bind({});
 export const WithSelectableCanaryMarkSmall = SelectableMarkTemplate.bind({});
+export const JustMarkIcon = IdentMarkTemplate.bind({});
 
 Primary.args = {
   id: 'someRandomString',
@@ -124,4 +129,11 @@ WithSelectableCanaryMarkSmall.args = {
     },
   },
 
+};
+
+JustMarkIcon.args = {
+  icon: {
+    icon: <CrownStandard />,
+  },
+  size: 'big',
 };
