@@ -1,9 +1,9 @@
 import React from 'react';
-import { IconWrapper } from '../icons/iconWrapper';
 import { IdenticonComponent } from './Identicon';
 import {
-  IdenticonMarkWrapper, Mark, WalletAvatar,
+  IdenticonMarkWrapper, WalletAvatar,
 } from './Identicon.styles';
+import { IdentMark } from './IdentMark';
 import { MarkedIdenticonProps } from './types';
 
 export const MarkedIdenticon = ({
@@ -16,9 +16,7 @@ export const MarkedIdenticon = ({
     >
       <WalletAvatar>
         {markIcon && (
-          <Mark size={size}>
-            <IconWrapper height={iconSize} width={iconSize} {...markIcon} />
-          </Mark>
+          <IdentMark size={size} icon={{ ...markIcon, width: iconSize, height: iconSize }} />
         )}
         <IdenticonComponent size={size} {...identicon} />
       </WalletAvatar>
