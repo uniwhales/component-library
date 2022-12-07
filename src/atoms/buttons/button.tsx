@@ -240,15 +240,15 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
 
    &:hover {
       background: ${props.theme.colors.primary.MANGO};
-      color: ${props.theme.colors.primary.DARK_BLUE};
+      color: ${props.theme.colors.primary.DARK_BLUE}!important;
       //font-weight: 700; it this implementation does not work
       svg {
         fill: ${props.theme.colors.primary.DARK_BLUE}!important;
       }
     };
     &:active {
-      background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
-      color: ${props.theme.colors.primary.MAIN_BLUE};
+      background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0}!important;
+      color: ${props.theme.colors.primary.MAIN_BLUE}!important;
 
       svg {
         fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
@@ -290,7 +290,7 @@ const ButtonSpecialSmallSubtle = Styled(Button)`
   `}
   ${({ disabled }) => !disabled && css`
     &:hover, &:active {
-    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE};
+    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
     svg {
       fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
     };
