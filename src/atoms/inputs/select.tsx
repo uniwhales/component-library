@@ -88,7 +88,7 @@ const OptionWrapper = Styled.div`
 const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   cursor: pointer;
 `;
 

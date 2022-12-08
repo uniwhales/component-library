@@ -9,6 +9,7 @@ import {
 } from '../icons';
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
+import { IdentMark } from '../identicon/IdentMark';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -24,7 +25,7 @@ const ColourOptions = [
 
 const WithIcon = [
   {
-    id: 0, value: 'blue blue', label: 'Blue', icon: <IconWrapper icon={<CrownStandard />} />,
+    id: 0, value: 'blue blue', label: 'Blue', icon: <IdentMark size="big" icon={{ icon: <CrownStandard /> }} />,
   },
   { id: 1, value: 'purple', label: 'Purple' },
 ];

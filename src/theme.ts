@@ -63,6 +63,7 @@ const LightTheme = {
   dropShadow: {
     REGULAR: '',
   },
+  svg: SvgGradients,
 };
 
 const Theme = {
