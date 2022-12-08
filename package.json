@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "1.0.54-FE-738-2",
+  "version": "1.0.54-FE-738-3",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
