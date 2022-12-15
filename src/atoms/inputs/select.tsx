@@ -44,6 +44,7 @@ export interface SelectProps<T extends SelectVariation> {
   handleClearValue?: () => void;
   maxMenuHeight?: number;
   isDisabled?: boolean;
+  onInputChange?: (e: string) => void;
 }
 
 interface StyledProps {
@@ -300,6 +301,7 @@ export const Select = <T extends SelectVariation>({
   handleClearValue,
   maxMenuHeight,
   isDisabled = false,
+  onInputChange,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -316,6 +318,7 @@ export const Select = <T extends SelectVariation>({
       placeholder={<div className="react-select__placeholder">{placeholder}</div>}
       closeMenuOnSelect={!isMulti}
       hideSelectedOptions={false}
+      onInputChange={(e) => onInputChange && onInputChange(e)}
       components={{
         Option: (props) => CheckBoxOption({
           ...props, readOnly, isCheckBox,
