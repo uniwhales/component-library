@@ -5,18 +5,19 @@ import {
 } from './chip.styles';
 
 export const Chip = ({
-  type, children, secondaryTypeBgColor, width,
+  type, children, secondaryTypeBgColor, width, cursor,
 }: ChipProps) => {
   switch (type) {
     case 'secondary':
       return (
-        <SecondaryChip bgColor={secondaryTypeBgColor} type={type} width={width}>
+        <SecondaryChip cursor={cursor} bgColor={secondaryTypeBgColor} type={type} width={width}>
           {children}
         </SecondaryChip>
       );
     case 'editable':
       return (
         <EditableChip
+          cursor={cursor}
           width={width}
           suppressContentEditableWarning
           contentEditable
@@ -27,13 +28,13 @@ export const Chip = ({
       );
     case 'tertiary':
       return (
-        <TertiaryChip type={type} width={width}>
+        <TertiaryChip cursor={cursor} type={type} width={width}>
           {children}
         </TertiaryChip>
       );
     default:
       return (
-        <PrimaryChip type={type} width={width}>
+        <PrimaryChip cursor={cursor} type={type} width={width}>
           {children}
         </PrimaryChip>
       );

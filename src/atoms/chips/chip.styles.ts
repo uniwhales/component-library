@@ -2,9 +2,9 @@ import { CSSProperties } from 'styled-components';
 import { Styled } from '../../theme';
 import { ChipProps } from './types';
 
-const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width'>>`
+const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width' | 'cursor'>>`
   width: ${({ width }) => width ?? 'fit-content'};
-  cursor: pointer;
+  cursor: ${({ cursor }) => cursor ?? 'pointer'};
   display: flex;
   align-items: center;
   justify-content: center;
