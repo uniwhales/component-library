@@ -27,6 +27,7 @@ export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
 export * from './atoms/identicon/MarkedIdenticon';
 export * from './atoms/identicon/SelectMarkedIdenticon';
+export * from './atoms/identicon/IdentMark';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';

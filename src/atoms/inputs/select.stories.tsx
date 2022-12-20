@@ -5,10 +5,11 @@ import {
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
+  AvalancheColor, BinanceColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
+import { IdentMark } from '../identicon/IdentMark';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -20,6 +21,13 @@ const ColourOptions = [
   { id: 6, value: 'forest', label: 'Forest' },
   { id: 7, value: 'slate', label: 'Slate' },
   { id: 8, value: 'silver', label: 'Silver' },
+];
+
+const WithIcon = [
+  {
+    id: 0, value: 'blue blue', label: 'Blue', icon: <IdentMark size="big" icon={{ icon: <CrownStandard /> }} />,
+  },
+  { id: 1, value: 'purple', label: 'Purple' },
 ];
 
 const LongOptions = [
@@ -109,6 +117,7 @@ const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) 
   return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 export const Primary = TemplateSingle.bind({});
+export const PrimaryIcon = TemplateSingle.bind({});
 export const LongOption = TemplateSingle.bind({});
 export const SingleGroupSearchSelect = TemplateGroup.bind({});
 export const MultiSelect = TemplateMulti.bind({});
@@ -123,6 +132,14 @@ Primary.args = {
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
+  isXL: false,
+  showValue: true,
+};
+
+PrimaryIcon.args = {
+  selectOptions: WithIcon,
+  isMulti: false,
+  readOnly: false,
   isXL: false,
   showValue: true,
 };

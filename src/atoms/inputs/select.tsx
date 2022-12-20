@@ -89,7 +89,7 @@ const OptionWrapper = Styled.div`
 const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   cursor: pointer;
 `;
 
@@ -132,9 +132,11 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     boxShadow: 'none',
     borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
     height: '40px',
-    svg: {
-      transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
-      cursor: 'pointer',
+    'div:nth-child(2)': {
+      svg: {
+        transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
+        cursor: 'pointer',
+      },
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
