@@ -8,7 +8,7 @@ export type ChipProps = {
   | 'secondary'
   | 'tertiary'
   | 'editable'
-} & Pick<CSSProperties, 'width'>;
+} & Pick<CSSProperties, 'width' | 'cursor'>;
 
 export enum FilterChipVariation {
   Basic = 'Basic',
