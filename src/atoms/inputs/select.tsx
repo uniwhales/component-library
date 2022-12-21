@@ -131,7 +131,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     boxShadow: 'none',
     borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
     height: '40px',
-    'div:nth-child(2)': {
+    'div:nth-of-type(2)': {
       svg: {
         transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
         cursor: 'pointer',
