@@ -80,6 +80,7 @@ NoInteraction.args = {
   id: 'someRandomString',
   hasInteraction: false,
   size: 'big',
+  isLink: false,
 };
 
 WithTealMarkBig.args = {
