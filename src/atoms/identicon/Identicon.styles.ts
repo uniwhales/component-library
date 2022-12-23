@@ -4,7 +4,7 @@ import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 import { IdenticonProps, MarkedIdenticonProps } from './types';
 
-export const Container = Styled.a<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
+export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
   height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};

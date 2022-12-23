@@ -10,6 +10,7 @@ export type IdenticonProps = {
   href?: string;
   target?: string;
   onMouseEnter?: () => void;
+  isLink?: boolean;
 };
 
 export type MarkedIdenticonProps = {
