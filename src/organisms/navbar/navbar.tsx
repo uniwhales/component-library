@@ -101,7 +101,6 @@ export const Navbar: FC<NavbarProps> = ({
               hasInteraction
               size="big"
               onClick={() => { setIsMenuOpen(!isMenuOpen); }}
-              isProfile
             />
             )}
           </NavbarRightSide>
