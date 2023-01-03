@@ -104,6 +104,7 @@ const Theme = {
       SHADE_VERTICAL: 'linear-gradient(180deg, #575757 0%, #1F232F 100%);',
       RADIAL_LIGHT: 'radial-gradient(50% 903.12% at 50% 100%, #E2E4EB 0%, #8E99BF 99.48%);',
       RADIAL: 'radial-gradient(50% 903.12% at 50% 100%, #23293B 35.94%, #666C81 99.48%);',
+      SHADE_HORIZONTAL: 'linear-gradient(90deg, #23293B 0%, #666C81 99.48%);',
     },
     system: {
       GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
