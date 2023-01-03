@@ -19,6 +19,9 @@ export const HoverCardComponent = ({
     closeDelay={50}
     arrowSize={arrowSize}
     exitTransitionDuration={0}
+    openDelay={50}
+    transitionDuration={0}
+    withinPortal
   >
     <HoverCard.Target>
       {target}
