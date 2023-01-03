@@ -101,7 +101,9 @@ const Theme = {
       CANARY: 'linear-gradient(180deg, #EEFF41 0%, #DB9C00 100%)',
       TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
       SKY: 'linear-gradient(180deg, #489BFC 0%, #2D467F 100%)',
-
+      SHADE_VERTICAL: 'linear-gradient(180deg, #23293B 0%, #666C81 99.48%);',
+      RADIAL_LIGHT: 'radial-gradient(50% 903.12% at 50% 100%, #E2E4EB 0%, #8E99BF 99.48%);',
+      RADIAL: 'radial-gradient(50% 903.12% at 50% 100%, #23293B 35.94%, #666C81 99.48%);',
     },
     system: {
       GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',

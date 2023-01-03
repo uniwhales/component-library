@@ -4,12 +4,13 @@ import { Container } from './Identicon.styles';
 import { IdenticonProps } from './types';
 
 export const IdenticonComponent = ({
-  size, id, hasInteraction, onClick, href, target, onMouseEnter, isLink = true,
+  size, id, hasInteraction, onClick, href, target, onMouseEnter, isLink = true, isProfile = false,
 }: IdenticonProps) => (
   <Container
     as={isLink ? 'a' : undefined}
     size={size}
     hasInteraction={hasInteraction}
+    isProfile={isProfile}
     onClick={onClick}
     href={href}
     target={target}
