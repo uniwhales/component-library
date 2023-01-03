@@ -121,6 +121,9 @@ const GlobalStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     font-family: Poppins,sans-serif;
   }
+  textarea {
+    font-family: Poppins,sans-serif;
+  }
 `;
 
 export {
