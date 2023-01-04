@@ -5,6 +5,7 @@ import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
+import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -21,6 +22,7 @@ export interface CopyToClipBoardProps {
   background?: boolean
   link?: string;
   hoverColor?: string;
+  textSize?: BodySizes | HeaderSizes
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
   width: 120px;
@@ -42,7 +44,7 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText, icon,
-  linkIcon, link,
+  linkIcon, link, textSize,
   /*
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
@@ -67,7 +69,7 @@ export const CopyToClipBoard = ({
   };
   return (
     <Wrapper>
-      <Text color={color} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
+      <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
       <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper
