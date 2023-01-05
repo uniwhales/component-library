@@ -61,7 +61,6 @@ export default {
 
 const Template: Story<TemplateSizes> = (args) => {
   const { list } = args;
-  console.debug(list);
   return (
     <>
       {list.map((item) => <Text key={item} size={item}>{item}</Text>)}

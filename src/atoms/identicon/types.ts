@@ -11,6 +11,7 @@ export type IdenticonProps = {
   target?: string;
   onMouseEnter?: () => void;
   isLink?: boolean;
+  gradientBorder?: boolean;
 };
 
 export type MarkedIdenticonProps = {
