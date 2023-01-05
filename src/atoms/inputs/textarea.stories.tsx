@@ -4,7 +4,8 @@ import { TextArea } from './textarea';
 import { Styled } from '../../theme';
 
 const Wrapper = Styled.div`
-  height: 200px;
+  height: 400px;
+  width: 400px;
 `;
 export default {
   title: 'Atoms/TextArea',
