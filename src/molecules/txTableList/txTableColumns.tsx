@@ -162,7 +162,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
             <Block justifyContent="flex-end">
               <TextArea textAlign="right">
                 <Text size="S-Bold">{row.transaction.from.token}</Text>
-                <Text size="XS-Regular">
+                <Text size="Caption-Regular">
                   <>
                     {formatNumber(row.transaction.from.amount.toFixed(2))}
                     /
@@ -197,7 +197,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
               />
               <TextArea textAlign="left">
                 <Text size="S-Bold">{row.transaction.for.token}</Text>
-                <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
+                <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>
                   <>
                     {formatNumber(row.transaction.for.amount.toFixed(2))}
                     /
@@ -216,7 +216,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
             <Text size="S-Regular">
               {`$${formatNumber(row.total_usd.toFixed(2))}`}
             </Text>
-            <Text size="XS-Regular" color={theme.textShades.SHADE_MINUS_2}>
+            <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>
               {`(${row.slippage.toFixed(2)}%)`}
             </Text>
           </SectionTotal>

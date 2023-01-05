@@ -71,7 +71,7 @@ const Template2: ComponentStory<typeof Modal> = () => {
             <ModalColumn>
               <Text size="S-Regular">{placeholderText}</Text>
               <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-                <Text size="XS-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+                <Text size="Caption-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
                 <IconWrapper
                   height="12px"
                   width="12px"
