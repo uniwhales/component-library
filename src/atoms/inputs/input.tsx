@@ -195,7 +195,7 @@ const Input = ({
   >
     <Text
       color={getMoreDetailsTextColor(inputState.status)}
-      size="XS-Regular"
+      size="Caption-Regular"
     >
       {inputState.message}
     </Text>
