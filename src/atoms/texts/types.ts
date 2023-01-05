@@ -1,41 +1,31 @@
 export type BodySizes =
   'L-Regular'
-  | 'L-Semibold'
   | 'L-Bold'
   | 'M-Regular'
-  | 'M-Semibold'
   | 'M-Bold'
+  | 'Button-Bold'
+  | 'Button-Regular'
   | 'S-Regular'
-  | 'S-Semibold'
   | 'S-Bold'
-  | 'XS-Regular'
-  | 'XS-Semibold'
-  | 'XS-Bold'
-  | 'XXS-Regular'
-  | 'XXS-Semibold'
-  | 'XXS-Bold'
-  | 'XXXS-Regular'
-  | 'XXXS-Semibold'
-  | 'XXXS-Bold';
+  | 'Caption-Regular'
+  | 'Caption-Bold'
+  | 'Tiny-Regular'
+  | 'Tiny-Bold'
+  | 'Overline-Regular'
+  | 'Overline-Bold';
 
 export type HeaderSizes =
-  'H1-Regular' |
-  'H1-Semibold'
+  'H1-Regular'
   | 'H1-Bold'
   | 'H2-Regular'
-  | 'H2-Semibold'
   | 'H2-Bold'
   | 'H3-Regular'
-  | 'H3-Semibold'
   | 'H3-Bold'
   | 'H4-Regular'
-  | 'H4-Semibold'
   | 'H4-Bold'
   | 'H5-Regular'
-  | 'H5-Semibold'
   | 'H5-Bold'
   | 'H6-Regular'
-  | 'H6-Semibold'
   | 'H6-Bold';
 
 export enum HyperLinkVariation {
