@@ -38,7 +38,7 @@ const InputWrapper = Styled.div`
   }
 `;
 
-const getBackgroundColor = (theme: typeof Theme, status:InputState['status']) => {
+export const getBackgroundColor = (theme: typeof Theme, status:InputState['status']) => {
   const lookup = {
     error: theme.colors.system.RED,
     invalid: theme.colors.system.RED,
@@ -88,7 +88,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon:
   `}
   }
 `;
-const InputLabel = Styled.label<{
+export const InputLabel = Styled.label<{
   focus: boolean, hover: boolean, disabled?: boolean
 }>`
   font-size: 12px;
