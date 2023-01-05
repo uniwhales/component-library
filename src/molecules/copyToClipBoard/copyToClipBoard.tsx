@@ -69,7 +69,7 @@ export const CopyToClipBoard = ({
     <Wrapper>
       <Text color={color} size="S-Regular">{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
       <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
-        <CustomReactTooltip id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
+        <CustomReactTooltip delayShow={0} delayHide={0} scrollHide id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         <IconWrapper
           onMouseEnter={() => {
             if (hoverColor && !background) setCurrentColor(hoverColor);
