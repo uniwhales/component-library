@@ -34,7 +34,6 @@ export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: bo
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   border-radius: 12px;
   padding: ${({ inputState }) => (inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
-  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
