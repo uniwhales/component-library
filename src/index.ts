@@ -28,6 +28,7 @@ export * from './atoms/socialButtonGroup/SocialButtonGroup';
 export * from './atoms/identicon/MarkedIdenticon';
 export * from './atoms/identicon/SelectMarkedIdenticon';
 export * from './atoms/identicon/IdentMark';
+export * from './atoms/inputs/textarea';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
@@ -72,6 +73,7 @@ export * from './utils/format';
 export * from './utils/useClickOutside';
 export * from './utils/constants';
 export * from './utils/getSize';
+export * from './utils/toasts';
 
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,

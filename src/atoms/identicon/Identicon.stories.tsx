@@ -67,6 +67,7 @@ export const NoInteraction = Template.bind({});
 export const WithTealMarkBig = MarkTemplate.bind({});
 export const WithCanaryMarkSmall = MarkTemplate.bind({});
 export const WithSelectableCanaryMarkSmall = SelectableMarkTemplate.bind({});
+export const WithSelectableCanaryMarkLarge = SelectableMarkTemplate.bind({});
 export const JustMarkIcon = IdentMarkTemplate.bind({});
 
 Primary.args = {
@@ -111,6 +112,35 @@ WithSelectableCanaryMarkSmall.args = {
     onClick: () => { console.debug('click select'); },
   },
   markedIdenticon: {
+    size: 'small',
+    markIcon: {
+      gradient: SvgGradients.CANARY,
+      icon: <DynamicList />,
+    },
+    identicon: {
+      id: 'someRandomString',
+      hasInteraction: true,
+      href: 'https://staging.app.cielo.finance/',
+      target: 'blank',
+      onClick: () => {
+        console.debug('click');
+      },
+    },
+    onMouseEnter: () => {
+      console.debug('preload called');
+    },
+  },
+
+};
+
+WithSelectableCanaryMarkLarge.args = {
+  text: <Text size="S-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
+  checkbox: {
+    disabled: false,
+    selected: false,
+    onClick: () => { console.debug('click select'); },
+  },
+  markedIdenticon: {
     size: 'big',
     markIcon: {
       gradient: SvgGradients.CANARY,
@@ -135,6 +165,7 @@ WithSelectableCanaryMarkSmall.args = {
 JustMarkIcon.args = {
   icon: {
     icon: <CrownStandard />,
+    fill: SvgGradients.TEAL,
   },
   size: 'big',
 };
