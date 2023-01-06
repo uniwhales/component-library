@@ -24,6 +24,7 @@ const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, inputStat
   `}
 `;
 export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: boolean, inputState:InputState }>`
+  font-family: Poppins,sans-serif;
   resize: none;
   outline: none;
   width: 100%;
