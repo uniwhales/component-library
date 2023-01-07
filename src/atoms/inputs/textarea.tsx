@@ -11,6 +11,8 @@ type TextAreaTypes = {
   value: string;
   label?: string;
   inputState?: InputState;
+  placeholder?: string;
+  maxLength?: number;
 };
 const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, inputState:InputState }>`
   border-radius: 12px;
@@ -65,7 +67,7 @@ const TextAreaWrapper = Styled.div`
   }
 `;
 export const TextArea = ({
-  disabled, value, onChange, label = 'Label', inputState = { message: '', status: 'default' },
+  disabled, value, onChange, label = 'Label', inputState = { message: '', status: 'default' }, placeholder, maxLength,
 }:TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -80,6 +82,8 @@ export const TextArea = ({
         onMouseLeave={() => setHover(false)}
       >
         <TextAreaComponent
+          maxLength={maxLength}
+          placeholder={placeholder}
           inputState={inputState}
           value={value}
           onChange={(e) => onChange(e)}
