@@ -4,29 +4,32 @@ import { tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 import { IdenticonProps, MarkedIdenticonProps } from './types';
 
-export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
+export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size' | 'gradientBorder'>>`
   height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
-  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  box-sizing: border-box;
   cursor: ${({ hasInteraction }) => hasInteraction && 'pointer'};
-  border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.SHADE_PLUS_2}`};
+  background: ${({ theme, gradientBorder, size }) => (size === 'small' ? null : gradientBorder ? `linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_1}, ${theme.containerAndCardShades.SHADE_PLUS_1}) padding-box,${theme.gradients.primary.MAIN_BLUE_GRADIENT_FLIPPED} border-box` : `linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_3}, ${theme.containerAndCardShades.SHADE_PLUS_3}) padding-box,${theme.gradients.secondary.SHADE_VERTICAL} border-box`)};
+  border: 1px solid transparent;
   &:hover {
-    border: ${({ theme, hasInteraction }) => hasInteraction && `2px solid ${theme.contrastColor.HIGH_CONTRAST}`};
+    border: ${({ hasInteraction }) => hasInteraction && '2px solid transparent'};
+    background: ${({ theme, gradientBorder, hasInteraction }) => hasInteraction && !gradientBorder && `linear-gradient(${theme.containerAndCardShades.BG_SHADE_PLUS_4}, ${theme.containerAndCardShades.BG_SHADE_PLUS_4}) padding-box,${theme.gradients.secondary.RADIAL_LIGHT} border-box`};
   };
    /* On mobile we do not have hover effects   */
   @media (min-width: ${DeviceWidth.tablet}) {
     :hover {
-      border: ${({ theme, hasInteraction }) => hasInteraction && `2px solid ${theme.contrastColor.HIGH_CONTRAST}`};
+      border: ${({ hasInteraction }) => hasInteraction && '2px solid transparent'};
+      background: ${({ theme, gradientBorder, hasInteraction }) => hasInteraction && !gradientBorder && `linear-gradient(${theme.containerAndCardShades.BG_SHADE_PLUS_4}, ${theme.containerAndCardShades.BG_SHADE_PLUS_4}) padding-box,${theme.gradients.secondary.RADIAL_LIGHT} border-box`};
     };
   }
 
-  ${({ hasInteraction }) => hasInteraction && tablet(css`
+  ${({ hasInteraction, gradientBorder }) => hasInteraction && tablet(css`
       :active {
-      border: ${({ theme }) => `2px solid ${theme.textShades.SHADE_MINUS_3}`};
+        background: ${({ theme }) => !gradientBorder && `linear-gradient(${theme.containerAndCardShades.BG_SHADE_PLUS_4}, ${theme.containerAndCardShades.BG_SHADE_PLUS_4}) padding-box,${theme.gradients.secondary.RADIAL_LIGHT} border-box`};
     }
   `)}
 `;
