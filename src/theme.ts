@@ -109,6 +109,8 @@ const Theme = {
       CANARY_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #DB9C00 3.24%, #EEFF41 95.37%)',
       TANGY_HORIZONTAL_GRADIENT: 'linear-gradient(90deg, #AD3B72 0%, #DD8442 100%)',
       TEAL_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #01AAE0 0%, #C0FBFF 98.47%)',
+      ORANGE_VERTICAL_GRADIENT: 'linear-gradient(0deg, #FE8F29 0%, #FFF06C 100%)',
+      ORANGE_HORIZONTAL_GRADIENT: 'linear-gradient(90deg, #FE8F29 0%, #FFF06C 100%)',
     },
     system: {
       GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
