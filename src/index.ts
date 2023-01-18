@@ -41,7 +41,6 @@ export * from './molecules/kebabMenu/kebabMenu';
 export * from './molecules/meatballMenu/meatballMenu';
 export * from './molecules/modals/modal';
 export * from './molecules/stickyActionBar/stickyActionBar';
-export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/popover/PopoverComponent';
 export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
@@ -50,7 +49,6 @@ export * from './molecules/dashboardMessages/DashMessageTwo';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
-export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
