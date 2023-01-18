@@ -124,13 +124,13 @@ const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       color: ${props.theme.textShades.SHADE_MINUS_1};
-      border: none;
+      border: 1px solid transparent;
   `};
   // active state
   ${(props) => !props.disabled && css`
     color: ${props.theme.contrastColor.LOW_CONTRAST};
     background-color: transparent;
-    border: none;
+    border: 1px solid transparent;
     &:hover {
        border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
        color: ${props.theme.contrastColor.HIGH_CONTRAST};
