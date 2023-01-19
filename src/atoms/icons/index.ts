@@ -213,6 +213,7 @@ export { Lyra } from './tokens/LYRA';
 export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
+export { Punk } from './miscIcons/Punk';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed
