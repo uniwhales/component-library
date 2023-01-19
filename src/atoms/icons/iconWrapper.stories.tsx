@@ -170,6 +170,8 @@ import { NftSidebarStandard } from './generalIcons/filledStyle/NftSidebarStandar
 import { Gmx } from './tokens/GMX';
 import { Lyra } from './tokens/LYRA';
 import { Blur } from './chains/Blur';
+import { Magic } from './miscIcons/Magic';
+import { Punk } from './miscIcons/Punk';
 
 export default {
   title: 'Atoms/Icons',
@@ -289,6 +291,8 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
     <IconWrapper name="Image Icon" icon={<ImageIcon />} cursor="pointer" />
     <IconWrapper name="NFT" icon={<NftIcon />} />
+    <IconWrapper name="Magic" icon={<Magic />} />
+    <IconWrapper name="Punk" icon={<Punk />} />
   </>
 );
 
