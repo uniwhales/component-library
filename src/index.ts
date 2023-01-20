@@ -50,7 +50,6 @@ export * from './molecules/dashboardMessages/DashMessageTwo';
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
-export * from './organisms/hintsAndHovers/hintsAndHovers';
 export * from './organisms/actionBar/actionBar';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
