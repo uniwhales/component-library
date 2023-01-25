@@ -72,6 +72,7 @@ const Theme = {
       MAIN_BLUE: '#1D86E8',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
+      YELLOW: '#FCD547',
     },
     secondary: {
       TEAL: '#01C5E0',
@@ -87,6 +88,7 @@ const Theme = {
       BLACK: '#131313',
       GREY: '#A5A6B8',
       DISABLED: '#23293B',
+      DISABLED_AND_HOVER: '#3F4354',
     },
   },
   gradients: {
