@@ -112,14 +112,6 @@ const LeftSideIcon = Styled.div`
   left: 0;
   top:0;
   padding:9px 9px;
-   svg {
-      fill: ${({ theme }) => theme.contrastColor.LOW_CONTRAST};
-  }
-  &:hover {
-    svg {
-      fill: ${({ theme }) => theme.contrastColor.HIGH_CONTRAST};
-    }
-  }
  `;
 const RightSideIcon = Styled.div`
   position: absolute;
@@ -213,7 +205,7 @@ const Input = ({
       >
         <InputContainer>
           <LeftSideIcon>
-            {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" icon={icon} />)}
+            {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={focus ? theme.contrastColor.HIGH_CONTRAST : theme.contrastColor.LOW_CONTRAST} icon={icon} />)}
             {inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
           </LeftSideIcon>
           <InputStyled
