@@ -47,6 +47,8 @@ export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 export * from './molecules/dashboardMessages/DashMessageOne';
 export * from './molecules/dashboardMessages/DashMessageTwo';
+export * from './molecules/labeled/select/labeledSelect';
+
 // organisms
 export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';

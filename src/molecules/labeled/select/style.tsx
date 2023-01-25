@@ -1,4 +1,4 @@
-import { Styled } from '../../theme';
+import { Styled } from '../../../theme';
 
 export const LabeledSelectWrapper = Styled.div`
     display: flex;

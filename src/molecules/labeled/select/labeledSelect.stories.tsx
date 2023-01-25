@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
-} from '../../atoms/icons';
-import { IconWrapper } from '../../atoms/icons/iconWrapper';
+} from '../../../atoms/icons';
+import { IconWrapper } from '../../../atoms/icons/iconWrapper';
 import { LabeledSelect } from './labeledSelect';
-import { Placeholder, SelectOption } from '../../atoms/inputs/select';
-import { ButtonAtom } from '../../atoms/buttons/button';
-import { Text } from '../../atoms/texts/text';
+import { Placeholder, SelectOption } from '../../../atoms/inputs/select';
+import { ButtonAtom } from '../../../atoms/buttons/button';
+import { Text } from '../../../atoms/texts/text';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
