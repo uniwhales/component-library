@@ -102,6 +102,7 @@ export * from './generalIcons/filledStyle/NftSidebarStandard';
 export * from './generalIcons/filledStyle/CrownStandard';
 export * from './generalIcons/filledStyle/ShareLinkStandard';
 export * from './generalIcons/filledStyle/LeaderboardStandard';
+export * from './generalIcons/filledStyle/Suggested';
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
