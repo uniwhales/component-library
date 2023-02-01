@@ -81,16 +81,10 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
     border: 2px solid ${theme.colors.primary.MAIN_BLUE};
     &:hover {
       background: ${theme.colors.primary.MAIN_BLUE};
-      /* svg {
-        fill: ${theme.colors.primary.MAIN_BLUE}!important;
-      } */
     };
     &:active {
       background: ${theme.colors.primary.MAIN_BLUE};
       border: 2px solid ${theme.colors.primary.YELLOW};
-      /* svg {
-        fill: ${theme.colors.primary.MAIN_BLUE}!important;
-      } */
     };
   `}
 `;
