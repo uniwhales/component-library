@@ -35,45 +35,26 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      color: ${props.theme.textShades.SHADE_MINUS_1};
-      border: none;
+      background: ${props.theme.colors.system.DISABLED};
+      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
       }
   `}
   // active state
   ${(props) => !props.disabled && css`
     position: relative;
-    border: none;
+    border: 2px solid transparent;
     opacity: 0.9;
-    background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    background: ${props.theme.colors.primary.MAIN_BLUE};
     z-index: ${props.theme.zIndex.BACKDROP};
-    &:before {
-      border-radius: 12px;
-      position: absolute;
-      content: "";
-      top: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      left: 0;
-      background-image: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
-      transition: opacity 0.25s linear;
-      opacity: 0;
-    }
     &:hover {
-      opacity: 1;
-      &:before {
-        opacity: 1;
-      }
+      background: ${props.theme.colors.secondary.SKY};
     }
     &:active {
-      opacity: 1;
-      &:before {
-        opacity: 1;
-      }
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
     }
   `}
 `;
@@ -86,9 +67,9 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // disabled state
   ${(props) => props.disabled && css`
     transition: background 0.45s ease;
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
-    border: none;
+    background: ${props.theme.colors.system.DISABLED};
+    color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+    border: 2px solid transparent;
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
     }
@@ -97,20 +78,19 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // active state
   ${({ theme, disabled }) => !disabled && css`
     background-color: transparent;
-    border: 1px solid ${theme.colors.primary.MANGO};
+    border: 2px solid ${theme.colors.primary.MAIN_BLUE};
     &:hover {
-      color: ${theme.colors.primary.DARK_BLUE};
-      background: ${theme.colors.primary.MANGO};
-      svg {
-        fill: ${theme.colors.primary.DARK_BLUE}!important;
-      }
+      background: ${theme.colors.primary.MAIN_BLUE};
+      /* svg {
+        fill: ${theme.colors.primary.MAIN_BLUE}!important;
+      } */
     };
     &:active {
-      color: ${theme.colors.primary.DARK_BLUE};
-      background: ${theme.colors.primary.MANGO};
-      svg {
-        fill: ${theme.colors.primary.DARK_BLUE}!important;
-      }
+      background: ${theme.colors.primary.MAIN_BLUE};
+      border: 2px solid ${theme.colors.primary.YELLOW};
+      /* svg {
+        fill: ${theme.colors.primary.MAIN_BLUE}!important;
+      } */
     };
   `}
 `;
