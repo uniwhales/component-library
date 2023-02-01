@@ -31,7 +31,7 @@ const Button = Styled.button<GenericStylingProps>`
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
-const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
@@ -58,7 +58,7 @@ const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
-const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
   svg {
@@ -67,12 +67,13 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // disabled state
   ${(props) => props.disabled && css`
     transition: background 0.45s ease;
-    background: ${props.theme.colors.system.DISABLED};
-    color: ${props.theme.colors.system.DISABLED_AND_HOVER};
-    border: 2px solid transparent;
-    svg {
-      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
-    }
+      background: ${props.theme.colors.system.DISABLED};
+      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+      }
   `}
 
   // active state
@@ -88,7 +89,7 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
     path {transition: fill 0.45s ease;}
@@ -96,37 +97,42 @@ const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   }
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      color: ${props.theme.textShades.SHADE_MINUS_1};
-      border: 1px solid transparent;
+      background: ${props.theme.colors.system.DISABLED};
+      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+      }
   `};
   // active state
   ${(props) => !props.disabled && css`
-    color: ${props.theme.contrastColor.LOW_CONTRAST};
+    color: ${props.theme.textShades.SHADE_MINUS_1};
     background-color: transparent;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     &:hover {
-       border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
        color: ${props.theme.contrastColor.HIGH_CONTRAST};
+       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       svg {
         fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
       }
     };
     &:active {
-      color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.MAIN_BLUE};
+     color: ${props.theme.contrastColor.HIGH_CONTRAST};
+     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+     border: 2px solid ${props.theme.colors.primary.YELLOW};
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
       }
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonPrimary)<Pick<ButtonProps, 'width'>>`
+const ButtonPrimaryAction = Styled(ButtonPrimary) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width ?? '40px'};
   height: 40px;
   padding: 10px;
 `;
-const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width ?? 'max-content'};
   height: 40px;
   path {transition: fill 0.45s ease;}
@@ -156,7 +162,7 @@ const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
   `}
 `;
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
     fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}!important;
@@ -184,7 +190,7 @@ const ButtonSecondaryActionInverse = Styled(Button)<Pick<ButtonProps, 'width'>>`
   `}
 `;
 
-const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   border-radius: 12px;
   border: none;
@@ -230,7 +236,7 @@ const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
+const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 32px;
   width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
   height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
@@ -306,7 +312,7 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
-export const ButtonAtom:FC<ButtonProps> = ({
+export const ButtonAtom: FC<ButtonProps> = ({
   children,
   buttonVariant,
   disabled = false,
@@ -324,7 +330,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -338,7 +344,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -352,7 +358,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -366,7 +372,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -380,7 +386,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -394,7 +400,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -407,7 +413,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -423,7 +429,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           buttonVariant={buttonVariant}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -434,7 +440,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
       return (
         <ButtonSpecialSmallSubtle
           disabled={disabled}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           type="button"
         >
           {children}
@@ -444,7 +450,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
       return (
         <ButtonIconOnly
           disabled={disabled}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           type="button"
         >
           {children}
@@ -457,7 +463,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
