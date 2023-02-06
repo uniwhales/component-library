@@ -125,7 +125,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     boxSizing: 'border-box',
     cursor: 'pointer',
     background: isFocused
-      ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
+      ? theme.colors.primary.MAIN_BLUE : isDisabled
+        ? theme.containerAndCardShades.SHADE_PLUS_1
+        : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
     outline: 'none',
     padding: '0 10px 0 10px',
@@ -147,7 +149,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       svg: {
         fill: theme.contrastColor.HIGH_CONTRAST,
       },
-      border: isFocused ? 'none' : `1px solid ${theme.colors.primary.MANGO}`,
+      border: isFocused ? 'none' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     },
   }),
   option: (defaultStyles, {

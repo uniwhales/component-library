@@ -79,6 +79,7 @@ const Theme = {
       CANARY: '#CED225',
       TANGY: '#DD8442',
       SKY: '#2A5ABA',
+      FUSCIA: '#E4599C',
     },
     system: {
       RED: '#FF6B6B',
