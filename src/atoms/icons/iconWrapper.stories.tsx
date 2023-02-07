@@ -172,6 +172,7 @@ import { Lyra } from './tokens/LYRA';
 import { Blur } from './chains/Blur';
 import { Magic } from './miscIcons/Magic';
 import { Punk } from './miscIcons/Punk';
+import { Canto } from './chains/fullColorStyle/Canto';
 
 export default {
   title: 'Atoms/Icons',
@@ -271,6 +272,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="dogechain" icon={<DogechainColor />} />
     <IconWrapper name="gnosis" icon={<GnosisColor />} />
     <IconWrapper name="blur" icon={<Blur />} />
+    <IconWrapper name="Canto" icon={<Canto />} />
   </>
 );
 

@@ -202,6 +202,7 @@ export * from './chains/fullColorStyle/ParaSwapV5';
 export * from './chains/fullColorStyle/EvmosColor';
 export * from './chains/fullColorStyle/DogechainColor';
 export * from './chains/fullColorStyle/GnosisColor';
+export * from './chains/fullColorStyle/Canto';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';

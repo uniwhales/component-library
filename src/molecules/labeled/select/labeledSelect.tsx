@@ -29,7 +29,7 @@ export const LabeledSelect = <T extends SelectVariation>(
   return (
     <LabeledSelectWrapper>
       {label && <Text size={labelFontSize ?? 'S-Bold'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor ?? textShades.SHADE_MINUS_1}>{label}</Text>}
-      {labels && labels.map((l) => <Text size={l?.fontSize ?? 'S-Bold'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : l.color ?? textShades.SHADE_MINUS_1}>{l.label}</Text>) }
+      {labels && labels.map((l) => <Text key={l.label} size={l?.fontSize ?? 'S-Bold'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : l.color ?? textShades.SHADE_MINUS_1}>{l.label}</Text>) }
       <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
         <Select
           {...props}
