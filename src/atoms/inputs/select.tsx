@@ -164,9 +164,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     cursor: 'pointer',
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.MAIN_BLUE
-      : isFocused ? readOnly ? 'none' : theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+      : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
-      background: !isSelected ? theme.containerAndCardShades.NEUTRAL_SHADE_0 : undefined,
+      background: !isSelected ? theme.colors.primary.MAIN_BLUE : undefined,
     },
   }),
   menu: (defaultStyles) => ({
@@ -184,32 +184,46 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    backgroundColor: theme.containerAndCardShades.SHADE_PLUS_1,
-    color: theme.textShades.SHADE_MINUS_3,
+    backgroundColor: theme.containerAndCardShades.SHADE_PLUS_2,
+    color: theme.textShades.SHADE_MINUS_2,
     borderRadius: '12px',
-    border: '1px solid white',
+    border: '2px solid transparent',
     display: 'flex',
+    gap: '6px',
+    padding: '0 6px',
     justifyContent: 'center',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'center',
-    padding: '4px 8px',
-    fontSize: '12px',
-    lineHeight: '16px',
+    fontSize: '14px',
+    lineHeight: '18px',
     fontWeight: 400,
     cursor: 'pointer',
+    '&:hover': {
+      background: theme.textShades.SHADE_MINUS_1,
+      color: theme.textShades.SHADE_MINUS_3,
+    },
+    '&:active': {
+      background: theme.textShades.SHADE_MINUS_1,
+      color: theme.textShades.SHADE_MINUS_3,
+      border: `2px solid ${theme.colors.primary.YELLOW}`,
+    },
     svg: {
       transform: 'unset',
-      height: '14px',
-      width: '14px',
+      height: '12px',
+      width: '12px',
     },
   }),
   multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
-    backgroundColor: theme.colors.primary.DARK_BLUE,
     borderRadius: '50%',
     padding: '2px',
     svg: {
-      fill: theme.colors.system.WHITE,
+      fill: theme.textShades.SHADE_MINUS_2,
+    },
+    '&:hover': {
+      svg: {
+        fill: theme.textShades.SHADE_MINUS_3,
+      },
     },
   }),
   valueContainer: (defaultStyles) => ({

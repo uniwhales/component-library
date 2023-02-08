@@ -173,6 +173,9 @@ import { Blur } from './chains/Blur';
 import { Magic } from './miscIcons/Magic';
 import { Punk } from './miscIcons/Punk';
 import { Canto } from './chains/fullColorStyle/Canto';
+import { Swap } from './feed/Swap';
+import { Withdraw } from './feed/Withdraw';
+import { ShortLong } from './feed/ShortLong';
 
 export default {
   title: 'Atoms/Icons',
@@ -426,6 +429,11 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Swap" icon={<SwapIcon />} />
     <IconWrapper name="Sweep" icon={<Sweep />} />
     <IconWrapper name="Unknown" icon={<Unknown />} />
+    <IconWrapper name="Swap" icon={<Swap />} />
+    <IconWrapper name="Withdraw" icon={<Withdraw />} />
+    <IconWrapper name="short/long" icon={<ShortLong />} />
+    <IconWrapper name="Transfer" icon={<ArrowRightIcon />} />
+    <IconWrapper name="Borrow" icon={<ArrowLeftIcon />} />
   </>
 );
 
