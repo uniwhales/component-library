@@ -17,14 +17,14 @@ const Switcher = Styled.label`
   width: 48px;
   height: 24px;
 `;
-const Toggle = Styled.span`
+const Toggle = Styled.span<{ isOn: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_1)};
   border-radius: 34px;
   :before {
     position: absolute;
@@ -38,22 +38,22 @@ const Toggle = Styled.span`
     border-radius: 50%;
   }
 `;
-const FakeInput = Styled.input`
+const FakeInput = Styled.input<{ isOn: boolean }>`
   opacity: 0;
   width: 0;
   height: 0;
 
   :hover + ${Toggle} {
-    background: ${({ theme }) => theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+    background: ${({ theme, isOn }) => (!isOn ? theme.contrastColor.LOW_CONTRAST : theme.textShades.SHADE_MINUS_2)};
   }
 
   :hover:checked + ${Toggle}:before {
-    background: ${({ theme }) => theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+    background: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   }
 
   :checked + ${Toggle}:before {
     transform: translateX(22px);
-    background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+    background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
     box-shadow:  ${({ theme }) => `inset 8px -4px 0px 0px ${theme.colors.system.WHITE}`};
   }
 `;
@@ -62,8 +62,8 @@ export const ThemeToggle = ({
 }:ThemeToggleProps) => (
   <Wrapper>
     <Switcher>
-      <FakeInput type="checkbox" defaultChecked={isOn} onChange={onClick} />
-      <Toggle />
+      <FakeInput isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
+      <Toggle isOn={isOn} />
     </Switcher>
   </Wrapper>
 );

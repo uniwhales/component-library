@@ -22,7 +22,7 @@ const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, inputStat
   height: 100%;
   background: ${({ theme, inputState }) => getBackgroundColor(theme, inputState.status)};
   ${({ focus, disabled }) => focus && !disabled && css`
-    background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
   `}
 `;
 export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: boolean, inputState:InputState }>`
@@ -38,7 +38,7 @@ export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: bo
   border-radius: 12px;
   padding: ${({ inputState }) => (inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   box-sizing: border-box;
-  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_1)};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
@@ -48,11 +48,11 @@ export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: bo
   }
   :hover {
     ::placeholder {
-      color: ${(props) => !props.disabled && props.theme.contrastColor.HIGH_CONTRAST};
+      color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
     }
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     ${({ focus, disabled }) => !focus && !disabled && css`
-      border: 1px solid ${(props) => props.theme.colors.primary.MANGO};
+      border: 1px solid ${(props) => props.theme.textShades.SHADE_MINUS_1};
   `}
   }
 `;
