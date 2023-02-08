@@ -12,7 +12,7 @@ const Button = Styled.button<GenericStylingProps>`
   display: flex;
   gap: 4px;
   align-items: center;
-  font-weight: 700;
+  font-weight: 400;
   font-family: Poppins, sans-serif;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
@@ -35,12 +35,12 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.colors.system.DISABLED};
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `}
   // active state
@@ -67,12 +67,12 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   // disabled state
   ${(props) => props.disabled && css`
     transition: background 0.45s ease;
-      background: ${props.theme.colors.system.DISABLED};
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `}
 
@@ -93,36 +93,36 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
     path {transition: fill 0.45s ease;}
-    fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_2}!important;
   }
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.colors.system.DISABLED};
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `};
   // active state
   ${(props) => !props.disabled && css`
-    color: ${props.theme.textShades.SHADE_MINUS_1};
+    color: ${props.theme.textShades.SHADE_MINUS_2};
     background-color: transparent;
     border: 2px solid transparent;
     &:hover {
-       color: ${props.theme.contrastColor.HIGH_CONTRAST};
-       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+       color: ${props.theme.textShades.SHADE_MINUS_3};
+       background: ${props.theme.textShades.SHADE_MINUS_1};
       svg {
-        fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
     &:active {
-     color: ${props.theme.contrastColor.HIGH_CONTRAST};
+     color: ${props.theme.textShades.SHADE_MINUS_3};
      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
      border: 2px solid ${props.theme.colors.primary.YELLOW};
       svg {
-        fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
   `};
@@ -131,14 +131,18 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width ?? '40px'};
   height: 40px;
   padding: 10px;
+    // active state
+  ${(props) => !props.disabled && css`
+    color: ${props.theme.textShades.SHADE_MINUS_1};
+  `};
   // disabled state
   ${(props) => props.disabled && css`
       background: none;
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: none;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `};
 `;
@@ -153,11 +157,11 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
   // disabled state
   ${(props) => props.disabled && css`
       background: none;
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: none;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `};
   // active state
@@ -165,12 +169,12 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
       }
     };
     &:active {
       svg {
-        fill: ${props.theme.colors.primary.YELLOW}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
   `}
@@ -179,17 +183,17 @@ const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
 const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
-    fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_1}!important;
   }
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
       background: none;
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: none;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `};
   // active state
@@ -197,12 +201,12 @@ const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width'>>
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
     &:active {
       svg {
-        fill: ${props.theme.colors.primary.YELLOW}!important;
+        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
   `}
@@ -224,12 +228,12 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
   };
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.colors.system.DISABLED};
-      color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.colors.system.DISABLED_AND_HOVER}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `}
   // active state
@@ -237,20 +241,18 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
 
    &:hover {
-      background: ${props.theme.colors.system.DISABLED_AND_HOVER};
-      color: ${props.theme.colors.system.WHITE}!important;
-      // font-weight: 700; it this implementation does not work
+      background: ${props.theme.textShades.SHADE_MINUS_1};
+      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
     &:active {
-      background: ${props.theme.containerAndCardShades.BG_SHADE_PLUS_4}!important;
-      color: ${props.theme.colors.system.WHITE}!important;
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
       border: 2px solid ${props.theme.colors.primary.YELLOW};
-      // font-weight: 700; it this implementation does not work
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
   `}
@@ -274,31 +276,31 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
 const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   svg {
     width: 16px;
     height: 16px;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
   };
   // disabled
   ${(props) => props.disabled && css`
-    color: ${props.theme.colors.system.DISABLED_AND_HOVER};
+    color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     svg {
-      fill: ${({ theme }) => theme.colors.system.DISABLED_AND_HOVER}!important;
+      fill: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1}!important;
     };
   `}
   // active state
   ${({ disabled }) => !disabled && css`
     &:hover {
-      color: ${({ theme }) => theme.colors.system.WHITE}!important;
+      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
       svg {
-        fill: ${({ theme }) => theme.colors.system.WHITE}!important;
+        fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
       };
     }
     &:active {
-      color: ${({ theme }) => theme.colors.primary.YELLOW}!important;
+      color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
       svg {
-        fill: ${({ theme }) => theme.colors.primary.YELLOW}!important;
+        fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
       };
     }
   `};

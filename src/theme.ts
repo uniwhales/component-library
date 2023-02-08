@@ -88,8 +88,6 @@ const Theme = {
       WHITE: '#FFFFFF',
       BLACK: '#131313',
       GREY: '#A5A6B8',
-      DISABLED: '#23293B',
-      DISABLED_AND_HOVER: '#3F4354',
     },
   },
   gradients: {
