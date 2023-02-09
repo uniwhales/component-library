@@ -6,7 +6,6 @@ import {
 } from '../icons';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
-import { FilterChipVariation } from './types';
 
 interface Filter {
   id: number;
@@ -84,7 +83,7 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
             onClick={() => setSelectFilter(chip.id)}
             isOn={selectFilter === chip.id}
           >
-            <Text size="XS-Bold">{chip.label}</Text>
+            <Text size="S-Regular">{chip.label}</Text>
           </FilterChip>
         ))}
     </Wrapper>
@@ -93,9 +92,6 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
 export const Basic = Template.bind({});
 export const BasicCustomWidth = Template.bind({});
 export const BasicNewsdesk = Template.bind({});
-export const Primary = Template.bind({});
-export const PrimaryDisabled = Template.bind({});
-export const Secondary = Template.bind({});
 
 Basic.args = { id: 0 };
 BasicCustomWidth.args = {
@@ -103,16 +99,3 @@ BasicCustomWidth.args = {
   id: 0,
 };
 BasicNewsdesk.args = { id: 1 };
-Primary.args = {
-  variant: FilterChipVariation.Primary,
-  id: 1,
-};
-Secondary.args = {
-  variant: FilterChipVariation.Secondary,
-  id: 0,
-};
-PrimaryDisabled.args = {
-  variant: FilterChipVariation.Primary,
-  id: 1,
-  disabled: true,
-};

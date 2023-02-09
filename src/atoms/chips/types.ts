@@ -8,6 +8,8 @@ export type ChipProps = {
   | 'secondary'
   | 'tertiary'
   | 'editable'
+  | 'tertiaryLined'
+  | 'subtle'
 } & Pick<CSSProperties, 'width' | 'cursor'>;
 
 export enum FilterChipVariation {
@@ -26,5 +28,4 @@ export type FilterChipProps = {
   isOn: boolean;
   onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
   id: number;
-  variant?: FilterChipVariation
 } & Pick<CSSProperties, 'width'>;

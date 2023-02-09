@@ -8,15 +8,15 @@ const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width' | '
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => props.theme.colors.system.WHITE};
+  color: ${({ theme }) => theme.colors.system.WHITE};
   transition: width 0.45s ease;
 `;
 
 export const PrimaryChip = Styled(CustomChip)`
-  padding: 4px 12px;
+  padding: 8px 12px;
   gap: 8px;
   border-radius: 40px;
-  background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+  background: ${({ theme }) => theme.colors.primary.MAIN_BLUE};
 `;
 
 export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
@@ -34,18 +34,15 @@ export const EditableChip = Styled(CustomChip)`
   transition: all .3s;
   border-radius: 12px;
   gap: 8px;
-  background: ${(props) => props.theme.colors.primary.DARK_BLUE};
-  border: ${(props) => `1px solid ${props.theme.textShades.SHADE_MINUS_2}
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_3};
 `};
-  &:hover {
-    background: ${(props) => props.theme.colors.primary.MANGO};
-    font-weight: 700;
-  }
 `;
 
 export const TertiaryChip = Styled(CustomChip)`
   padding: 4px 6px;
-  gap: 2px;
+  gap: 4px;
   border-radius: 12px;
   background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
   font-size: 10px;
@@ -53,4 +50,19 @@ export const TertiaryChip = Styled(CustomChip)`
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   }
+`;
+
+export const TertiaryLined = Styled(CustomChip)`
+  padding: 4px;
+  border-radius: 12px;
+  font-size: 8px;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  border: ${({ theme }) => `1px solid ${theme.colors.primary.MAIN_BLUE}`};
+  gap: 4px;
+`;
+
+export const SubtleChip = Styled(CustomChip)`
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+  font-size: 8px;
+  gap: 4px;
 `;

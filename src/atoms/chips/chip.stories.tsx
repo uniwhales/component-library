@@ -43,6 +43,8 @@ export const Secondary = Template.bind({});
 export const Tertiary = Template.bind({});
 export const TertiaryCustomWidth = Template.bind({});
 export const Editable = Template.bind({});
+export const TertiaryLined = Template.bind({});
+export const Subtle = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
@@ -72,4 +74,16 @@ TertiaryCustomWidth.args = {
 Editable.args = {
   type: 'editable',
   children: 'Edit Chip',
+};
+TertiaryLined.args = {
+  type: 'tertiaryLined',
+  children: 'Tertiary Lined',
+};
+TertiaryLined.args = {
+  type: 'tertiaryLined',
+  children: 'Tertiary Lined',
+};
+Subtle.args = {
+  type: 'subtle',
+  children: WithIcon(true, '8px'),
 };
