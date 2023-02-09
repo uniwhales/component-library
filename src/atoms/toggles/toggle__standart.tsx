@@ -37,7 +37,7 @@ const Toggle = Styled.span<{ size: string, disabled: boolean }>`
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
-    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_2 : props.theme.colors.system.WHITE)};
+    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_2 : props.theme.textShades.SHADE_MINUS_3)};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -57,7 +57,7 @@ const FakeInput = Styled.input<{ size:any }>`
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
-    background: ${(props) => props.theme.colors.system.WHITE};
+    background: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   }
 `;
 export const ToggleAtom = ({

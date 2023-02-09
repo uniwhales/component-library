@@ -144,10 +144,10 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontWeight: isFocused ? 'bold' : 'normal',
     '&:hover': {
       div: {
-        color: theme.contrastColor.HIGH_CONTRAST,
+        color: theme.colors.system.WHITE,
       },
       svg: {
-        fill: theme.contrastColor.HIGH_CONTRAST,
+        fill: theme.colors.system.WHITE,
       },
       border: isFocused ? 'none' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     },
