@@ -44,7 +44,7 @@ const FakeInput = Styled.input<{ isOn: boolean }>`
   height: 0;
 
   :hover + ${Toggle} {
-    background: ${({ theme, isOn }) => (!isOn ? theme.contrastColor.LOW_CONTRAST : theme.textShades.SHADE_MINUS_2)};
+    background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.LIGHT_BLUE : theme.textShades.SHADE_MINUS_2)};
   }
 
   :hover:checked + ${Toggle}:before {

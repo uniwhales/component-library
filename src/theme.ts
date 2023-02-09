@@ -70,6 +70,7 @@ const Theme = {
   colors: {
     primary: {
       MAIN_BLUE: '#1D86E8',
+      LIGHT_BLUE: '#85C4FF',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
       YELLOW: '#FCD547',

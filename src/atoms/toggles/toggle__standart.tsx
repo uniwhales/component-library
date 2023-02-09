@@ -52,7 +52,7 @@ const FakeInput = Styled.input<{ size:any }>`
   :checked + ${Toggle} {
     background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.colors.primary.MAIN_BLUE)};
     &:hover {
-      background: red;
+      background: ${({ theme }) => theme.colors.primary.LIGHT_BLUE};
     }
   }
   :checked + ${Toggle}:before {

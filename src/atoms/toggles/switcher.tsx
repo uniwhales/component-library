@@ -26,13 +26,13 @@ const Toggle = Styled.span<SwitcherProps>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+  background: ${({ isOn, theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.colors.secondary.SKY : theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 4px;
   :hover {
-    background: ${(props) => !props.disabled && props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+    background: ${({ isOn, disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.colors.secondary.SKY : theme.containerAndCardShades.SHADE_PLUS_1)};
     :before {
-      box-shadow: ${(props) => !props.disabled && props.theme.dropShadow.REGULAR};
-      background: ${(props) => !props.disabled && props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+      box-shadow: ${({ disabled, theme }) => !disabled && theme.dropShadow.REGULAR};
+      background: ${({ disabled, theme }) => !disabled && theme.colors.primary.LIGHT_BLUE};
     }
   }
 
@@ -42,7 +42,7 @@ const Toggle = Styled.span<SwitcherProps>`
     height: 100%;
     width: 50%;
     bottom: 0;
-    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.gradients.primary.MAIN_BLUE_GRADIENT)};
+    background: ${({ disabled, theme }) => (disabled ? theme.textShades.SHADE_MINUS_1 : theme.colors.primary.MAIN_BLUE)};
     transition: 0.4s;
     border-radius: 4px;
     transform: ${(props) => {
