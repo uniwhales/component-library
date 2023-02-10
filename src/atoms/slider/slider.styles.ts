@@ -17,7 +17,7 @@ const trackFill = css<Pick<SliderProps, 'value'>>`
   height: 8px;
   background-color: ${({ theme, value }) => (value === 100
     ? theme.colors.secondary.CANARY
-    : theme.containerAndCardShades.SHADE_PLUS_1)};
+    : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:hover {
     background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_MINUS_1};
   }

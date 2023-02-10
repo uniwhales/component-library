@@ -38,7 +38,7 @@ const DarkTheme = {
     LOW_CONTRAST: '#6A7382',
   },
   dropShadow: {
-    REGULAR: '#D9D9D9',
+    REGULAR: '',
   },
 };
 
@@ -61,7 +61,7 @@ const LightTheme = {
     LOW_CONTRAST: '#80C6E4',
   },
   dropShadow: {
-    REGULAR: '#D9D9D9',
+    REGULAR: '',
   },
 };
 
