@@ -176,6 +176,9 @@ import { Canto } from './chains/fullColorStyle/Canto';
 import { Swap } from './feed/Swap';
 import { Withdraw } from './feed/Withdraw';
 import { ShortLong } from './feed/ShortLong';
+import { Reward } from './feed/Reward';
+import { Perp } from './feed/Perp';
+import { Option } from './feed/Option';
 
 export default {
   title: 'Atoms/Icons',
@@ -434,6 +437,9 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="short/long" icon={<ShortLong />} />
     <IconWrapper name="Transfer" icon={<ArrowRightIcon />} />
     <IconWrapper name="Borrow" icon={<ArrowLeftIcon />} />
+    <IconWrapper name="Reward" icon={<Reward />} />
+    <IconWrapper name="Perp" icon={<Perp />} />
+    <IconWrapper name="Option" icon={<Option />} />
   </>
 );
 
