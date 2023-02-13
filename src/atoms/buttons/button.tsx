@@ -340,6 +340,48 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
+const SquareButton = Styled.button<GenericStylingProps>`
+  height: 70px;
+  width: 70px;
+  border-radius: 10px;
+  border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 10px;
+  svg {
+    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
+  }
+  // disabled
+  ${({ disabled, theme }) => disabled && css`
+    background: ${theme.containerAndCardShades.SHADE_PLUS_1};
+    color: ${theme.textShades.SHADE_MINUS_1}!important;
+    border: '2px solid transparent';
+    svg {
+      fill: ${theme.textShades.SHADE_MINUS_1}!important;
+    }
+  `}
+  // active state
+  ${({ theme, disabled }) => !disabled && css`
+   &:hover {
+      background: ${theme.colors.primary.MAIN_BLUE};
+      color: ${theme.colors.system.WHITE}!important;
+      svg {
+        fill: ${theme.colors.system.WHITE}!important;
+      };
+    };
+    &:active {
+       border: ${`2px solid ${theme.colors.primary.YELLOW}`};
+    };
+  `}
+`;
+
 export const ButtonAtom: FC<ButtonProps> = ({
   children,
   buttonVariant,
@@ -483,6 +525,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
         >
           {children}
         </ButtonIconOnly>
+      );
+    case 'square':
+      return (
+        <SquareButton
+          disabled={disabled}
+          onClick={!disabled ? onClick : () => { }}
+          type="button"
+        >
+          {children}
+        </SquareButton>
       );
     default:
       return (
