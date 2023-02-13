@@ -358,14 +358,15 @@ const SquareButton = Styled.button<GenericStylingProps>`
     cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
   }
-  // disabled
+    // disabled state
   ${({ disabled, theme }) => disabled && css`
-    background: ${theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${theme.textShades.SHADE_MINUS_1}!important;
-    border: '2px solid transparent';
-    svg {
-      fill: ${theme.textShades.SHADE_MINUS_1}!important;
-    }
+      background: ${theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
   `}
   // active state
   ${({ theme, disabled }) => !disabled && css`
