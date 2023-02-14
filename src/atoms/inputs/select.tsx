@@ -140,14 +140,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
         cursor: 'pointer',
       },
     },
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    color: isFocused ? theme.contrastColor.HIGH_CONTRAST : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
     '&:hover': {
       div: {
-        color: isFocused ? theme.colors.system.WHITE : theme.contrastColor.HIGH_CONTRAST,
+        color: theme.contrastColor.HIGH_CONTRAST,
       },
       svg: {
-        fill: isFocused ? theme.colors.system.WHITE : theme.contrastColor.HIGH_CONTRAST,
+        fill: theme.contrastColor.HIGH_CONTRAST,
       },
       border: isFocused ? 'none' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     },
