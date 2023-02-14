@@ -45,7 +45,6 @@ export const TertiaryChip = Styled(CustomChip)`
   gap: 4px;
   border-radius: 12px;
   background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
-  font-size: 10px;
   text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
@@ -55,7 +54,6 @@ export const TertiaryChip = Styled(CustomChip)`
 export const TertiaryLined = Styled(CustomChip)`
   padding: 4px;
   border-radius: 12px;
-  font-size: 8px;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   border: ${({ theme }) => `1px solid ${theme.colors.primary.MAIN_BLUE}`};
   gap: 4px;
@@ -63,6 +61,5 @@ export const TertiaryLined = Styled(CustomChip)`
 
 export const SubtleChip = Styled(CustomChip)`
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
-  font-size: 8px;
   gap: 4px;
 `;

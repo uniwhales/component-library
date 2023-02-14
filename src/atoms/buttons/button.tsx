@@ -348,9 +348,9 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
-const SquareButton = Styled.button<GenericStylingProps>`
-  height: 70px;
-  width: 70px;
+const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
+  height: ${({ size }) => size || '70px'};
+  width: ${({ size }) => size || '70px'};
   border-radius: 10px;
   border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
@@ -361,7 +361,6 @@ const SquareButton = Styled.button<GenericStylingProps>`
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-  font-size: 10px;
   svg {
     cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
@@ -400,6 +399,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
   onMouseEnter,
   onMouseLeave,
   width,
+  size = '70px',
 }) => {
   switch (buttonVariant) {
     case 'secondary':
@@ -541,6 +541,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
+          size={size}
         >
           {children}
         </SquareButton>
