@@ -177,7 +177,7 @@ import { Swap } from './feed/Swap';
 import { Withdraw } from './feed/Withdraw';
 import { Reward } from './feed/Reward';
 import { Perp } from './feed/Perp';
-import { Option } from './feed/OptionIcon';
+import { OptionIcon } from './feed/OptionIcon';
 
 export default {
   title: 'Atoms/Icons',
@@ -437,7 +437,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Borrow" icon={<ArrowLeftIcon />} />
     <IconWrapper name="Reward" icon={<Reward />} />
     <IconWrapper name="Perp" icon={<Perp />} />
-    <IconWrapper name="Option" icon={<Option />} />
+    <IconWrapper name="Option" icon={<OptionIcon />} />
   </>
 );
 
