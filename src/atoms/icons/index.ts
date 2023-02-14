@@ -228,3 +228,7 @@ export * from './feed/RevokeIcon';
 export * from './feed/SwapIcon';
 export * from './feed/Unknown';
 export * from './feed/Sweep';
+export * from './feed/OptionIcon';
+export * from './feed/Perp';
+export * from './feed/Reward';
+export * from './feed/Swap';

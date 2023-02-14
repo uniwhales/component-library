@@ -144,10 +144,10 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     fontWeight: isFocused ? 'bold' : 'normal',
     '&:hover': {
       div: {
-        color: theme.colors.system.WHITE,
+        color: isFocused ? theme.colors.system.WHITE : theme.contrastColor.HIGH_CONTRAST,
       },
       svg: {
-        fill: theme.colors.system.WHITE,
+        fill: isFocused ? theme.colors.system.WHITE : theme.contrastColor.HIGH_CONTRAST,
       },
       border: isFocused ? 'none' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     },
@@ -167,6 +167,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
       background: !isSelected ? theme.colors.primary.MAIN_BLUE : undefined,
+      color: theme.colors.system.WHITE,
     },
   }),
   menu: (defaultStyles) => ({
