@@ -6,6 +6,7 @@ import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
+import { ChevronDownIcon, ChevronUpIcon } from '../icons';
 
 export interface Option {
   value: string,
@@ -20,7 +21,7 @@ export interface SelectGroupOption {
   options: Option[]
 }
 
-export interface SelectOption extends Option {}
+export interface SelectOption extends Option { }
 
 export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
 export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
@@ -111,13 +112,6 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     },
   }),
-  dropdownIndicator: (defaultStyles, { isFocused, theme }: StyledProps) => ({
-    ...defaultStyles,
-    svg: {
-      transition: 'all 0.4s',
-      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-    },
-  }),
   control: (defaultStyles, {
     isFocused, menuIsOpen, theme, isDisabled,
   }: StyledProps) => ({
@@ -136,21 +130,11 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     height: '40px',
     'div:nth-of-type(2)': {
       svg: {
-        transform: menuIsOpen ? 'rotateZ(-180deg)' : undefined,
         cursor: 'pointer',
       },
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
-    '&:hover': {
-      div: {
-        color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
-      },
-      svg: {
-        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
-      },
-      border: isFocused ? 'none' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
-    },
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly, label,
@@ -241,7 +225,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 };
 
-const CheckBoxOption = (props:any) => {
+const CheckBoxOption = (props: any) => {
   const {
     label, isSelected, readOnly, isCheckBox, data,
   } = props;
@@ -256,7 +240,7 @@ const CheckBoxOption = (props:any) => {
             </label>
             <Checkbox
               selected={isSelected}
-              onClick={() => {}}
+              onClick={() => { }}
               disabled={false}
               size="small"
               selectCheck
@@ -285,6 +269,7 @@ const ClearIndicator = (props: any) => {
     selectProps,
     clearButtonText,
     handleClearValue,
+    isFocused,
   } = props;
   const theme = localTheme();
   const [hover, setHover] = useState(false);
@@ -297,11 +282,36 @@ const ClearIndicator = (props: any) => {
       onClick={handleClearValue}
     >
       <ClearButtonContainer>
-        <Text size="S-Regular" color={hover && !selectProps.menuIsOpen ? theme.colors.primary.MAIN_BLUE : selectProps.menuIsOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}>
+        <Text
+          size="S-Regular"
+          color={
+            hover || isFocused || selectProps.isMenuOpen
+              ? theme.colors.system.WHITE
+              : theme.textShades.SHADE_MINUS_2
+          }
+        >
           {clearButtonText}
         </Text>
       </ClearButtonContainer>
     </ClearWrapper>
+  );
+};
+
+const DropdownIndicator = ({ selectProps, isFocused }: any) => {
+  const theme = localTheme();
+  if (selectProps.menuIsOpen) {
+    return (
+      <IconWrapper
+        fill={theme.colors.system.WHITE}
+        icon={<ChevronDownIcon />}
+      />
+    );
+  }
+  return (
+    <IconWrapper
+      fill={isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
+      icon={<ChevronUpIcon />}
+    />
   );
 };
 
@@ -343,6 +353,7 @@ export const Select = <T extends SelectVariation>({
         }),
         IndicatorSeparator: () => null,
         ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
+        DropdownIndicator: (props) => DropdownIndicator({ ...props }),
       }}
       onChange={(option) => {
         if (!onSelectChange) return;
