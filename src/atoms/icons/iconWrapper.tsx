@@ -27,7 +27,7 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
   border-radius: 100px;
 
   :hover {
-    background: linear-gradient(0deg, #1DD1A1 0%, #CEFF41 100%);
+    background: ${({ theme }) => theme.colors.primary.YELLOW};
   }
   svg {
     fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};

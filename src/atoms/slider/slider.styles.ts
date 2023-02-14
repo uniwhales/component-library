@@ -12,15 +12,19 @@ const track = css<Pick<SliderProps, 'value'>>`
   border-radius: 12px;
 `;
 
-const trackFill = css<Pick<SliderProps, 'value'>>`
+const trackFill = css`
   ${track};
   height: 8px;
-  background-color: ${(props) => (props.value === 100
-    ? props.theme.textShades.SHADE_MINUS_3
-    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background-color: transparent;
+  background-image: ${({ theme, value }) => `linear-gradient(${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_1}, ${theme.containerAndCardShades.SHADE_PLUS_1})`};
+  background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
   &:hover {
-    background-color: ${(props) => props.theme.colors.primary.DARK_BLUE};
-  }
+    background-image: ${({ theme, value }) => `linear-gradient(${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+    linear-gradient(${theme.textShades.SHADE_MINUS_1}, ${theme.textShades.SHADE_MINUS_1})`};
+  };
 `;
 
 const fill = css`
@@ -35,13 +39,11 @@ const thumb = css<Pick<SliderProps, 'value'>>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: ${(props) => (props.value === 100
-    ? props.theme.colors.system.WHITE
-    : props.value === 0
-      ? props.theme.containerAndCardShades.NEUTRAL_SHADE_0
-      : props.theme.colors.primary.MANGO)};
+  background: ${({ theme, value }) => (value === 100
+    ? theme.colors.primary.YELLOW
+    : theme.colors.primary.MAIN_BLUE)};
   &:hover {
-    background: ${(props) => props.theme.colors.system.WHITE};
+    background: ${(props) => props.theme.colors.primary.LIGHT_BLUE};
   }
 `;
 
@@ -55,6 +57,10 @@ export const Input = Styled.input<Pick<SliderProps, 'value'>>`
   &:focus {
     outline: none;
   }
+
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--val) - var(--min)) / var(--range));
+  --sx: calc(0.5 * 20px + var(--ratio) * (100% - 20px));
 
   margin: 0;
   padding: 0;
@@ -110,15 +116,11 @@ export const MaxButton = Styled.button<Pick<SliderProps, 'value'>>`
   margin-left: 8px;
   gap: 8px;
   border-radius: 12px;
-  background: ${(props) => (props.value === 100
-    ? props.theme.textShades.SHADE_MINUS_3
-    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
-  color: ${(props) => (props.value === 100
-    ? props.theme.containerAndCardShades.SHADE_PLUS_3
-    : props.theme.textShades.SHADE_MINUS_3)};
-  border: none;
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  border: ${({ theme, value }) => `2px solid ${value === 100 ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
 `;

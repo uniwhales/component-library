@@ -43,8 +43,9 @@ export const getBackgroundColor = (theme: typeof Theme, status:InputState['statu
     error: theme.colors.system.RED,
     invalid: theme.colors.system.RED,
     exception: theme.colors.system.AMBER,
+    disabled: theme.containerAndCardShades.SHADE_PLUS_3,
   };
-  if (status === 'error' || status === 'invalid' || status === 'exception') {
+  if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'disabled') {
     return lookup[status];
   }
   return theme.containerAndCardShades.BG_SHADE_PLUS_4;
@@ -55,14 +56,13 @@ const BorderWrapper = Styled.div<{ focus: boolean, disabled?: boolean, inputStat
   box-sizing: border-box;
   background: ${({ theme, inputState }) => getBackgroundColor(theme, inputState.status)};
   ${({ focus, disabled }) => focus && !disabled && css`
-    background: ${(props) => props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
   `}
 `;
 const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon: boolean, inputState:InputState }>`
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? '0.2' : 1)};
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   height: 40px;
   line-height:24px;
@@ -70,7 +70,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon:
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
-  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.secondary.FUSCIA : inputState.status === 'disabled' ? theme.colors.system.DISABLED_AND_HOVER : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
@@ -84,7 +84,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon:
     }
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
     ${({ focus, disabled }) => !focus && !disabled && css`
-      border: 1px solid ${(props) => props.theme.colors.primary.MANGO};
+      border: 1px solid ${(props) => props.theme.textShades.SHADE_MINUS_1};
   `}
   }
 `;
@@ -173,7 +173,7 @@ const Input = ({
     const lookup = {
       valid: theme.colors.system.GREEN,
       exception: theme.colors.system.AMBER,
-      help: theme.colors.primary.MAIN_BLUE,
+      help: theme.colors.secondary.FUSCIA,
     };
     if (status === 'exception' || status === 'help' || status === 'valid') {
       return lookup[status];

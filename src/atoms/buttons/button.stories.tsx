@@ -82,6 +82,8 @@ export const SpecialSmallSubtle = Template.bind({});
 export const SpecialSmallSubtleWithIcon = Template.bind({});
 export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
+export const SquareButton = Template.bind({});
+export const SquareButtonCustomSize = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -162,4 +164,13 @@ SpecialSmallSubtleWithIconR.args = {
 SecondaryWithHoverEffect.args = {
   buttonVariant: 'secondary',
   width: '100px',
+};
+SquareButton.args = {
+  children: WithIcon(),
+  buttonVariant: 'square',
+};
+SquareButtonCustomSize.args = {
+  children: WithIcon(),
+  buttonVariant: 'square',
+  size: '140px',
 };

@@ -10,7 +10,7 @@ type CheckboxStyledProps = {
   selected: boolean;
   disabled: boolean;
   size: 'small' | 'big';
-  rounded?: boolean;
+  variant?: 'primary' | 'secondary'
 };
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
@@ -22,7 +22,7 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   height: ${(props) => (getCheckboxSize(props.size))};
   border: 2px solid ${(props) => {
     if (props.hover && !props.selected && !props.disabled) {
-      return props.theme.colors.secondary.TEAL;
+      return props.variant === 'secondary' ? props.theme.colors.primary.MAIN_BLUE : props.theme.colors.primary.YELLOW;
     }
 
     if (
@@ -32,19 +32,19 @@ const CheckboxStyled = Styled.div<CheckboxStyledProps>`
       return 'transparent';
     }
     if (props.disabled) {
-      return props.theme.textShades.SHADE_MINUS_1;
+      return props.theme.containerAndCardShades.SHADE_PLUS_1;
     }
 
-    return props.theme.colors.primary.MANGO;
+    return props.theme.textShades.SHADE_MINUS_1;
   }};
-  border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
+  border-radius: 50%;
   background-color: ${(props) => {
     if (!props.selected) return props.theme.containerAndCardShades.SHADE_PLUS_1;
     if (props.disabled && props.selected) {
       return props.theme.colors.system.GREEN;
     }
 
-    return props.theme.colors.primary.MANGO;
+    return props.variant === 'secondary' ? props.theme.colors.primary.MAIN_BLUE : props.theme.colors.primary.YELLOW;
   }};
   opacity: ${(props) => props.disabled && !props.selected && '0.7'};
   cursor: pointer;
@@ -58,8 +58,8 @@ export type CheckboxProps = {
   selected: boolean;
   size: 'small' | 'big';
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
-  rounded?: boolean;
   selectCheck?:boolean
+  variant?: 'primary' | 'secondary'
 };
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -67,8 +67,8 @@ export const Checkbox: FC<CheckboxProps> = ({
   selected,
   size,
   onClick,
-  rounded = false,
   selectCheck = false,
+  variant = 'primary',
 }) => {
   const theme = localTheme();
   const [focus, setFocus] = useState<boolean>(false);
@@ -76,7 +76,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
   return (
     <CheckboxStyled
-      rounded={rounded}
+      variant={variant}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       onMouseEnter={() => setHover(true)}
@@ -98,8 +98,8 @@ export const Checkbox: FC<CheckboxProps> = ({
           stroke={
             disabled ? theme.colors.system.WHITE
               : selected
-                ? theme.colors.primary.DARK_BLUE
-                : theme.colors.primary.MANGO
+                ? variant === 'secondary' ? theme.colors.system.WHITE : theme.colors.primary.DARK_BLUE
+                : variant === 'secondary' ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.YELLOW
           }
           fill="none"
           icon={<Check />}

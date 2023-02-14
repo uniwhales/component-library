@@ -28,7 +28,7 @@ const Toggle = Styled.span<{ size: string, disabled: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 34px;
   :before {
     position: absolute;
@@ -37,7 +37,7 @@ const Toggle = Styled.span<{ size: string, disabled: boolean }>`
     width: ${(props) => (props.size === 'small' ? 12 : 18)}px;
     left: ${(props) => (props.size === 'small' ? 2 : 4)}px;
     bottom: ${(props) => (props.size === 'small' ? 2 : 3)}px;
-    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.colors.secondary.SKY)};
+    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_2 : props.theme.textShades.SHADE_MINUS_3)};
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -47,17 +47,17 @@ const FakeInput = Styled.input<{ size:any }>`
   width: 0;
   height: 0;
   :hover + ${Toggle} {
-    background: ${(props) => props.theme.colors.primary.DARK_BLUE};
+    background: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
   :checked + ${Toggle} {
-    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.gradients.primary.MAIN_BLUE_GRADIENT)};
+    background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.colors.primary.MAIN_BLUE)};
     &:hover {
-      background: ${(props) => props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
+      background: ${({ theme }) => theme.colors.primary.LIGHT_BLUE};
     }
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
-    background: ${(props) => (props.disabled ? props.theme.textShades.SHADE_MINUS_1 : props.theme.colors.system.WHITE)};
+    background: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   }
 `;
 export const ToggleAtom = ({

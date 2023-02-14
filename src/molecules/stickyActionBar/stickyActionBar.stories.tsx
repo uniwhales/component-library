@@ -6,7 +6,6 @@ import { Select } from '../../atoms/inputs/select';
 import { Text } from '../../atoms/texts/text';
 import { groupTagOptions } from '../../organisms/navbar/mockData';
 import { Styled } from '../../theme';
-import { CheckboxSize } from '../../utils/getSize';
 import { StickyActionBar } from './stickyActionBar';
 
 const Wrapper = Styled.div`
@@ -67,7 +66,7 @@ const Template: ComponentStory<typeof StickyActionBar> = (args) => (
           disabled={false}
           onClick={() => {}}
           selected
-          size={CheckboxSize.Small}
+          size="small"
         />
       )}
       withTransform

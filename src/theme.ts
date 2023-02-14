@@ -23,13 +23,13 @@ const DarkTheme = {
   OVERLAY: 'rgba(17,17,17,0.50)',
   textShades: {
     SHADE_MINUS_3: '#F8F9FF',
-    SHADE_MINUS_2: '#BBBCCE',
+    SHADE_MINUS_2: '#B4B5C6',
     SHADE_MINUS_1: '#666C81',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#252E4F',
-    SHADE_PLUS_1: '#23293B',
-    SHADE_PLUS_2: '#1F232F',
+    NEUTRAL_SHADE_0: '#262C3F',
+    SHADE_PLUS_1: '#444959',
+    SHADE_PLUS_2: '#282C36',
     SHADE_PLUS_3: '#1F2128',
     BG_SHADE_PLUS_4: '#191B20',
   },
@@ -46,15 +46,15 @@ const LightTheme = {
   OVERLAY: 'rgba(255,255,255,0.50)',
   textShades: {
     SHADE_MINUS_3: '#1F2128',
-    SHADE_MINUS_2: '#575761',
-    SHADE_MINUS_1: '#797A84',
+    SHADE_MINUS_2: '#70717C',
+    SHADE_MINUS_1: '#C4C5CC',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#C1E1FF',
+    NEUTRAL_SHADE_0: '#A6B8C8',
     SHADE_PLUS_1: '#FFFFFF',
     SHADE_PLUS_2: '#F7F8FA',
-    SHADE_PLUS_3: '#F0F1F5',
-    BG_SHADE_PLUS_4: '#E2E4EB',
+    SHADE_PLUS_3: '#E9EBF1',
+    BG_SHADE_PLUS_4: '#DEDFE7',
   },
   contrastColor: {
     HIGH_CONTRAST: '#1D86E8',
@@ -70,6 +70,7 @@ const Theme = {
   colors: {
     primary: {
       MAIN_BLUE: '#1D86E8',
+      LIGHT_BLUE: '#85C4FF',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
       YELLOW: '#FCD547',
@@ -79,6 +80,7 @@ const Theme = {
       CANARY: '#CED225',
       TANGY: '#DD8442',
       SKY: '#2A5ABA',
+      FUSCIA: '#E4599C',
     },
     system: {
       RED: '#FF6B6B',
@@ -87,8 +89,6 @@ const Theme = {
       WHITE: '#FFFFFF',
       BLACK: '#131313',
       GREY: '#A5A6B8',
-      DISABLED: '#23293B',
-      DISABLED_AND_HOVER: '#3F4354',
     },
   },
   gradients: {

@@ -25,7 +25,7 @@ export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'isLarge' | 'disab
   height: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
   border-radius: 50%;
   background: transparent;
-  border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.textShades.SHADE_MINUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_3}`)};
+  border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_2}`)};
 `;
 export const RadioButton = Styled.input<{ isLarge: boolean }>`
   opacity: 0;
@@ -37,7 +37,7 @@ export const RadioButton = Styled.input<{ isLarge: boolean }>`
   cursor: pointer;
   &:hover ~ ${RadioButtonLabel} {
     background: transparent;
-    border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.textShades.SHADE_MINUS_1}` : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
+    border: ${({ disabled, theme }) => (!disabled && `2px solid ${theme.colors.primary.YELLOW}`)};
     &::after {
       content: "";
       display: block;
@@ -48,7 +48,7 @@ export const RadioButton = Styled.input<{ isLarge: boolean }>`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: ${({ disabled, theme }) => (disabled ? theme.textShades.SHADE_MINUS_1 : theme.gradients.primary.MAIN_BLUE_GRADIENT)}
+      background: ${({ disabled, theme }) => (!disabled && theme.textShades.SHADE_MINUS_1)};
     }
   }
   ${({
@@ -56,7 +56,7 @@ export const RadioButton = Styled.input<{ isLarge: boolean }>`
   }) => `
     &:checked + ${RadioButtonLabel} {
       background: transparent;
-      border: 2px solid ${disabled ? theme.textShades.SHADE_MINUS_1 : theme.colors.primary.MANGO};
+      border: 2px solid ${disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.primary.YELLOW};
       &::after {
         content: "";
         display: block;
@@ -67,7 +67,7 @@ export const RadioButton = Styled.input<{ isLarge: boolean }>`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: ${disabled ? theme.textShades.SHADE_MINUS_1 : theme.gradients.primary.MAIN_BLUE_GRADIENT};
+        background: ${disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.primary.YELLOW};
       }
     }
   `}

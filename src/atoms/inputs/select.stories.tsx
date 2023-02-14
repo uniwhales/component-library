@@ -114,7 +114,7 @@ const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
 };
 const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
-  return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+  return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} handleClearValue={() => setValue([])} />;
 };
 export const Primary = TemplateSingle.bind({});
 export const PrimaryIcon = TemplateSingle.bind({});

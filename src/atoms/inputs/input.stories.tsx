@@ -37,6 +37,7 @@ export const Exception = Template.bind({});
 export const Valid = Template.bind({});
 export const Invalid = Template.bind({});
 export const WithIcon = Template.bind({});
+export const Disabled = Template.bind({});
 
 Primary.args = {
   inputState: {
@@ -73,6 +74,14 @@ Invalid.args = {
     status: 'invalid',
     message: 'Invalid',
   },
+};
+
+Disabled.args = {
+  inputState: {
+    status: 'disabled',
+    message: 'disabled',
+  },
+  disabled: true,
 };
 
 Primary.parameters = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChipProps } from './types';
 import {
-  PrimaryChip, SecondaryChip, EditableChip, TertiaryChip,
+  PrimaryChip, SecondaryChip, EditableChip, TertiaryChip, TertiaryLined, SubtleChip,
 } from './chip.styles';
 
 export const Chip = ({
@@ -31,6 +31,18 @@ export const Chip = ({
         <TertiaryChip cursor={cursor} type={type} width={width}>
           {children}
         </TertiaryChip>
+      );
+    case 'tertiaryLined':
+      return (
+        <TertiaryLined cursor={cursor} type={type} width={width}>
+          {children}
+        </TertiaryLined>
+      );
+    case 'subtle':
+      return (
+        <SubtleChip cursor={cursor} type={type} width={width}>
+          {children}
+        </SubtleChip>
       );
     default:
       return (

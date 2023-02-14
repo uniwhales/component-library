@@ -12,7 +12,7 @@ const Button = Styled.button<GenericStylingProps>`
   display: flex;
   gap: 4px;
   align-items: center;
-  font-weight: 700;
+  font-weight: 400;
   font-family: Poppins, sans-serif;
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
@@ -31,53 +31,34 @@ const Button = Styled.button<GenericStylingProps>`
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
-const ButtonPrimary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      color: ${props.theme.textShades.SHADE_MINUS_1};
-      border: none;
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       }
   `}
   // active state
   ${(props) => !props.disabled && css`
     position: relative;
-    border: none;
+    border: 2px solid transparent;
     opacity: 0.9;
-    background-image: ${props.theme.gradients.primary.MAIN_BLUE_GRADIENT};
+    background: ${props.theme.colors.primary.MAIN_BLUE};
     z-index: ${props.theme.zIndex.BACKDROP};
-    &:before {
-      border-radius: 12px;
-      position: absolute;
-      content: "";
-      top: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      left: 0;
-      background-image: ${props.theme.gradients.primary.MAIN_HIGHLIGHT_GRADIENT};
-      transition: opacity 0.25s linear;
-      opacity: 0;
-    }
     &:hover {
-      opacity: 1;
-      &:before {
-        opacity: 1;
-      }
+      background: ${props.theme.colors.secondary.SKY};
     }
     &:active {
-      opacity: 1;
-      &:before {
-        opacity: 1;
-      }
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
     }
   `}
 `;
-const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
   svg {
@@ -86,73 +67,94 @@ const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width'>>`
   // disabled state
   ${(props) => props.disabled && css`
     transition: background 0.45s ease;
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
-    border: none;
-    svg {
-      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
-    }
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
   `}
 
   // active state
   ${({ theme, disabled }) => !disabled && css`
     background-color: transparent;
-    border: 1px solid ${theme.colors.primary.MANGO};
+    border: 2px solid ${theme.colors.primary.MAIN_BLUE};
     &:hover {
-      color: ${theme.colors.primary.DARK_BLUE};
-      background: ${theme.colors.primary.MANGO};
-      svg {
-        fill: ${theme.colors.primary.DARK_BLUE}!important;
+      background: ${theme.colors.primary.MAIN_BLUE};
+      color: ${theme.colors.system.WHITE};
+            svg {
+        fill: ${theme.colors.system.WHITE}!important;
       }
     };
     &:active {
-      color: ${theme.colors.primary.DARK_BLUE};
-      background: ${theme.colors.primary.MANGO};
-      svg {
-        fill: ${theme.colors.primary.DARK_BLUE}!important;
+      background: ${theme.colors.primary.MAIN_BLUE};
+      border: 2px solid ${theme.colors.primary.YELLOW};
+      color: ${theme.colors.system.WHITE};
+            svg {
+        fill: ${theme.colors.system.WHITE}!important;
       }
     };
   `}
 `;
-const ButtonTertiary = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
     path {transition: fill 0.45s ease;}
-    fill: ${(props) => props.theme.contrastColor.LOW_CONTRAST}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_2}!important;
   }
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      color: ${props.theme.textShades.SHADE_MINUS_1};
-      border: 1px solid transparent;
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
   `};
   // active state
   ${(props) => !props.disabled && css`
-    color: ${props.theme.contrastColor.LOW_CONTRAST};
+    color: ${props.theme.textShades.SHADE_MINUS_2};
     background-color: transparent;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     &:hover {
-       border: 1px solid ${props.theme.colors.primary.MAIN_BLUE};
-       color: ${props.theme.contrastColor.HIGH_CONTRAST};
+       color: ${props.theme.textShades.SHADE_MINUS_3};
+       background: ${props.theme.textShades.SHADE_MINUS_1};
       svg {
-        fill: ${props.theme.contrastColor.HIGH_CONTRAST}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
     &:active {
-      color: ${props.theme.colors.system.WHITE};
-      background: ${props.theme.colors.primary.MAIN_BLUE};
+     color: ${props.theme.textShades.SHADE_MINUS_3};
+     background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+     border: 2px solid ${props.theme.colors.primary.YELLOW};
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonPrimary)<Pick<ButtonProps, 'width'>>`
+const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width ?? '40px'};
   height: 40px;
   padding: 10px;
+    // active state
+  ${(props) => !props.disabled && css`
+    color: ${props.theme.textShades.SHADE_MINUS_1};
+  `};
+  // disabled state
+  ${(props) => props.disabled && css`
+      background: none;
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: none;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `};
 `;
-const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width ?? 'max-content'};
   height: 40px;
   path {transition: fill 0.45s ease;}
@@ -162,16 +164,20 @@ const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
-    border: none;
-  `}
+      background: none;
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: none;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `};
   // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
       }
     };
     &:active {
@@ -182,84 +188,87 @@ const ButtonSecondaryAction = Styled(Button)<Pick<ButtonProps, 'width'>>`
   `}
 `;
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button)<Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   svg {
-    fill: ${(props) => props.theme.colors.primary.MAIN_BLUE}!important;
+    fill: ${(props) => props.theme.textShades.SHADE_MINUS_1}!important;
   }
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
-    border: none;
-  `}
-      // active state
+      background: none;
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: none;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `};
+  // active state
   ${(props) => !props.disabled && css`
     background-color: transparent;
     &:hover {
       svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }
     };
     &:active {
-      svg {
-        fill: ${props.theme.colors.system.WHITE}!important;
-      }
-    };
-  `}
-`;
-
-const ButtonSpecialSmallNormal = Styled(Button)<Pick<ButtonProps, 'width'>>`
-  width: ${({ width }) => width};
-  border-radius: 12px;
-  border: none;
-  padding: 4px 12px;
-  height: auto;
-  line-height: 18px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  svg {
-    width: 16px;
-    height: 16px;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
-  };
-  // disabled
-  ${(props) => props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-    color: ${props.theme.textShades.SHADE_MINUS_1};
-    border: none;
-    svg {
-      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
-    }
-  `}
-
-  // active state
-  ${(props) => !props.disabled && css`
-    background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
-
-   &:hover {
-      background: ${props.theme.colors.primary.MANGO};
-      color: ${props.theme.colors.primary.DARK_BLUE}!important;
-      //font-weight: 700; it this implementation does not work
-      svg {
-        fill: ${props.theme.colors.primary.DARK_BLUE}!important;
-      }
-    };
-    &:active {
-      background: ${props.theme.containerAndCardShades.NEUTRAL_SHADE_0}!important;
-      color: ${props.theme.colors.primary.MAIN_BLUE}!important;
-
       svg {
         fill: ${props.theme.colors.primary.MAIN_BLUE}!important;
       }
     };
   `}
 `;
-const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant: ButtonProps['buttonVariant'] }>`
+
+const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
+  border-radius: 12px;
+  border: 2px solid transparent;
+  padding: 4px 12px;
+  height: auto;
+  line-height: 18px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+  };
+  // disabled state
+  ${(props) => props.disabled && css`
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `}
+  // active state
+  ${(props) => !props.disabled && css`
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+
+   &:hover {
+      background: ${props.theme.textShades.SHADE_MINUS_1};
+      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
+      svg {
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
+      }
+    };
+    &:active {
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
+      svg {
+        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
+      }
+    };
+  `}
+`;
+const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 32px;
-  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
-  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '20px' : '36px')};
+  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '36px')};
+  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '36px')};
 
   display: flex;
   justify-content: center;
@@ -267,34 +276,41 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal)<{ buttonVariant
   padding: 0;
 
   svg {
-    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
-    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '10px' : buttonVariant === 'special_tiny_round' ? '17px' : '21px')};
+    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
+    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
   }
 `;
 
 const ButtonSpecialSmallSubtle = Styled(Button)`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   svg {
     width: 16px;
     height: 16px;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
   };
   // disabled
   ${(props) => props.disabled && css`
-    color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+    color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
     svg {
-      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+      fill: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1}!important;
     };
   `}
+  // active state
   ${({ disabled }) => !disabled && css`
-    &:hover, &:active {
-    color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
-    svg {
-      fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
-    };
-  }
+    &:hover {
+      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+      svg {
+        fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+      };
+    }
+    &:active {
+      color: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
+      svg {
+        fill: ${({ theme }) => theme.colors.primary.MAIN_BLUE}!important;
+      };
+    }
   `};
 `;
 const ButtonIconOnly = Styled(Button)`
@@ -332,7 +348,49 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
-export const ButtonAtom:FC<ButtonProps> = ({
+const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
+  height: ${({ size }) => size || '70px'};
+  width: ${({ size }) => size || '70px'};
+  border-radius: 10px;
+  border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  svg {
+    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
+  }
+    // disabled state
+  ${({ disabled, theme }) => disabled && css`
+      background: ${theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `}
+  // active state
+  ${({ theme, disabled }) => !disabled && css`
+   &:hover {
+      background: ${theme.colors.primary.MAIN_BLUE};
+      color: ${theme.colors.system.WHITE}!important;
+      svg {
+        fill: ${theme.colors.system.WHITE}!important;
+      };
+    };
+    &:active {
+       border: ${`2px solid ${theme.colors.primary.YELLOW}`};
+    };
+  `}
+`;
+
+export const ButtonAtom: FC<ButtonProps> = ({
   children,
   buttonVariant,
   disabled = false,
@@ -341,6 +399,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
   onMouseEnter,
   onMouseLeave,
   width,
+  size = '70px',
 }) => {
   switch (buttonVariant) {
     case 'secondary':
@@ -350,7 +409,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -364,7 +423,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -378,7 +437,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -392,7 +451,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -406,7 +465,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -420,7 +479,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -433,7 +492,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -449,7 +508,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           buttonVariant={buttonVariant}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
@@ -460,7 +519,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
       return (
         <ButtonSpecialSmallSubtle
           disabled={disabled}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           type="button"
         >
           {children}
@@ -470,11 +529,22 @@ export const ButtonAtom:FC<ButtonProps> = ({
       return (
         <ButtonIconOnly
           disabled={disabled}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           type="button"
         >
           {children}
         </ButtonIconOnly>
+      );
+    case 'square':
+      return (
+        <SquareButton
+          disabled={disabled}
+          onClick={!disabled ? onClick : () => { }}
+          type="button"
+          size={size}
+        >
+          {children}
+        </SquareButton>
       );
     default:
       return (
@@ -483,7 +553,7 @@ export const ButtonAtom:FC<ButtonProps> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
-          onClick={!disabled ? onClick : () => {}}
+          onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
