@@ -258,7 +258,6 @@ const CheckBoxOption = (props:any) => {
               selected={isSelected}
               onClick={() => {}}
               disabled={false}
-              rounded
               size="small"
               selectCheck
             />
