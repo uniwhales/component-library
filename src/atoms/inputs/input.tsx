@@ -70,7 +70,7 @@ const InputStyled = Styled.input<{ focus: boolean, disabled?: boolean, withIcon:
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
-  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.secondary.FUSCIA : inputState.status === 'disabled' ? theme.colors.system.DISABLED_AND_HOVER : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  border: 1px solid ${({ theme, inputState }) => (inputState.status === 'help' ? theme.colors.secondary.FUSCIA : inputState.status === 'disabled' ? 'transparent' : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
