@@ -1,6 +1,6 @@
 import React from 'react';
 import { Placeholder, Select, SelectVariation } from '../../atoms/inputs/select';
-import { FilterChip } from '../../atoms/chips/filterChip';
+import { FilterChip } from '../../atoms/filterChips/filterChip';
 import {
   ActionTags, SelectWrapper, Wrapper,
 } from './actionBar.styles';

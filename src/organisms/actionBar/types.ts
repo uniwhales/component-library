@@ -1,5 +1,5 @@
 import { CardProps } from '../../atoms/card/types';
-import { FilterChipProps } from '../../atoms/chips/filterChip';
+import { FilterChipProps } from '../../atoms/filterChips/filterChip';
 import {
   SelectProps, SelectVariation,
 } from '../../atoms/inputs/select';

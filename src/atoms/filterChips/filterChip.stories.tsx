@@ -6,12 +6,13 @@ import {
 } from '../icons';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
+import { IconWrapper } from '../icons/iconWrapper';
 
 interface Filter {
   id: number;
   value: string;
-  label:string;
-  icon:JSX.Element
+  label: string;
+  icon: JSX.Element
 }
 const filtersArray = [
   {
@@ -55,6 +56,34 @@ const newsdeskStories: any[] = [
     id: 4,
   },
 ];
+
+type FilterData = {
+  id: number
+  text: string
+  icon?: JSX.Element
+};
+
+const filters: FilterData[] = [
+  {
+    id: 1,
+    text: 'swap',
+    icon: <StarIcon />,
+  },
+  {
+    id: 2,
+    text: 'bridge',
+    icon: <StarIcon />,
+  },
+  {
+    id: 3,
+    text: 'transfer',
+    icon: <StarIcon />,
+  },
+  {
+    id: 4,
+    text: 'perp',
+  },
+];
 const Wrapper = Styled.div`
   display: flex;
   align-items: center;
@@ -89,9 +118,27 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
     </Wrapper>
   );
 };
+const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => (
+  <Wrapper>
+    {filters.map((filter) => (
+      <FilterChip
+        onClick={() => { }}
+        variant="secondary"
+        id={filter.id}
+        disabled={disabled}
+      >
+        <>
+          {filter.icon && <IconWrapper cursor={disabled ? 'not allowed' : 'pointer'} icon={filter.icon} />}
+          {filter.text}
+        </>
+      </FilterChip>
+    ))}
+  </Wrapper>
+);
 export const Basic = Template.bind({});
 export const BasicCustomWidth = Template.bind({});
 export const BasicNewsdesk = Template.bind({});
+export const SecondaryFilterChip = Template2.bind({});
 
 Basic.args = { id: 0 };
 BasicCustomWidth.args = {
