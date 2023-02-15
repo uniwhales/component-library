@@ -48,6 +48,7 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
   height: auto;
   line-height: 18px;
   font-weight: 400;
+  gap: 4px;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   svg {
     width: 16px !important;

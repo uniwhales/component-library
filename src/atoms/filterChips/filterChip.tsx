@@ -15,7 +15,7 @@ export const FilterChip = ({
       return (
         <FilterChipSecondary disabled={disabled}>
           {children}
-          <IconWrapper cursor={disabled ? 'not-allowed' : 'pointer'} icon={<FloatingClose />} />
+          <FloatingClose />
         </FilterChipSecondary>
       );
     default:
