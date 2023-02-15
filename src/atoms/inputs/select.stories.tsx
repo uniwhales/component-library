@@ -128,6 +128,7 @@ Primary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 Primary.args = {
+  width: '226px',
   selectOptions: ColourOptions,
   isMulti: false,
   readOnly: false,

@@ -30,6 +30,7 @@ export type SelectOptions<T extends SelectVariation> = T extends 'single' ? Sele
   : SelectGroupOption[];
 
 export interface SelectProps<T extends SelectVariation> {
+  width?: string,
   onSelectChange?: (o: SelectVal<T>) => void,
   selectOptions: SelectOptions<T>,
   selectValue?: SelectVal<T>,
@@ -60,9 +61,9 @@ interface StyledProps {
   isDisabled?: boolean;
 }
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean }>`
-  max-width: ${(props) => (props.isXL ? '100%' : '172px')};
-  width: 100%;
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string }>`
+  max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
+  width: ${(props) => props.width ?? '100%'};
   outline: none;
   input{
     width: fit-content;
@@ -330,10 +331,12 @@ export const Select = <T extends SelectVariation>({
   maxMenuHeight,
   isDisabled = false,
   onInputChange,
+  width,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
     <StyledSelect
+      width={width}
       isDisabled={isDisabled}
       options={selectOptions}
       isMulti={isMulti}

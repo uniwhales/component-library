@@ -13,7 +13,6 @@ export const SelectableMarkedIdenticon = ({
     <>
       {showCheckbox && (
         <Checkbox
-          rounded
           size="small"
           {...checkbox}
         />
