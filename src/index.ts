@@ -14,6 +14,7 @@ export * from './atoms/toggles/themeToggle';
 export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/filterChips/filterChip';
+export * from './atoms/filterChips/types';
 export * from './atoms/chips/types';
 export * from './atoms/chips/chip';
 export * from './atoms/connectWalletButton/connectWalletButton';
