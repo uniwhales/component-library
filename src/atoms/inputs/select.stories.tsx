@@ -5,7 +5,7 @@ import {
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  AvalancheColor, BinanceColor, BobaColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
+  BinanceColor, BobaColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
