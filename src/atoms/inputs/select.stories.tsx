@@ -5,7 +5,7 @@ import {
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  AvalancheColor, BinanceColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
+  AvalancheColor, BinanceColor, BobaColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
@@ -76,7 +76,7 @@ const ChainOptions = [
     id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />, order: 3,
   },
   {
-    id: 4, value: 'avalanche', label: 'Avalanche', icon: <IconWrapper height="16px" width="16px" icon={<AvalancheColor />} />, order: 4,
+    id: 4, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
   },
 ];
 
