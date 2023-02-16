@@ -9,7 +9,7 @@ export interface NavbarProps {
   onWalletConnectClick: ConnectButtonProps['onClick'];
   account?: ConnectButtonProps['account']
   bottomSpacing?: boolean;
-  bgColor?: boolean;
+  bgColor?: boolean | string;
 }
 
 type IsMenuOpen = { isMenuOpen?: boolean };
