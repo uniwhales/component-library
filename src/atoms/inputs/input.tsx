@@ -28,7 +28,7 @@ export interface InputsProps {
   pattern?: keyof typeof InputPatterns
   inputState?: InputState;
 }
-const InputWrapper = Styled.div`
+const InputWrapper = Styled.div<{ width?: string }>`
   display: flex;
   flex-direction: column;
   align-items: stretch;
