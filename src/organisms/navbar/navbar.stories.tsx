@@ -57,6 +57,7 @@ const Template: ComponentStory<typeof Navbar> = (
   );
 };
 export const Newsdesk = Template.bind({});
+export const CustomColor = Template.bind({});
 export const FeedPage = Template.bind({});
 export const CollectionPage = Template.bind({});
 
@@ -105,4 +106,8 @@ FeedPage.args = {
 CollectionPage.args = {
   pageName: '',
   bgColor: false,
+};
+
+CustomColor.args = {
+  bgColor: 'red',
 };

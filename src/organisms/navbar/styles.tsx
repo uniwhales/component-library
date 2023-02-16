@@ -7,7 +7,7 @@ const FlexBase = Styled.div`
   align-items: center;
 `;
 
-export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean, bgColor: boolean }>`
+export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean, bgColor: boolean | string }>`
   position: sticky;
   top: 0;
   right: 0;
@@ -15,7 +15,9 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?
   flex-direction: column;
   justify-content: center;
 
-  background-color: ${({ theme, bgColor }) => (bgColor && theme.containerAndCardShades.SHADE_PLUS_3)};
+  background-color: ${({ theme, bgColor }) => (
+    typeof bgColor === 'string' ? bgColor : bgColor ? theme.containerAndCardShades.SHADE_PLUS_3 : 'transparent'
+  )};
   box-shadow: ${({ theme, bottomSpacing, bgColor }) => bgColor && bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.NAVBAR};
