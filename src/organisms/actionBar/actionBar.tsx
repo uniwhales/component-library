@@ -22,6 +22,7 @@ export const ActionBar = <T extends SelectVariation>({
     <ActionTags>
       {chipFilters.map((chip) => (
         <FilterChip
+          variant="primary"
           key={chip.id}
           onClick={setChipFilter}
           isOn={chipFilterValue === chip.id}
