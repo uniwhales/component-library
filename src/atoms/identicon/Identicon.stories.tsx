@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { IdenticonComponent } from './Identicon';
 import { MarkedIdenticon } from './MarkedIdenticon';
 import { CrownStandard, DynamicList } from '../icons';
-import { Styled, SvgGradients, Theme } from '../../theme';
+import { Styled, Theme } from '../../theme';
 import { SelectableMarkedIdenticon } from './SelectMarkedIdenticon';
 import { Text } from '../texts/text';
 import { IdentMark } from './IdentMark';
@@ -96,7 +96,6 @@ WithTealMarkBig.args = {
     },
   },
   markIcon: {
-    gradient: SvgGradients.TEAL,
     icon: <CrownStandard />,
   },
   onMouseEnter: () => {
@@ -114,7 +113,6 @@ WithSelectableCanaryMarkSmall.args = {
   markedIdenticon: {
     size: 'small',
     markIcon: {
-      gradient: SvgGradients.CANARY,
       icon: <DynamicList />,
     },
     identicon: {
@@ -143,7 +141,6 @@ WithSelectableCanaryMarkLarge.args = {
   markedIdenticon: {
     size: 'big',
     markIcon: {
-      gradient: SvgGradients.CANARY,
       icon: <DynamicList />,
     },
     identicon: {
@@ -165,7 +162,6 @@ WithSelectableCanaryMarkLarge.args = {
 JustMarkIcon.args = {
   icon: {
     icon: <CrownStandard />,
-    fill: SvgGradients.TEAL,
   },
   size: 'big',
 };

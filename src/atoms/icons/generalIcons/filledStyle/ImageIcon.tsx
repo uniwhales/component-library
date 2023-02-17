@@ -1,6 +1,4 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const ImageIcon = () => (
   <svg
@@ -9,10 +7,6 @@ export const ImageIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       fillRule="evenodd"
       d="M7.671 2h8.668C19.726 2 22 4.376 22 7.914v6.789c-.44-.425-.881-.864-1.083-1.065l-.07-.068a11.08 11.08 0 00-.167-.164c-.06-.058-.122-.117-.183-.178-.561-.54-1.162-1.072-1.864-1.493-1.402-.842-3.086-.461-4.178.962-.25.331-.481.691-.712 1.062l-.002.005c-.43.701-.84 1.37-1.47 1.71-.572.311-.912.15-1.724-.39a43.9 43.9 0 01-.096-.062c-.304-.195-.635-.406-1.006-.56-2.014-.842-3.467.952-4.018 1.634-.37.47-.962 1.193-1.573 1.924-.21.257-.423.513-.63.762l-.432.522C2.28 18.412 2 17.318 2 16.086V7.914C2 4.376 4.275 2 7.671 2zm1.202 9.378a2.604 2.604 0 002.581-2.581c0-1.408-1.173-2.582-2.58-2.582-1.408 0-2.581 1.174-2.581 2.582s1.173 2.581 2.58 2.581z"

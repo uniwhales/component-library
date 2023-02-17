@@ -8,7 +8,6 @@ import {
   AvalancheColor, BinanceColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
-import { ButtonAtom } from '../buttons/button';
 import { IdentMark } from '../identicon/IdentMark';
 
 const ColourOptions = [
@@ -98,10 +97,7 @@ export default {
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return (
-    <>
-      <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
-      <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
-    </>
+    <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
   );
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
@@ -143,6 +139,7 @@ PrimaryIcon.args = {
   readOnly: false,
   isXL: false,
   showValue: true,
+  placeholder: 'Primary Icon',
 };
 
 LongOption.args = {

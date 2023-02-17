@@ -37,24 +37,15 @@ export * from './molecules/cardDate/cardDate';
 export * from './molecules/txTableList/txTableList';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tokenPoolCard/tokenPoolCard';
-export * from './molecules/kebabMenu/kebabMenu';
-export * from './molecules/meatballMenu/meatballMenu';
-export * from './molecules/modals/modal';
 export * from './molecules/stickyActionBar/stickyActionBar';
 export * from './molecules/tooltip/TooltipComponent';
-export * from './molecules/popover/PopoverComponent';
 export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
-export * from './molecules/dashboardMessages/DashMessageOne';
-export * from './molecules/dashboardMessages/DashMessageTwo';
 export * from './molecules/labeled/select/labeledSelect';
 
 // organisms
-export * from './organisms/walletAlert/walletAlertsTable';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
-export * from './organisms/actionBar/actionBar';
 export * from './organisms/actionBar/mobileRHSActionBar';
-export * from './organisms/feedPageScrollableContent/feedPageScrollableContent';
 export * from './organisms/navbar/navbar';
 export * from './organisms/contentCard/contentCard';
 export * from './organisms/contentCard/types';

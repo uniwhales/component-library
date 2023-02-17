@@ -164,7 +164,6 @@ import { RevokeIcon } from './feed/RevokeIcon';
 import { SwapIcon } from './feed/SwapIcon';
 import { Sweep } from './feed/Sweep';
 import { Unknown } from './feed/Unknown';
-import { SvgGradients } from '../../theme';
 import { GnosisColor } from './chains/fullColorStyle/GnosisColor';
 import { NftSidebarStandard } from './generalIcons/filledStyle/NftSidebarStandard';
 import { Gmx } from './tokens/GMX';
@@ -447,13 +446,6 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
 
 const Template10: ComponentStory<typeof IconWrapper> = () => (
   <>
-    <IconWrapper gradient={SvgGradients.CANARY} name="Dynamic list" icon={<DynamicList />} />
-    <IconWrapper gradient={SvgGradients.MAIN_BLUE_GRADIENT} name="Creator" icon={<CrownStandard />} />
-  </>
-);
-
-const Template11: ComponentStory<typeof IconWrapper> = () => (
-  <>
     <IconWrapper href="1231321" name="Ethereum" icon={<Ethereum />} />
     <IconWrapper href="1231321" name="Polygon" icon={<Polygon />} />
     <IconWrapper href="1231321" name="Fantom" icon={<Fantom />} />
@@ -467,7 +459,7 @@ const Template11: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template12: ComponentStory<typeof IconWrapper> = () => (
+const Template11: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper width="25px" disabled height="25px" href="1231321" name="Href disabled" icon={<Ethereum />} />
     <IconWrapper width="25px" disabled height="25px" name="Non href disabled" icon={<Ethereum />} />
@@ -483,9 +475,8 @@ export const navigationIconsColor = Template6.bind({});
 export const generalFilledStyle = Template7.bind({});
 export const generalFullColor = Template8.bind({});
 export const feedIcons = Template9.bind({});
-export const gradientIcons = Template10.bind({});
-export const hrefIcons = Template11.bind({});
-export const otherIcons = Template12.bind({});
+export const hrefIcons = Template10.bind({});
+export const otherIcons = Template11.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

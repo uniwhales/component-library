@@ -1,6 +1,4 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const NotificationOff = () => (
   <svg
@@ -9,10 +7,6 @@ export const NotificationOff = () => (
     fill="none"
     viewBox="0 0 17 16"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
     <mask
       id="mask0_8046_115315"
       style={{ maskType: 'alpha' }}

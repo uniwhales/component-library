@@ -1,6 +1,4 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const ProfileStandard = () => (
   <svg
@@ -9,10 +7,7 @@ export const ProfileStandard = () => (
     fill="none"
     viewBox="0 0 16 16"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
+
     <mask
       id="mask0_9389_987643"
       style={{ maskType: 'alpha' }}

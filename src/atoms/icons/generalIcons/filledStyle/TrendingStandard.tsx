@@ -1,6 +1,5 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
+
 
 export const TrendingStandard = () => (
   <svg
@@ -9,10 +8,7 @@ export const TrendingStandard = () => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
+
     <path
       fillRule="evenodd"
       clipRule="evenodd"

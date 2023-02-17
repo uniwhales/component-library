@@ -1,7 +1,6 @@
 import {
   MouseEventHandler, ReactElement,
 } from 'react';
-import { SvgGradients } from '../../theme';
 
 export interface ModalData {
   id?: number;
@@ -15,7 +14,6 @@ export type ModalBaseProps = {
   headerText?: string
   headerIcon?: ReactElement
   headerIconFill?: string
-  headerIconGradient?: SvgGradients
   modalVariant: 'single' | 'double'
   modalContent: JSX.Element
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
