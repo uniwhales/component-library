@@ -13,7 +13,10 @@ export const FilterChip = ({
   switch (variant) {
     case 'secondary':
       return (
-        <FilterChipSecondary disabled={disabled}>
+        <FilterChipSecondary
+          onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+          disabled={disabled}
+        >
           {icon && <IconWrapper icon={icon} />}
           {children}
           <FloatingClose />
