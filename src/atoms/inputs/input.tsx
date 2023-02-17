@@ -28,6 +28,7 @@ export interface InputsProps {
   pattern?: keyof typeof InputPatterns
   inputState?: InputState;
   width?: string;
+  onEnterSubmit?: () => void;
 }
 const InputWrapper = Styled.div<{ width?: string }>`
   width: ${({ width }) => width};
@@ -152,6 +153,8 @@ export /**
   icon,
   pattern,
   inputState,
+  width,
+
 }
  * @returns {*}
  */
@@ -167,6 +170,7 @@ const Input = ({
   pattern,
   inputState = { message: '', status: 'default' },
   width,
+  onEnterSubmit,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -217,6 +221,11 @@ const Input = ({
             disabled={disabled}
             focus={focus}
             value={value}
+            onKeyDown={(e) => {
+              if (onEnterSubmit && e.key === 'Enter') {
+                onEnterSubmit();
+              }
+            }}
             onChange={(e) => {
               if (pattern && !InputPatterns[pattern].test(e.target.value)) return;
               onChange(e);
