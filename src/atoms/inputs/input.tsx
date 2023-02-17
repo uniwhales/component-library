@@ -27,8 +27,10 @@ export interface InputsProps {
   icon?: JSX.Element;
   pattern?: keyof typeof InputPatterns
   inputState?: InputState;
+  width?: string;
 }
 const InputWrapper = Styled.div<{ width?: string }>`
+  width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -164,6 +166,7 @@ const Input = ({
   icon,
   pattern,
   inputState = { message: '', status: 'default' },
+  width,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -194,7 +197,7 @@ const Input = ({
   </MoreDetailContainer>
   );
   return (
-    <InputWrapper>
+    <InputWrapper width={width}>
       {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
       <BorderWrapper
         inputState={inputState}
