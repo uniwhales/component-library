@@ -6,7 +6,6 @@ import {
 } from '../icons';
 import { Styled } from '../../theme';
 import { Text } from '../texts/text';
-import { IconWrapper } from '../icons/iconWrapper';
 
 interface Filter {
   id: number;
@@ -126,11 +125,9 @@ const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => (
         variant="secondary"
         id={filter.id}
         disabled={disabled}
+        icon={filter.icon}
       >
-        <>
-          {filter.icon && <IconWrapper cursor={disabled ? 'not allowed' : 'pointer'} icon={filter.icon} />}
-          {filter.text}
-        </>
+        {filter.text}
       </FilterChip>
     ))}
   </Wrapper>

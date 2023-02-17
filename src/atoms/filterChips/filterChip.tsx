@@ -14,6 +14,7 @@ export const FilterChip = ({
     case 'secondary':
       return (
         <FilterChipSecondary disabled={disabled}>
+          {icon && <IconWrapper icon={icon} />}
           {children}
           <FloatingClose />
         </FilterChipSecondary>
