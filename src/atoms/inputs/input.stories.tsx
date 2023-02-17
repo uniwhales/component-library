@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = ({
-  type, icon, pattern, disabled, label, inputState,
+  type, icon, pattern, disabled, label, inputState, width,
 }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
@@ -19,6 +19,7 @@ const Template: ComponentStory<typeof Input> = ({
   };
   return (
     <Input
+      width={width}
       value={localValue}
       disabled={disabled}
       label={label}
@@ -31,6 +32,7 @@ const Template: ComponentStory<typeof Input> = ({
   );
 };
 export const Primary = Template.bind({});
+export const CustomWidth = Template.bind({});
 export const Error = Template.bind({});
 export const Help = Template.bind({});
 export const Exception = Template.bind({});
@@ -98,4 +100,8 @@ WithIcon.args = {
 
 WithIcon.parameters = {
   backgrounds: { default: 'dark' },
+};
+
+CustomWidth.args = {
+  width: '300px',
 };
