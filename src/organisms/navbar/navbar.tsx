@@ -3,13 +3,10 @@ import React, {
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ConnectWalletButton } from '../../atoms/connectWalletButton/connectWalletButton';
-import { ArrowLeftIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Meatball } from '../../atoms/icons/navigationIcons/Meatball';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
-import { Text } from '../../atoms/texts/text';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
-import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
 import { UserMenu } from './components/UserMenu/UserMenu';
 import {
@@ -20,9 +17,7 @@ import {
 import { NavbarProps } from './types';
 
 export const Navbar: FC<NavbarProps> = ({
-  pageName,
   plan,
-  onBackButtonClick,
   leftSideChildren,
   rightSideChildren,
   account,
@@ -30,7 +25,6 @@ export const Navbar: FC<NavbarProps> = ({
   bottomSpacing = true,
   bgColor = true,
 }) => {
-  const theme = localTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
   const clickRef = useRef(null);
@@ -58,22 +52,6 @@ export const Navbar: FC<NavbarProps> = ({
       >
         <NavbarMainContent>
           <NavbarLeftSide>
-            <ButtonAtom buttonVariant="secondary_action" onClick={() => onBackButtonClick()}>
-              <>
-                <IconWrapper
-                  fill={theme.textShades.SHADE_MINUS_3}
-                  height="21px"
-                  width="21px"
-                  icon={<ArrowLeftIcon />}
-                  cursor="pointer"
-                />
-                {pageName && (
-                  <Text size="M-Regular">
-                    {pageName}
-                  </Text>
-                )}
-              </>
-            </ButtonAtom>
             {leftSideChildren}
           </NavbarLeftSide>
           <NavbarRightSide>
