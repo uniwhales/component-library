@@ -46,7 +46,7 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
   border-radius: 12px;
   border: 2px solid transparent;
   padding: 4px 12px;
-  height: auto;
+  height: max-content;
   line-height: 18px;
   font-weight: 400;
   gap: 4px;
