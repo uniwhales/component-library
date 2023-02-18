@@ -13,6 +13,7 @@ export const FilterChipWrapper = Styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: max-content;
   cursor: pointer;
   border: ${({ isOn, theme, disabled }) => `2px solid ${!disabled && isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
   path { transition: fill .45s ease; }
