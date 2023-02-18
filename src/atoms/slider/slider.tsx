@@ -2,10 +2,12 @@ import React, { FC, ChangeEvent, MouseEvent } from 'react';
 import { SliderProps } from './types';
 import { Container, Input, MaxButton } from './slider.styles';
 
-export const Slider: FC<SliderProps> = ({ value, onInput, onClick }: SliderProps) => {
+export const Slider: FC<SliderProps> = ({
+  value, onInput, onClick, min, max,
+}: SliderProps) => {
   const styles = {
-    '--min': 0,
-    '--max': 100,
+    '--min': min,
+    '--max': max,
     '--val': value,
   } as React.CSSProperties;
   return (

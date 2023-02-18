@@ -22,6 +22,8 @@ const Template: ComponentStory<typeof Slider> = () => {
       onClick={() => setSliderValue(100)}
       onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
       value={sliderValue}
+      min={0}
+      max={100}
     />
   );
 };

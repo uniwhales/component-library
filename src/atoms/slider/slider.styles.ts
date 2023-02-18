@@ -17,7 +17,7 @@ const trackFill = css`
   height: 8px;
   background-color: transparent;
   background-image: ${({ theme, value }) => `linear-gradient(${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
-    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_1}, ${theme.containerAndCardShades.SHADE_PLUS_1})`};
+    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_2}, ${theme.containerAndCardShades.SHADE_PLUS_2})`};
   background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
   background-position: left center, right center;
   background-repeat: no-repeat;
