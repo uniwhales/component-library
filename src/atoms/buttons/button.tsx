@@ -58,9 +58,10 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
-const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
   }
@@ -97,8 +98,10 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
+
   svg {
     path {transition: fill 0.45s ease;}
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_2}!important;
@@ -135,9 +138,9 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width'>>`
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width'>>`
+const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width ?? '40px'};
-  height: 40px;
+  height: ${({ height }) => height ?? '40px'};
   padding: 10px;
     // active state
   ${(props) => !props.disabled && css`
@@ -154,9 +157,9 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width'>>`
       }
   `};
 `;
-const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width ?? 'max-content'};
-  height: 40px;
+  height: ${({ height }) => height ?? '40px'};
   path {transition: fill 0.45s ease;}
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_3}!important;
@@ -188,8 +191,10 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width'>>`
   `}
 `;
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
+
   svg {
     fill: ${(props) => props.theme.textShades.SHADE_MINUS_1}!important;
   }
@@ -399,6 +404,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
   onMouseEnter,
   onMouseLeave,
   width,
+  height,
   size = '70px',
 }) => {
   switch (buttonVariant) {
@@ -406,6 +412,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
       return (
         <ButtonSecondary
           width={width}
+          height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
@@ -419,6 +426,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'tertiary':
       return (
         <ButtonTertiary
+          height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -433,6 +441,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'primary_action':
       return (
         <ButtonPrimaryAction
+          height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -447,6 +456,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action':
       return (
         <ButtonSecondaryAction
+          height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -475,6 +485,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action_inverse':
       return (
         <ButtonSecondaryActionInverse
+          height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
