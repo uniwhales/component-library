@@ -127,7 +127,7 @@ const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => (
         disabled={disabled}
         icon={filter.icon}
       >
-        {filter.text}
+        <Text size="S-Regular" color="SHADE_MINUS_1">{filter.text}</Text>
       </FilterChip>
     ))}
   </Wrapper>
