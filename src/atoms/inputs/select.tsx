@@ -123,7 +123,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       ? theme.colors.primary.MAIN_BLUE : isDisabled
         ? theme.containerAndCardShades.SHADE_PLUS_1
         : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`,
+    border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     outline: 'none',
     padding: '0 10px 0 10px',
     boxShadow: 'none',
