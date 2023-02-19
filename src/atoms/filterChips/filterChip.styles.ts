@@ -68,8 +68,10 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
   `}
   // active state
   ${(props) => !props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_2};
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+    }
    &:hover {
       background: ${props.theme.textShades.SHADE_MINUS_1};
       color: ${props.theme.textShades.SHADE_MINUS_3}!important;
