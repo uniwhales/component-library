@@ -11,10 +11,11 @@ import {
   ButtonContainer,
   Container,
   Details,
+  Input,
+  InputContainer,
   MinUsdButton,
   MinUsdButtonContent,
   TextRow,
-  Value,
   ValueRow,
 } from './styles';
 import { MinUsdProps } from './types';
@@ -67,10 +68,16 @@ export const MinUsdSlider = ({
                 onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
                 showMaxButton={false}
               />
-              <Value>
-                <Text size="S-Regular" color={theme.containerAndCardShades.SHADE_PLUS_2}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(sliderValue)}</Text>
+              <InputContainer>
+                <Input
+                  type="number"
+                  max={max}
+                  value={sliderValue}
+                  size={1}
+                  onChange={(e) => setSliderValue(Number(e.target.value))}
+                />
                 <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>USD</Text>
-              </Value>
+              </InputContainer>
             </ValueRow>
             <ButtonContainer>
               <ButtonAtom

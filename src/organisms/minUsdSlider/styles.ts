@@ -63,15 +63,26 @@ export const Details = Styled.div`
   gap: 8px;
 `;
 
-export const Value = Styled.div`
+export const InputContainer = Styled.div`
   padding: 4px 12px;
-  background: ${({ theme }) => theme.colors.system.GREY};
+  background: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   border-radius: 10px;
-  min-width: 150px
+  width: 100px
+`;
+
+export const Input = Styled.input`
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 60px;
+  ::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+  }
 `;
 
 export const ButtonContainer = Styled(Row)`
