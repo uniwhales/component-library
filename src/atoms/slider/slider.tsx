@@ -3,7 +3,7 @@ import { SliderProps } from './types';
 import { Container, Input, MaxButton } from './slider.styles';
 
 export const Slider: FC<SliderProps> = ({
-  value, onInput, onClick, min, max,
+  value, onInput, onMaxClick, min, max, showMaxButton,
 }: SliderProps) => {
   const styles = {
     '--min': min,
@@ -14,19 +14,22 @@ export const Slider: FC<SliderProps> = ({
     <Container>
       <Input
         type="range"
-        min={0}
-        max={100}
+        min={min}
+        max={max}
         value={value}
         onInput={(e: ChangeEvent<HTMLInputElement>) => onInput(e)}
         style={styles}
       />
-      <MaxButton
-        value={value}
-        onClick={(e: MouseEvent<HTMLButtonElement>) => onClick(e)}
-      >
-        Max
+      {showMaxButton && (
+        <MaxButton
+          value={value}
+          onClick={(e: MouseEvent<HTMLButtonElement>) => onMaxClick && onMaxClick(e)}
+          max={max}
+        >
+          Max
 
-      </MaxButton>
+        </MaxButton>
+      )}
     </Container>
   );
 };

@@ -5,5 +5,6 @@ export interface SliderProps {
   min: number;
   max: number;
   onInput: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  showMaxButton: boolean;
+  onMaxClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }

@@ -19,11 +19,12 @@ const Template: ComponentStory<typeof Slider> = () => {
 
   return (
     <Slider
-      onClick={() => setSliderValue(100)}
+      onMaxClick={() => setSliderValue(100)}
       onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
       value={sliderValue}
       min={0}
       max={100}
+      showMaxButton
     />
   );
 };
