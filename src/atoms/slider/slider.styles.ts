@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
+import { Row } from '../common/flex';
 
 const track = css<{ value: number, max: number }>`
   box-sizing: border-box;
@@ -110,21 +111,33 @@ export const Input = Styled.input<{ value: number, max: number }>`
   }
 `;
 
-export const MaxButton = Styled.button<{ value: number, max: number }>`
+export const NumInputContainer = Styled.div<{ value: number, max: number }>`
   padding: 4px 12px;
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
   gap: 8px;
   border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   border: ${({ theme, value, max }) => `2px solid ${value === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
+`;
+export const NumInput = Styled.input`
+box-sizing: border-box;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 60px;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  ::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+  }
 `;
 
-export const Container = Styled.div`
-  display: flex;
-  align-items: center;
+export const Container = Styled(Row)`
+  gap: 16px;
+  align-items: center
 `;

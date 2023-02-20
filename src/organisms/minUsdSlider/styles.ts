@@ -4,7 +4,6 @@ import { Styled } from '../../theme';
 export const Container = Styled(Column)`
   align-items: center;
   justify-content: center;
-
 `;
 
 export const MinUsdButton = Styled.div<{ isOpen:boolean }>`
@@ -44,10 +43,6 @@ export const Arrow = Styled.div`
   border-bottom: ${({ theme }) => `5px solid ${theme.containerAndCardShades.SHADE_PLUS_3}`};
 `;
 
-export const ValueRow = Styled(Row)`
-  gap: 16px;
-`;
-
 export const TextRow = Styled(Row)`
   gap: 4px;
 `;
@@ -61,28 +56,6 @@ export const Details = Styled.div`
   align-items: center;
   padding: 24px;
   gap: 8px;
-`;
-
-export const InputContainer = Styled.div`
-  padding: 4px 12px;
-  background: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border-radius: 10px;
-  width: 100px
-`;
-
-export const Input = Styled.input`
-  border: none;
-  background: transparent;
-  outline: none;
-  width: 60px;
-  ::-webkit-inner-spin-button{
-  -webkit-appearance: none;
-  margin: 0;
-  }
 `;
 
 export const ButtonContainer = Styled(Row)`

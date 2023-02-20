@@ -14,19 +14,29 @@ export default {
   },
 } as ComponentMeta<typeof Slider>;
 
-const Template: ComponentStory<typeof Slider> = () => {
+const Template: ComponentStory<typeof Slider> = (args) => {
   const [sliderValue, setSliderValue] = useState<number>(0);
 
   return (
     <Slider
-      onMaxClick={() => setSliderValue(100)}
+      {...args}
       onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
       value={sliderValue}
-      min={0}
-      max={100}
-      showMaxButton
+      setValue={setSliderValue}
     />
   );
 };
 
 export const SliderComponent = Template.bind({});
+export const SliderWithoutUnit = Template.bind({});
+
+SliderComponent.args = {
+  min: 0,
+  max: 50000,
+  unit: 'USD',
+};
+
+SliderWithoutUnit.args = {
+  min: 0,
+  max: 100,
+};

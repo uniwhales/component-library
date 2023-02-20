@@ -1,10 +1,10 @@
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 export interface SliderProps {
   value: number;
   min: number;
   max: number;
   onInput: (e: ChangeEvent<HTMLInputElement>) => void;
-  showMaxButton: boolean;
-  onMaxClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  setValue: Dispatch<SetStateAction<number>>;
+  unit?: string;
 }

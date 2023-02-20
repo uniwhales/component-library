@@ -1,10 +1,17 @@
-import React, { FC, ChangeEvent, MouseEvent } from 'react';
+import React, {
+  FC, ChangeEvent,
+} from 'react';
 import { SliderProps } from './types';
-import { Container, Input, MaxButton } from './slider.styles';
+import {
+  Container, Input, NumInput, NumInputContainer,
+} from './slider.styles';
+import { Text } from '../texts/text';
+import { localTheme } from '../../theme';
 
 export const Slider: FC<SliderProps> = ({
-  value, onInput, onMaxClick, min, max, showMaxButton,
+  min, max, onInput, value, setValue, unit,
 }: SliderProps) => {
+  const theme = localTheme();
   const styles = {
     '--min': min,
     '--max': max,
@@ -20,16 +27,21 @@ export const Slider: FC<SliderProps> = ({
         onInput={(e: ChangeEvent<HTMLInputElement>) => onInput(e)}
         style={styles}
       />
-      {showMaxButton && (
-        <MaxButton
-          value={value}
-          onClick={(e: MouseEvent<HTMLButtonElement>) => onMaxClick && onMaxClick(e)}
+      <NumInputContainer
+        max={max}
+        value={value}
+      >
+        <NumInput
+          type="number"
           max={max}
-        >
-          Max
-
-        </MaxButton>
-      )}
+          value={value}
+          size={1}
+          onChange={(e) => setValue(Number(e.target.value))}
+        />
+        {unit && (
+          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
+        )}
+      </NumInputContainer>
     </Container>
   );
 };
