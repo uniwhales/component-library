@@ -5,11 +5,10 @@ import {
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  BinanceColor, BobaColor, CrownStandard, EthereumColor, FantomColor, SettingsBars,
+  BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
 import { ButtonAtom } from '../buttons/button';
-import { IdentMark } from '../identicon/IdentMark';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -25,7 +24,7 @@ const ColourOptions = [
 
 const WithIcon = [
   {
-    id: 0, value: 'blue blue', label: 'Blue', icon: <IdentMark size="big" icon={{ icon: <CrownStandard /> }} />,
+    id: 0, value: 'blue blue', label: 'Blue',
   },
   { id: 1, value: 'purple', label: 'Purple' },
 ];

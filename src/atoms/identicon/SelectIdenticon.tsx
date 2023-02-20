@@ -1,27 +1,24 @@
 import React from 'react';
-import { IconWrapper } from '../icons/iconWrapper';
+import { Checkbox } from '../inputs/checkbox';
 import { IdenticonComponent } from './Identicon';
 import {
-  IdenticonMarkWrapper, Mark, WalletAvatar,
+  SelectableIdenticonWrapper,
 } from './Identicon.styles';
-import { MarkedIdenticonProps } from './types';
+import { SelectableIdenticonProps } from './types';
 
-export const MarkedIdenticon = ({
-  preload, markIcon, size, identicon,
-}: MarkedIdenticonProps) => {
-  const iconSize = size === 'big' ? '12px' : '8px';
-  return (
-    <IdenticonMarkWrapper
-      onMouseEnter={() => {
-        if (preload) preload();
-      }}
-    >
-      <WalletAvatar>
-        <Mark size={size}>
-          <IconWrapper height={iconSize} width={iconSize} {...markIcon} />
-        </Mark>
-        <IdenticonComponent size={size} {...identicon} />
-      </WalletAvatar>
-    </IdenticonMarkWrapper>
-  );
-};
+export const SelectableIdenticon = ({
+  checkbox, identicon, text, showCheckbox,
+}: SelectableIdenticonProps) => (
+  <SelectableIdenticonWrapper>
+    <>
+      {showCheckbox && (
+        <Checkbox
+          size="small"
+          {...checkbox}
+        />
+      )}
+      <IdenticonComponent {...identicon} />
+      {text && text}
+    </>
+  </SelectableIdenticonWrapper>
+);

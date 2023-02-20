@@ -26,9 +26,7 @@ export * from './atoms/cieloLogo/CieloLogo';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
-export * from './atoms/identicon/MarkedIdenticon';
-export * from './atoms/identicon/SelectMarkedIdenticon';
-export * from './atoms/identicon/IdentMark';
+export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
 
 // molecules

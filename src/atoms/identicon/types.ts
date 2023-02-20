@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import { IconWrapperProps } from '../icons/types';
 import { CheckboxProps } from '../inputs/checkbox';
 
 export type IdenticonProps = {
@@ -14,15 +13,9 @@ export type IdenticonProps = {
   gradientBorder?: boolean;
 };
 
-export type MarkedIdenticonProps = {
-  markIcon?: Omit<IconWrapperProps, 'height' | 'width'>
-  onMouseEnter?: () => void;
-  identicon: Omit<IdenticonProps, 'size'>
-} & Pick<IdenticonProps, 'size'>;
-
-export type SelectableMarkedIdenticonProps = {
+export type SelectableIdenticonProps = {
   checkbox: Omit<CheckboxProps, 'rounded' | 'size'>
-  markedIdenticon: MarkedIdenticonProps
   text?: ReactElement
   showCheckbox?: boolean
+  identicon: IdenticonProps
 };

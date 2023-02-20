@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { IdenticonComponent } from './Identicon';
-import { MarkedIdenticon } from './MarkedIdenticon';
-import { CrownStandard, DynamicList } from '../icons';
-import { Styled, SvgGradients, Theme } from '../../theme';
-import { SelectableMarkedIdenticon } from './SelectMarkedIdenticon';
+import { Styled, Theme } from '../../theme';
 import { Text } from '../texts/text';
-import { IdentMark } from './IdentMark';
+import { SelectableIdenticon } from './SelectIdenticon';
 
 export default {
   title: 'Atoms/Identicon',
@@ -39,18 +36,13 @@ const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
 const Template: ComponentStory<typeof IdenticonComponent> = (props) => (
   <IdenticonComponent {...props} />
 );
-const MarkTemplate: ComponentStory<typeof MarkedIdenticon> = (props) => (
-  <MarkedIdenticon {...props} />
-);
-const IdentMarkTemplate: ComponentStory<typeof IdentMark> = (props) => (
-  <IdentMark {...props} />
-);
-const SelectableMarkTemplate: ComponentStory<typeof SelectableMarkedIdenticon> = (props) => {
+
+const SelectableTemplate: ComponentStory<typeof SelectableIdenticon> = (props) => {
   const [checked, setChecked] = useState(false);
   return (
     <WalletWrapper>
 
-      <SelectableMarkedIdenticon
+      <SelectableIdenticon
         {...props}
         checkbox={{
           // eslint-disable-next-line
@@ -64,11 +56,7 @@ const SelectableMarkTemplate: ComponentStory<typeof SelectableMarkedIdenticon> =
 };
 export const Primary = Template.bind({});
 export const NoInteraction = Template.bind({});
-export const WithTealMarkBig = MarkTemplate.bind({});
-export const WithCanaryMarkSmall = MarkTemplate.bind({});
-export const WithSelectableCanaryMarkSmall = SelectableMarkTemplate.bind({});
-export const WithSelectableCanaryMarkLarge = SelectableMarkTemplate.bind({});
-export const JustMarkIcon = IdentMarkTemplate.bind({});
+export const WithSelectableTemplate = SelectableTemplate.bind({});
 
 Primary.args = {
   id: 'someRandomString',
@@ -84,9 +72,15 @@ NoInteraction.args = {
   isLink: false,
 };
 
-WithTealMarkBig.args = {
-  size: 'big',
+WithSelectableTemplate.args = {
+  text: <Text size="S-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
+  checkbox: {
+    disabled: false,
+    selected: false,
+    onClick: () => { console.debug('click select'); },
+  },
   identicon: {
+    size: 'big',
     id: 'someRandomString',
     hasInteraction: true,
     href: 'https://staging.app.cielo.finance/',
@@ -95,77 +89,4 @@ WithTealMarkBig.args = {
       console.debug('click');
     },
   },
-  markIcon: {
-    gradient: SvgGradients.TEAL,
-    icon: <CrownStandard />,
-  },
-  onMouseEnter: () => {
-    console.debug('preload called');
-  },
-};
-
-WithSelectableCanaryMarkSmall.args = {
-  text: <Text size="S-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
-  checkbox: {
-    disabled: false,
-    selected: false,
-    onClick: () => { console.debug('click select'); },
-  },
-  markedIdenticon: {
-    size: 'small',
-    markIcon: {
-      gradient: SvgGradients.CANARY,
-      icon: <DynamicList />,
-    },
-    identicon: {
-      id: 'someRandomString',
-      hasInteraction: true,
-      href: 'https://staging.app.cielo.finance/',
-      target: 'blank',
-      onClick: () => {
-        console.debug('click');
-      },
-    },
-    onMouseEnter: () => {
-      console.debug('preload called');
-    },
-  },
-
-};
-
-WithSelectableCanaryMarkLarge.args = {
-  text: <Text size="S-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
-  checkbox: {
-    disabled: false,
-    selected: false,
-    onClick: () => { console.debug('click select'); },
-  },
-  markedIdenticon: {
-    size: 'big',
-    markIcon: {
-      gradient: SvgGradients.CANARY,
-      icon: <DynamicList />,
-    },
-    identicon: {
-      id: 'someRandomString',
-      hasInteraction: true,
-      href: 'https://staging.app.cielo.finance/',
-      target: 'blank',
-      onClick: () => {
-        console.debug('click');
-      },
-    },
-    onMouseEnter: () => {
-      console.debug('preload called');
-    },
-  },
-
-};
-
-JustMarkIcon.args = {
-  icon: {
-    icon: <CrownStandard />,
-    fill: SvgGradients.TEAL,
-  },
-  size: 'big',
 };
