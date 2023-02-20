@@ -39,10 +39,10 @@ export const MinUsdSlider = ({
         isOpen={isOpen}
       >
         <MinUsdButtonContent>
-          <IconWrapper cursor="pointer" icon={<CoinStandard />} />
+          <IconWrapper width="12px" cursor="pointer" icon={<CoinStandard />} />
           Min. USD
         </MinUsdButtonContent>
-        <IconWrapper cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
+        <IconWrapper width="12px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
       </MinUsdButton>
       {isOpen && (
         <>

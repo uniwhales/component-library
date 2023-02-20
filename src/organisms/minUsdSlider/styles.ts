@@ -10,11 +10,11 @@ export const Container = Styled(Column)`
 export const MinUsdButton = Styled.div<{ isOpen:boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 145px;
-  padding: 12px;
+  gap: 48px;
+  padding: 10px;
   border-radius: 10px;
   border: ${({ theme, isOpen }) => `1px solid ${isOpen ? theme.textShades.SHADE_MINUS_1 : theme.containerAndCardShades.SHADE_PLUS_3}`};
+  font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)};
   cursor: pointer;
   svg {
