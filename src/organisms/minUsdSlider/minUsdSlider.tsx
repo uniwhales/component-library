@@ -29,7 +29,7 @@ export const MinUsdSlider = ({
   useClickOutside(clickRef, () => setIsOpen(false));
 
   const onApplyClicked = () => {
-    onApply();
+    onApply(sliderValue);
     setIsOpen(false);
   };
   return (
