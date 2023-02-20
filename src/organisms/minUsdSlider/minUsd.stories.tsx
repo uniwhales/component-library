@@ -17,8 +17,8 @@ export default {
 const Template: ComponentStory<typeof MinUsdSlider> = () => (
   <MinUsdSlider
     min={0}
-    max={100}
-    onApply={() => { }}
+    max={1000000}
+    onApply={() => console.debug('apply clicked')}
   />
 );
 

@@ -48,6 +48,10 @@ export const ValueRow = Styled(Row)`
   gap: 16px;
 `;
 
+export const TextRow = Styled(Row)`
+  gap: 4px;
+`;
+
 export const Details = Styled.div`
   border: ${({ theme }) => `1px solid ${theme.containerAndCardShades.SHADE_PLUS_2}`};
   border-radius: 10px;
@@ -64,8 +68,10 @@ export const Value = Styled.div`
   background: ${({ theme }) => theme.colors.system.GREY};
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   border-radius: 10px;
+  min-width: 150px
 `;
 
 export const ButtonContainer = Styled(Row)`

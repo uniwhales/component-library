@@ -7,7 +7,15 @@ import { Text } from '../../atoms/texts/text';
 import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
 import {
-  Arrow, ButtonContainer, Container, Details, MinUsdButton, MinUsdButtonContent, Value, ValueRow,
+  Arrow,
+  ButtonContainer,
+  Container,
+  Details,
+  MinUsdButton,
+  MinUsdButtonContent,
+  TextRow,
+  Value,
+  ValueRow,
 } from './styles';
 import { MinUsdProps } from './types';
 
@@ -20,7 +28,7 @@ export const MinUsdSlider = ({
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsOpen(false));
 
-  const handleApply = () => {
+  const onApplyClicked = () => {
     onApply();
     setIsOpen(false);
   };
@@ -40,7 +48,17 @@ export const MinUsdSlider = ({
         <>
           <Arrow />
           <Details>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">Set a min. value (USD) for transactions</Text>
+            <TextRow>
+              <Text color={theme.textShades.SHADE_MINUS_2} size="Caption-Regular">
+                Set a
+                {' '}
+              </Text>
+              <Text size="Caption-Bold" color={theme.textShades.SHADE_MINUS_2}>
+                min. value (USD)
+                {' '}
+              </Text>
+              <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>for transactions</Text>
+            </TextRow>
             <ValueRow>
               <Slider
                 min={min}
@@ -50,14 +68,14 @@ export const MinUsdSlider = ({
                 showMaxButton={false}
               />
               <Value>
-                <Text size="S-Regular" color={theme.containerAndCardShades.SHADE_PLUS_2}>{sliderValue}</Text>
+                <Text size="S-Regular" color={theme.containerAndCardShades.SHADE_PLUS_2}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sliderValue)}</Text>
                 <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>USD</Text>
               </Value>
             </ValueRow>
             <ButtonContainer>
               <ButtonAtom
                 buttonVariant="primary"
-                onClick={handleApply}
+                onClick={onApplyClicked}
               >
                 Apply
               </ButtonAtom>
