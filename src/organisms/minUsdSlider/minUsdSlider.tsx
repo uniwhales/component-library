@@ -68,7 +68,7 @@ export const MinUsdSlider = ({
                 showMaxButton={false}
               />
               <Value>
-                <Text size="S-Regular" color={theme.containerAndCardShades.SHADE_PLUS_2}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(sliderValue)}</Text>
+                <Text size="S-Regular" color={theme.containerAndCardShades.SHADE_PLUS_2}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(sliderValue)}</Text>
                 <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>USD</Text>
               </Value>
             </ValueRow>
