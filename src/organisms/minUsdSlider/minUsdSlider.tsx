@@ -22,11 +22,12 @@ export const MinUsdSlider = ({
 }: MinUsdProps) => {
   const theme = localTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState('0');
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsOpen(false));
 
   const onApplyClicked = () => {
+    if (!sliderValue) return;
     onApply(sliderValue);
     setIsOpen(false);
   };
@@ -60,9 +61,9 @@ export const MinUsdSlider = ({
             <Slider
               min={min}
               max={max}
-              value={sliderValue}
+              value={sliderValue ?? 0}
               setValue={setSliderValue}
-              onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
+              onInput={(e) => setSliderValue(e.target.value)}
               unit="USD"
             />
             <ButtonContainer>
@@ -74,7 +75,7 @@ export const MinUsdSlider = ({
               </ButtonAtom>
               <ButtonAtom
                 buttonVariant="secondary"
-                onClick={() => setSliderValue(0)}
+                onClick={() => setSliderValue('0')}
               >
                 Clear
               </ButtonAtom>

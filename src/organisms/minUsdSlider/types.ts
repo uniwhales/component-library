@@ -1,5 +1,5 @@
 export interface MinUsdProps {
   min: number
   max: number
-  onApply: (value: number) => void;
+  onApply: (value: string) => void;
 }

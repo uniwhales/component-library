@@ -36,7 +36,7 @@ export const Slider: FC<SliderProps> = ({
           max={max}
           value={value}
           size={1}
-          onChange={(e) => setValue(Number(e.target.value))}
+          onChange={(e) => setValue(e.target.value)}
         />
         {unit && (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>

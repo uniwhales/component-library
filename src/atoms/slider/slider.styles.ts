@@ -2,27 +2,27 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { Row } from '../common/flex';
 
-const track = css<{ value: number, max: number }>`
+const track = css<{ value: string, max: number }>`
   box-sizing: border-box;
   border: none;
   height: 8px;
-  background: ${(props) => (props.value === props.max
-    ? props.theme.textShades.SHADE_MINUS_3
-    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background: ${({ theme, value, max }) => (Number(value) === max
+    ? theme.textShades.SHADE_MINUS_3
+    : theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
 
-const trackFill = css<{ value: number, max: number }>`
+const trackFill = css<{ value: string, max: number }>`
   ${track};
   height: 8px;
   background-color: transparent;
-  background-image: ${({ theme, value, max }) => `linear-gradient(${value === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+  background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
     linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_2}, ${theme.containerAndCardShades.SHADE_PLUS_2})`};
   background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
   background-position: left center, right center;
   background-repeat: no-repeat;
   &:hover {
-    background-image: ${({ theme, value, max }) => `linear-gradient(${value === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+    background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
     linear-gradient(${theme.textShades.SHADE_MINUS_1}, ${theme.textShades.SHADE_MINUS_1})`};
   };
 `;
@@ -33,13 +33,13 @@ const fill = css`
   border-radius: 12px;
 `;
 
-const thumb = css<{ value: number, max: number }>`
+const thumb = css<{ value: string, max: number }>`
   box-sizing: border-box;
   border: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: ${({ theme, value, max }) => (value === max
+  background: ${({ theme, value, max }) => (Number(value) === max
     ? theme.colors.primary.YELLOW
     : theme.colors.primary.MAIN_BLUE)};
   &:hover {
@@ -47,7 +47,7 @@ const thumb = css<{ value: number, max: number }>`
   }
 `;
 
-export const Input = Styled.input<{ value: number, max: number }>`
+export const Input = Styled.input<{ value: string, max: number }>`
   cursor: pointer;
   &,
   &::-webkit-slider-thumb {
@@ -111,14 +111,14 @@ export const Input = Styled.input<{ value: number, max: number }>`
   }
 `;
 
-export const NumInputContainer = Styled.div<{ value: number, max: number }>`
+export const NumInputContainer = Styled.div<{ value: string, max: number }>`
   padding: 4px 12px;
   display: flex;
   align-items: center;
   gap: 8px;
   border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
-  border: ${({ theme, value, max }) => `2px solid ${value === max ? theme.colors.primary.YELLOW : 'transparent'}`};
+  border: ${({ theme, value, max }) => `2px solid ${Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
 `;
 export const NumInput = Styled.input`

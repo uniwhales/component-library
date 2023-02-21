@@ -15,12 +15,12 @@ export default {
 } as ComponentMeta<typeof Slider>;
 
 const Template: ComponentStory<typeof Slider> = (args) => {
-  const [sliderValue, setSliderValue] = useState<number>(0);
+  const [sliderValue, setSliderValue] = useState('0');
 
   return (
     <Slider
       {...args}
-      onInput={(e) => setSliderValue(parseInt(e.target.value, 10))}
+      onInput={(e) => setSliderValue(e.target.value)}
       value={sliderValue}
       setValue={setSliderValue}
     />
