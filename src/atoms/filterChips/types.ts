@@ -11,7 +11,7 @@ export type FilterChipProps = {
   disabled?: boolean;
   icon?: JSX.Element;
   isOn?: boolean;
-  onClick: (id: number, e: MouseEvent<HTMLElement>) => void;
+  onClick: (id: string, e: MouseEvent<HTMLElement>) => void;
   iconSize?: string;
-  id: number;
+  id: string;
 } & Pick<CSSProperties, 'width'>;
