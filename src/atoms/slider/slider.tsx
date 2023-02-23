@@ -47,7 +47,6 @@ export const Slider: FC<SliderProps> = ({
         >
           <NumInput
             type="number"
-            maxLength={10}
             max={max}
             value={value}
             size={1}
