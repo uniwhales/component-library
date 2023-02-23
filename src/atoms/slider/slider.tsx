@@ -17,6 +17,16 @@ export const Slider: FC<SliderProps> = ({
     '--max': max,
     '--val': value,
   } as React.CSSProperties;
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const firstChar = Array.from(e.target.value);
+
+    if (firstChar[0] === '0') {
+      setValue(e.target.value.slice(1));
+    } else {
+      setValue(e.target.value);
+    }
+  };
   return (
     <Container>
       <Input
@@ -36,7 +46,7 @@ export const Slider: FC<SliderProps> = ({
           max={max}
           value={value}
           size={1}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleChange}
         />
         {unit && (
           <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
