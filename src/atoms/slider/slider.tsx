@@ -3,13 +3,13 @@ import React, {
 } from 'react';
 import { SliderProps } from './types';
 import {
-  Container, Input, NumInput, NumInputContainer,
+  Container, Input, InputWrapper, NumInput, NumInputContainer,
 } from './slider.styles';
 import { Text } from '../texts/text';
 import { localTheme } from '../../theme';
 
 export const Slider: FC<SliderProps> = ({
-  min, max, onInput, value, setValue, unit, charLimit = 16,
+  min, max, onInput, value, setValue, hasError, errorMessage, unit, charLimit = 16,
 }: SliderProps) => {
   const theme = localTheme();
   const styles = {
@@ -39,22 +39,29 @@ export const Slider: FC<SliderProps> = ({
         onInput={(e: ChangeEvent<HTMLInputElement>) => onInput(e)}
         style={styles}
       />
-      <NumInputContainer
-        max={max}
-        value={value}
-      >
-        <NumInput
-          type="number"
-          maxLength={10}
+      <InputWrapper>
+        <NumInputContainer
           max={max}
           value={value}
-          size={1}
-          onChange={handleChange}
-        />
-        {unit && (
-          <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
+          hasError={hasError}
+        >
+          <NumInput
+            type="number"
+            maxLength={10}
+            max={max}
+            value={value}
+            size={1}
+            onChange={handleChange}
+          />
+          {unit && (
+            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
+          )}
+        </NumInputContainer>
+        {hasError && errorMessage && (
+          <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
         )}
-      </NumInputContainer>
+      </InputWrapper>
+
     </Container>
   );
 };

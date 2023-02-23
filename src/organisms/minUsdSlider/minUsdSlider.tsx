@@ -31,6 +31,9 @@ export const MinUsdSlider = ({
     onApply(sliderValue);
     setIsOpen(false);
   };
+
+  const valueIsTooLarge = Number(sliderValue) > max;
+  const valueIsEmpty = sliderValue === '';
   return (
     <Container ref={clickRef}>
       <MinUsdButton
@@ -61,15 +64,18 @@ export const MinUsdSlider = ({
             <Slider
               min={min}
               max={max}
-              value={sliderValue ?? 0}
+              value={sliderValue}
               setValue={setSliderValue}
               onInput={(e) => setSliderValue(e.target.value)}
               unit="USD"
+              hasError={valueIsEmpty || valueIsTooLarge}
+              errorMessage={valueIsEmpty ? 'Please enter a value' : valueIsTooLarge ? `Max number is ${max}` : undefined}
             />
             <ButtonContainer>
               <ButtonAtom
                 buttonVariant="primary"
                 onClick={onApplyClicked}
+                disabled={valueIsEmpty || valueIsTooLarge}
               >
                 Apply
               </ButtonAtom>

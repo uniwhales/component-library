@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { Row } from '../common/flex';
+import { Column, Row } from '../common/flex';
 
 const track = css<{ value: string, max: number }>`
   box-sizing: border-box;
@@ -62,7 +62,7 @@ export const Input = Styled.input<{ value: string, max: number }>`
   --ratio: calc((var(--val) - var(--min)) / var(--range));
   --sx: calc(0.5 * 20px + var(--ratio) * (100% - 20px));
 
-  margin: 0;
+  margin: 8px 0 0 0;
   padding: 0;
   height: 20px;
   background: transparent;
@@ -111,14 +111,16 @@ export const Input = Styled.input<{ value: string, max: number }>`
   }
 `;
 
-export const NumInputContainer = Styled.div<{ value: string, max: number }>`
+export const NumInputContainer = Styled.div<{ value: string, max: number, hasError:boolean }>`
   padding: 4px 12px;
   display: flex;
   align-items: center;
   gap: 8px;
   border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
-  border: ${({ theme, value, max }) => `2px solid ${Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
+  border: ${({
+    theme, value, max, hasError,
+  }) => `2px solid ${hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
 `;
 export const NumInput = Styled.input`
@@ -139,5 +141,9 @@ box-sizing: border-box;
 
 export const Container = Styled(Row)`
   gap: 16px;
-  align-items: center
+  height: 55px;
+`;
+
+export const InputWrapper = Styled(Column)`
+  gap: 4px;
 `;
