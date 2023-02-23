@@ -9,7 +9,7 @@ import { Text } from '../texts/text';
 import { localTheme } from '../../theme';
 
 export const Slider: FC<SliderProps> = ({
-  min, max, onInput, value, setValue, unit,
+  min, max, onInput, value, setValue, unit, charLimit = 16,
 }: SliderProps) => {
   const theme = localTheme();
   const styles = {
@@ -18,13 +18,15 @@ export const Slider: FC<SliderProps> = ({
     '--val': value,
   } as React.CSSProperties;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const firstChar = Array.from(e.target.value);
-
-    if (firstChar[0] === '0') {
-      setValue(e.target.value.slice(1));
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const firstChar = Array.from(target.value);
+    const valueWithoutZero = target.value.slice(1);
+    const hasLeadingZero = firstChar[0] === '0';
+    if (target.value.length > charLimit) return;
+    if (hasLeadingZero) {
+      setValue(valueWithoutZero);
     } else {
-      setValue(e.target.value);
+      setValue(target.value);
     }
   };
   return (
@@ -43,6 +45,7 @@ export const Slider: FC<SliderProps> = ({
       >
         <NumInput
           type="number"
+          maxLength={10}
           max={max}
           value={value}
           size={1}

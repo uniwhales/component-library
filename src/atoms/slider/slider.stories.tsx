@@ -29,11 +29,19 @@ const Template: ComponentStory<typeof Slider> = (args) => {
 
 export const SliderComponent = Template.bind({});
 export const SliderWithoutUnit = Template.bind({});
+export const SliderWithLargeCharLimit = Template.bind({});
 
 SliderComponent.args = {
   min: 0,
   max: 50000,
   unit: 'USD',
+};
+
+SliderWithLargeCharLimit.args = {
+  min: 0,
+  max: 100000,
+  unit: 'USD',
+  charLimit: 32,
 };
 
 SliderWithoutUnit.args = {
