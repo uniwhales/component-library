@@ -16,13 +16,13 @@ const trackFill = css<{ value: string, max: number }>`
   ${track};
   height: 8px;
   background-color: transparent;
-  background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+  background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
     linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_2}, ${theme.containerAndCardShades.SHADE_PLUS_2})`};
   background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
   background-position: left center, right center;
   background-repeat: no-repeat;
   &:hover {
-    background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+    background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
     linear-gradient(${theme.textShades.SHADE_MINUS_1}, ${theme.textShades.SHADE_MINUS_1})`};
   };
 `;
@@ -41,7 +41,7 @@ const thumb = css<{ value: string, max: number }>`
   border-radius: 50%;
   background: ${({ theme, value, max }) => (Number(value) === max
     ? theme.colors.primary.YELLOW
-    : theme.colors.primary.MAIN_BLUE)};
+    : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE)};
   &:hover {
     background: ${(props) => props.theme.colors.primary.LIGHT_BLUE};
   }
