@@ -42,6 +42,8 @@ export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/hoverCard/hoverCard';
 export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 export * from './molecules/labeled/select/labeledSelect';
+export * from './molecules/modals/modal';
+export * from './molecules/meatballMenu/meatballMenu';
 
 // organisms
 export * from './organisms/searchFilterSelect/searchFilterSelect';
