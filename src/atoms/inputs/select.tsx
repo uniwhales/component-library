@@ -336,6 +336,7 @@ export const Select = <T extends SelectVariation>({
   const theme = localTheme();
   return (
     <StyledSelect
+      closeMenuOnScroll
       width={width}
       isDisabled={isDisabled}
       options={selectOptions}
