@@ -1,10 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
-import { ChevronDownIcon, ChevronUpIcon, CoinStandard } from '../../atoms/icons';
+import { ChevronDownIcon, ChevronUpIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Slider } from '../../atoms/slider/slider';
-import { Text } from '../../atoms/texts/text';
-import { localTheme } from '../../theme';
 import { useClickOutside } from '../../utils/useClickOutside';
 import {
   Arrow,
@@ -13,14 +11,12 @@ import {
   Details,
   MinUsdButton,
   MinUsdButtonContent,
-  TextRow,
 } from './styles';
 import { MinUsdProps } from './types';
 
 export const MinUsdSlider = ({
-  min, max, onApply,
+  min, max, onApply, buttonText, buttonIcon, description, unit,
 }: MinUsdProps) => {
-  const theme = localTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [sliderValue, setSliderValue] = useState('0');
   const clickRef = useRef(null);
@@ -41,8 +37,8 @@ export const MinUsdSlider = ({
         isOpen={isOpen}
       >
         <MinUsdButtonContent>
-          <IconWrapper width="12px" cursor="pointer" icon={<CoinStandard />} />
-          Min. USD
+          {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
+          {buttonText}
         </MinUsdButtonContent>
         <IconWrapper width="12px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
       </MinUsdButton>
@@ -50,24 +46,14 @@ export const MinUsdSlider = ({
         <>
           <Arrow />
           <Details>
-            <TextRow>
-              <Text color={theme.textShades.SHADE_MINUS_2} size="Caption-Regular">
-                Set a
-                {' '}
-              </Text>
-              <Text size="Caption-Bold" color={theme.textShades.SHADE_MINUS_2}>
-                min. value (USD)
-                {' '}
-              </Text>
-              <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>for transactions</Text>
-            </TextRow>
+            {description}
             <Slider
               min={min}
               max={max}
               value={sliderValue}
               setValue={setSliderValue}
               onInput={(e) => setSliderValue(e.target.value)}
-              unit="USD"
+              unit={unit}
               hasError={valueIsEmpty || valueIsTooLarge}
               errorMessage={valueIsEmpty ? 'Please enter a value' : valueIsTooLarge ? `Max number is ${max}` : undefined}
             />
