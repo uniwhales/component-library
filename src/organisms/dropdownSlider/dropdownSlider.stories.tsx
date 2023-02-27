@@ -2,22 +2,20 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { CoinStandard } from '../../atoms/icons';
 import { Text } from '../../atoms/texts/text';
-import { MinUsdSlider } from './minUsdSlider';
+import { DropdownSlider } from './minUsdSlider';
 import { TextRow } from './styles';
 
 export default {
-  title: 'Organisms/MinUsdSlider',
-  component: MinUsdSlider,
+  title: 'Organisms/DropdownSlider',
+  component: DropdownSlider,
   argTypes: {},
-} as ComponentMeta<typeof MinUsdSlider>;
+} as ComponentMeta<typeof DropdownSlider>;
 
-const Template: ComponentStory<typeof MinUsdSlider> = (args, { globals }) => {
-  // localtheme is undefined in stories, so just using this
-  // to get light/dark to work properly
+const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
   const isDark = globals.backgrounds?.value === '#191B20';
 
   return (
-    <MinUsdSlider
+    <DropdownSlider
       min={0}
       max={1000000}
       buttonText="Min.USD"
@@ -40,8 +38,8 @@ const Template: ComponentStory<typeof MinUsdSlider> = (args, { globals }) => {
   );
 };
 
-export const MinUsdSliderComponent = Template.bind({});
+export const DropdownSliderComponent = Template.bind({});
 
-MinUsdSliderComponent.parameters = {
+DropdownSliderComponent.parameters = {
   backgrounds: { default: 'dark' },
 };

@@ -14,7 +14,7 @@ import {
 } from './styles';
 import { MinUsdProps } from './types';
 
-export const MinUsdSlider = ({
+export const DropdownSlider = ({
   min, max, onApply, buttonText, buttonIcon, description, unit,
 }: MinUsdProps) => {
   const [isOpen, setIsOpen] = useState(false);
