@@ -1,5 +1,5 @@
 import { CardProps } from '../../atoms/card/types';
-import { FilterChipProps } from '../../atoms/filterChips/filterChip';
+import { FilterChipProps } from '../../atoms/filterChips/types';
 import {
   SelectProps, SelectVariation,
 } from '../../atoms/inputs/select';
@@ -10,8 +10,8 @@ export type ChipFilterProps = Pick<FilterChipProps, 'icon' | 'isOn' | 'id'> & {
 
 export type ActionBarProps<T extends SelectVariation> = {
   chipFilters: ChipFilterProps[]
-  setChipFilter: (e: number) => void;
-  chipFilterValue: number;
+  setChipFilter: (e: string) => void;
+  chipFilterValue: string;
   handleClearValue: () => void;
 } & Pick<SelectProps<T>, 'selectValue' | 'onSelectChange' | 'selectOptions'>;
 
