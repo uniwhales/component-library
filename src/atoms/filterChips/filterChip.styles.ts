@@ -74,8 +74,6 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
     }
    &:hover {
-      background: ${props.theme.textShades.SHADE_MINUS_1};
-      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
       svg {
         fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
       }

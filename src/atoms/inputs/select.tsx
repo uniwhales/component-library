@@ -336,7 +336,6 @@ export const Select = <T extends SelectVariation>({
   const theme = localTheme();
   return (
     <StyledSelect
-      closeMenuOnScroll
       width={width}
       isDisabled={isDisabled}
       options={selectOptions}
@@ -362,14 +361,15 @@ export const Select = <T extends SelectVariation>({
       onChange={(option) => {
         if (!onSelectChange) return;
         /*
-            When providing variation of select
-            we restrict the option to be either single or group option type
-            therefor we can safely assume type here is right
-          */
+        When providing variation of select
+        we restrict the option to be either single or group option type
+        therefor we can safely assume type here is right
+        */
         onSelectChange(option as SelectVal<T>);
       }}
       value={selectValue}
       isXL={isXL}
+      closeMenuOnScroll
       getOptionLabel={getOptionLabel as any}
       maxMenuHeight={maxMenuHeight}
     />
