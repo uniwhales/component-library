@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ConnectButtonProps } from '../../atoms/connectWalletButton/types';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
@@ -14,6 +14,16 @@ export const UserIdenticon = ({
   plan,
 }: UserIdenticonProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleScroll = () => {
+    if (!isMenuOpen) return;
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
   return (
     <>
