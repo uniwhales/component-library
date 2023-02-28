@@ -149,7 +149,7 @@ import {
   FetchError, Interaction, FloatingClose, Kebab, Meatball, UniswapGenFilled, UniswapV3Filled,
   UniswapV2Filled, NearFilled, MagicLinkFilled, UniwhalesFilled, CieloFilled, SushiswapFilled,
   CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
-  BalencerFilled, EvmosFilled, BancorFilled, RedCross,
+  BalencerFilled, EvmosFilled, BancorFilled, RedCross, ChainScan,
   CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
@@ -382,6 +382,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Revoke" icon={<RevokeIcon />} />
     <IconWrapper name="Leaderboard" icon={<LeaderboardStandard />} />
     <IconWrapper name="Suggested" icon={<Suggested />} />
+    <IconWrapper name="Chain Scan" icon={<ChainScan />} />
   </>
 );
 
