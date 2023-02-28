@@ -2,7 +2,7 @@ import React, { MouseEvent } from 'react';
 import { FloatingClose } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  FilterChipContent, FilterChipSecondary, FilterChipWrapper,
+  FilterChipContent, FilterChipSecondary, FilterChipWrapper, FloatingCloseWrapper,
 } from './filterChip.styles';
 import { FilterChipProps } from './types';
 
@@ -18,14 +18,18 @@ export const FilterChip = ({
         >
           {icon && (
             <IconWrapper
-              onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
               width={iconSize}
               height={iconSize}
               icon={icon}
             />
           )}
           {children}
-          <FloatingClose />
+          <FloatingCloseWrapper
+            disabled={disabled}
+            onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+          >
+            <FloatingClose />
+          </FloatingCloseWrapper>
         </FilterChipSecondary>
       );
     default:

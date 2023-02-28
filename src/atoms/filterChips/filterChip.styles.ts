@@ -1,6 +1,7 @@
 import { CSSProperties, css } from 'styled-components';
 import { FilterChipProps } from './types';
 import { Styled } from '../../theme';
+import { Row } from '../common/flex';
 
 type Props = { isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'width'>;
 
@@ -34,6 +35,16 @@ export const FilterChipContent = Styled.div<{ disabled: boolean }>`
   }
   p{
     color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+  }
+`;
+
+export const FloatingCloseWrapper = Styled(Row)<{ disabled?: boolean }>`
+  svg {
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+
+    &:hover {
+      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+    };
   }
 `;
 
@@ -71,13 +82,6 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
     color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
-    }
-    svg:nth-child(3)  {
-      cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-
-      &:hover {
-        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
-      };
     }
     &:active {
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
