@@ -42,7 +42,6 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border-radius: 12px;
   border: 2px solid transparent;
   padding: 4px 12px;
@@ -73,11 +72,13 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>
     svg {
       fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
     }
-   &:hover {
-      svg {
+    svg:nth-child(3)  {
+      cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+
+      &:hover {
         fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
-      }
-    };
+      };
+    }
     &:active {
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
       color: ${props.theme.textShades.SHADE_MINUS_3}!important;
