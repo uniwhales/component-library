@@ -4,12 +4,21 @@ import { Styled } from '../../theme';
 export const Container = Styled(Column)`
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
-export const MinUsdButton = Styled.div<{ isOpen:boolean }>`
+export const OpenContainer = Styled.div`
+  position: absolute;
+  top: 50px;
+  z-index: ${({ theme }) => theme.zIndex.POPICON};
+`;
+
+export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string }>`
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 16px;
   padding: 10px;
   border-radius: 10px;
   border: ${({ theme, isOpen }) => `1px solid ${isOpen ? theme.textShades.SHADE_MINUS_1 : theme.containerAndCardShades.SHADE_PLUS_3}`};
@@ -41,6 +50,7 @@ export const Arrow = Styled.div`
   border-right: 5px solid transparent;
   margin-top: 20px;
   border-bottom: ${({ theme }) => `5px solid ${theme.containerAndCardShades.SHADE_PLUS_3}`};
+  margin: auto;
 `;
 
 export const TextRow = Styled(Row)`
@@ -49,6 +59,7 @@ export const TextRow = Styled(Row)`
 
 export const Details = Styled.div`
   border: ${({ theme }) => `1px solid ${theme.containerAndCardShades.SHADE_PLUS_2}`};
+  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -60,4 +71,9 @@ export const Details = Styled.div`
 
 export const ButtonContainer = Styled(Row)`
   gap: 8px;
+`;
+
+export const Bar = Styled(Row)`
+  gap: 24px;
+  padding: 16px;
 `;
