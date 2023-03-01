@@ -58,6 +58,8 @@ export * from './organisms/navbar/navbar';
 export * from './organisms/contentCard/contentCard';
 export * from './organisms/contentCard/types';
 export * from './organisms/UserIdenticon/UserIdenticon';
+export * from './organisms/dropdownSlider/minUsdSlider';
+
 // layouts
 export * from './layouts/brochure/brochureLayout.styles';
 export * from './layouts/tools/toolingLayout.styles';
