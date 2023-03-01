@@ -150,7 +150,7 @@ import {
   UniswapV2Filled, NearFilled, MagicLinkFilled, UniwhalesFilled, CieloFilled, SushiswapFilled,
   CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
   BalencerFilled, EvmosFilled, BancorFilled, RedCross, ChainScan,
-  CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested,
+  CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested, Follow,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -383,6 +383,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Leaderboard" icon={<LeaderboardStandard />} />
     <IconWrapper name="Suggested" icon={<Suggested />} />
     <IconWrapper name="Chain Scan" icon={<ChainScan />} />
+    <IconWrapper name="Follow" icon={<Follow />} />
   </>
 );
 

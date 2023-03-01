@@ -104,6 +104,7 @@ export * from './generalIcons/filledStyle/ShareLinkStandard';
 export * from './generalIcons/filledStyle/LeaderboardStandard';
 export * from './generalIcons/filledStyle/Suggested';
 export * from './generalIcons/filledStyle/ChainScan';
+export * from './generalIcons/filledStyle/Follow';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
