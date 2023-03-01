@@ -86,16 +86,16 @@ export const CopyToClipBoard = ({
     />
   );
 
-  const text = <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>;
+  const TextLabel = <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>;
 
   return (
     <Wrapper>
-      {!iconLeft && text}
+      {!iconLeft && TextLabel}
       <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip delayShow={0} delayHide={0} scrollHide id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
         {copyIcon}
       </Background>
-      {iconLeft && text}
+      {iconLeft && TextLabel}
       {link && (
         <Background hoverColor={hoverColor} background={background}>
           <IconWrapper
