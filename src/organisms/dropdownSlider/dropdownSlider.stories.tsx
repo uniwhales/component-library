@@ -1,9 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import { ButtonAtom } from '../../atoms/buttons/button';
+import { Column } from '../../atoms/common/flex';
 import { CoinStandard } from '../../atoms/icons';
 import { Text } from '../../atoms/texts/text';
 import { DropdownSlider } from './minUsdSlider';
-import { TextRow } from './styles';
+import { Bar, TextRow } from './styles';
 
 export default {
   title: 'Organisms/DropdownSlider',
@@ -15,26 +17,44 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
   const isDark = globals.backgrounds?.value === '#191B20';
 
   return (
-    <DropdownSlider
-      min={0}
-      max={1000000}
-      buttonText="Min.USD"
-      buttonIcon={<CoinStandard />}
-      description={(
-        <TextRow>
-          <Text color={isDark ? '#B4B5C6' : '#70717C'} size="Caption-Regular">
-            Set a
-            {' '}
-          </Text>
-          <Text size="Caption-Bold" color={isDark ? '#B4B5C6' : '#70717C'}>
-            min. value (USD)
-            {' '}
-          </Text>
-          <Text size="Caption-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
-        </TextRow>
-      )}
-      onApply={(value) => console.debug('apply clicked', value)}
-    />
+    <Column>
+      <Bar>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <DropdownSlider
+          min={0}
+          max={1000000}
+          buttonText="Min.USD"
+          buttonIcon={<CoinStandard />}
+          description={(
+            <TextRow>
+              <Text color={isDark ? '#B4B5C6' : '#70717C'} size="Caption-Regular">
+                Set a
+                {' '}
+              </Text>
+              <Text size="Caption-Bold" color={isDark ? '#B4B5C6' : '#70717C'}>
+                min. value (USD)
+                {' '}
+              </Text>
+              <Text size="Caption-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
+            </TextRow>
+        )}
+          onApply={(value) => console.debug('apply clicked', value)}
+        />
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+      </Bar>
+      <Bar>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        {' '}
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        {' '}
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+      </Bar>
+    </Column>
   );
 };
 

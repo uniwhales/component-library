@@ -5,5 +5,7 @@ export interface MinUsdProps {
   description: JSX.Element
   onApply: (value: string) => void
   buttonIcon?: JSX.Element
+  buttonWidth?: string
+  buttonHeight?: string
   unit?: string
 }

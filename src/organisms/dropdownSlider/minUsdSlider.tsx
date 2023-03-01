@@ -11,11 +11,15 @@ import {
   Details,
   MinUsdButton,
   MinUsdButtonContent,
+  OpenContainer,
 } from './styles';
 import { MinUsdProps } from './types';
 
 export const DropdownSlider = ({
-  min, max, onApply, buttonText, buttonIcon, description, unit,
+  min, max, onApply,
+  buttonText, buttonIcon,
+  buttonWidth, buttonHeight,
+  description, unit,
 }: MinUsdProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sliderValue, setSliderValue] = useState('0');
@@ -35,6 +39,8 @@ export const DropdownSlider = ({
       <MinUsdButton
         onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
+        height={buttonHeight}
+        width={buttonWidth}
       >
         <MinUsdButtonContent>
           {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
@@ -43,7 +49,7 @@ export const DropdownSlider = ({
         <IconWrapper width="12px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
       </MinUsdButton>
       {isOpen && (
-        <>
+        <OpenContainer>
           <Arrow />
           <Details>
             {description}
@@ -73,7 +79,7 @@ export const DropdownSlider = ({
               </ButtonAtom>
             </ButtonContainer>
           </Details>
-        </>
+        </OpenContainer>
       )}
     </Container>
   );
