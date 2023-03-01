@@ -1,28 +1,28 @@
 import { css } from 'styled-components';
 import { Styled } from '../../theme';
-import { SliderProps } from './types';
+import { Column, Row } from '../common/flex';
 
-const track = css<Pick<SliderProps, 'value'>>`
+const track = css<{ value: string, max: number }>`
   box-sizing: border-box;
   border: none;
   height: 8px;
-  background: ${(props) => (props.value === 100
-    ? props.theme.textShades.SHADE_MINUS_3
-    : props.theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+  background: ${({ theme, value, max }) => (Number(value) === max
+    ? theme.textShades.SHADE_MINUS_3
+    : theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
 
-const trackFill = css`
+const trackFill = css<{ value: string, max: number }>`
   ${track};
   height: 8px;
   background-color: transparent;
-  background-image: ${({ theme, value }) => `linear-gradient(${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
-    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_1}, ${theme.containerAndCardShades.SHADE_PLUS_1})`};
+  background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
+    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_2}, ${theme.containerAndCardShades.SHADE_PLUS_2})`};
   background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
   background-position: left center, right center;
   background-repeat: no-repeat;
   &:hover {
-    background-image: ${({ theme, value }) => `linear-gradient(${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}, ${value === 100 ? theme.colors.primary.YELLOW : theme.colors.primary.MAIN_BLUE}),
+    background-image: ${({ theme, value, max }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
     linear-gradient(${theme.textShades.SHADE_MINUS_1}, ${theme.textShades.SHADE_MINUS_1})`};
   };
 `;
@@ -33,21 +33,21 @@ const fill = css`
   border-radius: 12px;
 `;
 
-const thumb = css<Pick<SliderProps, 'value'>>`
+const thumb = css<{ value: string, max: number }>`
   box-sizing: border-box;
   border: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: ${({ theme, value }) => (value === 100
+  background: ${({ theme, value, max }) => (Number(value) === max
     ? theme.colors.primary.YELLOW
-    : theme.colors.primary.MAIN_BLUE)};
+    : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE)};
   &:hover {
     background: ${(props) => props.theme.colors.primary.LIGHT_BLUE};
   }
 `;
 
-export const Input = Styled.input<Pick<SliderProps, 'value'>>`
+export const Input = Styled.input<{ value: string, max: number }>`
   cursor: pointer;
   &,
   &::-webkit-slider-thumb {
@@ -62,7 +62,7 @@ export const Input = Styled.input<Pick<SliderProps, 'value'>>`
   --ratio: calc((var(--val) - var(--min)) / var(--range));
   --sx: calc(0.5 * 20px + var(--ratio) * (100% - 20px));
 
-  margin: 0;
+  margin: 8px 0 0 0;
   padding: 0;
   height: 20px;
   background: transparent;
@@ -111,21 +111,39 @@ export const Input = Styled.input<Pick<SliderProps, 'value'>>`
   }
 `;
 
-export const MaxButton = Styled.button<Pick<SliderProps, 'value'>>`
+export const NumInputContainer = Styled.div<{ value: string, max: number, hasError:boolean }>`
   padding: 4px 12px;
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
   gap: 8px;
   border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  border: ${({ theme, value }) => `2px solid ${value === 100 ? theme.colors.primary.YELLOW : 'transparent'}`};
+  border: ${({
+    theme, value, max, hasError,
+  }) => `2px solid ${hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
+`;
+export const NumInput = Styled.input`
+box-sizing: border-box;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 60px;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  ::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+  }
 `;
 
-export const Container = Styled.div`
-  display: flex;
-  align-items: center;
+export const Container = Styled(Row)`
+  gap: 16px;
+  height: 55px;
+`;
+
+export const InputWrapper = Styled(Column)`
+  gap: 4px;
 `;
