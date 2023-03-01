@@ -7,7 +7,8 @@ const CieloHoverCardDropdown = Styled(HoverCard.Dropdown)`
   background-color: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   border: 2px solid ${({ theme }) => theme.textShades.SHADE_MINUS_1};
-border-radius: 9px;
+  border-radius: 9px;
+  padding: 9px;
 `;
 
 export const HoverCardComponent = ({

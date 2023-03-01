@@ -1,7 +1,13 @@
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 export interface SliderProps {
-  value: number;
+  value: string;
+  min: number;
+  max: number;
   onInput: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  setValue: Dispatch<SetStateAction<string>>;
+  hasError: boolean;
+  errorMessage?: string;
+  charLimit?: number;
+  unit?: string;
 }
