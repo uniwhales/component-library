@@ -22,6 +22,7 @@ export interface CopyToClipBoardProps {
   background?: boolean
   link?: string;
   hoverColor?: string;
+  iconLeft?: boolean;
   textSize?: BodySizes | HeaderSizes
 }
 const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
@@ -49,7 +50,7 @@ export const CopyToClipBoard = ({
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
   */
-  hoverColor, background,
+  hoverColor, background, iconLeft,
 }:CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);
@@ -67,25 +68,32 @@ export const CopyToClipBoard = ({
   const openLink = () => {
     link && window.open(link, '_blank');
   };
+
+  const copyIcon = (
+    <IconWrapper
+      onMouseEnter={() => {
+        if (hoverColor && !background) setCurrentColor(hoverColor);
+      }}
+      onMouseLeave={() => {
+        if (hoverColor && !background) setCurrentColor(color);
+      }}
+      cursor="pointer"
+      width="12px"
+      height="12px"
+      fill={currentColor}
+      onClick={copyText}
+      icon={icon ?? <CopyStandard />}
+    />
+  );
+
   return (
     <Wrapper>
+      {iconLeft && copyIcon}
       <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>
       <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
         <CustomReactTooltip delayShow={0} delayHide={0} scrollHide id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        <IconWrapper
-          onMouseEnter={() => {
-            if (hoverColor && !background) setCurrentColor(hoverColor);
-          }}
-          onMouseLeave={() => {
-            if (hoverColor && !background) setCurrentColor(color);
-          }}
-          cursor="pointer"
-          width="12px"
-          height="12px"
-          fill={currentColor}
-          onClick={copyText}
-          icon={icon ?? <CopyStandard />}
-        />
+        {!iconLeft && copyIcon}
+
       </Background>
       {link && (
         <Background hoverColor={hoverColor} background={background}>
