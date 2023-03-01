@@ -19,10 +19,9 @@ export const DropdownSlider = ({
   min, max, onApply,
   buttonText, buttonIcon,
   buttonWidth, buttonHeight,
-  description, unit,
+  description, unit, sliderValue, setSliderValue,
 }: MinUsdProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [sliderValue, setSliderValue] = useState('0');
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsOpen(false));
 
@@ -61,7 +60,7 @@ export const DropdownSlider = ({
               onInput={(e) => setSliderValue(e.target.value)}
               unit={unit}
               hasError={valueIsEmpty || valueIsTooLarge}
-              errorMessage={valueIsEmpty ? 'Please enter a value' : valueIsTooLarge ? `Max number is ${max}` : undefined}
+              errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
             />
             <ButtonContainer>
               <ButtonAtom
