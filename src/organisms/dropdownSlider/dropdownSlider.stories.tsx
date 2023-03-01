@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Column } from '../../atoms/common/flex';
 import { CoinStandard } from '../../atoms/icons';
@@ -15,6 +15,7 @@ export default {
 
 const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
   const isDark = globals.backgrounds?.value === '#191B20';
+  const [val, setVal] = useState('0');
 
   return (
     <Column>
@@ -26,6 +27,8 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
           max={1000000}
           buttonText="Min.USD"
           buttonIcon={<CoinStandard />}
+          sliderValue={val}
+          setSliderValue={setVal}
           description={(
             <TextRow>
               <Text color={isDark ? '#B4B5C6' : '#70717C'} size="Caption-Regular">
@@ -52,7 +55,7 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         {' '}
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => setVal('0')}>Clear slider</ButtonAtom>
       </Bar>
     </Column>
   );
