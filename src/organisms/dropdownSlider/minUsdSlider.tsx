@@ -45,7 +45,7 @@ export const DropdownSlider = ({
           {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
           {buttonText}
         </MinUsdButtonContent>
-        <IconWrapper width="12px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
+        <IconWrapper cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
       </MinUsdButton>
       {isOpen && (
         <OpenContainer>

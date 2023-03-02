@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ConnectButtonProps } from '../../atoms/connectWalletButton/types';
 import { IdenticonComponent } from '../../atoms/identicon/Identicon';
 import { Text } from '../../atoms/texts/text';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
 import { UserMenu } from '../navbar/components/UserMenu/UserMenu';
 import { UserIdenticonWrapper } from './style';
+import { useClickOutside } from '../../utils/useClickOutside';
 
 export type UserIdenticonProps = { plan?: string, onWalletConnectClick: ConnectButtonProps['onClick'], account?: string };
 
@@ -14,11 +15,14 @@ export const UserIdenticon = ({
   plan,
 }: UserIdenticonProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const clickRef = useRef(null);
 
   const handleScroll = () => {
     if (!isMenuOpen) return;
     setIsMenuOpen(false);
   };
+
+  useClickOutside(clickRef, () => setIsMenuOpen(false));
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -27,7 +31,7 @@ export const UserIdenticon = ({
 
   return (
     <>
-      <UserIdenticonWrapper>
+      <UserIdenticonWrapper ref={clickRef}>
         <IdenticonComponent
           hasInteraction
           size="big"

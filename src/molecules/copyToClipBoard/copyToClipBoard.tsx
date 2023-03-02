@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import ReactTooltip from 'react-tooltip';
 import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
+import { SimpleTooltip } from '../tooltip/TooltipComponent';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -14,7 +14,6 @@ enum TEXT {
 export interface CopyToClipBoardProps {
   text:string;
   walletCut?: boolean;
-  id: string;
   color?:string;
   shortText?: string;
   icon?: JSX.Element;
@@ -25,10 +24,7 @@ export interface CopyToClipBoardProps {
   iconLeft?: boolean;
   textSize?: BodySizes | HeaderSizes
 }
-const CustomReactTooltip = Styled(ReactTooltip)<{ id: string | number }>`
-  width: 120px;
-  text-align: center;
-`;
+
 const Wrapper = Styled.div`
   display: flex;
   align-items: center;
@@ -42,9 +38,10 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     cursor: pointer;
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
+  z-index: ${({ theme }) => theme.zIndex.TOOLTIP};
 `;
 export const CopyToClipBoard = ({
-  text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, id, color, shortText, icon,
+  text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
   linkIcon, link, textSize,
   /*
     When hoverColor is provided without background only the icon highlights
@@ -91,10 +88,11 @@ export const CopyToClipBoard = ({
   return (
     <Wrapper>
       {!iconLeft && TextLabel}
-      <Background hoverColor={hoverColor} background={background} data-for={id} data-tip="Copy to clipboard">
-        <CustomReactTooltip delayShow={0} delayHide={0} scrollHide id={id} effect="solid" getContent={() => (copy ? TEXT.COPIED : TEXT.COPY)} />
-        {copyIcon}
-      </Background>
+      <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
+        <div>
+          {copyIcon}
+        </div>
+      </SimpleTooltip>
       {iconLeft && TextLabel}
       {link && (
         <Background hoverColor={hoverColor} background={background}>
