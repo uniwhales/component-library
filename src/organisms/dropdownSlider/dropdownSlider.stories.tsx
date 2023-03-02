@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
           buttonIcon={<CoinStandard />}
           sliderValue={val}
           setSliderValue={setVal}
+          buttonWidth="140px"
           description={(
             <TextRow>
               <Text color={isDark ? '#B4B5C6' : '#70717C'} size="Caption-Regular">

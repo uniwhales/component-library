@@ -21,10 +21,11 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
-  border: ${({ theme }) => `1px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`};
+  border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)};
   cursor: pointer;
+  justify-content: space-between;
   svg {
     fill: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)}!important;
   }

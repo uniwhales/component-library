@@ -41,7 +41,7 @@ export const DropdownSlider = ({
         height={buttonHeight}
         width={buttonWidth}
       >
-        <MinUsdButtonContent>
+        <MinUsdButtonContent onClick={() => setIsOpen(!isOpen)}>
           {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
           {buttonText}
         </MinUsdButtonContent>
