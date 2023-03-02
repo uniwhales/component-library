@@ -304,14 +304,14 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
     return (
       <IconWrapper
         fill={theme.colors.system.WHITE}
-        icon={<ChevronDownIcon />}
+        icon={<ChevronUpIcon />}
       />
     );
   }
   return (
     <IconWrapper
       fill={isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
-      icon={<ChevronUpIcon />}
+      icon={<ChevronDownIcon />}
     />
   );
 };
