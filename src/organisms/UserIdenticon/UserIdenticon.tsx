@@ -30,16 +30,14 @@ export const UserIdenticon = ({
   });
 
   return (
-    <>
-      <UserIdenticonWrapper ref={clickRef}>
-        <IdenticonComponent
-          hasInteraction
-          size="big"
-          id="user-identicon"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        />
-        {account && <Text size="Tiny-Regular">{shortenAddressTo11Chars(account)}</Text>}
-      </UserIdenticonWrapper>
+    <UserIdenticonWrapper ref={clickRef}>
+      <IdenticonComponent
+        hasInteraction
+        size="big"
+        id="user-identicon"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      />
+      {account && <Text size="Tiny-Regular">{shortenAddressTo11Chars(account)}</Text>}
       <UserMenu
         isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {
@@ -48,7 +46,7 @@ export const UserIdenticon = ({
         plan={plan ?? ''}
         account={account}
       />
-    </>
+    </UserIdenticonWrapper>
 
   );
 };
