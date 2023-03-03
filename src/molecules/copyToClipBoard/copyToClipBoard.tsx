@@ -12,12 +12,12 @@ enum TEXT {
   COPIED = 'Copied',
 }
 export interface CopyToClipBoardProps {
-  text:string;
+  text: string;
   walletCut?: boolean;
-  color?:string;
+  color?: string;
   shortText?: string;
   icon?: JSX.Element;
-  linkIcon?:JSX.Element;
+  linkIcon?: JSX.Element;
   background?: boolean
   link?: string;
   hoverColor?: string;
@@ -38,7 +38,6 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     cursor: pointer;
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
-  z-index: ${({ theme }) => theme.zIndex.TOOLTIP};
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
@@ -48,7 +47,7 @@ export const CopyToClipBoard = ({
     When hoverColor is provided with background only the background highlights
   */
   hoverColor, background, iconLeft,
-}:CopyToClipBoardProps) => {
+}: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);
   const [currentLinkColor, setCurrentLinkColor] = useState(color);
@@ -83,7 +82,7 @@ export const CopyToClipBoard = ({
     />
   );
 
-  const TextLabel = <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text }</Text>;
+  const TextLabel = <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
 
   return (
     <Wrapper>
