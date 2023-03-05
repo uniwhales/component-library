@@ -99,7 +99,7 @@ const TextArea = Styled.div<{ textAlign: string }>`
     color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   }
 `;
-export const dexIcons:Readonly<{
+export const dexIcons: Readonly<{
   '0x': JSX.Element,
   '1inchV3': JSX.Element,
   '1inchV4': JSX.Element,
@@ -128,17 +128,17 @@ export const dexIcons:Readonly<{
   CurveV2: <CurveColor />,
 };
 
-export const TxTableColumns = (wsData :TableItem[], theme:any) => {
+export const TxTableColumns = (wsData: TableItem[], theme: any) => {
   const data = useMemo(() => [...wsData], [wsData]);
   const columns = React.useMemo(
     () => [
       {
-        accessor: (row:TableItem) => (
+        accessor: (row: TableItem) => (
           <DateSection>
             {/* <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
             {/* <Text size="S-Bold" color={theme.colors.primary.MAIN_BLUE}>/</Text> */}
             {row.timestamp && (
-            <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ')[1]}</Text>
+              <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ')[1]}</Text>
             )}
 
           </DateSection>
@@ -146,7 +146,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
         Header: 'Time (Local)',
       },
       {
-        accessor(row:TableItem) {
+        accessor(row: TableItem) {
           return (
             <SectionDex>
               {(dexIcons as any)[row.dex]}
@@ -157,7 +157,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
         width: 10,
       },
       {
-        accessor: (row:TableItem) => (
+        accessor: (row: TableItem) => (
           <SwapWrapper>
             <Block justifyContent="flex-end">
               <TextArea textAlign="right">
@@ -211,7 +211,7 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
         Header: 'Swap for',
       },
       {
-        accessor: (row:TableItem) => (
+        accessor: (row: TableItem) => (
           <SectionTotal>
             <Text size="S-Regular">
               {`$${formatNumber(row.total_usd.toFixed(2))}`}
@@ -224,16 +224,16 @@ export const TxTableColumns = (wsData :TableItem[], theme:any) => {
         Header: 'Average Total',
       },
       {
-        accessor: (row:TableItem) => (
+        accessor: (row: TableItem) => (
           <Section>
-            <CopyToClipBoard walletCut text={row.address} id={row.hash} />
+            <CopyToClipBoard walletCut text={row.address} />
           </Section>
         ),
         Header: 'Address',
         width: 60,
       },
       {
-        accessor: (row:TableItem) => (
+        accessor: (row: TableItem) => (
           <LinkSection>
             <a target="_blank" href={`https://etherscan.io/tx/${row.hash}`} rel="noreferrer">
               <IconWrapper cursor="pointer" icon={<EtherscanColor />} />

@@ -6,6 +6,7 @@ import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
+import { InnerContainer } from '../../organisms/dropdownSlider/styles';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -88,9 +89,9 @@ export const CopyToClipBoard = ({
     <Wrapper>
       {!iconLeft && TextLabel}
       <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
-        <div>
+        <InnerContainer>
           {copyIcon}
-        </div>
+        </InnerContainer>
       </SimpleTooltip>
       {iconLeft && TextLabel}
       {link && (

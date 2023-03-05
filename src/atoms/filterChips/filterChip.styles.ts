@@ -48,18 +48,20 @@ export const FloatingCloseWrapper = Styled(Row)<{ disabled?: boolean }>`
   }
 `;
 
-export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled'>>`
+export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width'>>`
   box-sizing: border-box;
   display: flex;
+  padding: 0px 8px;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
   border: 2px solid transparent;
-  padding: 4px 12px;
   height: max-content;
   line-height: 18px;
   font-weight: 400;
   gap: 4px;
+  width: ${({ width }) => width ?? 'fit-content'};
+  height: ${({ height }) => height ?? 'fit-content'};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
   svg {
     width: 16px !important;

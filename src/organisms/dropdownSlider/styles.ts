@@ -78,3 +78,8 @@ export const Bar = Styled(Row)`
   gap: 24px;
   padding: 16px;
 `;
+
+export const InnerContainer = Styled(Row)`
+  width: 100%;
+  justify-content: space-between;
+`;

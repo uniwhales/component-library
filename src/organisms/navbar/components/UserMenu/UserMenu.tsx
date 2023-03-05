@@ -16,7 +16,7 @@ export const UserMenu: FC<UserMenuProps> = ({
 
   return (
     <NavbarUserMenu isMenuOpen={isMenuOpen}>
-      {account && <CopyToClipBoard walletCut text={account} id={account} />}
+      {account && <CopyToClipBoard walletCut text={account} />}
       {account && <Line length="98px" />}
       {account && plan && (
         <Text color={textShades.SHADE_MINUS_1} size="M-Regular">

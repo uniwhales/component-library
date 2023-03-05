@@ -8,12 +8,14 @@ import { FilterChipProps } from './types';
 
 export const FilterChip = ({
   children, icon, isOn = false, onClick, id, width,
-  disabled, variant, iconSize,
+  disabled, variant, iconSize, height,
 }: FilterChipProps) => {
   switch (variant) {
     case 'secondary':
       return (
         <FilterChipSecondary
+          height={height}
+          width={width}
           disabled={disabled}
         >
           {icon && (

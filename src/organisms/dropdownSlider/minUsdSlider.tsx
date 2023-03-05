@@ -9,6 +9,7 @@ import {
   ButtonContainer,
   Container,
   Details,
+  InnerContainer,
   MinUsdButton,
   MinUsdButtonContent,
   OpenContainer,
@@ -34,18 +35,19 @@ export const DropdownSlider = ({
   const valueIsTooLarge = Number(sliderValue) > max;
   const valueIsEmpty = sliderValue === '';
   return (
-    <Container ref={clickRef}>
+    <Container onClick={() => setIsOpen(!isOpen)} ref={clickRef}>
       <MinUsdButton
-        onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
         height={buttonHeight}
         width={buttonWidth}
       >
-        <MinUsdButtonContent onClick={() => setIsOpen(!isOpen)}>
-          {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
-          {buttonText}
-        </MinUsdButtonContent>
-        <IconWrapper cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
+        <InnerContainer>
+          <MinUsdButtonContent>
+            {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
+            {buttonText}
+          </MinUsdButtonContent>
+          <IconWrapper width="20px" height="20px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
+        </InnerContainer>
       </MinUsdButton>
       {isOpen && (
         <OpenContainer>

@@ -103,7 +103,7 @@ const Overlay = Styled.div`
 export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
   bot_id,
-}:WalletAlertsTableProps) => {
+}: WalletAlertsTableProps) => {
   const theme = localTheme();
   return (
     <Wrapper isLoading={isLoading}>
@@ -114,7 +114,7 @@ export const WalletAlertsTable = ({
             {label}
           </Text>
         )}
-        <CopyToClipBoard walletCut id={id.toString()} text={wallet} />
+        <CopyToClipBoard walletCut text={wallet} />
       </Section>
       <Section>
         <Group>
