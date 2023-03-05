@@ -156,7 +156,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
       background: !isSelected ? theme.colors.primary.MAIN_BLUE : undefined,
-      color: theme.textShades.SHADE_MINUS_3,
+      color: theme.colors.system.WHITE,
     },
   }),
   menu: (defaultStyles) => ({
