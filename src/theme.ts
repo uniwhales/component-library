@@ -36,14 +36,14 @@ const LightTheme = {
   textShades: {
     SHADE_MINUS_3: '#1F2128',
     SHADE_MINUS_2: '#70717C',
-    SHADE_MINUS_1: '#C4C5CC',
+    SHADE_MINUS_1: '#91929F',
   },
   containerAndCardShades: {
     NEUTRAL_SHADE_0: '#A6B8C8',
     SHADE_PLUS_1: '#FFFFFF',
     SHADE_PLUS_2: '#F7F8FA',
-    SHADE_PLUS_3: '#E9EBF1',
-    BG_SHADE_PLUS_4: '#DEDFE7',
+    SHADE_PLUS_3: '#E5E6EC',
+    BG_SHADE_PLUS_4: '#F1F2F4',
   },
   contrastColor: {
     HIGH_CONTRAST: '#1D86E8',
