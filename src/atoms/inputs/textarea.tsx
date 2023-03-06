@@ -28,7 +28,7 @@ export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: bo
   padding: ${({ inputState }) => (inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   box-sizing: border-box;
   border: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
-  background: ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  background: transparent;
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
