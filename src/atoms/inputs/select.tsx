@@ -151,7 +151,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     alignItems: 'center',
     justifyContent: 'space-between',
     cursor: 'pointer',
-    color: theme.textShades.SHADE_MINUS_1,
+    color: theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.MAIN_BLUE
       : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
