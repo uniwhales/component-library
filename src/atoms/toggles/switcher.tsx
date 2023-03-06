@@ -31,7 +31,6 @@ const Toggle = Styled.span<SwitcherProps>`
   :hover {
     background: ${({ isOn, disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.colors.secondary.SKY : theme.containerAndCardShades.SHADE_PLUS_1)};
     :before {
-      // box-shadow: ${({ disabled, theme }) => !disabled && theme.dropShadow.REGULAR};
       background: ${({ disabled, theme }) => !disabled && theme.colors.primary.LIGHT_BLUE};
     }
   }
