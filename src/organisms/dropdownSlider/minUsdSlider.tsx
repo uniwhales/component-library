@@ -35,8 +35,9 @@ export const DropdownSlider = ({
   const valueIsTooLarge = Number(sliderValue) > max;
   const valueIsEmpty = sliderValue === '';
   return (
-    <Container onClick={() => setIsOpen(!isOpen)} ref={clickRef}>
+    <Container ref={clickRef}>
       <MinUsdButton
+        onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
         height={buttonHeight}
         width={buttonWidth}
