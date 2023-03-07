@@ -67,7 +67,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     boxSizing: 'border-box',
     background: selectProps.menuIsOpen || isFocused
-      ? theme.gradients.primary.MAIN_BLUE_GRADIENT : theme.containerAndCardShades.BG_SHADE_PLUS_4,
+      ? theme.colors.primay.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4,
     border: '1px solid transparent',
     outline: 'none',
     boxShadow: 'none',

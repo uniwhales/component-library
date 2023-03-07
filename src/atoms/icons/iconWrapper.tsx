@@ -11,7 +11,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   justify-content: center;
   transition: width 0.3s;
   svg {
-    fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
+    fill: ${(props) => (props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')};
   }
@@ -30,7 +30,7 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
     background: ${({ theme }) => theme.colors.primary.YELLOW};
   }
   svg {
-    fill: ${(props) => (props.gradient ? `url(#${props.gradient})` : props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
+    fill: ${(props) => (props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
     cursor: pointer;
   };
@@ -58,7 +58,6 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   stroke,
   cursor,
   name,
-  gradient,
   onMouseEnter,
   onMouseLeave,
   href,
@@ -76,7 +75,6 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       fill={fill}
       stroke={stroke}
       name={name}
-      gradient={gradient}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
     >
@@ -98,7 +96,6 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       fill={fill}
       stroke={stroke}
       name={name}
-      gradient={gradient}
       disabled={disabled}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}

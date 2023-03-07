@@ -5,7 +5,7 @@ import { useClickOutside } from '../../utils/useClickOutside';
 import {
   Container, MeatballContainer, MeatballRow,
 } from './meatballMenu.styles';
-import { Item, MeatballMenuProps } from './types';
+import { MeatballMenuProps, Item } from './types';
 
 export const MeatballMenu = ({
   items,

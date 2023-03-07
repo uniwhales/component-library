@@ -32,7 +32,7 @@ const Imgs = [
 
 const Template: ComponentStory<typeof Carousel> = (args) => (
   <Wrapper>
-    <Carousel borderRadius="0" {...args}>{Imgs.map((i) => <Image imgUrl={i} />)}</Carousel>
+    <Carousel borderRadius="0" {...args}>{Imgs.map((i) => <Image key={i} imgUrl={i} />)}</Carousel>
   </Wrapper>
 );
 export const RegularCarousel = Template.bind({});

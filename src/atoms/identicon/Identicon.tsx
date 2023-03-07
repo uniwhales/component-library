@@ -12,13 +12,11 @@ export const IdenticonComponent = ({
   target,
   onMouseEnter,
   isLink = true,
-  gradientBorder = false,
 }: IdenticonProps) => (
   <Container
     as={isLink ? 'a' : undefined}
     size={size}
     hasInteraction={hasInteraction}
-    gradientBorder={gradientBorder}
     onClick={onClick}
     href={href}
     target={target}

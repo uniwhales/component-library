@@ -21,11 +21,9 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
-
   ${tablet(css`
     max-width: calc(100vw - 100px);
   `)}
-
   ${phone(css`
     width: 100vw;
     max-height: 600px;

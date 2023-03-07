@@ -59,7 +59,6 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
     closeFn={closeFn}
     headerText="Modal Header"
     headerIcon={<StarIcon />}
-    headerIconGradient={localTheme().gradients.svg.CANARY}
     modalVariant="single"
     modalContent={(
       <LatestAnnouncementsList height="100%" gap="48px">

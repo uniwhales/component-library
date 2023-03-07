@@ -8,17 +8,6 @@ import { ZIndex } from './utils/constants';
 // const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
-enum SvgGradients {
-  'MAIN_BLUE_GRADIENT' = 'MAIN_BLUE_GRADIENT',
-  'MAIN_BLUE_GRADIENT_FLIPPED' = 'MAIN_BLUE_GRADIENT_FLIPPED',
-  'MAIN_HIGHLIGHT_GRADIENT' = 'MAIN_HIGHLIGHT_GRADIENT',
-  'TEAL' = 'TEAL',
-  'CANARY' = 'CANARY',
-  'TANGY' = 'TANGY',
-  'SKY' = 'SKY',
-  'GREEN' = 'GREEN',
-}
-
 const DarkTheme = {
   OVERLAY: 'rgba(17,17,17,0.50)',
   textShades: {
@@ -70,6 +59,7 @@ const Theme = {
   colors: {
     primary: {
       MAIN_BLUE: '#1D86E8',
+      MEDIUM_BLUE: '#374475',
       LIGHT_BLUE: '#85C4FF',
       MANGO: '#CBAA00',
       DARK_BLUE: '#142A63',
@@ -91,46 +81,13 @@ const Theme = {
       GREY: '#A5A6B8',
     },
   },
-  gradients: {
-    svg: SvgGradients,
-    primary: {
-      MAIN_BLUE_GRADIENT: 'linear-gradient(180deg, #5AD7F9 0%, #255296 100%)',
-      MAIN_BLUE_GRADIENT_FLIPPED: 'linear-gradient(180deg, #255296 0%, #5AD7F9 100%)',
-      MAIN_HIGHLIGHT_GRADIENT: 'linear-gradient(180deg, #255296 0%, #95E6FF 100%)',
-      BLUE_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #2D467F 0%, #489BFC 100%)',
-    },
-    secondary: {
-      TEAL: 'linear-gradient(180deg, #01AAE0 0%, #C0FBFF 100%)',
-      CANARY: 'linear-gradient(180deg, #EEFF41 0%, #DB9C00 100%)',
-      TANGY: 'linear-gradient(180deg, #AD3B72 0%, #DD8442 100%)',
-      SKY: 'linear-gradient(180deg, #489BFC 0%, #2D467F 100%)',
-      SHADE_VERTICAL: 'linear-gradient(180deg, #575757 0%, #1F232F 100%)',
-      SHADE_HORIZONTAL: 'linear-gradient(90deg, #575757 0%, #1F232F 100%)',
-      RADIAL_LIGHT: 'radial-gradient(50% 903.12% at 50% 100%, #E2E4EB 0%, #8E99BF 99.48%)',
-      RADIAL: 'radial-gradient(50% 903.12% at 50% 100%, #23293B 35.94%, #666C81 99.48%)',
-      CANARY_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #DB9C00 3.24%, #EEFF41 95.37%)',
-      TANGY_HORIZONTAL_GRADIENT: 'linear-gradient(90deg, #AD3B72 0%, #DD8442 100%)',
-      TEAL_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #01AAE0 0%, #C0FBFF 98.47%)',
-      ORANGE_VERTICAL_GRADIENT: 'linear-gradient(0deg, #FE8F29 0%, #FFF06C 100%)',
-      ORANGE_HORIZONTAL_GRADIENT: 'linear-gradient(90deg, #FE8F29 0%, #FFF06C 100%)',
-    },
-    system: {
-      GREEN: 'linear-gradient(180deg, #1DD1A1 0%, #CEFF41 100%)',
-      GREEN_HORIZONTAL_GRADIENT: 'linear-gradient(270deg, #18FFC8 0%, #19BD64 98.47%)',
-      GREEN_VERTICAL_GRADIENT: 'linear-gradient(270deg, #18FFC8 0%, #19BD64 98.47%)',
-      SHADE_HORIZONTAL_GRADIENT: 'linear-gradient(90deg, #595A5B 0%, #1F2431 100%)',
-      SHADE_VERTICAL_GRADIENT: 'linear-gradient(180deg, #575757 0%, #1F232F 100%)',
-      RADIAL: 'radial-gradient(50% 903.12% at 50% 100%, #23293B 35.94%, #666C81 99.48%)',
-      RADIAL_LIGHT: 'radial-gradient(50% 903.12% at 50% 100%, #E2E4EB 0%, #8E99BF 99.48%)',
-    },
-  },
   zIndex: ZIndex,
 };
 
 LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;
 DarkTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.BLACK}`;
 
-const { colors, gradients } = Theme;
+const { colors } = Theme;
 const localTheme = () => useTheme() as typeof Theme;
 const GlobalStyle = createGlobalStyle`
   html {
@@ -144,6 +101,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export {
-  GlobalStyle, Theme, colors, gradients, LightTheme, DarkTheme, localTheme, SvgGradients,
+  GlobalStyle, Theme, colors, LightTheme, DarkTheme, localTheme,
 };
 export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;

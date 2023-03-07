@@ -1,9 +1,7 @@
 import { MouseEventHandler } from 'react';
-import { SvgGradients } from '../../theme';
 
 export type IconWrapperProps = {
   icon?: JSX.Element;
-  gradient?: SvgGradients
   onClick?: MouseEventHandler<HTMLDivElement>;
   height?: string;
   width?: string;

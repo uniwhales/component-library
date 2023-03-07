@@ -20,20 +20,20 @@ export const getToastColor = (type: TypeOptions, theme: typeof Theme) => {
 export const getToastIcon = (type: TypeOptions, theme: typeof Theme) => {
   const lookup = {
     default: <IconWrapper
-      gradient={theme.gradients.svg.TEAL}
+      fill={theme.colors.primary.MAIN_BLUE}
       icon={<TimeStandard />}
     />,
     info: <IconWrapper
-      gradient={theme.gradients.svg.TEAL}
+      fill={theme.colors.primary.MAIN_BLUE}
       icon={<TimeStandard />}
     />,
     success: <IconWrapper icon={<SelectedCheck />} />,
     error: <IconWrapper
-      gradient={theme.gradients.svg.CANARY}
+      fill={theme.colors.system.RED}
       icon={<NoticeIcon />}
     />,
     warning: <IconWrapper
-      gradient={theme.gradients.svg.TANGY}
+      fill={theme.colors.primary.MANGO}
       icon={<RevokeIcon />}
     />,
   };

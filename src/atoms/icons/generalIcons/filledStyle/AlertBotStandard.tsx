@@ -1,6 +1,4 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
 
 export const AlertBotStandard = () => (
   <svg
@@ -9,10 +7,6 @@ export const AlertBotStandard = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
     <path
       fillRule="evenodd"
       d="M12.94 5.766a2 2 0 10-2.887-2.223c-.04.115-.053.254-.053.457a2 2 0 001 1.732V7H6.545c-.868 0-1.7.316-2.314.879-.613.562-.958 1.325-.958 2.121v9c0 .796.345 1.559.958 2.121A3.43 3.43 0 006.545 22h10.91c.868 0 1.7-.316 2.314-.879.613-.562.958-1.325.958-2.121v-9c0-.796-.345-1.559-.958-2.121A3.43 3.43 0 0017.455 7H13l-.06-1.234zM15 17a1 1 0 100-2 1 1 0 000 2zm-5-1a1 1 0 11-2 0 1 1 0 012 0z"

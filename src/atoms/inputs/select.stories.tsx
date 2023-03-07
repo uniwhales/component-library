@@ -97,10 +97,7 @@ export default {
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return (
-    <>
-      <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
-      <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
-    </>
+    <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
   );
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
@@ -142,6 +139,7 @@ PrimaryIcon.args = {
   readOnly: false,
   isXL: false,
   showValue: true,
+  placeholder: 'Primary Icon',
 };
 
 LongOption.args = {
@@ -162,10 +160,10 @@ MultiSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
+    <Placeholder>
+      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+      <Text size="S-Regular">Filter Tx types and Chains</Text>
+    </Placeholder>,
   isXL: true,
   isClearable: false,
   isSearchable: false,
@@ -176,10 +174,10 @@ CustomMenuHeight.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
+    <Placeholder>
+      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+      <Text size="S-Regular">Filter Tx types and Chains</Text>
+    </Placeholder>,
   isXL: true,
   isClearable: false,
   isSearchable: false,
@@ -194,10 +192,10 @@ SingleGroupSearchSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
+    <Placeholder>
+      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+      <Text size="S-Regular">Filter Tx types and Chains</Text>
+    </Placeholder>,
   isXL: true,
   isClearable: true,
   isSearchable: true,
@@ -208,10 +206,10 @@ MultiGroupSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
+    <Placeholder>
+      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+      <Text size="S-Regular">Filter Tx types and Chains</Text>
+    </Placeholder>,
   isXL: true,
   isClearable: true,
   isSearchable: true,

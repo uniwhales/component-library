@@ -1,6 +1,5 @@
 import React from 'react';
-import { SvgGradients } from '../../../../theme';
-import { SvgLinearGradient } from '../../svgGradientProvider';
+
 
 export const SearchStandard = () => (
   <svg
@@ -9,10 +8,7 @@ export const SearchStandard = () => (
     fill="none"
     viewBox="0 0 24 24"
   >
-    {SvgLinearGradient(SvgGradients.MAIN_BLUE_GRADIENT)}
-    {SvgLinearGradient(SvgGradients.SKY)}
-    {SvgLinearGradient(SvgGradients.TEAL)}
-    {SvgLinearGradient(SvgGradients.CANARY)}
+
     <path
       fillRule="evenodd"
       d="M13.96 13.96a1.105 1.105 0 011.562 0l5.154 5.154a1.105 1.105 0 01-1.562 1.563l-5.154-5.155a1.105 1.105 0 010-1.562z"

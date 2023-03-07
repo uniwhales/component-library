@@ -74,11 +74,6 @@ export const Placeholder = Styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
-  div {
-    svg {
-      transform: unset;
-    }
-  }
 `;
 
 const OptionWrapper = Styled.div`
@@ -123,7 +118,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       ? theme.colors.primary.MAIN_BLUE : isDisabled
         ? theme.containerAndCardShades.SHADE_PLUS_1
         : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: isDisabled ? `1px solid ${theme.textShades.SHADE_MINUS_1}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
+    border: isDisabled ? '1px solid transparent' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
     outline: 'none',
     padding: '0 10px 0 10px',
     boxShadow: 'none',
@@ -136,6 +131,15 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     },
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
     fontWeight: isFocused ? 'bold' : 'normal',
+    svg: {
+      fill: isFocused && theme.colors.system.WHITE,
+    },
+    '&:hover': {
+      border: isDisabled ? '1px solid transparent' : `1px solid ${theme.textShades.SHADE_MINUS_2}`,
+      svg: {
+        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+      },
+    },
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly, label,
@@ -147,7 +151,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     alignItems: 'center',
     justifyContent: 'space-between',
     cursor: 'pointer',
-    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
+    color: theme.textShades.SHADE_MINUS_3,
     background: isSelected ? theme.colors.primary.MAIN_BLUE
       : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
