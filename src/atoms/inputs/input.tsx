@@ -64,6 +64,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: none;
+  border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
