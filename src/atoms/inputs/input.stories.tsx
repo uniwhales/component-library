@@ -42,6 +42,7 @@ export const WithIcon = Template.bind({});
 export const Disabled = Template.bind({});
 
 Primary.args = {
+  label: 'label',
   inputState: {
     status: 'default',
     message: '',

@@ -64,7 +64,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border: none;
-  background: transparent;
+  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
@@ -83,7 +83,7 @@ export const InputLabel = Styled.label<{
 }>`
   font-size: 12px;
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  font-weight: 700;
+  font-weight: 400;
   line-height: 16px;
   ${({ hover, disabled }) => hover && !disabled && css`
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
