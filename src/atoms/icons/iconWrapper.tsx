@@ -10,6 +10,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   align-items: center;
   justify-content: center;
   transition: width 0.3s;
+  pointer-events: ${({ pointerEvents }) => !pointerEvents && 'none'};
   svg {
     fill: ${(props) => (props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
     stroke: ${(props) => props.stroke};
@@ -62,6 +63,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   onMouseLeave,
   href,
   disabled,
+  pointerEvents = true,
 }) => (href ? (
   <Outer disabled={disabled} target="_blank" href={href}>
     <AnchorIconComponent
@@ -99,6 +101,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       disabled={disabled}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
+      pointerEvents={pointerEvents}
     >
       {icon && icon}
     </IconComponent>

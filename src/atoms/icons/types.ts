@@ -13,4 +13,5 @@ export type IconWrapperProps = {
   onMouseLeave?: () => void
   href?: string;
   disabled?: boolean;
+  pointerEvents?: boolean;
 };
