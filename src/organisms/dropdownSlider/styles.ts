@@ -10,12 +10,13 @@ export const Container = Styled(Column)`
 export const OpenContainer = Styled.div`
   position: absolute;
   top: 50px;
-  z-index: ${({ theme }) => theme.zIndex.POPICON};
+  z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
 export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string }>`
   height: ${({ height }) => height};
   width: ${({ width }) => width};
+  z-index: ${({ theme, isOpen }) => isOpen && theme.zIndex.MODAL};
   display: flex;
   align-items: center;
   gap: 16px;

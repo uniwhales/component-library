@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
+import { Overlay } from '../../atoms/common/overlay';
 import { ChevronDownIcon, ChevronUpIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Slider } from '../../atoms/slider/slider';
@@ -46,27 +47,29 @@ export const DropdownSlider = ({
   });
 
   return (
-    <Container ref={clickRef}>
-      <MinUsdButton
-        onClick={() => setIsOpen(!isOpen)}
-        isOpen={isOpen}
-        height={buttonHeight}
-        width={buttonWidth}
-      >
-        <InnerContainer>
-          <MinUsdButtonContent>
-            {buttonIcon && <IconWrapper height="20px" width="20px" cursor="pointer" icon={buttonIcon} />}
-            {buttonText}
-          </MinUsdButtonContent>
-          <IconWrapper
-            width="20px"
-            height="20px"
-            cursor="pointer"
-            icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-          />
-        </InnerContainer>
-      </MinUsdButton>
-      {isOpen && (
+    <>
+      {isOpen && <Overlay />}
+      <Container ref={clickRef}>
+        <MinUsdButton
+          onClick={() => setIsOpen(!isOpen)}
+          isOpen={isOpen}
+          height={buttonHeight}
+          width={buttonWidth}
+        >
+          <InnerContainer>
+            <MinUsdButtonContent>
+              {buttonIcon && <IconWrapper height="20px" width="20px" cursor="pointer" icon={buttonIcon} />}
+              {buttonText}
+            </MinUsdButtonContent>
+            <IconWrapper
+              width="20px"
+              height="20px"
+              cursor="pointer"
+              icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+            />
+          </InnerContainer>
+        </MinUsdButton>
+        {isOpen && (
         <OpenContainer>
           <Arrow />
           <Details>
@@ -98,7 +101,8 @@ export const DropdownSlider = ({
             </ButtonContainer>
           </Details>
         </OpenContainer>
-      )}
-    </Container>
+        )}
+      </Container>
+    </>
   );
 };
