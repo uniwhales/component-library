@@ -28,6 +28,7 @@ export interface CopyToClipBoardProps {
 
 const Wrapper = Styled.div`
   display: flex;
+  width: auto;
   align-items: center;
   gap: 5px;
 `;
