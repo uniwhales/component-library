@@ -66,7 +66,7 @@ export const DropdownSlider = ({
               height="20px"
               cursor="pointer"
               icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-              pointerEvents={false}
+              pointerEvents="none"
             />
           </InnerContainer>
         </MinUsdButton>
