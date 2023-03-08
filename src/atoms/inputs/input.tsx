@@ -64,6 +64,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
+  border-radius: 12px;
   border: none;
   background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   ::placeholder {
@@ -156,85 +157,85 @@ export /**
 }
  * @returns {*}
  */
-  const Input = ({
-    type,
-    placeholder,
-    value,
-    onChange,
-    label,
-    disabled,
-    min,
-    icon,
-    pattern,
-    inputState = { message: '', status: 'default' },
-    width,
-    onEnterSubmit,
-  }: InputsProps) => {
-    const [focus, setFocus] = useState<boolean>(false);
-    const [hover, setHover] = useState<boolean>(false);
-    const theme = localTheme();
+const Input = ({
+  type,
+  placeholder,
+  value,
+  onChange,
+  label,
+  disabled,
+  min,
+  icon,
+  pattern,
+  inputState = { message: '', status: 'default' },
+  width,
+  onEnterSubmit,
+}: InputsProps) => {
+  const [focus, setFocus] = useState<boolean>(false);
+  const [hover, setHover] = useState<boolean>(false);
+  const theme = localTheme();
 
-    const getMoreDetailsTextColor = (status: InputState['status']) => {
-      const lookup = {
-        valid: theme.colors.system.GREEN,
-        exception: theme.colors.system.AMBER,
-        help: theme.colors.secondary.FUSCIA,
-      };
-      if (status === 'exception' || status === 'help' || status === 'valid') {
-        return lookup[status];
-      }
-      return theme.colors.system.RED;
+  const getMoreDetailsTextColor = (status: InputState['status']) => {
+    const lookup = {
+      valid: theme.colors.system.GREEN,
+      exception: theme.colors.system.AMBER,
+      help: theme.colors.secondary.FUSCIA,
     };
-
-    const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
-      <MoreDetailContainer
-        inputState={inputState}
-      >
-        <Text
-          color={getMoreDetailsTextColor(inputState.status)}
-          size="Caption-Regular"
-        >
-          {inputState.message}
-        </Text>
-      </MoreDetailContainer>
-    );
-    return (
-      <InputWrapper width={width}>
-        {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
-        <InputContainer
-          inputState={inputState}
-          disabled={disabled}
-          focus={focus}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <LeftSideIcon>
-            {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={hover ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1} icon={icon} />)}
-            {inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
-          </LeftSideIcon>
-          <InputStyled
-            inputState={inputState}
-            min={min}
-            disabled={disabled}
-            value={value}
-            onChange={(e) => {
-              if (pattern && !InputPatterns[pattern].test(e.target.value)) return;
-              onChange(e);
-            }}
-            onKeyDown={(e) => {
-              if (onEnterSubmit && e.key === 'Enter') {
-                onEnterSubmit();
-              }
-            }}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-            placeholder={placeholder || 'Placeholder'}
-            type={type}
-            withIcon={!!icon}
-          />
-          {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
-          {!focus && moreDetailsContainer}
-        </InputContainer>
-      </InputWrapper>
-    );
+    if (status === 'exception' || status === 'help' || status === 'valid') {
+      return lookup[status];
+    }
+    return theme.colors.system.RED;
   };
+
+  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+  <MoreDetailContainer
+    inputState={inputState}
+  >
+    <Text
+      color={getMoreDetailsTextColor(inputState.status)}
+      size="Caption-Regular"
+    >
+      {inputState.message}
+    </Text>
+  </MoreDetailContainer>
+  );
+  return (
+    <InputWrapper width={width}>
+      {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
+      <InputContainer
+        inputState={inputState}
+        disabled={disabled}
+        focus={focus}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <LeftSideIcon>
+          {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={hover ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1} icon={icon} />)}
+          {inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
+        </LeftSideIcon>
+        <InputStyled
+          inputState={inputState}
+          min={min}
+          disabled={disabled}
+          value={value}
+          onChange={(e) => {
+            if (pattern && !InputPatterns[pattern].test(e.target.value)) return;
+            onChange(e);
+          }}
+          onKeyDown={(e) => {
+            if (onEnterSubmit && e.key === 'Enter') {
+              onEnterSubmit();
+            }
+          }}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          placeholder={placeholder || 'Placeholder'}
+          type={type}
+          withIcon={!!icon}
+        />
+        {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
+        {!focus && moreDetailsContainer}
+      </InputContainer>
+    </InputWrapper>
+  );
+};

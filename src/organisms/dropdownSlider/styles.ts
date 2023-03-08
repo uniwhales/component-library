@@ -21,6 +21,7 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
+  background: ${({ theme, isOpen }) => (isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)};
@@ -30,7 +31,7 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
     fill: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)}!important;
   }
   &:hover {
-    border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_1}`};
+    border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_2}`};
     color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       svg {
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;

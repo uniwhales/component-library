@@ -4,6 +4,8 @@ import { ChevronDownIcon, ChevronUpIcon } from '../../atoms/icons';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { Slider } from '../../atoms/slider/slider';
 import { useClickOutside } from '../../utils/useClickOutside';
+import useEnter from '../../utils/useEnter';
+import useEscape from '../../utils/useEscape';
 import {
   Arrow,
   ButtonContainer,
@@ -25,15 +27,24 @@ export const DropdownSlider = ({
   const [isOpen, setIsOpen] = useState(false);
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsOpen(false));
+  // validation
+  const valueIsTooLarge = Number(sliderValue) > max;
+  const valueIsEmpty = sliderValue === '';
+  // Close on escape press
+  useEscape(() => setIsOpen(false));
 
   const onApplyClicked = () => {
     if (!sliderValue) return;
     onApply(sliderValue);
     setIsOpen(false);
   };
+  // Handle enter press
+  useEnter(() => {
+    if (!isOpen || valueIsTooLarge || valueIsEmpty) return;
+    onApply(sliderValue);
+    setIsOpen(false);
+  });
 
-  const valueIsTooLarge = Number(sliderValue) > max;
-  const valueIsEmpty = sliderValue === '';
   return (
     <Container ref={clickRef}>
       <MinUsdButton
@@ -47,7 +58,12 @@ export const DropdownSlider = ({
             {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
             {buttonText}
           </MinUsdButtonContent>
-          <IconWrapper width="20px" height="20px" cursor="pointer" icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} />
+          <IconWrapper
+            width="20px"
+            height="20px"
+            cursor="pointer"
+            icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          />
         </InnerContainer>
       </MinUsdButton>
       {isOpen && (
