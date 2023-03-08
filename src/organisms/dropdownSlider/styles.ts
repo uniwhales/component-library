@@ -25,17 +25,17 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   background: ${({ theme, isOpen }) => (isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
-  color: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)};
+  color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
   cursor: pointer;
   justify-content: space-between;
   svg {
-    fill: ${({ theme, isOpen }) => (isOpen ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1)}!important;
+    fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)}!important;
   }
   &:hover {
-    border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_2}`};
-    color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+    border: ${({ theme, isOpen }) => `1px solid ${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}`};
+    color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
       svg {
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+    fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)}!important;
   }
   }
 `;
