@@ -33,9 +33,8 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   }
   &:hover {
     border: ${({ theme, isOpen }) => `1px solid ${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}`};
-    color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
       svg {
-    fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)}!important;
+    fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)}!important;
   }
   }
 `;

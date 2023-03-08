@@ -12,9 +12,14 @@ const IconComponent = Styled.div<IconWrapperProps>`
   transition: width 0.3s;
   pointer-events: ${({ pointerEvents }) => !pointerEvents && 'none'};
   svg {
-    fill: ${(props) => (props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
+    fill: ${(props) => (props.fill || props.theme.textShades.SHADE_MINUS_1)};
     stroke: ${(props) => props.stroke};
     cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')};
+  }
+  : hover {
+    svg {
+      fill: ${(props) => (!props.fill && props.theme.textShades.SHADE_MINUS_3)};
+    }
   }
 `;
 
