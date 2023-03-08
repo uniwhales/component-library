@@ -74,12 +74,12 @@ export const Navbar: FC<NavbarProps> = ({
             }
 
             {account && (
-            <IdenticonComponent
-              id={account}
-              hasInteraction
-              size="big"
-              onClick={() => { setIsMenuOpen(!isMenuOpen); }}
-            />
+              <IdenticonComponent
+                id={account}
+                hasInteraction
+                size="big"
+                onClick={() => { setIsMenuOpen(!isMenuOpen); }}
+              />
             )}
           </NavbarRightSide>
         </NavbarMainContent>
