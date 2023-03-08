@@ -16,7 +16,7 @@ const DarkTheme = {
     SHADE_MINUS_1: '#666C81',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#262C3F',
+    NEUTRAL_SHADE_0: '#252E4F',
     SHADE_PLUS_1: '#444959',
     SHADE_PLUS_2: '#282C36',
     SHADE_PLUS_3: '#1F2128',
@@ -39,7 +39,7 @@ const LightTheme = {
     SHADE_MINUS_1: '#91929F',
   },
   containerAndCardShades: {
-    NEUTRAL_SHADE_0: '#A6B8C8',
+    NEUTRAL_SHADE_0: '#CCD0E2',
     SHADE_PLUS_1: '#FFFFFF',
     SHADE_PLUS_2: '#F7F8FA',
     SHADE_PLUS_3: '#E5E6EC',
