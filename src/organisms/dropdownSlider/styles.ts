@@ -81,5 +81,7 @@ export const Bar = Styled(Row)`
 `;
 
 export const InnerContainer = Styled(Row)`
+  width: 100%;
   justify-content: space-between;
+  align-items: center;
 `;

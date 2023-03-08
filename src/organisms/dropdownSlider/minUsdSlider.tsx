@@ -55,7 +55,7 @@ export const DropdownSlider = ({
       >
         <InnerContainer>
           <MinUsdButtonContent>
-            {buttonIcon && <IconWrapper width="12px" cursor="pointer" icon={buttonIcon} />}
+            {buttonIcon && <IconWrapper height="20px" width="20px" cursor="pointer" icon={buttonIcon} />}
             {buttonText}
           </MinUsdButtonContent>
           <IconWrapper
