@@ -86,7 +86,7 @@ export const InputLabel = Styled.label<{
 }>`
   font-size: 12px;
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  font-weight: 400;
+  font-weight: 700;
   line-height: 16px;
   ${({ hover, disabled }) => hover && !disabled && css`
     color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
