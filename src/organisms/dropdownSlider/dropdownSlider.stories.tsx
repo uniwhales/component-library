@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Column } from '../../atoms/common/flex';
 import { CoinStandard } from '../../atoms/icons';
 import { Text } from '../../atoms/texts/text';
-import { DropdownSlider } from './minUsdSlider';
+import { DropdownSlider, SliderRef } from './minUsdSlider';
 import { Bar, TextRow } from './styles';
 
 export default {
@@ -14,8 +14,12 @@ export default {
 } as ComponentMeta<typeof DropdownSlider>;
 
 const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
+  const sliderEl = useRef<SliderRef>(null);
   const isDark = globals.backgrounds?.value === '#191B20';
-  const [val, setVal] = useState('0');
+
+  const onApply = (val: string) => {
+    console.log(`apply clicked ${val}`);
+  };
 
   return (
     <Column>
@@ -23,12 +27,11 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <DropdownSlider
+          ref={sliderEl}
           min={0}
           max={1000000}
           buttonText="Min.USD"
           buttonIcon={<CoinStandard />}
-          sliderValue={val}
-          setSliderValue={setVal}
           buttonWidth="140px"
           description={(
             <TextRow>
@@ -42,8 +45,8 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
               </Text>
               <Text size="Caption-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
             </TextRow>
-        )}
-          onApply={(value) => console.debug('apply clicked', value)}
+          )}
+          onApply={onApply}
         />
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
@@ -56,7 +59,7 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         {' '}
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom buttonVariant="primary" onClick={() => setVal('0')}>Clear slider</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => sliderEl.current?.resetSlider()}>Clear slider</ButtonAtom>
       </Bar>
     </Column>
   );

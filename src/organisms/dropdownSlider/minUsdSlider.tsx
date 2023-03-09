@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, {
+  useState, useRef, useImperativeHandle, forwardRef,
+} from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Overlay } from '../../atoms/common/overlay';
 import { ChevronDownIcon, ChevronUpIcon } from '../../atoms/icons';
@@ -19,12 +21,17 @@ import {
 } from './styles';
 import { MinUsdProps } from './types';
 
-export const DropdownSlider = ({
+export type SliderRef = {
+  resetSlider: () => void;
+};
+
+export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   min, max, onApply,
   buttonText, buttonIcon,
   buttonWidth, buttonHeight,
-  description, unit, sliderValue, setSliderValue,
-}: MinUsdProps) => {
+  description, unit,
+}, ref) => {
+  const [sliderValue, setSliderValue] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setIsOpen(false));
@@ -45,6 +52,11 @@ export const DropdownSlider = ({
     onApply(sliderValue);
     setIsOpen(false);
   });
+  useImperativeHandle(ref, () => ({
+    resetSlider() {
+      setSliderValue('0');
+    },
+  }));
 
   return (
     <>
@@ -71,39 +83,39 @@ export const DropdownSlider = ({
           </InnerContainer>
         </MinUsdButton>
         {isOpen && (
-        <OpenContainer>
-          <Arrow />
-          <Details>
-            {description}
-            <Slider
-              min={min}
-              max={max}
-              value={sliderValue}
-              setValue={setSliderValue}
-              onInput={(e) => setSliderValue(e.target.value)}
-              unit={unit}
-              hasError={valueIsEmpty || valueIsTooLarge}
-              errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
-            />
-            <ButtonContainer>
-              <ButtonAtom
-                buttonVariant="primary"
-                onClick={onApplyClicked}
-                disabled={valueIsEmpty || valueIsTooLarge}
-              >
-                Apply
-              </ButtonAtom>
-              <ButtonAtom
-                buttonVariant="secondary"
-                onClick={() => setSliderValue('0')}
-              >
-                Clear
-              </ButtonAtom>
-            </ButtonContainer>
-          </Details>
-        </OpenContainer>
+          <OpenContainer>
+            <Arrow />
+            <Details>
+              {description}
+              <Slider
+                min={min}
+                max={max}
+                value={sliderValue}
+                setValue={setSliderValue}
+                onInput={(e) => setSliderValue(e.target.value)}
+                unit={unit}
+                hasError={valueIsEmpty || valueIsTooLarge}
+                errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
+              />
+              <ButtonContainer>
+                <ButtonAtom
+                  buttonVariant="primary"
+                  onClick={onApplyClicked}
+                  disabled={valueIsEmpty || valueIsTooLarge}
+                >
+                  Apply
+                </ButtonAtom>
+                <ButtonAtom
+                  buttonVariant="secondary"
+                  onClick={() => setSliderValue('0')}
+                >
+                  Clear
+                </ButtonAtom>
+              </ButtonContainer>
+            </Details>
+          </OpenContainer>
         )}
       </Container>
     </>
   );
-};
+});
