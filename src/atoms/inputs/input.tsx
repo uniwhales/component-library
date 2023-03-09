@@ -98,16 +98,15 @@ export const InputLabel = Styled.label<{
 
 export const InputContainer = Styled.div<{ inputState: InputState, focus: boolean, disabled?: boolean }>`
   position: relative;
-  border: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
   border-radius: 12px;
-  padding: 1px;
   box-sizing: border-box;
-    ${({ focus, disabled }) => focus && !disabled && css`
-    border: ${(props) => `1px solid ${props.theme.colors.primary.MAIN_BLUE}`};
+  ${({ focus, disabled }) => focus && !disabled && css`
+    outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
   `}
   &:hover {
-    border: 1px solid ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+    outline: 1px solid ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   }
+  outline: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
 `;
 
 const LeftSideIcon = Styled.div`
