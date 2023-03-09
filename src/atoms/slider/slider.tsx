@@ -29,9 +29,11 @@ export const Slider: FC<SliderProps> = ({
       setValue(target.value);
     }
   };
+
   return (
     <Container>
       <Input
+        autoFocus
         type="range"
         min={min}
         max={max}
