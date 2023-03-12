@@ -150,7 +150,7 @@ import {
   UniswapV2Filled, NearFilled, MagicLinkFilled, UniwhalesFilled, CieloFilled, SushiswapFilled,
   CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
   BalencerFilled, EvmosFilled, BancorFilled, RedCross,
-  CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested,
+  CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested, PlanetStandard, MultipartFormStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -317,6 +317,8 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="MultiPlatform" icon={<MultipartFormStandard />} />
+    <IconWrapper name="Planet" icon={<PlanetStandard />} />
     <IconWrapper name="Hide" icon={<Hide />} />
     <IconWrapper name="Watch" icon={<WatchStandard />} />
     <IconWrapper name="Profile" icon={<ProfileStandard />} />

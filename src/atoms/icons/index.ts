@@ -34,6 +34,8 @@ export * from './generalIcons/fullColorStyle/WebinarColor';
 export * from './generalIcons/fullColorStyle/Check';
 export * from './generalIcons/fullColorStyle/UniwhalesColor';
 // generalIcons//STANDARD
+export * from './generalIcons/filledStyle/MultiPlatformStandard';
+export * from './generalIcons/filledStyle/PlanetStandard';
 export * from './generalIcons/filledStyle/WatchStandard';
 export * from './generalIcons/filledStyle/ProfileStandart';
 export * from './generalIcons/filledStyle/Feed';
