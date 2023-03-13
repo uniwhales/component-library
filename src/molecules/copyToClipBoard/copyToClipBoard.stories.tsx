@@ -15,6 +15,7 @@ export default {
 const Template: ComponentStory<typeof CopyToClipBoard> = (args) => <CopyToClipBoard {...args} />;
 export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
+export const CustomSize = Template.bind({});
 export const Hover = Template.bind({});
 export const BackgroundHover = Template.bind({});
 
@@ -24,6 +25,10 @@ Primary.parameters = {
 
 Secondary.args = {
   icon: <Share />,
+};
+
+CustomSize.args = {
+  iconSize: '32px',
 };
 
 Hover.args = {
