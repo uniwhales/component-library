@@ -24,6 +24,7 @@ export interface CopyToClipBoardProps {
   hoverColor?: string;
   iconLeft?: boolean;
   textSize?: BodySizes | HeaderSizes
+  iconSize?: string;
 }
 
 const Wrapper = Styled.div`
@@ -43,7 +44,7 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
-  linkIcon, link, textSize,
+  linkIcon, link, textSize, iconSize,
   /*
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
@@ -76,8 +77,8 @@ export const CopyToClipBoard = ({
         if (hoverColor && !background) setCurrentColor(color);
       }}
       cursor="pointer"
-      width="12px"
-      height="12px"
+      width={iconSize ?? '12px'}
+      height={iconSize ?? '12px'}
       fill={currentColor}
       onClick={copyText}
       icon={icon ?? <CopyStandard />}
@@ -105,8 +106,8 @@ export const CopyToClipBoard = ({
               if (hoverColor && !background) setCurrentLinkColor(color);
             }}
             cursor="pointer"
-            width="12px"
-            height="12px"
+            width={iconSize ?? '12px'}
+            height={iconSize ?? '12px'}
             fill={currentLinkColor}
             onClick={openLink}
             icon={linkIcon ?? <LinkIcon />}
