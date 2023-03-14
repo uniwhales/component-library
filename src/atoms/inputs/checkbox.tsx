@@ -15,6 +15,7 @@ type CheckboxStyledProps = {
 
 const CheckboxStyled = Styled.div<CheckboxStyledProps>`
   transition: background-color 0.45s ease, border 0.45s ease;
+  box-sizing: border-box;
   svg {
     cursor: pointer;
   }

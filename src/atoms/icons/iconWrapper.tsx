@@ -4,21 +4,23 @@ import { Text } from '../texts/text';
 import { IconWrapperProps } from './types';
 
 const IconComponent = Styled.div<IconWrapperProps>`
-  height: ${(props) => props.height};
-  width: ${(props) => props.width};
+  height: ${({ height }) => height};
+  width: ${({ width }) => width};
   display: flex;
   align-items: center;
   justify-content: center;
   transition: width 0.3s;
   pointer-events: ${({ pointerEvents }) => pointerEvents};
   svg {
-    fill: ${(props) => (props.fill || props.theme.textShades.SHADE_MINUS_1)};
-    stroke: ${(props) => props.stroke};
-    cursor:  ${(props) => (props.cursor ? props.cursor : 'auto')};
+    fill: ${({ fill, theme }) => (fill || theme.textShades.SHADE_MINUS_1)};
+    stroke: ${({ stroke }) => stroke};
+    cursor:  ${({ cursor, hasHover }) => (hasHover ? 'pointer' : cursor || 'auto')};
   }
-  : hover {
+  :hover {
     svg {
-      fill: ${(props) => (!props.fill && props.theme.textShades.SHADE_MINUS_3)};
+      fill: ${({
+    fill, theme, hasHover,
+  }) => (hasHover && !fill && theme.textShades.SHADE_MINUS_3)};
     }
   }
 `;
@@ -69,6 +71,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   href,
   disabled,
   pointerEvents,
+  hasHover = false,
 }) => (href ? (
   <Outer disabled={disabled} target="_blank" href={href}>
     <AnchorIconComponent
@@ -107,6 +110,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
       pointerEvents={pointerEvents}
+      hasHover={hasHover}
     >
       {icon && icon}
     </IconComponent>

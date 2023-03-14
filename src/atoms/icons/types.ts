@@ -14,4 +14,5 @@ export type IconWrapperProps = {
   href?: string;
   disabled?: boolean;
   pointerEvents?: string;
+  hasHover?: boolean;
 };
