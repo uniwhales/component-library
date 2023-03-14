@@ -100,12 +100,23 @@ const ClearWrapper = Styled.div``;
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
+    width: '100%',
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     p: {
+      width: '100%',
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      '&:hover': {
+        color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
+      },
     },
     svg: {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      '&:hover': {
+        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
+      },
+    },
+    '&:hover': {
+      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     },
   }),
   control: (defaultStyles, {
@@ -137,7 +148,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     '&:hover': {
       border: isDisabled ? '1px solid transparent' : `1px solid ${theme.textShades.SHADE_MINUS_2}`,
       svg: {
-        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
       },
     },
   }),
