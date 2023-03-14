@@ -31,7 +31,7 @@ export const FilterChipContent = Styled.div<{ disabled: boolean }>`
   svg {
     height: 20px;
     width: 20px;
-    fill: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+    fill: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.contrastColor.HIGH_CONTRAST)};
   }
   p{
     color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
