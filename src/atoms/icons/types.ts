@@ -15,4 +15,5 @@ export type IconWrapperProps = {
   disabled?: boolean;
   pointerEvents?: string;
   hasHover?: boolean;
+  hoverColor?: string;
 };

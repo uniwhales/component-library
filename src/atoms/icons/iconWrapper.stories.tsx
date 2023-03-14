@@ -480,7 +480,7 @@ const Template12: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper hasHover name="Profile" icon={<ProfileStandard />} />
     <IconWrapper hasHover name="Feed" icon={<Feed />} />
     <IconWrapper hasHover name="Fire" icon={<Fire />} />
-    <IconWrapper hasHover name="Alert Bot" icon={<AlertBotStandard />} />
+    <IconWrapper hasHover hoverColor="red" name="Alert Bot" icon={<AlertBotStandard />} />
   </>
 );
 
