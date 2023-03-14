@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const TransactionsStandard = () => (
   <svg
     width="100%"

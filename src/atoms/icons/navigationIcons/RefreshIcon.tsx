@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const RefreshIcon = () => (
   <svg
     width="100%"

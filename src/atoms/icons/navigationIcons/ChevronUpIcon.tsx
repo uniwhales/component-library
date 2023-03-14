@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const ChevronUpIcon = () => (
   <svg
     width="100%"

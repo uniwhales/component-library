@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const TrendingStandard = () => (
   <svg
     width="100%"

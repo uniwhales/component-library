@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const CrossIcon = () => (
   <svg
     width="100%"

@@ -8,7 +8,6 @@ import {
   BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
-import { ButtonAtom } from '../buttons/button';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -160,10 +159,10 @@ MultiSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-    <Placeholder>
-      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-      <Text size="S-Regular">Filter Tx types and Chains</Text>
-    </Placeholder>,
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
   isXL: true,
   isClearable: false,
   isSearchable: false,
@@ -174,10 +173,10 @@ CustomMenuHeight.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-    <Placeholder>
-      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-      <Text size="S-Regular">Filter Tx types and Chains</Text>
-    </Placeholder>,
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
   isXL: true,
   isClearable: false,
   isSearchable: false,
@@ -192,10 +191,10 @@ SingleGroupSearchSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-    <Placeholder>
-      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-      <Text size="S-Regular">Filter Tx types and Chains</Text>
-    </Placeholder>,
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
   isXL: true,
   isClearable: true,
   isSearchable: true,
@@ -206,10 +205,10 @@ MultiGroupSelect.args = {
   readOnly: false,
   showValue: true,
   placeholder:
-    <Placeholder>
-      <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-      <Text size="S-Regular">Filter Tx types and Chains</Text>
-    </Placeholder>,
+  <Placeholder>
+    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <Text size="S-Regular">Filter Tx types and Chains</Text>
+  </Placeholder>,
   isXL: true,
   isClearable: true,
   isSearchable: true,

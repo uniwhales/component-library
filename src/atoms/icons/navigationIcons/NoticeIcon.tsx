@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const NoticeIcon = () => (
   <svg
     width="100%"

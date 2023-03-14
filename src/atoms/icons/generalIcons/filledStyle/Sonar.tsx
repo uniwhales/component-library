@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const Sonar = () => (
   <svg
     width="100%"
