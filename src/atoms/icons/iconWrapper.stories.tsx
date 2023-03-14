@@ -471,6 +471,19 @@ const Template11: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template12: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper hasHover name="MultiPlatform" icon={<MultipartFormStandard />} />
+    <IconWrapper hasHover name="Planet" icon={<PlanetStandard />} />
+    <IconWrapper hasHover name="Hide" icon={<Hide />} />
+    <IconWrapper hasHover name="Watch" icon={<WatchStandard />} />
+    <IconWrapper hasHover name="Profile" icon={<ProfileStandard />} />
+    <IconWrapper hasHover name="Feed" icon={<Feed />} />
+    <IconWrapper hasHover name="Fire" icon={<Fire />} />
+    <IconWrapper hasHover name="Alert Bot" icon={<AlertBotStandard />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
@@ -482,6 +495,7 @@ export const generalFullColor = Template8.bind({});
 export const feedIcons = Template9.bind({});
 export const hrefIcons = Template10.bind({});
 export const otherIcons = Template11.bind({});
+export const IconsWithHover = Template12.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },
