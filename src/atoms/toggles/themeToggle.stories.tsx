@@ -8,9 +8,27 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ThemeToggle>;
 
-const Template: ComponentStory<typeof ThemeToggle> = (args) => {
+const Template: ComponentStory<typeof ThemeToggle> = (args, { globals }) => {
   const [isOn, setIsOn] = useState<boolean>(false);
-  return <ThemeToggle {...args} isOn={isOn} onClick={() => setIsOn(!isOn)} />;
+  const [expanded, setExpanded] = useState(false);
+  const isDark = globals.backgrounds?.value === '#191B20';
+  return (
+    <div>
+      <ThemeToggle
+        {...args}
+        expanded={expanded}
+        night={isDark}
+        isOn={isOn}
+        onClick={() => setIsOn(!isOn)}
+      />
+      <button
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+      >
+        show expanded
+      </button>
+    </div>
+  );
 };
 
 export const ThemeToggleStandard = Template.bind({});

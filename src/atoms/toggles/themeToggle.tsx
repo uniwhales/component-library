@@ -1,9 +1,12 @@
 import React, { ChangeEventHandler } from 'react';
-import { Styled } from '../../theme';
+import { localTheme, Styled } from '../../theme';
+import { Text } from '../texts/text';
 
 export interface ThemeToggleProps {
   isOn: boolean;
   onClick: ChangeEventHandler<HTMLInputElement>;
+  expanded: boolean;
+  night: boolean;
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -11,11 +14,11 @@ const Wrapper = Styled.div`
   justify-content: center;
   gap: 8px;
 `;
-const Switcher = Styled.label`
+const Switcher = Styled.label<{ expanded: boolean }>`
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 24px;
+  width: ${({ expanded }) => (expanded ? '60px' : '38px')};
+  height: 22px;
 `;
 const Toggle = Styled.span<{ isOn: boolean }>`
   position: absolute;
@@ -29,16 +32,16 @@ const Toggle = Styled.span<{ isOn: boolean }>`
   :before {
     position: absolute;
     content: '';
-    height: 18px;
-    width: 18px;
+    height: 14px;
+    width: 14px;
     left: 4px;
-    bottom: 3px;
+    bottom: 4px;
     background: ${({ theme }) => theme.colors.system.WHITE};
     transition: 0.4s;
     border-radius: 50%;
   }
 `;
-const FakeInput = Styled.input<{ isOn: boolean }>`
+const FakeInput = Styled.input<{ isOn: boolean, expanded: boolean }>`
   opacity: 0;
   width: 0;
   height: 0;
@@ -52,18 +55,22 @@ const FakeInput = Styled.input<{ isOn: boolean }>`
   }
 
   :checked + ${Toggle}:before {
-    transform: translateX(22px);
+    transform: ${({ expanded }) => `translateX(${expanded ? '36px' : '16px'})`};
     background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
-    box-shadow:  ${({ theme }) => `inset 8px -4px 0px 0px ${theme.colors.system.WHITE}`};
+    box-shadow:  ${({ theme }) => `inset -6px -4px 0px 0px ${theme.colors.system.WHITE}`};
   }
 `;
 export const ThemeToggle = ({
-  onClick, isOn,
-}:ThemeToggleProps) => (
-  <Wrapper>
-    <Switcher>
-      <FakeInput isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
-      <Toggle isOn={isOn} />
-    </Switcher>
-  </Wrapper>
-);
+  onClick, isOn, expanded, night,
+}:ThemeToggleProps) => {
+  const theme = localTheme();
+  return (
+    <Wrapper>
+      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{night ? 'Dark' : 'Light'}</Text>}
+      <Switcher expanded={expanded}>
+        <FakeInput expanded={expanded} isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
+        <Toggle isOn={isOn} />
+      </Switcher>
+    </Wrapper>
+  );
+};
