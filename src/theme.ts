@@ -25,6 +25,7 @@ const DarkTheme = {
   contrastColor: {
     HIGH_CONTRAST: '#F8F9FF',
     LOW_CONTRAST: '#6A7382',
+    SIDEBAR_HIGHLIGHT: '#FCD547',
   },
   dropShadow: {
     REGULAR: '',
@@ -48,6 +49,7 @@ const LightTheme = {
   contrastColor: {
     HIGH_CONTRAST: '#1D86E8',
     LOW_CONTRAST: '#80C6E4',
+    SIDEBAR_HIGHLIGHT: '#1B82E2',
   },
   dropShadow: {
     REGULAR: '',
