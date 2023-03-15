@@ -19,8 +19,8 @@ const IconComponent = Styled.div<IconWrapperProps>`
   :hover {
     svg {
       fill: ${({
-    fill, theme, hasHover,
-  }) => (hasHover && !fill && theme.textShades.SHADE_MINUS_3)};
+    fill, theme, hasHover, hoverColor,
+  }) => ((hasHover && !fill) && hoverColor ? hoverColor : theme.textShades.SHADE_MINUS_3)};
     }
   }
 `;
@@ -72,6 +72,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   disabled,
   pointerEvents,
   hasHover = false,
+  hoverColor,
 }) => (href ? (
   <Outer disabled={disabled} target="_blank" href={href}>
     <AnchorIconComponent
@@ -111,6 +112,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
       pointerEvents={pointerEvents}
       hasHover={hasHover}
+      hoverColor={hoverColor}
     >
       {icon && icon}
     </IconComponent>

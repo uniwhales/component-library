@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { CieloLogo } from './CieloLogo';
 
 export default {
@@ -10,14 +10,19 @@ export default {
 
 const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
   const isDark = globals.backgrounds?.value === '#191B20';
-  const [text, setText] = useState(true);
   return (
-    <>
-      <CieloLogo noText={text} night={isDark} />
-      <button type="button" onClick={() => setText(!text)}>{text ? 'Full logo' : 'Symbol only logo'}</button>
-    </>
-
+    <CieloLogo {...args} night={isDark} />
   );
 };
 
 export const Standard = Template.bind({});
+export const NoText = Template.bind({});
+export const Square = Template.bind({});
+
+NoText.args = {
+  variant: 'noText',
+};
+
+Square.args = {
+  variant: 'square',
+};
