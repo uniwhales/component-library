@@ -6,7 +6,7 @@ import { ConnectButton } from './connectWalletButton.styles';
 import { ConnectButtonProps } from './types';
 
 export const ConnectWalletButton: FC<ConnectButtonProps> = ({
-  onClick, account,
+  onClick, account, showText = true,
 }) => {
   const [text, setText] = useState<string>('Connect');
 
@@ -28,7 +28,7 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
       transitionState={text === 'Connected'}
     >
       {(!account || text === 'Connected') && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
-      <Text size="S-Bold">{text}</Text>
+      {showText && <Text size="S-Bold">{text}</Text>}
     </ConnectButton>
   );
 };

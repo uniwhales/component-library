@@ -44,7 +44,7 @@ export const FilterChip = ({
             width={width}
           >
             <FilterChipContent disabled={!!disabled}>
-              {icon && <IconWrapper width={iconSize} height={iconSize} icon={icon} cursor="pointer" />}
+              {icon && <IconWrapper width={iconSize} height={iconSize} icon={icon} cursor={disabled ? 'auto' : 'pointer'} />}
               {children}
             </FilterChipContent>
           </FilterChipWrapper>

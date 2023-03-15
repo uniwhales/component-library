@@ -9,13 +9,13 @@ export const FilterChipWrapper = Styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
   background: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.SHADE_PLUS_1)};
+  cursor: ${({ disabled }) => !disabled && 'pointer'};
   padding: 2px 8px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: max-content;
-  cursor: pointer;
   border: ${({ isOn, theme, disabled }) => `2px solid ${!disabled && isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
   path { transition: fill .45s ease; }
   transition: background .45s ease, width .45s ease;
@@ -36,6 +36,16 @@ export const FilterChipContent = Styled.div<{ disabled: boolean }>`
   p{
     color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
   }
+    // disabled state
+  ${(props) => props.disabled && css`
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+      }
+  `}
 `;
 
 export const FloatingCloseWrapper = Styled(Row)<{ disabled?: boolean }>`

@@ -102,6 +102,7 @@ const DataPresets = [filtersArray, newsdeskStories];
 const Template: ComponentStory<typeof FilterChip> = (props) => {
   const [selectFilter, setSelectFilter] = useState<string>();
   const { id } = props;
+
   return (
     <Wrapper>
       {DataPresets[Number(id)]
