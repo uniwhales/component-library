@@ -102,8 +102,12 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     width: '100%',
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    fontSize: '12px',
+    lineHeight: '16px',
     p: {
       width: '100%',
+      fontSize: '12px',
+      lineHeight: '16px',
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
       '&:hover': {
         color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
@@ -195,8 +199,8 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    fontSize: '14px',
-    lineHeight: '18px',
+    fontSize: '12px',
+    lineHeight: '16px',
     fontWeight: 400,
     cursor: 'pointer',
     '&:hover': {
