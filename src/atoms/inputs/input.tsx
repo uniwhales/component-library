@@ -35,7 +35,7 @@ const InputWrapper = Styled.div<{ width?: string }>`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 2px;
+  gap: 4px;
   p{
     margin: 0;
   }
