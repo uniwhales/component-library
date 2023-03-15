@@ -6,7 +6,6 @@ export interface ThemeToggleProps {
   isOn: boolean;
   onClick: ChangeEventHandler<HTMLInputElement>;
   expanded: boolean;
-  night: boolean;
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -61,12 +60,12 @@ const FakeInput = Styled.input<{ isOn: boolean, expanded: boolean }>`
   }
 `;
 export const ThemeToggle = ({
-  onClick, isOn, expanded, night,
+  onClick, isOn, expanded,
 }:ThemeToggleProps) => {
   const theme = localTheme();
   return (
     <Wrapper>
-      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{night ? 'Dark' : 'Light'}</Text>}
+      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{isOn ? 'Dark' : 'Light'}</Text>}
       <Switcher expanded={expanded}>
         <FakeInput expanded={expanded} isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
         <Toggle isOn={isOn} />
