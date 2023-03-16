@@ -11,6 +11,7 @@ export const OpenContainer = Styled.div`
   position: absolute;
   top: 50px;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
+  right: 0;
 `;
 
 export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string }>`
