@@ -16,7 +16,7 @@ const Wrapper = Styled.div`
 const Switcher = Styled.label<{ expanded: boolean }>`
   position: relative;
   display: inline-block;
-  width: ${({ expanded }) => (expanded ? '60px' : '38px')};
+  width: ${({ expanded }) => (expanded ? '90px' : '38px')};
   height: 22px;
 `;
 const Toggle = Styled.span<{ isOn: boolean }>`
@@ -54,7 +54,7 @@ const FakeInput = Styled.input<{ isOn: boolean, expanded: boolean }>`
   }
 
   :checked + ${Toggle}:before {
-    transform: ${({ expanded }) => `translateX(${expanded ? '36px' : '16px'})`};
+    transform: ${({ expanded }) => `translateX(${expanded ? '64px' : '16px'})`};
     background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
     box-shadow:  ${({ theme }) => `inset -6px -4px 0px 0px ${theme.colors.system.WHITE}`};
   }
