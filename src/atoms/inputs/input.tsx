@@ -30,7 +30,7 @@ export interface InputsProps {
   width?: string;
   onEnterSubmit?: () => void;
 }
-const InputWrapper = Styled.div<{ width?: string }>`
+const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -38,6 +38,20 @@ const InputWrapper = Styled.div<{ width?: string }>`
   gap: 4px;
   p{
     margin: 0;
+  }
+  :hover {
+    input {
+      ::placeholder {
+        color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      }
+      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      }
+      svg {
+      fill: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+    }
+    label {
+      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+    }
   }
 `;
 
@@ -74,26 +88,12 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   :focus  {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
-  :hover {
-    ::placeholder {
-      color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
-    }
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-  }
 `;
-export const InputLabel = Styled.label<{
-  focus: boolean, hover: boolean, disabled?: boolean
-}>`
+export const InputLabel = Styled.label`
   font-size: 12px;
   color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
   font-weight: 400;
   line-height: 16px;
-  ${({ hover, disabled }) => hover && !disabled && css`
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-  `}
-  ${({ focus, disabled }) => focus && !disabled && css`
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-  `}
 `;
 
 export const InputContainer = Styled.div<{ inputState: InputState, focus: boolean, disabled?: boolean }>`
@@ -104,7 +104,7 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
     outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
   `}
   &:hover {
-    outline: 1px solid ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+    outline: 1px solid ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_2};
   }
   outline: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
 `;
@@ -122,11 +122,6 @@ const RightSideIcon = Styled.div`
   padding:9px 9px;
    svg {
       fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
-  }
-  &:hover {
-    svg {
-      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-    }
   }
  `;
 
@@ -200,8 +195,8 @@ const Input = ({
   </MoreDetailContainer>
   );
   return (
-    <InputWrapper width={width}>
-      {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
+    <InputWrapper width={width} disabled={!!disabled}>
+      {label && <InputLabel>{label}</InputLabel>}
       <InputContainer
         inputState={inputState}
         disabled={disabled}
