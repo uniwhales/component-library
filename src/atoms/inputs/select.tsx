@@ -61,12 +61,23 @@ interface StyledProps {
   isDisabled?: boolean;
 }
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string }>`
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled:boolean }>`
   max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
   width: ${(props) => props.width ?? '100%'};
   outline: none;
   input{
     width: fit-content;
+  }
+  :hover {
+    div {
+      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+    }
+    input {
+      ::placeholder {
+        color: ${(props) => !props.isDisabled && props.theme.textShades.SHADE_MINUS_3};
+      }
+      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      }
   }
 `;
 
@@ -109,18 +120,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fontSize: '12px',
       lineHeight: '16px',
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-      '&:hover': {
-        color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
-      },
     },
     svg: {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-      '&:hover': {
-        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
-      },
-    },
-    '&:hover': {
-      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
     },
   }),
   control: (defaultStyles, {
