@@ -20,7 +20,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
     svg {
       fill: ${({
     fill, theme, hasHover, hoverColor,
-  }) => ((hasHover && !fill) && hoverColor ? hoverColor : theme.textShades.SHADE_MINUS_3)};
+  }) => ((hasHover && !fill) && (hoverColor ?? theme.textShades.SHADE_MINUS_3))};
     }
   }
 `;
