@@ -151,7 +151,7 @@ import {
   CurveFilled, ZeroXFilled, OneInchV3Filled, OneInchV2Filled, DogecoinFilled,
   BalencerFilled, EvmosFilled, BancorFilled, RedCross, ChainScan,
   CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested,
-  Follow, PlanetStandard, MultipartFormStandard, Timestamp, Flame,
+  Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -447,7 +447,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Filter Tokens" icon={<FilterTokens />} />
     <IconWrapper name="Filter Tx" icon={<FilterTx />} />
     <IconWrapper name="Timestamp" icon={<Timestamp />} />
-    <IconWrapper name="Flame" icon={<Flame />} />
+    <IconWrapper name="TrendingFlame" icon={<TrendingFlame />} />
   </>
 );
 
