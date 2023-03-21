@@ -16,7 +16,7 @@ const Wrapper = Styled.div`
 const Switcher = Styled.label<{ expanded: boolean }>`
   position: relative;
   display: inline-block;
-  width: ${({ expanded }) => (expanded ? '90px' : '38px')};
+  width: ${({ expanded }) => (expanded ? '60px' : '38px')};
   height: 22px;
 `;
 const Toggle = Styled.span<{ isOn: boolean }>`
@@ -26,7 +26,7 @@ const Toggle = Styled.span<{ isOn: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_1)};
+  background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 34px;
   :before {
     position: absolute;
@@ -54,8 +54,8 @@ const FakeInput = Styled.input<{ isOn: boolean, expanded: boolean }>`
   }
 
   :checked + ${Toggle}:before {
-    transform: ${({ expanded }) => `translateX(${expanded ? '64px' : '16px'})`};
-    background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+    transform: ${({ expanded }) => `translateX(${expanded ? '34px' : '16px'})`};
+    background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
     box-shadow:  ${({ theme }) => `inset -6px -4px 0px 0px ${theme.colors.system.WHITE}`};
   }
 `;
@@ -65,11 +65,11 @@ export const ThemeToggle = ({
   const theme = localTheme();
   return (
     <Wrapper>
-      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{isOn ? 'Dark' : 'Light'}</Text>}
       <Switcher expanded={expanded}>
         <FakeInput expanded={expanded} isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
         <Toggle isOn={isOn} />
       </Switcher>
+      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{isOn ? 'Dark' : 'Light'}</Text>}
     </Wrapper>
   );
 };
