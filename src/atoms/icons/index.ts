@@ -107,6 +107,7 @@ export * from './generalIcons/filledStyle/LeaderboardStandard';
 export * from './generalIcons/filledStyle/Suggested';
 export * from './generalIcons/filledStyle/ChainScan';
 export * from './generalIcons/filledStyle/Follow';
+export * from './generalIcons/filledStyle/TrendingFlame';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
@@ -240,5 +241,4 @@ export * from './feed/Swap';
 export * from './feed/Withdraw';
 export * from './feed/FilterTokens';
 export * from './feed/FilterTx';
-export * from './feed/Flame';
 export * from './feed/Timestamp';
