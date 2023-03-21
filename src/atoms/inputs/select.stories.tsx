@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
   Placeholder, Select, SelectOption,
@@ -101,7 +101,8 @@ const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
-  return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+  const ref = useRef();
+  return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} ref={ref} />;
 };
 const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();

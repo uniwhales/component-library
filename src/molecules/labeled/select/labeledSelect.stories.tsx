@@ -118,6 +118,7 @@ LabeledPrimary.args = {
   isXL: false,
   showValue: true,
   label: 'Cielo',
+  required: true,
 };
 
 LabeledMultiSelect.parameters = {

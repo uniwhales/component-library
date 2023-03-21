@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, Ref, useState } from 'react';
 import { css } from 'styled-components';
 import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
@@ -29,6 +29,9 @@ export interface InputsProps {
   inputState?: InputState;
   width?: string;
   onEnterSubmit?: () => void;
+  required?: boolean
+  ref?: Ref<HTMLInputElement>
+  tabIndex?: number
 }
 const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
   width: ${({ width }) => width};
@@ -132,6 +135,10 @@ const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   margin: 8px;
 `;
 
+const Required = Styled.span`
+  color: ${({ theme }) => theme.colors.system.RED};
+`;
+
 export /**
  * @Don't use number patterns with number type, use tel + any number pattern
  * @date 10/10/2022 - 9:52:23 AM
@@ -165,6 +172,9 @@ const Input = ({
   inputState = { message: '', status: 'default' },
   width,
   onEnterSubmit,
+  required,
+  ref,
+  tabIndex,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -195,8 +205,13 @@ const Input = ({
   </MoreDetailContainer>
   );
   return (
-    <InputWrapper width={width} disabled={!!disabled}>
-      {label && <InputLabel>{label}</InputLabel>}
+    <InputWrapper ref={ref} width={width} disabled={!!disabled}>
+      {label && (
+      <InputLabel>
+        {label}
+        {required && (<Required>*</Required>)}
+      </InputLabel>
+      )}
       <InputContainer
         inputState={inputState}
         disabled={disabled}
@@ -227,6 +242,7 @@ const Input = ({
           placeholder={placeholder || 'Placeholder'}
           type={type}
           withIcon={!!icon}
+          tabIndex={tabIndex}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
         {!focus && moreDetailsContainer}

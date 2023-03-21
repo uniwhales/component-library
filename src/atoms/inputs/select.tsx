@@ -1,6 +1,6 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, Ref, useState } from 'react';
 import ReactSelect, {
-  components, StylesConfig,
+  components, SelectInstance, StylesConfig,
 } from 'react-select';
 import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
@@ -15,6 +15,7 @@ export interface Option {
   icon?: JSX.Element,
   isSelected?: boolean;
   order?: number;
+  required?: boolean;
 }
 export interface SelectGroupOption {
   label: string;
@@ -47,6 +48,9 @@ export interface SelectProps<T extends SelectVariation> {
   maxMenuHeight?: number;
   isDisabled?: boolean;
   onInputChange?: (e: string) => void;
+  required?: boolean
+  tabIndex?: number
+  ref?: Ref<SelectInstance>
 }
 
 interface StyledProps {
@@ -61,7 +65,7 @@ interface StyledProps {
   isDisabled?: boolean;
 }
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled:boolean }>`
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean }>`
   max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
   width: ${(props) => props.width ?? '100%'};
   outline: none;
@@ -247,9 +251,13 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 };
 
+export const Required = Styled.span`
+  color: ${({ theme }) => theme.colors.system.RED};
+`;
+
 const CheckBoxOption = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data,
+    label, isSelected, readOnly, isCheckBox, data, required,
   } = props;
 
   return (
@@ -271,6 +279,7 @@ const CheckBoxOption = (props: any) => {
         ) : (
           <label>
             {label}
+            {required && (<Required>*</Required>)}
           </label>
         )}
       </components.Option>
@@ -278,10 +287,11 @@ const CheckBoxOption = (props: any) => {
   );
 };
 
-const getOptionLabel = ({ label, icon }: Option) => (
+const getOptionLabel = ({ label, icon, required }: Option) => (
   <OptionContainer>
     {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
     <span>{label}</span>
+    {required && (<Required>*</Required>)}
   </OptionContainer>
 );
 
@@ -353,6 +363,9 @@ export const Select = <T extends SelectVariation>({
   isDisabled = false,
   onInputChange,
   width,
+  required,
+  tabIndex,
+  ref,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -393,6 +406,9 @@ export const Select = <T extends SelectVariation>({
       closeMenuOnScroll
       getOptionLabel={getOptionLabel as any}
       maxMenuHeight={maxMenuHeight}
+      tabIndex={tabIndex}
+      required={required}
+      ref={ref}
     />
   );
 };

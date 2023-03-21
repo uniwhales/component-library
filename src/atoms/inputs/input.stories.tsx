@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = ({
-  type, icon, pattern, disabled, label, inputState, width,
+  type, icon, pattern, disabled, label, inputState, width, required,
 }) => {
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
@@ -28,6 +28,7 @@ const Template: ComponentStory<typeof Input> = ({
       type={type}
       icon={icon}
       inputState={inputState}
+      required={required}
     />
   );
 };
@@ -40,6 +41,7 @@ export const Valid = Template.bind({});
 export const Invalid = Template.bind({});
 export const WithIcon = Template.bind({});
 export const Disabled = Template.bind({});
+export const Required = Template.bind({});
 
 Primary.args = {
   label: 'label',
@@ -85,6 +87,14 @@ Disabled.args = {
     message: 'disabled',
   },
   disabled: true,
+};
+Required.args = {
+  label: 'label',
+  inputState: {
+    status: 'default',
+    message: '',
+  },
+  required: true,
 };
 
 Primary.parameters = {
