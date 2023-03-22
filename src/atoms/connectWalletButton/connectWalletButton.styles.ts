@@ -40,17 +40,6 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
     }
   `}
 
-  ${css`
-    p {
-      color: ${({ theme }) => theme.colors.system.WHITE};
-    };
-    svg {
-      fill: ${({ theme }) => theme.colors.system.WHITE};
-    };
-    background: ${({ theme }) => theme.colors.system.GREEN};
-    border: ${({ theme }) => `2px solid ${theme.colors.system.GREEN}`};
-  `}
-
   ${tablet(css<{ isConnected: boolean }>`
     &:active {
       p {
