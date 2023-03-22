@@ -33,7 +33,7 @@ export interface InputsProps {
   ref?: Ref<HTMLInputElement>
   tabIndex?: number
 }
-const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
+const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -45,15 +45,15 @@ const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
   :hover {
     input {
       ::placeholder {
-        color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
-      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
       svg {
-      fill: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      fill: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
     }
     label {
-      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
     }
   }
 `;
@@ -107,7 +107,7 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
     outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
   `}
   &:hover {
-    outline: 1px solid ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_2};
+    outline: 1px solid ${({ theme, disabled, inputState }) => (!disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
   }
   outline: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
 `;
@@ -205,7 +205,7 @@ const Input = ({
   </MoreDetailContainer>
   );
   return (
-    <InputWrapper ref={ref} width={width} disabled={!!disabled}>
+    <InputWrapper inputState={inputState} ref={ref} width={width} disabled={!!disabled}>
       {label && (
       <InputLabel>
         {label}
