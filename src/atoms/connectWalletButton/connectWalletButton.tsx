@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { WalletStandard } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -11,9 +11,8 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
   <ConnectButton
     onClick={onClick}
     isConnected={!!account}
-    transitionState={text === 'Connected'}
   >
-    {(!account || text === 'Connected') && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
-    <Text size="S-Bold">{text}</Text>
+    {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
+    <Text size="S-Bold">{account ? 'Disconnect' : 'Connect'}</Text>
   </ConnectButton>
 );
