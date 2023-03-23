@@ -1,6 +1,6 @@
 import React, { ReactNode, Ref, useState } from 'react';
 import ReactSelect, {
-  components, SelectInstance, StylesConfig,
+  components, StylesConfig,
 } from 'react-select';
 import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
@@ -50,7 +50,7 @@ export interface SelectProps<T extends SelectVariation> {
   onInputChange?: (e: string) => void;
   required?: boolean
   tabIndex?: number
-  ref?: Ref<SelectInstance>
+  ref?: Ref<any>
 }
 
 interface StyledProps {
