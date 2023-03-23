@@ -75,6 +75,12 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   :hover {
     div {
       color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      // target placeholder when we have a custom component with icon
+      // have not been able to find another way of targeting this than
+      // overriding like this.
+      p {
+        color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      }
     }
     input {
       ::placeholder {
