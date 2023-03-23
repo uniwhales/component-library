@@ -45,7 +45,7 @@ export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: bo
   `}
   }
 `;
-const TextAreaWrapper = Styled.div`
+const TextAreaWrapper = Styled.div<{ disabled:boolean }>`
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -54,18 +54,30 @@ const TextAreaWrapper = Styled.div`
   p{
     margin: 0;
   }
+    :hover {
+    ::placeholder {
+      color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
+    }
+    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+    ${({ disabled }) => !disabled && css`
+      textarea {
+        border: 1px solid ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      }
+    label {
+      color: ${({ theme }) => !disabled && theme.textShades.SHADE_MINUS_3};
+    }
+  `}
+  }
 `;
 export const TextArea = ({
   disabled, value, onChange, label = 'Label', inputState = { message: '', status: 'default' }, placeholder, maxLength,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
-  const [hover, setHover] = useState<boolean>(false);
   return (
     <TextAreaWrapper
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      disabled={disabled}
     >
-      {label && <InputLabel disabled={disabled} focus={focus} hover={hover}>{label}</InputLabel>}
+      {label && <InputLabel>{label}</InputLabel>}
       <TextAreaComponent
         maxLength={maxLength}
         placeholder={placeholder}

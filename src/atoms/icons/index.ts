@@ -240,3 +240,5 @@ export * from './feed/Swap';
 export * from './feed/Withdraw';
 export * from './feed/FilterTokens';
 export * from './feed/FilterTx';
+export * from './feed/Flame';
+export * from './feed/Timestamp';
