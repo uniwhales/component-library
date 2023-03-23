@@ -176,7 +176,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     background: isSelected ? theme.colors.primary.MAIN_BLUE
       : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
     '&:hover': {
-      background: !isSelected ? theme.colors.primary.MAIN_BLUE : undefined,
+      background: !isSelected ? theme.textShades.SHADE_MINUS_1 : undefined,
       color: theme.colors.system.WHITE,
     },
   }),
