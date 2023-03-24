@@ -171,6 +171,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     fontSize: '12px',
     lineHeight: '16px',
+    cursor: 'pointer',
     p: {
       width: '100%',
       fontSize: '12px',
@@ -184,6 +185,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   control: (defaultStyles) => ({
     ...defaultStyles,
     border: 'none',
+    cursor: 'pointer',
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly, label,
@@ -362,6 +364,7 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
       <IconWrapper
         fill={theme.colors.system.WHITE}
         icon={<ChevronUpIcon />}
+        cursor="pointer"
       />
     );
   }
@@ -369,6 +372,7 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
     <IconWrapper
       fill={isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
       icon={<ChevronDownIcon />}
+      cursor="pointer"
     />
   );
 };

@@ -164,7 +164,7 @@ MultiSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -178,7 +178,7 @@ CustomMenuHeight.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -196,7 +196,7 @@ SingleGroupSearchSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -210,7 +210,7 @@ MultiGroupSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
