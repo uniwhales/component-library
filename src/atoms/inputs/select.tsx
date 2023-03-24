@@ -2,7 +2,7 @@ import React, {
   ReactNode, Ref, useState,
 } from 'react';
 import ReactSelect, {
-  components, StylesConfig,
+  components, GroupBase, SelectInstance, StylesConfig,
 } from 'react-select';
 import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
@@ -52,7 +52,7 @@ export interface SelectProps<T extends SelectVariation> {
   onInputChange?: (e: string) => void;
   required?: boolean
   tabIndex?: number
-  ref?: Ref<any>
+  ref?: Ref<SelectInstance<unknown, boolean, GroupBase<unknown>>> | undefined
   error?: boolean
 }
 
@@ -106,6 +106,10 @@ const OptionWrapper = Styled.div`
   &:nth-of-type(2n) {
     background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
   };
+`;
+
+const OptionLabelContainer = Styled.label<{ hasIcon: boolean }>`
+  padding-left: ${({ hasIcon }) => !hasIcon && '24px'};
 `;
 
 const OptionContainer = Styled.div`
@@ -264,17 +268,19 @@ export const Required = Styled.span`
 
 const CheckBoxOption = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, required,
+    label, isSelected, readOnly, isCheckBox, data,
   } = props;
-
+  const hasIcon = !!data.icon;
   return (
     <OptionWrapper>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
-            <label>
-              {label}
-            </label>
+            <OptionLabelContainer hasIcon={hasIcon}>
+              <label>
+                {label}
+              </label>
+            </OptionLabelContainer>
             <Checkbox
               selected={isSelected}
               onClick={() => { }}
@@ -284,21 +290,22 @@ const CheckBoxOption = (props: any) => {
             />
           </>
         ) : (
-          <label>
-            {label}
-            {required && (<Required>*</Required>)}
-          </label>
+          <OptionLabelContainer hasIcon={hasIcon}>
+            <label>
+              {label}
+            </label>
+          </OptionLabelContainer>
+
         )}
       </components.Option>
     </OptionWrapper>
   );
 };
 
-const getOptionLabel = ({ label, icon, required }: Option) => (
+const getOptionLabel = ({ label, icon }: Option) => (
   <OptionContainer>
     {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
     <span>{label}</span>
-    {required && (<Required>*</Required>)}
   </OptionContainer>
 );
 
@@ -354,7 +361,7 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
   );
 };
 
-const Control = (props:any) => {
+const Control = (props: any) => {
   const Comp = components.Control;
   const { isFocused, selectProps } = props;
   const { menuIsOpen, error, isDisabled } = selectProps;

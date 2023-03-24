@@ -76,6 +76,9 @@ const ChainOptions = [
   {
     id: 4, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
   },
+  {
+    id: 4, value: 'noicon', label: 'No Icon', order: 4,
+  },
 ];
 
 const GroupExample = [
@@ -95,14 +98,14 @@ export default {
 
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
+  const ref = useRef<any>();
   return (
-    <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+    <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} ref={ref} />
   );
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
-  const ref = useRef();
-  return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} ref={ref} />;
+  return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
@@ -125,7 +128,7 @@ Primary.parameters = {
 };
 Primary.args = {
   width: '226px',
-  selectOptions: ColourOptions,
+  selectOptions: ChainOptions,
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
