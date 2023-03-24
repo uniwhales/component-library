@@ -99,6 +99,7 @@ export default {
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   const ref = useRef<any>();
+  console.debug('ref', ref);
   return (
     <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} ref={ref} />
   );
