@@ -51,6 +51,7 @@ export interface SelectProps<T extends SelectVariation> {
   required?: boolean
   tabIndex?: number
   ref?: Ref<any>
+  error?: boolean
 }
 
 interface StyledProps {
@@ -63,9 +64,10 @@ interface StyledProps {
   isCheckBox?: boolean;
   label?: string;
   isDisabled?: boolean;
+  error?: boolean;
 }
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean }>`
+const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
   max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
   width: ${(props) => props.width ?? '100%'};
   outline: none;
@@ -74,19 +76,19 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   }
   :hover {
     div {
-      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       // target placeholder when we have a custom component with icon
       // have not been able to find another way of targeting this than
       // overriding like this.
       p {
-        color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       }
     }
     input {
       ::placeholder {
-        color: ${(props) => !props.isDisabled && props.theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
       }
-      color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       }
   }
 `;
@@ -118,6 +120,32 @@ const ClearButtonContainer = Styled.div`
 
 const ClearWrapper = Styled.div``;
 
+const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean }>`
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  padding: 0 10px 0 10px;
+  box-shadow: none;
+  border-radius: ${({ menuIsOpen, isFocused }) => (menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px')};
+  height: 40px;
+  background: ${({ theme, isFocused, isDisabled }) => (isFocused
+    ? theme.colors.primary.MAIN_BLUE : isDisabled
+      ? theme.containerAndCardShades.SHADE_PLUS_1
+      : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
+  color: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
+  font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
+  svg {
+    fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
+  }
+  :hover {
+    border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
+    svg {
+    fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
+  }
+  }
+`;
+
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
@@ -135,38 +163,9 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     },
   }),
-  control: (defaultStyles, {
-    isFocused, menuIsOpen, theme, isDisabled,
-  }: StyledProps) => ({
+  control: (defaultStyles) => ({
     ...defaultStyles,
-    boxSizing: 'border-box',
-    cursor: 'pointer',
-    background: isFocused
-      ? theme.colors.primary.MAIN_BLUE : isDisabled
-        ? theme.containerAndCardShades.SHADE_PLUS_1
-        : theme.containerAndCardShades.BG_SHADE_PLUS_4,
-    border: isDisabled ? '1px solid transparent' : `1px solid ${theme.textShades.SHADE_MINUS_1}`,
-    outline: 'none',
-    padding: '0 10px 0 10px',
-    boxShadow: 'none',
-    borderRadius: menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px',
-    height: '40px',
-    'div:nth-of-type(2)': {
-      svg: {
-        cursor: 'pointer',
-      },
-    },
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
-    fontWeight: isFocused ? 'bold' : 'normal',
-    svg: {
-      fill: isFocused && theme.colors.system.WHITE,
-    },
-    '&:hover': {
-      border: isDisabled ? '1px solid transparent' : `1px solid ${theme.textShades.SHADE_MINUS_2}`,
-      svg: {
-        fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3,
-      },
-    },
+    border: 'none',
   }),
   option: (defaultStyles, {
     isFocused, isSelected, theme, readOnly, label,
@@ -353,6 +352,23 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
   );
 };
 
+const Control = (props:any) => {
+  const Comp = components.Control;
+  console.debug(props);
+  const { isFocused, selectProps } = props;
+  const { menuIsOpen, error, isDisabled } = selectProps;
+  return (
+    <ControlComponent
+      menuIsOpen={menuIsOpen}
+      isDisabled={isDisabled}
+      error={error}
+      isFocused={isFocused}
+    >
+      <Comp {...props} />
+    </ControlComponent>
+  );
+};
+
 export const Select = <T extends SelectVariation>({
   selectOptions,
   readOnly,
@@ -372,6 +388,7 @@ export const Select = <T extends SelectVariation>({
   required,
   tabIndex,
   ref,
+  error,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
@@ -397,6 +414,7 @@ export const Select = <T extends SelectVariation>({
         IndicatorSeparator: () => null,
         ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
         DropdownIndicator: (props) => DropdownIndicator({ ...props }),
+        Control: (props) => Control({ ...props }),
       }}
       onChange={(option) => {
         if (!onSelectChange) return;
@@ -415,6 +433,7 @@ export const Select = <T extends SelectVariation>({
       tabIndex={tabIndex}
       required={required}
       ref={ref}
+      error={!!error}
     />
   );
 };
