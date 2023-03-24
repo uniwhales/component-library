@@ -87,6 +87,7 @@ Disabled.args = {
     message: 'disabled',
   },
   disabled: true,
+  label: 'Disabled',
 };
 Required.args = {
   label: 'label',

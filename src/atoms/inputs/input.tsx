@@ -75,7 +75,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
   height: 40px;
   line-height:24px;
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
@@ -84,7 +84,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   border-radius: 12px;
   border: none;
   border-radius: 12px;
-  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
@@ -92,9 +92,9 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
 `;
-export const InputLabel = Styled.label`
+export const InputLabel = Styled.label<{ disabled:boolean }>`
   font-size: 12px;
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.textShades.SHADE_MINUS_2)};
   font-weight: 400;
   line-height: 16px;
 `;
@@ -207,7 +207,7 @@ const Input = ({
   return (
     <InputWrapper inputState={inputState} ref={ref} width={width} disabled={!!disabled}>
       {label && (
-      <InputLabel>
+      <InputLabel disabled={!!disabled}>
         {label}
         {required && (<Required>*</Required>)}
       </InputLabel>

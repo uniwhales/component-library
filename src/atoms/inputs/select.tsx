@@ -1,4 +1,6 @@
-import React, { ReactNode, Ref, useState } from 'react';
+import React, {
+  ReactNode, Ref, useState,
+} from 'react';
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
@@ -354,7 +356,6 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
 
 const Control = (props:any) => {
   const Comp = components.Control;
-  console.debug(props);
   const { isFocused, selectProps } = props;
   const { menuIsOpen, error, isDisabled } = selectProps;
   return (
