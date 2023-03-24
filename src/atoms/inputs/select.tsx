@@ -411,9 +411,9 @@ export const Select = <T extends SelectVariation>({
   width,
   required,
   tabIndex,
-  ref,
   error,
   errorMessage,
+  ref,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
