@@ -54,6 +54,7 @@ export interface SelectProps<T extends SelectVariation> {
   tabIndex?: number
   ref?: Ref<SelectInstance<unknown, boolean, GroupBase<unknown>>> | undefined
   error?: boolean
+  errorMessage?: string
 }
 
 interface StyledProps {
@@ -69,10 +70,16 @@ interface StyledProps {
   error?: boolean;
 }
 
+const SelectWrapper = Styled.div`
+  position: relative;
+  width: fit-content;
+`;
+
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
   max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
   width: ${(props) => props.width ?? '100%'};
   outline: none;
+  margin-bottom: 4px;
   input{
     width: fit-content;
   }
@@ -93,6 +100,11 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
       color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       }
   }
+`;
+
+const ErrorMessageContainer = Styled.div`
+  position: absolute;
+  right: 0;
 `;
 
 export const Placeholder = Styled.div`
@@ -397,51 +409,61 @@ export const Select = <T extends SelectVariation>({
   tabIndex,
   ref,
   error,
+  errorMessage,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
-    <StyledSelect
-      width={width}
-      isDisabled={isDisabled}
-      options={selectOptions}
-      isMulti={isMulti}
-      theme={theme}
-      isOptionDisabled={() => !!readOnly}
-      isSearchable={isSearchable}
-      styles={colourStyles as StylesConfig}
-      controlShouldRenderValue={showValue}
-      isClearable={isClearable}
-      placeholder={<div className="react-select__placeholder">{placeholder}</div>}
-      closeMenuOnSelect={!isMulti}
-      hideSelectedOptions={false}
-      onInputChange={(e) => onInputChange && onInputChange(e)}
-      components={{
-        Option: (props) => CheckBoxOption({
-          ...props, readOnly, isCheckBox,
-        }),
-        IndicatorSeparator: () => null,
-        ClearIndicator: (props) => ClearIndicator({ ...props, clearButtonText, handleClearValue }),
-        DropdownIndicator: (props) => DropdownIndicator({ ...props }),
-        Control: (props) => Control({ ...props }),
-      }}
-      onChange={(option) => {
-        if (!onSelectChange) return;
-        /*
+    <SelectWrapper>
+      <StyledSelect
+        width={width}
+        isDisabled={isDisabled}
+        options={selectOptions}
+        isMulti={isMulti}
+        theme={theme}
+        isOptionDisabled={() => !!readOnly}
+        isSearchable={isSearchable}
+        styles={colourStyles as StylesConfig}
+        controlShouldRenderValue={showValue}
+        isClearable={isClearable}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        closeMenuOnSelect={!isMulti}
+        hideSelectedOptions={false}
+        onInputChange={(e) => onInputChange && onInputChange(e)}
+        components={{
+          Option: (props) => CheckBoxOption({
+            ...props, readOnly, isCheckBox,
+          }),
+          IndicatorSeparator: () => null,
+          ClearIndicator: (props) => ClearIndicator(
+            { ...props, clearButtonText, handleClearValue },
+          ),
+          DropdownIndicator: (props) => DropdownIndicator({ ...props }),
+          Control: (props) => Control({ ...props }),
+        }}
+        onChange={(option) => {
+          if (!onSelectChange) return;
+          /*
         When providing variation of select
         we restrict the option to be either single or group option type
         therefor we can safely assume type here is right
         */
-        onSelectChange(option as SelectVal<T>);
-      }}
-      value={selectValue}
-      isXL={isXL}
-      closeMenuOnScroll
-      getOptionLabel={getOptionLabel as any}
-      maxMenuHeight={maxMenuHeight}
-      tabIndex={tabIndex}
-      required={required}
-      ref={ref}
-      error={!!error}
-    />
+          onSelectChange(option as SelectVal<T>);
+        }}
+        value={selectValue}
+        isXL={isXL}
+        closeMenuOnScroll
+        getOptionLabel={getOptionLabel as any}
+        maxMenuHeight={maxMenuHeight}
+        tabIndex={tabIndex}
+        required={required}
+        ref={ref}
+        error={!!error}
+      />
+      {error && errorMessage && (
+        <ErrorMessageContainer>
+          <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+        </ErrorMessageContainer>
+      )}
+    </SelectWrapper>
   );
 };
