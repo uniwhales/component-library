@@ -70,14 +70,14 @@ interface StyledProps {
   error?: boolean;
 }
 
-const SelectWrapper = Styled.div`
+const SelectWrapper = Styled.div<{ width?: string }>`
   position: relative;
-  width: fit-content;
+  width: ${({ width }) => width ?? '100%'};
 `;
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
-  max-width: ${(props) => (props.width ? props.width : props.isXL ? '100%' : '172px')};
-  width: ${(props) => props.width ?? '100%'};
+  max-width: ${({ width, isXL }) => (width || (isXL ? '100%' : '172px'))};
+  width: ${({ width }) => width ?? '100%'};
   outline: none;
   margin-bottom: 4px;
   input{
@@ -417,7 +417,7 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
-    <SelectWrapper>
+    <SelectWrapper width={width}>
       <StyledSelect
         width={width}
         isDisabled={isDisabled}
