@@ -120,8 +120,8 @@ const OptionWrapper = Styled.div`
   };
 `;
 
-const OptionLabelContainer = Styled.label<{ hasIcon: boolean }>`
-  padding-left: ${({ hasIcon }) => !hasIcon && '24px'};
+const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
+  padding-left: ${({ addPadding }) => addPadding && '24px'};
 `;
 
 const OptionContainer = Styled.div`
@@ -282,15 +282,21 @@ export const Required = Styled.span`
 
 const CheckBoxOption = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data,
+    label, isSelected, readOnly, isCheckBox, data, options,
   } = props;
+  // check if any options have icons
+  const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
+  // check if individual options has an icon
   const hasIcon = !!data.icon;
+  // show padding if any options have
+  // icons and current option does not
+  const addPadding = optionsHaveIcon.length > 0 && !hasIcon;
   return (
     <OptionWrapper>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
-            <OptionLabelContainer hasIcon={hasIcon}>
+            <OptionLabelContainer addPadding={addPadding}>
               <label>
                 {label}
               </label>
@@ -304,7 +310,7 @@ const CheckBoxOption = (props: any) => {
             />
           </>
         ) : (
-          <OptionLabelContainer hasIcon={hasIcon}>
+          <OptionLabelContainer addPadding={addPadding}>
             <label>
               {label}
             </label>
@@ -464,9 +470,9 @@ export const Select = <T extends SelectVariation>({
         error={!!error}
       />
       {error && errorMessage && (
-        <ErrorMessageContainer>
-          <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
-        </ErrorMessageContainer>
+      <ErrorMessageContainer>
+        <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+      </ErrorMessageContainer>
       )}
     </SelectWrapper>
   );
