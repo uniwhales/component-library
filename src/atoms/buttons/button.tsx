@@ -3,6 +3,11 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { ButtonProps, GenericStylingProps } from './types';
 
+export const ButtonWrapper = Styled.div`
+  padding: 50px;
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+`;
+
 const Button = Styled.button<GenericStylingProps>`
   transition: 0.3s;
   font-size: 14px;
