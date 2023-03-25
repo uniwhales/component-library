@@ -63,10 +63,9 @@ export const getBorderColor = (theme: typeof Theme, status: InputState['status']
     error: theme.colors.system.RED,
     invalid: theme.colors.system.RED,
     exception: theme.colors.system.AMBER,
-    disabled: theme.containerAndCardShades.SHADE_PLUS_3,
     help: theme.colors.secondary.FUSCIA,
   };
-  if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'disabled' || status === 'help') {
+  if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'help') {
     return lookup[status];
   }
   return theme.textShades.SHADE_MINUS_1;
@@ -107,9 +106,9 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
     outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
   `}
   &:hover {
-    outline: 1px solid ${({ theme, disabled, inputState }) => (!disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
+    outline: 1px solid ${({ theme, disabled, inputState }) => (disabled ? '1px solid transparent' : !disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
   }
-  outline: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
+  outline: 1px solid ${({ theme, inputState, disabled }) => (disabled ? '1px solid transparent' : getBorderColor(theme, inputState.status))};
 `;
 
 const LeftSideIcon = Styled.div`
