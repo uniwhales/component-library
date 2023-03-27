@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ButtonAtom } from './button';
+import { ButtonAtom, ButtonWrapper } from './button';
 import { IconWrapper } from '../icons/iconWrapper';
 import { DashboardStandard } from '../icons';
 
@@ -43,7 +43,11 @@ const WithIconR = (isText = true) => (
 );
 const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   const { children } = args;
-  return <ButtonAtom {...args}>{children}</ButtonAtom>;
+  return (
+    <ButtonWrapper>
+      <ButtonAtom {...args}>{children}</ButtonAtom>
+    </ButtonWrapper>
+  );
 };
 
 const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {

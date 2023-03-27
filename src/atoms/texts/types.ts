@@ -3,8 +3,6 @@ export type BodySizes =
   | 'L-Bold'
   | 'M-Regular'
   | 'M-Bold'
-  | 'Button-Bold'
-  | 'Button-Regular'
   | 'S-Regular'
   | 'S-Bold'
   | 'Caption-Regular'

@@ -3,6 +3,11 @@ import { css } from 'styled-components';
 import { Styled } from '../../theme';
 import { ButtonProps, GenericStylingProps } from './types';
 
+export const ButtonWrapper = Styled.div`
+  padding: 50px;
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+`;
+
 const Button = Styled.button<GenericStylingProps>`
   transition: 0.3s;
   font-size: 14px;
@@ -37,7 +42,7 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: 2px solid transparent;
+      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -70,7 +75,7 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     transition: background 0.45s ease;
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: 2px solid transparent;
+      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -110,7 +115,7 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: 2px solid transparent;
+      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
