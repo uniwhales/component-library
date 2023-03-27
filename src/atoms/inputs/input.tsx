@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, Ref, useState } from 'react';
 import { css } from 'styled-components';
 import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
@@ -29,8 +29,11 @@ export interface InputsProps {
   inputState?: InputState;
   width?: string;
   onEnterSubmit?: () => void;
+  required?: boolean
+  ref?: Ref<HTMLInputElement>
+  tabIndex?: number
 }
-const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
+const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -42,15 +45,15 @@ const InputWrapper = Styled.div<{ width?: string, disabled:boolean }>`
   :hover {
     input {
       ::placeholder {
-        color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
-      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
       svg {
-      fill: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      fill: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
     }
     label {
-      color: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
     }
   }
 `;
@@ -60,10 +63,9 @@ export const getBorderColor = (theme: typeof Theme, status: InputState['status']
     error: theme.colors.system.RED,
     invalid: theme.colors.system.RED,
     exception: theme.colors.system.AMBER,
-    disabled: theme.containerAndCardShades.SHADE_PLUS_3,
     help: theme.colors.secondary.FUSCIA,
   };
-  if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'disabled' || status === 'help') {
+  if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'help') {
     return lookup[status];
   }
   return theme.textShades.SHADE_MINUS_1;
@@ -72,7 +74,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
   height: 40px;
   line-height:24px;
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
@@ -81,7 +83,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   border-radius: 12px;
   border: none;
   border-radius: 12px;
-  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
@@ -89,9 +91,9 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
 `;
-export const InputLabel = Styled.label`
+export const InputLabel = Styled.label<{ disabled:boolean }>`
   font-size: 12px;
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.textShades.SHADE_MINUS_2)};
   font-weight: 400;
   line-height: 16px;
 `;
@@ -104,9 +106,9 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
     outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
   `}
   &:hover {
-    outline: 1px solid ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_2};
+    outline: 1px solid ${({ theme, disabled, inputState }) => (disabled ? '1px solid transparent' : !disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
   }
-  outline: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
+  outline: 1px solid ${({ theme, inputState, disabled }) => (disabled ? '1px solid transparent' : getBorderColor(theme, inputState.status))};
 `;
 
 const LeftSideIcon = Styled.div`
@@ -130,6 +132,10 @@ const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   left: ${({ inputState }) => inputState.status === 'invalid' && 0};
   right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
   margin: 8px;
+`;
+
+const Required = Styled.span`
+  color: ${({ theme }) => theme.colors.system.RED};
 `;
 
 export /**
@@ -165,6 +171,9 @@ const Input = ({
   inputState = { message: '', status: 'default' },
   width,
   onEnterSubmit,
+  required,
+  ref,
+  tabIndex,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
@@ -195,8 +204,13 @@ const Input = ({
   </MoreDetailContainer>
   );
   return (
-    <InputWrapper width={width} disabled={!!disabled}>
-      {label && <InputLabel>{label}</InputLabel>}
+    <InputWrapper inputState={inputState} ref={ref} width={width} disabled={!!disabled}>
+      {label && (
+      <InputLabel disabled={!!disabled}>
+        {label}
+        {required && (<Required>*</Required>)}
+      </InputLabel>
+      )}
       <InputContainer
         inputState={inputState}
         disabled={disabled}
@@ -227,6 +241,7 @@ const Input = ({
           placeholder={placeholder || 'Placeholder'}
           type={type}
           withIcon={!!icon}
+          tabIndex={tabIndex}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
         {!focus && moreDetailsContainer}
