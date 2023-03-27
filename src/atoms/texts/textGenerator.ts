@@ -3,7 +3,6 @@ export const P_FONTSIZE = Object.freeze({
   Tiny: 10,
   Caption: 12,
   S: 14,
-  Button: 14,
   M: 14,
   L: 16,
 });
@@ -12,7 +11,6 @@ export const P_LINE_HEIGHT = Object.freeze({
   Tiny: 12,
   Caption: 16,
   S: 18,
-  Button: 20,
   M: 20,
   L: 20,
 });
