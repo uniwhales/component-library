@@ -453,8 +453,8 @@ export const Select = <T extends SelectVariation>({
           ClearIndicator: (props) => ClearIndicator(
             { ...props, clearButtonText, handleClearValue },
           ),
-          DropdownIndicator: (props) => DropdownIndicator({ ...props }),
-          Control: (props) => Control({ ...props }),
+          DropdownIndicator,
+          Control,
         }}
         onChange={(option) => {
           if (!onSelectChange) return;
