@@ -286,11 +286,17 @@ const CheckBoxOption = (props: any) => {
   } = props;
   // check if any options have icons
   const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
-  // check if individual options has an icon
+  // check if groups have icons
+  const groups = options.filter((o: SelectGroupOption) => o.options);
+  const groupOptions = groups
+  && groups.map((g: { options: Option[]; }) => g.options.filter((o: Option) => o.icon));
+  const groupHasIcons = groupOptions.some((group: string | any[]) => group.length > 0);
+
+  // check if individual option has an icon
   const hasIcon = !!data.icon;
   // show padding if any options have
   // icons and current option does not
-  const addPadding = optionsHaveIcon.length > 0 && !hasIcon;
+  const addPadding = (optionsHaveIcon.length > 0 || groupHasIcons) && !hasIcon;
   return (
     <OptionWrapper>
       <components.Option {...props} label={data.label}>
