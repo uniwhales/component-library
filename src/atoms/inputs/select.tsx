@@ -2,7 +2,7 @@ import React, {
   ReactNode, Ref, useState,
 } from 'react';
 import ReactSelect, {
-  components, GroupBase, SelectInstance, StylesConfig,
+  components, StylesConfig,
 } from 'react-select';
 import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
@@ -52,7 +52,7 @@ export interface SelectProps<T extends SelectVariation> {
   onInputChange?: (e: string) => void;
   required?: boolean
   tabIndex?: number
-  ref?: Ref<SelectInstance<unknown, boolean, GroupBase<unknown>>> | undefined
+  ref?: Ref<HTMLDivElement>
   error?: boolean
   errorMessage?: string
 }
@@ -423,7 +423,7 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
-    <SelectWrapper width={width}>
+    <SelectWrapper width={width} ref={ref}>
       <StyledSelect
         width={width}
         isDisabled={isDisabled}
@@ -466,7 +466,6 @@ export const Select = <T extends SelectVariation>({
         maxMenuHeight={maxMenuHeight}
         tabIndex={tabIndex}
         required={required}
-        ref={ref}
         error={!!error}
       />
       {error && errorMessage && (
