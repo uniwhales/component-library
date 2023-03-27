@@ -76,6 +76,9 @@ const ChainOptions = [
   {
     id: 4, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
   },
+  {
+    id: 4, value: 'noicon', label: 'No Icon', order: 4,
+  },
 ];
 
 const GroupExample = [
@@ -124,7 +127,7 @@ Primary.parameters = {
 };
 Primary.args = {
   width: '226px',
-  selectOptions: ColourOptions,
+  selectOptions: ChainOptions,
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
@@ -160,7 +163,7 @@ MultiSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -174,7 +177,7 @@ CustomMenuHeight.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -192,7 +195,7 @@ SingleGroupSearchSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
@@ -206,7 +209,7 @@ MultiGroupSelect.args = {
   showValue: true,
   placeholder:
   <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
+    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="S-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,

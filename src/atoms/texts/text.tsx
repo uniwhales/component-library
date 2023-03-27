@@ -21,7 +21,7 @@ export const Text: FC<TextProps> = ({
       </StyledA>
     );
   }
-  if ((['L', 'M', 'S', 'Button', 'Caption', 'Tiny', 'Overline'].includes(textType))) {
+  if ((['L', 'M', 'S', 'Caption', 'Tiny', 'Overline'].includes(textType))) {
     return (
       <StyledP
         textDecoration={textDecoration}
