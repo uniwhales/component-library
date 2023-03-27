@@ -280,7 +280,7 @@ export const Required = Styled.span`
   color: ${({ theme }) => theme.colors.system.RED};
 `;
 
-const CheckBoxOption = (props: any) => {
+const OptionComponent = (props: any) => {
   const {
     label, isSelected, readOnly, isCheckBox, data, options,
   } = props;
@@ -446,7 +446,7 @@ export const Select = <T extends SelectVariation>({
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
-          Option: (props) => CheckBoxOption({
+          Option: (props) => OptionComponent({
             ...props, readOnly, isCheckBox,
           }),
           IndicatorSeparator: () => null,
