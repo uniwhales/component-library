@@ -19,7 +19,7 @@ export const UserMenu: FC<UserMenuProps> = ({
       {account && <CopyToClipBoard walletCut text={account} />}
       {account && <Line length="98px" />}
       {account && plan && (
-        <Text color={textShades.SHADE_MINUS_1} size="M-Regular">
+        <Text color={textShades.SHADE_MINUS_1} size="14-Regular">
           <>
             {'Plan: '}
             {plan}

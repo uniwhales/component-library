@@ -158,7 +158,7 @@ const NoOptionsMessage = (props: any) => {
   if (selectProps.isDropdownDisabled) return null;
   return (
     <NoOptionsMessageStyled {...props}>
-      <Text size="M-Regular">No Results</Text>
+      <Text size="14-Regular">No Results</Text>
     </NoOptionsMessageStyled>
   );
 };

@@ -85,7 +85,7 @@ FeedPage.args = {
         onChange={(e) => console.log(e)}
         type="text"
       />
-      <Text href="TODO-ADD-LINK" size="S-Regular">
+      <Text href="TODO-ADD-LINK" size="14-Regular">
         <>
           Following:
           {' '}

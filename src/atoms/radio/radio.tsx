@@ -14,7 +14,7 @@ export const Radio = ({
     (
       <RadioAndLabel>
         {label && (
-        <Text color={labelColor ?? theme.textShades.SHADE_MINUS_3} size="S-Bold">
+        <Text color={labelColor ?? theme.textShades.SHADE_MINUS_3} size="14-Bold">
           {label}
         </Text>
         )}

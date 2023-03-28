@@ -68,7 +68,7 @@ export const ToggleAtom = ({
       <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
       <Toggle disabled={!!disabled} size={size} />
     </Switcher>
-    {label && <Text size="M-Regular">{label}</Text>}
+    {label && <Text size="14-Regular">{label}</Text>}
   </Wrapper>
 
 );

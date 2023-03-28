@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <FooterComponent>
       <FooterLogo />
-      <Text color={theme.textShades.SHADE_MINUS_2} size="Tiny-Regular">UniWhales DAO ©2022</Text>
+      <Text color={theme.textShades.SHADE_MINUS_2} size="10-Regular">UniWhales DAO ©2022</Text>
     </FooterComponent>
   );
 };

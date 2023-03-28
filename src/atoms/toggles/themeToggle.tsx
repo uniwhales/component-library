@@ -69,7 +69,7 @@ export const ThemeToggle = ({
         <FakeInput expanded={expanded} isOn={isOn} type="checkbox" defaultChecked={isOn} onChange={onClick} />
         <Toggle isOn={isOn} />
       </Switcher>
-      {expanded && <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>{isOn ? 'Dark' : 'Light'}</Text>}
+      {expanded && <Text size="12-Regular" color={theme.textShades.SHADE_MINUS_2}>{isOn ? 'Dark' : 'Light'}</Text>}
     </Wrapper>
   );
 };

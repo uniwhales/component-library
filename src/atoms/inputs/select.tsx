@@ -355,7 +355,7 @@ const ClearIndicator = (props: any) => {
     >
       <ClearButtonContainer>
         <Text
-          size="S-Regular"
+          size="14-Regular"
           color={
             hover || isFocused || selectProps.isMenuOpen
               ? theme.colors.system.WHITE
@@ -476,7 +476,7 @@ export const Select = <T extends SelectVariation>({
       />
       {error && errorMessage && (
       <ErrorMessageContainer>
-        <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+        <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
       </ErrorMessageContainer>
       )}
     </SelectWrapper>

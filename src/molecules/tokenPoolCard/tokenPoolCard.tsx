@@ -87,9 +87,9 @@ export const TokenPoolCard:FC<TokenPoolCardInterface> = (
             <img src={data.token1_image} alt="token1_image" />
           </ImgBlock>
           <TextBlock>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">{data.token0}</Text>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">+</Text>
-            <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">{data.token1}</Text>
+            <Text color={theme.textShades.SHADE_MINUS_2} size="14-Bold">{data.token0}</Text>
+            <Text color={theme.textShades.SHADE_MINUS_2} size="14-Bold">+</Text>
+            <Text color={theme.textShades.SHADE_MINUS_2} size="14-Bold">{data.token1}</Text>
           </TextBlock>
           <a target="_blank" href={data.link} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
@@ -101,12 +101,12 @@ export const TokenPoolCard:FC<TokenPoolCardInterface> = (
       </Section>
       <Section>
         <TotalLiquidity>
-          <Text color={theme.textShades.SHADE_MINUS_1} size="S-Regular">Total Liquidity</Text>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">{formatter(false).format(data.liquidity)}</Text>
+          <Text color={theme.textShades.SHADE_MINUS_1} size="14-Regular">Total Liquidity</Text>
+          <Text color={theme.textShades.SHADE_MINUS_2} size="14-Bold">{formatter(false).format(data.liquidity)}</Text>
         </TotalLiquidity>
         <Volume>
-          <Text color={theme.textShades.SHADE_MINUS_1} size="S-Regular">24 Hour  Volume</Text>
-          <Text color={theme.textShades.SHADE_MINUS_2} size="M-Bold">{formatter(false).format(data.volume_usd)}</Text>
+          <Text color={theme.textShades.SHADE_MINUS_1} size="14-Regular">24 Hour  Volume</Text>
+          <Text color={theme.textShades.SHADE_MINUS_2} size="14-Bold">{formatter(false).format(data.volume_usd)}</Text>
         </Volume>
       </Section>
     </Wrapper>

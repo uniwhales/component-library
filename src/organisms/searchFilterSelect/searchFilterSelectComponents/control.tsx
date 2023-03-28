@@ -27,7 +27,7 @@ export const Control = (props: any) => {
   return (
     <>
       <ControlHeaderContainer>
-        <Text color={theme.textShades.SHADE_MINUS_1} size="S-Bold">
+        <Text color={theme.textShades.SHADE_MINUS_1} size="14-Bold">
           {`${label}  |`}
         </Text>
         <Text size={!isContractSearch ? 'S-Regular' : 'S-Bold'}>{leftSwitchText}</Text>

@@ -73,7 +73,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
                 {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
                 {headerText && (
                   <Text
-                    size="L-Regular"
+                    size="16-Regular"
                     color={theme.textShades.SHADE_MINUS_3}
                   >
                     {headerText}

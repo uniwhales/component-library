@@ -52,7 +52,7 @@ const Template: ComponentStory<typeof StickyActionBar> = (args) => (
             readOnly={false}
             isMulti={false}
           />
-          <Text href="TODO-ADD-LINK" size="S-Regular">
+          <Text href="TODO-ADD-LINK" size="14-Regular">
             <>
               Following:
               {' '}

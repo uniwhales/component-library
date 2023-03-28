@@ -1,16 +1,16 @@
 export type BodySizes =
-  'L-Regular'
-  | 'L-Bold'
-  | 'M-Regular'
-  | 'M-Bold'
-  | 'S-Regular'
-  | 'S-Bold'
-  | 'Caption-Regular'
-  | 'Caption-Bold'
-  | 'Tiny-Regular'
-  | 'Tiny-Bold'
-  | 'Overline-Regular'
-  | 'Overline-Bold';
+  '8-Regular'
+  | '8-Bold'
+  | '10-Regular'
+  | '10-Bold'
+  | '11-Regular'
+  | '11-Bold'
+  | '12-Regular'
+  | '12-Bold'
+  | '14-Regular'
+  | '14-Bold'
+  | '16-Regular'
+  | '16-Bold';
 
 export type HeaderSizes =
   'H1-Regular'

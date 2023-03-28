@@ -1,18 +1,18 @@
 export const P_FONTSIZE = Object.freeze({
-  Overline: 8,
-  Tiny: 10,
-  Caption: 12,
-  S: 14,
-  M: 14,
-  L: 16,
+  8: 8,
+  10: 10,
+  11: 11,
+  12: 12,
+  14: 14,
+  16: 16,
 });
 export const P_LINE_HEIGHT = Object.freeze({
-  Overline: 10,
-  Tiny: 12,
-  Caption: 16,
-  S: 18,
-  M: 20,
-  L: 20,
+  8: 10,
+  10: 12,
+  11: 12,
+  12: 16,
+  14: 18,
+  16: 20,
 });
 export const H_FONTSIZE = Object.freeze({
   H1: 44,
