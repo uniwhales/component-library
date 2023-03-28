@@ -10,11 +10,11 @@ export const CardDate: FC<CardDateProps> = ({ state, date, size }) => {
   return (
     <CardDateContainer size={size}>
       <Chip secondaryTypeBgColor={secondaryTypeBgColor} type="secondary">
-        <Text size={size === 'S' ? 'Tiny-Bold' : 'S-Bold'}>
+        <Text size={size === 'S' ? '10-Bold' : '14-Bold'}>
           {size === 'S' ? state.toUpperCase() : state}
         </Text>
       </Chip>
-      <Text size={size === 'S' ? 'Caption-Bold' : 'M-Bold'}>{date}</Text>
+      <Text size={size === 'S' ? '12-Bold' : '14-Bold'}>{date}</Text>
     </CardDateContainer>
   );
 };

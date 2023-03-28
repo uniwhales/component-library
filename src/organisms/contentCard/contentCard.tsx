@@ -44,7 +44,7 @@ export const ContentCard:FC<ContentCardProps> = ({
       </CardHeader>
       <Spacer />
       <CardTitle>
-        <Text size={size === 'S' ? 'S-Bold' : 'M-Bold'}>{title}</Text>
+        <Text size={size === 'S' ? '12-Bold' : '14-Bold'}>{title}</Text>
       </CardTitle>
       <ArticleCover size={size} url={coverImgUrl} />
       <AboutSection>

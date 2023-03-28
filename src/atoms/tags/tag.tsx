@@ -20,7 +20,7 @@ export const Tag = ({
       isOn={isOn}
       tabIndex={tabIndex}
     >
-      <Text size={fontSize ?? 'S-Bold'} color={textColour}>{children}</Text>
+      <Text size={fontSize ?? '14-Bold'} color={textColour}>{children}</Text>
     </CustomTag>
   );
 };
