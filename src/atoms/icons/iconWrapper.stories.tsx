@@ -180,6 +180,8 @@ import { Perp } from './feed/Perp';
 import { OptionIcon } from './feed/OptionIcon';
 import { FilterTokens } from './feed/FilterTokens';
 import { FilterTx } from './feed/FilterTx';
+import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
+import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
 
 export default {
   title: 'Atoms/Icons',
@@ -262,6 +264,9 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Binance" icon={<BinanceColor />} />
     <IconWrapper name="Curve" icon={<CurveColor />} />
     <IconWrapper name="Ethereum" icon={<EthereumColor />} />
+
+    <IconWrapper name="ZkSync" icon={<ZkSyncColor />} />
+    <IconWrapper name="ZkEvm" icon={<ZkEvmColor />} />
     <IconWrapper name="Etherscan" icon={<EtherscanColor />} />
     <IconWrapper name="Fantom" icon={<FantomColor />} />
     <IconWrapper name="Harmony" icon={<HarmonyColor />} />
