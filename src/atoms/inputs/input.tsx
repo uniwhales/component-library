@@ -91,7 +91,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
 `;
-export const InputLabel = Styled.label<{ disabled:boolean }>`
+export const InputLabel = Styled.label<{ disabled?:boolean }>`
   font-size: 12px;
   color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.textShades.SHADE_MINUS_2)};
   font-weight: 400;

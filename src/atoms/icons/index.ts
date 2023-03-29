@@ -209,6 +209,8 @@ export * from './chains/fullColorStyle/EvmosColor';
 export * from './chains/fullColorStyle/DogechainColor';
 export * from './chains/fullColorStyle/GnosisColor';
 export * from './chains/fullColorStyle/Canto';
+export * from './chains/fullColorStyle/ZkEvm';
+export * from './chains/fullColorStyle/ZkSync';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
