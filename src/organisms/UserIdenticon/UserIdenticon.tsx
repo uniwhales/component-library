@@ -37,7 +37,7 @@ export const UserIdenticon = ({
         id="user-identicon"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       />
-      {account && <Text size="Tiny-Regular">{shortenAddressTo11Chars(account)}</Text>}
+      {account && <Text size="10-Regular">{shortenAddressTo11Chars(account)}</Text>}
       <UserMenu
         isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {

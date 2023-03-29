@@ -26,15 +26,15 @@ const Template: ComponentStory<typeof MeatballMenu> = () => {
         items={[
           {
             key: 'key1',
-            content: <Text size="S-Regular">some text</Text>,
+            content: <Text size="14-Regular">some text</Text>,
           },
           {
             key: 'key2',
-            content: <Text size="S-Regular">more text</Text>,
+            content: <Text size="14-Regular">more text</Text>,
           },
           {
             key: 'key3',
-            content: <Text size="S-Regular">even more text</Text>,
+            content: <Text size="14-Regular">even more text</Text>,
           },
         ]}
       />

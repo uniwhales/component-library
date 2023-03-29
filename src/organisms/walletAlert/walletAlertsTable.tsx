@@ -38,7 +38,7 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
   justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
-  
+
   @media screen and (max-width: 1024px) {
     p{
       font-size: 14px;
@@ -110,7 +110,7 @@ export const WalletAlertsTable = ({
       {isLoading && <Overlay />}
       <Section>
         {label && (
-          <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>
+          <Text size="14-Bold" color={theme.textShades.SHADE_MINUS_2}>
             {label}
           </Text>
         )}
@@ -128,7 +128,7 @@ export const WalletAlertsTable = ({
       <Section>
         <Group>
           {bot_id && (
-            <Text size="M-Regular">
+            <Text size="14-Regular">
               {`bot #${bot_id.id}`}
             </Text>
           )}

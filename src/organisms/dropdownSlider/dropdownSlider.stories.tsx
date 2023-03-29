@@ -35,15 +35,15 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
           buttonWidth="140px"
           description={(
             <TextRow>
-              <Text color={isDark ? '#B4B5C6' : '#70717C'} size="Caption-Regular">
+              <Text color={isDark ? '#B4B5C6' : '#70717C'} size="12-Regular">
                 Set a
                 {' '}
               </Text>
-              <Text size="Caption-Bold" color={isDark ? '#B4B5C6' : '#70717C'}>
+              <Text size="12-Bold" color={isDark ? '#B4B5C6' : '#70717C'}>
                 min. value (USD)
                 {' '}
               </Text>
-              <Text size="Caption-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
+              <Text size="12-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
             </TextRow>
           )}
           onApply={onApply}

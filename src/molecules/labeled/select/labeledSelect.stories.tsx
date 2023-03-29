@@ -132,7 +132,7 @@ LabeledMultiSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: false,
@@ -151,7 +151,7 @@ LabeledSingleGroupSearchSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: true,
@@ -166,7 +166,7 @@ LabeledMultiGroupSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: true,

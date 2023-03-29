@@ -77,7 +77,7 @@ export const TextArea = ({
     <TextAreaWrapper
       disabled={disabled}
     >
-      {label && <InputLabel>{label}</InputLabel>}
+      {label && <InputLabel disabled={disabled}>{label}</InputLabel>}
       <TextAreaComponent
         maxLength={maxLength}
         placeholder={placeholder}

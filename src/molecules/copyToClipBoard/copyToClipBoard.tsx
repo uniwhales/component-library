@@ -85,7 +85,7 @@ export const CopyToClipBoard = ({
     />
   );
 
-  const TextLabel = <Text color={color} size={textSize ?? 'S-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
+  const TextLabel = <Text color={color} size={textSize ?? '14-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
 
   return (
     <Wrapper>

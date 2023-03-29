@@ -6,12 +6,14 @@ import {
 import { HyperLinkStyle, HyperLinkVariation } from './types';
 
 export const StyledP = Styled.p<{ textType: string, textWeight: string, textDecoration?: string }>`
-  font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
+  // Adding unknown here as TS thinks we are making a mistake converting to a string
+  // because we are not using numbers instead of regular string
+  font-size: ${(props) => P_FONTSIZE[props.textType as unknown as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   padding: 0;
   margin: 0;
   color: ${(props) => (props.color ? props.color : props.theme.textShades.SHADE_MINUS_3)};
-  line-height: ${(props) => P_LINE_HEIGHT[props.textType as keyof typeof P_LINE_HEIGHT]}px;
+  line-height: ${(props) => P_LINE_HEIGHT[props.textType as unknown as keyof typeof P_LINE_HEIGHT]}px;
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
 export const StyledHeading = Styled.div<{ textType: string, textWeight: string, textDecoration?: string }>`
@@ -28,7 +30,7 @@ export const StyledA = Styled.a<{ textType: string, textWeight: string, textDeco
   padding: 0;
   margin: 0;
   line-height: 24px;
-  font-size: ${(props) => P_FONTSIZE[props.textType as keyof typeof P_FONTSIZE]}px;
+  font-size: ${(props) => P_FONTSIZE[props.textType as unknown as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   color: ${(props) => (props.color ? props.color : props.theme.colors.secondary.TEAL)};
   text-decoration-thickness: 2px;

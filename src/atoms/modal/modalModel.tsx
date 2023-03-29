@@ -68,8 +68,8 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
           <AnnouncementCardContainerMobile key={datetime}>
             <Cover coverUrl={image} />
             <Content>
-              <Text size="S-Bold">{datetime}</Text>
-              <Text size="L-Regular">{title}</Text>
+              <Text size="14-Bold">{datetime}</Text>
+              <Text size="16-Regular">{title}</Text>
               <AnnouncementText dangerouslySetInnerHTML={{ __html: text ?? '' }} />
             </Content>
           </AnnouncementCardContainerMobile>
@@ -102,9 +102,9 @@ export const doubleModalExample = ({
       modalContent={(
         <ModalContentContainer>
           <ModalColumn>
-            <Text size="S-Regular">{placeholderText}</Text>
+            <Text size="14-Regular">{placeholderText}</Text>
             <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-              <Text color={theme.colors.primary.MAIN_BLUE} size="Caption-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+              <Text color={theme.colors.primary.MAIN_BLUE} size="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
               <IconWrapper
                 fill={theme.colors.primary.MAIN_BLUE}
                 height="12px"
@@ -116,7 +116,7 @@ export const doubleModalExample = ({
           {showMore && (
             <ModalColumn>
               {' '}
-              <Text size="S-Regular">{placeholderText}</Text>
+              <Text size="14-Regular">{placeholderText}</Text>
             </ModalColumn>
           )}
         </ModalContentContainer>

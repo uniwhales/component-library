@@ -135,10 +135,10 @@ export const TxTableColumns = (wsData: TableItem[], theme: any) => {
       {
         accessor: (row: TableItem) => (
           <DateSection>
-            {/* <Text size="S-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
-            {/* <Text size="S-Bold" color={theme.colors.primary.MAIN_BLUE}>/</Text> */}
+            {/* <Text size="14-Regular">{row.timestamp.split(' ').at(0)}</Text> */}
+            {/* <Text size="14-Bold" color={theme.colors.primary.MAIN_BLUE}>/</Text> */}
             {row.timestamp && (
-              <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_2} size="S-Bold">{row.timestamp.split(' ')[1]}</Text>
+              <Text textDecoration="underline" color={row.isNew ? theme.colors.primary.MAIN_BLUE : theme.textShades.SHADE_MINUS_2} size="14-Bold">{row.timestamp.split(' ')[1]}</Text>
             )}
 
           </DateSection>
@@ -161,8 +161,8 @@ export const TxTableColumns = (wsData: TableItem[], theme: any) => {
           <SwapWrapper>
             <Block justifyContent="flex-end">
               <TextArea textAlign="right">
-                <Text size="S-Bold">{row.transaction.from.token}</Text>
-                <Text size="Caption-Regular">
+                <Text size="14-Bold">{row.transaction.from.token}</Text>
+                <Text size="12-Regular">
                   <>
                     {formatNumber(row.transaction.from.amount.toFixed(2))}
                     /
@@ -196,8 +196,8 @@ export const TxTableColumns = (wsData: TableItem[], theme: any) => {
                 }}
               />
               <TextArea textAlign="left">
-                <Text size="S-Bold">{row.transaction.for.token}</Text>
-                <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>
+                <Text size="14-Bold">{row.transaction.for.token}</Text>
+                <Text size="12-Regular" color={theme.textShades.SHADE_MINUS_2}>
                   <>
                     {formatNumber(row.transaction.for.amount.toFixed(2))}
                     /
@@ -213,10 +213,10 @@ export const TxTableColumns = (wsData: TableItem[], theme: any) => {
       {
         accessor: (row: TableItem) => (
           <SectionTotal>
-            <Text size="S-Regular">
+            <Text size="14-Regular">
               {`$${formatNumber(row.total_usd.toFixed(2))}`}
             </Text>
-            <Text size="Caption-Regular" color={theme.textShades.SHADE_MINUS_2}>
+            <Text size="12-Regular" color={theme.textShades.SHADE_MINUS_2}>
               {`(${row.slippage.toFixed(2)}%)`}
             </Text>
           </SectionTotal>

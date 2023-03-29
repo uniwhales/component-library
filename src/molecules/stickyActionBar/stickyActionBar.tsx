@@ -11,7 +11,7 @@ import { StickyActionBarProps } from './types';
 
 type ChildProps = { elem: MobileRHSActionBarProps['left'], noHover?: MobileRHSActionBarProps['noHover'] };
 const Child = ({ elem, noHover }: ChildProps) => (
-  typeof elem === 'string' ? <Text size="M-Regular">{elem}</Text> : <IconWrapper cursor={noHover ? '' : 'pointer'} icon={elem} />);
+  typeof elem === 'string' ? <Text size="14-Regular">{elem}</Text> : <IconWrapper cursor={noHover ? '' : 'pointer'} icon={elem} />);
 
 export const StickyActionBar: FC<StickyActionBarProps> = ({
   icon, left, right, withTransform, index, cardProps, rootMargin = 24, mt,

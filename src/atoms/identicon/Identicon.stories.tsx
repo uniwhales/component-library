@@ -73,7 +73,7 @@ NoInteraction.args = {
 };
 
 WithSelectableTemplate.args = {
-  text: <Text size="S-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
+  text: <Text size="14-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
   checkbox: {
     disabled: false,
     selected: false,

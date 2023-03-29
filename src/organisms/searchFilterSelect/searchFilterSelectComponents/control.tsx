@@ -27,16 +27,16 @@ export const Control = (props: any) => {
   return (
     <>
       <ControlHeaderContainer>
-        <Text color={theme.textShades.SHADE_MINUS_1} size="S-Bold">
+        <Text color={theme.textShades.SHADE_MINUS_1} size="14-Bold">
           {`${label}  |`}
         </Text>
-        <Text size={!isContractSearch ? 'S-Regular' : 'S-Bold'}>{leftSwitchText}</Text>
+        <Text size={!isContractSearch ? '14-Regular' : '14-Bold'}>{leftSwitchText}</Text>
         <SwitcherAtom
           disabled={isDisabled}
           isOn={!isContractSearch}
           onClick={() => onSwitch && onSwitch()}
         />
-        <Text size={isContractSearch ? 'S-Regular' : 'S-Bold'}>{rightSwitchText}</Text>
+        <Text size={isContractSearch ? '14-Regular' : '14-Bold'}>{rightSwitchText}</Text>
       </ControlHeaderContainer>
       <components.Control {...props} />
     </>

@@ -93,7 +93,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
         {icon && icon}
       </Border>
     </AnchorIconComponent>
-    {name && <Text size="S-Regular">{name}</Text>}
+    {name && <Text size="14-Regular">{name}</Text>}
   </Outer>
 ) : (
   <>
@@ -116,6 +116,6 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
     >
       {icon && icon}
     </IconComponent>
-    {name && <Text size="S-Regular">{name}</Text>}
+    {name && <Text size="14-Regular">{name}</Text>}
   </>
 ));

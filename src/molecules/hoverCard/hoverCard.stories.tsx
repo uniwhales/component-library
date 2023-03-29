@@ -24,7 +24,7 @@ export default {
 const Template: ComponentStory<typeof HoverCardComponent> = () => {
   const content = (
     <div>
-      <Text size="S-Regular">hover Card content</Text>
+      <Text size="14-Regular">hover Card content</Text>
       <ButtonAtom buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
     </div>
   );

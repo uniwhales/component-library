@@ -55,11 +55,11 @@ export const Slider: FC<SliderProps> = ({
             onChange={handleChange}
           />
           {unit && (
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
+            <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
           )}
         </NumInputContainer>
         {hasError && errorMessage && (
-          <Text size="Caption-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+          <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
         )}
       </InputWrapper>
 

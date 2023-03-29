@@ -114,7 +114,7 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
             onClick={() => setSelectFilter(chip.id)}
             isOn={selectFilter === chip.id}
           >
-            <Text size="S-Regular">{chip.label}</Text>
+            <Text size="14-Regular">{chip.label}</Text>
           </FilterChip>
         ))}
     </Wrapper>
@@ -135,7 +135,7 @@ const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => {
           disabled={disabled}
           icon={f.icon}
         >
-          <Text size="S-Regular" color="SHADE_MINUS_1">{f.text}</Text>
+          <Text size="14-Regular" color="SHADE_MINUS_1">{f.text}</Text>
         </FilterChip>
       ))}
     </Wrapper>

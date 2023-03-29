@@ -23,7 +23,7 @@ export const LoadingMessage = (props: any) => {
       <Rotate>
         <IconWrapper fill={theme.textShades.SHADE_MINUS_2} icon={<RefreshIcon />} />
       </Rotate>
-      <Text size="M-Regular">Loading Data</Text>
+      <Text size="14-Regular">Loading Data</Text>
     </LoadingMessageContainer>
   );
 };

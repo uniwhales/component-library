@@ -38,13 +38,13 @@ export const ContentCard:FC<ContentCardProps> = ({
       <CardHeader>
         <CardHeaderLeftSide>
           {chipText && <Chip type="secondary">{chipText}</Chip>}
-          <Text size="S-Bold">{releaseDate}</Text>
+          <Text size="14-Bold">{releaseDate}</Text>
         </CardHeaderLeftSide>
-        {duration && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">{duration}</Text>}
+        {duration && <Text color={theme.textShades.SHADE_MINUS_2} size="14-Regular">{duration}</Text>}
       </CardHeader>
       <Spacer />
       <CardTitle>
-        <Text size={size === 'S' ? 'S-Bold' : 'M-Bold'}>{title}</Text>
+        <Text size={size === 'S' ? '12-Bold' : '14-Bold'}>{title}</Text>
       </CardTitle>
       <ArticleCover size={size} url={coverImgUrl} />
       <AboutSection>
@@ -62,8 +62,8 @@ export const ContentCard:FC<ContentCardProps> = ({
                   : <WebinarStandard />}
             />
           </MediaTypeIcon>
-          {guest && <Text color={theme.textShades.SHADE_MINUS_2} size="S-Regular">with</Text>}
-          {guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="S-Regular">{guest}</Text>}
+          {guest && <Text color={theme.textShades.SHADE_MINUS_2} size="14-Regular">with</Text>}
+          {guest && <Text href={guestLink} color={theme.colors.system.GREEN} size="14-Regular">{guest}</Text>}
         </AboutSectionLeftSide>
         <ButtonAtom buttonVariant="special_tiny_round" onClick={() => onClick()}>
           <IconWrapper

@@ -13,6 +13,6 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
     isConnected={!!account}
   >
     {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
-    <Text size="S-Bold">{account ? 'Disconnect' : 'Connect'}</Text>
+    <Text size="14-Bold">{account ? 'Disconnect' : 'Connect'}</Text>
   </ConnectButton>
 );

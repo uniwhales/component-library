@@ -164,7 +164,7 @@ MultiSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: false,
@@ -178,7 +178,7 @@ CustomMenuHeight.args = {
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: false,
@@ -196,7 +196,7 @@ SingleGroupSearchSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: true,
@@ -210,7 +210,7 @@ MultiGroupSelect.args = {
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="S-Regular">Filter Tx types and Chains</Text>
+    <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
   isXL: true,
   isClearable: true,

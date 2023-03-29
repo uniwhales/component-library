@@ -115,7 +115,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
                 backgroundPositionY: 'center',
               }}
             />
-            <Text size="M-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
+            <Text size="14-Bold" color={theme.textShades.SHADE_MINUS_2}>{data.symbol}</Text>
           </ClickBlock>
           <a target="_blank" href={`https://etherscan.io/token/${data.address}`} rel="noreferrer">
             <IconWrapper cursor="pointer" width="17px" height="17px" icon={<LinkIcon />} />
@@ -139,20 +139,20 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
         </Block>
         <Block>
           <TimeSection>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>1h</Text>
-            <Text size="S-Regular" color={generateColor(data.price_change_percentage_1h)}>
+            <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>1h</Text>
+            <Text size="14-Regular" color={generateColor(data.price_change_percentage_1h)}>
               {`${data.price_change_percentage_1h.toFixed(2)}%`}
             </Text>
           </TimeSection>
           <TimeSection>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>1d</Text>
-            <Text size="S-Regular" color={generateColor(data.price_change_percentage_24h)}>
+            <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>1d</Text>
+            <Text size="14-Regular" color={generateColor(data.price_change_percentage_24h)}>
               {`${data.price_change_percentage_24h.toFixed(2)}%`}
             </Text>
           </TimeSection>
           <TimeSection>
-            <Text size="S-Regular" color={theme.textShades.SHADE_MINUS_1}>7d</Text>
-            <Text size="S-Regular" color={generateColor(data.price_change_percentage_7d)}>
+            <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>7d</Text>
+            <Text size="14-Regular" color={generateColor(data.price_change_percentage_7d)}>
               {`${data.price_change_percentage_7d.toFixed(2)}%`}
             </Text>
           </TimeSection>

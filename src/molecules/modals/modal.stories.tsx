@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof Modal> = () => {
         modalVariant="single"
         modalContent={(
           <DummyModalContent>
-            <Text size="S-Regular">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
+            <Text size="14-Regular">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
             <Input
               value="afadf"
               label="fdfsa"
@@ -69,9 +69,9 @@ const Template2: ComponentStory<typeof Modal> = () => {
         modalContent={(
           <ModalContentContainer>
             <ModalColumn>
-              <Text size="S-Regular">{placeholderText}</Text>
+              <Text size="14-Regular">{placeholderText}</Text>
               <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-                <Text size="Caption-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+                <Text size="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
                 <IconWrapper
                   height="12px"
                   width="12px"
@@ -82,7 +82,7 @@ const Template2: ComponentStory<typeof Modal> = () => {
             {showMore && (
               <ModalColumn>
                 {' '}
-                <Text size="S-Regular">{placeholderText}</Text>
+                <Text size="14-Regular">{placeholderText}</Text>
               </ModalColumn>
             )}
           </ModalContentContainer>

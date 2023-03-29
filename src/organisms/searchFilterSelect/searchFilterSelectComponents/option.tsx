@@ -51,22 +51,22 @@ export const Option = (props:any) => {
       <OptionGrid>
         <Icon address={data.address} />
         <OptionEntry>
-          <Text size="S-Regular" color={color}>
+          <Text size="14-Regular" color={color}>
             Symbol:
           </Text>
-          <Text size="S-Bold" color={color}>{data.symbol}</Text>
+          <Text size="14-Bold" color={color}>{data.symbol}</Text>
         </OptionEntry>
         <OptionEntry>
-          <Text size="S-Regular" color={color}>
+          <Text size="14-Regular" color={color}>
             Name:
           </Text>
-          <Text size="S-Bold" color={color}>{data.name}</Text>
+          <Text size="14-Bold" color={color}>{data.name}</Text>
         </OptionEntry>
         <OptionEntry>
-          <Text size="S-Regular" color={color}>
+          <Text size="14-Regular" color={color}>
             Address:
           </Text>
-          <Text size="S-Bold" color={color}>{shortenAddressTo11Chars(data.address)}</Text>
+          <Text size="14-Bold" color={color}>{shortenAddressTo11Chars(data.address)}</Text>
         </OptionEntry>
       </OptionGrid>
     </components.Option>
