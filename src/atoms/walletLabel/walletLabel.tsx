@@ -14,7 +14,6 @@ export const WalletLabel = (
   const limit = chars || 5;
 
   if (label && label.length > limit) {
-    console.debug('fire', labelHasSpaces, limit);
     return (
       <Container width={width} breakWord={labelHasSpaces}>
         <ShortText
