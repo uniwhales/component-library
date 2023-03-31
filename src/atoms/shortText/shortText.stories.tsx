@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ShortenText } from './shortenText';
+import { ShortText } from './shortText';
 import { Styled } from '../../theme';
 
 export default {
   title: 'Atoms/shortenText',
-  component: ShortenText,
+  component: ShortText,
   argTypes: {
     children: {
       control: {
@@ -13,16 +13,16 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ShortenText>;
+} as ComponentMeta<typeof ShortText>;
 
 const Wrapper = Styled.div`
   width: 200px;
   margin: 50px 0;
 `;
 
-const Template: ComponentStory<typeof ShortenText> = (args) => (
+const Template: ComponentStory<typeof ShortText> = (args) => (
   <Wrapper>
-    <ShortenText {...args} />
+    <ShortText {...args} />
   </Wrapper>
 );
 

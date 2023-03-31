@@ -1,6 +1,6 @@
 import React from 'react';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
-import { ShortenText } from '../shortenText/shortenText';
+import { ShortenText } from '../shortText/shortText';
 import { Text } from '../texts/text';
 import { Container } from './styles';
 import { WalletLabelProps } from './types';

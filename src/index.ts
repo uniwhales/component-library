@@ -28,7 +28,7 @@ export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
 export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
-export * from './atoms/shortenText/shortenText';
+export * from './atoms/shortText/shortText';
 export * from './atoms/walletLabel/walletLabel';
 
 // molecules
