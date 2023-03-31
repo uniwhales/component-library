@@ -24,5 +24,14 @@ export const ShortenText = ({
     );
   }
 
-  return <Text size={size} color={color}>{text}</Text>;
+  return (
+    <Text
+      size={size}
+      color={color}
+      href={href}
+      target={target}
+    >
+      {text}
+    </Text>
+  );
 };
