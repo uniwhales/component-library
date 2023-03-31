@@ -1,10 +1,7 @@
-import { HeaderSizes, BodySizes } from '../texts/types';
+import { TextPropsBase } from '../shortText/types';
 
-export type WalletLabelProps = {
-  size: BodySizes | HeaderSizes,
-  color?: string,
-  charactersToDisplay: number,
-  label?: string,
-  address: string,
-  width?:string
+export type WalletLabelProps = TextPropsBase & {
+  label?: string;
+  address: string;
+  width?: string;
 };

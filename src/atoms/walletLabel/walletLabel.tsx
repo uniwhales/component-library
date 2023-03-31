@@ -1,25 +1,27 @@
 import React from 'react';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
-import { ShortenText } from '../shortText/shortText';
+import { ShortText } from '../shortText/shortText';
 import { Text } from '../texts/text';
 import { Container } from './styles';
 import { WalletLabelProps } from './types';
 
 export const WalletLabel = (
   {
-    label, address, size, color, charactersToDisplay, width,
+    label, address, size, color, chars, width,
   }: WalletLabelProps,
 ) => {
-  const labelHasSpaces = label?.includes(' ') ?? false;
+  const labelHasSpaces = !!label?.trim().includes(' ');
+  const limit = chars || 5;
 
-  if (label && label.length > charactersToDisplay) {
+  if (label && label.length > limit) {
+    console.debug('fire', labelHasSpaces, limit);
     return (
       <Container width={width} breakWord={labelHasSpaces}>
-        <ShortenText
+        <ShortText
           text={label}
-          size={size}
+          size={size ?? '14-Regular'}
           color={color}
-          chars={charactersToDisplay}
+          chars={limit}
         />
       </Container>
     );
@@ -27,13 +29,13 @@ export const WalletLabel = (
   if (label) {
     return (
       <Container width={width} breakWord={labelHasSpaces}>
-        <Text size={size} color={color}>{label}</Text>
+        <Text size={size ?? '14-Regular'} color={color}>{label}</Text>
       </Container>
     );
   }
   return (
     <Container width={width} breakWord={labelHasSpaces}>
-      <Text size={size} color={color}>{shortenAddressTo11Chars(address)}</Text>
+      <Text size={size ?? '14-Regular'} color={color}>{shortenAddressTo11Chars(address)}</Text>
     </Container>
   );
 };
