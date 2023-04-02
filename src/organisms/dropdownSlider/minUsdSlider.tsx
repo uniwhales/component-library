@@ -96,6 +96,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
                 unit={unit}
                 hasError={valueIsEmpty || valueIsTooLarge}
                 errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
+                useLogarithmic
               />
               <ButtonContainer>
                 <ButtonAtom

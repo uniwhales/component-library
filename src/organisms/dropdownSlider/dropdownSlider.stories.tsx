@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
         <DropdownSlider
           ref={sliderEl}
           min={0}
-          max={1000000}
+          max={10000000}
           buttonText="Min.USD"
           buttonIcon={<CoinStandard />}
           buttonWidth="140px"
