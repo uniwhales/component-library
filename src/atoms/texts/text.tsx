@@ -3,7 +3,7 @@ import { StyledA, StyledHeading, StyledP } from './text.styles';
 import { TextProps } from './types';
 
 export const Text: FC<TextProps> = ({
-  children, size, color, textDecoration, href, target, hyperLinkVariation,
+  children, size = '14-Regular', color, textDecoration, href, target, hyperLinkVariation,
 }) => {
   const [textType, textWeight] = size.split('-');
   if (href) {
