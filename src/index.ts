@@ -19,6 +19,7 @@ export * from './atoms/chips/types';
 export * from './atoms/chips/chip';
 export * from './atoms/connectWalletButton/connectWalletButton';
 export * from './atoms/common/flex';
+export * from './atoms/common/overlay';
 export * from './atoms/identicon/Identicon';
 export * from './atoms/modal/modal';
 export * from './atoms/uniwhalesLogo/uniwhalesLogo';
@@ -28,6 +29,7 @@ export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
 export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
+export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
