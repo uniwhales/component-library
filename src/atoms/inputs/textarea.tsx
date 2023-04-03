@@ -1,8 +1,9 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
 import {
-  InputWrapper, InputLabel, InputContainer, Required, InputState,
+  InputWrapper, InputLabel, InputContainer, Required, InputState, MoreDetailContainer,
 } from './input';
-import { Styled } from '../../theme';
+import { Styled, localTheme } from '../../theme';
+import { Text } from '../texts/text';
 
 type TextAreaTypes = {
   disabled: boolean;
@@ -58,14 +59,40 @@ export const TextArea = ({
   maxLength,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
+  const theme = localTheme();
+
+  const getMoreDetailsTextColor = (status: InputState['status']) => {
+    const lookup = {
+      valid: theme.colors.system.GREEN,
+      exception: theme.colors.system.AMBER,
+      help: theme.colors.secondary.FUSCIA,
+    };
+    if (status === 'exception' || status === 'help' || status === 'valid') {
+      return lookup[status];
+    }
+    return theme.colors.system.RED;
+  };
+
+  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+    <MoreDetailContainer
+      inputState={inputState}
+    >
+      <Text
+        color={getMoreDetailsTextColor(inputState.status)}
+        size="12-Regular"
+      >
+        {inputState.message}
+      </Text>
+    </MoreDetailContainer>
+  );
 
   return (
     <TextAreaWrapper inputState={inputState} ref={ref} disabled={!!disabled}>
       {label && (
-      <InputLabel disabled={!!disabled}>
-        {label}
-        {required && (<Required>*</Required>)}
-      </InputLabel>
+        <InputLabel disabled={!!disabled}>
+          {label}
+          {required && (<Required>*</Required>)}
+        </InputLabel>
       )}
       <TextAreaContainer
         inputState={inputState}
@@ -82,6 +109,7 @@ export const TextArea = ({
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}
         />
+        {!focus && moreDetailsContainer}
       </TextAreaContainer>
     </TextAreaWrapper>
   );

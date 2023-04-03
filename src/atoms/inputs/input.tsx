@@ -126,7 +126,7 @@ const RightSideIcon = Styled.div`
   }
  `;
 
-const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
+export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   position: absolute;
   left: ${({ inputState }) => inputState.status === 'invalid' && 0};
   right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
@@ -177,7 +177,6 @@ const Input = ({
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const theme = localTheme();
-  console.debug(inputState);
   const getMoreDetailsTextColor = (status: InputState['status']) => {
     const lookup = {
       valid: theme.colors.system.GREEN,
