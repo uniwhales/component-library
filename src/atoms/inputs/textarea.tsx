@@ -14,7 +14,8 @@ type TextAreaTypes = {
   placeholder?: string;
   maxLength?: number;
   required?: boolean;
-  ref?: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLDivElement>;
+  tabIndex?: number
 };
 
 const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputState }>`
@@ -57,6 +58,7 @@ export const TextArea = ({
   required,
   ref,
   maxLength,
+  tabIndex,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
   const theme = localTheme();
@@ -108,6 +110,7 @@ export const TextArea = ({
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}
+          tabIndex={tabIndex}
         />
         {!focus && moreDetailsContainer}
       </TextAreaContainer>
