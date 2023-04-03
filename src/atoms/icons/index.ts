@@ -244,3 +244,10 @@ export * from './feed/Withdraw';
 export * from './feed/FilterTokens';
 export * from './feed/FilterTx';
 export * from './feed/Timestamp';
+// onboarding
+export * from './onboarding/Onboarding_Registration_1';
+export * from './onboarding/Onboarding_Registration_2';
+export * from './onboarding/Onboarding_Registration_3';
+export * from './onboarding/Onboarding_Registration_4';
+export * from './onboarding/Onboarding_Registration_5';
+export * from './onboarding/Onboarding_Registration_6';

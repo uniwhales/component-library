@@ -43,7 +43,7 @@ export interface TextProps {
   | string
   | string[]
   | number;
-  size: BodySizes | HeaderSizes;
+  size?: BodySizes | HeaderSizes;
   color?: string;
   textDecoration?: string;
   href?: string;
