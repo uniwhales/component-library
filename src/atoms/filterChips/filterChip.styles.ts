@@ -105,3 +105,32 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled' |
     };
   `}
 `;
+
+export const FilterChipOnboarding = Styled.div<{ isOn:boolean, disabled?:boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  height: 22px;
+  padding: 0 16px;
+  // disabled state
+  ${(props) => props.disabled && css`
+      background: ${({ theme }) => theme.colors.primary.MEDIUM_BLUE};
+      color: ${({ theme }) => theme.colors.primary.DARK_BLUE};
+      border: 2px solid transparent;
+
+      svg {
+        fill: ${({ theme }) => theme.colors.primary.DARK_BLUE}!important;
+      }
+  `}
+  // active state
+  ${({ disabled, theme, isOn }) => !disabled && css`
+    border: ${isOn ? `2px solid ${theme.colors.primary.YELLOW}` : `2px solid ${theme.colors.primary.MAIN_BLUE}`}};
+    color: ${theme.colors.system.WHITE};
+    background: ${isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
+    cursor: pointer;
+    &:hover {
+      background: ${theme.colors.primary.MAIN_BLUE};
+    };
+  `};
+`;
