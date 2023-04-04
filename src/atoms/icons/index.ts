@@ -251,3 +251,7 @@ export * from './onboarding/Onboarding_Registration_3';
 export * from './onboarding/Onboarding_Registration_4';
 export * from './onboarding/Onboarding_Registration_5';
 export * from './onboarding/Onboarding_Registration_6';
+// Tutorial
+
+export * from './tutorial/Configure';
+export * from './tutorial/YourFeed';
