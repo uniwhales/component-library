@@ -88,6 +88,10 @@ export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
 export const SquareButton = Template.bind({});
 export const SquareButtonCustomSize = Template.bind({});
+export const OnboardingButton = Template.bind({});
+export const OnboardingCustomWidthButton = Template.bind({});
+export const CloseButtonPrimary = Template.bind({});
+export const CloseButtonOnboarding = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -177,4 +181,21 @@ SquareButtonCustomSize.args = {
   children: WithIcon(),
   buttonVariant: 'square',
   size: '140px',
+};
+OnboardingButton.args = {
+  children: 'Onboarding',
+  buttonVariant: 'onboarding',
+};
+OnboardingCustomWidthButton.args = {
+  children: 'Onboarding',
+  buttonVariant: 'onboarding',
+  width: '225px',
+};
+CloseButtonPrimary.args = {
+  buttonVariant: 'close',
+  size: '30px',
+};
+CloseButtonOnboarding.args = {
+  buttonVariant: 'close_onboarding',
+  size: '30px',
 };
