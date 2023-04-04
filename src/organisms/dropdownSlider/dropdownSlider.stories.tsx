@@ -27,9 +27,8 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <DropdownSlider
+          {...args}
           ref={sliderEl}
-          min={0}
-          max={10000000}
           buttonText="Min.USD"
           buttonIcon={<CoinStandard />}
           buttonWidth="140px"
@@ -66,6 +65,11 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
 };
 
 export const DropdownSliderComponent = Template.bind({});
+
+DropdownSliderComponent.args = {
+  min: 0,
+  max: 250000,
+};
 
 DropdownSliderComponent.parameters = {
   backgrounds: { default: 'dark' },

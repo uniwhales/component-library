@@ -37,13 +37,19 @@ export const Slider: FC<SliderProps> = ({
     return (Math.log(v) - minLog) / scale + min;
   };
 
+  const customScale = (v: number, mn: number, mx: number, blend: number) => {
+    const logVal = logScale(v, mn, mx);
+    const linearVal = v;
+    return blend * logVal + (1 - blend) * linearVal;
+  };
+
   const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
     const linearValue = parseInt(e.target.value, 10);
-    const newValue = useLogarithmic ? logScale(linearValue, min, max) : linearValue;
+    const blend = 0.5; // Adjust this value between 0 and 1 to control the compression of the scale
+    const newValue = useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
     const actualValue = Math.min(Math.round(newValue), max);
     setValue(actualValue.toString());
 
-    // Update the slider value based on the logarithmic scale
     const sliderValue = Math.round(useLogarithmic ? inverseLogScale(newValue, min, max) : newValue);
     e.target.value = sliderValue.toString();
   };
