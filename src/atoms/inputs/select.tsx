@@ -79,7 +79,7 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   max-width: ${({ width, isXL }) => (width || (isXL ? '100%' : '172px'))};
   width: ${({ width }) => width ?? '100%'};
   outline: none;
-  margin-bottom: 4px;
+  margin-bottom: ${({ error }) => error && '4px'};
   input{
     width: fit-content;
   }
