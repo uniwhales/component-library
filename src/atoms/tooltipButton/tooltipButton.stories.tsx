@@ -28,7 +28,7 @@ export default {
 const Template: ComponentStory<typeof TooltipButton> = () => (
   <Wrapper>
     <TooltipButton
-      content={(<div>hello</div>)}
+      content={(<div>Additional content, triggered on click</div>)}
     />
   </Wrapper>
 );
