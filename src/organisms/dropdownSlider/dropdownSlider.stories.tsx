@@ -65,10 +65,17 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
 };
 
 export const DropdownSliderComponent = Template.bind({});
+export const DropdownSliderWithScaleComponent = Template.bind({});
 
 DropdownSliderComponent.args = {
   min: 0,
+  max: 2500000,
+};
+
+DropdownSliderWithScaleComponent.args = {
+  min: 0,
   max: 250000,
+  useLogarithmic: true,
 };
 
 DropdownSliderComponent.parameters = {

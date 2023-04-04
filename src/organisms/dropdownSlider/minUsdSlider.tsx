@@ -29,7 +29,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   min, max, onApply,
   buttonText, buttonIcon,
   buttonWidth, buttonHeight,
-  description, unit,
+  description, unit, useLogarithmic,
 }, ref) => {
   const [sliderValue, setSliderValue] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
@@ -96,7 +96,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
                 unit={unit}
                 hasError={valueIsEmpty || valueIsTooLarge}
                 errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
-                useLogarithmic
+                useLogarithmic={useLogarithmic}
               />
               <ButtonContainer>
                 <ButtonAtom

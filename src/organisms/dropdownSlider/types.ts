@@ -8,4 +8,5 @@ export interface MinUsdProps {
   buttonWidth?: string
   buttonHeight?: string
   unit?: string
+  useLogarithmic?:boolean
 }
