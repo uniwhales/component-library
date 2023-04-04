@@ -66,6 +66,7 @@ const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {
     </ButtonAtom>
   );
 };
+
 export const Primary = Template.bind({});
 export const PrimaryWithIcon = Template.bind({});
 export const Secondary = Template.bind({});
