@@ -17,9 +17,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'special_extra_tiny_subtle'
   | 'icon_only'
   | 'square'
-  | 'onboarding'
-  | 'close'
-  | 'close_onboarding'
+  | 'onboarding_primary'
+  | 'onboarding_secondary'
+  | 'close_primary'
+  | 'close_secondary'
   borderRadius?: string,
   disabled?: boolean
   size?: string

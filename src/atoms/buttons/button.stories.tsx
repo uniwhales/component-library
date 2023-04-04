@@ -89,10 +89,12 @@ export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
 export const SquareButton = Template.bind({});
 export const SquareButtonCustomSize = Template.bind({});
-export const OnboardingButton = Template.bind({});
-export const OnboardingCustomWidthButton = Template.bind({});
+export const OnboardingButtonPrimary = Template.bind({});
+export const OnboardingButtonPrimaryCustomWidthButton = Template.bind({});
+export const OnboardingButtonSecondary = Template.bind({});
+export const OnboardingButtonSecondaryCustomWidthButton = Template.bind({});
 export const CloseButtonPrimary = Template.bind({});
-export const CloseButtonOnboarding = Template.bind({});
+export const CloseButtonSecondary = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -183,20 +185,29 @@ SquareButtonCustomSize.args = {
   buttonVariant: 'square',
   size: '140px',
 };
-OnboardingButton.args = {
+OnboardingButtonPrimary.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding',
+  buttonVariant: 'onboarding_primary',
 };
-OnboardingCustomWidthButton.args = {
+OnboardingButtonPrimaryCustomWidthButton.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding',
+  buttonVariant: 'onboarding_primary',
+  width: '225px',
+};
+OnboardingButtonSecondary.args = {
+  children: 'Onboarding',
+  buttonVariant: 'onboarding_secondary',
+};
+OnboardingButtonSecondaryCustomWidthButton.args = {
+  children: 'Onboarding',
+  buttonVariant: 'onboarding_secondary',
   width: '225px',
 };
 CloseButtonPrimary.args = {
-  buttonVariant: 'close',
+  buttonVariant: 'close_primary',
   size: '30px',
 };
-CloseButtonOnboarding.args = {
-  buttonVariant: 'close_onboarding',
+CloseButtonSecondary.args = {
+  buttonVariant: 'close_secondary',
   size: '30px',
 };

@@ -402,16 +402,16 @@ const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
   `}
 `;
 
-const OnboardingButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const OnboardingPrimaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.colors.primary.MEDIUM_BLUE};
-      color: ${props.theme.colors.primary.DARK_BLUE};
+      background: ${props.theme.colors.primary.MAIN_BLUE};
+      color: ${props.theme.colors.secondary.SKY};
       border:2px solid transparent;
 
       svg {
-        fill: ${props.theme.colors.primary.DARK_BLUE}!important;
+        fill: ${props.theme.colors.secondary.SKY}!important;
       }
   `}
   // active state
@@ -429,13 +429,40 @@ const OnboardingButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
-const CloseButtonOnboarding = Styled(OnboardingButton)<Pick<ButtonProps, 'size'>>`
+const OnboardingSecondaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
+  width: ${({ width }) => width};
+  // disabled state
+  ${(props) => props.disabled && css`
+      background: ${props.theme.colors.primary.MEDIUM_BLUE};
+      color: ${props.theme.colors.primary.DARK_BLUE};
+      border:2px solid transparent;
+
+      svg {
+        fill: ${props.theme.colors.primary.DARK_BLUE}!important;
+      }
+  `}
+  // active state
+  ${(props) => !props.disabled && css`
+    position: relative;
+    border: 2px solid transparent;
+    opacity: 0.9;
+    background: ${props.theme.colors.primary.MAIN_BLUE};
+    z-index: ${props.theme.zIndex.BACKDROP};
+    &:hover {
+      background: ${props.theme.colors.secondary.SKY};
+    }
+    &:active {
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
+    }
+  `}
+`;
+const CloseButtonPrimary = Styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
   border-radius: 50%;
 `;
 
-const CloseButtonPrimary = Styled(ButtonPrimary)<Pick<ButtonProps, 'size'>>`
+const CloseButtonSecondary = Styled(OnboardingSecondaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
   border-radius: 50%;
@@ -603,18 +630,29 @@ export const ButtonAtom: FC<ButtonProps> = ({
           {children}
         </SquareButton>
       );
-    case 'onboarding':
+    case 'onboarding_primary':
       return (
-        <OnboardingButton
+        <OnboardingPrimaryButton
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
           width={width}
         >
           {children}
-        </OnboardingButton>
+        </OnboardingPrimaryButton>
       );
-    case 'close':
+    case 'onboarding_secondary':
+      return (
+        <OnboardingSecondaryButton
+          disabled={disabled}
+          onClick={!disabled ? onClick : () => { }}
+          type="button"
+          width={width}
+        >
+          {children}
+        </OnboardingSecondaryButton>
+      );
+    case 'close_primary':
       return (
         <CloseButtonPrimary
           size={size}
@@ -625,16 +663,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
           <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
         </CloseButtonPrimary>
       );
-    case 'close_onboarding':
+    case 'close_secondary':
       return (
-        <CloseButtonOnboarding
+        <CloseButtonSecondary
           size={size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
         >
           <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
-        </CloseButtonOnboarding>
+        </CloseButtonSecondary>
       );
     default:
       return (
