@@ -106,12 +106,13 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled' |
   `}
 `;
 
-export const FilterChipOnboarding = Styled.div<{ isOn:boolean, disabled?:boolean }>`
+export const FilterChipOnboarding = Styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width' | 'isOn'>>`
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  height: 22px;
+  width: ${({ width }) => width ?? 'fit-content'};
+  height: ${({ height }) => height ?? 'fit-content'};
   padding: 0 16px;
   // disabled state
   ${(props) => props.disabled && css`
