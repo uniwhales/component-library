@@ -152,6 +152,9 @@ import {
   BalencerFilled, EvmosFilled, BancorFilled, RedCross, ChainScan,
   CrownStandard, ShareLinkStandard, LeaderboardStandard, Suggested,
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
+  OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
+  OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
+  YourFeed, Configure,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -491,6 +494,24 @@ const Template12: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
+const Template13: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper width="" height="" name="Onboarding_Registration_1" icon={<OnboardingRegistration1 />} />
+    <IconWrapper height="" width="" name="Onboarding_Registration_2" icon={<OnboardingRegistration2 />} />
+    <IconWrapper height="" width="" name="Onboarding_Registration_3" icon={<OnboardingRegistration3 />} />
+    <IconWrapper height="" width="" name="Onboarding_Registration_4" icon={<OnboardingRegistration4 />} />
+    <IconWrapper height="" width="" name="Onboarding_Registration_5" icon={<OnboardingRegistration5 />} />
+    <IconWrapper height="" width="" name="Onboarding_Registration_6" icon={<OnboardingRegistration6 />} />
+  </>
+);
+
+const Template14: ComponentStory<typeof IconWrapper> = () => (
+  <>
+    <IconWrapper width="" height="" name="Your Feed" icon={<YourFeed />} />
+    <IconWrapper height="" width="" name="Configure" icon={<Configure />} />
+  </>
+);
+
 export const navigationIcons = Template.bind({});
 export const chainsIcons = Template2.bind({});
 export const chainsIconsColor = Template3.bind({});
@@ -503,6 +524,8 @@ export const feedIcons = Template9.bind({});
 export const hrefIcons = Template10.bind({});
 export const otherIcons = Template11.bind({});
 export const IconsWithHover = Template12.bind({});
+export const OnboardingRegistration = Template13.bind({});
+export const Tutorial = Template14.bind({});
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

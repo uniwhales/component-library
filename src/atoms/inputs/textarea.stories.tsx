@@ -14,14 +14,40 @@ export default {
   },
 } as ComponentMeta<typeof TextArea>;
 
-const Template: ComponentStory<typeof TextArea> = () => {
+const Template: ComponentStory<typeof TextArea> = ({
+  inputState, label, disabled, required,
+}) => {
   const [value, setValue] = useState<string>('');
   return (
     <Wrapper>
-      <TextArea value={value} onChange={(e) => setValue(e.target.value)} disabled={false} />
+      <TextArea
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        disabled={disabled}
+        inputState={inputState}
+        label={label}
+        required={required}
+      />
     </Wrapper>
 
   );
 };
 
 export const Primary = Template.bind({});
+export const Error = Template.bind({});
+
+Primary.args = {
+  label: 'label',
+  inputState: {
+    status: 'default',
+    message: '',
+  },
+};
+
+Error.args = {
+  label: 'label',
+  inputState: {
+    status: 'error',
+    message: 'Error message',
+  },
+};
