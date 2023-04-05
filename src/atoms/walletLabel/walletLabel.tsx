@@ -7,11 +7,11 @@ import { WalletLabelProps } from './types';
 
 export const WalletLabel = (
   {
-    label, address, size, color, chars, width,
+    label, address, size, color, chars = 5, width,
   }: WalletLabelProps,
 ) => {
   const labelHasSpaces = !!label?.trim().includes(' ');
-  const limit = chars || 5;
+  const limit = labelHasSpaces ? (chars * 2) : chars;
 
   if (label && label.length > limit) {
     return (
