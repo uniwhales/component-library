@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Required } from '../../../atoms/inputs/input';
 import {
-  Required, Select, SelectProps, SelectVariation,
+  Select, SelectProps, SelectVariation,
 } from '../../../atoms/inputs/select';
 import { Text } from '../../../atoms/texts/text';
 import { BodySizes, HeaderSizes } from '../../../atoms/texts/types';
