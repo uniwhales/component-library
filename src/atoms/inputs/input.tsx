@@ -4,6 +4,7 @@ import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
+import { Required } from './select';
 
 const InputPatterns = {
   number: /^-?\d*\.?\d*$/,
@@ -131,10 +132,6 @@ export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   left: ${({ inputState }) => inputState.status === 'invalid' && 0};
   right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
   margin: 8px;
-`;
-
-export const Required = Styled.span`
-  color: ${({ theme }) => theme.colors.system.RED};
 `;
 
 export /**
