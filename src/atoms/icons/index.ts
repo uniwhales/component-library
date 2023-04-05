@@ -224,6 +224,7 @@ export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
 export { Punk } from './miscIcons/Punk';
+export { WalletConnect } from './miscIcons/WalletConnect';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed
