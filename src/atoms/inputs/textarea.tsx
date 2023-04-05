@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useState } from 'react';
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import React, { ChangeEvent, Ref, useState } from 'react';
 import {
-  getBorderColor, InputLabel, InputState,
+  InputWrapper, InputLabel, InputContainer, InputState, MoreDetailContainer,
 } from './input';
+import { Styled, localTheme } from '../../theme';
+import { Text } from '../texts/text';
+import { Required } from './select';
 
 type TextAreaTypes = {
   disabled: boolean;
@@ -13,83 +14,107 @@ type TextAreaTypes = {
   inputState?: InputState;
   placeholder?: string;
   maxLength?: number;
+  required?: boolean;
+  ref?: Ref<HTMLDivElement>;
+  tabIndex?: number
 };
-export const TextAreaComponent = Styled.textarea<{ focus: boolean, disabled?: boolean, inputState: InputState }>`
-  font-family: Poppins,sans-serif;
+
+const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputState }>`
   resize: none;
   outline: none;
-  width: 100%;
   height: 100%;
-  margin-bottom: 0;
+  width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? '0.2' : 1)};
-  color: ${(props) => props.theme.textShades.SHADE_MINUS_2};
-  border-radius: 12px;
-  padding: ${({ inputState }) => (inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+  padding: 8px 24px;
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
-  border: 1px solid ${({ theme, inputState }) => getBorderColor(theme, inputState.status)};
-  background: transparent;
+  border-radius: 12px;
+  border: none;
+  background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  line-height:24px;
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
   :focus  {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
-  :hover {
-    ::placeholder {
-      color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
-    }
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-    ${({ focus, disabled }) => !focus && !disabled && css`
-      border: 1px solid ${(props) => props.theme.textShades.SHADE_MINUS_1};
-  `}
-  }
 `;
-const TextAreaWrapper = Styled.div<{ disabled:boolean }>`
-  display: flex;
+
+const TextAreaWrapper = Styled(InputWrapper)`
   height: 100%;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 2px;
-  p{
-    margin: 0;
-  }
-    :hover {
-    ::placeholder {
-      color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
-    }
-    color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
-    ${({ disabled }) => !disabled && css`
-      textarea {
-        border: 1px solid ${(props) => props.theme.textShades.SHADE_MINUS_3};
-      }
-    label {
-      color: ${({ theme }) => !disabled && theme.textShades.SHADE_MINUS_3};
-    }
-  `}
-  }
 `;
+
+const TextAreaContainer = Styled(InputContainer)`
+  height: 100%;
+`;
+
 export const TextArea = ({
-  disabled, value, onChange, label = 'Label', inputState = { message: '', status: 'default' }, placeholder, maxLength,
+  placeholder,
+  value,
+  onChange,
+  label,
+  disabled,
+  inputState = { message: '', status: 'default' },
+  required,
+  ref,
+  maxLength,
+  tabIndex,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
-  return (
-    <TextAreaWrapper
-      disabled={disabled}
-    >
-      {label && <InputLabel disabled={disabled}>{label}</InputLabel>}
-      <TextAreaComponent
-        maxLength={maxLength}
-        placeholder={placeholder}
-        inputState={inputState}
-        value={value}
-        onChange={(e) => onChange(e)}
-        focus={focus}
-        disabled={disabled}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+  const theme = localTheme();
 
-      />
+  const getMoreDetailsTextColor = (status: InputState['status']) => {
+    const lookup = {
+      valid: theme.colors.system.GREEN,
+      exception: theme.colors.system.AMBER,
+      help: theme.colors.secondary.FUSCIA,
+    };
+    if (status === 'exception' || status === 'help' || status === 'valid') {
+      return lookup[status];
+    }
+    return theme.colors.system.RED;
+  };
+
+  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+    <MoreDetailContainer
+      inputState={inputState}
+    >
+      <Text
+        color={getMoreDetailsTextColor(inputState.status)}
+        size="12-Regular"
+      >
+        {inputState.message}
+      </Text>
+    </MoreDetailContainer>
+  );
+
+  return (
+    <TextAreaWrapper inputState={inputState} ref={ref} disabled={!!disabled}>
+      {label && (
+        <InputLabel disabled={!!disabled}>
+          {label}
+          {required && (<Required>*</Required>)}
+        </InputLabel>
+      )}
+      <TextAreaContainer
+        inputState={inputState}
+        disabled={disabled}
+        focus={focus}
+      >
+        <TextAreaStyled
+          inputState={inputState}
+          maxLength={maxLength}
+          disabled={disabled}
+          value={value}
+          onChange={(e) => onChange(e)}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          placeholder={placeholder || 'Placeholder'}
+          tabIndex={tabIndex}
+        />
+        {!focus && moreDetailsContainer}
+      </TextAreaContainer>
     </TextAreaWrapper>
   );
 };

@@ -4,6 +4,7 @@ import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
+import { Required } from './select';
 
 const InputPatterns = {
   number: /^-?\d*\.?\d*$/,
@@ -33,7 +34,7 @@ export interface InputsProps {
   ref?: Ref<HTMLInputElement>
   tabIndex?: number
 }
-const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
+export const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -43,7 +44,7 @@ const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: 
     margin: 0;
   }
   :hover {
-    input {
+    input, textarea {
       ::placeholder {
         color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
@@ -82,7 +83,6 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   box-sizing: border-box;
   border-radius: 12px;
   border: none;
-  border-radius: 12px;
   background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
@@ -127,15 +127,11 @@ const RightSideIcon = Styled.div`
   }
  `;
 
-const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
+export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   position: absolute;
   left: ${({ inputState }) => inputState.status === 'invalid' && 0};
   right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
   margin: 8px;
-`;
-
-const Required = Styled.span`
-  color: ${({ theme }) => theme.colors.system.RED};
 `;
 
 export /**
@@ -178,7 +174,6 @@ const Input = ({
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const theme = localTheme();
-
   const getMoreDetailsTextColor = (status: InputState['status']) => {
     const lookup = {
       valid: theme.colors.system.GREEN,
