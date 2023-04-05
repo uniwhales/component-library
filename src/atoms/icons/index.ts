@@ -170,6 +170,8 @@ export * from './chains/UniwhalesFilled';
 export * from './chains/CieloFilled';
 export * from './chains/SushiswapFilled';
 export * from './chains/Blur';
+export * from './chains/WalletConnect';
+
 // chains color
 export * from './chains/fullColorStyle/X2Y2Color';
 export * from './chains/fullColorStyle/OpenseaColor';
@@ -211,6 +213,7 @@ export * from './chains/fullColorStyle/GnosisColor';
 export * from './chains/fullColorStyle/Canto';
 export * from './chains/fullColorStyle/ZkEvm';
 export * from './chains/fullColorStyle/ZkSync';
+
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
@@ -224,7 +227,6 @@ export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
 export { Punk } from './miscIcons/Punk';
-export { WalletConnect } from './miscIcons/WalletConnect';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed
