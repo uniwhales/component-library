@@ -185,6 +185,7 @@ import { FilterTokens } from './feed/FilterTokens';
 import { FilterTx } from './feed/FilterTx';
 import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
 import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
+import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -252,6 +253,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="X2Y2" icon={<X2Y2Color />} />
     <IconWrapper name="Opensea" icon={<OpenseaColor />} />
+    <IconWrapper name="OpenseaPro" icon={<OpenseaProColor />} />
     <IconWrapper name="LooksRare" icon={<LooksRareColor />} />
     <IconWrapper name="Genie" icon={<GenieColor />} />
     <IconWrapper name="Gem" icon={<GemColor />} />

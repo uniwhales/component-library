@@ -173,6 +173,7 @@ export * from './chains/Blur';
 // chains color
 export * from './chains/fullColorStyle/X2Y2Color';
 export * from './chains/fullColorStyle/OpenseaColor';
+export * from './chains/fullColorStyle/OpenseaProColor';
 export * from './chains/fullColorStyle/LooksRareColor';
 export * from './chains/fullColorStyle/GenieColor';
 export * from './chains/fullColorStyle/GemColor';
