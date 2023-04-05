@@ -1,9 +1,10 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
 import {
-  InputWrapper, InputLabel, InputContainer, Required, InputState, MoreDetailContainer,
+  InputWrapper, InputLabel, InputContainer, InputState, MoreDetailContainer,
 } from './input';
 import { Styled, localTheme } from '../../theme';
 import { Text } from '../texts/text';
+import { Required } from './select';
 
 type TextAreaTypes = {
   disabled: boolean;

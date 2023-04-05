@@ -138,6 +138,10 @@ const ClearButtonContainer = Styled.div`
 
 const ClearWrapper = Styled.div``;
 
+export const Required = Styled.span`
+  color: ${({ theme }) => theme.colors.system.RED};
+`;
+
 const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean }>`
   box-sizing: border-box;
   cursor: pointer;
