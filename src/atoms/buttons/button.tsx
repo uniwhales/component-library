@@ -38,8 +38,9 @@ const Button = Styled.button<GenericStylingProps>`
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
-const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
+  height: ${({ height }) => height};
   // disabled state
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
