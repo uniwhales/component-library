@@ -5,6 +5,8 @@ export const Wrapper = Styled.div`
   height: 300px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
   padding: 20px;
+  margin-top: 220px;
+  margin-left: 350px;
 `;
 
 export const TooltipButtonWrapper = Styled.div`
