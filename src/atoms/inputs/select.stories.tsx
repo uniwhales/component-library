@@ -8,6 +8,7 @@ import {
   BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars,
 } from '../icons';
 import { Text } from '../texts/text';
+import { Wrapper } from './input';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -99,20 +100,34 @@ export default {
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return (
-    <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+    <Wrapper>
+      <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+    </Wrapper>
   );
 };
 const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
-  return <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+  return (
+    <Wrapper>
+      <Select<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+    </Wrapper>
+  );
 };
 const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
-  return <Select<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+  return (
+    <Wrapper>
+      <Select<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+    </Wrapper>
+  );
 };
 const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
-  return <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} handleClearValue={() => setValue([])} />;
+  return (
+    <Wrapper>
+      <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} handleClearValue={() => setValue([])} />
+    </Wrapper>
+  );
 };
 export const Primary = TemplateSingle.bind({});
 export const PrimaryIcon = TemplateSingle.bind({});

@@ -1,5 +1,4 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
-import { css } from 'styled-components';
 import { localTheme, Styled, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -65,6 +64,7 @@ export const getBorderColor = (theme: typeof Theme, status: InputState['status']
     invalid: theme.colors.system.RED,
     exception: theme.colors.system.AMBER,
     help: theme.colors.secondary.FUSCIA,
+    disabled: theme.colors.system.RED,
   };
   if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'help') {
     return lookup[status];
@@ -93,7 +93,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
 `;
 export const InputLabel = Styled.label<{ disabled?:boolean }>`
   font-size: 12px;
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.textShades.SHADE_MINUS_2)};
+  color: ${({ theme, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2)};
   font-weight: 400;
   line-height: 16px;
 `;
@@ -102,13 +102,10 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
   position: relative;
   border-radius: 12px;
   box-sizing: border-box;
-  ${({ focus, disabled }) => focus && !disabled && css`
-    outline: 1px solid ${({ theme }) => theme.colors.primary.MAIN_BLUE};
-  `}
   &:hover {
-    outline: 1px solid ${({ theme, disabled, inputState }) => (disabled ? '1px solid transparent' : !disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
+    outline: 1.5px solid ${({ theme, disabled, inputState }) => (disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : !disabled && inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, inputState.status))};
   }
-  outline: 1px solid ${({ theme, inputState, disabled }) => (disabled ? '1px solid transparent' : getBorderColor(theme, inputState.status))};
+  outline: 1.5px solid ${({ theme, inputState, disabled }) => (disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : getBorderColor(theme, inputState.status))};
 `;
 
 const LeftSideIcon = Styled.div`
@@ -132,6 +129,11 @@ export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   left: ${({ inputState }) => inputState.status === 'invalid' && 0};
   right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
   margin: 8px;
+`;
+
+export const Wrapper = Styled.div`
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  padding: 20px;
 `;
 
 export /**
@@ -198,6 +200,7 @@ const Input = ({
     </Text>
   </MoreDetailContainer>
   );
+
   return (
     <InputWrapper inputState={inputState} ref={ref} width={width} disabled={!!disabled}>
       {label && (

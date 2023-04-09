@@ -114,6 +114,7 @@ export const Placeholder = Styled.div`
 `;
 
 const OptionWrapper = Styled.div`
+  zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
   &:nth-of-type(2n) {
     background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
@@ -152,9 +153,9 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
   height: 40px;
   background: ${({ theme, isFocused, isDisabled }) => (isFocused
     ? theme.colors.primary.MAIN_BLUE : isDisabled
-      ? theme.containerAndCardShades.SHADE_PLUS_1
+      ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
+  border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
   color: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
   font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
   svg {

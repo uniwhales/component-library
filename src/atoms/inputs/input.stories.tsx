@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input } from './input';
+import { Input, Wrapper } from './input';
 import { SearchStandard } from '../icons';
 
 export default {
@@ -18,18 +18,20 @@ const Template: ComponentStory<typeof Input> = ({
     setValue(inputValue);
   };
   return (
-    <Input
-      width={width}
-      value={localValue}
-      disabled={disabled}
-      label={label}
-      pattern={pattern}
-      onChange={(e) => onChangeInput(e.target.value)}
-      type={type}
-      icon={icon}
-      inputState={inputState}
-      required={required}
-    />
+    <Wrapper>
+      <Input
+        width={width}
+        value={localValue}
+        disabled={disabled}
+        label={label}
+        pattern={pattern}
+        onChange={(e) => onChangeInput(e.target.value)}
+        type={type}
+        icon={icon}
+        inputState={inputState}
+        required={required}
+      />
+    </Wrapper>
   );
 };
 export const Primary = Template.bind({});

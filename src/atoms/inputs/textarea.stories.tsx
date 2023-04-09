@@ -6,6 +6,8 @@ import { Styled } from '../../theme';
 const Wrapper = Styled.div`
   height: 400px;
   width: 400px;
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  padding: 30px;
 `;
 export default {
   title: 'Atoms/TextArea',
@@ -15,7 +17,7 @@ export default {
 } as ComponentMeta<typeof TextArea>;
 
 const Template: ComponentStory<typeof TextArea> = ({
-  inputState, label, disabled, required,
+  inputState, label, disabled, required, maxLength,
 }) => {
   const [value, setValue] = useState<string>('');
   return (
@@ -27,6 +29,7 @@ const Template: ComponentStory<typeof TextArea> = ({
         inputState={inputState}
         label={label}
         required={required}
+        maxLength={maxLength}
       />
     </Wrapper>
 
@@ -42,6 +45,7 @@ Primary.args = {
     status: 'default',
     message: '',
   },
+  maxLength: 30,
 };
 
 Error.args = {
@@ -50,4 +54,5 @@ Error.args = {
     status: 'error',
     message: 'Error message',
   },
+  maxLength: 30,
 };
