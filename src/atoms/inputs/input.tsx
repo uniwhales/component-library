@@ -64,7 +64,6 @@ export const getBorderColor = (theme: typeof Theme, status: InputState['status']
     invalid: theme.colors.system.RED,
     exception: theme.colors.system.AMBER,
     help: theme.colors.secondary.FUSCIA,
-    disabled: theme.colors.system.RED,
   };
   if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'help') {
     return lookup[status];
