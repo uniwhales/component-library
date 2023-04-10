@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { TextArea } from './textarea';
 import { Styled } from '../../theme';
 
@@ -20,6 +20,8 @@ const Template: ComponentStory<typeof TextArea> = ({
   inputState, label, disabled, required, maxLength,
 }) => {
   const [value, setValue] = useState<string>('');
+  const ref = useRef<HTMLTextAreaElement>(null);
+  console.debug(ref);
   return (
     <Wrapper>
       <TextArea
@@ -30,6 +32,7 @@ const Template: ComponentStory<typeof TextArea> = ({
         label={label}
         required={required}
         maxLength={maxLength}
+        textareaRef={ref}
       />
     </Wrapper>
 

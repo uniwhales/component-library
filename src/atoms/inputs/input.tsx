@@ -30,7 +30,7 @@ export interface InputsProps {
   width?: string;
   onEnterSubmit?: () => void;
   required?: boolean
-  ref?: Ref<HTMLInputElement>
+  inputRef?: Ref<HTMLInputElement>
   tabIndex?: number
 }
 export const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
@@ -130,9 +130,10 @@ export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   margin: 8px;
 `;
 
-export const Wrapper = Styled.div`
+export const Wrapper = Styled.div<{ mt?:string }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 20px;
+  margin-top: ${({ mt }) => mt && mt}
 `;
 
 export /**
@@ -169,7 +170,7 @@ const Input = ({
   width,
   onEnterSubmit,
   required,
-  ref,
+  inputRef,
   tabIndex,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
@@ -201,7 +202,7 @@ const Input = ({
   );
 
   return (
-    <InputWrapper inputState={inputState} ref={ref} width={width} disabled={!!disabled}>
+    <InputWrapper inputState={inputState} width={width} disabled={!!disabled}>
       {label && (
       <InputLabel disabled={!!disabled}>
         {label}
@@ -239,6 +240,7 @@ const Input = ({
           type={type}
           withIcon={!!icon}
           tabIndex={tabIndex}
+          ref={inputRef}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
         {!focus && moreDetailsContainer}

@@ -15,7 +15,7 @@ type TextAreaTypes = {
   placeholder?: string;
   maxLength?: number;
   required?: boolean;
-  ref?: Ref<HTMLDivElement>;
+  textareaRef?: Ref<HTMLTextAreaElement>;
   tabIndex?: number
 };
 
@@ -65,7 +65,7 @@ export const TextArea = ({
   disabled,
   inputState = { message: '', status: 'default' },
   required,
-  ref,
+  textareaRef,
   maxLength,
   tabIndex,
 }: TextAreaTypes) => {
@@ -103,7 +103,7 @@ export const TextArea = ({
   );
 
   return (
-    <TextAreaWrapper inputState={inputState} ref={ref} disabled={!!disabled}>
+    <TextAreaWrapper inputState={inputState} disabled={!!disabled}>
       {label && (
         <InputLabel disabled={!!disabled}>
           {label}
@@ -125,6 +125,7 @@ export const TextArea = ({
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}
           tabIndex={tabIndex}
+          ref={textareaRef}
         />
         <MaxContainer inputState={inputState}>
           {maxLengthText}

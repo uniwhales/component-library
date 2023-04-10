@@ -100,7 +100,7 @@ export default {
 const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return (
-    <Wrapper>
+    <Wrapper mt="200px">
       <Select<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
     </Wrapper>
   );
@@ -148,6 +148,7 @@ Primary.args = {
   placeholder: 'DEX filters',
   isXL: false,
   showValue: true,
+  showOnTop: true,
 };
 
 PrimaryIcon.args = {

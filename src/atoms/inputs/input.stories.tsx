@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input, Wrapper } from './input';
 import { SearchStandard } from '../icons';
@@ -17,6 +17,8 @@ const Template: ComponentStory<typeof Input> = ({
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
+  const ref = useRef<HTMLInputElement>(null);
+  console.debug(ref);
   return (
     <Wrapper>
       <Input
@@ -30,6 +32,7 @@ const Template: ComponentStory<typeof Input> = ({
         icon={icon}
         inputState={inputState}
         required={required}
+        inputRef={ref}
       />
     </Wrapper>
   );
