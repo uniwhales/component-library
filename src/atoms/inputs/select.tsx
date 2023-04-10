@@ -115,12 +115,15 @@ export const Placeholder = Styled.div`
   gap: 6px;
 `;
 
-const OptionWrapper = Styled.div`
+const OptionWrapper = Styled.div<{ isSelected: boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
-  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:nth-of-type(2n) {
-    background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+    background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
   };
+  :hover {
+    background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
+  }
 `;
 
 const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
@@ -202,24 +205,6 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     border: 'none',
     cursor: 'pointer',
   }),
-  option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly, label,
-  }: StyledProps) => ({
-    ...defaultStyles,
-    overflowWrap: label && label.includes(' ') ? 'break-word' : 'anywhere',
-    display: 'flex',
-    transition: 'background 0.1s ease',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    cursor: 'pointer',
-    color: theme.textShades.SHADE_MINUS_3,
-    background: isSelected ? theme.colors.primary.MAIN_BLUE
-      : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
-    '&:hover': {
-      background: !isSelected ? theme.textShades.SHADE_MINUS_1 : undefined,
-      color: theme.colors.system.WHITE,
-    },
-  }),
   menu: (defaultStyles) => ({
     ...defaultStyles,
     margin: 0,
@@ -300,7 +285,7 @@ const OptionComponent = (props: any) => {
   // icons and current option does not
   const addPadding = (optionsHaveIcon.length > 0 || groupHasIcons) && !hasIcon;
   return (
-    <OptionWrapper>
+    <OptionWrapper isSelected={isSelected}>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
           <>
