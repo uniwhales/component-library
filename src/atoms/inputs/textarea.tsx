@@ -15,7 +15,7 @@ type TextAreaTypes = {
   placeholder?: string;
   maxLength?: number;
   required?: boolean;
-  ref?: Ref<HTMLDivElement>;
+  textareaRef?: Ref<HTMLTextAreaElement>;
   tabIndex?: number
 };
 
@@ -32,9 +32,11 @@ const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputSt
   border-radius: 12px;
   border: none;
   background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  font-family: Poppins, sans-serif;
   line-height:24px;
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
+    font-family: Poppins, sans-serif;
   }
   :focus  {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
@@ -49,6 +51,13 @@ const TextAreaContainer = Styled(InputContainer)`
   height: 100%;
 `;
 
+const MaxContainer = Styled.div<{ inputState: InputState }>`
+  position: absolute;
+  left: ${({ inputState }) => inputState.status === 'invalid' && 0};
+  right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
+  margin: 8px;
+`;
+
 export const TextArea = ({
   placeholder,
   value,
@@ -57,12 +66,13 @@ export const TextArea = ({
   disabled,
   inputState = { message: '', status: 'default' },
   required,
-  ref,
+  textareaRef,
   maxLength,
   tabIndex,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
   const theme = localTheme();
+  const error = inputState.status === 'error';
 
   const getMoreDetailsTextColor = (status: InputState['status']) => {
     const lookup = {
@@ -89,8 +99,12 @@ export const TextArea = ({
     </MoreDetailContainer>
   );
 
+  const maxLengthText = !error && maxLength && (
+    <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value.length.toString()}/${maxLength.toString()}`}</Text>
+  );
+
   return (
-    <TextAreaWrapper inputState={inputState} ref={ref} disabled={!!disabled}>
+    <TextAreaWrapper inputState={inputState} disabled={!!disabled}>
       {label && (
         <InputLabel disabled={!!disabled}>
           {label}
@@ -112,7 +126,11 @@ export const TextArea = ({
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}
           tabIndex={tabIndex}
+          ref={textareaRef}
         />
+        <MaxContainer inputState={inputState}>
+          {maxLengthText}
+        </MaxContainer>
         {!focus && moreDetailsContainer}
       </TextAreaContainer>
     </TextAreaWrapper>

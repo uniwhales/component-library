@@ -20,6 +20,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   borderRadius?: string,
   disabled?: boolean
   size?: string
+  color?: string
 }
 
 export type GenericStylingProps = Partial<Pick<ButtonProps, 'borderRadius'>>;

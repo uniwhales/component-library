@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ButtonAtom, ButtonWrapper } from './button';
 import { IconWrapper } from '../icons/iconWrapper';
-import { DashboardStandard } from '../icons';
+import { AlertBotStandard, DashboardStandard, RefreshIcon } from '../icons';
 
 export default {
   title: 'Atoms/Buttons',
@@ -88,6 +88,8 @@ export const SpecialSmallSubtleWithIconR = Template.bind({});
 export const SecondaryWithHoverEffect = TemplateHover.bind({});
 export const SquareButton = Template.bind({});
 export const SquareButtonCustomSize = Template.bind({});
+export const TwitterExample = Template.bind({});
+export const TelegramExample = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -177,4 +179,24 @@ SquareButtonCustomSize.args = {
   children: WithIcon(),
   buttonVariant: 'square',
   size: '140px',
+};
+TwitterExample.args = {
+  buttonVariant: 'special_extra_tiny_subtle',
+  color: '#1D86E8',
+  children: (
+    <>
+      <IconWrapper icon={<RefreshIcon />} />
+      Twitter Connect
+    </>
+  ),
+};
+TelegramExample.args = {
+  buttonVariant: 'special_extra_tiny_subtle',
+  color: '#B4B5C6',
+  children: (
+    <>
+      <IconWrapper icon={<AlertBotStandard />} />
+      Telegram Bots
+    </>
+  ),
 };

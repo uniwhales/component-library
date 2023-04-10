@@ -155,7 +155,7 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: none;
+       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -174,7 +174,7 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'heigh
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: none;
+       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -208,7 +208,7 @@ const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' |
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: none;
+       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -248,7 +248,7 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: 2px solid transparent;
+       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -291,18 +291,20 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
   }
 `;
 
-const ButtonSpecialSmallSubtle = Styled(Button)`
+const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+  color: ${({ theme, color }) => color || theme.textShades.SHADE_MINUS_2};
   svg {
     width: 16px;
     height: 16px;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
+    fill: ${({ theme, color }) => color || theme.textShades.SHADE_MINUS_2}!important;
   };
   // disabled
   ${(props) => props.disabled && css`
+    border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
     color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+
     svg {
       fill: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1}!important;
     };
@@ -411,6 +413,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
   width,
   height,
   size = '70px',
+  color,
 }) => {
   switch (buttonVariant) {
     case 'secondary':
@@ -537,6 +540,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
+          color={color}
         >
           {children}
         </ButtonSpecialSmallSubtle>
