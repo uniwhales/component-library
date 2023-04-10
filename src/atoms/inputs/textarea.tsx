@@ -36,6 +36,7 @@ const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputSt
   line-height:24px;
   ::placeholder {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
+    font-family: Poppins, sans-serif;
   }
   :focus  {
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};

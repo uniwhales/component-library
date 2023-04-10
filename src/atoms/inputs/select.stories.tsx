@@ -75,10 +75,13 @@ const ChainOptions = [
     id: 3, value: 'bsc', label: 'Bsc', icon: <IconWrapper height="16px" width="16px" icon={<BinanceColor />} />, order: 3,
   },
   {
-    id: 4, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
+    id: 4, value: 'noicon', label: 'No Icon', order: 4,
   },
   {
-    id: 4, value: 'noicon', label: 'No Icon', order: 4,
+    id: 5, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
+  },
+  {
+    id: 6, value: 'noicon', label: 'No Icon', order: 4,
   },
 ];
 

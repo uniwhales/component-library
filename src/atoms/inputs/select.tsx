@@ -128,9 +128,6 @@ const OptionWrapper = Styled.div<{ isSelected: boolean }>`
 
 const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
   padding-left: ${({ addPadding }) => addPadding && '24px'};
-`;
-
-const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -146,6 +143,11 @@ const ClearWrapper = Styled.div``;
 
 export const Required = Styled.span`
   color: ${({ theme }) => theme.colors.system.RED};
+`;
+
+const CheckboxOptionContainer = Styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
@@ -288,11 +290,11 @@ const OptionComponent = (props: any) => {
     <OptionWrapper isSelected={isSelected}>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
-          <>
+
+          <CheckboxOptionContainer>
             <OptionLabelContainer addPadding={addPadding}>
-              <label>
-                {label}
-              </label>
+              {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+              {label}
             </OptionLabelContainer>
             <Checkbox
               selected={isSelected}
@@ -301,26 +303,17 @@ const OptionComponent = (props: any) => {
               size="small"
               selectCheck
             />
-          </>
+          </CheckboxOptionContainer>
         ) : (
           <OptionLabelContainer addPadding={addPadding}>
-            <label>
-              {label}
-            </label>
+            {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+            {label}
           </OptionLabelContainer>
-
         )}
       </components.Option>
     </OptionWrapper>
   );
 };
-
-const getOptionLabel = ({ label, icon }: Option) => (
-  <OptionContainer>
-    {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
-    <span>{label}</span>
-  </OptionContainer>
-);
 
 const ClearIndicator = (props: any) => {
   const {
@@ -472,7 +465,6 @@ export const Select = <T extends SelectVariation>({
         value={selectValue}
         isXL={isXL}
         closeMenuOnScroll
-        getOptionLabel={getOptionLabel as any}
         maxMenuHeight={maxMenuHeight}
         tabIndex={tabIndex}
         required={required}
