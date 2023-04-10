@@ -170,7 +170,7 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
       ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
-  color: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
+  color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
   font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
@@ -362,12 +362,12 @@ const ClearIndicator = (props: any) => {
   );
 };
 
-const DropdownIndicator = ({ selectProps, isFocused }: any) => {
+const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   const theme = localTheme();
   if (selectProps.menuIsOpen) {
     return (
       <IconWrapper
-        fill={theme.colors.system.WHITE}
+        fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.WHITE}
         icon={<ChevronUpIcon />}
         cursor="pointer"
       />
@@ -375,7 +375,8 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
   }
   return (
     <IconWrapper
-      fill={isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
+      fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1
+        : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
       icon={<ChevronDownIcon />}
       cursor="pointer"
     />
