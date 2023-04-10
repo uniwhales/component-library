@@ -9,7 +9,8 @@ import { Text } from '../texts/text';
 import { localTheme } from '../../theme';
 
 export const Slider: FC<SliderProps> = ({
-  min, max, onInput, value, setValue, hasError, errorMessage, unit, charLimit = 16,
+  min, max, onInput, value, setValue, hasError,
+  errorMessage, unit, charLimit = 16, useLogarithmic = false,
 }: SliderProps) => {
   const theme = localTheme();
   const styles = {
@@ -18,16 +19,52 @@ export const Slider: FC<SliderProps> = ({
     '--val': value,
   } as React.CSSProperties;
 
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+  const logScale = (v: number, mn: number, mx: number) => {
+    // eslint-disable-next-line no-param-reassign
+    if (mn === 0) mn = 1; // Avoid logarithm of zero
+    const minLog = Math.log(mn);
+    const maxLog = Math.log(mx);
+    const scale = (maxLog - minLog) / (mx - mn);
+    return Math.exp(minLog + scale * (v - min));
+  };
+
+  const inverseLogScale = (v: number, mn: number, mx: number) => {
+    // eslint-disable-next-line no-param-reassign
+    if (mn === 0) mn = 1; // Avoid logarithm of zero
+    const minLog = Math.log(mn);
+    const maxLog = Math.log(mx);
+    const scale = (maxLog - minLog) / (mx - mn);
+    return (Math.log(v) - minLog) / scale + min;
+  };
+
+  const customScale = (v: number, mn: number, mx: number, blend: number) => {
+    const logVal = logScale(v, mn, mx);
+    const linearVal = v;
+    return blend * logVal + (1 - blend) * linearVal;
+  };
+
+  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const linearValue = parseInt(e.target.value, 10);
+    const blend = 0.5; // Adjust this value between 0 and 1 to control the compression of the scale
+    const newValue = useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
+    const actualValue = Math.min(Math.round(newValue), max);
+    setValue(actualValue.toString());
+
+    const sliderValue = Math.round(useLogarithmic ? inverseLogScale(newValue, min, max) : newValue);
+    e.target.value = sliderValue.toString();
+  };
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const firstChar = Array.from(target.value);
-    const valueWithoutZero = target.value.slice(1);
     const hasLeadingZero = firstChar[0] === '0';
+    const valueWithoutZero = parseInt(target.value.slice(1), 10);
+    const newValue = parseInt(target.value, 10);
     if (target.value.length > charLimit) return;
-    if (hasLeadingZero) {
-      setValue(valueWithoutZero);
-    } else {
-      setValue(target.value);
-    }
+
+    // Create a new synthetic event with the updated value
+    const newEvent = {
+      ...target, value: hasLeadingZero ? valueWithoutZero.toString() : newValue.toString(),
+    } as HTMLInputElement;
+    onInput({ target: newEvent } as ChangeEvent<HTMLInputElement>);
   };
 
   return (
@@ -38,7 +75,7 @@ export const Slider: FC<SliderProps> = ({
         min={min}
         max={max}
         value={value}
-        onInput={(e: ChangeEvent<HTMLInputElement>) => onInput(e)}
+        onInput={handleSliderChange}
         style={styles}
       />
       <InputWrapper>
@@ -52,7 +89,7 @@ export const Slider: FC<SliderProps> = ({
             max={max}
             value={value}
             size={1}
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
           {unit && (
             <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>

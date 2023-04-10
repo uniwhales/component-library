@@ -39,9 +39,10 @@ SliderComponent.args = {
 
 SliderWithLargeCharLimit.args = {
   min: 0,
-  max: 100000,
+  max: 10000000,
   unit: 'USD',
   charLimit: 32,
+  useLogarithmic: true,
 };
 
 SliderWithoutUnit.args = {
