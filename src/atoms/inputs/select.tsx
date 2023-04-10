@@ -115,7 +115,7 @@ export const Placeholder = Styled.div`
   gap: 6px;
 `;
 
-const OptionWrapper = Styled.div<{ isSelected: boolean }>`
+const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?:boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:nth-of-type(2n) {
@@ -124,6 +124,13 @@ const OptionWrapper = Styled.div<{ isSelected: boolean }>`
   :hover {
     background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
   }
+  &:first-of-type {
+    border-radius: ${({ showOnTop }) => (showOnTop && '12px 12px 0 0')};
+  }
+  &:last-of-type {
+    border-radius: ${({ showOnTop }) => (!showOnTop && '0 0 12px 12px')};
+  }
+
 `;
 
 const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
@@ -211,6 +218,11 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     ...defaultStyles,
     margin: 0,
   }),
+  menuList: (defaultStyles) => ({
+    ...defaultStyles,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }),
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
     backgroundColor: theme.containerAndCardShades.SHADE_PLUS_2,
@@ -271,7 +283,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const OptionComponent = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, options,
+    label, isSelected, readOnly, isCheckBox, data, options, selectProps,
   } = props;
   // check if any options have icons
   const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
@@ -286,8 +298,9 @@ const OptionComponent = (props: any) => {
   // show padding if any options have
   // icons and current option does not
   const addPadding = (optionsHaveIcon.length > 0 || groupHasIcons) && !hasIcon;
+  const showOnTop = selectProps.menuPlacement === 'top';
   return (
-    <OptionWrapper isSelected={isSelected}>
+    <OptionWrapper showOnTop={showOnTop} isSelected={isSelected}>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
 
