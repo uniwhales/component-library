@@ -291,14 +291,14 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
   }
 `;
 
-const ButtonSpecialSmallSubtle = Styled(Button)`
+const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+  color: ${({ theme, color }) => color || theme.textShades.SHADE_MINUS_2};
   svg {
     width: 16px;
     height: 16px;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
+    fill: ${({ theme, color }) => color || theme.textShades.SHADE_MINUS_2}!important;
   };
   // disabled
   ${(props) => props.disabled && css`
@@ -413,6 +413,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
   width,
   height,
   size = '70px',
+  color,
 }) => {
   switch (buttonVariant) {
     case 'secondary':
@@ -539,6 +540,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
+          color={color}
         >
           {children}
         </ButtonSpecialSmallSubtle>
