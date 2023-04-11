@@ -21,7 +21,6 @@ export const Slider: FC<SliderProps> = ({
 
   const logScale = (v: number, mn: number, mx: number) => {
     if (v === 0) return 0;
-
     const adjustedMin = mn > 0 ? mn : 1;
     const minLog = Math.log(adjustedMin);
     const maxLog = Math.log(mx);
@@ -31,7 +30,6 @@ export const Slider: FC<SliderProps> = ({
 
   const inverseLogScale = (v: number, mn: number, mx: number) => {
     if (v === 0) return 0;
-
     const adjustedMin = mn > 0 ? mn : 1;
     const minLog = Math.log(adjustedMin);
     const maxLog = Math.log(mx);
