@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ButtonAtom, ButtonWrapper } from './button';
 import { IconWrapper } from '../icons/iconWrapper';
-import { DashboardStandard } from '../icons';
+import { AlertBotStandard, DashboardStandard, RefreshIcon } from '../icons';
 
 export default {
   title: 'Atoms/Buttons',
@@ -95,6 +95,8 @@ export const OnboardingButtonSecondary = Template.bind({});
 export const OnboardingButtonSecondaryCustomWidthButton = Template.bind({});
 export const CloseButtonPrimary = Template.bind({});
 export const CloseButtonSecondary = Template.bind({});
+export const TwitterExample = Template.bind({});
+export const TelegramExample = Template.bind({});
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -210,4 +212,24 @@ CloseButtonPrimary.args = {
 CloseButtonSecondary.args = {
   buttonVariant: 'close_secondary',
   size: '30px',
+}
+TwitterExample.args = {
+  buttonVariant: 'special_extra_tiny_subtle',
+  color: '#1D86E8',
+  children: (
+    <>
+      <IconWrapper icon={<RefreshIcon />} />
+      Twitter Connect
+    </>
+  ),
+};
+TelegramExample.args = {
+  buttonVariant: 'special_extra_tiny_subtle',
+  color: '#B4B5C6',
+  children: (
+    <>
+      <IconWrapper icon={<AlertBotStandard />} />
+      Telegram Bots
+    </>
+  ),
 };
