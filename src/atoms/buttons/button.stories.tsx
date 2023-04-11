@@ -212,7 +212,7 @@ CloseButtonPrimary.args = {
 CloseButtonSecondary.args = {
   buttonVariant: 'close_secondary',
   size: '30px',
-}
+};
 TwitterExample.args = {
   buttonVariant: 'special_extra_tiny_subtle',
   color: '#1D86E8',
