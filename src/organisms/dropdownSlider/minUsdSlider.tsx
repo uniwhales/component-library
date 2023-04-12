@@ -1,5 +1,5 @@
 import React, {
-  useState, useRef, useImperativeHandle, forwardRef,
+  useState, useRef, useImperativeHandle, forwardRef, useEffect,
 } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Overlay } from '../../atoms/common/overlay';
@@ -42,7 +42,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   useEscape(() => setIsOpen(false));
 
   const onApplyClicked = () => {
-    if (!sliderValue) return;
+    if (!sliderValue || typeof sliderValue !== 'number') return;
     onApply(sliderValue);
     setIsOpen(false);
   };
@@ -57,6 +57,8 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
       setSliderValue('0');
     },
   }));
+
+  useEffect(() => { console.debug(sliderValue); });
 
   return (
     <>
@@ -102,7 +104,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
                 <ButtonAtom
                   buttonVariant="primary"
                   onClick={onApplyClicked}
-                  disabled={valueIsEmpty || valueIsTooLarge}
+                  disabled={valueIsEmpty || valueIsTooLarge || Number.isNaN(Number(sliderValue))}
                 >
                   Apply
                 </ButtonAtom>
