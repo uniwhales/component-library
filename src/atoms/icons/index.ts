@@ -108,6 +108,7 @@ export * from './generalIcons/filledStyle/Suggested';
 export * from './generalIcons/filledStyle/ChainScan';
 export * from './generalIcons/filledStyle/Follow';
 export * from './generalIcons/filledStyle/TrendingFlame';
+export * from './generalIcons/filledStyle/CieloLogoTyped';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';

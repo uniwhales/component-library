@@ -154,7 +154,7 @@ import {
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
-  YourFeed, Configure,
+  YourFeed, Configure, CieloLogoTyped,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -458,6 +458,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Filter Tx" icon={<FilterTx />} />
     <IconWrapper name="Timestamp" icon={<Timestamp />} />
     <IconWrapper name="TrendingFlame" icon={<TrendingFlame />} />
+    <IconWrapper name="Cielo Logo Typed" icon={<CieloLogoTyped />} />
   </>
 );
 
