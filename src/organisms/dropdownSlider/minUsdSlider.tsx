@@ -42,14 +42,15 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   useEscape(() => setIsOpen(false));
 
   const onApplyClicked = () => {
-    // check if no value or NaN
-    if (!sliderValue || Number.isNaN(Number(sliderValue))) return;
+    // check if no value, value greater than max or NaN
+    if (!sliderValue || valueIsTooLarge || Number.isNaN(Number(sliderValue))) return;
     onApply(sliderValue);
     setIsOpen(false);
   };
   // Handle enter press
   useEnter(() => {
-    if (!isOpen || valueIsTooLarge || valueIsEmpty) return;
+    // check if no value, value greater than max or NaN
+    if (!isOpen || !sliderValue || valueIsTooLarge || Number.isNaN(Number(sliderValue))) return;
     onApply(sliderValue);
     setIsOpen(false);
   });
