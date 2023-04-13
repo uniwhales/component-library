@@ -7,7 +7,7 @@ import { WalletLabelProps } from './types';
 
 export const WalletLabel = (
   {
-    label, address, size, color, chars = 5, width,
+    label, address, size, color, chars = 5, width, target, href,
   }: WalletLabelProps,
 ) => {
   const labelHasSpaces = !!label?.trim().includes(' ');
@@ -21,6 +21,8 @@ export const WalletLabel = (
           size={size ?? '14-Regular'}
           color={color}
           chars={limit}
+          target={target}
+          href={href}
         />
       </Container>
     );
@@ -28,13 +30,13 @@ export const WalletLabel = (
   if (label) {
     return (
       <Container width={width} breakWord={labelHasSpaces}>
-        <Text size={size ?? '14-Regular'} color={color}>{label}</Text>
+        <Text target={target} href={href} size={size ?? '14-Regular'} color={color}>{label}</Text>
       </Container>
     );
   }
   return (
     <Container width={width} breakWord={labelHasSpaces}>
-      <Text size={size ?? '14-Regular'} color={color}>{shortenAddressTo11Chars(address)}</Text>
+      <Text target={target} href={href} size={size ?? '14-Regular'} color={color}>{shortenAddressTo11Chars(address)}</Text>
     </Container>
   );
 };
