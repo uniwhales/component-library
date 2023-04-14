@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
-  Required, Select, SelectProps, SelectVariation,
+  Required,
+  Select, SelectProps, SelectVariation,
 } from '../../../atoms/inputs/select';
 import { Text } from '../../../atoms/texts/text';
 import { BodySizes, HeaderSizes } from '../../../atoms/texts/types';
@@ -31,7 +32,7 @@ export const LabeledSelect = <T extends SelectVariation>(
   return (
     <LabeledSelectWrapper>
       {label && (
-      <Text size={labelFontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor ?? textShades.SHADE_MINUS_2}>
+      <Text size={labelFontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor || (isDisabled ? textShades.SHADE_MINUS_1 : textShades.SHADE_MINUS_2)}>
         <>
           {label}
           {required && (<Required>*</Required>)}

@@ -108,6 +108,7 @@ export * from './generalIcons/filledStyle/Suggested';
 export * from './generalIcons/filledStyle/ChainScan';
 export * from './generalIcons/filledStyle/Follow';
 export * from './generalIcons/filledStyle/TrendingFlame';
+export * from './generalIcons/filledStyle/CieloLogoTyped';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
@@ -170,9 +171,12 @@ export * from './chains/UniwhalesFilled';
 export * from './chains/CieloFilled';
 export * from './chains/SushiswapFilled';
 export * from './chains/Blur';
+export * from './chains/WalletConnect';
+
 // chains color
 export * from './chains/fullColorStyle/X2Y2Color';
 export * from './chains/fullColorStyle/OpenseaColor';
+export * from './chains/fullColorStyle/OpenseaProColor';
 export * from './chains/fullColorStyle/LooksRareColor';
 export * from './chains/fullColorStyle/GenieColor';
 export * from './chains/fullColorStyle/GemColor';
@@ -211,6 +215,7 @@ export * from './chains/fullColorStyle/GnosisColor';
 export * from './chains/fullColorStyle/Canto';
 export * from './chains/fullColorStyle/ZkEvm';
 export * from './chains/fullColorStyle/ZkSync';
+
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';

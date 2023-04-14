@@ -55,6 +55,7 @@ export interface SelectProps<T extends SelectVariation> {
   ref?: Ref<HTMLDivElement>
   error?: boolean
   errorMessage?: string
+  showOnTop?: boolean
 }
 
 interface StyledProps {
@@ -68,6 +69,7 @@ interface StyledProps {
   label?: string;
   isDisabled?: boolean;
   error?: boolean;
+  showOnTop?: boolean;
 }
 
 const SelectWrapper = Styled.div<{ width?: string }>`
@@ -113,18 +115,26 @@ export const Placeholder = Styled.div`
   gap: 6px;
 `;
 
-const OptionWrapper = Styled.div`
-  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?:boolean }>`
+  zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
+  background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:nth-of-type(2n) {
-    background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+    background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
   };
+  :hover {
+    background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
+  }
+  &:first-of-type {
+    border-radius: ${({ showOnTop }) => (showOnTop && '12px 12px 0 0')};
+  }
+  &:last-of-type {
+    border-radius: ${({ showOnTop }) => (!showOnTop && '0 0 12px 12px')};
+  }
+
 `;
 
 const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
   padding-left: ${({ addPadding }) => addPadding && '24px'};
-`;
-
-const OptionContainer = Styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -142,20 +152,25 @@ export const Required = Styled.span`
   color: ${({ theme }) => theme.colors.system.RED};
 `;
 
-const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean }>`
+const CheckboxOptionContainer = Styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
   padding: 0 10px 0 10px;
   box-shadow: none;
-  border-radius: ${({ menuIsOpen, isFocused }) => (menuIsOpen && isFocused ? '12px 12px 0 0 ' : '12px')};
+  border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop ? '0 0 12px 12px' : menuIsOpen && isFocused && !showOnTop ? '12px 12px 0 0 ' : '12px')};
   height: 40px;
   background: ${({ theme, isFocused, isDisabled }) => (isFocused
     ? theme.colors.primary.MAIN_BLUE : isDisabled
-      ? theme.containerAndCardShades.SHADE_PLUS_1
+      ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
-  color: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
+  border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
+  color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
   font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
@@ -166,6 +181,14 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
     fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
   }
   }
+`;
+
+const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
+  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  padding-top: 0;
+  border-radius: ${({ showOnTop }) => (showOnTop ? '10px 10px 0px 0px' : '0px 0px 10px 10px')};
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
@@ -191,36 +214,14 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     border: 'none',
     cursor: 'pointer',
   }),
-  option: (defaultStyles, {
-    isFocused, isSelected, theme, readOnly, label,
-  }: StyledProps) => ({
-    ...defaultStyles,
-    overflowWrap: label && label.includes(' ') ? 'break-word' : 'anywhere',
-    display: 'flex',
-    transition: 'background 0.1s ease',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    cursor: 'pointer',
-    color: theme.textShades.SHADE_MINUS_3,
-    background: isSelected ? theme.colors.primary.MAIN_BLUE
-      : isFocused ? readOnly ? 'none' : 'theme.containerAndCardShades.NEUTRAL_SHADE_0' : undefined,
-    '&:hover': {
-      background: !isSelected ? theme.textShades.SHADE_MINUS_1 : undefined,
-      color: theme.colors.system.WHITE,
-    },
-  }),
   menu: (defaultStyles) => ({
     ...defaultStyles,
-    marginTop: 0,
-    borderRadius: 0,
+    margin: 0,
   }),
-  menuList: (defaultStyles, { theme }: StyledProps) => ({
+  menuList: (defaultStyles) => ({
     ...defaultStyles,
-    background: theme.containerAndCardShades.SHADE_PLUS_2,
-    color: theme.textShades.SHADE_MINUS_3,
     paddingTop: 0,
-    borderRadius: '0px 0px 10px 10px',
-    zIndex: theme.zIndex.SAFE_LAYER,
+    paddingBottom: 0,
   }),
   multiValue: (defaultStyles, { theme }: StyledProps) => ({
     ...defaultStyles,
@@ -282,7 +283,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const OptionComponent = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, options,
+    label, isSelected, readOnly, isCheckBox, data, options, selectProps,
   } = props;
   // check if any options have icons
   const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
@@ -297,15 +298,16 @@ const OptionComponent = (props: any) => {
   // show padding if any options have
   // icons and current option does not
   const addPadding = (optionsHaveIcon.length > 0 || groupHasIcons) && !hasIcon;
+  const showOnTop = selectProps.menuPlacement === 'top';
   return (
-    <OptionWrapper>
+    <OptionWrapper showOnTop={showOnTop} isSelected={isSelected}>
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
-          <>
+
+          <CheckboxOptionContainer>
             <OptionLabelContainer addPadding={addPadding}>
-              <label>
-                {label}
-              </label>
+              {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+              {label}
             </OptionLabelContainer>
             <Checkbox
               selected={isSelected}
@@ -314,26 +316,17 @@ const OptionComponent = (props: any) => {
               size="small"
               selectCheck
             />
-          </>
+          </CheckboxOptionContainer>
         ) : (
           <OptionLabelContainer addPadding={addPadding}>
-            <label>
-              {label}
-            </label>
+            {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+            {label}
           </OptionLabelContainer>
-
         )}
       </components.Option>
     </OptionWrapper>
   );
 };
-
-const getOptionLabel = ({ label, icon }: Option) => (
-  <OptionContainer>
-    {icon && <IconWrapper height="14px" width="14px" icon={icon} />}
-    <span>{label}</span>
-  </OptionContainer>
-);
 
 const ClearIndicator = (props: any) => {
   const {
@@ -369,12 +362,12 @@ const ClearIndicator = (props: any) => {
   );
 };
 
-const DropdownIndicator = ({ selectProps, isFocused }: any) => {
+const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   const theme = localTheme();
   if (selectProps.menuIsOpen) {
     return (
       <IconWrapper
-        fill={theme.colors.system.WHITE}
+        fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.WHITE}
         icon={<ChevronUpIcon />}
         cursor="pointer"
       />
@@ -382,23 +375,38 @@ const DropdownIndicator = ({ selectProps, isFocused }: any) => {
   }
   return (
     <IconWrapper
-      fill={isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
+      fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1
+        : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
       icon={<ChevronDownIcon />}
       cursor="pointer"
     />
   );
 };
 
+const MenuList = (props:any) => {
+  const Comp = components.MenuList;
+  const { selectProps } = props;
+  const { menuPlacement } = selectProps;
+  return (
+    <MenuListComponent showOnTop={menuPlacement === 'top'}>
+      <Comp {...props} />
+    </MenuListComponent>
+  );
+};
+
 const Control = (props: any) => {
   const Comp = components.Control;
   const { isFocused, selectProps } = props;
-  const { menuIsOpen, error, isDisabled } = selectProps;
+  const {
+    menuIsOpen, error, isDisabled, menuPlacement,
+  } = selectProps;
   return (
     <ControlComponent
       menuIsOpen={menuIsOpen}
       isDisabled={isDisabled}
       error={error}
       isFocused={isFocused}
+      showOnTop={menuPlacement === 'top'}
     >
       <Comp {...props} />
     </ControlComponent>
@@ -426,11 +434,13 @@ export const Select = <T extends SelectVariation>({
   error,
   errorMessage,
   ref,
+  showOnTop,
 }: SelectProps<T>) => {
   const theme = localTheme();
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
+        menuPlacement={showOnTop ? 'top' : 'bottom'}
         width={width}
         isDisabled={isDisabled}
         options={selectOptions}
@@ -455,6 +465,7 @@ export const Select = <T extends SelectVariation>({
           ),
           DropdownIndicator,
           Control,
+          MenuList,
         }}
         onChange={(option) => {
           if (!onSelectChange) return;
@@ -468,7 +479,6 @@ export const Select = <T extends SelectVariation>({
         value={selectValue}
         isXL={isXL}
         closeMenuOnScroll
-        getOptionLabel={getOptionLabel as any}
         maxMenuHeight={maxMenuHeight}
         tabIndex={tabIndex}
         required={required}

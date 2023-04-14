@@ -29,7 +29,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   min, max, onApply,
   buttonText, buttonIcon,
   buttonWidth, buttonHeight,
-  description, unit,
+  description, unit, useLogarithmic,
 }, ref) => {
   const [sliderValue, setSliderValue] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,8 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   useEscape(() => setIsOpen(false));
 
   const onApplyClicked = () => {
-    if (!sliderValue) return;
+    // check if no value or NaN
+    if (!sliderValue || Number.isNaN(Number(sliderValue))) return;
     onApply(sliderValue);
     setIsOpen(false);
   };
@@ -96,12 +97,13 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
                 unit={unit}
                 hasError={valueIsEmpty || valueIsTooLarge}
                 errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
+                useLogarithmic={useLogarithmic}
               />
               <ButtonContainer>
                 <ButtonAtom
                   buttonVariant="primary"
                   onClick={onApplyClicked}
-                  disabled={valueIsEmpty || valueIsTooLarge}
+                  disabled={valueIsEmpty || valueIsTooLarge || Number.isNaN(Number(sliderValue))}
                 >
                   Apply
                 </ButtonAtom>

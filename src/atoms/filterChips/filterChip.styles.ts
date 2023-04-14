@@ -9,7 +9,7 @@ export const FilterChipWrapper = Styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
   background: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.SHADE_PLUS_1)};
-  cursor: ${({ disabled }) => !disabled && 'pointer'};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   padding: 2px 8px;
   border-radius: 12px;
   display: flex;

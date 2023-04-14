@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input } from './input';
+import { Input, Wrapper } from './input';
 import { SearchStandard } from '../icons';
 
 export default {
@@ -17,19 +17,24 @@ const Template: ComponentStory<typeof Input> = ({
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
   };
+  const ref = useRef<HTMLInputElement>(null);
+  console.debug(ref);
   return (
-    <Input
-      width={width}
-      value={localValue}
-      disabled={disabled}
-      label={label}
-      pattern={pattern}
-      onChange={(e) => onChangeInput(e.target.value)}
-      type={type}
-      icon={icon}
-      inputState={inputState}
-      required={required}
-    />
+    <Wrapper>
+      <Input
+        width={width}
+        value={localValue}
+        disabled={disabled}
+        label={label}
+        pattern={pattern}
+        onChange={(e) => onChangeInput(e.target.value)}
+        type={type}
+        icon={icon}
+        inputState={inputState}
+        required={required}
+        inputRef={ref}
+      />
+    </Wrapper>
   );
 };
 export const Primary = Template.bind({});

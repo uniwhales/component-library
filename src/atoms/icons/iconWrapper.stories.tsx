@@ -154,7 +154,7 @@ import {
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
-  YourFeed, Configure,
+  YourFeed, Configure, CieloLogoTyped,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -185,6 +185,7 @@ import { FilterTokens } from './feed/FilterTokens';
 import { FilterTx } from './feed/FilterTx';
 import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
 import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
+import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -252,6 +253,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
   <>
     <IconWrapper name="X2Y2" icon={<X2Y2Color />} />
     <IconWrapper name="Opensea" icon={<OpenseaColor />} />
+    <IconWrapper name="OpenseaPro" icon={<OpenseaProColor />} />
     <IconWrapper name="LooksRare" icon={<LooksRareColor />} />
     <IconWrapper name="Genie" icon={<GenieColor />} />
     <IconWrapper name="Gem" icon={<GemColor />} />
@@ -456,6 +458,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Filter Tx" icon={<FilterTx />} />
     <IconWrapper name="Timestamp" icon={<Timestamp />} />
     <IconWrapper name="TrendingFlame" icon={<TrendingFlame />} />
+    <IconWrapper name="Cielo Logo Typed" icon={<CieloLogoTyped />} />
   </>
 );
 

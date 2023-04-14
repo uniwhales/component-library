@@ -29,6 +29,9 @@ export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
 export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
+export * from './atoms/shortText/shortText';
+export * from './atoms/walletLabel/walletLabel';
+export * from './atoms/tooltipButton/tooltipButton';
 export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules

@@ -28,7 +28,7 @@ export interface TokenPriceCardInterface {
   isFavorite?: boolean
 }
 
-export const Wrapper = Styled.div`
+export const TokenPriceCardWrapper = Styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
   transition: all .2s;
@@ -85,7 +85,7 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
   const [isHighlighted, setIsHighlighted] = useState(false);
 
   return (
-    <Wrapper>
+    <TokenPriceCardWrapper>
       <Section>
         <TextBlock>
           <IconWrapper
@@ -158,6 +158,6 @@ export const TokenPriceCard:FC<TokenPriceCardInterface> = ({
           </TimeSection>
         </Block>
       </SectionColumn>
-    </Wrapper>
+    </TokenPriceCardWrapper>
   );
 };

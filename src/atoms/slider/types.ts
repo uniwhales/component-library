@@ -10,4 +10,5 @@ export interface SliderProps {
   errorMessage?: string;
   charLimit?: number;
   unit?: string;
+  useLogarithmic?: boolean;
 }
