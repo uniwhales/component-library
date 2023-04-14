@@ -24,8 +24,6 @@ export const SimpleTooltip = ({
       closeDelay={0}
       arrowSize={arrowSize}
       opened={opened}
-      transitionDuration={0}
-      withinPortal
       zIndex={zIndex}
       styles={{
         arrow: {

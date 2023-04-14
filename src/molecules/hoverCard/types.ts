@@ -1,9 +1,7 @@
+import { HoverCardProps as LibProps } from '@mantine/core';
 import { ReactNode } from 'react';
 
-export interface HoverCardProps {
+export type HoverCardProps = {
   target: ReactNode;
   content: ReactNode;
-  position?: 'bottom' | 'left' | 'right' | 'top';
-  arrowSize?: number;
-  initiallyOpened?: boolean;
-}
+} & Pick<LibProps, 'initiallyOpened' | 'arrowSize' | 'position' | 'zIndex'>;
