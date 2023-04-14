@@ -115,7 +115,7 @@ export const Placeholder = Styled.div`
   gap: 6px;
 `;
 
-const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?:boolean }>`
+const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?: boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:nth-of-type(2n) {
@@ -139,6 +139,7 @@ const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  word-break: break-all;
 `;
 
 const ClearButtonContainer = Styled.div`
@@ -290,7 +291,7 @@ const OptionComponent = (props: any) => {
   // check if groups have icons
   const groups = options.filter((o: SelectGroupOption) => o.options);
   const groupOptions = groups
-  && groups.map((g: { options: Option[]; }) => g.options.filter((o: Option) => o.icon));
+    && groups.map((g: { options: Option[]; }) => g.options.filter((o: Option) => o.icon));
   const groupHasIcons = groupOptions.some((group: string | any[]) => group.length > 0);
 
   // check if individual option has an icon
@@ -383,7 +384,7 @@ const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   );
 };
 
-const MenuList = (props:any) => {
+const MenuList = (props: any) => {
   const Comp = components.MenuList;
   const { selectProps } = props;
   const { menuPlacement } = selectProps;
@@ -485,9 +486,9 @@ export const Select = <T extends SelectVariation>({
         error={!!error}
       />
       {error && errorMessage && (
-      <ErrorMessageContainer>
-        <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
-      </ErrorMessageContainer>
+        <ErrorMessageContainer>
+          <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+        </ErrorMessageContainer>
       )}
     </SelectWrapper>
   );
