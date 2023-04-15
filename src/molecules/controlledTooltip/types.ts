@@ -1,9 +1,7 @@
+import { PopoverProps } from '@mantine/core';
 import { ReactNode } from 'react';
 
-export interface ControlledTooltipProps {
+export type ControlledTooltipProps = {
   target: ReactNode;
   content: ReactNode;
-  position?: 'bottom' | 'left' | 'right' | 'top';
-  arrowSize?: number;
-  withArrow?: boolean;
-}
+} & Pick<PopoverProps, 'zIndex' | 'withArrow' | 'arrowSize' | 'position' | 'opened'>;

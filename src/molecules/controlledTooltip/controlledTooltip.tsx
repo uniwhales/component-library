@@ -5,10 +5,13 @@ import { localTheme } from '../../theme';
 
 export const ControlledTooltipComponent = ({
   target, content, position = 'top', arrowSize = 5, withArrow = true,
+  opened, zIndex,
 }: ControlledTooltipProps) => {
   const theme = localTheme();
   return (
     <Popover
+      zIndex={zIndex}
+      opened={opened}
       position={position}
       arrowSize={arrowSize}
       withArrow={withArrow}
