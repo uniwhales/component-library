@@ -78,14 +78,10 @@ const SelectWrapper = Styled.div<{ width?: string }>`
 `;
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
-  max-width: ${({ width, isXL }) => (width || (isXL ? '100%' : '172px'))};
-  width: ${({ width }) => width ?? '100%'};
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
+  width: ${({ width }) => width ?? '100%'};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
-  input{
-    width: fit-content;
-  }
   :hover {
     div {
       color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
@@ -114,6 +110,7 @@ export const Placeholder = Styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+  overflow: hidden;
 `;
 
 const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?: boolean }>`
@@ -196,13 +193,12 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
     ...defaultStyles,
-    width: '100%',
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
     fontSize: '12px',
     lineHeight: '16px',
     cursor: 'pointer',
     p: {
-      width: '100%',
+
       fontSize: '12px',
       lineHeight: '16px',
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
@@ -272,8 +268,8 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   valueContainer: (defaultStyles) => ({
     ...defaultStyles,
     display: '-webkit-box',
-    flexWrap: 'nowrap',
-    overflow: 'scroll',
+    flexWrap: 'unset',
+    overflowX: 'scroll',
     scrollbarWidth: 'none',
     whiteSpace: 'nowrap',
     '&::-webkit-scrollbar': {
@@ -442,8 +438,8 @@ export const Select = <T extends SelectVariation>({
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
-        menuPlacement={showOnTop ? 'top' : 'bottom'}
         width={width}
+        menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}
         options={selectOptions}
         isMulti={isMulti}
