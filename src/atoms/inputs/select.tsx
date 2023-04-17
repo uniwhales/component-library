@@ -82,6 +82,7 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   width: ${({ width }) => width ?? '100%'};
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
+  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   input{
     width: fit-content;
   }
