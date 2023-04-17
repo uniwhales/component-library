@@ -149,8 +149,8 @@ const ClearButtonContainer = Styled.div`
 
 const ClearWrapper = Styled.div``;
 
-export const Required = Styled.span`
-  color: ${({ theme }) => theme.colors.system.RED};
+export const Required = Styled.span<{ disabled: boolean }>`
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.RED)};
 `;
 
 const CheckboxOptionContainer = Styled.div`
