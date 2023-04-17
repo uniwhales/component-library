@@ -16,7 +16,6 @@ export const SimpleTooltip = ({
       closeDelay={0}
       arrowSize={arrowSize}
       opened={opened}
-      transitionDuration={0}
       styles={{
         arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
         tooltip: {
