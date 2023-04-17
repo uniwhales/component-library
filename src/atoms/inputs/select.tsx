@@ -36,7 +36,7 @@ export interface SelectProps<T extends SelectVariation> {
   width?: string,
   onSelectChange?: (o: SelectVal<T>) => void,
   selectOptions: SelectOptions<T>,
-  selectValue?: SelectVal<T>,
+  selectValue?: SelectVal<T> | null,
   readOnly?: boolean,
   isMulti?: boolean,
   isCheckBox?: boolean,
