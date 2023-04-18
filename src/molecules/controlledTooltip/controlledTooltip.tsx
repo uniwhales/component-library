@@ -15,13 +15,20 @@ export const ControlledTooltipComponent = ({
       position={position}
       arrowSize={arrowSize}
       withArrow={withArrow}
+      offset={8}
       styles={{
-        arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
+        arrow: {
+          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
+          borderColor: theme.containerAndCardShades.SHADE_PLUS_1,
+          borderWidth: 1,
+        },
         dropdown: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          color: theme.textShades.SHADE_MINUS_2,
+          color: theme.textShades.SHADE_MINUS_3,
+          borderColor: theme.containerAndCardShades.SHADE_PLUS_1,
+          borderRadius: 9,
+          borderWidth: 1,
         },
-
       }}
     >
       <Popover.Target>
