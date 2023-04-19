@@ -91,6 +91,8 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   }
 `;
 export const InputLabel = Styled.label<{ disabled?:boolean }>`
+  display: flex;
+  gap: 5px;
   font-size: 12px;
   color: ${({ theme, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2)};
   font-weight: 400;
@@ -206,7 +208,7 @@ const Input = ({
       {label && (
       <InputLabel disabled={!!disabled}>
         {label}
-        {required && (<Required>*</Required>)}
+        {required && (<Required disabled={!!disabled}>*</Required>)}
       </InputLabel>
       )}
       <InputContainer
