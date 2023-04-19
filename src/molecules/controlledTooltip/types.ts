@@ -4,4 +4,4 @@ import { ReactNode } from 'react';
 export type ControlledTooltipProps = {
   target: ReactNode;
   content: ReactNode;
-} & Pick<PopoverProps, 'zIndex' | 'withArrow' | 'arrowSize' | 'position' | 'opened'>;
+} & Pick<PopoverProps, 'disabled' | 'zIndex' | 'withArrow' | 'arrowSize' | 'position' | 'opened'>;
