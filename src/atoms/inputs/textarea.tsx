@@ -131,7 +131,7 @@ export const TextArea = ({
         <MaxContainer inputState={inputState}>
           {maxLengthText}
         </MaxContainer>
-        {!focus && moreDetailsContainer}
+        {moreDetailsContainer}
       </TextAreaContainer>
     </TextAreaWrapper>
   );

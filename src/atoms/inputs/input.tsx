@@ -245,7 +245,7 @@ const Input = ({
           ref={inputRef}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
-        {!focus && moreDetailsContainer}
+        {moreDetailsContainer}
       </InputContainer>
     </InputWrapper>
   );
