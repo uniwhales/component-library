@@ -86,6 +86,7 @@ const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) =>
   return (
     <>
       <LabeledSelect<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
+      <LabeledSelect<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
       <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
     </>
   );

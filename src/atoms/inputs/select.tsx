@@ -116,7 +116,6 @@ export const Placeholder = Styled.div`
 `;
 
 const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?: boolean }>`
-  zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   &:nth-of-type(2n) {
     background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
@@ -189,7 +188,6 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   padding-top: 0;
   border-radius: ${({ showOnTop }) => (showOnTop ? '10px 10px 0px 0px' : '0px 0px 10px 10px')};
-  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
