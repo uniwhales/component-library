@@ -81,7 +81,6 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
   width: ${({ width }) => width ?? '100%'};
-  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   :hover {
     div {
       color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};

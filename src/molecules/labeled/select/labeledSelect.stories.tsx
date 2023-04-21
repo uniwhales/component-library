@@ -86,9 +86,7 @@ const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) =>
   return (
     <>
       <LabeledSelect<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
-      <div style={{ zIndex: 1, position: 'relative' }}>
-        <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
-      </div>
+      <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
     </>
   );
 };
