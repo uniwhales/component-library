@@ -17,6 +17,7 @@ export const ControlledTooltipComponent = ({
       position={position}
       arrowSize={arrowSize}
       withArrow={withArrow}
+      withinPortal
       offset={8}
       styles={{
         arrow: {
