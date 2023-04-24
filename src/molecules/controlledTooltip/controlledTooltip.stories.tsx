@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof ControlledTooltipComponent> = () => {
   );
   const content = (
     <Content>
-      <Text size="14-Regular">Tooltip target</Text>
+      <Text size="14-Regular">Each bar represents an onchain\n transaction. Cielo applies labels to\naid your understanding.</Text>
       <ButtonAtom buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
     </Content>
   );

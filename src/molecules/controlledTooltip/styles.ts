@@ -14,4 +14,5 @@ export const Target = Styled.div`
 
 export const Content = Styled(Column)`
   gap: 10px;
+  white-space: pre-line;
 `;
