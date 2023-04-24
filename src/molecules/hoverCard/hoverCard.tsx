@@ -24,6 +24,7 @@ export const HoverCardComponent = ({
     openDelay={50}
     initiallyOpened={initiallyOpened}
     zIndex={zIndex}
+    withinPortal
   >
     <HoverCard.Target>
       {target}

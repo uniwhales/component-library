@@ -68,7 +68,6 @@ export const Slider: FC<SliderProps> = ({
   return (
     <Container>
       <Input
-        autoFocus
         type="range"
         min={min}
         max={max}
@@ -83,6 +82,7 @@ export const Slider: FC<SliderProps> = ({
           hasError={hasError}
         >
           <NumInput
+            autoFocus
             type="number"
             max={max}
             value={value}
