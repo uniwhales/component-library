@@ -5,7 +5,7 @@ import { localTheme } from '../../theme';
 
 export const ControlledTooltipComponent = ({
   target, content, position = 'top', arrowSize = 12, withArrow = true,
-  opened, zIndex, disabled,
+  opened, zIndex, disabled, withinPortal = true,
 }: ControlledTooltipProps) => {
   const theme = localTheme();
 
@@ -17,7 +17,7 @@ export const ControlledTooltipComponent = ({
       position={position}
       arrowSize={arrowSize}
       withArrow={withArrow}
-      withinPortal
+      withinPortal={withinPortal}
       offset={8}
       styles={{
         arrow: {

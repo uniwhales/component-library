@@ -7,5 +7,5 @@ export const UserIdenticonWrapper = Styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: ${({ theme }) => theme.zIndex.USER_MENU};
+    z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
 `;
