@@ -16,6 +16,7 @@ export type ModalBaseProps = {
   headerIconFill?: string
   modalVariant: 'single' | 'double'
   modalContent: JSX.Element
+  closeOnOverlayClick?: boolean
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalTinyAction?: ReactElement
   maxWidth?: string
