@@ -176,6 +176,11 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
   }
 `;
 
+const GroupComponent = Styled.div<{ showOnTop?:boolean }>`
+  padding-top: ${({ showOnTop }) => (showOnTop ? 0 : '8px')};
+  padding-bottom:  ${({ showOnTop }) => (showOnTop ? '8px' : 0)};
+`;
+
 const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
@@ -270,6 +275,11 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       display: ' none',
       scrollbarWidth: 'none',
     },
+  }),
+  group: (defaultStyles) => ({
+    ...defaultStyles,
+    paddingBottom: 0,
+    paddingTop: 0,
   }),
 };
 
@@ -416,6 +426,17 @@ const Control = (props: any) => {
   );
 };
 
+const Group = (props: any) => {
+  const Comp = components.Group;
+  const { selectProps } = props;
+  const { menuPlacement } = selectProps;
+  return (
+    <GroupComponent showOnTop={menuPlacement === 'top'}>
+      <Comp {...props} />
+    </GroupComponent>
+  );
+};
+
 export const Select = <T extends SelectVariation>({
   selectOptions,
   readOnly,
@@ -469,6 +490,7 @@ export const Select = <T extends SelectVariation>({
           DropdownIndicator,
           Control,
           MenuList,
+          Group,
         }}
         onChange={(option) => {
           if (!onSelectChange) return;
