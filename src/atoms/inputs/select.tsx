@@ -83,7 +83,6 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   width: ${({ width }) => width ?? '100%'};
   :hover {
     div {
-      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       // target placeholder when we have a custom component with icon
       // have not been able to find another way of targeting this than
       // overriding like this.
@@ -95,7 +94,6 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
       ::placeholder {
         color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
       }
-      color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
       }
   }
 `;
@@ -112,20 +110,17 @@ export const Placeholder = Styled.div`
   overflow: hidden;
 `;
 
-const OptionWrapper = Styled.div<{ isSelected: boolean, showOnTop?: boolean }>`
+const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
-  &:nth-of-type(2n) {
-    background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
-  };
   :hover {
     background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
   }
   &:first-of-type {
-    border-radius: ${({ showOnTop }) => (showOnTop && '12px 12px 0 0')};
+    border-radius: ${({ showOnTop, hasGroups }) => (showOnTop && !hasGroups && '12px 12px 0 0')};
   }
   &:last-of-type {
-    border-radius: ${({ showOnTop }) => (!showOnTop && '0 0 12px 12px')};
+    border-radius: ${({ showOnTop, isLastGroup }) => (!showOnTop && isLastGroup && '0 0 12px 12px')};
   }
 
 `;
@@ -296,8 +291,19 @@ const OptionComponent = (props: any) => {
   // icons and current option does not
   const addPadding = (optionsHaveIcon.length > 0 || groupHasIcons) && !hasIcon;
   const showOnTop = selectProps.menuPlacement === 'top';
+
+  const isLastGroup = React.useMemo(() => {
+    const lastGroup = [...options].reverse().find((o: SelectGroupOption) => o.options);
+    return lastGroup && lastGroup.options.includes(data);
+  }, [options, data]);
+
   return (
-    <OptionWrapper showOnTop={showOnTop} isSelected={isSelected}>
+    <OptionWrapper
+      showOnTop={showOnTop}
+      isSelected={isSelected}
+      isLastGroup={isLastGroup}
+      hasGroups={groups.length > 0}
+    >
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
 
