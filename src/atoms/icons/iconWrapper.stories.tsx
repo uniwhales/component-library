@@ -396,6 +396,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Suggested" icon={<Suggested />} />
     <IconWrapper name="Chain Scan" icon={<ChainScan />} />
     <IconWrapper name="Follow" icon={<Follow />} />
+    <IconWrapper name="info" icon={<InfoStandard />} />
   </>
 );
 
