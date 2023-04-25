@@ -48,6 +48,7 @@ export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 export * from './molecules/labeled/select/labeledSelect';
 export * from './molecules/modals/modal';
 export * from './molecules/meatballMenu/meatballMenu';
+export * from './molecules/controlledTooltip/controlledTooltip';
 
 // organisms
 export * from './organisms/searchFilterSelect/searchFilterSelect';

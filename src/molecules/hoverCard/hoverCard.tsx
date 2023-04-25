@@ -13,7 +13,7 @@ const CieloHoverCardDropdown = Styled(HoverCard.Dropdown)`
 
 export const HoverCardComponent = ({
   position = 'bottom', arrowSize = 10, target, content,
-  initiallyOpened,
+  initiallyOpened, zIndex,
 }: HoverCardProps) => (
   <HoverCard
     radius={9}
@@ -21,11 +21,10 @@ export const HoverCardComponent = ({
     withArrow
     closeDelay={50}
     arrowSize={arrowSize}
-    exitTransitionDuration={0}
     openDelay={50}
-    transitionDuration={0}
-    withinPortal
     initiallyOpened={initiallyOpened}
+    zIndex={zIndex}
+    withinPortal
   >
     <HoverCard.Target>
       {target}

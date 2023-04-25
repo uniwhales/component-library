@@ -9,30 +9,22 @@ export const SimpleTooltip = ({
 }: TooltipProps) => {
   const theme = localTheme();
 
-  const arrowMargin = {
-    top: '0px 0px -4px 0px',
-    bottom: '-4px 0px 0px 0px',
-    left: '0px -4px 0px 0px',
-    right: '0px 0px 0px -4px',
-  };
   return (
     <Tooltip
       radius={8}
       label={label}
       position={position}
       withArrow
+      offset={4}
       closeDelay={0}
       arrowSize={arrowSize}
       opened={opened}
-      transitionDuration={0}
-      withinPortal
       zIndex={zIndex}
       styles={{
         arrow: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
           border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
           padding: 2,
-          margin: arrowMargin[position],
         },
         tooltip: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
