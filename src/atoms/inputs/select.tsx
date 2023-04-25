@@ -286,6 +286,13 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     padding: '8px 16px',
     marginBottom: 0,
   }),
+  option: (defaultStyles, { theme, isSelected }: StyledProps) => ({
+    ...defaultStyles,
+    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    '&:hover': {
+      color: theme.colors.system.WHITE,
+    },
+  }),
 };
 
 const OptionComponent = (props: any) => {
