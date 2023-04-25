@@ -683,6 +683,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
       return (
         <ButtonPrimary
           width={width}
+          height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           borderRadius={borderRadius}
