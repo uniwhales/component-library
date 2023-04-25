@@ -6,4 +6,5 @@ export enum ZIndex {
   TOOLTIP,
   OVERLAY,
   MODAL,
+  TUTORIAL_TIMELINE,
 }

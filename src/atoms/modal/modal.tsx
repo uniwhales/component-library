@@ -18,6 +18,7 @@ import {
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
+  closeOnOverlayClick = true,
   headerText,
   headerIcon,
   headerIconFill,
@@ -41,7 +42,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
       <Overlay />
       <ModalContainer onClick={(e) => {
         e.stopPropagation();
-        if (!closeFn) return;
+        if (!closeFn || !closeOnOverlayClick) return;
         setReplay(true);
         setTimeout(() => closeFn(e), 150);
       }}
