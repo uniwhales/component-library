@@ -33,7 +33,7 @@ export const FilterChip = ({
           {children}
           <FloatingCloseWrapper
             disabled={disabled}
-            onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+            onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
           >
             <FloatingClose />
           </FloatingCloseWrapper>
@@ -44,7 +44,7 @@ export const FilterChip = ({
         <FilterChipOnboarding
           disabled={disabled}
           isOn={isOn}
-          onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+          onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
         >
           {children}
         </FilterChipOnboarding>
@@ -55,7 +55,7 @@ export const FilterChip = ({
           <FilterChipWrapper
             disabled={disabled}
             isOn={isOn}
-            onClick={(e: MouseEvent<HTMLElement>) => onClick(id, e)}
+            onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
             width={width}
           >
             <FilterChipContent disabled={!!disabled}>
