@@ -42,7 +42,7 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+      border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -75,7 +75,7 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     transition: background 0.45s ease;
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+      border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -115,7 +115,7 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-      border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+      border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -155,7 +155,7 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+       border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -174,7 +174,7 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'heigh
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+       border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -208,7 +208,7 @@ const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' |
   ${(props) => props.disabled && css`
       background: none;
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+       border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -248,7 +248,7 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
   ${(props) => props.disabled && css`
       background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
-       border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+       border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
       svg {
         fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
@@ -302,7 +302,7 @@ const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
   };
   // disabled
   ${(props) => props.disabled && css`
-    border: ${({ theme }) => `1.5px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
+    border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
     color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
 
     svg {
