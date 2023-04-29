@@ -126,7 +126,7 @@ export const FilterChipOnboarding = Styled.div<Pick<FilterChipProps, 'disabled' 
   `}
   // active state
   ${({ disabled, theme, isOn }) => !disabled && css`
-    border: ${isOn ? `2px solid ${theme.colors.primary.YELLOW}` : `2px solid ${theme.colors.primary.MAIN_BLUE}`};
+    border: ${isOn ? `1px solid ${theme.colors.primary.YELLOW}` : `1px solid ${theme.colors.primary.MAIN_BLUE}`};
     color: ${theme.colors.system.WHITE};
     background: ${isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
     cursor: pointer;
