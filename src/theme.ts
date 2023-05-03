@@ -42,9 +42,9 @@ const LightTheme = {
   containerAndCardShades: {
     NEUTRAL_SHADE_0: '#CCD0E2',
     SHADE_PLUS_1: '#FFFFFF',
-    SHADE_PLUS_2: '#F7F8FA',
-    SHADE_PLUS_3: '#E5E6EC',
-    BG_SHADE_PLUS_4: '#F1F2F4',
+    SHADE_PLUS_2: '#E4E4E8',
+    SHADE_PLUS_3: '#F1F2F4',
+    BG_SHADE_PLUS_4: '#F7F8FA',
   },
   contrastColor: {
     HIGH_CONTRAST: '#1D86E8',
