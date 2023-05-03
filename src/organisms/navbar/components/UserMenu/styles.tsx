@@ -18,7 +18,7 @@ export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
   position: fixed;
   max-width: 160px;
   transition: all 800ms ease-in-out;
-  z-index: ${({ theme }) => theme.zIndex.USER_MENU};
+  z-index: ${({ theme }) => theme.zIndex.STICKY};
 
   ${tablet(css<{ isMenuOpen: boolean }>`
     position: unset;

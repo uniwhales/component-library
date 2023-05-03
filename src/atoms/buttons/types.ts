@@ -1,5 +1,5 @@
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactChild;
+  children?: React.ReactChild;
   width?: string;
   height?: string;
   buttonVariant:
@@ -17,6 +17,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'special_extra_tiny_subtle'
   | 'icon_only'
   | 'square'
+  | 'onboarding_primary'
+  | 'onboarding_secondary'
+  | 'close_primary'
+  | 'close_secondary'
   borderRadius?: string,
   disabled?: boolean
   size?: string

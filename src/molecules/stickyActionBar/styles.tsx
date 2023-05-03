@@ -14,7 +14,7 @@ export const StickyActionBarWrapper = Styled(Card)<StickyActionBarWrapperProps>`
     background: ${isOnEdge && withTransform && 'transparent'};
     justify-content: ${isOnEdge && withTransform ? 'flex-end' : 'space-between'};
     position: ${isOnEdge && withTransform && 'sticky'};
-    z-index: ${isOnEdge && withTransform ? theme.zIndex.POPICON : theme.zIndex.SAFE_LAYER};
+    z-index: ${isOnEdge && withTransform ? theme.zIndex.STICKY : theme.zIndex.SAFE_LAYER};
     height: ${height ?? '42px'};
     top: 0;
   `}

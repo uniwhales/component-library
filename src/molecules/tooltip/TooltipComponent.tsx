@@ -5,22 +5,33 @@ import { TooltipProps } from './types';
 
 export const SimpleTooltip = ({
   label, children, position = 'top', arrowSize = 5, opened,
+  zIndex,
 }: TooltipProps) => {
   const theme = localTheme();
+
   return (
     <Tooltip
       radius={8}
       label={label}
       position={position}
       withArrow
+      offset={4}
       closeDelay={0}
       arrowSize={arrowSize}
       opened={opened}
+      zIndex={zIndex}
       styles={{
-        arrow: { backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4 },
+        arrow: {
+          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
+          border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
+          padding: 2,
+        },
         tooltip: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          color: theme.textShades.SHADE_MINUS_2,
+          color: theme.textShades.SHADE_MINUS_3,
+          border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
+          borderRadius: 9,
+          padding: 9,
         },
       }}
     >

@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 import { CSSProperties } from 'styled-components';
 
 export type FilterChipProps = {
-  variant: 'primary' | 'secondary'
+  variant: 'primary' | 'secondary' | 'onboarding'
   children:
   | JSX.Element
   | JSX.Element[]

@@ -31,6 +31,7 @@ export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
 export * from './atoms/shortText/shortText';
 export * from './atoms/walletLabel/walletLabel';
+export * from './atoms/tooltipButton/tooltipButton';
 export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
@@ -47,6 +48,7 @@ export { StickyActionBarProps } from './molecules/stickyActionBar/types';
 export * from './molecules/labeled/select/labeledSelect';
 export * from './molecules/modals/modal';
 export * from './molecules/meatballMenu/meatballMenu';
+export * from './molecules/controlledTooltip/controlledTooltip';
 
 // organisms
 export * from './organisms/searchFilterSelect/searchFilterSelect';

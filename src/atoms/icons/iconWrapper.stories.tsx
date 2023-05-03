@@ -154,7 +154,7 @@ import {
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
-  YourFeed, Configure,
+  YourFeed, Configure, CieloLogoTyped, WalletConnect,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -282,7 +282,8 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Polygon" icon={<PolygonColor />} />
     <IconWrapper name="Sushiswap" icon={<SushiswapColor />} />
     <IconWrapper name="Terra" icon={<TerraColor />} />
-    <IconWrapper name="Wallet Connect" icon={<WalletConnectColor />} />
+    <IconWrapper name="Wallet Connect Color" icon={<WalletConnectColor />} />
+    <IconWrapper name="Wallet Connect" icon={<WalletConnect />} />
     <IconWrapper name="Uniwhales" icon={<UniWhalesColor />} />
     <IconWrapper name="0x" icon={<OxColor />} />
     <IconWrapper name="evmos" icon={<EvmosColor />} />
@@ -396,6 +397,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Suggested" icon={<Suggested />} />
     <IconWrapper name="Chain Scan" icon={<ChainScan />} />
     <IconWrapper name="Follow" icon={<Follow />} />
+    <IconWrapper name="info" icon={<InfoStandard />} />
   </>
 );
 
@@ -458,6 +460,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Filter Tx" icon={<FilterTx />} />
     <IconWrapper name="Timestamp" icon={<Timestamp />} />
     <IconWrapper name="TrendingFlame" icon={<TrendingFlame />} />
+    <IconWrapper name="Cielo Logo Typed" icon={<CieloLogoTyped />} />
   </>
 );
 
