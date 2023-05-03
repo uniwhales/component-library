@@ -1,7 +1,12 @@
 import React from 'react';
 
 export const CieloLogoTyped = () => (
-  <svg viewBox="0 0 203 77" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    viewBox="0 0 203 77"
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    fill="none"
+  >
     <path d="M68.0959 21.8442H57.6592V75.9997H68.0959V21.8442Z" />
     <path d="M142.361 0H131.924V75.9888H142.361V0Z" />
     <path d="M62.877 13.6566C66.6449 13.6566 69.6994 10.5995 69.6994 6.82829C69.6994 3.05713 66.6449 0 62.877 0C59.1092 0 56.0547 3.05713 56.0547 6.82829C56.0547 10.5995 59.1092 13.6566 62.877 13.6566Z" />
