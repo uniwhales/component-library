@@ -56,6 +56,7 @@ export interface SelectProps<T extends SelectVariation> {
   error?: boolean
   errorMessage?: string
   showOnTop?: boolean
+  noOptionsMessage?:string;
 }
 
 interface StyledProps {
@@ -460,11 +461,14 @@ export const Select = <T extends SelectVariation>({
   errorMessage,
   ref,
   showOnTop,
+  noOptionsMessage,
 }: SelectProps<T>) => {
   const theme = localTheme();
+  const customNoOptionsMessage = () => noOptionsMessage || 'No options';
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
+        noOptionsMessage={customNoOptionsMessage}
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}

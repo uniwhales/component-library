@@ -111,6 +111,7 @@ LabeledPrimary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 LabeledPrimary.args = {
+  noOptionsMessage: 'Custom message',
   selectOptions: ColourOptions,
   isMulti: false,
   readOnly: false,

@@ -25,7 +25,8 @@ export const LabeledSelect = <T extends SelectVariation>(
   props: SelectProps<T> & LabeledSelectProps,
 ) => {
   const {
-    label, labels, isDisabled, labelColor, labelFontSize, required,
+    label, labels, isDisabled, labelColor, labelFontSize,
+    required,
   } = props;
   const { textShades } = localTheme();
   const [hover, setHover] = useState(false);
