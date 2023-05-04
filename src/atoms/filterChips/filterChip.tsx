@@ -12,12 +12,13 @@ import { FilterChipProps } from './types';
 
 export const FilterChip = ({
   children, icon, isOn = false, onClick, id, width,
-  disabled, variant, iconSize, height,
+  disabled, variant, iconSize, height, padding,
 }: FilterChipProps) => {
   switch (variant) {
     case 'secondary':
       return (
         <FilterChipSecondary
+          padding={padding}
           height={height}
           width={width}
           disabled={disabled}
@@ -44,6 +45,7 @@ export const FilterChip = ({
         <FilterChipOnboarding
           disabled={disabled}
           isOn={isOn}
+          padding={padding}
           onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
         >
           {children}
@@ -57,6 +59,7 @@ export const FilterChip = ({
             isOn={isOn}
             onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
             width={width}
+            padding={padding}
           >
             <FilterChipContent disabled={!!disabled}>
               {icon && <IconWrapper width={iconSize} height={iconSize} icon={icon} cursor={disabled ? 'not-allowed' : 'pointer'} />}

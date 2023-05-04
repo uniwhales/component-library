@@ -5,7 +5,7 @@ import { localTheme } from '../../theme';
 
 export const ControlledTooltipComponent = ({
   target, content, position = 'top', arrowSize = 12, withArrow = true,
-  opened, zIndex, disabled, withinPortal = true,
+  opened, zIndex, disabled, withinPortal = true, padding,
 }: ControlledTooltipProps) => {
   const theme = localTheme();
 
@@ -31,7 +31,7 @@ export const ControlledTooltipComponent = ({
           borderColor: theme.containerAndCardShades.SHADE_PLUS_1,
           borderRadius: 9,
           borderWidth: 1,
-          padding: 23,
+          padding: padding ?? 23,
         },
       }}
     >

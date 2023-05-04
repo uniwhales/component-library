@@ -14,4 +14,4 @@ export type FilterChipProps = {
   onClick: (id: string, e: MouseEvent<HTMLElement>) => void;
   iconSize?: string;
   id: string;
-} & Pick<CSSProperties, 'width' | 'height'>;
+} & Pick<CSSProperties, 'padding' | 'width' | 'height'>;

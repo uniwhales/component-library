@@ -3,14 +3,14 @@ import { FilterChipProps } from './types';
 import { Styled } from '../../theme';
 import { Row } from '../common/flex';
 
-type Props = { isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'width'>;
+type Props = { isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'padding' | 'width'>;
 
 export const FilterChipWrapper = Styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
   background: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.SHADE_PLUS_1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  padding: 2px 8px;
+  padding: ${({ padding }) => padding ?? '2px 8px'};
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -58,10 +58,10 @@ export const FloatingCloseWrapper = Styled(Row)<{ disabled?: boolean }>`
   }
 `;
 
-export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width'>>`
+export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'padding' | 'disabled' | 'height' | 'width'>>`
   box-sizing: border-box;
   display: flex;
-  padding: 0px 8px;
+  padding: ${({ padding }) => padding ?? '0px 8px'};
   align-items: center;
   justify-content: center;
   border-radius: 12px;
@@ -106,14 +106,14 @@ export const FilterChipSecondary = Styled.div<Pick<FilterChipProps, 'disabled' |
   `}
 `;
 
-export const FilterChipOnboarding = Styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width' | 'isOn'>>`
+export const FilterChipOnboarding = Styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width' | 'isOn' | 'padding'>>`
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
   width: ${({ width }) => width ?? 'fit-content'};
   height: ${({ height }) => height ?? 'fit-content'};
-  padding: 0 16px;
+  padding: ${({ padding }) => padding ?? '0 13px'};
   // disabled state
   ${(props) => props.disabled && css`
       background: ${({ theme }) => theme.colors.primary.MEDIUM_BLUE};
@@ -126,7 +126,7 @@ export const FilterChipOnboarding = Styled.div<Pick<FilterChipProps, 'disabled' 
   `}
   // active state
   ${({ disabled, theme, isOn }) => !disabled && css`
-    border: ${isOn ? `2px solid ${theme.colors.primary.YELLOW}` : `2px solid ${theme.colors.primary.MAIN_BLUE}`}};
+    border: ${isOn ? `1px solid ${theme.colors.primary.YELLOW}` : `1px solid ${theme.colors.primary.MAIN_BLUE}`};
     color: ${theme.colors.system.WHITE};
     background: ${isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
     cursor: pointer;
