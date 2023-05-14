@@ -38,7 +38,6 @@ export { ModalContainer, CloseButton } from './atoms/modal/styles';
 export * from './molecules/copyToClipBoard/copyToClipBoard';
 export * from './molecules/groupTabs/selectorTabs';
 export * from './molecules/cardDate/cardDate';
-export * from './molecules/txTableList/txTableList';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/hoverCard/hoverCard';
