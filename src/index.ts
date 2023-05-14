@@ -40,7 +40,6 @@ export * from './molecules/groupTabs/selectorTabs';
 export * from './molecules/cardDate/cardDate';
 export * from './molecules/txTableList/txTableList';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
-export * from './molecules/tokenPoolCard/tokenPoolCard';
 export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/hoverCard/hoverCard';
 export * from './molecules/labeled/select/labeledSelect';
