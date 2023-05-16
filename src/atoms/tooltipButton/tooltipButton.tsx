@@ -7,7 +7,7 @@ import { useClickOutside } from '../../utils/useClickOutside';
 import { TooltipButtonProps } from './types';
 import { localTheme } from '../../theme';
 
-export const TooltipButton = ({ content, position = 'top', arrowSize = 5 }: TooltipButtonProps) => {
+export const TooltipButton = ({ content, position = 'top' }: TooltipButtonProps) => {
   const [open, setOpen] = useState(false);
   const theme = localTheme();
   const clickRef = useRef(null);
@@ -19,7 +19,6 @@ export const TooltipButton = ({ content, position = 'top', arrowSize = 5 }: Tool
         label={content}
         opened={open}
         position={position}
-        arrowSize={arrowSize}
       >
         <TooltipButtonWrapper onClick={() => setOpen(!open)}>
           <IconWrapper
