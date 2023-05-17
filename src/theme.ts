@@ -30,6 +30,9 @@ const DarkTheme = {
   dropShadow: {
     REGULAR: '',
   },
+  gradients: {
+    PREVIEW_GRADIENT: 'linear-gradient(180deg, rgba(21, 21, 23, 0) 0%, #151517 100%)',
+  },
 };
 
 const LightTheme = {
@@ -53,6 +56,9 @@ const LightTheme = {
   },
   dropShadow: {
     REGULAR: '',
+  },
+  gradients: {
+    PREVIEW_GRADIENT: 'linear-gradient(180deg, rgba(247, 248, 250, 0) 0%, #F7F8FA 100%)',
   },
 };
 
