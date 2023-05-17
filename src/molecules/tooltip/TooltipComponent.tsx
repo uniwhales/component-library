@@ -4,7 +4,7 @@ import { localTheme } from '../../theme';
 import { TooltipProps } from './types';
 
 export const SimpleTooltip = ({
-  label, children, position = 'top', arrowSize = 5, opened,
+  label, children, position = 'top', opened,
   zIndex,
 }: TooltipProps) => {
   const theme = localTheme();
@@ -17,14 +17,17 @@ export const SimpleTooltip = ({
       withArrow
       offset={4}
       closeDelay={0}
-      arrowSize={arrowSize}
+      arrowSize={5}
       opened={opened}
       zIndex={zIndex}
       styles={{
         arrow: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
           border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
-          padding: 2,
+          bottom: position === 'top' ? '-5px !important' : undefined,
+          top: position === 'bottom' ? '-5px !important' : undefined,
+          left: position === 'right' ? '-5px !important' : undefined,
+          right: position === 'left' ? '-5px !important' : undefined,
         },
         tooltip: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,

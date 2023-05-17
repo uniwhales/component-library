@@ -8,7 +8,7 @@ export const ModalContainer = Styled.div`
   position: fixed;
   height: 100%;
   width: 100%;
-  left: 0;
+  left: 64px;
   top: 0;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
   display: flex;
