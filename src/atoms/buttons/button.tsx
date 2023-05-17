@@ -259,7 +259,7 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
   `}
   // active state
   ${(props) => !props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_2};
 
    &:hover {
       background: ${props.theme.textShades.SHADE_MINUS_1};

@@ -41,7 +41,7 @@ const LightTheme = {
   },
   containerAndCardShades: {
     NEUTRAL_SHADE_0: '#A6B8C8',
-    SHADE_PLUS_1: '#A9AAB4',
+    SHADE_PLUS_1: '#C6C9CF',
     SHADE_PLUS_2: '#E1E2E9',
     SHADE_PLUS_3: '#EFF0F2',
     BG_SHADE_PLUS_4: '#F7F8FA',
