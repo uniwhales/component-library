@@ -24,6 +24,7 @@ export * from './atoms/identicon/Identicon';
 export * from './atoms/modal/modal';
 export * from './atoms/uniwhalesLogo/uniwhalesLogo';
 export * from './atoms/cieloLogo/CieloLogo';
+export * from './atoms/cieloLogo/CieloLogoBeta';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
