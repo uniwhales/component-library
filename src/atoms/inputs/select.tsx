@@ -290,6 +290,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   option: (defaultStyles, { theme, isSelected }: StyledProps) => ({
     ...defaultStyles,
     color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    fontSize: '12px',
     '&:hover': {
       color: theme.colors.system.WHITE,
     },

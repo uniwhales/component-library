@@ -78,10 +78,13 @@ const ChainOptions = [
     id: 4, value: 'noicon', label: 'No Icon', order: 4,
   },
   {
-    id: 5, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
+    id: 5, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 5,
   },
   {
-    id: 6, value: 'noicon', label: 'No Icon', order: 4,
+    id: 6, value: 'noicon', label: 'No Icon', order: 6,
+  },
+  {
+    id: 7, value: 'conttract', label: 'Contract creation', order: 7,
   },
 ];
 
@@ -144,14 +147,13 @@ Primary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 Primary.args = {
-  width: '226px',
+  width: '160px',
   selectOptions: ChainOptions,
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
   showValue: true,
-  showOnTop: true,
 };
 
 PrimaryIcon.args = {
