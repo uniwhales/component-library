@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
   const [text, setText] = useState(true);
   return (
     <>
-      <CieloLogo noText={text} night={isDark} />
+      <CieloLogo {...args} noText={text} night={isDark} />
       <button type="button" onClick={() => setText(!text)}>{text ? 'Full logo' : 'Symbol only logo'}</button>
     </>
 
@@ -21,3 +21,7 @@ const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
 };
 
 export const Standard = Template.bind({});
+export const Beta = Template.bind({});
+Beta.args = {
+  isBeta: true,
+};
