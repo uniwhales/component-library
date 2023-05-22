@@ -11,7 +11,7 @@ export const ButtonWrapper = Styled.div`
 `;
 
 const Button = Styled.button<GenericStylingProps>`
-  transition: 0.3s;
+  transition: background 0.45s ease;
   font-size: 14px;
   line-height: 20px;
   padding: 8px 12px;
