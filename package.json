@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "2.2.6-dev-dark-theme-changes-3",
+  "version": "2.2.8",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
