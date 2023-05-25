@@ -26,7 +26,8 @@ export const StyledHeading = Styled.div<{ textType: string, textWeight: string, 
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
   `;
 
-export const StyledA = Styled.a<{ textType: string, textWeight: string, textDecoration?: string, hyperLinkVariation?: HyperLinkVariation }>`
+export const StyledA = Styled.a<{ textType: string, textWeight: string, textDecoration?: string, hyperLinkVariation?: HyperLinkVariation, disabled?:boolean }>`
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   padding: 0;
   margin: 0;
   line-height: 24px;
