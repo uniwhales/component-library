@@ -23,7 +23,7 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
-  background: ${({ theme, isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  background: ${({ theme, isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
