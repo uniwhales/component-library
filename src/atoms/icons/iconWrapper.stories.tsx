@@ -186,7 +186,7 @@ import { FilterTx } from './feed/FilterTx';
 import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
 import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
 import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
-import { PulsechainColor } from './chains/fullColorStyle/PulschainColor';
+import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
 
 export default {
   title: 'Atoms/Icons',
