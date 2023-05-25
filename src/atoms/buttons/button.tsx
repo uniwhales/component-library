@@ -282,7 +282,6 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
   border-radius: 50%;
   width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
   height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
-   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
 
   display: flex;
   justify-content: center;
@@ -293,9 +292,7 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
     width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
     height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
   }
-  &:hover {
-    background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
-  }
+
 `;
 
 const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
