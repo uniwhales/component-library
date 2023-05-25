@@ -23,11 +23,11 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
-  background: ${({ theme, isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_2 : isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  background: ${({ theme, isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   justify-content: space-between;
   svg {
     fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)}!important;
