@@ -198,6 +198,7 @@ export * from './chains/fullColorStyle/MetisColor';
 export * from './chains/fullColorStyle/NearColor';
 export * from './chains/fullColorStyle/OptimismColor';
 export * from './chains/fullColorStyle/PolygonColor';
+export * from './chains/fullColorStyle/PulsechainColor';
 export * from './chains/fullColorStyle/SushiswapColor';
 export * from './chains/fullColorStyle/TerraColor';
 export * from './chains/fullColorStyle/WalletConnectColor';
