@@ -186,6 +186,7 @@ import { FilterTx } from './feed/FilterTx';
 import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
 import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
 import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
+import { PulsechainColor } from './chains/fullColorStyle/PulschainColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -280,6 +281,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Near" icon={<NearColor />} />
     <IconWrapper name="Optimism" icon={<OptimismColor />} />
     <IconWrapper name="Polygon" icon={<PolygonColor />} />
+    <IconWrapper name="Pulse" icon={<PulsechainColor />} />
     <IconWrapper name="Sushiswap" icon={<SushiswapColor />} />
     <IconWrapper name="Terra" icon={<TerraColor />} />
     <IconWrapper name="Wallet Connect Color" icon={<WalletConnectColor />} />
