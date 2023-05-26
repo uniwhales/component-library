@@ -5,7 +5,7 @@ import { TooltipProps } from './types';
 
 export const SimpleTooltip = ({
   label, children, position = 'top', opened,
-  zIndex,
+  zIndex, multiline = false,
 }: TooltipProps) => {
   const theme = localTheme();
 
@@ -20,6 +20,8 @@ export const SimpleTooltip = ({
       arrowSize={5}
       opened={opened}
       zIndex={zIndex}
+      multiline={multiline}
+      width={multiline ? 300 : undefined}
       styles={{
         arrow: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
