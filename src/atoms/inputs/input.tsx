@@ -29,11 +29,12 @@ export interface InputsProps {
   inputState?: InputState;
   width?: string;
   onEnterSubmit?: () => void;
-  required?: boolean
-  inputRef?: Ref<HTMLInputElement>
-  tabIndex?: number
+  required?: boolean;
+  inputRef?: Ref<HTMLInputElement>;
+  tabIndex?: number;
+  maxLength?: number;
 }
-export const InputWrapper = Styled.div<{ width?: string, disabled:boolean, inputState: InputState }>`
+export const InputWrapper = Styled.div<{ width?: string, disabled: boolean, inputState: InputState }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -90,7 +91,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
 `;
-export const InputLabel = Styled.label<{ disabled?:boolean }>`
+export const InputLabel = Styled.label<{ disabled?: boolean }>`
   display: flex;
   gap: 5px;
   font-size: 12px;
@@ -132,10 +133,17 @@ export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
   margin: 8px;
 `;
 
-export const Wrapper = Styled.div<{ mt?:string }>`
+export const Wrapper = Styled.div<{ mt?: string }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 20px;
-  margin-top: ${({ mt }) => mt && mt}
+  margin-top: ${({ mt }) => mt && mt};
+`;
+
+const MaxContainer = Styled.div<{ inputState: InputState }>`
+  position: absolute;
+  left: ${({ inputState }) => inputState.status === 'invalid' && 0};
+  right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
+  margin: 8px;
 `;
 
 export /**
@@ -174,10 +182,12 @@ const Input = ({
   required,
   inputRef,
   tabIndex,
+  maxLength,
 }: InputsProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [hover, setHover] = useState<boolean>(false);
   const theme = localTheme();
+  const error = inputState.status === 'error';
   const getMoreDetailsTextColor = (status: InputState['status']) => {
     const lookup = {
       valid: theme.colors.system.GREEN,
@@ -201,6 +211,10 @@ const Input = ({
       {inputState.message}
     </Text>
   </MoreDetailContainer>
+  );
+
+  const maxLengthText = !error && maxLength && (
+  <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${maxLength.toString()}`}</Text>
   );
 
   return (
@@ -243,8 +257,12 @@ const Input = ({
           withIcon={!!icon}
           tabIndex={tabIndex}
           ref={inputRef}
+          maxLength={maxLength}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
+        <MaxContainer inputState={inputState}>
+          {maxLengthText}
+        </MaxContainer>
         {moreDetailsContainer}
       </InputContainer>
     </InputWrapper>
