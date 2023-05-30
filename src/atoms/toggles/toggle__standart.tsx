@@ -52,12 +52,12 @@ const FakeInput = Styled.input<{ size:any }>`
   :checked + ${Toggle} {
     background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.colors.primary.MAIN_BLUE)};
     &:hover {
-      background: ${({ theme }) => theme.colors.primary.LIGHT_BLUE};
+      background: ${({ theme, disabled }) => !disabled && theme.colors.primary.LIGHT_BLUE};
     }
   }
   :checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
-    background: ${(props) => props.theme.textShades.SHADE_MINUS_3};
+    background: ${({ disabled, theme }) => !disabled && theme.textShades.SHADE_MINUS_3};
   }
 `;
 export const ToggleAtom = ({
