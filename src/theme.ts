@@ -17,7 +17,7 @@ const DarkTheme = {
   },
   containerAndCardShades: {
     NEUTRAL_SHADE_0: '#262C3F',
-    SHADE_PLUS_1: '#444959',
+    SHADE_PLUS_1: '#595E71',
     SHADE_PLUS_2: '#282C36',
     SHADE_PLUS_3: '#1E1F23',
     BG_SHADE_PLUS_4: '#151517',
