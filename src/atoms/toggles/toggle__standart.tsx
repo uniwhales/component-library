@@ -1,5 +1,5 @@
 import React from 'react';
-import { Styled } from '../../theme';
+import { Styled, localTheme } from '../../theme';
 import { Text } from '../texts/text';
 
 export interface ToggleProps {
@@ -23,7 +23,7 @@ const Switcher = Styled.label<{ size: string }>`
 `;
 const Toggle = Styled.span<{ size: string, disabled: boolean }>`
   position: absolute;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   top: 0;
   left: 0;
   right: 0;
@@ -62,13 +62,15 @@ const FakeInput = Styled.input<{ size:any }>`
 `;
 export const ToggleAtom = ({
   isOn, onClick, label, size = 'standard', disabled,
-}:ToggleProps) => (
-  <Wrapper>
-    <Switcher size={size}>
-      <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
-      <Toggle disabled={!!disabled} size={size} />
-    </Switcher>
-    {label && <Text size="14-Regular">{label}</Text>}
-  </Wrapper>
-
-);
+}:ToggleProps) => {
+  const theme = localTheme();
+  return (
+    <Wrapper>
+      <Switcher size={size}>
+        <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
+        <Toggle disabled={!!disabled} size={size} />
+      </Switcher>
+      {label && <Text color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_3} size="14-Regular">{label}</Text>}
+    </Wrapper>
+  );
+};
