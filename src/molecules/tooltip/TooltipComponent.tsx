@@ -4,8 +4,8 @@ import { localTheme } from '../../theme';
 import { TooltipProps } from './types';
 
 export const SimpleTooltip = ({
-  label, children, position = 'top', opened,
-  zIndex, multiline = false,
+  label, children, position = 'top', opened, multiline = false,
+  zIndex, offset = 4,
 }: TooltipProps) => {
   const theme = localTheme();
 
@@ -15,7 +15,7 @@ export const SimpleTooltip = ({
       label={label}
       position={position}
       withArrow
-      offset={4}
+      offset={offset}
       closeDelay={0}
       arrowSize={5}
       opened={opened}
