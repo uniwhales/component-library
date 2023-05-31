@@ -73,9 +73,6 @@ export * from './utils/constants';
 export * from './utils/getSize';
 export * from './utils/toasts';
 
-// images
-export * from './images/ExplorePageBanner';
-
 export {
   Theme, LightTheme, DarkTheme, Styled, localTheme,
 } from './theme';
