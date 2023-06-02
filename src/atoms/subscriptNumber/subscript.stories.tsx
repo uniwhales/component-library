@@ -2,6 +2,8 @@ import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import { BodySizes, HeaderSizes } from '../texts/types';
 import { Subscript } from './subscript';
+import { Text } from '../texts/text';
+import { Row } from '../common/flex';
 
 const headerSizes: HeaderSizes[] = ['H1-Regular',
   'H1-Bold',
@@ -51,7 +53,12 @@ const Template: Story<TemplateSizes> = (args) => {
   const { list } = args;
   return (
     <>
-      {list.map((item) => <Subscript key={item} size={item} beforeSubscript="0.0" subscript="6" afterSubscript="452" />)}
+      {list.map((item) => (
+        <Row gap="4px" alignItems="center">
+          <Text size={item}>Some text:</Text>
+          <Subscript key={item} size={item} beforeSubscript="0.0" subscript="6" afterSubscript="452" />
+        </Row>
+      ))}
     </>
   );
 };
