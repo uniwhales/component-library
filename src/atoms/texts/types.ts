@@ -49,6 +49,7 @@ export interface TextProps {
   href?: string;
   target?: string;
   hyperLinkVariation?: HyperLinkVariation
+  disabled?: boolean;
 }
 type HyperLinkStyleProperty = {
   idle: string,

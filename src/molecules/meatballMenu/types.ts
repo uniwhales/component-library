@@ -10,4 +10,5 @@ export interface MeatballMenuProps {
   setShowMenu: Dispatch<SetStateAction<boolean>>;
   items: Item[];
   width?: string;
+  disabled?:boolean;
 }

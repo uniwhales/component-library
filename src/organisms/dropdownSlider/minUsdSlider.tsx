@@ -29,7 +29,7 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   min, max, onApply,
   buttonText, buttonIcon,
   buttonWidth, buttonHeight,
-  description, unit, useLogarithmic,
+  description, unit, useLogarithmic, disabled,
 }, ref) => {
   const [sliderValue, setSliderValue] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
@@ -65,10 +65,14 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
       {isOpen && <Overlay />}
       <Container ref={clickRef}>
         <MinUsdButton
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            if (disabled) return;
+            setIsOpen(!isOpen);
+          }}
           isOpen={isOpen}
           height={buttonHeight}
           width={buttonWidth}
+          disabled={!!disabled}
         >
           <InnerContainer>
             <MinUsdButtonContent>
