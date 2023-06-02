@@ -50,7 +50,6 @@ const Template: Story<TemplateSizes> = (args) => {
   );
 };
 
-export const HeadingsAndTitles = Template.bind({});
 export const BodyText = Template.bind({});
 
 BodyText.args = {
