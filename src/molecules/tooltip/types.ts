@@ -8,5 +8,6 @@ export interface TooltipProps {
   opened?: boolean;
   allowPointerEvents?: boolean;
   zIndex?: ZIndex;
+  multiline?: boolean;
   offset?: number;
 }

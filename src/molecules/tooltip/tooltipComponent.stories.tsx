@@ -63,4 +63,19 @@ const Template: ComponentStory<typeof SimpleTooltip> = () => (
 
 );
 
+const MultiLineTemplate: ComponentStory<typeof SimpleTooltip> = () => (
+  <SimpleTooltip
+    position="top"
+    zIndex={Theme.zIndex.OVERLAY}
+    label="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    allowPointerEvents
+    multiline
+  >
+    <div>
+      <Text>target bottom</Text>
+    </div>
+  </SimpleTooltip>
+);
+
 export const SimpleTooltipComponent = Template.bind({});
+export const MultiLine = MultiLineTemplate.bind({});
