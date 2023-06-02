@@ -33,6 +33,7 @@ const Template: ComponentStory<typeof Input> = ({
         inputState={inputState}
         required={required}
         inputRef={ref}
+        maxLength={10}
       />
     </Wrapper>
   );
