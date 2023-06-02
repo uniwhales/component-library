@@ -12,6 +12,7 @@ export const MeatballMenu = ({
   showMenu,
   setShowMenu,
   width,
+  disabled,
 }: MeatballMenuProps) => {
   const clickRef = useRef(null);
   useClickOutside(clickRef, () => setShowMenu(false));
@@ -20,6 +21,7 @@ export const MeatballMenu = ({
       <ButtonAtom
         buttonVariant="special_tiny_round"
         onClick={() => setShowMenu(!showMenu)}
+        disabled={disabled}
       >
         <Meatball />
       </ButtonAtom>

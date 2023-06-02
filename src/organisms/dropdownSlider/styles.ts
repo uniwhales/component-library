@@ -14,7 +14,7 @@ export const OpenContainer = Styled.div`
   right: 0;
 `;
 
-export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string }>`
+export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string, disabled:boolean }>`
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   z-index: ${({ theme, isOpen }) => isOpen && theme.zIndex.MODAL};
@@ -23,20 +23,21 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
-  background: ${({ theme, isOpen }) => (isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme }) => `1px solid ${theme.textShades.SHADE_MINUS_1}`};
+  background: ${({ theme, isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   justify-content: space-between;
   svg {
     fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)}!important;
   }
-  &:hover {
-    border: ${({ theme, isOpen }) => `1px solid ${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}`};
-    color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
-      svg {
-    fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)}!important;
+ &:hover {
+    border: ${({ theme, isOpen, disabled }) => (disabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : `1px solid ${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}`)};
+    color: ${({ theme, isOpen, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : `${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}`)};
+    svg {
+      fill: ${({ theme, isOpen, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : `${isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}`)}!important;
+    }
   }
   }
 `;
