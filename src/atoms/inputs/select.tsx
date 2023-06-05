@@ -57,6 +57,7 @@ export interface SelectProps<T extends SelectVariation> {
   errorMessage?: string
   showOnTop?: boolean
   noOptionsMessage?:string;
+  smallText?: boolean;
 }
 
 interface StyledProps {
@@ -126,13 +127,14 @@ const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, show
 
 `;
 
-const OptionLabelContainer = Styled.label<{ addPadding: boolean }>`
+const OptionLabelContainer = Styled.label<{ addPadding: boolean, smallText?:boolean }>`
   padding-left: ${({ addPadding }) => addPadding && '24px'};
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   word-break: break-all;
+  font-size: ${({ smallText }) => smallText && '12px'};
 `;
 
 const ClearButtonContainer = Styled.div`
@@ -298,7 +300,7 @@ const colourStyles: StylesConfig<StyledProps, false> = {
 
 const OptionComponent = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, options, selectProps,
+    label, isSelected, readOnly, isCheckBox, data, options, selectProps, smallText,
   } = props;
   // check if any options have icons
   const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
@@ -307,7 +309,6 @@ const OptionComponent = (props: any) => {
   const groupOptions = groups
     && groups.map((g: { options: Option[]; }) => g.options.filter((o: Option) => o.icon));
   const groupHasIcons = groupOptions.some((group: string | any[]) => group.length > 0);
-
   // check if individual option has an icon
   const hasIcon = !!data.icon;
   // show padding if any options have
@@ -331,7 +332,7 @@ const OptionComponent = (props: any) => {
         {!readOnly && isCheckBox ? (
 
           <CheckboxOptionContainer>
-            <OptionLabelContainer addPadding={addPadding}>
+            <OptionLabelContainer addPadding={addPadding} smallText={smallText}>
               {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
               {label}
             </OptionLabelContainer>
@@ -344,7 +345,7 @@ const OptionComponent = (props: any) => {
             />
           </CheckboxOptionContainer>
         ) : (
-          <OptionLabelContainer addPadding={addPadding}>
+          <OptionLabelContainer smallText={smallText} addPadding={addPadding}>
             {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
             {label}
           </OptionLabelContainer>
@@ -462,6 +463,7 @@ export const Select = <T extends SelectVariation>({
   ref,
   showOnTop,
   noOptionsMessage,
+  smallText = false,
 }: SelectProps<T>) => {
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
@@ -486,7 +488,7 @@ export const Select = <T extends SelectVariation>({
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
           Option: (props) => OptionComponent({
-            ...props, readOnly, isCheckBox,
+            ...props, readOnly, isCheckBox, smallText,
           }),
           IndicatorSeparator: () => null,
           ClearIndicator: (props) => ClearIndicator(
