@@ -5,7 +5,7 @@ import {
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
-  BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars,
+  BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars, ZkEvmColor,
 } from '../icons';
 import { Text } from '../texts/text';
 import { Wrapper } from './input';
@@ -78,10 +78,13 @@ const ChainOptions = [
     id: 4, value: 'noicon', label: 'No Icon', order: 4,
   },
   {
-    id: 5, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 4,
+    id: 5, value: 'bobo', label: 'Bobo', icon: <IconWrapper height="16px" width="16px" icon={<BobaColor />} />, order: 5,
   },
   {
-    id: 6, value: 'noicon', label: 'No Icon', order: 4,
+    id: 6, value: 'noicon', label: 'No Icon', order: 6,
+  },
+  {
+    id: 5, value: 'polygonzkevm', label: 'Polygon ZKevm', icon: <IconWrapper height="16px" width="16px" icon={<ZkEvmColor />} />, order: 7,
   },
 ];
 
@@ -144,14 +147,14 @@ Primary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 Primary.args = {
-  width: '226px',
+  width: '150px',
   selectOptions: ChainOptions,
   isMulti: false,
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
   showValue: true,
-  showOnTop: true,
+  smallText: true,
 };
 
 PrimaryIcon.args = {
