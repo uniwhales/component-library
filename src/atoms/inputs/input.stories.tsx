@@ -55,6 +55,7 @@ Primary.args = {
     status: 'default',
     message: '',
   },
+  icon: <SearchStandard />,
 };
 Error.args = {
   inputState: {
