@@ -32,6 +32,7 @@ export * from './atoms/inputs/textarea';
 export * from './atoms/shortText/shortText';
 export * from './atoms/walletLabel/walletLabel';
 export * from './atoms/tooltipButton/tooltipButton';
+export * from './atoms/subscriptNumber/subscript';
 export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
