@@ -22,7 +22,7 @@ export const Text: FC<TextProps> = ({
       </StyledA>
     );
   }
-  if ((['8', '10', '11', '12', '14', '16'].includes(textType))) {
+  if ((['8', '9', '10', '11', '12', '14', '16'].includes(textType))) {
     return (
       <StyledP
         textDecoration={textDecoration}

@@ -27,6 +27,8 @@ const bodySizes: BodySizes[] = [
   '11-Bold',
   '10-Regular',
   '10-Bold',
+  '9-Regular',
+  '9-Bold',
   '8-Regular',
   '8-Bold',
 ];

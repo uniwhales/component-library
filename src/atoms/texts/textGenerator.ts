@@ -1,5 +1,6 @@
 export const P_FONTSIZE = Object.freeze({
   8: 8,
+  9: 9,
   10: 10,
   11: 11,
   12: 12,
@@ -8,6 +9,7 @@ export const P_FONTSIZE = Object.freeze({
 });
 export const P_LINE_HEIGHT = Object.freeze({
   8: 10,
+  9: 10,
   10: 12,
   11: 12,
   12: 16,
