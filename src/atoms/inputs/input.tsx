@@ -227,7 +227,7 @@ const Input = ({
         onMouseLeave={() => setHover(false)}
       >
         <LeftSideIcon>
-          {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={hover ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1} icon={icon} />)}
+          {!!icon && inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={!disabled && hover ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1} icon={icon} />)}
           {inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
         </LeftSideIcon>
         <InputStyled

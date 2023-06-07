@@ -175,7 +175,7 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'heigh
   border: none;
   // disabled state
   ${(props) => props.disabled && css`
-      background: none;
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
       color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
        border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
 
