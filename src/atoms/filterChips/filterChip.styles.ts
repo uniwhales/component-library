@@ -29,8 +29,6 @@ export const FilterChipContent = Styled.div<{ disabled: boolean }>`
   justify-content: center;
   gap: 4px;
   svg {
-    height: 16px;
-    width: 16px;
     fill: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.contrastColor.HIGH_CONTRAST)};
   }
   p{
