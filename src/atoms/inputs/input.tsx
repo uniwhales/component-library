@@ -126,10 +126,9 @@ const RightSideIcon = Styled.div`
   }
  `;
 
-export const MoreDetailContainer = Styled.div<{ inputState: InputState }>`
+export const MoreDetailContainer = Styled.div`
   position: absolute;
-  left: ${({ inputState }) => inputState.status === 'invalid' && 0};
-  right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
+  right: 0;
   margin: 8px;
 `;
 
@@ -137,13 +136,6 @@ export const Wrapper = Styled.div<{ mt?: string }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 20px;
   margin-top: ${({ mt }) => mt && mt};
-`;
-
-const MaxContainer = Styled.div<{ inputState: InputState }>`
-  position: absolute;
-  left: ${({ inputState }) => inputState.status === 'invalid' && 0};
-  right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
-  margin: 8px;
 `;
 
 export /**
@@ -200,21 +192,23 @@ const Input = ({
     return theme.colors.system.RED;
   };
 
-  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
-  <MoreDetailContainer
-    inputState={inputState}
-  >
-    <Text
-      color={getMoreDetailsTextColor(inputState.status)}
-      size="12-Regular"
-    >
-      {inputState.message}
-    </Text>
-  </MoreDetailContainer>
-  );
+  const showMaxLength = !error && maxLength;
+  const showMoreDetails = (!error && maxLength) || (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error');
 
-  const maxLengthText = !error && maxLength && (
-  <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${maxLength.toString()}`}</Text>
+  const moreDetailsContainer = (showMoreDetails || showMaxLength) && (
+    <MoreDetailContainer>
+      {(inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+      <Text
+        color={getMoreDetailsTextColor(inputState.status)}
+        size="12-Regular"
+      >
+        {inputState.message}
+      </Text>
+      )}
+      {!error && maxLength && (
+        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${maxLength.toString()}`}</Text>
+      )}
+    </MoreDetailContainer>
   );
 
   return (
@@ -260,9 +254,6 @@ const Input = ({
           maxLength={maxLength}
         />
         {inputState.status === 'valid' && <RightSideIcon><IconWrapper height="20px" width="20px" icon={<SelectedCheck />} /></RightSideIcon>}
-        <MaxContainer inputState={inputState}>
-          {maxLengthText}
-        </MaxContainer>
         {moreDetailsContainer}
       </InputContainer>
     </InputWrapper>

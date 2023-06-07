@@ -51,13 +51,6 @@ const TextAreaContainer = Styled(InputContainer)`
   height: 100%;
 `;
 
-const MaxContainer = Styled.div<{ inputState: InputState }>`
-  position: absolute;
-  left: ${({ inputState }) => inputState.status === 'invalid' && 0};
-  right: ${({ inputState }) => inputState.status !== 'invalid' && 0};
-  margin: 8px;
-`;
-
 export const TextArea = ({
   placeholder,
   value,
@@ -86,21 +79,23 @@ export const TextArea = ({
     return theme.colors.system.RED;
   };
 
-  const moreDetailsContainer = (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
-    <MoreDetailContainer
-      inputState={inputState}
-    >
+  const showMaxLength = !error && maxLength;
+  const showMoreDetails = (!error && maxLength) || (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error');
+
+  const moreDetailsContainer = (showMoreDetails || showMaxLength) && (
+    <MoreDetailContainer>
+      {(inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
       <Text
         color={getMoreDetailsTextColor(inputState.status)}
         size="12-Regular"
       >
         {inputState.message}
       </Text>
+      )}
+      {!error && maxLength && (
+        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${maxLength.toString()}`}</Text>
+      )}
     </MoreDetailContainer>
-  );
-
-  const maxLengthText = !error && maxLength && (
-    <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value.length.toString()}/${maxLength.toString()}`}</Text>
   );
 
   return (
@@ -128,9 +123,6 @@ export const TextArea = ({
           tabIndex={tabIndex}
           ref={textareaRef}
         />
-        <MaxContainer inputState={inputState}>
-          {maxLengthText}
-        </MaxContainer>
         {moreDetailsContainer}
       </TextAreaContainer>
     </TextAreaWrapper>

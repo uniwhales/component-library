@@ -1,7 +1,6 @@
-import { addDecorator } from '@storybook/react';
 import themeDecorator from './decorators';
-    
-addDecorator(themeDecorator);
+
+export const decorators = [themeDecorator];
 
 const customViewports = {
   '2kScreen': {
