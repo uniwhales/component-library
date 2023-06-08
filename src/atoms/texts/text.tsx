@@ -3,7 +3,7 @@ import { StyledA, StyledHeading, StyledP } from './text.styles';
 import { TextProps } from './types';
 
 export const Text: FC<TextProps> = ({
-  children, size = '14-Regular', color, textDecoration, href, target, hyperLinkVariation, disabled,
+  children, size = '14-Regular', color, textDecoration, href, target, hyperLinkVariation, disabled, removeLineHeight,
 }) => {
   const [textType, textWeight] = size.split('-');
   if (href) {
@@ -29,6 +29,7 @@ export const Text: FC<TextProps> = ({
         textType={textType}
         color={color}
         textWeight={textWeight}
+        removeLineHeight={removeLineHeight}
       >
         {children}
       </StyledP>
