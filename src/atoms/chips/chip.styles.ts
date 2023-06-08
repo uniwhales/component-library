@@ -24,7 +24,7 @@ export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryT
   width: fit-content;
   gap: 8px;
   border-radius: 12px;
-  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : theme.colors.system.RED)};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : bgColor === 'yellow' ? theme.colors.primary.YELLOW : theme.colors.system.RED)};
 `;
 
 export const EditableChip = Styled(CustomChip)`
@@ -40,11 +40,11 @@ export const EditableChip = Styled(CustomChip)`
 `};
 `;
 
-export const TertiaryChip = Styled(CustomChip)`
+export const TertiaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 6px;
   gap: 4px;
   border-radius: 12px;
-  background: ${(props) => props.theme.colors.primary.MAIN_BLUE};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : bgColor === 'yellow' ? theme.colors.primary.YELLOW : theme.colors.system.RED)};
   text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
