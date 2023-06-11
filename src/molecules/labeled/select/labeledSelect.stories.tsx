@@ -117,7 +117,7 @@ LabeledPrimary.args = {
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
-  showValue: true,
+  showValue: 'every',
   label: 'Cielo',
   required: true,
 };
@@ -129,7 +129,7 @@ LabeledMultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
   readOnly: false,
-  showValue: true,
+  showValue: 'every',
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -148,7 +148,7 @@ LabeledSingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
   readOnly: false,
-  showValue: true,
+  showValue: 'every',
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -163,7 +163,7 @@ LabeledMultiGroupSelect.args = {
   selectOptions: GroupExample,
   isMulti: true,
   readOnly: false,
-  showValue: true,
+  showValue: 'every',
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
