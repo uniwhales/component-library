@@ -334,7 +334,7 @@ const MultiValue = (
   && o.value !== BulkSelectOption.SelectAll);
   // eslint-disable-next-line
   if (Array.isArray(selectedOptions) && selectedOptions.length === filteredOptions.length) {
-    return index === 0 ? 'All' : null;
+    return index === 0 ? <span>All</span> : null;
   }
 
   return <components.MultiValue {...props} />;
