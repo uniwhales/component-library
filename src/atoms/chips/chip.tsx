@@ -28,7 +28,12 @@ export const Chip = ({
       );
     case 'tertiary':
       return (
-        <TertiaryChip cursor={cursor} type={type} width={width}>
+        <TertiaryChip
+          cursor={cursor}
+          type={type}
+          width={width}
+          bgColor={secondaryTypeBgColor}
+        >
           {children}
         </TertiaryChip>
       );

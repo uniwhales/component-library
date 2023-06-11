@@ -8,14 +8,14 @@ type Props = { isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'paddin
 export const FilterChipWrapper = Styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
-  background: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${({ disabled, theme, isOn }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  padding: ${({ padding }) => padding ?? '2px 8px'};
+  padding: ${({ padding }) => padding ?? '4px 12px'};
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: max-content;
+  height: 24px;
   border: ${({ isOn, theme, disabled }) => `2px solid ${!disabled && isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
   path { transition: fill .45s ease; }
   transition: background .45s ease, width .45s ease;
@@ -29,8 +29,6 @@ export const FilterChipContent = Styled.div<{ disabled: boolean }>`
   justify-content: center;
   gap: 4px;
   svg {
-    height: 20px;
-    width: 20px;
     fill: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.contrastColor.HIGH_CONTRAST)};
   }
   p{

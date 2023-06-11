@@ -1,6 +1,8 @@
 export type BodySizes =
   '8-Regular'
   | '8-Bold'
+  | '9-Regular'
+  | '9-Bold'
   | '10-Regular'
   | '10-Bold'
   | '11-Regular'
