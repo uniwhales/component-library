@@ -74,6 +74,27 @@ interface StyledProps {
   showOnTop?: boolean;
 }
 
+export const isSelectOptionGuard = (
+  o: SelectOption[] | SelectGroupOption[],
+  // @ts-ignore
+): o is SelectOption[] => Array.isArray(o) && o.every((group: SelectOption | SelectGroupOption): group is SelectOption => !('options' in group));
+
+export enum BulkSelectOption {
+  SelectAll = 'Select All',
+  DeselectAll = 'Deselect All',
+}
+
+const SelectAllOption: SelectOption = {
+  value: BulkSelectOption.SelectAll,
+  id: 99999,
+  label: BulkSelectOption.SelectAll,
+};
+const DeselectAllOption: SelectOption = {
+  value: BulkSelectOption.DeselectAll,
+  label: BulkSelectOption.DeselectAll,
+  id: 99999,
+};
+
 const SelectWrapper = Styled.div<{ width?: string }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
@@ -96,7 +117,7 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
       ::placeholder {
         color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
       }
-      }
+    }
   }
 `;
 
@@ -124,7 +145,6 @@ const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, show
   &:last-of-type {
     border-radius: ${({ showOnTop, isLastGroup }) => (!showOnTop && isLastGroup && '0 0 12px 12px')};
   }
-
 `;
 
 const OptionLabelContainer = Styled.label<{ addPadding: boolean, smallText?:boolean }>`
@@ -298,6 +318,28 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
 };
 
+const MultiValue = (
+  props: any,
+  selectedOptions: null | undefined | SelectOption | SelectOption[],
+) => {
+  const { options, index } = props;
+  /*
+    Because this component gets rendered for each option,
+    we need to check if all options are selected and if so,
+    only render the first one as "All"
+
+    eslint disable next line is for destructing array component which makes no sense here
+  */
+  const filteredOptions = options.filter((o: any) => o.value !== BulkSelectOption.DeselectAll
+  && o.value !== BulkSelectOption.SelectAll);
+  // eslint-disable-next-line
+  if (Array.isArray(selectedOptions) && selectedOptions.length === filteredOptions.length) {
+    return index === 0 ? <Text size="11-Regular">All</Text> : null;
+  }
+
+  return <components.MultiValue {...props} />;
+};
+
 const OptionComponent = (props: any) => {
   const {
     label, isSelected, readOnly, isCheckBox, data, options, selectProps, smallText,
@@ -467,6 +509,14 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
+  const completeOptions = isSelectOptionGuard(selectOptions)
+    ? [
+      selectValue
+        && Array.isArray(selectValue)
+        && selectValue.length === selectOptions.length
+        ? DeselectAllOption : SelectAllOption, ...selectOptions]
+    : selectOptions;
+
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
@@ -474,7 +524,7 @@ export const Select = <T extends SelectVariation>({
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}
-        options={selectOptions}
+        options={completeOptions}
         isMulti={isMulti}
         theme={theme}
         isOptionDisabled={() => !!readOnly}
@@ -487,6 +537,7 @@ export const Select = <T extends SelectVariation>({
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
+          MultiValue: (props) => MultiValue(props, selectValue),
           Option: (props) => OptionComponent({
             ...props, readOnly, isCheckBox, smallText,
           }),
@@ -498,14 +549,22 @@ export const Select = <T extends SelectVariation>({
           Control,
           MenuList,
         }}
-        onChange={(option) => {
+        onChange={(option: any) => {
           if (!onSelectChange) return;
+          if (Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.SelectAll)) {
+            onSelectChange(selectOptions as unknown as SelectVal<T>);
+            return;
+          } if (
+            Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.DeselectAll)) {
+            onSelectChange([] as unknown as SelectVal<T>);
+            return;
+          }
           /*
-        When providing variation of select
-        we restrict the option to be either single or group option type
-        therefor we can safely assume type here is right
-        */
-          onSelectChange(option as SelectVal<T>);
+            When providing variation of select
+            we restrict the option to be either single or group option type
+            therefor we can safely assume type here is right
+          */
+          onSelectChange(option);
         }}
         value={selectValue}
         isXL={isXL}
