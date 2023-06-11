@@ -509,7 +509,7 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
-  const completeOptions = isSelectOptionGuard(selectOptions)
+  const completeOptions = isMulti && isSelectOptionGuard(selectOptions)
     ? [
       selectValue
         && Array.isArray(selectValue)
