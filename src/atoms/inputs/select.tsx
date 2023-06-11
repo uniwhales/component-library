@@ -44,7 +44,7 @@ export interface SelectProps<T extends SelectVariation> {
   isXL?: boolean,
   isClearable?: boolean,
   isSearchable?: boolean,
-  showValue?: boolean,
+  showValue?: 'onlyAll' | 'every' | 'none',
   clearButtonText?: string,
   handleClearValue?: () => void;
   maxMenuHeight?: number;
@@ -491,7 +491,7 @@ export const Select = <T extends SelectVariation>({
   isXL = false,
   isClearable = false,
   isSearchable = false,
-  showValue = false,
+  showValue = 'none',
   clearButtonText = 'Clear',
   handleClearValue,
   maxMenuHeight,
@@ -530,7 +530,7 @@ export const Select = <T extends SelectVariation>({
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
         styles={colourStyles as StylesConfig}
-        controlShouldRenderValue={showValue}
+        controlShouldRenderValue={showValue === 'onlyAll' ? (!!selectValue && Array.isArray(selectValue) && selectValue.length === selectOptions.length) : showValue === 'every'}
         isClearable={isClearable}
         placeholder={<div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
