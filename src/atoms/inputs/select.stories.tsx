@@ -153,7 +153,7 @@ Primary.args = {
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
-  showValue: 'every',
+  showValue: true,
   smallText: true,
 };
 
@@ -162,7 +162,7 @@ PrimaryIcon.args = {
   isMulti: false,
   readOnly: false,
   isXL: false,
-  showValue: 'every',
+  showValue: true,
   placeholder: 'Primary Icon',
 };
 
@@ -172,7 +172,7 @@ LongOption.args = {
   readOnly: false,
   placeholder: 'Long',
   isXL: false,
-  showValue: 'every',
+  showValue: true,
 };
 
 MultiSelect.parameters = {
@@ -182,7 +182,7 @@ MultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
@@ -196,7 +196,7 @@ CustomMenuHeight.args = {
   selectOptions: ColourOptions,
   isMulti: true,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
@@ -214,7 +214,7 @@ SingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
@@ -228,7 +228,7 @@ MultiGroupSelect.args = {
   selectOptions: GroupExample,
   isMulti: true,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
