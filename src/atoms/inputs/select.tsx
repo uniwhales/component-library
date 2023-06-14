@@ -331,8 +331,7 @@ const MultiValue = (
   */
   const filteredOptions = options.filter((o: any) => o.value !== BulkSelectOption.DeselectAll
   && o.value !== BulkSelectOption.SelectAll);
-  console.debug(selectedOptions);
-  if (Array.isArray(selectedOptions)) {
+  if (Array.isArray(selectedOptions) && isSelectOptionGuard(options)) {
     // eslint-disable-next-line
     const text = filteredOptions.length === selectedOptions.length
     // eslint-disable-next-line
@@ -520,8 +519,10 @@ export const Select = <T extends SelectVariation>({
         ? DeselectAllOption : SelectAllOption, ...selectOptions]
     : selectOptions;
 
-  const multiPlaceholder = (!selectValue
-    || (Array.isArray(selectValue) && selectValue.length === 0)) && <span>All disabled</span>;
+  const multiPlaceholder = (!selectValue || (isSelectOptionGuard(selectOptions)
+  && Array.isArray(selectValue) && selectValue.length === 0))
+  && <span>All disabled</span>;
+
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
@@ -537,7 +538,7 @@ export const Select = <T extends SelectVariation>({
         styles={colourStyles as StylesConfig}
         controlShouldRenderValue={showValue}
         isClearable={isClearable}
-        placeholder={isMulti ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
+        placeholder={isMulti && isSelectOptionGuard(selectOptions) ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
