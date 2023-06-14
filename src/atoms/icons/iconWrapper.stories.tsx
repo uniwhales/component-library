@@ -187,6 +187,7 @@ import { ZkSyncColor } from './chains/fullColorStyle/ZkSync';
 import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
 import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
 import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
+import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
 
 export default {
   title: 'Atoms/Icons',
@@ -315,6 +316,7 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="NFT" icon={<NftIcon />} />
     <IconWrapper name="Magic" icon={<Magic />} />
     <IconWrapper name="Punk" icon={<Punk />} />
+    <IconWrapper name="Mobile" height="" width="" icon={<NotOptimisedForModalSvg />} />
   </>
 );
 
