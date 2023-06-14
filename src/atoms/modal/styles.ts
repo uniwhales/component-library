@@ -4,7 +4,7 @@ import { Styled } from '../../theme';
 import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
-export const ModalContainer = Styled.div<{ isMobile:boolean }>`
+export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
   position: fixed;
   height: 100%;
   width: 100%;
