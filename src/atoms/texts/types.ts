@@ -52,6 +52,7 @@ export interface TextProps {
   target?: string;
   hyperLinkVariation?: HyperLinkVariation
   disabled?: boolean;
+  removeLineHeight?:boolean;
 }
 type HyperLinkStyleProperty = {
   idle: string,
