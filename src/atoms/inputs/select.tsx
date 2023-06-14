@@ -44,7 +44,7 @@ export interface SelectProps<T extends SelectVariation> {
   isXL?: boolean,
   isClearable?: boolean,
   isSearchable?: boolean,
-  showValue?: 'onlyAll' | 'every' | 'none',
+  showValue?: boolean,
   clearButtonText?: string,
   handleClearValue?: () => void;
   maxMenuHeight?: number;
@@ -208,14 +208,13 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
-  placeholder: (defaultStyles, { theme, isFocused }: StyledProps) => ({
+  placeholder: (defaultStyles, { theme, isFocused, isMulti }: StyledProps) => ({
     ...defaultStyles,
     color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-    fontSize: '12px',
+    fontSize: isMulti ? '16px' : '12px',
     lineHeight: '16px',
     cursor: 'pointer',
     p: {
-
       fontSize: '12px',
       lineHeight: '16px',
       color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
@@ -332,9 +331,13 @@ const MultiValue = (
   */
   const filteredOptions = options.filter((o: any) => o.value !== BulkSelectOption.DeselectAll
   && o.value !== BulkSelectOption.SelectAll);
-  // eslint-disable-next-line
-  if (Array.isArray(selectedOptions) && selectedOptions.length === filteredOptions.length) {
-    return index === 0 ? <span>All</span> : null;
+  console.debug(selectedOptions);
+  if (Array.isArray(selectedOptions)) {
+    // eslint-disable-next-line
+    const text = filteredOptions.length === selectedOptions.length
+    // eslint-disable-next-line
+      ? 'All' : `${selectedOptions.length} selected`;
+    return index === 0 ? <span>{text}</span> : null;
   }
 
   return <components.MultiValue {...props} />;
@@ -491,7 +494,7 @@ export const Select = <T extends SelectVariation>({
   isXL = false,
   isClearable = false,
   isSearchable = false,
-  showValue = 'none',
+  showValue = false,
   clearButtonText = 'Clear',
   handleClearValue,
   maxMenuHeight,
@@ -517,6 +520,8 @@ export const Select = <T extends SelectVariation>({
         ? DeselectAllOption : SelectAllOption, ...selectOptions]
     : selectOptions;
 
+  const multiPlaceholder = (!selectValue
+    || (Array.isArray(selectValue) && selectValue.length === 0)) && <span>All disabled</span>;
   return (
     <SelectWrapper width={width} ref={ref}>
       <StyledSelect
@@ -530,9 +535,9 @@ export const Select = <T extends SelectVariation>({
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
         styles={colourStyles as StylesConfig}
-        controlShouldRenderValue={showValue === 'onlyAll' ? (!!selectValue && Array.isArray(selectValue) && selectValue.length === selectOptions.length) : showValue === 'every'}
+        controlShouldRenderValue={showValue}
         isClearable={isClearable}
-        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        placeholder={isMulti ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}

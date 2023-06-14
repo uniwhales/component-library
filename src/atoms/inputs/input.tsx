@@ -75,7 +75,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_2)};
   height: 40px;
   line-height:24px;
   padding: ${({ withIcon, inputState }) => (withIcon || inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
