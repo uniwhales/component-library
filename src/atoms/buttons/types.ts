@@ -21,6 +21,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'onboarding_secondary'
   | 'close_primary'
   | 'close_secondary'
+  | 'close_modal'
   borderRadius?: string,
   disabled?: boolean
   size?: string

@@ -460,6 +460,39 @@ const OnboardingSecondaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
+
+const CloseButtonModal = Styled(Button)`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+    // disabled state
+  ${(props) => props.disabled && css`
+      background:${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      border:2px solid transparent;
+
+      svg {
+        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+      }
+  `}
+  // Active state
+    ${(props) => !props.disabled && css`
+    position: relative;
+    border: 2px solid transparent;
+    opacity: 0.9;
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_2};
+    z-index: ${props.theme.zIndex.BACKDROP};
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
+    }
+    &:hover {
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    }
+    &:active {
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
+    }
+  `}
+`;
+
 const CloseButtonPrimary = Styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
@@ -679,6 +712,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
         >
           <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
         </CloseButtonSecondary>
+      );
+    case 'close_modal':
+      return (
+        <CloseButtonModal
+          onClick={!disabled ? onClick : () => { }}
+          disabled={disabled}
+          type="button"
+        >
+          <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
+        </CloseButtonModal>
       );
     default:
       return (
