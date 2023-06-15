@@ -95,6 +95,7 @@ export const OnboardingButtonSecondary = Template.bind({});
 export const OnboardingButtonSecondaryCustomWidthButton = Template.bind({});
 export const CloseButtonPrimary = Template.bind({});
 export const CloseButtonSecondary = Template.bind({});
+export const CloseButtonModal = Template.bind({});
 export const TwitterExample = Template.bind({});
 export const TelegramExample = Template.bind({});
 
@@ -212,6 +213,9 @@ CloseButtonPrimary.args = {
 CloseButtonSecondary.args = {
   buttonVariant: 'close_secondary',
   size: '30px',
+};
+CloseButtonModal.args = {
+  buttonVariant: 'close_modal',
 };
 TwitterExample.args = {
   buttonVariant: 'special_extra_tiny_subtle',
