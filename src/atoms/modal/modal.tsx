@@ -40,9 +40,6 @@ export const ModalBase: FC<ModalBaseProps> = ({
     };
   }, []);
 
-  const breakpoint = useBreakpoint();
-  const isMobile = breakpoint <= Breakpoints.Tablet;
-
   return (
     <>
       <Overlay />
