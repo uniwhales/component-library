@@ -74,9 +74,10 @@ interface StyledProps {
   showOnTop?: boolean;
 }
 
-const SelectWrapper = Styled.div<{ width?: string }>`
+const SelectWrapper = Styled.div<{ width?: string, isDisabled:boolean }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
+  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 `;
 
 const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
@@ -468,7 +469,7 @@ export const Select = <T extends SelectVariation>({
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
   return (
-    <SelectWrapper width={width} ref={ref}>
+    <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
       <StyledSelect
         noOptionsMessage={customNoOptionsMessage}
         width={width}
