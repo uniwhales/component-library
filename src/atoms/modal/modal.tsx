@@ -15,6 +15,7 @@ import {
   CloseButton,
   HeaderAndIconContainer,
 } from './styles';
+import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
@@ -29,6 +30,8 @@ export const ModalBase: FC<ModalBaseProps> = ({
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
+  const breakpoint = useBreakpoint();
+  const isMobile = breakpoint <= Breakpoints.Tablet;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -40,12 +43,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
   return (
     <>
       <Overlay />
-      <ModalContainer onClick={(e) => {
-        e.stopPropagation();
-        if (!closeFn || !closeOnOverlayClick) return;
-        setReplay(true);
-        setTimeout(() => closeFn(e), 150);
-      }}
+      <ModalContainer
+        isMobile={isMobile}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (!closeFn || !closeOnOverlayClick) return;
+          setReplay(true);
+          setTimeout(() => closeFn(e), 150);
+        }}
       >
         <ModalBody
           onClick={(e) => e.stopPropagation()}

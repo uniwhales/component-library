@@ -230,6 +230,7 @@ export { DashedSpinner } from './miscIcons/DashedSpinner';
 export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
 export { Punk } from './miscIcons/Punk';
+export * from './miscIcons/NotOptimisedForModalSvg';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed
