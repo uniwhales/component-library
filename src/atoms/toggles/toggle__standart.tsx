@@ -23,7 +23,7 @@ const Switcher = Styled.label<{ size: string }>`
 `;
 const Toggle = Styled.span<{ size: string, disabled: boolean }>`
   position: absolute;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   top: 0;
   left: 0;
   right: 0;

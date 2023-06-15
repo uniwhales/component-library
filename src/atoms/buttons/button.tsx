@@ -24,7 +24,7 @@ const Button = Styled.button<GenericStylingProps>`
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
   justify-content: center;
-  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   .button__group {
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@ const Button = Styled.button<GenericStylingProps>`
   svg {
     width: 20px;
     height: 20px;
-    cursor: ${(props) => (props.disabled ? 'default' : 'pointer')}!important;
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')}!important;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
@@ -371,14 +371,14 @@ const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
   border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')}!important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
   svg {
-    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')}!important;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
   }
     // disabled state
@@ -413,7 +413,6 @@ const OnboardingPrimaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
       background: ${props.theme.colors.primary.MAIN_BLUE};
       color: ${props.theme.colors.secondary.SKY};
       border:2px solid transparent;
-
       svg {
         fill: ${props.theme.colors.secondary.SKY}!important;
       }

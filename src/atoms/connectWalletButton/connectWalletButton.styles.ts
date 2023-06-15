@@ -17,7 +17,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
   height: 40px;
   background-color: ${() => 'transparent'};
   border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   transition: color 300ms, fill 300ms, background 300ms ease-in-out;
 
   .button__group {
