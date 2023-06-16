@@ -209,29 +209,6 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
-  placeholder: (defaultStyles, {
-    theme, isFocused, isMulti, options,
-  }: StyledProps) => ({
-    ...defaultStyles,
-    /* Multi select that is not a group never shows placeholder
-    but all disabled / all so we adjust the color */
-    color: isFocused
-      ? theme.colors.system.WHITE
-      : isMulti && isSelectOptionGuard(options)
-        ? theme.textShades.SHADE_MINUS_2
-        : theme.textShades.SHADE_MINUS_1,
-    fontSize: isMulti ? '16px' : '12px',
-    lineHeight: '16px',
-    cursor: 'pointer',
-    p: {
-      fontSize: '12px',
-      lineHeight: '16px',
-      color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-    },
-    svg: {
-      fill: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-    },
-  }),
   control: (defaultStyles) => ({
     ...defaultStyles,
     border: 'none',
@@ -544,7 +521,35 @@ export const Select = <T extends SelectVariation>({
         theme={theme}
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
-        styles={colourStyles as StylesConfig}
+        styles={{
+          ...colourStyles,
+          /* We are defining it here because showValue isn't passed to the placeholder
+            through the props
+          */
+          placeholder: (defaultStyles, { isFocused }: StyledProps) => ({
+            ...defaultStyles,
+            /* Multi select that is not a group never shows placeholder
+            but all disabled / all so we adjust the color */
+            color: isFocused
+              ? theme.colors.system.WHITE
+              : isMulti && showValue && isSelectOptionGuard(selectOptions)
+                ? theme.textShades.SHADE_MINUS_2
+                : theme.textShades.SHADE_MINUS_1,
+            fontSize: isMulti ? '16px' : '12px',
+            lineHeight: '16px',
+            cursor: 'pointer',
+            p: {
+              fontSize: '12px',
+              lineHeight: '16px',
+              color: isFocused
+                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+            },
+            svg: {
+              fill: isFocused
+                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+            },
+          }),
+        } as StylesConfig}
         controlShouldRenderValue={showValue}
         isClearable={isClearable}
         placeholder={isMulti && isSelectOptionGuard(selectOptions) ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
