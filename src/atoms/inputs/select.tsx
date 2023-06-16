@@ -60,10 +60,11 @@ export interface SelectProps<T extends SelectVariation> {
   smallText?: boolean;
 }
 
-interface StyledProps {
+type StyledProps = {
   isFocused?: boolean
   isSelected?: boolean
   menuIsOpen?: boolean
+  options?: any;
   theme: any;
   readOnly?: boolean;
   isMulti?: boolean;
@@ -72,7 +73,7 @@ interface StyledProps {
   isDisabled?: boolean;
   error?: boolean;
   showOnTop?: boolean;
-}
+};
 
 export const isSelectOptionGuard = (
   o: SelectOption[] | SelectGroupOption[],
@@ -194,8 +195,8 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
   :hover {
     border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
     svg {
-    fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
-  }
+      fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
+    }
   }
 `;
 
@@ -208,9 +209,17 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
-  placeholder: (defaultStyles, { theme, isFocused, isMulti }: StyledProps) => ({
+  placeholder: (defaultStyles, {
+    theme, isFocused, isMulti, options,
+  }: StyledProps) => ({
     ...defaultStyles,
-    color: isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    /* Multi select that is not a group never shows placeholder
+    but all disabled / all so we adjust the color */
+    color: isFocused
+      ? theme.colors.system.WHITE
+      : isMulti && isSelectOptionGuard(options)
+        ? theme.textShades.SHADE_MINUS_2
+        : theme.textShades.SHADE_MINUS_1,
     fontSize: isMulti ? '16px' : '12px',
     lineHeight: '16px',
     cursor: 'pointer',
