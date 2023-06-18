@@ -27,7 +27,7 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : theme.textShades.SHADE_MINUS_1}`};
   font-size: 12px;
   color: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   justify-content: space-between;
   svg {
     fill: ${({ theme, isOpen }) => (isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)}!important;

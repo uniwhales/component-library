@@ -24,7 +24,7 @@ const Button = Styled.button<GenericStylingProps>`
   color: ${(props) => props.theme.colors.system.WHITE};
   border-radius: ${(props) => props.borderRadius || '12px'};
   justify-content: center;
-  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   .button__group {
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@ const Button = Styled.button<GenericStylingProps>`
   svg {
     width: 20px;
     height: 20px;
-    cursor: ${(props) => (props.disabled ? 'default' : 'pointer')}!important;
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')}!important;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
@@ -371,14 +371,14 @@ const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
   border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')}!important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
   svg {
-    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')}!important;
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')}!important;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2}!important;
   }
     // disabled state
@@ -413,7 +413,6 @@ const OnboardingPrimaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
       background: ${props.theme.colors.primary.MAIN_BLUE};
       color: ${props.theme.colors.secondary.SKY};
       border:2px solid transparent;
-
       svg {
         fill: ${props.theme.colors.secondary.SKY}!important;
       }
@@ -460,6 +459,39 @@ const OnboardingSecondaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
+
+const CloseButtonModal = Styled(Button)`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+    // disabled state
+  ${(props) => props.disabled && css`
+      background:${props.theme.containerAndCardShades.SHADE_PLUS_3};
+      border:2px solid transparent;
+
+      svg {
+        fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+      }
+  `}
+  // Active state
+    ${(props) => !props.disabled && css`
+    position: relative;
+    border: 2px solid transparent;
+    opacity: 0.9;
+    background: ${props.theme.containerAndCardShades.SHADE_PLUS_2};
+    z-index: ${props.theme.zIndex.BACKDROP};
+    svg {
+      fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
+    }
+    &:hover {
+      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+    }
+    &:active {
+      border: 2px solid ${props.theme.colors.primary.YELLOW};
+    }
+  `}
+`;
+
 const CloseButtonPrimary = Styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
@@ -679,6 +711,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
         >
           <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
         </CloseButtonSecondary>
+      );
+    case 'close_modal':
+      return (
+        <CloseButtonModal
+          onClick={!disabled ? onClick : () => { }}
+          disabled={disabled}
+          type="button"
+        >
+          <IconWrapper height="16px" width="16px" icon={<FloatingClose />} />
+        </CloseButtonModal>
       );
     default:
       return (
