@@ -33,5 +33,5 @@ export const StyledA = Styled.a<{ textType: string, textWeight: string, textDeco
   font-size: ${(props) => P_FONTSIZE[props.textType as unknown as keyof typeof P_FONTSIZE]}px;
   font-weight: ${(props) => FONTWEIGHT[props.textWeight as keyof typeof FONTWEIGHT]};
   color: ${(props) => (props.color ? props.color : props.theme.colors.secondary.TEAL)};
-  text-decoration-thickness: 2px;
+  text-decoration: none;
 `;
