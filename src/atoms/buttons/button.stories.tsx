@@ -1,30 +1,16 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { ButtonAtom, ButtonWrapper } from './button';
 import { IconWrapper } from '../icons/iconWrapper';
 import { AlertBotStandard, DashboardStandard, RefreshIcon } from '../icons';
+import { ButtonProps } from './types';
 
-export default {
-  title: 'Atoms/Buttons',
+const meta: Meta<typeof ButtonAtom> = {
   component: ButtonAtom,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-    buttonVariant: {
-      control: {
-        type: null,
-      },
-    },
-    disabled: {
-      control: {
-        type: 'boolean',
-      },
-    },
-  },
-} as ComponentMeta<typeof ButtonAtom>;
+};
+
+export default meta;
+type Story = StoryObj<typeof ButtonAtom>;
 
 const WithIcon = (isText = true) => (
   <>
@@ -41,7 +27,8 @@ const WithIconR = (isText = true) => (
     <IconWrapper icon={<DashboardStandard />} />
   </>
 );
-const Template: ComponentStory<typeof ButtonAtom> = (args) => {
+
+const Template = (args: React.JSX.IntrinsicAttributes & ButtonProps) => {
   const { children } = args;
   return (
     <ButtonWrapper>
@@ -50,7 +37,7 @@ const Template: ComponentStory<typeof ButtonAtom> = (args) => {
   );
 };
 
-const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {
+const TemplateHover = (args: React.JSX.IntrinsicAttributes & ButtonProps) => {
   const [text, setText] = useState('test');
   return (
     <ButtonAtom
@@ -67,37 +54,128 @@ const TemplateHover: ComponentStory<typeof ButtonAtom> = (args) => {
   );
 };
 
-export const Primary = Template.bind({});
-export const PrimaryWithIcon = Template.bind({});
-export const Secondary = Template.bind({});
-export const SecondaryWithIcon = Template.bind({});
-export const Tertiary = Template.bind({});
-export const TertiaryWithIcon = Template.bind({});
-export const TertiaryIconOnly = Template.bind({});
-export const PrimaryAction = Template.bind({});
-export const SecondaryAction = Template.bind({});
-export const TinyAction = Template.bind({});
-export const SecondaryActionInverse = Template.bind({});
-export const SpacialSmallNormal = Template.bind({});
-export const SpacialSmallNormalWithIcon = Template.bind({});
-export const SpacialSmallRound = Template.bind({});
-export const SpacialTinyRound = Template.bind({});
-export const SpecialExtraTinyRound = Template.bind({});
-export const SpecialSmallSubtle = Template.bind({});
-export const SpecialSmallSubtleWithIcon = Template.bind({});
-export const SpecialSmallSubtleWithIconR = Template.bind({});
-export const SecondaryWithHoverEffect = TemplateHover.bind({});
-export const SquareButton = Template.bind({});
-export const SquareButtonCustomSize = Template.bind({});
-export const OnboardingButtonPrimary = Template.bind({});
-export const OnboardingButtonPrimaryCustomWidthButton = Template.bind({});
-export const OnboardingButtonSecondary = Template.bind({});
-export const OnboardingButtonSecondaryCustomWidthButton = Template.bind({});
-export const CloseButtonPrimary = Template.bind({});
-export const CloseButtonSecondary = Template.bind({});
-export const CloseButtonModal = Template.bind({});
-export const TwitterExample = Template.bind({});
-export const TelegramExample = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const PrimaryWithIcon: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const Secondary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SecondaryWithIcon: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const Tertiary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const TertiaryWithIcon: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const TertiaryIconOnly: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const PrimaryAction: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SecondaryAction: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const TinyAction: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SecondaryActionInverse: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallNormal: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallNormalWithIcon: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallRound: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const SpecialTinyRound: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialExtraTinyRound: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallSubtle: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallSubtleWithIcon: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SpecialSmallSubtleWithIconR: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SquareButton: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SquareButtonCustomSize: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const OnboardingButtonPrimary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const OnboardingButtonPrimaryCustomWidthButton: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const OnboardingButtonSecondary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const OnboardingButtonSecondaryCustomWidthButton: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CloseButtonPrimary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CloseButtonSecondary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CloseButtonModal: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const TwitterExample: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const TelegramExample: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const SecondaryWithHoverEffect: Story = {
+  render: (args) => <TemplateHover {...args} />,
+};
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
@@ -143,19 +221,19 @@ SecondaryActionInverse.args = {
   children: WithIcon(false),
   buttonVariant: 'secondary_action_inverse',
 };
-SpacialSmallNormal.args = {
+SpecialSmallNormal.args = {
   children: 'Special Small',
   buttonVariant: 'special_small',
 };
-SpacialSmallNormalWithIcon.args = {
+SpecialSmallNormalWithIcon.args = {
   children: WithIcon(),
   buttonVariant: 'special_small',
 };
-SpacialSmallRound.args = {
+SpecialSmallRound.args = {
   children: WithIcon(false),
   buttonVariant: 'special_small_round',
 };
-SpacialTinyRound.args = {
+SpecialTinyRound.args = {
   children: WithIcon(false),
   buttonVariant: 'special_tiny_round',
 };
