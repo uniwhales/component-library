@@ -9,9 +9,10 @@ export const Container = Styled(Column)`
 
 export const OpenContainer = Styled.div`
   position: absolute;
-  top: 50px;
+  top: 140px;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
-  right: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string, disabled:boolean }>`
