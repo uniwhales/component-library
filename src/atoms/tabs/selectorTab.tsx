@@ -1,6 +1,6 @@
 import React from 'react';
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import { css, styled } from 'styled-components';
+
 
 export interface SelectorTabProps {
   children: React.ReactChild;
@@ -8,7 +8,7 @@ export interface SelectorTabProps {
   tabIndex: number
   setActiveTab?: () => void;
 }
-const SelectorTab = Styled.div<SelectorTabProps>`
+const SelectorTab = styled.div<SelectorTabProps>`
   .tabs__group {
     display: flex;
     align-items: center;

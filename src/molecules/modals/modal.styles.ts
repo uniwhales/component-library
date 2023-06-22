@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { Card } from '../../atoms/card/card';
 import { phone, tablet } from '../../layouts/breakpoints';
-import { Styled } from '../../theme';
 
-export const ModalWrapper = Styled.div`
+
+export const ModalWrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -11,7 +11,7 @@ export const ModalWrapper = Styled.div`
   z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
-export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
+export const ModalContent = styled(Card)<{ modalVariant: 'single' | 'double' }>`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -29,7 +29,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
     max-height: 600px;
   `)}
 `;
-export const IconWrapperAbsolute = Styled.div`
+export const IconWrapperAbsolute = styled.div`
   position: absolute;
   right: 18px;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
@@ -37,7 +37,7 @@ export const IconWrapperAbsolute = Styled.div`
   padding: 3px;
 `;
 
-export const CloseSection = Styled.div`
+export const CloseSection = styled.div`
   display: flex;
   justify-content: flex-end;
   @media (max-width: 768px) {
@@ -48,7 +48,7 @@ export const CloseSection = Styled.div`
   }
 `;
 
-export const DummyModalContent = Styled.div`
+export const DummyModalContent = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;

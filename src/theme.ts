@@ -1,4 +1,4 @@
-import baseStyled, { ThemedStyledInterface, createGlobalStyle, useTheme } from 'styled-components';
+import { DefaultTheme, createGlobalStyle, useTheme } from 'styled-components';
 import { ZIndex } from './utils/constants';
 
 // const PoppinsRegular = require('./fonts/Poppins-Regular.ttf');
@@ -56,7 +56,7 @@ const LightTheme = {
   },
 };
 
-const Theme = {
+const Theme: DefaultTheme = {
   ...DarkTheme,
   colors: {
     primary: {
@@ -83,7 +83,15 @@ const Theme = {
       GREY: '#A5A6B8',
     },
   },
-  zIndex: ZIndex,
+  zIndex: {
+    [ZIndex.BACKDROP]: 0,
+    [ZIndex.SAFE_LAYER]: 1,
+    [ZIndex.STICKY]: 2,
+    [ZIndex.TOOLTIP]: 3,
+    [ZIndex.OVERLAY]: 4,
+    [ZIndex.MODAL]: 5,
+    [ZIndex.TUTORIAL_TIMELINE]: 6,
+  },
 };
 
 LightTheme.dropShadow.REGULAR = `0px 4px 30px 0px ${Theme.colors.system.GREY}`;
@@ -105,4 +113,3 @@ const GlobalStyle = createGlobalStyle`
 export {
   GlobalStyle, Theme, colors, LightTheme, DarkTheme, localTheme,
 };
-export const Styled = baseStyled as ThemedStyledInterface<typeof Theme>;

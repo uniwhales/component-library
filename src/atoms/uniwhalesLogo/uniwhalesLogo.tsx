@@ -1,9 +1,10 @@
 import React, { CSSProperties, MouseEventHandler } from 'react';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
+
 import { IconWrapper } from '../icons/iconWrapper';
 import { UniWhalesColor, UniwhalesColor, UniwhalesStandard } from '../icons';
 
-const Container = Styled.div<{ showText?: boolean, width: CSSProperties['width'] }>`
+const Container = styled.div<{ showText?: boolean, width: CSSProperties['width'] }>`
   width: ${({ width }) => width ?? '100%'};
   display: flex;
   align-items: center;
@@ -12,7 +13,7 @@ const Container = Styled.div<{ showText?: boolean, width: CSSProperties['width']
   cursor: pointer;
 `;
 
-type Props = {
+export type LogoProps = {
   showText?: boolean
   onClick?: MouseEventHandler<HTMLDivElement>
   night?: boolean
@@ -22,7 +23,7 @@ type Props = {
 
 export const UniWhalesLogo = ({
   showText, onClick, night, width, containerWidth,
-}: Props) => {
+}: LogoProps) => {
   const logoSize = showText ? '33px' : '44px';
 
   return (

@@ -1,3 +1,3 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const LogoContainer = Styled.div``;
+export const LogoContainer = styled.div``;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { CustomCarousel } from './carousel.styles';
 import { CarouselProps } from './types';
+import { CustomCarousel } from './carousel.styles';
 
 export const Carousel: FC<CarouselProps> = ({ children, onChange, borderRadius }) => (
   <CustomCarousel

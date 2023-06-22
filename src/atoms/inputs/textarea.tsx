@@ -1,12 +1,13 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
+import { styled } from 'styled-components';
 import {
   InputWrapper, InputLabel, InputContainer, InputState, MoreDetailContainer,
 } from './input';
-import { Styled, localTheme } from '../../theme';
+import { localTheme } from '../../theme';
 import { Text } from '../texts/text';
 import { Required } from './select';
 
-type TextAreaTypes = {
+export type TextAreaTypes = {
   disabled: boolean;
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   value: string;
@@ -19,7 +20,7 @@ type TextAreaTypes = {
   tabIndex?: number
 };
 
-const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputState }>`
+const TextAreaStyled = styled.textarea<{ disabled?: boolean, inputState: InputState }>`
   resize: none;
   outline: none;
   height: 100%;
@@ -43,11 +44,11 @@ const TextAreaStyled = Styled.textarea<{ disabled?: boolean, inputState: InputSt
   }
 `;
 
-const TextAreaWrapper = Styled(InputWrapper)`
+const TextAreaWrapper = styled(InputWrapper)`
   height: 100%;
 `;
 
-const TextAreaContainer = Styled(InputContainer)`
+const TextAreaContainer = styled(InputContainer)`
   height: 100%;
 `;
 
@@ -116,7 +117,7 @@ export const TextArea = ({
           maxLength={maxLength}
           disabled={disabled}
           value={value}
-          onChange={(e) => onChange(e)}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}

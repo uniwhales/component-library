@@ -1,5 +1,5 @@
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import { css, styled } from 'styled-components';
+
 import { Column, Row } from '../common/flex';
 
 const track = css<{ value: string, max: number }>`
@@ -47,7 +47,7 @@ const thumb = css<{ value: string, max: number }>`
   }
 `;
 
-export const Input = Styled.input<{ value: string, max: number }>`
+export const Input = styled.input<{ value: string, max: number }>`
   cursor: pointer;
   &,
   &::-webkit-slider-thumb {
@@ -111,7 +111,7 @@ export const Input = Styled.input<{ value: string, max: number }>`
   }
 `;
 
-export const NumInputContainer = Styled.div<{ value: string, max: number, hasError:boolean }>`
+export const NumInputContainer = styled.div<{ value: string, max: number, hasError:boolean }>`
   padding: 4px 12px;
   display: flex;
   align-items: center;
@@ -123,7 +123,7 @@ export const NumInputContainer = Styled.div<{ value: string, max: number, hasErr
   }) => `2px solid ${hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
 `;
-export const NumInput = Styled.input`
+export const NumInput = styled.input`
 box-sizing: border-box;
   border: none;
   background: transparent;
@@ -139,11 +139,11 @@ box-sizing: border-box;
   }
 `;
 
-export const Container = Styled(Row)`
+export const Container = styled(Row)`
   gap: 16px;
   height: 55px;
 `;
 
-export const InputWrapper = Styled(Column)`
+export const InputWrapper = styled(Column)`
   gap: 4px;
 `;

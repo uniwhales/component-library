@@ -1,6 +1,6 @@
+import { styled } from 'styled-components';
 import { Column } from '../../../atoms/common/flex';
-import { Styled } from '../../../theme';
 
-export const LabeledSelectWrapper = Styled(Column)`
+export const LabeledSelectWrapper = styled(Column)`
     gap: 4px;
 `;

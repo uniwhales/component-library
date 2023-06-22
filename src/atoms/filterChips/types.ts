@@ -1,5 +1,4 @@
-import { MouseEvent } from 'react';
-import { CSSProperties } from 'styled-components';
+import { CSSProperties, MouseEvent } from 'react';
 
 export type FilterChipProps = {
   variant: 'primary' | 'secondary' | 'onboarding'

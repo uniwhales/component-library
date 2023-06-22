@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { styled } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
-import { Styled } from '../../theme';
+
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
@@ -28,13 +29,13 @@ export interface CopyToClipBoardProps {
   copyCb?: (text: string) => void; // callback to be called when copy is clicked
 }
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   width: auto;
   align-items: center;
   gap: 5px;
 `;
-const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
+const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
   border-radius: 36px;
   background-color: ${({ theme, background }) => background && theme.containerAndCardShades.NEUTRAL_SHADE_0};
   padding: 4px;
@@ -50,7 +51,7 @@ export const CopyToClipBoard = ({
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
   */
-  hoverColor, background, iconLeft, 
+  hoverColor, background, iconLeft,
 }: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);

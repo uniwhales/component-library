@@ -5,15 +5,14 @@ import ReactSelect, {
   InputActionMeta,
 } from 'react-select';
 
-import { useTheme } from 'styled-components';
+import { styled, useTheme } from 'styled-components';
 import { Text } from '../../atoms/texts/text';
-import { Styled } from '../../theme';
 import { Option } from './searchFilterSelectComponents/option';
 import { Control } from './searchFilterSelectComponents/control';
 import { LoadingMessage } from './searchFilterSelectComponents/loadingMessage';
 import { IndicatorsContainer } from './searchFilterSelectComponents/indicatorsContainer';
 
-const StyledSelect = Styled(ReactSelect)<{
+const StyledSelect = styled(ReactSelect)<{
   label?: string,
   isContractSearch?: boolean,
   onSwitch?: () => void,
@@ -147,7 +146,7 @@ const colourStyles:StylesConfig<StyledProps, false> = {
   }),
 };
 
-const NoOptionsMessageStyled = Styled(components.NoOptionsMessage)`
+const NoOptionsMessageStyled = styled(components.NoOptionsMessage)`
   text-align: left;
   margin-left: 8px;
 `;

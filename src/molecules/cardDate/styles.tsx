@@ -1,6 +1,6 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const CardDateContainer = Styled.div<{ size?: 'S' | 'L' }>`
+export const CardDateContainer = styled.div<{ size?: 'S' | 'L' }>`
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
     border-radius: 12px;
     width: fit-content;

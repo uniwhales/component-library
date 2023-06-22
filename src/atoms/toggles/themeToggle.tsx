@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler } from 'react';
-import { localTheme, Styled } from '../../theme';
+import { styled } from 'styled-components';
+import { localTheme } from '../../theme';
 import { Text } from '../texts/text';
 
 export interface ThemeToggleProps {
@@ -7,19 +8,19 @@ export interface ThemeToggleProps {
   onClick: ChangeEventHandler<HTMLInputElement>;
   expanded: boolean;
 }
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 `;
-const Switcher = Styled.label<{ expanded: boolean }>`
+const Switcher = styled.label<{ expanded: boolean }>`
   position: relative;
   display: inline-block;
   width: ${({ expanded }) => (expanded ? '60px' : '38px')};
   height: 22px;
 `;
-const Toggle = Styled.span<{ isOn: boolean }>`
+const Toggle = styled.span<{ isOn: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -40,7 +41,7 @@ const Toggle = Styled.span<{ isOn: boolean }>`
     border-radius: 50%;
   }
 `;
-const FakeInput = Styled.input<{ isOn: boolean, expanded: boolean }>`
+const FakeInput = styled.input<{ isOn: boolean, expanded: boolean }>`
   opacity: 0;
   width: 0;
   height: 0;

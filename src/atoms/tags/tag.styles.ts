@@ -1,6 +1,7 @@
-import { CSSProperties } from 'styled-components';
+import { styled } from 'styled-components';
+import { CSSProperties } from 'react';
 import { TagProps } from './types';
-import { Styled, Theme } from '../../theme';
+import { Theme } from '../../theme';
 import { WidthBreakpoints } from '../../layouts/breakpoints';
 
 export type CustomTagProps = Pick<TagProps, 'isOn' | 'tabIndex'> & Pick<CSSProperties, 'width'>;
@@ -14,7 +15,7 @@ const BackgroundAndBorderColors = [
   { background: Theme.colors.primary.DARK_BLUE, border: `1px solid ${Theme.colors.primary.DARK_BLUE}` },
 ];
 
-export const CustomTag = Styled.div<CustomTagProps>`
+export const CustomTag = styled.div<CustomTagProps>`
   border-radius: 12px;
   padding: 4px 12px;
   cursor: pointer;
@@ -35,7 +36,7 @@ export const CustomTag = Styled.div<CustomTagProps>`
   }
 `;
 
-export const Wrapper = Styled.div`
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 `;

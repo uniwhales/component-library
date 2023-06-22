@@ -1,8 +1,8 @@
+import { styled } from 'styled-components';
 import { DeviceWidth } from '../../hooks/useBreakpoint';
-import { Styled } from '../../theme';
 import { IdenticonProps } from './types';
 
-export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
+export const Container = styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
   height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   display: flex;
@@ -24,7 +24,7 @@ export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'siz
   }
 `;
 
-export const SelectableIdenticonWrapper = Styled.div`
+export const SelectableIdenticonWrapper = styled.div`
   gap: 8px;
   align-items: center;
   display: contents;

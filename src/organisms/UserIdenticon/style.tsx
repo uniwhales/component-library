@@ -1,6 +1,6 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const UserIdenticonWrapper = Styled.div`
+export const UserIdenticonWrapper = styled.div`
     position: fixed;
     top: 43px;
     right: 45px;

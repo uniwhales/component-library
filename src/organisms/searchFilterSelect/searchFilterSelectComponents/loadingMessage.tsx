@@ -2,13 +2,13 @@ import React, { } from 'react';
 import {
   components,
 } from 'react-select';
+import { styled } from 'styled-components';
 import { Rotate } from '../../../atoms/animations/rotate';
 import { RefreshIcon } from '../../../atoms/icons';
 import { IconWrapper } from '../../../atoms/icons/iconWrapper';
 import { Text } from '../../../atoms/texts/text';
-import { Styled } from '../../../theme';
 
-const LoadingMessageContainer = Styled(components.LoadingMessage)`
+const LoadingMessageContainer = styled(components.LoadingMessage)`
   display: inline-flex;
   gap: 8px;
   align-items: center;

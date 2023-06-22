@@ -4,8 +4,9 @@ import React, {
 import ReactSelect, {
   components, StylesConfig,
 } from 'react-select';
+import { styled } from 'styled-components';
 import { Checkbox } from './checkbox';
-import { localTheme, Styled } from '../../theme';
+import { localTheme } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
 import { ChevronDownIcon, ChevronUpIcon } from '../icons';
@@ -96,13 +97,13 @@ const DeselectAllOption: SelectOption = {
   id: 99999,
 };
 
-const SelectWrapper = Styled.div<{ width?: string, isDisabled:boolean }>`
+const SelectWrapper = styled.div<{ width?: string, isDisabled:boolean }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 `;
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
+const StyledSelect = styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
   width: ${({ width }) => width ?? '100%'};
@@ -123,19 +124,19 @@ const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDis
   }
 `;
 
-const ErrorMessageContainer = Styled.div`
+const ErrorMessageContainer = styled.div`
   position: absolute;
   right: 0;
 `;
 
-export const Placeholder = Styled.div`
+export const Placeholder = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
   overflow: hidden;
 `;
 
-const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
+const OptionWrapper = styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
   :hover {
@@ -149,7 +150,7 @@ const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, show
   }
 `;
 
-const OptionLabelContainer = Styled.label<{ addPadding: boolean, smallText?:boolean }>`
+const OptionLabelContainer = styled.label<{ addPadding: boolean, smallText?:boolean }>`
   padding-left: ${({ addPadding }) => addPadding && '24px'};
   display: flex;
   align-items: center;
@@ -159,23 +160,23 @@ const OptionLabelContainer = Styled.label<{ addPadding: boolean, smallText?:bool
   font-size: ${({ smallText }) => smallText && '12px'};
 `;
 
-const ClearButtonContainer = Styled.div`
+const ClearButtonContainer = styled.div`
   cursor: pointer;
   padding: 0 5px;
 `;
 
-const ClearWrapper = Styled.div``;
+const ClearWrapper = styled.div``;
 
-export const Required = Styled.span<{ disabled?: boolean }>`
+export const Required = styled.span<{ disabled?: boolean }>`
   color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.RED)};
 `;
 
-const CheckboxOptionContainer = Styled.div`
+const CheckboxOptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
+const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
@@ -201,7 +202,7 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
   }
 `;
 
-const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
+const MenuListComponent = styled.div<{ showOnTop?: boolean }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   padding-top: 0;
@@ -556,14 +557,14 @@ export const Select = <T extends SelectVariation>({
         placeholder={isMulti && isSelectOptionGuard(selectOptions) ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
         hideSelectedOptions={false}
-        onInputChange={(e) => onInputChange && onInputChange(e)}
+        onInputChange={(e: any) => onInputChange && onInputChange(e)}
         components={{
-          MultiValue: (props) => MultiValue(props, selectValue),
-          Option: (props) => OptionComponent({
+          MultiValue: (props: any) => MultiValue(props, selectValue),
+          Option: (props: any) => OptionComponent({
             ...props, readOnly, isCheckBox, smallText,
           }),
           IndicatorSeparator: () => null,
-          ClearIndicator: (props) => ClearIndicator(
+          ClearIndicator: (props: any) => ClearIndicator(
             { ...props, clearButtonText, handleClearValue },
           ),
           DropdownIndicator,

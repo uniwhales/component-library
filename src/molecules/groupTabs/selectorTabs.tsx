@@ -1,6 +1,6 @@
 import React from 'react';
+import { styled } from 'styled-components';
 import { SelectorTabAtom } from '../../atoms/tabs/selectorTab';
-import { Styled } from '../../theme';
 
 export interface Tab {
   id: string;
@@ -13,7 +13,7 @@ export interface SelectorTabsProps {
   setActiveTab: (e:any) => void;
   activeTab?: Tab;
 }
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 

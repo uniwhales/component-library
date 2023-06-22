@@ -1,13 +1,13 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const BrochureLayout = Styled.div`
-  align-items: center; 
-  justify-content: center; 
+export const BrochureLayout = styled.div`
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   display: flex;
   gap: 16px;
   padding-top: 58px;
-  
+
   div:nth-of-type(1) {
     height: 148px;
     width: 100%;

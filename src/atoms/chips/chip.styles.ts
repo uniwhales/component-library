@@ -1,8 +1,8 @@
-import { CSSProperties } from 'styled-components';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
+import { CSSProperties } from 'react';
 import { ChipProps } from './types';
 
-const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width' | 'cursor'>>`
+const CustomChip = styled.div<{ type: string } & Pick<CSSProperties, 'width' | 'cursor'>>`
   width: ${({ width }) => width ?? 'fit-content'};
   cursor: ${({ cursor }) => cursor ?? 'pointer'};
   display: flex;
@@ -12,14 +12,14 @@ const CustomChip = Styled.div<{ type: string } & Pick<CSSProperties, 'width' | '
   transition: width 0.45s ease;
 `;
 
-export const PrimaryChip = Styled(CustomChip)`
+export const PrimaryChip = styled(CustomChip)`
   padding: 8px 12px;
   gap: 8px;
   border-radius: 40px;
   background: ${({ theme }) => theme.colors.primary.MAIN_BLUE};
 `;
 
-export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
+export const SecondaryChip = styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 12px;
   width: fit-content;
   gap: 8px;
@@ -27,7 +27,7 @@ export const SecondaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryT
   background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.system.AMBER : bgColor === 'green' ? theme.colors.system.GREEN : bgColor === 'yellow' ? theme.colors.primary.YELLOW : theme.colors.system.RED)};
 `;
 
-export const EditableChip = Styled(CustomChip)`
+export const EditableChip = styled(CustomChip)`
   padding: 4px 12px;
   width: fit-content;
   min-width: 50px;
@@ -40,7 +40,7 @@ export const EditableChip = Styled(CustomChip)`
 `};
 `;
 
-export const TertiaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
+export const TertiaryChip = styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 6px;
   gap: 4px;
   border-radius: 12px;
@@ -51,7 +51,7 @@ export const TertiaryChip = Styled(CustomChip)<{ bgColor: ChipProps['secondaryTy
   }
 `;
 
-export const TertiaryLined = Styled(CustomChip)`
+export const TertiaryLined = styled(CustomChip)`
   padding: 4px;
   border-radius: 12px;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
@@ -59,7 +59,7 @@ export const TertiaryLined = Styled(CustomChip)`
   gap: 4px;
 `;
 
-export const SubtleChip = Styled(CustomChip)`
+export const SubtleChip = styled(CustomChip)`
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
   gap: 4px;
 `;

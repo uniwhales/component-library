@@ -1,8 +1,8 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 import { ZIndex } from '../../utils/constants';
 import { FadeIn } from '../animations/fades';
 
-export const Overlay = Styled.div<{ zIndex?: ZIndex }>`
+export const Overlay = styled.div<{ zIndex?: ZIndex }>`
   ${FadeIn};
   width: 100%;
   height: 100%;

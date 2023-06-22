@@ -1,17 +1,17 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const Wrapper = Styled.div`
+export const Wrapper = styled.div`
   margin-left: 350px;
 `;
 
-export const Container = Styled.div`
+export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   width: fit-content;
 `;
 
-export const MeatballRow = Styled.div`
+export const MeatballRow = styled.div`
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ export const MeatballRow = Styled.div`
     };
 `;
 
-export const MeatballContainer = Styled.div<{ width?: string }>`
+export const MeatballContainer = styled.div<{ width?: string }>`
   position: absolute;
   top: 100%;
   transform: translate(-60%, 5%);
@@ -50,6 +50,6 @@ export const MeatballContainer = Styled.div<{ width?: string }>`
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
 `;
 
-export const StyledLink = Styled.a`
+export const StyledLink = styled.a`
   text-decoration: none;
 `;

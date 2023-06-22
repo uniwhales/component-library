@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
-import { useTheme } from 'styled-components';
+import { styled, useTheme } from 'styled-components';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import {
   ArrowDownIcon,
   ArrowUpIcon, LinkIcon, HeartStandard,
 } from '../../atoms/icons';
 import { Text } from '../../atoms/texts/text';
-import { Styled } from '../../theme';
+
 import { LogoUrlBase } from '../../utils/constants';
 import { formatter } from '../../utils/format';
 
@@ -28,7 +28,7 @@ export interface TokenPriceCardInterface {
   isFavorite?: boolean
 }
 
-export const TokenPriceCardWrapper = Styled.div`
+export const TokenPriceCardWrapper = styled.div`
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
   transition: all .2s;
@@ -42,30 +42,30 @@ export const TokenPriceCardWrapper = Styled.div`
     transform: translateY(-2px);
   }
 `;
-const Section = Styled.div`
+const Section = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 8px;
 `;
-const SectionColumn = Styled(Section)`
+const SectionColumn = styled(Section)`
   flex-direction: column;
   align-items: flex-end;
 `;
-const Block = Styled.div`
+const Block = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
 `;
-const TimeSection = Styled.div`
+const TimeSection = styled.div`
   display: flex;
   gap: 8px;
 `;
-const TextBlock = Styled.div`
+const TextBlock = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
 `;
-const ClickBlock = Styled.div`
+const ClickBlock = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;

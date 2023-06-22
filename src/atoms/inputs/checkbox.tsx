@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { localTheme, Styled } from '../../theme';
+import { styled } from 'styled-components';
+import { localTheme } from '../../theme';
 import { getCheckboxSvgSize, getCheckboxSize } from '../../utils/getSize';
 import { Check } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -13,7 +14,7 @@ type CheckboxStyledProps = {
   variant?: 'primary' | 'secondary'
 };
 
-const CheckboxStyled = Styled.div<CheckboxStyledProps>`
+const CheckboxStyled = styled.div<CheckboxStyledProps>`
   transition: background-color 0.45s ease, border 0.45s ease;
   box-sizing: border-box;
   svg {
@@ -87,7 +88,7 @@ export const Checkbox: FC<CheckboxProps> = ({
       disabled={disabled}
       selected={selected}
       size={size}
-      onClick={selectCheck ? onClick : (e) => {
+      onClick={selectCheck ? onClick : (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         e.stopPropagation();
         if (!disabled) onClick(e);
       }}

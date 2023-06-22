@@ -1,5 +1,5 @@
 import React from 'react';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
 export interface SwitcherProps {
   isOn?: boolean;
@@ -7,19 +7,19 @@ export interface SwitcherProps {
   disabled: boolean;
   size?: 'big' | 'small'
 }
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 `;
-const Switcher = Styled.label<Pick<SwitcherProps, 'size'>>`
+const Switcher = styled.label<Pick<SwitcherProps, 'size'>>`
   position: relative;
   display: inline-block;
   width: ${(props) => (props.size === 'small' ? '32px' : '48px')};
   height: ${(props) => (props.size === 'small' ? '16px' : '24px')};
 `;
-const Toggle = Styled.span<SwitcherProps>`
+const Toggle = styled.span<SwitcherProps>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -51,7 +51,7 @@ const Toggle = Styled.span<SwitcherProps>`
   }};
   }
 `;
-const FakeInput = Styled.input`
+const FakeInput = styled.input`
   opacity: 0;
   width: 0;
   height: 0;

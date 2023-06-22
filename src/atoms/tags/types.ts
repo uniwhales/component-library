@@ -1,5 +1,4 @@
-import { MouseEvent, ReactChild } from 'react';
-import { CSSProperties } from 'styled-components';
+import { CSSProperties, MouseEvent, ReactChild } from 'react';
 import { TextProps } from '../texts/types';
 
 export type TagProps = {

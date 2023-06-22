@@ -1,7 +1,7 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 import { ContentCardProps, ContentType } from './types';
 
-export const Card = Styled.div<{ size: ContentCardProps['size'], width?: string }>`
+export const Card = styled.div<{ size: ContentCardProps['size'], width?: string }>`
     border-radius: 12px;
     box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
@@ -15,30 +15,30 @@ export const Card = Styled.div<{ size: ContentCardProps['size'], width?: string 
     }
 `;
 
-export const CardHeader = Styled.div`
+export const CardHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 42px;
 `;
 
-export const CardTitle = Styled.div`
+export const CardTitle = styled.div`
     height: 48px;
 `;
 
-export const CardHeaderLeftSide = Styled.div`
+export const CardHeaderLeftSide = styled.div`
     display: flex;
     gap: 8px;
 `;
 
-export const Spacer = Styled.div`
+export const Spacer = styled.div`
     width: 100%;
     height: 1px;
     background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
     margin-bottom: 12px;
 `;
 
-export const ArticleCover = Styled.div<{ url: string, size: ContentCardProps['size'] }>`
+export const ArticleCover = styled.div<{ url: string, size: ContentCardProps['size'] }>`
     background: ${({ url }) => `url(${url})`};
     background-size: cover;
     background-position: center;
@@ -48,17 +48,17 @@ export const ArticleCover = Styled.div<{ url: string, size: ContentCardProps['si
     margin: 12px auto;
 `;
 
-export const AboutSection = Styled.div`
+export const AboutSection = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
-export const AboutSectionLeftSide = Styled.div`
+export const AboutSectionLeftSide = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
 `;
-export const MediaTypeIcon = Styled.div<{ contentType: ContentType, size: ContentCardProps['size'] }>`
+export const MediaTypeIcon = styled.div<{ contentType: ContentType, size: ContentCardProps['size'] }>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +72,7 @@ export const MediaTypeIcon = Styled.div<{ contentType: ContentType, size: Conten
   }};
 `;
 
-export const TagSection = Styled.div`
+export const TagSection = styled.div`
     margin-top: 8px;
     display: flex;
     justify-content: left;

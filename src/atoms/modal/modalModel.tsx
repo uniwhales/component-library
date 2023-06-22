@@ -1,6 +1,8 @@
 import { create } from '@ebay/nice-modal-react';
 import React, { useState } from 'react';
-import { localTheme, Styled } from '../../theme';
+import { styled } from 'styled-components';
+
+import { localTheme } from '../../theme';
 import { ButtonAtom } from '../buttons/button';
 import {
   ArrowLeftIcon, ArrowRightIcon, ProfileStandard, StarIcon,
@@ -13,7 +15,7 @@ import {
   DoubleModalProps, ExampleModalProps,
 } from './types';
 
-const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
+const LatestAnnouncementsList = styled.div<{ gap?: string, height?: string }>`
     background-color: transparent;
     margin-top: 24px;
     height: ${({ height }) => height ?? '280px'};
@@ -25,14 +27,14 @@ const LatestAnnouncementsList = Styled.div<{ gap?: string, height?: string }>`
     gap: ${({ gap }) => gap};
 `;
 
-const AnnouncementCardContainerMobile = Styled.div`
+const AnnouncementCardContainerMobile = styled.div`
     width: 100%
     padding: 24px;
     display: flex;
     flex-direction: column;
 `;
 
-const Cover = Styled.div<{ coverUrl: string }>`
+const Cover = styled.div<{ coverUrl: string }>`
   background: ${({ coverUrl }) => `url(${coverUrl})`};
   height: 115px;
   width: 233px;
@@ -43,13 +45,13 @@ const Cover = Styled.div<{ coverUrl: string }>`
   background-position: center;
 `;
 
-const Content = Styled.div`
+const Content = styled.div`
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
 `;
 
-const AnnouncementText = Styled.div`
+const AnnouncementText = styled.div`
     color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
     font-size: 14px;
 `;

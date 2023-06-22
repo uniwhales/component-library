@@ -2,11 +2,11 @@ import React, { } from 'react';
 import {
   components,
 } from 'react-select';
+import { styled } from 'styled-components';
 import { Text } from '../../../atoms/texts/text';
 import { SwitcherAtom } from '../../../atoms/toggles/switcher';
-import { Styled } from '../../../theme';
 
-const ControlHeaderContainer = Styled.div`
+const ControlHeaderContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;

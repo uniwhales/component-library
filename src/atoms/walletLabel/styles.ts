@@ -1,6 +1,6 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const Container = Styled.div<{ breakWord:boolean, width?:string }>`
+export const Container = styled.div<{ breakWord:boolean, width?:string }>`
   word-break: ${({ breakWord }) => breakWord && 'break-word'};
   width ${({ width }) => width && width};
 `;

@@ -2,12 +2,13 @@ import React, { } from 'react';
 import {
   components,
 } from 'react-select';
+import { styled } from 'styled-components';
 import { Text } from '../../../atoms/texts/text';
-import { Styled } from '../../../theme';
+
 import { LogoUrlBase } from '../../../utils/constants';
 import { shortenAddressTo11Chars } from '../../../utils/shortenAddress';
 
-const OptionGrid = Styled.div`
+const OptionGrid = styled.div`
   display: grid;
   grid-template-columns: 30px;
   grid-template-rows: repeat(3, 1fr);
@@ -28,7 +29,7 @@ const OptionGrid = Styled.div`
   }
 `;
 
-const Icon = Styled.div<{ address: string }>`
+const Icon = styled.div<{ address: string }>`
   height: 20px;
   width: 20px;
   background-size: contain;
@@ -38,7 +39,7 @@ const Icon = Styled.div<{ address: string }>`
   margin-top: 6px;
 `;
 
-const OptionEntry = Styled.div`
+const OptionEntry = styled.div`
   display: flex;
   gap: 5px;
 `;

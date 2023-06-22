@@ -1,25 +1,26 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
+
 import { Column } from '../common/flex';
 import { RadioProps } from './types';
 
-export const Wrapper = Styled(Column)`
+export const Wrapper = styled(Column)`
   gap: 6px;
 `;
 
-export const RadioAndLabel = Styled.div`
+export const RadioAndLabel = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 
-export const Container = Styled.div`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
 `;
 
-export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'isLarge' | 'disabled'>>`
+export const RadioButtonLabel = styled.label<Pick<RadioProps, 'isLarge' | 'disabled'>>`
   position: absolute;
   width: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
   height: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
@@ -27,7 +28,7 @@ export const RadioButtonLabel = Styled.label<Pick<RadioProps, 'isLarge' | 'disab
   background: transparent;
   border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_2}`)};
 `;
-export const RadioButton = Styled.input<{ isLarge: boolean }>`
+export const RadioButton = styled.input<{ isLarge: boolean }>`
   opacity: 0;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   border-radius: 50%;

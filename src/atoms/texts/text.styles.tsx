@@ -1,11 +1,11 @@
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import { css, styled } from 'styled-components';
+
 import {
   FONTWEIGHT, H_FONTSIZE, H_LINE_HEIGHT, P_FONTSIZE, P_LINE_HEIGHT,
 } from './textGenerator';
 import { HyperLinkStyle, HyperLinkVariation } from './types';
 
-export const StyledP = Styled.p<{ textType: string, textWeight: string, textDecoration?: string, removeLineHeight?:boolean }>`
+export const StyledP = styled.p<{ textType: string, textWeight: string, textDecoration?: string, removeLineHeight?:boolean }>`
   // Adding unknown here as TS thinks we are making a mistake converting to a string
   // because we are not using numbers instead of regular string
   font-size: ${(props) => P_FONTSIZE[props.textType as unknown as keyof typeof P_FONTSIZE]}px;
@@ -16,7 +16,7 @@ export const StyledP = Styled.p<{ textType: string, textWeight: string, textDeco
   line-height: ${(props) => (!props.removeLineHeight && `${P_LINE_HEIGHT[props.textType as unknown as keyof typeof P_LINE_HEIGHT]}px`)};
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
 `;
-export const StyledHeading = Styled.div<{ textType: string, textWeight: string, textDecoration?: string }>`
+export const StyledHeading = styled.div<{ textType: string, textWeight: string, textDecoration?: string }>`
   padding: 0;
   margin: 0;
   line-height: ${(props) => H_LINE_HEIGHT[props.textType as keyof typeof H_LINE_HEIGHT]}px;
@@ -26,7 +26,7 @@ export const StyledHeading = Styled.div<{ textType: string, textWeight: string, 
   text-decoration: ${(props) => (props.textDecoration ? props.textDecoration : 'none')};
   `;
 
-export const StyledA = Styled.a<{ textType: string, textWeight: string, textDecoration?: string, hyperLinkVariation?: HyperLinkVariation, disabled?:boolean }>`
+export const StyledA = styled.a<{ textType: string, textWeight: string, textDecoration?: string, hyperLinkVariation?: HyperLinkVariation, disabled?:boolean }>`
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   padding: 0;
   margin: 0;

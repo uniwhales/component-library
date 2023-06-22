@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
-import { css } from 'styled-components';
-import { Styled } from '../../theme';
+import { css, styled } from 'styled-components';
 import { ButtonProps, GenericStylingProps } from './types';
 import { IconWrapper } from '../icons/iconWrapper';
 import { FloatingClose } from '../icons';
 
-export const ButtonWrapper = Styled.div`
+export const ButtonWrapper = styled.div`
   padding: 50px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
 `;
 
-const Button = Styled.button<GenericStylingProps>`
+const Button = styled.button<GenericStylingProps>`
   transition: background 0.45s ease;
   font-size: 14px;
   line-height: 20px;
@@ -38,7 +37,7 @@ const Button = Styled.button<GenericStylingProps>`
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
 `;
-const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   // disabled state
@@ -66,7 +65,7 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     }
   `}
 `;
-const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -106,7 +105,7 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `}
 `;
-const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -146,7 +145,7 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width ?? '40px'};
   height: ${({ height }) => height ?? '40px'};
   padding: 10px;
@@ -165,7 +164,7 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
       }
   `};
 `;
-const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondaryAction = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width ?? 'max-content'};
   height: ${({ height }) => height ?? '40px'};
   path {transition: fill 0.45s ease;}
@@ -198,8 +197,8 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'heigh
     };
   `}
 `;
-const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonTinyAction = styled(ButtonSecondaryAction)``;
+const ButtonSecondaryActionInverse = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -233,7 +232,7 @@ const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' |
   `}
 `;
 
-const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const ButtonSpecialSmallNormal = styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   border-radius: 12px;
   border: 2px solid transparent;
@@ -278,7 +277,7 @@ const ButtonSpecialSmallNormal = Styled(Button) <Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
+const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 50%;
   width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
   height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
@@ -295,7 +294,7 @@ const ButtonSpecialSmallRound = Styled(ButtonSpecialSmallNormal) <{ buttonVarian
 
 `;
 
-const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
+const ButtonSpecialSmallSubtle = styled(Button)<{ color?: string }>`
   background: none;
   border: none;
   color: ${({ theme, color }) => color || theme.textShades.SHADE_MINUS_2};
@@ -329,7 +328,7 @@ const ButtonSpecialSmallSubtle = Styled(Button)<{ color?: string }>`
     }
   `};
 `;
-const ButtonIconOnly = Styled(Button)`
+const ButtonIconOnly = styled(Button)`
   background: none;
   width: 24px;
   height: 24px;
@@ -364,7 +363,7 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
-const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
+const SquareButton = styled.button<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '70px'};
   width: ${({ size }) => size || '70px'};
   border-radius: 10px;
@@ -406,7 +405,7 @@ const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
   `}
 `;
 
-const OnboardingPrimaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const OnboardingPrimaryButton = styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
@@ -432,7 +431,7 @@ const OnboardingPrimaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
     }
   `}
 `;
-const OnboardingSecondaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
+const OnboardingSecondaryButton = styled(Button) <Pick<ButtonProps, 'width'>>`
   width: ${({ width }) => width};
   // disabled state
   ${(props) => props.disabled && css`
@@ -460,7 +459,7 @@ const OnboardingSecondaryButton = Styled(Button) <Pick<ButtonProps, 'width'>>`
   `}
 `;
 
-const CloseButtonModal = Styled(Button)`
+const CloseButtonModal = styled(Button)`
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -492,13 +491,13 @@ const CloseButtonModal = Styled(Button)`
   `}
 `;
 
-const CloseButtonPrimary = Styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
+const CloseButtonPrimary = styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
   border-radius: 50%;
 `;
 
-const CloseButtonSecondary = Styled(OnboardingSecondaryButton)<Pick<ButtonProps, 'size'>>`
+const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps, 'size'>>`
   height: ${({ size }) => size || '30px'};
   width: ${({ size }) => size || '30px'};
   border-radius: 50%;

@@ -75,5 +75,5 @@ export * from './utils/getSize';
 export * from './utils/toasts';
 
 export {
-  Theme, LightTheme, DarkTheme, Styled, localTheme,
+  Theme, LightTheme, DarkTheme, localTheme,
 } from './theme';
