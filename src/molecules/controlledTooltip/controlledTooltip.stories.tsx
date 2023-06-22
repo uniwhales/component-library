@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ControlledTooltipComponent } from './controlledTooltip';
@@ -20,9 +20,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ControlledTooltipComponent>;
+} as Meta<typeof ControlledTooltipComponent>;
 
-const Template: ComponentStory<typeof ControlledTooltipComponent> = () => {
+const Template: StoryFn<typeof ControlledTooltipComponent> = () => {
   const target = (
     <Target>
       <Text size="14-Regular" color="#F8F9FF">Click to see tooltip</Text>

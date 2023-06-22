@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Slider } from './slider';
+import { SliderProps } from './types';
 
-export default {
-  title: 'Atoms/Slider',
+const meta: Meta<typeof Slider> = {
   component: Slider,
-  argTypes: {
-    value: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof Slider>;
+};
 
-const Template: ComponentStory<typeof Slider> = (args) => {
+export default meta;
+type Story = StoryObj<typeof Slider>;
+
+const Template = (args: React.JSX.IntrinsicAttributes & SliderProps) => {
   const [sliderValue, setSliderValue] = useState('0');
 
   return (
@@ -27,9 +23,15 @@ const Template: ComponentStory<typeof Slider> = (args) => {
   );
 };
 
-export const SliderComponent = Template.bind({});
-export const SliderWithoutUnit = Template.bind({});
-export const SliderWithLargeCharLimit = Template.bind({});
+export const SliderComponent: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const SliderWithoutUnit: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const SliderWithLargeCharLimit: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 SliderComponent.args = {
   min: 0,

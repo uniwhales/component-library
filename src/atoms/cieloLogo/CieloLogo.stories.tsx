@@ -1,14 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { CieloLogo } from './CieloLogo';
+import { LogoProps } from './types';
 
-export default {
-  title: 'Atoms/CieloLogo',
+const meta: Meta<typeof CieloLogo> = {
   component: CieloLogo,
-  argTypes: {},
-} as ComponentMeta<typeof CieloLogo>;
+};
 
-const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
+export default meta;
+type Story = StoryObj<typeof CieloLogo>;
+
+const Template = (args: React.JSX.IntrinsicAttributes & LogoProps, { globals }: any) => {
   const isDark = globals.backgrounds?.value === '#191B20';
   const [text, setText] = useState(true);
   return (
@@ -20,8 +22,12 @@ const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
   );
 };
 
-export const Standard = Template.bind({});
-export const Beta = Template.bind({});
+export const Standard: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Beta: Story = {
+  render: (args) => <Template {...args} />,
+};
 Beta.args = {
   isBeta: true,
 };

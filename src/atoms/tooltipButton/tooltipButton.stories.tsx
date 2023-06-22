@@ -1,37 +1,22 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { TooltipButton } from './tooltipButton';
 import { Wrapper } from './styles';
 
-export default {
-  title: 'Atoms/TooltipButton',
+const meta: Meta<typeof TooltipButton> = {
   component: TooltipButton,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-    buttonVariant: {
-      control: {
-        type: null,
-      },
-    },
-    disabled: {
-      control: {
-        type: 'boolean',
-      },
-    },
-  },
-} as ComponentMeta<typeof TooltipButton>;
+};
 
-const Template: ComponentStory<typeof TooltipButton> = () => (
-  <Wrapper>
-    <TooltipButton
-      position="left"
-      content={(<div>Additional content, triggered on click</div>)}
-    />
-  </Wrapper>
-);
+export default meta;
+type Story = StoryObj<typeof TooltipButton>;
 
-export const TooltipBtn = Template.bind({});
+export const TooltipBtn: Story = {
+  render: () => (
+    <Wrapper>
+      <TooltipButton
+        position="left"
+        content={(<div>Additional content, triggered on click</div>)}
+      />
+    </Wrapper>
+  ),
+};

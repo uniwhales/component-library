@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { CopyToClipBoard } from './copyToClipBoard';
 import { Share } from '../../atoms/icons/generalIcons/filledStyle/Share';
 import { Theme } from '../../theme';
@@ -10,9 +10,9 @@ export default {
   component: CopyToClipBoard,
   argTypes: {
   },
-} as ComponentMeta<typeof CopyToClipBoard>;
+} as Meta<typeof CopyToClipBoard>;
 
-const Template: ComponentStory<typeof CopyToClipBoard> = (args) => <CopyToClipBoard {...args} />;
+const Template: StoryFn<typeof CopyToClipBoard> = (args) => <CopyToClipBoard {...args} />;
 export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
 export const CustomSize = Template.bind({});

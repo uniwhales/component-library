@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { CardDate } from './cardDate';
 
@@ -6,14 +6,14 @@ export default {
   title: 'Molecules/CardDate',
   component: CardDate,
   argTypes: {},
-} as ComponentMeta<typeof CardDate>;
+} as Meta<typeof CardDate>;
 
 const defaultParams = {
   date: 'Nov 31st, 2021',
   state: 'Upcoming',
 };
 
-const Template: ComponentStory<typeof CardDate> = (args) => (
+const Template: StoryFn<typeof CardDate> = (args) => (
   <CardDate {...defaultParams} {...args} />
 );
 

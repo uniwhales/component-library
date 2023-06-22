@@ -1,18 +1,19 @@
 import React, { useRef, useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input, Wrapper } from './input';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Input, InputsProps, Wrapper } from './input';
 import { SearchStandard } from '../icons';
 
-export default {
-  title: 'Atoms/Inputs',
+const meta: Meta<typeof Input> = {
   component: Input,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Input>;
+};
 
-const Template: ComponentStory<typeof Input> = ({
-  type, icon, pattern, disabled, label, inputState, width, required,
-}) => {
+export default meta;
+type Story = StoryObj<typeof Input>;
+
+const Template = (args: InputsProps) => {
+  const {
+    type, icon, pattern, disabled, label, inputState, width, required,
+  } = args;
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
     setValue(inputValue);
@@ -38,16 +39,34 @@ const Template: ComponentStory<typeof Input> = ({
     </Wrapper>
   );
 };
-export const Primary = Template.bind({});
-export const CustomWidth = Template.bind({});
-export const Error = Template.bind({});
-export const Help = Template.bind({});
-export const Exception = Template.bind({});
-export const Valid = Template.bind({});
-export const Invalid = Template.bind({});
-export const WithIcon = Template.bind({});
-export const Disabled = Template.bind({});
-export const Required = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const CustomWidth: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Error: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Help: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Exception: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Valid: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Invalid: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const WithIcon: Story = {
+  render: (args) => <Template {...args} />,
+}; export const Disabled: Story = {
+  render: (args) => <Template {...args} />,
+}; export const Required: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.args = {
   label: 'label',

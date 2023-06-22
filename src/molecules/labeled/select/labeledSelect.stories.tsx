@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
 } from '../../../atoms/icons';
@@ -79,9 +79,9 @@ export default {
   component: LabeledSelect,
   argTypes: {
   },
-} as ComponentMeta<typeof LabeledSelect>;
+} as Meta<typeof LabeledSelect>;
 
-const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) => {
+const TemplateSingle: StoryFn<typeof LabeledSelect<'single'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <>
@@ -90,15 +90,15 @@ const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) =>
     </>
   );
 };
-const TemplateGroup: ComponentStory<typeof LabeledSelect<'group'>> = (args) => {
+const TemplateGroup: StoryFn<typeof LabeledSelect<'group'>> = (args) => {
   const [value, setValue] = useState<SelectOption>();
   return <LabeledSelect<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMulti: ComponentStory<typeof LabeledSelect<'multi'>> = (args) => {
+const TemplateMulti: StoryFn<typeof LabeledSelect<'multi'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMultiGroup: ComponentStory<typeof LabeledSelect<'multi-group'>> = (args) => {
+const TemplateMultiGroup: StoryFn<typeof LabeledSelect<'multi-group'>> = (args) => {
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };

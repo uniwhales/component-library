@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { MeatballMenu } from './meatballMenu';
 import { Wrapper } from './meatballMenu.styles';
 import { Text } from '../../atoms/texts/text';
@@ -14,9 +14,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof MeatballMenu>;
+} as Meta<typeof MeatballMenu>;
 
-const Template: ComponentStory<typeof MeatballMenu> = () => {
+const Template: StoryFn<typeof MeatballMenu> = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <Wrapper>

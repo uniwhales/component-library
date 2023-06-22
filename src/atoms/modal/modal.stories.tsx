@@ -1,20 +1,20 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
+import { styled } from 'styled-components';
 import { ButtonAtom } from '../buttons/button';
 import { DoubleModalExample, ExampleModal } from './modalModel';
 import { ModalMockDataLatestAnnouncements } from './mockData';
 import { BrochureLayout } from '../../layouts/brochure/brochureLayout.styles';
 import { Navbar } from '../../organisms/navbar/navbar';
-import { Styled } from '../../theme';
 
 const list = Array.from(Array(20).keys());
 
 export default {
   title: 'Atoms/Modal',
-} as ComponentMeta<typeof ExampleModal>;
+} as Meta<typeof ExampleModal>;
 
-const Placeholder = Styled.div`
+const Placeholder = styled.div`
   height: 200px;
   width: 200px;
   display: flex;
@@ -66,13 +66,13 @@ const Double = () => {
   );
 };
 
-const Template: ComponentStory<typeof ExampleModal> = () => (
+const Template: StoryFn<typeof ExampleModal> = () => (
   <NiceModal.Provider>
     <Proxy />
   </NiceModal.Provider>
 );
 
-const Template2: ComponentStory<typeof ExampleModal> = () => (
+const Template2: StoryFn<typeof ExampleModal> = () => (
   <NiceModal.Provider>
     <Double />
   </NiceModal.Provider>

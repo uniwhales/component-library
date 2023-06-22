@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { SearchFilterSelect } from './searchFilterSelect';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: SearchFilterSelect,
   argTypes: {
   },
-} as ComponentMeta<typeof SearchFilterSelect>;
+} as Meta<typeof SearchFilterSelect>;
 
 const MockData = [{
   symbol: 'APE',
@@ -55,7 +55,7 @@ const MockData = [{
   label: 'NEAR',
 }];
 
-const Template: ComponentStory<typeof SearchFilterSelect> = (args) => {
+const Template: StoryFn<typeof SearchFilterSelect> = (args) => {
   const {
     isLoading: argIsLoading,
     options: argOptions,

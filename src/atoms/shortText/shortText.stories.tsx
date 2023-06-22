@@ -1,34 +1,36 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { styled } from 'styled-components';
 import { ShortText } from './shortText';
-import { Styled } from '../../theme';
+import { ShortTextProps, TextPropsBase } from './types';
 
-export default {
-  title: 'Atoms/shortenText',
+const meta: Meta<typeof ShortText> = {
   component: ShortText,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof ShortText>;
+};
 
-const Wrapper = Styled.div`
+export default meta;
+type Story = StoryObj<typeof ShortText>;
+
+const Wrapper = styled.div`
   width: 200px;
   margin: 50px 0;
 `;
 
-const Template: ComponentStory<typeof ShortText> = (args) => (
+const Template = (args: React.JSX.IntrinsicAttributes & TextPropsBase & ShortTextProps) => (
   <Wrapper>
     <ShortText {...args} />
   </Wrapper>
 );
 
-export const Primary = Template.bind({});
-export const LongerLimit = Template.bind({});
-export const Href = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const LongerLimit: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Href: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.args = {
   text: 'This is a very long text that will be shortened',

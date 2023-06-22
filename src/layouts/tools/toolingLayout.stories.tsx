@@ -1,40 +1,40 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { styled } from 'styled-components';
 import { ToolingLayoutOne } from './toolingLayout.styles';
-import { Styled } from '../../theme';
 
-export default {
-  title: 'Layouts/Tooling',
+const meta: Meta<typeof ToolingLayoutOne> = {
   component: ToolingLayoutOne,
-  argTypes: {
-  },
-} as ComponentMeta<typeof ToolingLayoutOne>;
+};
 
-const Wrapper = Styled.div`
+export default meta;
+type Story = StoryObj<typeof ToolingLayoutOne>;
+
+const Wrapper = styled.div`
     width: 100%;
 `;
 
-const RHSBar = Styled.div`
+const RHSBar = styled.div`
     width: 100%;
     height: 100vh;
     background-color: blue;
 `;
 
-const Content = Styled.div`
+const Content = styled.div`
     width: 100%;
     height: 100vh;
     background-color: red;
 `;
-
-const Template: ComponentStory<typeof ToolingLayoutOne> = (args) => (
-  <Wrapper>
-    <ToolingLayoutOne {...args}>
-      <Content />
-      <RHSBar />
-    </ToolingLayoutOne>
-  </Wrapper>
-);
-export const Tooling = Template.bind({});
+export const Tooling: Story = {
+  render: () => (
+    <Wrapper>
+      <ToolingLayoutOne>
+        <Content />
+        <RHSBar />
+      </ToolingLayoutOne>
+    </Wrapper>
+  ),
+};
 
 Tooling.parameters = {
   backgrounds: { default: 'dark' },

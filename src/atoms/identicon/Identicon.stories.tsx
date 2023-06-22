@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { styled } from 'styled-components';
 import { IdenticonComponent } from './Identicon';
-import { Styled, Theme } from '../../theme';
+import { Theme } from '../../theme';
 import { Text } from '../texts/text';
 import { SelectableIdenticon } from './SelectIdenticon';
+import { IdenticonProps, SelectableIdenticonProps } from './types';
 
-export default {
-  title: 'Atoms/Identicon',
+const meta: Meta<typeof IdenticonComponent> = {
   component: IdenticonComponent,
-  argTypes: {},
-} as ComponentMeta<typeof IdenticonComponent>;
-const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
+};
+
+export default meta;
+type Story = StoryObj<typeof IdenticonComponent>;
+
+const WalletWrapper = styled.div<{ $isMintersTab?: boolean }>`
   padding: 8px 16px;
   display: flex;
   cursor: pointer;
@@ -33,11 +37,11 @@ const WalletWrapper = Styled.div<{ $isMintersTab?: boolean }>`
     background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_2};
   }
 `;
-const Template: ComponentStory<typeof IdenticonComponent> = (props) => (
-  <IdenticonComponent {...props} />
+const Template = (args: React.JSX.IntrinsicAttributes & IdenticonProps) => (
+  <IdenticonComponent {...args} />
 );
 
-const SelectableTemplate: ComponentStory<typeof SelectableIdenticon> = (props) => {
+const SelectableTemplate = (props: React.JSX.IntrinsicAttributes & SelectableIdenticonProps) => {
   const [checked, setChecked] = useState(false);
   return (
     <WalletWrapper>
@@ -54,9 +58,36 @@ const SelectableTemplate: ComponentStory<typeof SelectableIdenticon> = (props) =
     </WalletWrapper>
   );
 };
-export const Primary = Template.bind({});
-export const NoInteraction = Template.bind({});
-export const WithSelectableTemplate = SelectableTemplate.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const NoInteraction: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const WithSelectableTemplate: Story = {
+  render: () => (
+    <SelectableTemplate
+      text={(
+        <Text size="14-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>
+      )}
+      checkbox={{
+        disabled: false,
+        selected: false,
+        onClick: () => { console.debug('click select'); },
+      }}
+      identicon={{
+        size: 'big',
+        id: 'someRandomString',
+        hasInteraction: true,
+        href: 'https://staging.app.cielo.finance/',
+        target: 'blank',
+        onClick: () => {
+          console.debug('click');
+        },
+      }}
+    />
+  ),
+};
 
 Primary.args = {
   id: 'someRandomString',
@@ -70,23 +101,4 @@ NoInteraction.args = {
   hasInteraction: false,
   size: 'big',
   isLink: false,
-};
-
-WithSelectableTemplate.args = {
-  text: <Text size="14-Regular" color={Theme.textShades.SHADE_MINUS_2}>Label of a wallet</Text>,
-  checkbox: {
-    disabled: false,
-    selected: false,
-    onClick: () => { console.debug('click select'); },
-  },
-  identicon: {
-    size: 'big',
-    id: 'someRandomString',
-    hasInteraction: true,
-    href: 'https://staging.app.cielo.finance/',
-    target: 'blank',
-    onClick: () => {
-      console.debug('click');
-    },
-  },
 };

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useRef } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Column } from '../../atoms/common/flex';
@@ -11,9 +11,9 @@ export default {
   title: 'Organisms/DropdownSlider',
   component: DropdownSlider,
   argTypes: {},
-} as ComponentMeta<typeof DropdownSlider>;
+} as Meta<typeof DropdownSlider>;
 
-const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
+const Template: StoryFn<typeof DropdownSlider> = (args, { globals }) => {
   const sliderEl = useRef<SliderRef>(null);
   const isDark = globals.backgrounds?.value === '#191B20';
 

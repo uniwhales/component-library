@@ -1,24 +1,25 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useRef, useState } from 'react';
-import { TextArea } from './textarea';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
+import { TextArea, TextAreaTypes } from './textarea';
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   height: 400px;
   width: 400px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 30px;
 `;
-export default {
-  title: 'Atoms/TextArea',
+const meta: Meta<typeof TextArea> = {
   component: TextArea,
-  argTypes: {
-  },
-} as ComponentMeta<typeof TextArea>;
+};
 
-const Template: ComponentStory<typeof TextArea> = ({
-  inputState, label, disabled, required, maxLength,
-}) => {
+export default meta;
+type Story = StoryObj<typeof TextArea>;
+
+const Template = (args: TextAreaTypes) => {
+  const {
+    inputState, label, disabled, required, maxLength,
+  } = args;
   const [value, setValue] = useState<string>('');
   const ref = useRef<HTMLTextAreaElement>(null);
   console.debug(ref);
@@ -39,8 +40,13 @@ const Template: ComponentStory<typeof TextArea> = ({
   );
 };
 
-export const Primary = Template.bind({});
-export const Error = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const Error: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.args = {
   label: 'label',

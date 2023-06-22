@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
-  Placeholder, Select, SelectOption,
+  Placeholder, Select, SelectOption, SelectProps,
 } from './select';
 import { IconWrapper } from '../icons/iconWrapper';
 import {
@@ -96,14 +96,14 @@ const GroupExample = [
   { label: 'Tx Types', options: TxOptions },
 ];
 
-export default {
-  title: 'Atoms/Select',
+const meta: Meta<typeof Select> = {
   component: Select,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Select>;
+};
 
-const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
+export default meta;
+type Story = StoryObj<typeof Select>;
+
+const TemplateSingle = (args: SelectProps<'single'>) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <Wrapper mt="200px">
@@ -111,7 +111,7 @@ const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
+const TemplateGroup = (args: SelectProps<'group'>) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <Wrapper>
@@ -119,7 +119,7 @@ const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
+const TemplateMulti = (args: SelectProps<'multi'>) => {
   const [value, setValue] = useState<SelectOption[]>();
   return (
     <Wrapper>
@@ -127,7 +127,7 @@ const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) => {
+const TemplateMultiGroup = (args: SelectProps<'multi-group'>) => {
   const [value, setValue] = useState<SelectOption[]>();
   return (
     <Wrapper>
@@ -135,13 +135,27 @@ const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) 
     </Wrapper>
   );
 };
-export const Primary = TemplateSingle.bind({});
-export const PrimaryIcon = TemplateSingle.bind({});
-export const LongOption = TemplateSingle.bind({});
-export const SingleGroupSearchSelect = TemplateGroup.bind({});
-export const MultiSelect = TemplateMulti.bind({});
-export const MultiGroupSelect = TemplateMultiGroup.bind({});
-export const CustomMenuHeight = TemplateMulti.bind({});
+export const Primary: Story = {
+  render: (args) => <TemplateSingle {...args} />,
+};
+export const PrimaryIcon: Story = {
+  render: (args) => <TemplateSingle {...args} />,
+};
+export const LongOption: Story = {
+  render: (args) => <TemplateSingle {...args} />,
+};
+export const SingleGroupSearchSelect: Story = {
+  render: (args) => <TemplateGroup {...args} />,
+};
+export const MultiSelect: Story = {
+  render: (args) => <TemplateMulti {...args} />,
+};
+export const MultiGroupSelect: Story = {
+  render: (args) => <TemplateMultiGroup {...args} />,
+};
+export const CustomMenuHeight: Story = {
+  render: (args) => <TemplateMulti {...args} />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark theme' },

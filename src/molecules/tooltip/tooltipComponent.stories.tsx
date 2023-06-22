@@ -1,72 +1,77 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Styled, Theme } from '../../theme';
+import { styled } from 'styled-components';
 import { SimpleTooltip } from './TooltipComponent';
 import { Text } from '../../atoms/texts/text';
+import { localTheme } from '../../theme';
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 128px;
 `;
-export default {
-  title: 'Molecules/SimpleTooltip',
+const meta: Meta<typeof SimpleTooltip> = {
   component: SimpleTooltip,
-  argTypes: {},
-} as ComponentMeta<typeof SimpleTooltip>;
+};
 
-const Template: ComponentStory<typeof SimpleTooltip> = () => (
-  <Wrapper>
-    <SimpleTooltip
-      position="bottom"
-      zIndex={Theme.zIndex.OVERLAY}
-      label="content bottom"
-      allowPointerEvents
-    >
-      <div>
-        <Text>target bottom</Text>
-      </div>
-    </SimpleTooltip>
-    <SimpleTooltip
-      position="top"
-      zIndex={Theme.zIndex.OVERLAY}
-      label="content top"
-      allowPointerEvents
-    >
-      <div>
-        <Text>target top</Text>
-      </div>
-    </SimpleTooltip>
-    <SimpleTooltip
-      position="left"
-      zIndex={Theme.zIndex.OVERLAY}
-      label="content left"
-      allowPointerEvents
-    >
-      <div>
-        <Text>target left</Text>
-      </div>
-    </SimpleTooltip>
-    <SimpleTooltip
-      position="right"
-      zIndex={Theme.zIndex.OVERLAY}
-      label="content right"
-      allowPointerEvents
-    >
-      <div>
-        <Text>target right</Text>
-      </div>
-    </SimpleTooltip>
-  </Wrapper>
+export default meta;
+type Story = StoryObj<typeof SimpleTooltip>;
 
-);
+const Template = () => {
+  const theme = localTheme();
+  return (
+    <Wrapper>
+      <SimpleTooltip
+        position="bottom"
+        zIndex={theme.zIndex.OVERLAY}
+        label="content bottom"
+        allowPointerEvents
+      >
+        <div>
+          <Text>target bottom</Text>
+        </div>
+      </SimpleTooltip>
+      <SimpleTooltip
+        position="top"
+        zIndex={theme.zIndex.OVERLAY}
+        label="content top"
+        allowPointerEvents
+      >
+        <div>
+          <Text>target top</Text>
+        </div>
+      </SimpleTooltip>
+      <SimpleTooltip
+        position="left"
+        zIndex={theme.zIndex.OVERLAY}
+        label="content left"
+        allowPointerEvents
+      >
+        <div>
+          <Text>target left</Text>
+        </div>
+      </SimpleTooltip>
+      <SimpleTooltip
+        position="right"
+        zIndex={theme.zIndex.OVERLAY}
+        label="content right"
+        allowPointerEvents
+      >
+        <div>
+          <Text>target right</Text>
+        </div>
+      </SimpleTooltip>
+    </Wrapper>
 
-const MultiLineTemplate: ComponentStory<typeof SimpleTooltip> = () => (
+  );
+};
+
+const MultiLineTemplate = () => (
   <SimpleTooltip
     position="top"
-    zIndex={Theme.zIndex.OVERLAY}
+    zIndex={theme.zIndex.OVERLAY}
     label="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     allowPointerEvents
     multiline
@@ -77,5 +82,9 @@ const MultiLineTemplate: ComponentStory<typeof SimpleTooltip> = () => (
   </SimpleTooltip>
 );
 
-export const SimpleTooltipComponent = Template.bind({});
-export const MultiLine = MultiLineTemplate.bind({});
+export const SimpleTooltipComponent: Story = {
+  render: () => <Template />,
+};
+export const MultiLine: Story = {
+  render: () => <MultiLineTemplate />,
+};

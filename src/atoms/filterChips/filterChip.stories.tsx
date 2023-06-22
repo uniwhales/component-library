@@ -1,11 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+import { styled } from 'styled-components';
 import { FilterChip } from './filterChip';
 import {
   AllIcon, CoinStandard, ImageIcon, Microscope, Sonar, StarIcon, Suitcase, WebinarStandard,
 } from '../icons';
-import { Styled } from '../../theme';
 import { Text } from '../texts/text';
+import { FilterChipProps } from './types';
 
 interface Filter {
   id: string;
@@ -101,14 +102,14 @@ const interests: InterestsData[] = [
   { id: '7', text: 'DEX' },
   { id: '8', text: 'DAO' },
 ];
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 900px;
   gap: 24px;
 `;
-const OnboardingWrapper = Styled.div`
+const OnboardingWrapper = styled.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -116,24 +117,25 @@ const OnboardingWrapper = Styled.div`
   padding: 16px;
   background: ${({ theme }) => theme.colors.primary.DARK_BLUE};
 `;
-export default {
-  title: 'Atoms/FilterChips',
+const meta: Meta<typeof FilterChip> = {
   component: FilterChip,
+};
 
-} as ComponentMeta<typeof FilterChip>;
+export default meta;
+type Story = StoryObj<typeof FilterChip>;
 
 const DataPresets = [filtersArray, newsdeskStories];
 
-const Template: ComponentStory<typeof FilterChip> = (props) => {
+const Template = (args: FilterChipProps) => {
   const [selectFilter, setSelectFilter] = useState<string>();
-  const { id } = props;
+  const { id } = args;
 
   return (
     <Wrapper>
       {DataPresets[Number(id)]
         .map((chip: Filter) => (
           <FilterChip
-            {...props}
+            {...args}
             {...chip}
             variant="primary"
             onClick={() => setSelectFilter(chip.id)}
@@ -145,7 +147,9 @@ const Template: ComponentStory<typeof FilterChip> = (props) => {
     </Wrapper>
   );
 };
-const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => {
+const Template2 = (args: FilterChipProps) => {
+  const { disabled } = args;
+
   const [filter, setFilter] = useState<string | undefined>();
 
   return (
@@ -167,7 +171,8 @@ const Template2: ComponentStory<typeof FilterChip> = ({ disabled }) => {
   );
 };
 
-const Template3: ComponentStory<typeof FilterChip> = ({ disabled }) => {
+const Template3 = (args: FilterChipProps) => {
+  const { disabled } = args;
   const [selected, setSelected] = useState<string[] | undefined>();
 
   const handleClick = (id: string) => {
@@ -194,11 +199,21 @@ const Template3: ComponentStory<typeof FilterChip> = ({ disabled }) => {
     </OnboardingWrapper>
   );
 };
-export const Basic = Template.bind({});
-export const BasicCustomWidth = Template.bind({});
-export const BasicNewsdesk = Template.bind({});
-export const SecondaryFilterChip = Template2.bind({});
-export const OnboardingFilterChip = Template3.bind({});
+export const Basic: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const BasicCustomWidth: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const BasicNewsdesk: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const SecondaryFilterChip: Story = {
+  render: (args) => <Template2 {...args} />,
+};
+export const OnboardingFilterChip: Story = {
+  render: (args) => <Template3 {...args} />,
+};
 
 Basic.args = { id: '0' };
 BasicCustomWidth.args = {

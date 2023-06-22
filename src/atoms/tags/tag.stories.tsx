@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Tag } from './tag';
 import { Wrapper } from './tag.styles';
+import { BodySizes, HeaderSizes } from '../texts/types';
 
-export default {
-  title: 'Atoms/Tags',
+const meta: Meta<typeof Tag> = {
   component: Tag,
-  argTypes: {
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof Tag>;
+};
+
+export default meta;
+type Story = StoryObj<typeof Tag>;
 
 const mockData = ['NFT', 'privacy', 'defi', 'metaverse', 'Aurora', 'L2'];
 
-const Template: ComponentStory<typeof Tag> = (args) => (
+const Template = (args: React.JSX.IntrinsicAttributes & { children: React.ReactChild; isOn: boolean; tabIndex: number; onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void; fontSize?: BodySizes | HeaderSizes | undefined; } & Pick<React.CSSProperties, 'width'>) => (
   <Wrapper>
     {mockData.map((item, index) => {
       const [isActive, setIsActive] = useState<boolean>(false);
@@ -38,9 +34,16 @@ const Template: ComponentStory<typeof Tag> = (args) => (
     })}
   </Wrapper>
 );
-export const ContentTags = Template.bind({});
-export const ContentTagsCustomWidth = Template.bind({});
-export const CustomFontSize = Template.bind({});
+export const ContentTags: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const ContentTagsCustomWidth: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CustomFontSize: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 ContentTags.parameters = {
   backgrounds: { default: 'dark' },

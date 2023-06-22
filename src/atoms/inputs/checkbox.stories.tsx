@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Checkbox } from './checkbox';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Checkbox, CheckboxProps } from './checkbox';
 
-export default {
-  title: 'Atoms/Checkbox',
+const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Checkbox>;
+};
 
-const Template: ComponentStory<typeof Checkbox> = (props) => {
+export default meta;
+type Story = StoryObj<typeof Checkbox>;
+
+const Template = (props: React.JSX.IntrinsicAttributes & CheckboxProps) => {
   const [selected, setSelected] = useState<boolean>(false);
   return <Checkbox {...props} selected={selected} onClick={() => { setSelected(!selected); }} />;
 };
 
-export const Primary = Template.bind({});
-export const Secondary = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Secondary: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.args = {
   disabled: false,

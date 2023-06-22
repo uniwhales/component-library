@@ -1,18 +1,21 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { SwitcherAtom } from './switcher';
+import { SwitcherAtom, SwitcherProps } from './switcher';
 
-export default {
-  title: 'Atoms/Switcher',
+const meta: Meta<typeof SwitcherAtom> = {
   component: SwitcherAtom,
-  argTypes: {},
-} as ComponentMeta<typeof SwitcherAtom>;
+};
 
-const Template: ComponentStory<typeof SwitcherAtom> = (args) => {
+export default meta;
+type Story = StoryObj<typeof SwitcherAtom>;
+
+const Template = (args: React.JSX.IntrinsicAttributes & SwitcherProps) => {
   const [isOn, setIsOn] = useState<boolean>(false);
   return <SwitcherAtom {...args} isOn={isOn} onClick={() => setIsOn(!isOn)} />;
 };
-export const Standard = Template.bind({});
+export const Standard: Story = {
+  render: (args) => <Template {...args} />,
+};
 Standard.args = {
   disabled: false,
 };

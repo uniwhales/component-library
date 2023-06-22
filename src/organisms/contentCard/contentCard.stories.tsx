@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { ContentCard } from './contentCard';
-import { Styled } from '../../theme';
+
 import { ContentType } from './types';
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -15,7 +15,7 @@ export default {
   title: 'Organisms/ContentCard',
   component: ContentCard,
   argTypes: {},
-} as ComponentMeta<typeof ContentCard>;
+} as Meta<typeof ContentCard>;
 
 const defaultValues = {
   contentType: ContentType.Article,
@@ -31,7 +31,7 @@ const defaultValues = {
   size: 'LnM',
 };
 
-const Template: ComponentStory<typeof ContentCard> = (args) => (
+const Template: StoryFn<typeof ContentCard> = (args) => (
   <Wrapper>
     <ContentCard {...defaultValues} {...args} />
   </Wrapper>

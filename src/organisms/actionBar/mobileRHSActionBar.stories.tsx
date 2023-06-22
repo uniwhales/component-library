@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { MobileRHSActionBar } from './mobileRHSActionBar';
 import { AllIcon } from '../../atoms/icons';
 
@@ -7,9 +7,9 @@ export default {
   title: 'Organisms/MobileRHSActionBar',
   component: MobileRHSActionBar,
   argTypes: {},
-} as ComponentMeta<typeof MobileRHSActionBar>;
+} as Meta<typeof MobileRHSActionBar>;
 
-const Template: ComponentStory<typeof MobileRHSActionBar> = (args) => (
+const Template: StoryFn<typeof MobileRHSActionBar> = (args) => (
   <MobileRHSActionBar {...args} />
 );
 

@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { TokenPriceCard } from './tokenPriceCard';
-import { Styled } from '../../theme';
 
-const Wrapper = Styled.div`
+
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -12,7 +12,7 @@ export default {
   title: 'Molecules/TokenPriceCard',
   component: TokenPriceCard,
   argTypes: {},
-} as ComponentMeta<typeof TokenPriceCard>;
+} as Meta<typeof TokenPriceCard>;
 
 const Shiba = {
   symbol: 'SHIB',
@@ -53,7 +53,7 @@ const Snipe = {
   price_change_percentage_7d: -8.048321568361459,
 };
 
-const Template: ComponentStory<typeof TokenPriceCard> = () => {
+const Template: StoryFn<typeof TokenPriceCard> = () => {
   const [favorites, setFavorites] = useState([Shiba.address]);
   const isFav = (address: string) => favorites.some((id) => id === address);
   const filterFavs = (address: string) => (favorites.some((id) => id === address)

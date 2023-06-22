@@ -1,14 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { ThemeToggle } from './themeToggle';
+import { ThemeToggle, ThemeToggleProps } from './themeToggle';
 
-export default {
-  title: 'Atoms/ThemeToggle',
+const meta: Meta<typeof ThemeToggle> = {
   component: ThemeToggle,
-  argTypes: {},
-} as ComponentMeta<typeof ThemeToggle>;
+};
 
-const Template: ComponentStory<typeof ThemeToggle> = (args) => {
+export default meta;
+type Story = StoryObj<typeof ThemeToggle>;
+
+const Template = (args: React.JSX.IntrinsicAttributes & ThemeToggleProps) => {
   const [isOn, setIsOn] = useState<boolean>(false);
   const [expanded, setExpanded] = useState(false);
   return (
@@ -29,4 +30,6 @@ const Template: ComponentStory<typeof ThemeToggle> = (args) => {
   );
 };
 
-export const ThemeToggleStandard = Template.bind({});
+export const ThemeToggleStandard: Story = {
+  render: (args) => <Template {...args} />,
+};

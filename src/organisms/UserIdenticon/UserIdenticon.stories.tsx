@@ -1,14 +1,14 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { UserIdenticon } from './UserIdenticon';
 
 export default {
   title: 'Organisms/UserIdenticon',
   component: UserIdenticon,
   argTypes: {},
-} as ComponentMeta<typeof UserIdenticon>;
+} as Meta<typeof UserIdenticon>;
 
-const Template: ComponentStory<typeof UserIdenticon> = (args) => (
+const Template: StoryFn<typeof UserIdenticon> = (args) => (
   <UserIdenticon {...args} />
 );
 export const Primary = Template.bind({});

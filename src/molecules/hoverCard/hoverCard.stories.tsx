@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { HoverCardComponent } from './hoverCard';
@@ -19,9 +19,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof HoverCardComponent>;
+} as Meta<typeof HoverCardComponent>;
 
-const Template: ComponentStory<typeof HoverCardComponent> = () => {
+const Template: StoryFn<typeof HoverCardComponent> = () => {
   const content = (
     <div>
       <Text size="14-Regular">hover Card content</Text>

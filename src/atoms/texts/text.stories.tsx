@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, Story } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from './text';
 import { BodySizes, HeaderSizes, HyperLinkVariation } from './types';
 
@@ -43,36 +43,33 @@ const hyperLinks: HyperLinkVariation[] = [
 
 ];
 
-interface TemplateSizes {
-  list: | HeaderSizes[] | BodySizes[],
-}
-
-export default {
-  title: 'Atoms/Text',
+const meta: Meta<typeof Text> = {
   component: Text,
-  argTypes: {
-    size: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof Text>;
-
-const Template: Story<TemplateSizes> = (args) => {
-  const { list } = args;
-  return (
-    <>
-      {list.map((item) => <Text key={item} size={item}>{item}</Text>)}
-    </>
-  );
 };
 
-const LinkTemplate: Story<TemplateSizes> = (args) => {
-  const { list } = args;
-  return (
+export default meta;
+type Story = StoryObj<typeof Text>;
+
+export const BodyText: Story = {
+  render: () => (
     <>
-      {list.map((item) => (
+      {bodySizes.map((item) => <Text key={item} size={item}>{item}</Text>)}
+    </>
+  ),
+};
+
+export const HeadingsAndTitles: Story = {
+  render: () => (
+    <>
+      {headerSizes.map((item) => <Text key={item} size={item}>{item}</Text>)}
+    </>
+  ),
+};
+
+export const LinkS: Story = {
+  render: () => (
+    <>
+      {bodySizes.map((item) => (
         <div>
           {hyperLinks.map((h) => (
             <div>
@@ -88,21 +85,9 @@ const LinkTemplate: Story<TemplateSizes> = (args) => {
         </div>
       ))}
     </>
-  );
+  ),
 };
-export const HeadingsAndTitles = Template.bind({});
-export const BodyText = Template.bind({});
-export const LinkS = LinkTemplate.bind({});
 
-BodyText.args = {
-  list: bodySizes,
-};
-HeadingsAndTitles.args = {
-  list: headerSizes,
-};
-LinkS.args = {
-  list: bodySizes,
-};
 LinkS.parameters = {
   backgrounds: { default: 'dark' },
 };

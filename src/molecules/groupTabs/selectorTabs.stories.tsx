@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { SelectorTabsMolecules, Tab } from './selectorTabs';
 
@@ -15,9 +15,9 @@ export default {
   title: 'Molecules/Tabs',
   component: SelectorTabsMolecules,
   argTypes: {},
-} as ComponentMeta<typeof SelectorTabsMolecules>;
+} as Meta<typeof SelectorTabsMolecules>;
 
-const Template: ComponentStory<typeof SelectorTabsMolecules> = (args) => {
+const Template: StoryFn<typeof SelectorTabsMolecules> = (args) => {
   const { tabs } = args;
   const [data, setData] = useState<Tab>();
   return (
