@@ -5,7 +5,7 @@ import {
 } from './input';
 import { localTheme } from '../../theme';
 import { Text } from '../texts/text';
-import { Required } from './select/select';
+import { Required } from './select/components';
 
 export type TextAreaTypes = {
   disabled: boolean;

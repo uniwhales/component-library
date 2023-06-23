@@ -4,7 +4,7 @@ import { localTheme, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
-import { Required } from './select/select';
+import { Required } from './select/components';
 
 const InputPatterns = {
   number: /^-?\d*\.?\d*$/,
