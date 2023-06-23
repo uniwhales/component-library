@@ -1,23 +1,32 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { CopyToClipBoard } from './copyToClipBoard';
 import { Share } from '../../atoms/icons/generalIcons/filledStyle/Share';
 import { Theme } from '../../theme';
 import { CopyStandard } from '../../atoms/icons';
 
-export default {
-  title: 'Molecules/CopyToClipBoard',
+const meta: Meta<typeof CopyToClipBoard> = {
   component: CopyToClipBoard,
-  argTypes: {
-  },
-} as Meta<typeof CopyToClipBoard>;
+};
 
-const Template: StoryFn<typeof CopyToClipBoard> = (args) => <CopyToClipBoard {...args} />;
-export const Primary = Template.bind({});
-export const Secondary = Template.bind({});
-export const CustomSize = Template.bind({});
-export const Hover = Template.bind({});
-export const BackgroundHover = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof CopyToClipBoard>;
+
+export const Primary: Story = {
+  render: (args) => <CopyToClipBoard {...args} />,
+};
+export const Secondary: Story = {
+  render: (args) => <CopyToClipBoard {...args} />,
+};
+export const CustomSize: Story = {
+  render: (args) => <CopyToClipBoard {...args} />,
+};
+export const Hover: Story = {
+  render: (args) => <CopyToClipBoard {...args} />,
+};
+export const BackgroundHover: Story = {
+  render: (args) => <CopyToClipBoard {...args} />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },

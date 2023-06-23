@@ -1,28 +1,39 @@
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { CardDate } from './cardDate';
+import { CardDateProps } from './types';
 
-export default {
-  title: 'Molecules/CardDate',
+const meta: Meta<typeof CardDate> = {
   component: CardDate,
-  argTypes: {},
-} as Meta<typeof CardDate>;
+};
+
+export default meta;
+type Story = StoryObj<typeof CardDate>;
 
 const defaultParams = {
   date: 'Nov 31st, 2021',
   state: 'Upcoming',
 };
 
-const Template: StoryFn<typeof CardDate> = (args) => (
+const Template = (args: CardDateProps) => (
   <CardDate {...defaultParams} {...args} />
 );
 
-export const CardDateUpcoming = Template.bind({});
-export const CardDateNew = Template.bind({});
+export const CardDateUpcoming: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CardDateNew: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const CardDateBreaking: Story = {
+  render: (args) => <Template {...args} />,
+};
+
 CardDateNew.args = {
   state: 'New',
 };
-export const CardDateBreaking = Template.bind({});
 CardDateBreaking.args = {
   state: 'Breaking',
 };

@@ -1,28 +1,18 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ControlledTooltipComponent } from './controlledTooltip';
 import { Content, Target, Wrapper } from './styles';
 
-export default {
-  title: 'Molecules/ControlledTooltip',
+const meta: Meta<typeof ControlledTooltipComponent> = {
   component: ControlledTooltipComponent,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as Meta<typeof ControlledTooltipComponent>;
+};
 
-const Template: StoryFn<typeof ControlledTooltipComponent> = () => {
+export default meta;
+type Story = StoryObj<typeof ControlledTooltipComponent>;
+
+const Template = () => {
   const target = (
     <Target>
       <Text size="14-Regular" color="#F8F9FF">Click to see tooltip</Text>
@@ -45,4 +35,6 @@ const Template: StoryFn<typeof ControlledTooltipComponent> = () => {
   );
 };
 
-export const ControlledTooltip = Template.bind({});
+export const ControlledTooltip: Story = {
+  render: () => <Template />,
+};

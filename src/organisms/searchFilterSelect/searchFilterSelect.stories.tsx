@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { SearchFilterSelect } from './searchFilterSelect';
 
-export default {
-  title: 'Organisms/SearchFilterSelect',
+const meta: Meta<typeof SearchFilterSelect> = {
   component: SearchFilterSelect,
-  argTypes: {
-  },
-} as Meta<typeof SearchFilterSelect>;
+};
+
+export default meta;
+type Story = StoryObj<typeof SearchFilterSelect>;
 
 const MockData = [{
   symbol: 'APE',
@@ -55,11 +55,10 @@ const MockData = [{
   label: 'NEAR',
 }];
 
-const Template: StoryFn<typeof SearchFilterSelect> = (args) => {
+const Template = (args: { isDropdownDisabled?: boolean; isLoading?: boolean; }) => {
   const {
-    isLoading: argIsLoading,
-    options: argOptions,
     isDropdownDisabled: argsIsDropdownDisabled,
+    isLoading: argIsLoading,
   } = args;
   const [value, setValue] = useState<string>('');
   const [inputValue, setInputValue] = useState<string>('');
@@ -68,7 +67,6 @@ const Template: StoryFn<typeof SearchFilterSelect> = (args) => {
 
   return (
     <SearchFilterSelect
-      {...args}
       options={options}
       onChange={(e) => {
         setValue(e);
@@ -78,7 +76,7 @@ const Template: StoryFn<typeof SearchFilterSelect> = (args) => {
         if (e.length > 2) {
           setIsLoading(argIsLoading || true);
           setTimeout(() => {
-            setOptions(argOptions || MockData);
+            setOptions(MockData);
             setIsLoading(argIsLoading || false);
           }, 1000);
         }
@@ -95,14 +93,15 @@ const Template: StoryFn<typeof SearchFilterSelect> = (args) => {
     />
   );
 };
-export const Primary = Template.bind({});
-export const NoDropdown = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const NoDropdown: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
-};
-
-Primary.args = {
 };
 
 NoDropdown.parameters = {

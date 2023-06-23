@@ -1,27 +1,17 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { HoverCardComponent } from './hoverCard';
 
-export default {
-  title: 'Molecules/HoverCard',
+const meta: Meta<typeof HoverCardComponent> = {
   component: HoverCardComponent,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as Meta<typeof HoverCardComponent>;
+};
 
-const Template: StoryFn<typeof HoverCardComponent> = () => {
+export default meta;
+type Story = StoryObj<typeof HoverCardComponent>;
+
+const Template = () => {
   const content = (
     <div>
       <Text size="14-Regular">hover Card content</Text>
@@ -51,4 +41,6 @@ const Template: StoryFn<typeof HoverCardComponent> = () => {
   );
 };
 
-export const HoverCard = Template.bind({});
+export const HoverCard: Story = {
+  render: () => <Template />,
+};

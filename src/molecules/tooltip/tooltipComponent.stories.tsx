@@ -68,19 +68,22 @@ const Template = () => {
   );
 };
 
-const MultiLineTemplate = () => (
-  <SimpleTooltip
-    position="top"
-    zIndex={theme.zIndex.OVERLAY}
-    label="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    allowPointerEvents
-    multiline
-  >
-    <div>
-      <Text>target bottom</Text>
-    </div>
-  </SimpleTooltip>
-);
+const MultiLineTemplate = () => {
+  const theme = localTheme();
+  return (
+    <SimpleTooltip
+      position="top"
+      zIndex={theme.zIndex.OVERLAY}
+      label="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      allowPointerEvents
+      multiline
+    >
+      <div>
+        <Text>target bottom</Text>
+      </div>
+    </SimpleTooltip>
+  );
+};
 
 export const SimpleTooltipComponent: Story = {
   render: () => <Template />,

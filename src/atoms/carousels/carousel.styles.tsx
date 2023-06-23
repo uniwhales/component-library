@@ -1,8 +1,7 @@
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel as OriginalCarousel, CarouselProps as OriginalCarouselProps } from 'react-responsive-carousel';
 import { styled } from 'styled-components';
-import { CarouselProps } from './types';
 
-export const CustomCarousel = styled(Carousel)<{ borderRadius: CarouselProps['borderRadius'] }>`
+export const CustomCarousel = styled(OriginalCarousel)<OriginalCarouselProps & { borderRadius?: string }>`
     .carousel-slider {
         height: inherit;
     }

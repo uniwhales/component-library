@@ -1,6 +1,3 @@
-import { ReactElement } from 'react';
-import { CheckboxProps } from '../inputs/checkbox';
-
 export type IdenticonProps = {
   size: 'big' | 'small';
   id: string;
@@ -10,11 +7,4 @@ export type IdenticonProps = {
   target?: string;
   onMouseEnter?: () => void;
   isLink?: boolean;
-};
-
-export type SelectableIdenticonProps = {
-  checkbox: Omit<CheckboxProps, 'rounded' | 'size'>
-  text?: ReactElement
-  showCheckbox?: boolean
-  identicon: IdenticonProps
 };

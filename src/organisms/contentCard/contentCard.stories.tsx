@@ -1,8 +1,9 @@
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import { styled } from 'styled-components';
 import { ContentCard } from './contentCard';
 
-import { ContentType } from './types';
+import { ContentCardProps, ContentType } from './types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,11 +12,12 @@ const Wrapper = styled.div`
 
   width: 420px;
 `;
-export default {
-  title: 'Organisms/ContentCard',
+const meta: Meta<typeof ContentCard> = {
   component: ContentCard,
-  argTypes: {},
-} as Meta<typeof ContentCard>;
+};
+
+export default meta;
+type Story = StoryObj<typeof ContentCard>;
 
 const defaultValues = {
   contentType: ContentType.Article,
@@ -31,18 +33,28 @@ const defaultValues = {
   size: 'LnM',
 };
 
-const Template: StoryFn<typeof ContentCard> = (args) => (
+const Template = (args: React.JSX.IntrinsicAttributes & ContentCardProps) => (
   <Wrapper>
     <ContentCard {...defaultValues} {...args} />
   </Wrapper>
 );
 
-export const ContentCardMAndLarge = Template.bind({});
-export const ContentCardS = Template.bind({});
+export const ContentCardMAndLarge: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const ContentCardS: Story = {
+  render: (args) => <Template {...args} />,
+};
+
+export const ContentCardSSingleLineTitle: Story = {
+  render: (args) => <Template {...args} />,
+};
+
 ContentCardS.args = {
   size: 'S',
 };
-export const ContentCardSSingleLineTitle = Template.bind({});
+
 ContentCardSSingleLineTitle.args = {
   title: 'Title of Card on a one liner',
 };

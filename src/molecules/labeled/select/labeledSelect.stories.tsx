@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
 } from '../../../atoms/icons';
 import { IconWrapper } from '../../../atoms/icons/iconWrapper';
-import { LabeledSelect } from './labeledSelect';
-import { Placeholder, SelectOption } from '../../../atoms/inputs/select';
+import { LabeledSelect, LabeledSelectProps } from './labeledSelect';
+import { Placeholder, SelectOption, SelectProps } from '../../../atoms/inputs/select';
 import { ButtonAtom } from '../../../atoms/buttons/button';
 import { Text } from '../../../atoms/texts/text';
 
@@ -74,14 +74,14 @@ const GroupExample = [
   { label: 'Tx Types', options: TxOptions },
 ];
 
-export default {
-  title: 'Molecules/LabeledSelect',
+const meta: Meta<typeof LabeledSelect> = {
   component: LabeledSelect,
-  argTypes: {
-  },
-} as Meta<typeof LabeledSelect>;
+};
 
-const TemplateSingle: StoryFn<typeof LabeledSelect<'single'>> = (args) => {
+export default meta;
+type Story = StoryObj<typeof LabeledSelect>;
+
+const TemplateSingle = (args: React.JSX.IntrinsicAttributes & SelectProps<'single'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <>
@@ -90,22 +90,30 @@ const TemplateSingle: StoryFn<typeof LabeledSelect<'single'>> = (args) => {
     </>
   );
 };
-const TemplateGroup: StoryFn<typeof LabeledSelect<'group'>> = (args) => {
+const TemplateGroup = (args: React.JSX.IntrinsicAttributes & SelectProps<'group'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return <LabeledSelect<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMulti: StoryFn<typeof LabeledSelect<'multi'>> = (args) => {
+const TemplateMulti = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMultiGroup: StoryFn<typeof LabeledSelect<'multi-group'>> = (args) => {
+const TemplateMultiGroup = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi-group'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-export const LabeledPrimary = TemplateSingle.bind({});
-export const LabeledSingleGroupSearchSelect = TemplateGroup.bind({});
-export const LabeledMultiSelect = TemplateMulti.bind({});
-export const LabeledMultiGroupSelect = TemplateMultiGroup.bind({});
+export const LabeledPrimary: Story = {
+  render: (args) => <TemplateSingle {...args} />,
+};
+export const LabeledSingleGroupSearchSelect: Story = {
+  render: (args) => <TemplateGroup {...args} />,
+};
+export const LabeledMultiSelect: Story = {
+  render: (args) => <TemplateMulti {...args} />,
+};
+export const LabeledMultiGroupSelect: Story = {
+  render: (args) => <TemplateMultiGroup {...args} />,
+};
 
 LabeledPrimary.parameters = {
   backgrounds: { default: 'dark theme' },

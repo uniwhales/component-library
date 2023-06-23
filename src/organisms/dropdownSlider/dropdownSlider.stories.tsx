@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useRef } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { Column } from '../../atoms/common/flex';
@@ -6,20 +6,26 @@ import { CoinStandard } from '../../atoms/icons';
 import { Text } from '../../atoms/texts/text';
 import { DropdownSlider, SliderRef } from './minUsdSlider';
 import { Bar, TextRow } from './styles';
+import { MinUsdProps } from './types';
 
-export default {
-  title: 'Organisms/DropdownSlider',
+const meta: Meta<typeof DropdownSlider> = {
   component: DropdownSlider,
-  argTypes: {},
-} as Meta<typeof DropdownSlider>;
+};
 
-const Template: StoryFn<typeof DropdownSlider> = (args, { globals }) => {
+export default meta;
+type Story = StoryObj<typeof DropdownSlider>;
+
+const Template = (
+  args: React.JSX.IntrinsicAttributes & MinUsdProps
+  & React.RefAttributes<SliderRef>,
+  isDark: boolean,
+) => {
   const sliderEl = useRef<SliderRef>(null);
-  const isDark = globals.backgrounds?.value === '#191B20';
-
   const onApply = (val: string) => {
     console.log(`apply clicked ${val}`);
   };
+
+  const textColor = isDark ? '#B4B5C6' : '#70717C';
 
   return (
     <Column>
@@ -34,15 +40,15 @@ const Template: StoryFn<typeof DropdownSlider> = (args, { globals }) => {
           buttonWidth="140px"
           description={(
             <TextRow>
-              <Text color={isDark ? '#B4B5C6' : '#70717C'} size="12-Regular">
+              <Text color={textColor} size="12-Regular">
                 Set a
                 {' '}
               </Text>
-              <Text size="12-Bold" color={isDark ? '#B4B5C6' : '#70717C'}>
+              <Text size="12-Bold" color={textColor}>
                 min. value (USD)
                 {' '}
               </Text>
-              <Text size="12-Regular" color={isDark ? '#B4B5C6' : '#70717C'}>for transactions</Text>
+              <Text size="12-Regular" color={textColor}>for transactions</Text>
             </TextRow>
           )}
           onApply={onApply}
@@ -64,8 +70,18 @@ const Template: StoryFn<typeof DropdownSlider> = (args, { globals }) => {
   );
 };
 
-export const DropdownSliderComponent = Template.bind({});
-export const DropdownSliderWithScaleComponent = Template.bind({});
+export const DropdownSliderComponent: Story = {
+  render: (args, { globals: { backgrounds } }) => {
+    const isDark = backgrounds?.value === '#191B20';
+    return Template(args, isDark);
+  },
+};
+export const DropdownSliderWithScaleComponent: Story = {
+  render: (args, { globals: { backgrounds } }) => {
+    const isDark = backgrounds?.value === '#191B20';
+    return Template(args, isDark);
+  },
+};
 
 DropdownSliderComponent.args = {
   min: 0,

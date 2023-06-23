@@ -252,7 +252,7 @@ export const SearchFilterSelect: SelectFn = ({
       }}
       value={value}
       inputValue={inputValue}
-      onInputChange={(v, actionMeta) => {
+      onInputChange={(v: string, actionMeta: InputActionMeta) => {
         if (actionMeta.action === 'input-change' || actionMeta.action === 'set-value') {
           onInputChange(v, actionMeta);
         }

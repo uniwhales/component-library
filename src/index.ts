@@ -2,7 +2,6 @@
 export * from './atoms/buttons/button';
 export * from './atoms/icons/iconWrapper';
 export * from './atoms/inputs/input';
-export * from './atoms/tabs/selectorTab';
 export * from './atoms/texts/text';
 export { HyperLinkVariation } from './atoms/texts/types';
 export * from './atoms/toggles/toggle__standart';
@@ -27,7 +26,6 @@ export * from './atoms/cieloLogo/CieloLogo';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
-export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
 export * from './atoms/shortText/shortText';
 export * from './atoms/walletLabel/walletLabel';
@@ -37,7 +35,6 @@ export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
-export * from './molecules/groupTabs/selectorTabs';
 export * from './molecules/cardDate/cardDate';
 export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tooltip/TooltipComponent';
