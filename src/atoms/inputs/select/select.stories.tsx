@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
-  Placeholder, Select, SelectOption, SelectProps,
+  Select,
 } from './select';
-import { IconWrapper } from '../icons/iconWrapper';
+import { IconWrapper } from '../../icons/iconWrapper';
 import {
   BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars, ZkEvmColor,
-} from '../icons';
-import { Text } from '../texts/text';
-import { Wrapper } from './input';
+} from '../../icons';
+import { Text } from '../../texts/text';
+import { Wrapper } from '../input';
+import { Placeholder } from './components';
+import { SelectOption, SelectProps } from './types';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -136,25 +138,25 @@ const TemplateMultiGroup = (args: SelectProps<'multi-group'>) => {
   );
 };
 export const Primary: Story = {
-  render: (args) => <TemplateSingle {...args} />,
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
 };
 export const PrimaryIcon: Story = {
-  render: (args) => <TemplateSingle {...args} />,
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
 };
 export const LongOption: Story = {
-  render: (args) => <TemplateSingle {...args} />,
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
 };
 export const SingleGroupSearchSelect: Story = {
-  render: (args) => <TemplateGroup {...args} />,
+  render: (args: SelectProps<'group'>) => <TemplateGroup {...args} />,
 };
 export const MultiSelect: Story = {
-  render: (args) => <TemplateMulti {...args} />,
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
 };
 export const MultiGroupSelect: Story = {
-  render: (args) => <TemplateMultiGroup {...args} />,
+  render: (args: SelectProps<'multi-group'>) => <TemplateMultiGroup {...args} />,
 };
 export const CustomMenuHeight: Story = {
-  render: (args) => <TemplateMulti {...args} />,
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
 };
 
 Primary.parameters = {

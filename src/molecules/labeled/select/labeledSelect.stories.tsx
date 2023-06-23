@@ -5,7 +5,7 @@ import {
 } from '../../../atoms/icons';
 import { IconWrapper } from '../../../atoms/icons/iconWrapper';
 import { LabeledSelect, LabeledSelectProps } from './labeledSelect';
-import { Placeholder, SelectOption, SelectProps } from '../../../atoms/inputs/select';
+import { Placeholder, SelectOption, SelectProps } from '../../../atoms/inputs/select/select';
 import { ButtonAtom } from '../../../atoms/buttons/button';
 import { Text } from '../../../atoms/texts/text';
 

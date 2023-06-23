@@ -1,90 +1,23 @@
-import React, {
-  ReactNode, Ref, useState,
-} from 'react';
-import ReactSelect, {
+import React, { useState } from 'react';
+import {
   components, StylesConfig,
 } from 'react-select';
-import { styled } from 'styled-components';
-import { Checkbox } from './checkbox';
-import { localTheme } from '../../theme';
-import { IconWrapper } from '../icons/iconWrapper';
-import { Text } from '../texts/text';
-import { ChevronDownIcon, ChevronUpIcon } from '../icons';
-
-export interface Option {
-  value: string,
-  label: string,
-  id: number;
-  icon?: JSX.Element,
-  isSelected?: boolean;
-  order?: number;
-  required?: boolean;
-}
-export interface SelectGroupOption {
-  label: string;
-  options: Option[]
-}
-
-export interface SelectOption extends Option { }
-
-export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
-export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
-  : SelectOption[];
-export type SelectOptions<T extends SelectVariation> = T extends 'single' ? SelectOption[] : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectGroupOption[]
-  : SelectGroupOption[];
-
-export interface SelectProps<T extends SelectVariation> {
-  width?: string,
-  onSelectChange?: (o: SelectVal<T>) => void,
-  selectOptions: SelectOptions<T>,
-  selectValue?: SelectVal<T> | null,
-  readOnly?: boolean,
-  isMulti?: boolean,
-  isCheckBox?: boolean,
-  placeholder: string | ReactNode,
-  isXL?: boolean,
-  isClearable?: boolean,
-  isSearchable?: boolean,
-  showValue?: boolean,
-  clearButtonText?: string,
-  handleClearValue?: () => void;
-  maxMenuHeight?: number;
-  isDisabled?: boolean;
-  onInputChange?: (e: string) => void;
-  required?: boolean
-  tabIndex?: number
-  ref?: Ref<HTMLDivElement>
-  error?: boolean
-  errorMessage?: string
-  showOnTop?: boolean
-  noOptionsMessage?:string;
-  smallText?: boolean;
-}
-
-type StyledProps = {
-  isFocused?: boolean
-  isSelected?: boolean
-  menuIsOpen?: boolean
-  options?: any;
-  theme: any;
-  readOnly?: boolean;
-  isMulti?: boolean;
-  isCheckBox?: boolean;
-  label?: string;
-  isDisabled?: boolean;
-  error?: boolean;
-  showOnTop?: boolean;
-};
-
-export const isSelectOptionGuard = (
-  o: SelectOption[] | SelectGroupOption[],
-  // @ts-ignore
-): o is SelectOption[] => Array.isArray(o) && o.every((group: SelectOption | SelectGroupOption): group is SelectOption => !('options' in group));
-
-export enum BulkSelectOption {
-  SelectAll = 'Select All',
-  DeselectAll = 'Deselect All',
-}
+import { Checkbox } from '../checkbox';
+import { localTheme } from '../../../theme';
+import { IconWrapper } from '../../icons/iconWrapper';
+import { Text } from '../../texts/text';
+import { ChevronDownIcon, ChevronUpIcon } from '../../icons';
+import {
+  CheckboxOptionContainer, ClearButtonContainer, ClearWrapper,
+  ControlComponent, ErrorMessageContainer, GroupHeadingComponent,
+  MenuListComponent, MultiValueComponent, MultiValueRemoveComponent,
+  OptionLabelContainer, OptionWrapper, SelectWrapper,
+  SingleValueComponent, StyledSelect,
+} from './components';
+import {
+  BulkSelectOption, isSelectOptionGuard, Option, SelectGroupOption,
+  SelectOption, SelectProps, SelectVal, SelectVariation, StyledProps,
+} from './types';
 
 const SelectAllOption: SelectOption = {
   value: BulkSelectOption.SelectAll,
@@ -97,122 +30,10 @@ const DeselectAllOption: SelectOption = {
   id: 99999,
 };
 
-const SelectWrapper = styled.div<{ width?: string, isDisabled:boolean }>`
-  position: relative;
-  width: ${({ width }) => width ?? '100%'};
-  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
-`;
-
-const StyledSelect = styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
-  outline: none;
-  margin-bottom: ${({ error }) => error && '4px'};
-  width: ${({ width }) => width ?? '100%'};
-  :hover {
-    div {
-      // target placeholder when we have a custom component with icon
-      // have not been able to find another way of targeting this than
-      // overriding like this.
-      p {
-        color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-      }
-    }
-    input {
-      ::placeholder {
-        color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
-      }
-    }
-  }
-`;
-
-const ErrorMessageContainer = styled.div`
-  position: absolute;
-  right: 0;
-`;
-
-export const Placeholder = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow: hidden;
-`;
-
-const OptionWrapper = styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
-  zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
-  background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
-  :hover {
-    background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
-  }
-  &:first-of-type {
-    border-radius: ${({ showOnTop, hasGroups }) => (showOnTop && !hasGroups && '12px 12px 0 0')};
-  }
-  &:last-of-type {
-    border-radius: ${({ showOnTop, isLastGroup }) => (!showOnTop && isLastGroup && '0 0 12px 12px')};
-  }
-`;
-
-const OptionLabelContainer = styled.label<{ addPadding: boolean, smallText?:boolean }>`
-  padding-left: ${({ addPadding }) => addPadding && '24px'};
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  word-break: break-all;
-  font-size: ${({ smallText }) => smallText && '12px'};
-`;
-
-const ClearButtonContainer = styled.div`
-  cursor: pointer;
-  padding: 0 5px;
-`;
-
-const ClearWrapper = styled.div``;
-
-export const Required = styled.span<{ disabled?: boolean }>`
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.RED)};
-`;
-
-const CheckboxOptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
-  box-sizing: border-box;
-  cursor: pointer;
-  outline: none;
-  padding: 0 10px 0 10px;
-  box-shadow: none;
-  border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop ? '0 0 12px 12px' : menuIsOpen && isFocused && !showOnTop ? '12px 12px 0 0 ' : '12px')};
-  height: 40px;
-  background: ${({ theme, isFocused, isDisabled }) => (isFocused
-    ? theme.colors.primary.MAIN_BLUE : isDisabled
-      ? theme.containerAndCardShades.SHADE_PLUS_3
-      : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
-  color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
-  font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
-  svg {
-    fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
-  }
-  :hover {
-    border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
-    svg {
-      fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
-    }
-  }
-`;
-
-const MenuListComponent = styled.div<{ showOnTop?: boolean }>`
-  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_2};
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  padding-top: 0;
-  border-radius: ${({ showOnTop }) => (showOnTop ? '10px 10px 0px 0px' : '0px 0px 10px 10px')};
-  z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
-`;
-
 const colourStyles: StylesConfig<StyledProps, false> = {
   control: (defaultStyles) => ({
     ...defaultStyles,
+    backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
   }),
@@ -225,49 +46,15 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     paddingTop: 0,
     paddingBottom: 0,
   }),
-  multiValue: (defaultStyles, { theme }: StyledProps) => ({
+  multiValue: (defaultStyles) => ({
     ...defaultStyles,
-    backgroundColor: theme.containerAndCardShades.SHADE_PLUS_2,
-    color: theme.textShades.SHADE_MINUS_2,
-    borderRadius: '12px',
-    border: '2px solid transparent',
-    display: 'flex',
-    gap: '6px',
-    padding: '0 6px',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    fontSize: '12px',
-    lineHeight: '16px',
-    fontWeight: 400,
-    cursor: 'pointer',
-    '&:hover': {
-      background: theme.textShades.SHADE_MINUS_1,
-      color: theme.textShades.SHADE_MINUS_3,
-    },
-    '&:active': {
-      background: theme.textShades.SHADE_MINUS_1,
-      color: theme.textShades.SHADE_MINUS_3,
-      border: `2px solid ${theme.colors.primary.YELLOW}`,
-    },
-    svg: {
-      transform: 'unset',
-      height: '12px',
-      width: '12px',
-    },
   }),
-  multiValueRemove: (defaultStyles, { theme }: StyledProps) => ({
+  multiValueRemove: (defaultStyles) => ({
     ...defaultStyles,
-    borderRadius: '50%',
-    padding: '2px',
-    svg: {
-      fill: theme.textShades.SHADE_MINUS_2,
-    },
-    '&:hover': {
-      svg: {
-        fill: theme.textShades.SHADE_MINUS_3,
-      },
-    },
+    backgroundColor: 'transparent',
+  }),
+  singleValue: (defaultStyles) => ({
+    ...defaultStyles,
   }),
   valueContainer: (defaultStyles) => ({
     ...defaultStyles,
@@ -286,22 +73,11 @@ const colourStyles: StylesConfig<StyledProps, false> = {
     paddingBottom: 0,
     paddingTop: 0,
   }),
-  groupHeading: (defaultStyles, { theme }: StyledProps) => ({
+  groupHeading: (defaultStyles) => ({
     ...defaultStyles,
-    background: theme.containerAndCardShades.SHADE_PLUS_1,
-    color: theme.textShades.SHADE_MINUS_3,
-    fontSize: '12px',
-    lineHeight: '16px',
-    fontWeight: 400,
-    padding: '8px 16px',
-    marginBottom: 0,
   }),
-  option: (defaultStyles, { theme, isSelected }: StyledProps) => ({
+  option: (defaultStyles) => ({
     ...defaultStyles,
-    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
-    '&:hover': {
-      color: theme.colors.system.WHITE,
-    },
   }),
 };
 
@@ -318,16 +94,38 @@ const MultiValue = (
     eslint disable next line is for destructing array component which makes no sense here
   */
   const filteredOptions = options.filter((o: any) => o.value !== BulkSelectOption.DeselectAll
-  && o.value !== BulkSelectOption.SelectAll);
+    && o.value !== BulkSelectOption.SelectAll);
   if (Array.isArray(selectedOptions) && isSelectOptionGuard(options)) {
     // eslint-disable-next-line
     const text = filteredOptions.length === selectedOptions.length
-    // eslint-disable-next-line
+      // eslint-disable-next-line
       ? 'All' : `${selectedOptions.length} selected`;
     return index === 0 ? <span>{text}</span> : null;
   }
 
-  return <components.MultiValue {...props} />;
+  return (
+    <MultiValueComponent>
+      <components.MultiValue {...props} />
+    </MultiValueComponent>
+  );
+};
+
+const MultiValueRemove = (props: any) => {
+  const Comp = components.MultiValueRemove;
+  return (
+    <MultiValueRemoveComponent>
+      <Comp {...props} />
+    </MultiValueRemoveComponent>
+  );
+};
+
+const GroupHeading = (props: any) => {
+  const Comp = components.GroupHeading;
+  return (
+    <GroupHeadingComponent>
+      <Comp {...props} />
+    </GroupHeadingComponent>
+  );
 };
 
 const OptionComponent = (props: any) => {
@@ -364,7 +162,11 @@ const OptionComponent = (props: any) => {
         {!readOnly && isCheckBox ? (
 
           <CheckboxOptionContainer>
-            <OptionLabelContainer addPadding={addPadding} smallText={smallText}>
+            <OptionLabelContainer
+              isSelected={isSelected}
+              addPadding={addPadding}
+              smallText={smallText}
+            >
               {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
               {label}
             </OptionLabelContainer>
@@ -377,7 +179,11 @@ const OptionComponent = (props: any) => {
             />
           </CheckboxOptionContainer>
         ) : (
-          <OptionLabelContainer smallText={smallText} addPadding={addPadding}>
+          <OptionLabelContainer
+            isSelected={isSelected}
+            smallText={smallText}
+            addPadding={addPadding}
+          >
             {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
             {label}
           </OptionLabelContainer>
@@ -459,6 +265,7 @@ const Control = (props: any) => {
   const {
     menuIsOpen, error, isDisabled, menuPlacement,
   } = selectProps;
+  console.debug('control', props);
   return (
     <ControlComponent
       menuIsOpen={menuIsOpen}
@@ -469,6 +276,21 @@ const Control = (props: any) => {
     >
       <Comp {...props} />
     </ControlComponent>
+  );
+};
+
+const SingleValue = (props: any) => {
+  const Comp = components.SingleValue;
+  const { isFocused, selectProps } = props;
+  const { isDisabled } = selectProps;
+  console.debug('hello', props);
+  return (
+    <SingleValueComponent
+      isDisabled={isDisabled}
+      isFocused={isFocused}
+    >
+      <Comp {...props} />
+    </SingleValueComponent>
   );
 };
 
@@ -508,12 +330,13 @@ export const Select = <T extends SelectVariation>({
     : selectOptions;
 
   const multiPlaceholder = (!selectValue || (isSelectOptionGuard(selectOptions)
-  && Array.isArray(selectValue) && selectValue.length === 0))
-  && <span>All disabled</span>;
+    && Array.isArray(selectValue) && selectValue.length === 0))
+    && <span>All disabled</span>;
 
   return (
     <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
       <StyledSelect
+        // unstyled
         noOptionsMessage={customNoOptionsMessage}
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
@@ -570,6 +393,9 @@ export const Select = <T extends SelectVariation>({
           DropdownIndicator,
           Control,
           MenuList,
+          MultiValueRemove,
+          GroupHeading,
+          SingleValue,
         }}
         onChange={(option: any) => {
           if (!onSelectChange) return;

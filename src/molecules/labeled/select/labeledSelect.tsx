@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Required,
   Select, SelectProps, SelectVariation,
-} from '../../../atoms/inputs/select';
+} from '../../../atoms/inputs/select/select';
 import { Text } from '../../../atoms/texts/text';
 import { BodySizes, HeaderSizes } from '../../../atoms/texts/types';
 import { localTheme } from '../../../theme';

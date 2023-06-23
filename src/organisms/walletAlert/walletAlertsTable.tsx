@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { localTheme } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
-import { Select, SelectOption } from '../../atoms/inputs/select';
+import { Select, SelectOption } from '../../atoms/inputs/select/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
