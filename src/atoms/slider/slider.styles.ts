@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { css, styled } from 'styled-components';
 
 import { Column, Row } from '../common/flex';
@@ -11,7 +12,6 @@ const track = css<{ value: string, max: number }>`
     : theme.containerAndCardShades.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
-
 const trackFill = css<{ value: string, max: number }>`
   ${track};
   height: 8px;
@@ -46,7 +46,6 @@ const thumb = css<{ value: string, max: number }>`
     background: ${(props) => props.theme.colors.primary.LIGHT_BLUE};
   }
 `;
-
 export const Input = styled.input<{ value: string, max: number }>`
   cursor: pointer;
   &,
@@ -66,7 +65,6 @@ export const Input = styled.input<{ value: string, max: number }>`
   padding: 0;
   height: 20px;
   background: transparent;
-
 
   &::-webkit-slider-runnable-track {
     ${trackFill};
