@@ -9,6 +9,7 @@ import { ButtonAtom } from '../../../atoms/buttons/button';
 import { Text } from '../../../atoms/texts/text';
 import { SelectOption, SelectProps } from '../../../atoms/inputs/select/types';
 import { Placeholder } from '../../../atoms/inputs/select/components';
+import { Select } from '../../../atoms/inputs/select/select';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -80,7 +81,7 @@ const meta: Meta<typeof LabeledSelect> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof LabeledSelect>;
+type Story = StoryObj<typeof Select>;
 
 const TemplateSingle = (args: SelectProps<'single'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
@@ -100,13 +101,13 @@ const TemplateMulti = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi'
   return <LabeledSelect<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
 export const LabeledPrimary: Story = {
-  render: (args: SelectProps<'single'> & LabeledSelectProps) => <TemplateSingle {...args} />,
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} label="Label" />,
 };
 export const LabeledSingleGroupSearchSelect: Story = {
-  render: (args: SelectProps<'group'> & LabeledSelectProps) => <TemplateGroup {...args} />,
+  render: (args: SelectProps<'group'>) => <TemplateGroup {...args} label="Label" />,
 };
 export const LabeledMultiSelect: Story = {
-  render: (args: SelectProps<'multi'> & LabeledSelectProps) => <TemplateMulti {...args} />,
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} label="Label" />,
 };
 
 LabeledPrimary.parameters = {
@@ -120,7 +121,6 @@ LabeledPrimary.args = {
   placeholder: 'DEX filters',
   isXL: false,
   showValue: true,
-  label: 'Cielo',
   required: true,
 };
 
@@ -140,7 +140,6 @@ LabeledMultiSelect.args = {
   isXL: true,
   isClearable: false,
   isSearchable: false,
-  label: 'Labeled Multi Select',
 };
 
 LabeledSingleGroupSearchSelect.parameters = {
@@ -159,5 +158,4 @@ LabeledSingleGroupSearchSelect.args = {
   isXL: true,
   isClearable: true,
   isSearchable: true,
-  label: 'Labeled Single Group Search Select',
 };

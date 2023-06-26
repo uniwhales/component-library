@@ -12,7 +12,7 @@ const lightTheme = { ...Theme, ...LightTheme }
 
 const ThemeDecorator = (storyFn, context) => {
     return (
-        <StyleSheetManager shouldForwardProp={isPropValid}>
+        <StyleSheetManager enableVendorPrefixes shouldForwardProp={isPropValid}>
             <ThemeProvider theme={context.globals.backgrounds?.value === '#191B20' ? darkTheme : lightTheme}>
                 <GlobalStyle />
                 {storyFn()}
