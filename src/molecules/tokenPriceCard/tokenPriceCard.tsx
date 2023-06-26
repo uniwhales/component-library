@@ -38,7 +38,7 @@ export const TokenPriceCardWrapper = styled.div`
   width: 100%;
   padding: 28px 24px;
   box-sizing: border-box;
-  :hover {
+  &:hover {
     transform: translateY(-2px);
   }
 `;

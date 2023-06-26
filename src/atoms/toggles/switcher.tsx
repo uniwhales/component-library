@@ -28,14 +28,14 @@ const Toggle = styled.span<SwitcherProps>`
   bottom: 0;
   background: ${({ isOn, theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.colors.secondary.SKY : theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 4px;
-  :hover {
+  &:hover {
     background: ${({ isOn, disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.colors.secondary.SKY : theme.containerAndCardShades.SHADE_PLUS_1)};
-    :before {
+    &:before {
       background: ${({ disabled, theme }) => !disabled && theme.colors.primary.LIGHT_BLUE};
     }
   }
 
-  :before {
+  &:before {
     position: absolute;
     content: '';
     height: 100%;

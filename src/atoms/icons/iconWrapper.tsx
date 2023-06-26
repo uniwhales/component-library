@@ -16,7 +16,7 @@ const IconComponent = styled.div<IconWrapperProps>`
     stroke: ${({ stroke }) => stroke};
     cursor:  ${({ cursor, hasHover }) => (hasHover ? 'pointer' : cursor || 'auto')};
   }
-  :hover {
+  &:hover {
     svg {
       fill: ${({
     fill, theme, hasHover, hoverColor,
@@ -34,7 +34,7 @@ const AnchorIconComponent = styled.div<IconWrapperProps>`
   transition: width 0.3s;
   border-radius: 100px;
 
-  :hover {
+  &:hover {
     background: ${({ theme }) => theme.colors.primary.YELLOW};
   }
   svg {

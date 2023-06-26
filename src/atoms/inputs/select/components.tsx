@@ -11,7 +11,7 @@ export const StyledSelect = styled(ReactSelect) <{ isXL: boolean, width?: string
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
   width: ${({ width }) => width ?? '100%'};
-  :hover {
+  &:hover {
     div {
       // target placeholder when we have a custom component with icon
       // have not been able to find another way of targeting this than
@@ -43,7 +43,7 @@ export const Placeholder = styled.div`
 export const OptionWrapper = styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
-  :hover {
+  &:hover {
     background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
   }
   &:first-of-type {
@@ -106,7 +106,7 @@ export const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boo
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
   }
-  :hover {
+  &:hover {
     /* border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)}; */
     svg {
       fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};

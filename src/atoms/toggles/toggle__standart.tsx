@@ -31,7 +31,7 @@ const Toggle = styled.span<{ size: string, disabled: boolean }>`
   bottom: 0;
   background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_3 : props.theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 34px;
-  :before {
+  &:before {
     position: absolute;
     content: '';
     height: ${(props) => (props.size === 'small' ? 12 : 18)}px;
@@ -47,16 +47,16 @@ const FakeInput = styled.input<{ size:any }>`
   opacity: 0;
   width: 0;
   height: 0;
-  :hover + ${Toggle} {
+  &:hover + ${Toggle} {
     background: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
   }
-  :checked + ${Toggle} {
+  &:checked + ${Toggle} {
     background: ${(props) => (props.disabled ? props.theme.containerAndCardShades.SHADE_PLUS_1 : props.theme.colors.primary.MAIN_BLUE)};
     &:hover {
       background: ${({ theme, disabled }) => !disabled && theme.colors.primary.LIGHT_BLUE};
     }
   }
-  :checked + ${Toggle}:before {
+  &:checked + ${Toggle}:before {
     transform: translateX(${(props) => (props.size === 'small' ? '16px' : '22px')});
     background: ${({ disabled, theme }) => !disabled && theme.textShades.SHADE_MINUS_3};
   }

@@ -44,9 +44,9 @@ export const InputWrapper = styled.div<{ width?: string, disabled: boolean, inpu
   p{
     margin: 0;
   }
-  :hover {
+  &:hover {
     input, textarea {
-      ::placeholder {
+      &::placeholder {
         color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
       color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};

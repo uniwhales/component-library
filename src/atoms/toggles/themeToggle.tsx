@@ -29,7 +29,7 @@ const Toggle = styled.span<{ isOn: boolean }>`
   bottom: 0;
   background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_1)};
   border-radius: 34px;
-  :before {
+  &:before {
     position: absolute;
     content: '';
     height: 14px;
@@ -46,15 +46,15 @@ const FakeInput = styled.input<{ isOn: boolean, expanded: boolean }>`
   width: 0;
   height: 0;
 
-  :hover + ${Toggle} {
+  &:hover + ${Toggle} {
     background: ${({ theme, isOn }) => (!isOn ? theme.colors.primary.LIGHT_BLUE : theme.textShades.SHADE_MINUS_2)};
   }
 
-  :hover:checked + ${Toggle}:before {
+  &:hover:checked + ${Toggle}:before {
     background: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
   }
 
-  :checked + ${Toggle}:before {
+  &:checked + ${Toggle}:before {
     transform: ${({ expanded }) => `translateX(${expanded ? '34px' : '16px'})`};
     background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
     box-shadow:  ${({ theme }) => `inset -6px -4px 0px 0px ${theme.colors.system.WHITE}`};

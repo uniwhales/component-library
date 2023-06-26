@@ -21,8 +21,10 @@ export const Container = styled.div<Pick<IdenticonProps, 'hasInteraction' | 'siz
     :hover {
       border: ${({ hasInteraction, theme }) => hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
     };
-    canvas:hover {
-      border: none;
+    canvas {
+      &:hover {
+        border: none;
+      }
     }
   }
 `;
