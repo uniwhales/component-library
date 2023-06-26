@@ -96,7 +96,7 @@ export const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boo
   box-shadow: none;
   border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop ? '0 0 12px 12px' : menuIsOpen && isFocused && !showOnTop ? '12px 12px 0 0 ' : '12px')};
   height: 40px;
-  background: ${({ theme, isFocused, isDisabled }) => (isFocused
+  background-color: ${({ theme, isFocused, isDisabled }) => (isFocused
     ? theme.colors.primary.MAIN_BLUE : isDisabled
       ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
@@ -107,7 +107,7 @@ export const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boo
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
   }
   &:hover {
-    /* border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)}; */
+    border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
     svg {
       fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
     }
