@@ -13,19 +13,19 @@ export const StyledSelect = styled(ReactSelect) <{ isXL: boolean, width?: string
   width: ${({ width }) => width ?? '100%'};
   &:hover {
     div {
-      // target placeholder when we have a custom component with icon
-      // have not been able to find another way of targeting this than
-      // overriding like this.
+      /* target placeholder when we have a custom component with icon
+      have not been able to find another way of targeting this than
+      overriding like this. */
       p {
         color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-      }
-    }
+      };
+    };
     input {
-      ::placeholder {
+      &::placeholder {
         color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
-      }
-    }
-  }
+      };
+    };
+  };
 `;
 
 export const ErrorMessageContainer = styled.div`
@@ -63,9 +63,9 @@ export const OptionLabelContainer = styled.label<{ addPadding: boolean, smallTex
   word-break: break-all;
   font-size: ${({ smallText }) => smallText && '12px'};
   color: ${({ isSelected, theme }) => (isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
-  &:hover: {
-    color: ${({ theme }) => theme.colors.system.WHITE};,
-  },
+  &:hover {
+    color: ${({ theme }) => theme.colors.system.WHITE};
+  };
 `;
 
 export const ClearButtonContainer = styled.div`
@@ -105,13 +105,13 @@ export const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boo
   font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
-  }
+  };
   &:hover {
     border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
     svg {
       fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
-    }
-  }
+    };
+  };
 `;
 
 export const MenuListComponent = styled.div<{ showOnTop?: boolean }>`
@@ -140,17 +140,17 @@ export const MultiValueComponent = styled.div`
   &:hover: {
     background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
     color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  },
+  }
   &:active: {
-    background: theme.textShades.SHADE_MINUS_1;
-    color: theme.textShades.SHADE_MINUS_3;
+    background: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+    color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
     border: ${({ theme }) => `2px solid ${theme.colors.primary.YELLOW}`};
-  },
+  }
   svg: {
-    transform: 'unset',
-    height: '12px',
-    width: '12px',
-  },
+    transform: unset;
+    height: 12px;
+    width: 12px;
+  }
 `;
 
 export const MultiValueRemoveComponent = styled.div`
@@ -158,12 +158,12 @@ export const MultiValueRemoveComponent = styled.div`
     padding: 2px;
     svg: {
       fill: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
-    },
+    };
     &:hover: {
       svg: {
       fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-      },
-    },
+      };
+    };
 `;
 
 export const GroupHeadingComponent = styled.div`
