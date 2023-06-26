@@ -7,7 +7,7 @@ export const Footer = () => {
   const theme = localTheme();
   return (
     <FooterComponent>
-      <Text color={theme.textShades.SHADE_MINUS_2} size="10-Regular">Cielo | ©2023</Text>
+      <Text color={theme.textShades.SHADE_MINUS_2} size="10-Regular">Cielo | © Copyright 2023</Text>
     </FooterComponent>
   );
 };
