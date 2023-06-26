@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { css, styled } from 'styled-components';
 
 import { Column, Row } from '../common/flex';
@@ -131,7 +130,7 @@ box-sizing: border-box;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  ::-webkit-inner-spin-button{
+  &::-webkit-inner-spin-button{
   -webkit-appearance: none;
   margin: 0;
   }

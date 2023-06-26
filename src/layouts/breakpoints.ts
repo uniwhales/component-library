@@ -16,7 +16,7 @@ export const HeightBreakpoints = Object.freeze({
 });
 
 // type AnyIfEmpty<T extends object> = keyof T extends never ? any : T;
-
+// old type: (inner: FlattenInterpolation<ThemedStyledProps<any, AnyIfEmpty<DefaultTheme>>>)
 export const normalDesktop = (inner: any) => css`
     @media (max-width: ${WidthBreakpoints.Desktop.top}px) {
       ${inner};
