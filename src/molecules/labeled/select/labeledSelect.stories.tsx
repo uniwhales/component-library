@@ -5,9 +5,10 @@ import {
 } from '../../../atoms/icons';
 import { IconWrapper } from '../../../atoms/icons/iconWrapper';
 import { LabeledSelect, LabeledSelectProps } from './labeledSelect';
-import { Placeholder, SelectOption, SelectProps } from '../../../atoms/inputs/select/select';
 import { ButtonAtom } from '../../../atoms/buttons/button';
 import { Text } from '../../../atoms/texts/text';
+import { SelectOption, SelectProps } from '../../../atoms/inputs/select/types';
+import { Placeholder } from '../../../atoms/inputs/select/components';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -81,7 +82,7 @@ const meta: Meta<typeof LabeledSelect> = {
 export default meta;
 type Story = StoryObj<typeof LabeledSelect>;
 
-const TemplateSingle = (args: React.JSX.IntrinsicAttributes & SelectProps<'single'> & LabeledSelectProps) => {
+const TemplateSingle = (args: SelectProps<'single'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <>
@@ -90,7 +91,7 @@ const TemplateSingle = (args: React.JSX.IntrinsicAttributes & SelectProps<'singl
     </>
   );
 };
-const TemplateGroup = (args: React.JSX.IntrinsicAttributes & SelectProps<'group'> & LabeledSelectProps) => {
+const TemplateGroup = (args: SelectProps<'group'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return <LabeledSelect<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
@@ -98,21 +99,14 @@ const TemplateMulti = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi'
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMultiGroup = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi-group'> & LabeledSelectProps) => {
-  const [value, setValue] = useState<SelectOption[]>();
-  return <LabeledSelect<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
-};
 export const LabeledPrimary: Story = {
-  render: (args) => <TemplateSingle {...args} />,
+  render: (args: SelectProps<'single'> & LabeledSelectProps) => <TemplateSingle {...args} />,
 };
 export const LabeledSingleGroupSearchSelect: Story = {
-  render: (args) => <TemplateGroup {...args} />,
+  render: (args: SelectProps<'group'> & LabeledSelectProps) => <TemplateGroup {...args} />,
 };
 export const LabeledMultiSelect: Story = {
-  render: (args) => <TemplateMulti {...args} />,
-};
-export const LabeledMultiGroupSelect: Story = {
-  render: (args) => <TemplateMultiGroup {...args} />,
+  render: (args: SelectProps<'multi'> & LabeledSelectProps) => <TemplateMulti {...args} />,
 };
 
 LabeledPrimary.parameters = {
@@ -125,7 +119,7 @@ LabeledPrimary.args = {
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
-  showValue: 'every',
+  showValue: true,
   label: 'Cielo',
   required: true,
 };
@@ -137,7 +131,7 @@ LabeledMultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -156,7 +150,7 @@ LabeledSingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -166,19 +160,4 @@ LabeledSingleGroupSearchSelect.args = {
   isClearable: true,
   isSearchable: true,
   label: 'Labeled Single Group Search Select',
-};
-LabeledMultiGroupSelect.args = {
-  selectOptions: GroupExample,
-  isMulti: true,
-  readOnly: false,
-  showValue: 'every',
-  placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="14-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
-  isXL: true,
-  isClearable: true,
-  isSearchable: true,
-  label: 'Labeled Multi Group Select',
 };

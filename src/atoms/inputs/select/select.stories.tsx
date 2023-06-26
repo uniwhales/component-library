@@ -129,14 +129,6 @@ const TemplateMulti = (args: SelectProps<'multi'>) => {
     </Wrapper>
   );
 };
-const TemplateMultiGroup = (args: SelectProps<'multi-group'>) => {
-  const [value, setValue] = useState<SelectOption[]>();
-  return (
-    <Wrapper>
-      <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} handleClearValue={() => setValue([])} />
-    </Wrapper>
-  );
-};
 export const Primary: Story = {
   render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
 };
@@ -151,9 +143,6 @@ export const SingleGroupSearchSelect: Story = {
 };
 export const MultiSelect: Story = {
   render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
-};
-export const MultiGroupSelect: Story = {
-  render: (args: SelectProps<'multi-group'>) => <TemplateMultiGroup {...args} />,
 };
 export const CustomMenuHeight: Story = {
   render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
@@ -229,20 +218,6 @@ SingleGroupSearchSelect.parameters = {
 SingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
-  readOnly: false,
-  showValue: true,
-  placeholder:
-  <Placeholder>
-    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="14-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
-  isXL: true,
-  isClearable: true,
-  isSearchable: true,
-};
-MultiGroupSelect.args = {
-  selectOptions: GroupExample,
-  isMulti: true,
   readOnly: false,
   showValue: true,
   placeholder:
