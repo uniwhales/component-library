@@ -34,6 +34,7 @@ const Wrapper = styled.div`
   width: auto;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 `;
 const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
   border-radius: 36px;
@@ -54,7 +55,6 @@ export const CopyToClipBoard = ({
   hoverColor, background, iconLeft,
 }: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
-  const [currentColor, setCurrentColor] = useState(color);
   const [currentLinkColor, setCurrentLinkColor] = useState(color);
 
   const copyText = () => {
@@ -73,50 +73,45 @@ export const CopyToClipBoard = ({
 
   const copyIcon = (
     <IconWrapper
-      onMouseEnter={() => {
-        if (hoverColor && !background) setCurrentColor(hoverColor);
-      }}
-      onMouseLeave={() => {
-        if (hoverColor && !background) setCurrentColor(color);
-      }}
       cursor="pointer"
       width={iconSize ?? '12px'}
       height={iconSize ?? '12px'}
-      fill={currentColor}
-      onClick={copyText}
+      fill={currentLinkColor}
       icon={icon ?? <CopyStandard />}
     />
   );
 
-  const TextLabel = <Text color={color} size={textSize ?? '14-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
-
   return (
-    <Wrapper>
-      {!iconLeft && TextLabel}
+    <Wrapper
+      onMouseEnter={() => {
+        if (hoverColor && !background) setCurrentLinkColor(hoverColor);
+      }}
+      onMouseLeave={() => {
+        if (hoverColor && !background) setCurrentLinkColor(color);
+      }}
+      onClick={copyText}
+    >
+
       <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
         <InnerContainer>
+          {!iconLeft && <Text color={currentLinkColor} size={textSize ?? '14-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>}
           {copyIcon}
+          {iconLeft && <Text color={currentLinkColor} size={textSize ?? '14-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>}
+          {link && (
+          <Background hoverColor={hoverColor} background={background}>
+            <IconWrapper
+              cursor="pointer"
+              width={iconSize ?? '12px'}
+              height={iconSize ?? '12px'}
+              fill={currentLinkColor}
+              onClick={openLink}
+              icon={linkIcon ?? <LinkIcon />}
+            />
+          </Background>
+          )}
         </InnerContainer>
       </SimpleTooltip>
-      {iconLeft && TextLabel}
-      {link && (
-        <Background hoverColor={hoverColor} background={background}>
-          <IconWrapper
-            onMouseEnter={() => {
-              if (hoverColor && !background) setCurrentLinkColor(hoverColor);
-            }}
-            onMouseLeave={() => {
-              if (hoverColor && !background) setCurrentLinkColor(color);
-            }}
-            cursor="pointer"
-            width={iconSize ?? '12px'}
-            height={iconSize ?? '12px'}
-            fill={currentLinkColor}
-            onClick={openLink}
-            icon={linkIcon ?? <LinkIcon />}
-          />
-        </Background>
-      )}
+
     </Wrapper>
   );
 };
