@@ -6,6 +6,8 @@ export * from './atoms/texts/text';
 export { HyperLinkVariation } from './atoms/texts/types';
 export * from './atoms/toggles/toggle__standart';
 export * from './atoms/inputs/select/select';
+export * from './atoms/inputs/select/types';
+export * from './atoms/inputs/select/components';
 export * from './atoms/tags/tag';
 export * from './atoms/inputs/checkbox';
 export * from './atoms/toggles/switcher';
