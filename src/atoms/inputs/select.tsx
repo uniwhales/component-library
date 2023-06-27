@@ -75,27 +75,6 @@ type StyledProps = {
   showOnTop?: boolean;
 };
 
-export const isSelectOptionGuard = (
-  o: SelectOption[] | SelectGroupOption[],
-  // @ts-ignore
-): o is SelectOption[] => Array.isArray(o) && o.every((group: SelectOption | SelectGroupOption): group is SelectOption => !('options' in group));
-
-export enum BulkSelectOption {
-  SelectAll = 'Select All',
-  DeselectAll = 'Deselect All',
-}
-
-const SelectAllOption: SelectOption = {
-  value: BulkSelectOption.SelectAll,
-  id: 99999,
-  label: BulkSelectOption.SelectAll,
-};
-const DeselectAllOption: SelectOption = {
-  value: BulkSelectOption.DeselectAll,
-  label: BulkSelectOption.DeselectAll,
-  id: 99999,
-};
-
 const SelectWrapper = Styled.div<{ width?: string, isDisabled:boolean }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
@@ -189,7 +168,7 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
   color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
-  font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
+  font-weight: normal;
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
   }
@@ -210,6 +189,24 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
+  placeholder: (defaultStyles, { isFocused, theme }: StyledProps) => ({
+    ...defaultStyles,
+    color: isFocused
+      ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    fontSize: '12px',
+    lineHeight: '16px',
+    cursor: 'pointer',
+    p: {
+      fontSize: '12px',
+      lineHeight: '16px',
+      color: isFocused
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+    svg: {
+      fill: isFocused
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+  }),
   control: (defaultStyles) => ({
     ...defaultStyles,
     border: 'none',
@@ -302,31 +299,6 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       color: theme.colors.system.WHITE,
     },
   }),
-};
-
-const MultiValue = (
-  props: any,
-  selectedOptions: null | undefined | SelectOption | SelectOption[],
-) => {
-  const { options, index } = props;
-  /*
-    Because this component gets rendered for each option,
-    we need to check if all options are selected and if so,
-    only render the first one as "All"
-
-    eslint disable next line is for destructing array component which makes no sense here
-  */
-  const filteredOptions = options.filter((o: any) => o.value !== BulkSelectOption.DeselectAll
-  && o.value !== BulkSelectOption.SelectAll);
-  if (Array.isArray(selectedOptions) && isSelectOptionGuard(options)) {
-    // eslint-disable-next-line
-    const text = filteredOptions.length === selectedOptions.length
-    // eslint-disable-next-line
-      ? 'All' : `${selectedOptions.length} selected`;
-    return index === 0 ? <span>{text}</span> : null;
-  }
-
-  return <components.MultiValue {...props} />;
 };
 
 const OptionComponent = (props: any) => {
@@ -498,17 +470,6 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
-  const completeOptions = isMulti && isSelectOptionGuard(selectOptions)
-    ? [
-      selectValue
-        && Array.isArray(selectValue)
-        && selectValue.length === selectOptions.length
-        ? DeselectAllOption : SelectAllOption, ...selectOptions]
-    : selectOptions;
-
-  const multiPlaceholder = (!selectValue || (isSelectOptionGuard(selectOptions)
-  && Array.isArray(selectValue) && selectValue.length === 0))
-  && <span>All disabled</span>;
 
   return (
     <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
@@ -517,48 +478,20 @@ export const Select = <T extends SelectVariation>({
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}
-        options={completeOptions}
+        options={selectOptions}
         isMulti={isMulti}
         theme={theme}
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
-        styles={{
-          ...colourStyles,
-          /* We are defining it here because showValue isn't passed to the placeholder
-            through the props
-          */
-          placeholder: (defaultStyles, { isFocused }: StyledProps) => ({
-            ...defaultStyles,
-            /* Multi select that is not a group never shows placeholder
-            but all disabled / all so we adjust the color */
-            color: isFocused
-              ? theme.colors.system.WHITE
-              : isMulti && showValue && isSelectOptionGuard(selectOptions)
-                ? theme.textShades.SHADE_MINUS_2
-                : theme.textShades.SHADE_MINUS_1,
-            fontSize: isMulti ? '16px' : '12px',
-            lineHeight: '16px',
-            cursor: 'pointer',
-            p: {
-              fontSize: '12px',
-              lineHeight: '16px',
-              color: isFocused
-                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-            },
-            svg: {
-              fill: isFocused
-                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
-            },
-          }),
-        } as StylesConfig}
+        // @ts-ignore
+        styles={colourStyles}
         controlShouldRenderValue={showValue}
         isClearable={isClearable}
-        placeholder={isMulti && isSelectOptionGuard(selectOptions) ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
-          MultiValue: (props) => MultiValue(props, selectValue),
           Option: (props) => OptionComponent({
             ...props, readOnly, isCheckBox, smallText,
           }),
@@ -572,14 +505,6 @@ export const Select = <T extends SelectVariation>({
         }}
         onChange={(option: any) => {
           if (!onSelectChange) return;
-          if (Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.SelectAll)) {
-            onSelectChange(selectOptions as unknown as SelectVal<T>);
-            return;
-          } if (
-            Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.DeselectAll)) {
-            onSelectChange([] as unknown as SelectVal<T>);
-            return;
-          }
           /*
             When providing variation of select
             we restrict the option to be either single or group option type
