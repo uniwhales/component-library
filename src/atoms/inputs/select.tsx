@@ -168,7 +168,7 @@ const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, i
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
   border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
   color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
-  font-weight: ${({ isFocused }) => (isFocused ? 'bold' : 'normal')};
+  font-weight: normal;
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
   }
