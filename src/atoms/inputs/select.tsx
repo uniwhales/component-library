@@ -189,6 +189,24 @@ const MenuListComponent = Styled.div<{ showOnTop?: boolean }>`
 `;
 
 const colourStyles: StylesConfig<StyledProps, false> = {
+  placeholder: (defaultStyles, { isFocused, theme }: StyledProps) => ({
+    ...defaultStyles,
+    color: isFocused
+      ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    fontSize: '12px',
+    lineHeight: '16px',
+    cursor: 'pointer',
+    p: {
+      fontSize: '12px',
+      lineHeight: '16px',
+      color: isFocused
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+    svg: {
+      fill: isFocused
+        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+    },
+  }),
   control: (defaultStyles) => ({
     ...defaultStyles,
     border: 'none',
