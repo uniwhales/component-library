@@ -33,7 +33,6 @@ const DeselectAllOption: SelectOption = {
 const colourStyles: StylesConfig<StyledProps, false> = {
   control: (defaultStyles) => ({
     ...defaultStyles,
-    backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
   }),
@@ -336,7 +335,7 @@ export const Select = <T extends SelectVariation>({
   return (
     <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
       <StyledSelect
-        // unstyled
+        unstyled
         noOptionsMessage={customNoOptionsMessage}
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}

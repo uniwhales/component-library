@@ -96,7 +96,7 @@ export const ControlComponent = styled.div<{ menuIsOpen: boolean, isFocused: boo
   box-shadow: none;
   border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop ? '0 0 12px 12px' : menuIsOpen && isFocused && !showOnTop ? '12px 12px 0 0 ' : '12px')};
   height: 40px;
-  background-color: ${({ theme, isFocused, isDisabled }) => (isFocused
+  background: ${({ theme, isFocused, isDisabled }) => (isFocused
     ? theme.colors.primary.MAIN_BLUE : isDisabled
       ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
