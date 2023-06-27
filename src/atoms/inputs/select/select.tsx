@@ -335,7 +335,6 @@ export const Select = <T extends SelectVariation>({
   return (
     <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
       <StyledSelect
-        unstyled
         noOptionsMessage={customNoOptionsMessage}
         width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
