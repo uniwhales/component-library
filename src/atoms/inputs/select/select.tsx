@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {
-  components, StylesConfig,
+import ReactSelect, {
+  components, StylesConfig, ThemeConfig,
 } from 'react-select';
 import { Checkbox } from '../checkbox';
 import { localTheme } from '../../../theme';
@@ -12,7 +12,7 @@ import {
   ControlComponent, ErrorMessageContainer, GroupHeadingComponent,
   MenuListComponent, MultiValueComponent, MultiValueRemoveComponent,
   OptionLabelContainer, OptionWrapper, SelectWrapper,
-  SingleValueComponent, StyledSelect,
+  SingleValueComponent,
 } from './components';
 import {
   BulkSelectOption, isSelectOptionGuard, Option, SelectGroupOption,
@@ -299,7 +299,6 @@ export const Select = <T extends SelectVariation>({
   onSelectChange,
   selectValue, isMulti = true,
   isCheckBox, placeholder,
-  isXL = false,
   isClearable = false,
   isSearchable = false,
   showValue = false,
@@ -333,19 +332,19 @@ export const Select = <T extends SelectVariation>({
     && <span>All disabled</span>;
 
   return (
-    <SelectWrapper isDisabled={isDisabled} width={width} ref={ref}>
-      <StyledSelect
+    <SelectWrapper error={!!error} isDisabled={isDisabled} width={width} ref={ref}>
+      <ReactSelect
         noOptionsMessage={customNoOptionsMessage}
-        width={width}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}
         options={completeOptions}
         isMulti={isMulti}
-        theme={theme}
+        theme={theme as unknown as ThemeConfig}
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
         styles={{
           ...colourStyles,
+          cursor: isDisabled ? 'not-allowed' : 'pointer',
           /* We are defining it here because showValue isn't passed to the placeholder
             through the props
           */
@@ -413,12 +412,10 @@ export const Select = <T extends SelectVariation>({
           onSelectChange(option);
         }}
         value={selectValue}
-        isXL={isXL}
         closeMenuOnScroll
         maxMenuHeight={maxMenuHeight}
         tabIndex={tabIndex}
         required={required}
-        error={!!error}
       />
       {error && errorMessage && (
         <ErrorMessageContainer>

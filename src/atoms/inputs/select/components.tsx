@@ -1,23 +1,17 @@
 import { styled } from 'styled-components';
-import ReactSelect from 'react-select';
 
-export const SelectWrapper = styled.div<{ width?: string, isDisabled: boolean }>`
+export const SelectWrapper = styled.div<{ width?: string, isDisabled: boolean, error: boolean }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
-`;
-
-export const StyledSelect = styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
-  outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
-  width: ${({ width }) => width ?? '100%'};
-  &:hover {
-    div {
+    &:hover {
+    div.react-select__placeholder {
       /* target placeholder when we have a custom component with icon
       have not been able to find another way of targeting this than
       overriding like this. */
       p {
-        color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme, isDisabled }) => !isDisabled && theme.textShades.SHADE_MINUS_3};
       };
     };
     input {
