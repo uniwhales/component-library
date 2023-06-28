@@ -115,6 +115,7 @@ export * from './navigationIcons/ArrowDownIcon';
 export * from './navigationIcons/ArrowLeftIcon';
 export * from './navigationIcons/ArrowRightIcon';
 export * from './navigationIcons/ArrowUpIcon';
+export * from './navigationIcons/FatArrowUpIcon';
 export * from './navigationIcons/NoticeIcon';
 export * from './navigationIcons/LinkIcon';
 export * from './navigationIcons/CrossIcon';
