@@ -8,11 +8,8 @@ export * from './atoms/toggles/toggle__standart';
 export * from './atoms/inputs/select/select';
 export * from './atoms/inputs/select/types';
 export * from './atoms/inputs/select/components';
-export * from './atoms/tags/tag';
 export * from './atoms/inputs/checkbox';
-export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
-export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/filterChips/filterChip';
 export * from './atoms/filterChips/types';
@@ -37,8 +34,6 @@ export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
-export * from './molecules/cardDate/cardDate';
-export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/hoverCard/hoverCard';
 export * from './molecules/labeled/select/labeledSelect';
@@ -50,8 +45,6 @@ export * from './molecules/controlledTooltip/controlledTooltip';
 export * from './organisms/searchFilterSelect/searchFilterSelect';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/navbar/navbar';
-export * from './organisms/contentCard/contentCard';
-export * from './organisms/contentCard/types';
 export * from './organisms/UserIdenticon/UserIdenticon';
 export * from './organisms/dropdownSlider/minUsdSlider';
 
