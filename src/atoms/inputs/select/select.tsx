@@ -337,6 +337,9 @@ export const Select = <T extends SelectVariation>({
         isDisabled={isDisabled}
         options={completeOptions}
         isMulti={isMulti}
+        /* React select allows a theme to be passed to the component, but unfortunately it
+        restricts the theme to be of type ThemeConfig, which is not the type of our theme.
+        So we have to use casting here to get around this. */
         theme={theme as unknown as ThemeConfig}
         isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
