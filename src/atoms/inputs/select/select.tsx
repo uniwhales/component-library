@@ -264,7 +264,6 @@ const Control = (props: any) => {
   const {
     menuIsOpen, error, isDisabled, menuPlacement,
   } = selectProps;
-  console.debug('control', props);
   return (
     <ControlComponent
       menuIsOpen={menuIsOpen}
@@ -282,7 +281,6 @@ const SingleValue = (props: any) => {
   const Comp = components.SingleValue;
   const { isFocused, selectProps } = props;
   const { isDisabled } = selectProps;
-  console.debug('hello', props);
   return (
     <SingleValueComponent
       isDisabled={isDisabled}

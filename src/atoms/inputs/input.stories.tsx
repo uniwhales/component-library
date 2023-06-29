@@ -19,7 +19,6 @@ const Template = (args: InputsProps) => {
     setValue(inputValue);
   };
   const ref = useRef<HTMLInputElement>(null);
-  console.debug(ref);
   return (
     <Wrapper>
       <Input

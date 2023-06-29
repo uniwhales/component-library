@@ -22,7 +22,6 @@ const Template = (args: TextAreaTypes) => {
   } = args;
   const [value, setValue] = useState<string>('');
   const ref = useRef<HTMLTextAreaElement>(null);
-  console.debug(ref);
   return (
     <Wrapper>
       <TextArea

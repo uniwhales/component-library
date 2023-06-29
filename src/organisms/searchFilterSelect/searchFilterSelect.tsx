@@ -153,7 +153,6 @@ const NoOptionsMessageStyled = styled(components.NoOptionsMessage)`
 
 const NoOptionsMessage = (props: any) => {
   const { selectProps } = props;
-  console.log({ selectProps });
   if (selectProps.isDropdownDisabled) return null;
   return (
     <NoOptionsMessageStyled {...props}>
