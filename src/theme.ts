@@ -7,6 +7,7 @@ import { ZIndex } from './utils/constants';
 // const OpenSansRegular = require('./fonts/OpenSans-Regular.ttf');
 // const OpenSansBold = require('./fonts/OpenSans-Bold.ttf');
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
+// const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
 const DarkTheme = {
   OVERLAY: 'rgba(17,17,17,0.50)',

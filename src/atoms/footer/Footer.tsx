@@ -13,7 +13,7 @@ export const Footer = () => {
   return (
     <FooterComponent isMobile={isMobile}>
       {isMobile ? <FooterLogoMobile /> : <FooterLogo />}
-      <Text color={theme.textShades.SHADE_MINUS_2} size={isMobile ? '9-Regular' : '10-Regular'}>UniWhales DAO ©2023</Text>
+      <Text color={theme.textShades.SHADE_MINUS_2} size={isMobile ? '9-Regular' : '10-Regular'}>Cielo | © Copyright 2023</Text>
     </FooterComponent>
   );
 };

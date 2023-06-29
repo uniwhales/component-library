@@ -16,19 +16,8 @@ import {
 } from './components';
 import {
   BulkSelectOption, isSelectOptionGuard, Option, SelectGroupOption,
-  SelectOption, SelectProps, SelectVal, SelectVariation, StyledProps,
+  SelectOption, SelectProps, SelectVariation, StyledProps,
 } from './types';
-
-const SelectAllOption: SelectOption = {
-  value: BulkSelectOption.SelectAll,
-  id: 99999,
-  label: BulkSelectOption.SelectAll,
-};
-const DeselectAllOption: SelectOption = {
-  value: BulkSelectOption.DeselectAll,
-  label: BulkSelectOption.DeselectAll,
-  id: 99999,
-};
 
 const colourStyles: StylesConfig<StyledProps, false> = {
   control: (defaultStyles) => ({
@@ -317,17 +306,6 @@ export const Select = <T extends SelectVariation>({
 }: SelectProps<T>) => {
   const theme = localTheme();
   const customNoOptionsMessage = () => noOptionsMessage || 'No options';
-  const completeOptions = isMulti && isSelectOptionGuard(selectOptions)
-    ? [
-      selectValue
-        && Array.isArray(selectValue)
-        && selectValue.length === selectOptions.length
-        ? DeselectAllOption : SelectAllOption, ...selectOptions]
-    : selectOptions;
-
-  const multiPlaceholder = (!selectValue || (isSelectOptionGuard(selectOptions)
-    && Array.isArray(selectValue) && selectValue.length === 0))
-    && <span>All disabled</span>;
 
   return (
     <SelectWrapper error={!!error} isDisabled={isDisabled} width={width} ref={ref}>
@@ -335,7 +313,7 @@ export const Select = <T extends SelectVariation>({
         noOptionsMessage={customNoOptionsMessage}
         menuPlacement={showOnTop ? 'top' : 'bottom'}
         isDisabled={isDisabled}
-        options={completeOptions}
+        options={selectOptions}
         isMulti={isMulti}
         /* React select allows a theme to be passed to the component, but unfortunately it
         restricts the theme to be of type ThemeConfig, which is not the type of our theme.
@@ -397,14 +375,6 @@ export const Select = <T extends SelectVariation>({
         }}
         onChange={(option: any) => {
           if (!onSelectChange) return;
-          if (Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.SelectAll)) {
-            onSelectChange(selectOptions as unknown as SelectVal<T>);
-            return;
-          } if (
-            Array.isArray(option) && option.some((o) => o.value === BulkSelectOption.DeselectAll)) {
-            onSelectChange([] as unknown as SelectVal<T>);
-            return;
-          }
           /*
             When providing variation of select
             we restrict the option to be either single or group option type
