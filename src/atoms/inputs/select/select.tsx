@@ -353,7 +353,7 @@ export const Select = <T extends SelectVariation>({
         } as StylesConfig}
         controlShouldRenderValue={showValue}
         isClearable={isClearable}
-        placeholder={isMulti && isSelectOptionGuard(selectOptions) ? multiPlaceholder : <div className="react-select__placeholder">{placeholder}</div>}
+        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
         closeMenuOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e: any) => onInputChange && onInputChange(e)}
