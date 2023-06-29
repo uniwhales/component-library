@@ -42,7 +42,6 @@ export * from './molecules/meatballMenu/meatballMenu';
 export * from './molecules/controlledTooltip/controlledTooltip';
 
 // organisms
-export * from './organisms/searchFilterSelect/searchFilterSelect';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/navbar/navbar';
 export * from './organisms/UserIdenticon/UserIdenticon';
