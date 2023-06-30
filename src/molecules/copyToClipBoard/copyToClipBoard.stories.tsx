@@ -23,6 +23,10 @@ Primary.parameters = {
   backgrounds: { default: 'dark' },
 };
 
+Primary.args = {
+  walletCut: true,
+};
+
 Secondary.args = {
   icon: <Share />,
 };
