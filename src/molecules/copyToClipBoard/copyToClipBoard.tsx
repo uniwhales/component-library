@@ -44,6 +44,9 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
+const CopyTextLabel = Styled.div`
+  white-space: nowrap;
+`;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
   linkIcon, link, textSize, iconSize, copyCb,
@@ -88,7 +91,11 @@ export const CopyToClipBoard = ({
     />
   );
 
-  const TextLabel = <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
+  const TextLabel = (
+    <CopyTextLabel>
+      <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
+    </CopyTextLabel>
+  );
 
   return (
     <Wrapper>

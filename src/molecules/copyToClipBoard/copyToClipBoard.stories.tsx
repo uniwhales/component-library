@@ -25,6 +25,7 @@ Primary.parameters = {
 
 Primary.args = {
   walletCut: true,
+  addressId: '1',
 };
 
 Secondary.args = {
