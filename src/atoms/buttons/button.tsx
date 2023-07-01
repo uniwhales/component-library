@@ -5,6 +5,7 @@ import { ButtonProps, GenericStylingProps } from './types';
 import { IconWrapper } from '../icons/iconWrapper';
 import { FloatingClose } from '../icons';
 import useBreakpoint from '../../hooks/useBreakpoint';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const ButtonWrapper = Styled.div`
   padding: 50px;
@@ -49,7 +50,7 @@ const Button = Styled.button<GenericStylingProps & { isMobile?: boolean }>`
     }
   `}
 `;
-const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   // disabled state
@@ -77,7 +78,7 @@ const ButtonPrimary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     }
   `}
 `;
-const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondary = Styled(Button)<Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean } & { isMobile?: boolean }>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -117,7 +118,7 @@ const ButtonSecondary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `}
 `;
-const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -157,7 +158,7 @@ const ButtonTertiary = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `};
 `;
-const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width ?? '40px'};
   height: ${({ height }) => height ?? '40px'};
   padding: 10px;
@@ -176,7 +177,7 @@ const ButtonPrimaryAction = Styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
       }
   `};
 `;
-const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width ?? 'max-content'};
   height: ${({ height }) => height ?? '40px'};
   path {transition: fill 0.45s ease;}
@@ -210,7 +211,7 @@ const ButtonSecondaryAction = Styled(Button) <Pick<ButtonProps, 'width' | 'heigh
   `}
 `;
 const ButtonTinyAction = Styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondaryActionInverse = Styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -528,7 +529,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
   size = '70px',
   color,
 }) => {
-  const isMobile = useBreakpoint(2);
+  const isMobile = useIsMobile();
 
   switch (buttonVariant) {
     case 'secondary':
