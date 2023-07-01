@@ -4,7 +4,6 @@ import { Styled } from '../../theme';
 import { ButtonProps, GenericStylingProps } from './types';
 import { IconWrapper } from '../icons/iconWrapper';
 import { FloatingClose } from '../icons';
-import useBreakpoint from '../../hooks/useBreakpoint';
 import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const ButtonWrapper = Styled.div`
@@ -376,7 +375,7 @@ const ButtonIconOnly = Styled(Button)`
     };
   `}
 `;
-const SquareButton = Styled.button<Pick<ButtonProps, 'size'>>`
+const SquareButton = Styled.button<Pick<ButtonProps, 'size'> & { isMobile?: boolean }>`
   height: ${({ size }) => size || '70px'};
   width: ${({ size }) => size || '70px'};
   border-radius: 10px;
