@@ -53,6 +53,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
         }}
       >
         <ModalBody
+          padding="25px 18px"
           onClick={(e) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}

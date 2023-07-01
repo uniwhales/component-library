@@ -1,6 +1,4 @@
-import { css } from 'styled-components';
 import { Card } from '../../atoms/card/card';
-import { phone, tablet } from '../../layouts/breakpoints';
 import { Styled } from '../../theme';
 
 export const ModalWrapper = Styled.div`
@@ -21,13 +19,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
-  ${tablet(css`
-    max-width: calc(100vw - 100px);
-  `)}
-  ${phone(css`
-    width: 100vw;
-    max-height: 600px;
-  `)}
+  box-sizing: border-box;
 `;
 export const IconWrapperAbsolute = Styled.div`
   position: absolute;
@@ -49,6 +41,7 @@ export const CloseSection = Styled.div`
 `;
 
 export const DummyModalContent = Styled.div`
+  width: 360px;
   text-align: center;
   display: flex;
   flex-direction: column;

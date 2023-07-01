@@ -40,18 +40,7 @@ export const Modal = ({
           noHover
         >
           <>
-            <CloseButton>
-              <IconWrapper
-                onClick={() => {
-                  setTimeout(() => toggle(), 150);
-                }}
-                cursor="pointer"
-                icon={<FloatingClose />}
-                fill={theme.contrastColor.HIGH_CONTRAST}
-                height="18px"
-                width="18px"
-              />
-            </CloseButton>
+
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
@@ -65,6 +54,18 @@ export const Modal = ({
                 )}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
+              <CloseButton>
+                <IconWrapper
+                  onClick={() => {
+                    setTimeout(() => toggle(), 150);
+                  }}
+                  cursor="pointer"
+                  icon={<FloatingClose />}
+                  fill={theme.contrastColor.HIGH_CONTRAST}
+                  height="18px"
+                  width="18px"
+                />
+              </CloseButton>
             </ModalHeaderContainer>
             {modalContent}
           </>

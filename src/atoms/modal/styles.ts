@@ -1,7 +1,5 @@
-import { css } from 'styled-components';
 import { Column, Row } from '../common/flex';
 import { Styled } from '../../theme';
-import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
 export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
@@ -26,21 +24,10 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
-
-  ${tablet(css<{ replay: boolean }>`
-    max-width: calc(100vw - 100px);
-  `)}
-
-  ${phone(css`
-    width: 100vw;
-    max-height: 600px;
-  `)}
+  box-sizing: border-box;
 `;
 
 export const CloseButton = Styled.div`
-  top: 0;
-  right: -30px;
-  position: absolute;
   background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
   height: 22px;
   width: 22px;
@@ -49,7 +36,7 @@ export const CloseButton = Styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-     background:${({ theme }) => theme.colors.primary.MANGO};
+    background:${({ theme }) => theme.colors.primary.MANGO};
   }
 `;
 
