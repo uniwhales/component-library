@@ -11,7 +11,7 @@ export interface ModalData {
 }
 
 export type ModalBaseProps = {
-  headerText?: string
+  headerText?: string | JSX.Element
   headerIcon?: ReactElement
   headerIconFill?: string
   modalVariant: 'single' | 'double'

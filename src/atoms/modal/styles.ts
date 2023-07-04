@@ -1,3 +1,4 @@
+import { css } from 'styled-components';
 import { Column, Row } from '../common/flex';
 import { Styled } from '../../theme';
 import { Card } from '../card/card';
@@ -14,17 +15,26 @@ export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string }>`
+export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
-  position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant, maxWidth }) => (maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
-  max-height: 650px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
   box-sizing: border-box;
+  
+  ${({ isMobile, modalVariant, maxWidth }) => (isMobile ? css`
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: calc(100vh - 55px);
+  ` : css`
+    position: relative;
+    max-width: ${(maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
+    max-height: 650px;
+  `)}
 `;
 
 export const CloseButton = Styled.div`

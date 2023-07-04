@@ -1,21 +1,21 @@
 import { Card } from '../../atoms/card/card';
 import { Styled } from '../../theme';
 
-export const ModalWrapper = Styled.div`
+export const ModalWrapper = Styled.div<{ isMobile?: boolean }>`
   position: fixed;
-  top: 50%;
+  top: ${({ isMobile }) => (isMobile ? '0px' : '50%')};
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
-export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
+export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double', isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
-  max-height: 650px;
+  max-width: ${({ modalVariant, isMobile }) => (isMobile && (modalVariant === 'double' ? '748px' : '360px'))};
+  max-height: ${({ isMobile }) => !isMobile && '650px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;

@@ -11,6 +11,7 @@ import {
   ModalWrapper,
 } from './modal.styles';
 import { ModalProps } from './types';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const Modal = ({
   show,
@@ -23,7 +24,7 @@ export const Modal = ({
 }: ModalProps) => {
   if (!show) return null;
   const theme = localTheme();
-
+  const isMobile = useIsMobile();
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -34,8 +35,9 @@ export const Modal = ({
   return ReactDom.createPortal(
     <>
       <Overlay onClick={toggle} />
-      <ModalWrapper>
+      <ModalWrapper isMobile={isMobile}>
         <ModalContent
+          isMobile={isMobile}
           modalVariant={modalVariant}
           noHover
         >
