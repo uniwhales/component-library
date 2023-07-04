@@ -3,7 +3,7 @@ import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
-import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
+import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils/shortenAddress';
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
 import { InnerContainer } from '../../organisms/dropdownSlider/styles';
@@ -15,6 +15,7 @@ enum TEXT {
 export interface CopyToClipBoardProps {
   text: string;
   walletCut?: boolean;
+  addressId?:string;
   color?: string;
   shortText?: string;
   icon?: JSX.Element;
@@ -43,6 +44,9 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
+const CopyTextLabel = Styled.div`
+  white-space: nowrap;
+`;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
   linkIcon, link, textSize, iconSize, copyCb,
@@ -50,7 +54,7 @@ export const CopyToClipBoard = ({
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
   */
-  hoverColor, background, iconLeft, 
+  hoverColor, background, iconLeft, addressId,
 }: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);
@@ -87,7 +91,11 @@ export const CopyToClipBoard = ({
     />
   );
 
-  const TextLabel = <Text color={color} size={textSize ?? '14-Regular'}>{walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>;
+  const TextLabel = (
+    <CopyTextLabel>
+      <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
+    </CopyTextLabel>
+  );
 
   return (
     <Wrapper>
