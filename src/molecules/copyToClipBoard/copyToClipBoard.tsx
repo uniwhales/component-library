@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Text } from '../../atoms/texts/text';
-import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils/shortenAddress';
@@ -29,13 +29,13 @@ export interface CopyToClipBoardProps {
   copyCb?: (text: string) => void; // callback to be called when copy is clicked
 }
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
   display: flex;
   width: auto;
   align-items: center;
   gap: 5px;
 `;
-const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
+const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
   border-radius: 36px;
   background-color: ${({ theme, background }) => background && theme.containerAndCardShades.NEUTRAL_SHADE_0};
   padding: 4px;
@@ -44,7 +44,7 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
-const CopyTextLabel = Styled.div`
+const CopyTextLabel = styled.div`
   white-space: nowrap;
 `;
 export const CopyToClipBoard = ({

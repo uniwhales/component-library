@@ -2,16 +2,14 @@
 export * from './atoms/buttons/button';
 export * from './atoms/icons/iconWrapper';
 export * from './atoms/inputs/input';
-export * from './atoms/tabs/selectorTab';
 export * from './atoms/texts/text';
 export { HyperLinkVariation } from './atoms/texts/types';
 export * from './atoms/toggles/toggle__standart';
-export * from './atoms/inputs/select';
-export * from './atoms/tags/tag';
+export * from './atoms/inputs/select/select';
+export * from './atoms/inputs/select/types';
+export * from './atoms/inputs/select/components';
 export * from './atoms/inputs/checkbox';
-export * from './atoms/toggles/switcher';
 export * from './atoms/toggles/themeToggle';
-export * from './atoms/carousels/carousel';
 export * from './atoms/card/card';
 export * from './atoms/filterChips/filterChip';
 export * from './atoms/filterChips/types';
@@ -27,7 +25,6 @@ export * from './atoms/cieloLogo/CieloLogo';
 export * from './atoms/footer/Footer';
 export * from './atoms/radio/radio';
 export * from './atoms/socialButtonGroup/SocialButtonGroup';
-export * from './atoms/identicon/SelectIdenticon';
 export * from './atoms/inputs/textarea';
 export * from './atoms/shortText/shortText';
 export * from './atoms/walletLabel/walletLabel';
@@ -37,9 +34,6 @@ export { ModalContainer, CloseButton } from './atoms/modal/styles';
 
 // molecules
 export * from './molecules/copyToClipBoard/copyToClipBoard';
-export * from './molecules/groupTabs/selectorTabs';
-export * from './molecules/cardDate/cardDate';
-export * from './molecules/tokenPriceCard/tokenPriceCard';
 export * from './molecules/tooltip/TooltipComponent';
 export * from './molecules/hoverCard/hoverCard';
 export * from './molecules/labeled/select/labeledSelect';
@@ -48,11 +42,8 @@ export * from './molecules/meatballMenu/meatballMenu';
 export * from './molecules/controlledTooltip/controlledTooltip';
 
 // organisms
-export * from './organisms/searchFilterSelect/searchFilterSelect';
 export * from './organisms/actionBar/mobileRHSActionBar';
 export * from './organisms/navbar/navbar';
-export * from './organisms/contentCard/contentCard';
-export * from './organisms/contentCard/types';
 export * from './organisms/UserIdenticon/UserIdenticon';
 export * from './organisms/dropdownSlider/minUsdSlider';
 
@@ -75,5 +66,5 @@ export * from './utils/getSize';
 export * from './utils/toasts';
 
 export {
-  Theme, LightTheme, DarkTheme, Styled, localTheme,
+  Theme, LightTheme, DarkTheme, localTheme,
 } from './theme';

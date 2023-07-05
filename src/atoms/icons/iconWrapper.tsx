@@ -1,9 +1,9 @@
 import React from 'react';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 import { Text } from '../texts/text';
 import { IconWrapperProps } from './types';
 
-const IconComponent = Styled.div<IconWrapperProps>`
+const IconComponent = styled.div<IconWrapperProps>`
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   display: flex;
@@ -16,7 +16,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
     stroke: ${({ stroke }) => stroke};
     cursor:  ${({ cursor, hasHover }) => (hasHover ? 'pointer' : cursor || 'auto')};
   }
-  :hover {
+  &:hover {
     svg {
       fill: ${({
     fill, theme, hasHover, hoverColor,
@@ -25,7 +25,7 @@ const IconComponent = Styled.div<IconWrapperProps>`
   }
 `;
 
-const AnchorIconComponent = Styled.div<IconWrapperProps>`
+const AnchorIconComponent = styled.div<IconWrapperProps>`
   height: ${(props) => `calc(${props.height} + 2px)`};
   width: ${(props) => `calc(${props.width} + 2px)`};
   display: flex;
@@ -34,7 +34,7 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
   transition: width 0.3s;
   border-radius: 100px;
 
-  :hover {
+  &:hover {
     background: ${({ theme }) => theme.colors.primary.YELLOW};
   }
   svg {
@@ -45,14 +45,14 @@ const AnchorIconComponent = Styled.div<IconWrapperProps>`
 
 `;
 
-const Border = Styled.div<Pick<IconWrapperProps, 'href' | 'height' | 'width'>>`
+const Border = styled.div<Pick<IconWrapperProps, 'href' | 'height' | 'width'>>`
   background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   border-radius: 100px;
 `;
 
-const Outer = Styled.a<Pick<IconWrapperProps, 'disabled'>>`
+const Outer = styled.a<Pick<IconWrapperProps, 'disabled'>>`
   ${({ disabled }) => disabled && 'pointer-events: none'};
   ${({ disabled }) => disabled && 'cursor: default'};
 `;
@@ -78,7 +78,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
     <AnchorIconComponent
       href={href}
       cursor={cursor}
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!disabled && onClick) onClick(e);
       }}
       height={height}
@@ -98,7 +98,7 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
 ) : (
   <>
     <IconComponent
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!disabled && onClick) onClick(e);
       }}
       cursor={cursor}

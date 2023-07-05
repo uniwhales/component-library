@@ -1,8 +1,7 @@
-import { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { tablet } from '../../../../layouts/breakpoints';
-import { Styled } from '../../../../theme';
 
-export const NavbarUserMenu = Styled.div<{ isMenuOpen: boolean }>`
+export const NavbarUserMenu = styled.div<{ isMenuOpen: boolean }>`
   display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 8px;

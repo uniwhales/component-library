@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { ZIndex } from '../../utils/constants';
 
 export interface TooltipProps {
   children: ReactNode;
@@ -7,7 +6,7 @@ export interface TooltipProps {
   position?: 'bottom' | 'left' | 'right' | 'top';
   opened?: boolean;
   allowPointerEvents?: boolean;
-  zIndex?: ZIndex;
+  zIndex?: number;
   multiline?: boolean;
   offset?: number;
 }

@@ -1,7 +1,7 @@
+import { styled } from 'styled-components';
 import { Row } from '../../atoms/common/flex';
-import { Styled } from '../../theme';
 
-export const ContentWrapper = Styled(Row)`
+export const ContentWrapper = styled(Row)`
     justify-content: space-between;
     align-items: center;
     width: 100%;

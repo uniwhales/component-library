@@ -1,9 +1,8 @@
-import { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { tablet } from '../../layouts/breakpoints';
-import { Styled } from '../../theme';
 import { ConnectButtonProps } from './types';
 
-export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: boolean }>`
+export const ConnectButton = styled.button<ConnectButtonProps & { isConnected: boolean }>`
   svg {
     cursor: pointer;
     fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};

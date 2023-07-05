@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, Story } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { BodySizes } from '../texts/types';
 import { Subscript } from './subscript';
 import { Text } from '../texts/text';
@@ -20,40 +20,24 @@ const bodySizes: BodySizes[] = [
   '8-Bold',
 ];
 
-interface TemplateSizes {
-  list: BodySizes[],
-}
-
-export default {
-  title: 'Atoms/Subscript',
+const meta: Meta<typeof Subscript> = {
   component: Subscript,
-  argTypes: {
-    size: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof Subscript>;
+};
 
-const Template: Story<TemplateSizes> = (args) => {
-  const { list } = args;
-  return (
+export default meta;
+type Story = StoryObj<typeof Subscript>;
+
+export const BodyText: Story = {
+  render: () => (
     <>
-      {list.map((item) => (
+      {bodySizes.map((item) => (
         <Row gap="4px" alignItems="center">
           <Text size={item}>Some text:</Text>
           <Subscript key={item} size={item} beforeSubscript="0.0" subscript="6" afterSubscript="452" />
         </Row>
       ))}
     </>
-  );
-};
-
-export const BodyText = Template.bind({});
-
-BodyText.args = {
-  list: bodySizes,
+  ),
 };
 
 BodyText.parameters = {

@@ -1,15 +1,18 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { UniWhalesLogo } from './uniwhalesLogo';
+import { LogoProps, UniWhalesLogo } from './uniwhalesLogo';
 
-export default {
-  title: 'Atoms/UniwhalesLogo',
+const meta: Meta<typeof UniWhalesLogo> = {
   component: UniWhalesLogo,
-  argTypes: {},
-} as ComponentMeta<typeof UniWhalesLogo>;
+};
 
-const Template: ComponentStory<typeof UniWhalesLogo> = (args) => {
+export default meta;
+type Story = StoryObj<typeof UniWhalesLogo>;
+
+const Template = (args: LogoProps) => {
   const [showText, setShowText] = useState(true);
   return <UniWhalesLogo {...args} showText={showText} containerWidth="max-content" onClick={() => setShowText(!showText)} />;
 };
-export const Standard = Template.bind({});
+export const Standard: Story = {
+  render: (args) => <Template {...args} />,
+};

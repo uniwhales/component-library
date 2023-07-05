@@ -1,36 +1,43 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Styled } from '../../theme';
+import type { Meta, StoryObj } from '@storybook/react';
+import { styled } from 'styled-components';
+
 import { WalletLabel } from './walletLabel';
+import { WalletLabelProps } from './types';
 
-export default {
-  title: 'Atoms/WalletLabel',
+const meta: Meta<typeof WalletLabel> = {
   component: WalletLabel,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof WalletLabel>;
+};
 
-const Wrapper = Styled.div`
+export default meta;
+type Story = StoryObj<typeof WalletLabel>;
+
+const Wrapper = styled.div`
   width: 200px;
   margin: 50px 0;
 `;
 
-const Template: ComponentStory<typeof WalletLabel> = (args) => (
+const Template = (args: WalletLabelProps) => (
   <Wrapper>
     <WalletLabel {...args} />
   </Wrapper>
 );
 
-export const ShortLabel = Template.bind({});
-export const LongLabel = Template.bind({});
-export const NoLabel = Template.bind({});
-export const BreakWord = Template.bind({});
-export const TrimString = Template.bind({});
+export const ShortLabel: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const LongLabel: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const NoLabel: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const BreakWord: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const TrimString: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 ShortLabel.args = {
   label: 'label',

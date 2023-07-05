@@ -1,9 +1,10 @@
 import { HoverCard } from '@mantine/core';
 import React from 'react';
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
+
 import { HoverCardProps } from './types';
 
-const CieloHoverCardDropdown = Styled(HoverCard.Dropdown)`
+const CieloHoverCardDropdown = styled(HoverCard.Dropdown)`
   background-color: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   border: 2px solid ${({ theme }) => theme.textShades.SHADE_MINUS_1};

@@ -1,9 +1,10 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
-import { localTheme, Styled, Theme } from '../../theme';
+import { styled } from 'styled-components';
+import { localTheme, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
-import { Required } from './select';
+import { Required } from './select/components';
 
 const InputPatterns = {
   number: /^-?\d*\.?\d*$/,
@@ -34,7 +35,7 @@ export interface InputsProps {
   tabIndex?: number;
   maxLength?: number;
 }
-export const InputWrapper = Styled.div<{ width?: string, disabled: boolean, inputState: InputState }>`
+export const InputWrapper = styled.div<{ width?: string, disabled: boolean, inputState: InputState }>`
   width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
@@ -43,9 +44,9 @@ export const InputWrapper = Styled.div<{ width?: string, disabled: boolean, inpu
   p{
     margin: 0;
   }
-  :hover {
+  &:hover {
     input, textarea {
-      ::placeholder {
+      &::placeholder {
         color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
       }
       color: ${({ theme, disabled, inputState }) => !disabled && inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
@@ -71,7 +72,7 @@ export const getBorderColor = (theme: typeof Theme, status: InputState['status']
   }
   return theme.textShades.SHADE_MINUS_1;
 };
-const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputState: InputState }>`
+const InputStyled = styled.input<{ disabled?: boolean, withIcon: boolean, inputState: InputState }>`
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -91,7 +92,7 @@ const InputStyled = Styled.input<{ disabled?: boolean, withIcon: boolean, inputS
     color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
   }
 `;
-export const InputLabel = Styled.label<{ disabled?: boolean }>`
+export const InputLabel = styled.label<{ disabled?: boolean }>`
   display: flex;
   gap: 5px;
   font-size: 12px;
@@ -100,7 +101,7 @@ export const InputLabel = Styled.label<{ disabled?: boolean }>`
   line-height: 16px;
 `;
 
-export const InputContainer = Styled.div<{ inputState: InputState, focus: boolean, disabled?: boolean }>`
+export const InputContainer = styled.div<{ inputState: InputState, focus: boolean, disabled?: boolean }>`
   position: relative;
   border-radius: 12px;
   box-sizing: border-box;
@@ -110,13 +111,13 @@ export const InputContainer = Styled.div<{ inputState: InputState, focus: boolea
   outline: 1.5px solid ${({ theme, inputState, disabled }) => (disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : getBorderColor(theme, inputState.status))};
 `;
 
-const LeftSideIcon = Styled.div`
+const LeftSideIcon = styled.div`
   position:absolute;
   left: 0;
   top:0;
   padding:9px 9px;
  `;
-const RightSideIcon = Styled.div`
+const RightSideIcon = styled.div`
   position: absolute;
   right: 0;
   top:0;
@@ -126,13 +127,13 @@ const RightSideIcon = Styled.div`
   }
  `;
 
-export const MoreDetailContainer = Styled.div`
+export const MoreDetailContainer = styled.div`
   position: absolute;
   right: 0;
   margin: 8px;
 `;
 
-export const Wrapper = Styled.div<{ mt?: string }>`
+export const Wrapper = styled.div<{ mt?: string }>`
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   padding: 20px;
   margin-top: ${({ mt }) => mt && mt};
@@ -235,11 +236,11 @@ const Input = ({
           min={min}
           disabled={disabled}
           value={value}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             if (pattern && !InputPatterns[pattern].test(e.target.value)) return;
             onChange(e);
           }}
-          onKeyDown={(e) => {
+          onKeyDown={(e: any) => {
             if (onEnterSubmit && e.key === 'Enter') {
               onEnterSubmit();
             }

@@ -1,5 +1,4 @@
-import { keyframes } from 'styled-components';
-import { Styled } from '../../theme';
+import { keyframes, styled } from 'styled-components';
 
 const rotate = keyframes`
   from {
@@ -11,6 +10,6 @@ const rotate = keyframes`
   }
 `;
 
-export const Rotate = Styled.div`
+export const Rotate = styled.div`
   animation: ${rotate} 2s linear infinite;
 `;

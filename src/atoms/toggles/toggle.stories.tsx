@@ -1,12 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { ToggleAtom } from './toggle__standart';
 
-export default {
-  title: 'Atoms/Toggles',
+const meta: Meta<typeof ToggleAtom> = {
   component: ToggleAtom,
-  argTypes: {},
-} as ComponentMeta<typeof ToggleAtom>;
+};
 
-const Template: ComponentStory<typeof ToggleAtom> = (args) => <ToggleAtom {...args} />;
-export const Standart = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof ToggleAtom>;
+
+export const Standard: Story = {
+  render: (args) => <ToggleAtom {...args} />,
+};

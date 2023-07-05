@@ -1,7 +1,8 @@
+import { css, styled } from 'styled-components';
 import { Card } from '../../atoms/card/card';
-import { Styled } from '../../theme';
+import { phone, tablet } from '../../layouts/breakpoints';
 
-export const ModalWrapper = Styled.div<{ isMobile?: boolean }>`
+export const ModalWrapper = styled.div<{ isMobile?: boolean }>`
   position: fixed;
   top: ${({ isMobile }) => (isMobile ? '0px' : '50%')};
   left: 50%;
@@ -9,7 +10,7 @@ export const ModalWrapper = Styled.div<{ isMobile?: boolean }>`
   z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
-export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double', isMobile?: boolean }>`
+export const ModalContent = styled(Card)<{ modalVariant: 'single' | 'double', isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -21,7 +22,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double', is
   text-align: left;
   box-sizing: border-box;
 `;
-export const IconWrapperAbsolute = Styled.div`
+export const IconWrapperAbsolute = styled.div`
   position: absolute;
   right: 18px;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
@@ -29,7 +30,7 @@ export const IconWrapperAbsolute = Styled.div`
   padding: 3px;
 `;
 
-export const CloseSection = Styled.div`
+export const CloseSection = styled.div`
   display: flex;
   justify-content: flex-end;
   @media (max-width: 768px) {
@@ -40,7 +41,7 @@ export const CloseSection = Styled.div`
   }
 `;
 
-export const DummyModalContent = Styled.div`
+export const DummyModalContent = styled.div`
   width: 360px;
   text-align: center;
   display: flex;

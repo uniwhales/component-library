@@ -1,25 +1,15 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Chip } from './chip';
 import { IconWrapper } from '../icons/iconWrapper';
 import { StarIcon } from '../icons';
 
-export default {
-  title: 'Atoms/Chips',
+const meta: Meta<typeof Chip> = {
   component: Chip,
-  argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-    },
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof Chip>;
+};
+
+export default meta;
+type Story = StoryObj<typeof Chip>;
 
 const WithIcon = (isText = true, iconSize = '16px') => (
   <>
@@ -33,18 +23,34 @@ const WithIcon = (isText = true, iconSize = '16px') => (
   </>
 );
 
-const Template: ComponentStory<typeof Chip> = (args) => {
+const Template = (args: React.JSX.IntrinsicAttributes & { children: React.ReactChild; secondaryTypeBgColor?: 'orange' | 'green' | 'red' | 'yellow' | undefined; type: 'primary' | 'secondary' | 'tertiary' | 'editable' | 'tertiaryLined' | 'subtle'; } & Pick<React.CSSProperties, 'width' | 'cursor'>) => {
   const { children } = args;
   return <Chip {...args}>{children}</Chip>;
 };
-export const Primary = Template.bind({});
-export const PrimaryCustomWidth = Template.bind({});
-export const Secondary = Template.bind({});
-export const Tertiary = Template.bind({});
-export const TertiaryCustomWidth = Template.bind({});
-export const Editable = Template.bind({});
-export const TertiaryLined = Template.bind({});
-export const Subtle = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const PrimaryCustomWidth: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Secondary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Tertiary: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const TertiaryCustomWidth: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const TertiaryLined: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Editable: Story = {
+  render: (args) => <Template {...args} />,
+};
+export const Subtle: Story = {
+  render: (args) => <Template {...args} />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },

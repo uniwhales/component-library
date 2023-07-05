@@ -1,22 +1,30 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { MobileRHSActionBar } from './mobileRHSActionBar';
 import { AllIcon } from '../../atoms/icons';
 
-export default {
-  title: 'Organisms/MobileRHSActionBar',
+const meta: Meta<typeof MobileRHSActionBar> = {
   component: MobileRHSActionBar,
-  argTypes: {},
-} as ComponentMeta<typeof MobileRHSActionBar>;
+};
 
-const Template: ComponentStory<typeof MobileRHSActionBar> = (args) => (
-  <MobileRHSActionBar {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof MobileRHSActionBar>;
 
-export const Primary = Template.bind({});
-export const NoHover = Template.bind({});
-export const Tertiary = Template.bind({});
-export const Quartary = Template.bind({});
+export const Primary: Story = {
+  render: (args) => <MobileRHSActionBar {...args} />,
+};
+
+export const NoHover: Story = {
+  render: (args) => <MobileRHSActionBar {...args} />,
+};
+
+export const Tertiary: Story = {
+  render: (args) => <MobileRHSActionBar {...args} />,
+};
+
+export const Quartary: Story = {
+  render: (args) => <MobileRHSActionBar {...args} />,
+};
 
 Primary.args = {
   left: 'Latest Announcements',

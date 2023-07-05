@@ -1,6 +1,6 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const IconContainer = Styled.div`
+export const IconContainer = styled.div`
   height: 36px;
   width: 36px;
   position: relative;
@@ -9,7 +9,7 @@ export const IconContainer = Styled.div`
   align-items: center;
 `;
 
-export const SmallIcon = Styled.div<{ bgColor: string, smallSize: string }>`
+export const SmallIcon = styled.div<{ bgColor: string, smallSize: string }>`
   position: absolute;
   bottom: 50%;
   left: 55%;
@@ -24,7 +24,7 @@ export const SmallIcon = Styled.div<{ bgColor: string, smallSize: string }>`
   width: 20px;
 `;
 
-export const LargeIcon = Styled.div<{ bgColor: string, largeSize: string }>`
+export const LargeIcon = styled.div<{ bgColor: string, largeSize: string }>`
   position: absolute;
   border-radius: 50%;
   background: ${(props) => (props.bgColor ? props.bgColor : props.theme.containerAndCardShades.SHADE_PLUS_1)};

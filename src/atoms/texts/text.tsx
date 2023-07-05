@@ -40,7 +40,7 @@ export const Text: FC<TextProps> = ({
       <StyledHeading
         textDecoration={textDecoration}
         color={color}
-        as={textType.toLowerCase() as never}
+        as={textType.toLowerCase()}
         textType={textType}
         textWeight={textWeight}
       >

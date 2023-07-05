@@ -1,27 +1,38 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { CieloLogo } from './CieloLogo';
+import { LogoProps } from './types';
 
-export default {
-  title: 'Atoms/CieloLogo',
+const meta: Meta<typeof CieloLogo> = {
   component: CieloLogo,
-  argTypes: {},
-} as ComponentMeta<typeof CieloLogo>;
+};
 
-const Template: ComponentStory<typeof CieloLogo> = (args, { globals }) => {
-  const isDark = globals.backgrounds?.value === '#191B20';
+export default meta;
+type Story = StoryObj<typeof CieloLogo>;
+
+const Template = (args: React.JSX.IntrinsicAttributes & LogoProps) => {
   const [text, setText] = useState(true);
   return (
     <>
-      <CieloLogo {...args} noText={text} night={isDark} />
+      <CieloLogo {...args} noText={text} />
       <button type="button" onClick={() => setText(!text)}>{text ? 'Full logo' : 'Symbol only logo'}</button>
     </>
 
   );
 };
 
-export const Standard = Template.bind({});
-export const Beta = Template.bind({});
+export const Standard: Story = {
+  render: (args, { globals: { backgrounds } }) => {
+    const isDark = backgrounds?.value === '#191B20';
+    return <Template {...args} night={isDark} />;
+  },
+};
+export const Beta: Story = {
+  render: (args, { globals: { backgrounds } }) => {
+    const isDark = backgrounds?.value === '#191B20';
+    return <Template {...args} night={isDark} />;
+  },
+};
 Beta.args = {
   isBeta: true,
 };

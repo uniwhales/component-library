@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   AvalancheColor, BinanceColor, EthereumColor, FantomColor, SettingsBars,
 } from '../../../atoms/icons';
 import { IconWrapper } from '../../../atoms/icons/iconWrapper';
-import { LabeledSelect } from './labeledSelect';
-import { Placeholder, SelectOption } from '../../../atoms/inputs/select';
+import { LabeledSelect, LabeledSelectProps } from './labeledSelect';
 import { ButtonAtom } from '../../../atoms/buttons/button';
 import { Text } from '../../../atoms/texts/text';
+import { SelectOption, SelectProps } from '../../../atoms/inputs/select/types';
+import { Placeholder } from '../../../atoms/inputs/select/components';
+import { Select } from '../../../atoms/inputs/select/select';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -74,14 +76,14 @@ const GroupExample = [
   { label: 'Tx Types', options: TxOptions },
 ];
 
-export default {
-  title: 'Molecules/LabeledSelect',
+const meta: Meta<typeof LabeledSelect> = {
   component: LabeledSelect,
-  argTypes: {
-  },
-} as ComponentMeta<typeof LabeledSelect>;
+};
 
-const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) => {
+export default meta;
+type Story = StoryObj<typeof Select>;
+
+const TemplateSingle = (args: SelectProps<'single'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <>
@@ -90,22 +92,23 @@ const TemplateSingle: ComponentStory<typeof LabeledSelect<'single'>> = (args) =>
     </>
   );
 };
-const TemplateGroup: ComponentStory<typeof LabeledSelect<'group'>> = (args) => {
+const TemplateGroup = (args: SelectProps<'group'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption>();
   return <LabeledSelect<'group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMulti: ComponentStory<typeof LabeledSelect<'multi'>> = (args) => {
+const TemplateMulti = (args: React.JSX.IntrinsicAttributes & SelectProps<'multi'> & LabeledSelectProps) => {
   const [value, setValue] = useState<SelectOption[]>();
   return <LabeledSelect<'multi'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
 };
-const TemplateMultiGroup: ComponentStory<typeof LabeledSelect<'multi-group'>> = (args) => {
-  const [value, setValue] = useState<SelectOption[]>();
-  return <LabeledSelect<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />;
+export const LabeledPrimary: Story = {
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} label="Label" />,
 };
-export const LabeledPrimary = TemplateSingle.bind({});
-export const LabeledSingleGroupSearchSelect = TemplateGroup.bind({});
-export const LabeledMultiSelect = TemplateMulti.bind({});
-export const LabeledMultiGroupSelect = TemplateMultiGroup.bind({});
+export const LabeledSingleGroupSearchSelect: Story = {
+  render: (args: SelectProps<'group'>) => <TemplateGroup {...args} label="Label" />,
+};
+export const LabeledMultiSelect: Story = {
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} label="Label" />,
+};
 
 LabeledPrimary.parameters = {
   backgrounds: { default: 'dark theme' },
@@ -117,8 +120,7 @@ LabeledPrimary.args = {
   readOnly: false,
   placeholder: 'DEX filters',
   isXL: false,
-  showValue: 'every',
-  label: 'Cielo',
+  showValue: true,
   required: true,
 };
 
@@ -129,7 +131,7 @@ LabeledMultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -138,7 +140,6 @@ LabeledMultiSelect.args = {
   isXL: true,
   isClearable: false,
   isSearchable: false,
-  label: 'Labeled Multi Select',
 };
 
 LabeledSingleGroupSearchSelect.parameters = {
@@ -148,7 +149,7 @@ LabeledSingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
   readOnly: false,
-  showValue: 'every',
+  showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
@@ -157,20 +158,4 @@ LabeledSingleGroupSearchSelect.args = {
   isXL: true,
   isClearable: true,
   isSearchable: true,
-  label: 'Labeled Single Group Search Select',
-};
-LabeledMultiGroupSelect.args = {
-  selectOptions: GroupExample,
-  isMulti: true,
-  readOnly: false,
-  showValue: 'every',
-  placeholder:
-  <Placeholder>
-    <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="14-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
-  isXL: true,
-  isClearable: true,
-  isSearchable: true,
-  label: 'Labeled Multi Group Select',
 };

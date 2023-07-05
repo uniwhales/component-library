@@ -1,13 +1,12 @@
-import { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { tablet } from '../../layouts/breakpoints';
-import { Styled } from '../../theme';
 
-const FlexBase = Styled.div`
+const FlexBase = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean, bgColor: boolean | string }>`
+export const NavbarContainer = styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean, bgColor: boolean | string }>`
   position: sticky;
   top: 0;
   right: 0;
@@ -33,7 +32,7 @@ export const NavbarContainer = Styled(FlexBase)<{ isMenuOpen?: boolean, account?
   `)}
 `;
 
-export const NavbarMainContent = Styled.div`
+export const NavbarMainContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,17 +45,17 @@ export const NavbarMainContent = Styled.div`
   `)}
 `;
 
-export const NavbarLeftSide = Styled(FlexBase)`
+export const NavbarLeftSide = styled(FlexBase)`
   gap: 6px;
 `;
 
-export const NavbarRightSide = Styled(FlexBase)`
+export const NavbarRightSide = styled(FlexBase)`
   gap: 16px;
 `;
 
-export const IdenticonContainer = Styled.div``;
+export const IdenticonContainer = styled.div``;
 
-export const NavbarDesktopMenu = Styled.div`
+export const NavbarDesktopMenu = styled.div`
   ${tablet(css`
     display: none;
   `)}

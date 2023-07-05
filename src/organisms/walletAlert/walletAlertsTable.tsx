@@ -1,7 +1,8 @@
 import React from 'react';
-import { localTheme, Styled } from '../../theme';
+import { styled } from 'styled-components';
+import { localTheme } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
-import { Select, SelectOption } from '../../atoms/inputs/select';
+import { Select, SelectOption } from '../../atoms/inputs/select/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
@@ -26,7 +27,7 @@ export interface WalletAlertsTableProps {
   filters: SelectOption[];
   bot_id: BotIdArray
 }
-const Wrapper = Styled.div<{ isLoading: boolean }>`
+const Wrapper = styled.div<{ isLoading: boolean }>`
   position: relative;
   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
   border-radius: 12px;
@@ -53,22 +54,22 @@ const Wrapper = Styled.div<{ isLoading: boolean }>`
     padding: 5px 10px;
   }
 `;
-const Section = Styled.div<{ flex?: number }>`
+const Section = styled.div<{ flex?: number }>`
   flex: ${(props) => props.flex || 1};
 `;
-const SectionSelect = Styled(Section)`
+const SectionSelect = styled(Section)`
   display: none;
   @media screen and (min-width: 1024px) {
     display: flex;
   }
 `;
-const Group = Styled.div`
+const Group = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height:100%;
 `;
-const ButtonGroup = Styled.div`
+const ButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 25px;
@@ -77,7 +78,7 @@ const ButtonGroup = Styled.div`
     display: flex;
   }
 `;
-const ButtonGroupMobile = Styled.div`
+const ButtonGroupMobile = styled.div`
   display: none;
   align-items: center;
   justify-content: flex-end;
@@ -91,7 +92,7 @@ const ButtonGroupMobile = Styled.div`
   }
 `;
 
-const Overlay = Styled.div`
+const Overlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: ${({ theme }) => theme.zIndex.OVERLAY};

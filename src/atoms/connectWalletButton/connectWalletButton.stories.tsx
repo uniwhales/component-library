@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { ConnectWalletButton } from './connectWalletButton';
 
-export default {
-  title: 'Atoms/WalletConnectButton',
+const meta: Meta<typeof ConnectWalletButton> = {
   component: ConnectWalletButton,
-  argTypes: {
-  },
-} as ComponentMeta<typeof ConnectWalletButton>;
+};
 
-const Template: ComponentStory<typeof ConnectWalletButton> = () => {
+export default meta;
+type Story = StoryObj<typeof ConnectWalletButton>;
+
+const Template = () => {
   const [account, setAccount] = useState<string | null>(null);
 
   const handleSwitch = () => {
@@ -27,4 +27,6 @@ const Template: ComponentStory<typeof ConnectWalletButton> = () => {
   );
 };
 
-export const ConnectButton = Template.bind({});
+export const ConnectButton: Story = {
+  render: () => <Template />,
+};

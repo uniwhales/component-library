@@ -1,6 +1,6 @@
-import { Styled } from '../../theme';
+import { styled } from 'styled-components';
 
-export const Wrapper = Styled.div`
+export const Wrapper = styled.div`
   display: flex;
   height: 300px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
@@ -9,7 +9,7 @@ export const Wrapper = Styled.div`
   margin-left: 350px;
 `;
 
-export const TooltipButtonWrapper = Styled.div`
+export const TooltipButtonWrapper = styled.div`
   border: ${({ theme }) => `2px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`};
   border-radius: 50%;
   cursor: pointer;

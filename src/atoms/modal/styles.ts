@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { Column, Row } from '../common/flex';
-import { Styled } from '../../theme';
+import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
-export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
+export const ModalContainer = styled.div<{ isMobile?:boolean }>`
   position: fixed;
   height: 100%;
   width: 100%;
@@ -15,7 +15,8 @@ export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
   justify-content: center;
 `;
 
-export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
+
+export const ModalBody = styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -37,7 +38,7 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   `)}
 `;
 
-export const CloseButton = Styled.div`
+export const CloseButton = styled.div`
   background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
   height: 22px;
   width: 22px;
@@ -50,30 +51,30 @@ export const CloseButton = Styled.div`
   }
 `;
 
-export const ModalHeaderContainer = Styled.div`
+export const ModalHeaderContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
   justify-content: space-between;
 `;
 
-export const HeaderAndIconContainer = Styled(Row)`
+export const HeaderAndIconContainer = styled(Row)`
   gap: 8px;
 `;
 
-export const ModalContentContainer = Styled.div`
+export const ModalContentContainer = styled.div`
   display: flex;
   gap: 24px;
   overflow: scroll;
 `;
 
-export const ExtraContentRow = Styled(Row)`
+export const ExtraContentRow = styled(Row)`
   align-items: center;
   cursor: pointer;
   padding: 12px 0;
   gap: 8px;
 `;
 
-export const ModalColumn = Styled(Column)`
+export const ModalColumn = styled(Column)`
   width: 360px;
 `;

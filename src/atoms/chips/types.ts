@@ -1,5 +1,4 @@
-import { ReactChild } from 'react';
-import { CSSProperties } from 'styled-components';
+import { CSSProperties, ReactChild } from 'react';
 
 export type ChipProps = {
   children: ReactChild;

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './radio';
 import { Wrapper } from './radio.styles';
 
-export default {
-  title: 'Atoms/Radio',
+const meta: Meta<typeof Radio> = {
   component: Radio,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Radio>;
+};
+
+export default meta;
+type Story = StoryObj<typeof Radio>;
 
 const dummyData = [{ label: 'Radio One', disabled: false }, { label: 'Radio Two', disabled: false }, { label: 'Radio Three', disabled: false }, { label: 'Disabled Radio', disabled: true }];
 
-const Template: ComponentStory<typeof Radio> = () => {
+const Template = () => {
   const [selected, setSelected] = useState<null | string>('Radio Two');
 
   return (
@@ -33,7 +33,9 @@ const Template: ComponentStory<typeof Radio> = () => {
   );
 };
 
-export const Primary = Template.bind({});
+export const Primary: Story = {
+  render: () => <Template />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },

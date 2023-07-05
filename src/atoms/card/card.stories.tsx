@@ -1,17 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Card } from './card';
 import { ButtonAtom } from '../buttons/button';
 
-export default {
-  title: 'Atoms/Card',
+const meta: Meta<typeof Card
+> = {
   component: Card,
-  argTypes: {},
-} as ComponentMeta<typeof Card>;
+};
 
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args}><ButtonAtom onClick={() => {}} buttonVariant="primary">test</ButtonAtom></Card>;
-export const CardComponent = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof Card>;
 
-CardComponent.parameters = {
-  backgrounds: { default: 'dark' },
+export const Primary: Story = {
+  render: (args) => <Card {...args}><ButtonAtom onClick={() => {}} buttonVariant="primary">test</ButtonAtom></Card>,
 };

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
-  Placeholder, Select, SelectOption,
+  Select,
 } from './select';
-import { IconWrapper } from '../icons/iconWrapper';
+import { IconWrapper } from '../../icons/iconWrapper';
 import {
   BinanceColor, BobaColor, EthereumColor, FantomColor, SettingsBars, ZkEvmColor,
-} from '../icons';
-import { Text } from '../texts/text';
-import { Wrapper } from './input';
+} from '../../icons';
+import { Text } from '../../texts/text';
+import { Wrapper } from '../input';
+import { Placeholder } from './components';
+import { SelectOption, SelectProps } from './types';
 
 const ColourOptions = [
   { id: 0, value: 'blue blue', label: 'Blue' },
@@ -96,14 +98,14 @@ const GroupExample = [
   { label: 'Tx Types', options: TxOptions },
 ];
 
-export default {
-  title: 'Atoms/Select',
+const meta: Meta<typeof Select> = {
   component: Select,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Select>;
+};
 
-const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
+export default meta;
+type Story = StoryObj<typeof Select>;
+
+const TemplateSingle = (args: SelectProps<'single'>) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <Wrapper mt="200px">
@@ -111,7 +113,7 @@ const TemplateSingle: ComponentStory<typeof Select<'single'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
+const TemplateGroup = (args: SelectProps<'group'>) => {
   const [value, setValue] = useState<SelectOption>();
   return (
     <Wrapper>
@@ -119,7 +121,7 @@ const TemplateGroup: ComponentStory<typeof Select<'group'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
+const TemplateMulti = (args: SelectProps<'multi'>) => {
   const [value, setValue] = useState<SelectOption[]>();
   return (
     <Wrapper>
@@ -127,21 +129,24 @@ const TemplateMulti: ComponentStory<typeof Select<'multi'>> = (args) => {
     </Wrapper>
   );
 };
-const TemplateMultiGroup: ComponentStory<typeof Select<'multi-group'>> = (args) => {
-  const [value, setValue] = useState<SelectOption[]>();
-  return (
-    <Wrapper>
-      <Select<'multi-group'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} handleClearValue={() => setValue([])} />
-    </Wrapper>
-  );
+export const Primary: Story = {
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
 };
-export const Primary = TemplateSingle.bind({});
-export const PrimaryIcon = TemplateSingle.bind({});
-export const LongOption = TemplateSingle.bind({});
-export const SingleGroupSearchSelect = TemplateGroup.bind({});
-export const MultiSelect = TemplateMulti.bind({});
-export const MultiGroupSelect = TemplateMultiGroup.bind({});
-export const CustomMenuHeight = TemplateMulti.bind({});
+export const PrimaryIcon: Story = {
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
+};
+export const LongOption: Story = {
+  render: (args: SelectProps<'single'>) => <TemplateSingle {...args} />,
+};
+export const SingleGroupSearchSelect: Story = {
+  render: (args: SelectProps<'group'>) => <TemplateGroup {...args} />,
+};
+export const MultiSelect: Story = {
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
+};
+export const CustomMenuHeight: Story = {
+  render: (args: SelectProps<'multi'>) => <TemplateMulti {...args} />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark theme' },
@@ -213,20 +218,6 @@ SingleGroupSearchSelect.parameters = {
 SingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
-  readOnly: false,
-  showValue: true,
-  placeholder:
-  <Placeholder>
-    <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
-    <Text size="14-Regular">Filter Tx types and Chains</Text>
-  </Placeholder>,
-  isXL: true,
-  isClearable: true,
-  isSearchable: true,
-};
-MultiGroupSelect.args = {
-  selectOptions: GroupExample,
-  isMulti: true,
   readOnly: false,
   showValue: true,
   placeholder:

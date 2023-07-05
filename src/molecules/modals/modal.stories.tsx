@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import {
@@ -11,15 +11,16 @@ import { Text } from '../../atoms/texts/text';
 import { Modal } from './modal';
 import { DummyModalContent } from './modal.styles';
 
-export default {
-  title: 'Molecules/Modals',
+const meta: Meta<typeof Modal> = {
   component: Modal,
-  argTypes: {},
-} as ComponentMeta<typeof Modal>;
+};
+
+export default meta;
+type Story = StoryObj<typeof Modal>;
 
 const placeholderText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
-const Template: ComponentStory<typeof Modal> = () => {
+const Template = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <>
@@ -46,7 +47,7 @@ const Template: ComponentStory<typeof Modal> = () => {
   );
 };
 
-const Template2: ComponentStory<typeof Modal> = () => {
+const Template2 = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showMore, setShowMore] = useState(false);
   return (
@@ -92,12 +93,13 @@ const Template2: ComponentStory<typeof Modal> = () => {
   );
 };
 
-export const Primary = Template.bind({});
-export const DoubleModal = Template2.bind({});
-
-Primary.args = {
-  show: true,
+export const Primary: Story = {
+  render: () => <Template />,
 };
+export const DoubleModal: Story = {
+  render: () => <Template2 />,
+};
+
 Primary.parameters = {
   backgrounds: { default: 'dark' },
 };

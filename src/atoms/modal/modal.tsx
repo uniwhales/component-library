@@ -45,7 +45,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
       <Overlay />
       <ModalContainer
         isMobile={isMobile}
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLDivElement, MouseEvent>) => {
           e.stopPropagation();
           if (!closeFn || !closeOnOverlayClick) return;
           setReplay(true);
@@ -53,9 +53,9 @@ export const ModalBase: FC<ModalBaseProps> = ({
         }}
       >
         <ModalBody
-          padding="25px 18px"
           isMobile={isMobile}
-          onClick={(e) => e.stopPropagation()}
+          padding="25px 18px"
+          onClick={(e: { stopPropagation: () => void; }) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}
           maxWidth={maxWidth}

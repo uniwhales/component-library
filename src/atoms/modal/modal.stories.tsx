@@ -1,20 +1,23 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
+import { styled } from 'styled-components';
 import { ButtonAtom } from '../buttons/button';
 import { DoubleModalExample, ExampleModal } from './modalModel';
 import { ModalMockDataLatestAnnouncements } from './mockData';
 import { BrochureLayout } from '../../layouts/brochure/brochureLayout.styles';
 import { Navbar } from '../../organisms/navbar/navbar';
-import { Styled } from '../../theme';
 
 const list = Array.from(Array(20).keys());
 
-export default {
-  title: 'Atoms/Modal',
-} as ComponentMeta<typeof ExampleModal>;
+const meta: Meta<typeof ExampleModal> = {
+  component: ExampleModal,
+};
 
-const Placeholder = Styled.div`
+export default meta;
+type Story = StoryObj<typeof ExampleModal>;
+
+const Placeholder = styled.div`
   height: 200px;
   width: 200px;
   display: flex;
@@ -28,7 +31,7 @@ const Proxy = () => {
 
   return (
     <>
-      <Navbar onBackButtonClick={() => {}} onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
+      <Navbar onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
       <BrochureLayout>
         <ButtonAtom
           buttonVariant="primary"
@@ -50,7 +53,7 @@ const Double = () => {
 
   return (
     <>
-      <Navbar onBackButtonClick={() => {}} onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
+      <Navbar onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
       <BrochureLayout>
         <ButtonAtom
           buttonVariant="primary"
@@ -66,20 +69,24 @@ const Double = () => {
   );
 };
 
-const Template: ComponentStory<typeof ExampleModal> = () => (
+const Template = () => (
   <NiceModal.Provider>
     <Proxy />
   </NiceModal.Provider>
 );
 
-const Template2: ComponentStory<typeof ExampleModal> = () => (
+const Template2 = () => (
   <NiceModal.Provider>
     <Double />
   </NiceModal.Provider>
 );
 
-export const Primary = Template.bind({});
-export const DoubleModal = Template2.bind({});
+export const Primary: Story = {
+  render: () => <Template />,
+};
+export const DoubleModal: Story = {
+  render: () => <Template2 />,
+};
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },

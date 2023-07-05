@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { IconWrapper } from './iconWrapper';
 import {
   ArrowDownIcon, ArrowUpIcon,
@@ -190,14 +190,14 @@ import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
 import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
 import { FatUpArrowIcon } from './navigationIcons/FatArrowUpIcon';
 
-export default {
-  title: 'Atoms/Icons',
+const meta: Meta<typeof IconWrapper> = {
   component: IconWrapper,
-  argTypes: {
-  },
-} as ComponentMeta<typeof IconWrapper>;
+};
 
-const Template: ComponentStory<typeof IconWrapper> = () => (
+export default meta;
+type Story = StoryObj<typeof IconWrapper>;
+
+const Template = () => (
   <>
     <IconWrapper name="Arrow Down" icon={<ArrowDownIcon />} />
     <IconWrapper name="Arrow Up" icon={<ArrowUpIcon />} />
@@ -223,7 +223,7 @@ const Template: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Filter" icon={<SettingsBars />} />
   </>
 );
-const Template2: ComponentStory<typeof IconWrapper> = () => (
+const Template2 = () => (
   <>
     <IconWrapper name="Ethereum" icon={<Ethereum />} />
     <IconWrapper name="Polygon" icon={<Polygon />} />
@@ -253,7 +253,7 @@ const Template2: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="0x" icon={<ZeroXFilled />} />
   </>
 );
-const Template3: ComponentStory<typeof IconWrapper> = () => (
+const Template3 = () => (
   <>
     <IconWrapper name="X2Y2" icon={<X2Y2Color />} />
     <IconWrapper name="Opensea" icon={<OpenseaColor />} />
@@ -299,7 +299,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template4: ComponentStory<typeof IconWrapper> = () => (
+const Template4 = () => (
   <>
     <IconWrapper name="Weth" icon={<Weth />} />
     <IconWrapper name="Dai" icon={<Dai />} />
@@ -310,7 +310,7 @@ const Template4: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template5: ComponentStory<typeof IconWrapper> = () => (
+const Template5 = () => (
   <>
     <IconWrapper name="Identicon Icon" icon={<Identicon />} cursor="pointer" />
     <IconWrapper name="Star Icon" icon={<StarIcon />} cursor="pointer" />
@@ -322,7 +322,7 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template6: ComponentStory<typeof IconWrapper> = () => (
+const Template6 = () => (
   <>
     <IconWrapper name="Arrow Right" icon={<ArrowRightColor />} />
     <IconWrapper name="Arrow Left" icon={<ArrowLeftColor />} />
@@ -332,7 +332,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Red Cross" icon={<RedCross />} />
   </>
 );
-const Template7: ComponentStory<typeof IconWrapper> = () => (
+const Template7 = () => (
   <>
     <IconWrapper name="MultiPlatform" icon={<MultipartFormStandard />} />
     <IconWrapper name="Planet" icon={<PlanetStandard />} />
@@ -407,7 +407,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template8: ComponentStory<typeof IconWrapper> = () => (
+const Template8 = () => (
   <>
     <IconWrapper name="Alert Bot" icon={<AlertBotColor />} />
     <IconWrapper name="Article" icon={<ArticleColor />} />
@@ -444,7 +444,7 @@ const Template8: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template9: ComponentStory<typeof IconWrapper> = () => (
+const Template9 = () => (
   <>
     <IconWrapper name="Approve" icon={<ApproveIcon />} />
     <IconWrapper name="Bridge" icon={<BridgeIcon />} />
@@ -470,7 +470,7 @@ const Template9: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template10: ComponentStory<typeof IconWrapper> = () => (
+const Template10 = () => (
   <>
     <IconWrapper href="1231321" name="Ethereum" icon={<Ethereum />} />
     <IconWrapper href="1231321" name="Polygon" icon={<Polygon />} />
@@ -485,14 +485,14 @@ const Template10: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template11: ComponentStory<typeof IconWrapper> = () => (
+const Template11 = () => (
   <>
     <IconWrapper width="25px" disabled height="25px" href="1231321" name="Href disabled" icon={<Ethereum />} />
     <IconWrapper width="25px" disabled height="25px" name="Non href disabled" icon={<Ethereum />} />
   </>
 );
 
-const Template12: ComponentStory<typeof IconWrapper> = () => (
+const Template12 = () => (
   <>
     <IconWrapper hasHover name="MultiPlatform" icon={<MultipartFormStandard />} />
     <IconWrapper hasHover name="Planet" icon={<PlanetStandard />} />
@@ -501,11 +501,11 @@ const Template12: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper hasHover name="Profile" icon={<ProfileStandard />} />
     <IconWrapper hasHover name="Feed" icon={<Feed />} />
     <IconWrapper hasHover name="Fire" icon={<Fire />} />
-    <IconWrapper hasHover hoverColor="red" name="Alert Bot" icon={<AlertBotStandard />} />
+    <IconWrapper hasHover name="Alert Bot" icon={<AlertBotStandard />} />
   </>
 );
 
-const Template13: ComponentStory<typeof IconWrapper> = () => (
+const Template13 = () => (
   <>
     <IconWrapper width="" height="" name="Onboarding_Registration_1" icon={<OnboardingRegistration1 />} />
     <IconWrapper height="" width="" name="Onboarding_Registration_2" icon={<OnboardingRegistration2 />} />
@@ -516,27 +516,66 @@ const Template13: ComponentStory<typeof IconWrapper> = () => (
   </>
 );
 
-const Template14: ComponentStory<typeof IconWrapper> = () => (
+const Template14 = () => (
   <>
     <IconWrapper width="" height="" name="Your Feed" icon={<YourFeed />} />
     <IconWrapper height="" width="" name="Configure" icon={<Configure />} />
   </>
 );
 
-export const navigationIcons = Template.bind({});
-export const chainsIcons = Template2.bind({});
-export const chainsIconsColor = Template3.bind({});
-export const tokens = Template4.bind({});
-export const misc = Template5.bind({});
-export const navigationIconsColor = Template6.bind({});
-export const generalFilledStyle = Template7.bind({});
-export const generalFullColor = Template8.bind({});
-export const feedIcons = Template9.bind({});
-export const hrefIcons = Template10.bind({});
-export const otherIcons = Template11.bind({});
-export const IconsWithHover = Template12.bind({});
-export const OnboardingRegistration = Template13.bind({});
-export const Tutorial = Template14.bind({});
+export const navigationIcons: Story = {
+  render: () => <Template />,
+};
+
+export const chainsIcons: Story = {
+  render: () => <Template2 />,
+};
+
+export const chainsIconsColor: Story = {
+  render: () => <Template3 />,
+};
+
+export const tokens: Story = {
+  render: () => <Template4 />,
+};
+
+export const misc: Story = {
+  render: () => <Template5 />,
+};
+
+export const navigationIconsColor: Story = {
+  render: () => <Template6 />,
+};
+
+export const generalFilledStyle: Story = {
+  render: () => <Template7 />,
+};
+
+export const generalFullColor: Story = {
+  render: () => <Template8 />,
+};
+
+export const feedIcons: Story = {
+  render: () => <Template9 />,
+};
+
+export const hrefIcons: Story = {
+  render: () => <Template10 />,
+};
+
+export const otherIcons: Story = {
+  render: () => <Template11 />,
+};
+
+export const IconsWithHover: Story = {
+  render: () => <Template12 />,
+};
+export const OnboardingRegistration: Story = {
+  render: () => <Template13 />,
+};
+export const Tutorial: Story = {
+  render: () => <Template14 />,
+};
 
 navigationIcons.parameters = {
   backgrounds: { default: 'dark' },

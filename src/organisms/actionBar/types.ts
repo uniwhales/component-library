@@ -2,7 +2,7 @@ import { CardProps } from '../../atoms/card/types';
 import { FilterChipProps } from '../../atoms/filterChips/types';
 import {
   SelectProps, SelectVariation,
-} from '../../atoms/inputs/select';
+} from '../../atoms/inputs/select/select';
 
 export type ChipFilterProps = Pick<FilterChipProps, 'icon' | 'isOn' | 'id'> & {
   label: string

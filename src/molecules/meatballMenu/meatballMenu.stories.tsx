@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { MeatballMenu } from './meatballMenu';
 import { Wrapper } from './meatballMenu.styles';
 import { Text } from '../../atoms/texts/text';
 
-export default {
-  title: 'Molecules/MeatballMenu',
+const meta: Meta<typeof MeatballMenu> = {
   component: MeatballMenu,
-  argTypes: {
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
-} as ComponentMeta<typeof MeatballMenu>;
+};
 
-const Template: ComponentStory<typeof MeatballMenu> = () => {
+export default meta;
+type Story = StoryObj<typeof MeatballMenu>;
+
+const Template = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <Wrapper>
@@ -42,7 +37,9 @@ const Template: ComponentStory<typeof MeatballMenu> = () => {
   );
 };
 
-export const Meatball = Template.bind({});
+export const Meatball: Story = {
+  render: () => <Template />,
+};
 
 Meatball.parameters = {
   backgrounds: { default: 'dark' },

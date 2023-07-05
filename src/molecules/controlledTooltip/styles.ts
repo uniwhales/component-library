@@ -1,18 +1,18 @@
+import { styled } from 'styled-components';
 import { Column } from '../../atoms/common/flex';
-import { Styled } from '../../theme';
 
-export const Wrapper = Styled.div`
+export const Wrapper = styled.div`
   padding: 20px;
 `;
 
-export const Target = Styled.div`
+export const Target = styled.div`
   background: ${({ theme }) => theme.colors.primary.DARK_BLUE};
   padding: 50px;
   border-radius: 16px;
   cursor: pointer;
 `;
 
-export const Content = Styled(Column)`
+export const Content = styled(Column)`
   gap: 10px;
   white-space: pre-line;
 `;

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import {
-  Required,
-  Select, SelectProps, SelectVariation,
-} from '../../../atoms/inputs/select';
+  Select,
+} from '../../../atoms/inputs/select/select';
 import { Text } from '../../../atoms/texts/text';
 import { BodySizes, HeaderSizes } from '../../../atoms/texts/types';
 import { localTheme } from '../../../theme';
 import { LabeledSelectWrapper } from './style';
+import { Required } from '../../../atoms/inputs/select/components';
+import { SelectProps, SelectVariation } from '../../../atoms/inputs/select/types';
 
 export type SelectLabel = {
   label: string

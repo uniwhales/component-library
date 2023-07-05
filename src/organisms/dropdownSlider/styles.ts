@@ -1,13 +1,13 @@
+import { styled } from 'styled-components';
 import { Column, Row } from '../../atoms/common/flex';
-import { Styled } from '../../theme';
 
-export const Container = Styled(Column)`
+export const Container = styled(Column)`
   align-items: center;
   justify-content: center;
   position: relative;
 `;
 
-export const OpenContainer = Styled.div`
+export const OpenContainer = styled.div`
   position: absolute;
   top: 140px;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
@@ -15,7 +15,7 @@ export const OpenContainer = Styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string, disabled:boolean }>`
+export const MinUsdButton = styled.div<{ isOpen:boolean, width?:string, height?:string, disabled:boolean }>`
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   z-index: ${({ theme, isOpen }) => isOpen && theme.zIndex.MODAL};
@@ -43,13 +43,13 @@ export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:
   }
 `;
 
-export const MinUsdButtonContent = Styled(Row)`
+export const MinUsdButtonContent = styled(Row)`
   align-items: center;
   justify-contents: center;
   gap: 6px;
 `;
 
-export const Arrow = Styled.div`
+export const Arrow = styled.div`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -59,11 +59,11 @@ export const Arrow = Styled.div`
   margin: auto;
 `;
 
-export const TextRow = Styled(Row)`
+export const TextRow = styled(Row)`
   gap: 4px;
 `;
 
-export const Details = Styled.div`
+export const Details = styled.div`
   border: ${({ theme }) => `1px solid ${theme.containerAndCardShades.SHADE_PLUS_2}`};
   background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
   border-radius: 10px;
@@ -75,16 +75,16 @@ export const Details = Styled.div`
   gap: 8px;
 `;
 
-export const ButtonContainer = Styled(Row)`
+export const ButtonContainer = styled(Row)`
   gap: 8px;
 `;
 
-export const Bar = Styled(Row)`
+export const Bar = styled(Row)`
   gap: 24px;
   padding: 16px;
 `;
 
-export const InnerContainer = Styled(Row)`
+export const InnerContainer = styled(Row)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
