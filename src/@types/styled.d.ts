@@ -41,6 +41,7 @@ declare module 'styled-components' {
         TANGY: string;
         SKY: string;
         FUSCIA: string;
+        GREEN: string;
       },
       system: {
         RED: string;

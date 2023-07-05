@@ -188,6 +188,7 @@ import { ZkEvmColor } from './chains/fullColorStyle/ZkEvm';
 import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
 import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
 import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
+import { FatUpArrowIcon } from './navigationIcons/FatArrowUpIcon';
 
 const meta: Meta<typeof IconWrapper> = {
   component: IconWrapper,
@@ -200,6 +201,7 @@ const Template = () => (
   <>
     <IconWrapper name="Arrow Down" icon={<ArrowDownIcon />} />
     <IconWrapper name="Arrow Up" icon={<ArrowUpIcon />} />
+    <IconWrapper name="Arrow Up" icon={<FatUpArrowIcon />} />
     <IconWrapper name="Arrow Left" icon={<ArrowLeftIcon />} />
     <IconWrapper name="Arrow Right" icon={<ArrowRightIcon />} />
     <IconWrapper name="Arrow Right Square" icon={<ArrowRightSquareIcon />} />

@@ -74,6 +74,7 @@ const Theme: DefaultTheme = {
       TANGY: '#DD8442',
       SKY: '#2A5ABA',
       FUSCIA: '#E4599C',
+      GREEN: '#1DD1A1',
     },
     system: {
       RED: '#FF6B6B',
