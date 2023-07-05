@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Text } from '../../atoms/texts/text';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
@@ -6,7 +7,6 @@ import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
 import { InnerContainer } from '../../organisms/dropdownSlider/styles';
-import styled from 'styled-components';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
