@@ -64,6 +64,7 @@ export * from './utils/useClickOutside';
 export * from './utils/constants';
 export * from './utils/getSize';
 export * from './utils/toasts';
+export * from './utils/isWindowAvailable';
 
 export {
   Theme, LightTheme, DarkTheme, localTheme,
