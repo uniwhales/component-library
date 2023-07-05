@@ -1,4 +1,4 @@
-import { css, styled } from 'styled-components';
+import { styled } from 'styled-components';
 import {
   FONTWEIGHT, H_FONTSIZE, H_LINE_HEIGHT, P_FONTSIZE, P_LINE_HEIGHT,
 } from './textGenerator';

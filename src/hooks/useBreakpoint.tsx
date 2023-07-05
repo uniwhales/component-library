@@ -1,5 +1,6 @@
 import { throttle } from 'lodash-es';
 import { useState, useEffect } from 'react';
+import { isWindowAvailable } from '../utils/isWindowAvailable';
 
 export enum Breakpoints {
   Phone,
@@ -31,12 +32,13 @@ const useBreakpoint = (version?: number): ReturnType<typeof getDeviceConfig> => 
   >(() => getDeviceConfig(window.innerWidth, version));
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     const calcInnerWidth = throttle(() => {
       setBrkPnt(getDeviceConfig(window.innerWidth, version));
     }, 200);
     window.addEventListener('resize', calcInnerWidth);
     return () => window.removeEventListener('resize', calcInnerWidth);
-  }, []);
+  }, [isWindowAvailable()]);
 
   return brkPnt;
 };

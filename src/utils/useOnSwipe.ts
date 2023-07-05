@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { isWindowAvailable } from './isWindowAvailable';
 
 export const useScrollDirection = (threshold: number = 100) => {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
@@ -7,6 +8,7 @@ export const useScrollDirection = (threshold: number = 100) => {
   const prevScrollY = useRef(0);
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     prevScrollY.current = window.pageYOffset;
 
     const updateScrollDirection = () => {
@@ -33,7 +35,7 @@ export const useScrollDirection = (threshold: number = 100) => {
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollDirection]);
+  }, [scrollDirection, isWindowAvailable()]);
 
   return scrollDirection;
 };

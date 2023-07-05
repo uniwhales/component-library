@@ -1,6 +1,5 @@
-import { css, styled } from 'styled-components';
+import { styled } from 'styled-components';
 import { Card } from '../../atoms/card/card';
-import { phone, tablet } from '../../layouts/breakpoints';
 
 export const ModalWrapper = styled.div<{ isMobile?: boolean }>`
   position: fixed;

@@ -1,6 +1,5 @@
 import { css, styled } from 'styled-components';
 import { Column, Row } from '../common/flex';
-import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
 export const ModalContainer = styled.div<{ isMobile?:boolean }>`
@@ -14,7 +13,6 @@ export const ModalContainer = styled.div<{ isMobile?:boolean }>`
   align-items: center;
   justify-content: center;
 `;
-
 
 export const ModalBody = styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
   display: flex;

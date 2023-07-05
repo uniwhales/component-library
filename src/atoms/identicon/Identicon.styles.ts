@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { DeviceWidth } from '../../hooks/useBreakpoint';
 import { IdenticonProps } from './types';
 
 export const Container = styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`

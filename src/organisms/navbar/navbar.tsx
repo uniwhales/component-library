@@ -15,6 +15,7 @@ import {
   NavbarLeftSide, NavbarMainContent, NavbarRightSide,
 } from './styles';
 import { NavbarProps } from './types';
+import { isWindowAvailable } from '../../utils/isWindowAvailable';
 
 export const Navbar: FC<NavbarProps> = ({
   plan,
@@ -36,9 +37,10 @@ export const Navbar: FC<NavbarProps> = ({
   };
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, [isWindowAvailable()]);
 
   return (
     <>
