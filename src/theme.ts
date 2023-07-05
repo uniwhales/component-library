@@ -9,7 +9,7 @@ import { ZIndex } from './utils/constants';
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
-export interface CieloThemeInterface {
+interface CieloThemeInterface {
   OVERLAY: string;
   textShades: {
     SHADE_MINUS_3: string;
@@ -166,5 +166,5 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export {
-  GlobalStyle, Theme, colors, LightTheme, DarkTheme, localTheme,
+  GlobalStyle, Theme, colors, LightTheme, DarkTheme, localTheme, CieloThemeInterface,
 };
