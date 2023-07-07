@@ -2,7 +2,6 @@ import { css, styled } from 'styled-components';
 import { Card } from '../../atoms/card/card';
 import { phone, tablet } from '../../layouts/breakpoints';
 
-
 export const ModalWrapper = styled.div`
   position: fixed;
   top: 50%;
@@ -11,12 +10,12 @@ export const ModalWrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndex.MODAL};
 `;
 
-export const ModalContent = styled(Card)<{ modalVariant: 'single' | 'double' }>`
+export const ModalContent = styled(Card)<{ $modalVariant: 'single' | 'double' }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
+  max-width: ${({ $modalVariant }) => ($modalVariant === 'double' ? '748px' : '360px')};
   max-height: 650px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};

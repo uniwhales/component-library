@@ -36,8 +36,8 @@ export const Modal = ({
       <Overlay onClick={toggle} />
       <ModalWrapper>
         <ModalContent
-          modalVariant={modalVariant}
-          noHover
+          $modalVariant={modalVariant}
+          $noHover
         >
           <>
             <CloseButton>

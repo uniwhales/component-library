@@ -88,7 +88,7 @@ const TemplateSingle = (args: SelectProps<'single'> & LabeledSelectProps) => {
   return (
     <>
       <LabeledSelect<'single'> {...args} onSelectChange={(v) => setValue(v)} selectValue={value} />
-      <ButtonAtom buttonVariant="primary">Test</ButtonAtom>
+      <ButtonAtom $buttonVariant="primary">Test</ButtonAtom>
     </>
   );
 };
@@ -114,12 +114,12 @@ LabeledPrimary.parameters = {
   backgrounds: { default: 'dark theme' },
 };
 LabeledPrimary.args = {
-  noOptionsMessage: 'Custom message',
+  $noOptionsMessage: 'Custom message',
   selectOptions: ColourOptions,
   isMulti: false,
-  readOnly: false,
+  $readOnly: false,
   placeholder: 'DEX filters',
-  isXL: false,
+  $isXL: false,
   showValue: true,
   required: true,
 };
@@ -130,14 +130,14 @@ LabeledMultiSelect.parameters = {
 LabeledMultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
-  readOnly: false,
+  $readOnly: false,
   showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
-  isXL: true,
+  $isXL: true,
   isClearable: false,
   isSearchable: false,
 };
@@ -148,14 +148,14 @@ LabeledSingleGroupSearchSelect.parameters = {
 LabeledSingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
-  readOnly: false,
+  $readOnly: false,
   showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper height="20px" width="20px" icon={<SettingsBars />} />
     <Text size="14-Regular">Filter Tx types and Chains</Text>
   </Placeholder>,
-  isXL: true,
+  $isXL: true,
   isClearable: true,
   isSearchable: true,
 };

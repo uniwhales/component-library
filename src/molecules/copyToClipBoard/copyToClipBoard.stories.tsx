@@ -46,14 +46,14 @@ CustomSize.args = {
 };
 
 Hover.args = {
-  hoverColor: Theme.colors.primary.MANGO,
+  $hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
 };
 
 BackgroundHover.args = {
   icon: <CopyStandard />,
   iconLeft: true,
-  hoverColor: Theme.colors.primary.MANGO,
+  $hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
   background: true,
 };

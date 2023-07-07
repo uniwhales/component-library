@@ -26,7 +26,7 @@ export const LabeledSelect = <T extends SelectVariation>(
   props: SelectProps<T> & LabeledSelectProps,
 ) => {
   const {
-    label, labels, isDisabled, labelColor, labelFontSize,
+    label, labels, $isDisabled, labelColor, labelFontSize,
     required,
   } = props;
   const { textShades } = localTheme();
@@ -34,18 +34,18 @@ export const LabeledSelect = <T extends SelectVariation>(
   return (
     <LabeledSelectWrapper>
       {label && (
-      <Text size={labelFontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor || (isDisabled ? textShades.SHADE_MINUS_1 : textShades.SHADE_MINUS_2)}>
+      <Text size={labelFontSize ?? '12-Regular'} color={!$isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor || ($isDisabled ? textShades.SHADE_MINUS_1 : textShades.SHADE_MINUS_2)}>
         <>
           {label}
-          {required && (<Required disabled={!!isDisabled}>*</Required>)}
+          {required && (<Required disabled={!!$isDisabled}>*</Required>)}
         </>
       </Text>
       )}
       {labels && labels.map((l) => (
-        <Text key={l.label} size={l?.fontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : l.color ?? textShades.SHADE_MINUS_1}>
+        <Text key={l.label} size={l?.fontSize ?? '12-Regular'} color={!$isDisabled && hover ? textShades.SHADE_MINUS_3 : l.color ?? textShades.SHADE_MINUS_1}>
           <>
             {l.label}
-            {required && (<Required disabled={!!isDisabled}>*</Required>)}
+            {required && (<Required disabled={!!$isDisabled}>*</Required>)}
           </>
         </Text>
       )) }

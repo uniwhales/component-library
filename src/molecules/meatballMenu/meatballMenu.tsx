@@ -19,7 +19,7 @@ export const MeatballMenu = ({
   return (
     <Container ref={clickRef}>
       <ButtonAtom
-        buttonVariant="special_tiny_round"
+        $buttonVariant="special_tiny_round"
         onClick={() => setShowMenu(!showMenu)}
         disabled={disabled}
       >
