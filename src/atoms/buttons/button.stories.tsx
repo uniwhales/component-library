@@ -179,124 +179,124 @@ export const SecondaryWithHoverEffect: Story = {
 
 PrimaryWithIcon.args = {
   children: WithIcon(),
-  buttonVariant: 'primary',
+  $buttonVariant: 'primary',
 };
 Primary.args = {
   children: 'Primary',
-  buttonVariant: 'primary',
+  $buttonVariant: 'primary',
 };
 Secondary.args = {
   children: 'Secondary',
-  buttonVariant: 'secondary',
+  $buttonVariant: 'secondary',
 };
 SecondaryWithIcon.args = {
   children: WithIcon(),
-  buttonVariant: 'secondary',
+  $buttonVariant: 'secondary',
 };
 Tertiary.args = {
   children: 'Tertiary',
-  buttonVariant: 'tertiary',
+  $buttonVariant: 'tertiary',
 };
 TertiaryWithIcon.args = {
   children: WithIcon(),
-  buttonVariant: 'tertiary',
+  $buttonVariant: 'tertiary',
 };
 TertiaryIconOnly.args = {
   children: IconNoText(),
-  buttonVariant: 'tertiary',
+  $buttonVariant: 'tertiary',
 };
 PrimaryAction.args = {
   children: WithIcon(false),
-  buttonVariant: 'primary_action',
+  $buttonVariant: 'primary_action',
 };
 SecondaryAction.args = {
   children: WithIcon(false),
-  buttonVariant: 'secondary_action',
+  $buttonVariant: 'secondary_action',
 };
 TinyAction.args = {
   children: WithIcon(false),
-  buttonVariant: 'tiny_action',
+  $buttonVariant: 'tiny_action',
 };
 SecondaryActionInverse.args = {
   children: WithIcon(false),
-  buttonVariant: 'secondary_action_inverse',
+  $buttonVariant: 'secondary_action_inverse',
 };
 SpecialSmallNormal.args = {
   children: 'Special Small',
-  buttonVariant: 'special_small',
+  $buttonVariant: 'special_small',
 };
 SpecialSmallNormalWithIcon.args = {
   children: WithIcon(),
-  buttonVariant: 'special_small',
+  $buttonVariant: 'special_small',
 };
 SpecialSmallRound.args = {
   children: WithIcon(false),
-  buttonVariant: 'special_small_round',
+  $buttonVariant: 'special_small_round',
 };
 SpecialTinyRound.args = {
   children: WithIcon(false),
-  buttonVariant: 'special_tiny_round',
+  $buttonVariant: 'special_tiny_round',
 };
 SpecialExtraTinyRound.args = {
   children: WithIcon(false),
-  buttonVariant: 'special_extra_tiny_round',
+  $buttonVariant: 'special_extra_tiny_round',
 };
 SpecialSmallSubtle.args = {
   children: 'Test',
-  buttonVariant: 'special_extra_tiny_subtle',
+  $buttonVariant: 'special_extra_tiny_subtle',
 };
 SpecialSmallSubtleWithIcon.args = {
   children: WithIcon(),
-  buttonVariant: 'special_extra_tiny_subtle',
+  $buttonVariant: 'special_extra_tiny_subtle',
 };
 SpecialSmallSubtleWithIconR.args = {
   children: WithIconR(),
-  buttonVariant: 'special_extra_tiny_subtle',
+  $buttonVariant: 'special_extra_tiny_subtle',
 };
 SecondaryWithHoverEffect.args = {
-  buttonVariant: 'secondary',
+  $buttonVariant: 'secondary',
   width: '100px',
 };
 SquareButton.args = {
   children: WithIcon(),
-  buttonVariant: 'square',
+  $buttonVariant: 'square',
 };
 SquareButtonCustomSize.args = {
   children: WithIcon(),
-  buttonVariant: 'square',
-  size: '140px',
+  $buttonVariant: 'square',
+  $size: '140px',
 };
 OnboardingButtonPrimary.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding_primary',
+  $buttonVariant: 'onboarding_primary',
 };
 OnboardingButtonPrimaryCustomWidthButton.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding_primary',
+  $buttonVariant: 'onboarding_primary',
   width: '225px',
 };
 OnboardingButtonSecondary.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding_secondary',
+  $buttonVariant: 'onboarding_secondary',
 };
 OnboardingButtonSecondaryCustomWidthButton.args = {
   children: 'Onboarding',
-  buttonVariant: 'onboarding_secondary',
+  $buttonVariant: 'onboarding_secondary',
   width: '225px',
 };
 CloseButtonPrimary.args = {
-  buttonVariant: 'close_primary',
-  size: '30px',
+  $buttonVariant: 'close_primary',
+  $size: '30px',
 };
 CloseButtonSecondary.args = {
-  buttonVariant: 'close_secondary',
-  size: '30px',
+  $buttonVariant: 'close_secondary',
+  $size: '30px',
 };
 CloseButtonModal.args = {
-  buttonVariant: 'close_modal',
+  $buttonVariant: 'close_modal',
 };
 TwitterExample.args = {
-  buttonVariant: 'special_extra_tiny_subtle',
+  $buttonVariant: 'special_extra_tiny_subtle',
   color: '#1D86E8',
   children: (
     <>
@@ -306,7 +306,7 @@ TwitterExample.args = {
   ),
 };
 TelegramExample.args = {
-  buttonVariant: 'special_extra_tiny_subtle',
+  $buttonVariant: 'special_extra_tiny_subtle',
   color: '#B4B5C6',
   children: (
     <>

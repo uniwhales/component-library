@@ -21,7 +21,7 @@ const Button = styled.button<GenericStylingProps>`
   font-weight: 400;
   font-family: Poppins, sans-serif;
   color: ${(props) => props.theme.colors.system.WHITE};
-  border-radius: ${(props) => props.borderRadius || '12px'};
+  border-radius: ${(props) => props.$borderRadius || '12px'};
   justify-content: center;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   .button__group {
@@ -277,10 +277,10 @@ const ButtonSpecialSmallNormal = styled(Button) <Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
+const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ $buttonVariant: ButtonProps['$buttonVariant'] }>`
   border-radius: 50%;
-  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
-  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
+  width: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '16px' : $buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
+  height: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '16px' : $buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
 
   display: flex;
   justify-content: center;
@@ -288,8 +288,8 @@ const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ buttonVarian
   padding: 0;
 
   svg {
-    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
-    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
+    width: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '12px' : $buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
+    height: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '12px' : $buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
   }
 
 `;
@@ -363,9 +363,9 @@ const ButtonIconOnly = styled(Button)`
     };
   `}
 `;
-const SquareButton = styled.button<Pick<ButtonProps, 'size'>>`
-  height: ${({ size }) => size || '70px'};
-  width: ${({ size }) => size || '70px'};
+const SquareButton = styled.button<Pick<ButtonProps, '$size'>>`
+  height: ${({ $size }) => $size || '70px'};
+  width: ${({ $size }) => $size || '70px'};
   border-radius: 10px;
   border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
@@ -491,32 +491,32 @@ const CloseButtonModal = styled(Button)`
   `}
 `;
 
-const CloseButtonPrimary = styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
-  height: ${({ size }) => size || '30px'};
-  width: ${({ size }) => size || '30px'};
+const CloseButtonPrimary = styled(OnboardingPrimaryButton)<Pick<ButtonProps, '$size'>>`
+  height: ${({ $size }) => $size || '30px'};
+  width: ${({ $size }) => $size || '30px'};
   border-radius: 50%;
 `;
 
-const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps, 'size'>>`
-  height: ${({ size }) => size || '30px'};
-  width: ${({ size }) => size || '30px'};
+const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps, '$size'>>`
+  height: ${({ $size }) => $size || '30px'};
+  width: ${({ $size }) => $size || '30px'};
   border-radius: 50%;
 `;
 
 export const ButtonAtom: FC<ButtonProps> = ({
   children,
-  buttonVariant,
+  $buttonVariant,
   disabled = false,
   onClick,
-  borderRadius,
+  $borderRadius,
   onMouseEnter,
   onMouseLeave,
   width,
   height,
-  size = '70px',
+  $size = '70px',
   color,
 }) => {
-  switch (buttonVariant) {
+  switch ($buttonVariant) {
     case 'secondary':
       return (
         <ButtonSecondary
@@ -524,7 +524,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -539,7 +539,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -554,7 +554,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -569,7 +569,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -583,7 +583,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -598,7 +598,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -627,7 +627,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          buttonVariant={buttonVariant}
+          $buttonVariant={$buttonVariant}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -662,7 +662,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
-          size={size}
+          $size={$size}
         >
           {children}
         </SquareButton>
@@ -692,7 +692,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_primary':
       return (
         <CloseButtonPrimary
-          size={size}
+          $size={$size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -703,7 +703,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_secondary':
       return (
         <CloseButtonSecondary
-          size={size}
+          $size={$size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -728,7 +728,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
           height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          borderRadius={borderRadius}
+          $borderRadius={$borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
