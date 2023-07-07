@@ -19,9 +19,9 @@ export const Subscript = ({
   if ((['8', '10', '11', '12', '14', '16'].includes(textType))) {
     return (
       <StyledP
-        textType={textType}
+        $textType={textType}
         color={color}
-        textWeight={textWeight}
+        $textWeight={textWeight}
       >
         {beforeSubscript}
         <StyledSubscript
