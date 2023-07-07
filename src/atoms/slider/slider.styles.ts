@@ -108,7 +108,7 @@ export const Input = styled.input<{ value: string, max: number }>`
   }
 `;
 
-export const NumInputContainer = styled.div<{ value: string, max: number, hasError:boolean }>`
+export const NumInputContainer = styled.div<{ value: string, max: number, $hasError:boolean }>`
   padding: 4px 12px;
   display: flex;
   align-items: center;
@@ -116,8 +116,8 @@ export const NumInputContainer = styled.div<{ value: string, max: number, hasErr
   border-radius: 12px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
   border: ${({
-    theme, value, max, hasError,
-  }) => `2px solid ${hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
+    theme, value, max, $hasError,
+  }) => `2px solid ${$hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
   cursor: pointer;
 `;
 export const NumInput = styled.input`

@@ -9,8 +9,8 @@ import { Text } from '../texts/text';
 import { localTheme } from '../../theme';
 
 export const Slider: FC<SliderProps> = ({
-  min, max, onInput, value, setValue, hasError,
-  errorMessage, unit, charLimit = 16, useLogarithmic = false,
+  min, max, $onInput, value, $setValue, $hasError,
+  $errorMessage, unit, $charLimit = 16, $useLogarithmic = false,
 }: SliderProps) => {
   const theme = localTheme();
   const styles = {
@@ -46,23 +46,23 @@ export const Slider: FC<SliderProps> = ({
   const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
     const linearValue = parseInt(e.target.value, 10);
     const blend = 0.5; // Adjust this value between 0 and 1 to control the compression
-    const newValue = useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
+    const newValue = $useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
     const actualValue = Math.min(Math.round(newValue), max);
-    setValue(actualValue.toString());
+    $setValue(actualValue.toString());
 
-    const sliderValue = Math.round(useLogarithmic && newValue > 0
+    const sliderValue = Math.round($useLogarithmic && newValue > 0
       ? inverseLogScale(newValue, min, max) : newValue);
     e.target.value = sliderValue.toString();
   };
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(target.value, 10);
-    if (target.value.length > charLimit) return;
+    if (target.value.length > $charLimit) return;
 
     // Create a new synthetic event with the updated value
     const newEvent = {
       ...target, value: newValue.toString(),
     } as HTMLInputElement;
-    onInput({ target: newEvent } as ChangeEvent<HTMLInputElement>);
+    $onInput({ target: newEvent } as ChangeEvent<HTMLInputElement>);
   };
 
   return (
@@ -79,7 +79,7 @@ export const Slider: FC<SliderProps> = ({
         <NumInputContainer
           max={max}
           value={value}
-          hasError={hasError}
+          $hasError={$hasError}
         >
           <NumInput
             autoFocus
@@ -93,8 +93,8 @@ export const Slider: FC<SliderProps> = ({
             <Text size="14-Regular" color={theme.textShades.SHADE_MINUS_1}>{unit}</Text>
           )}
         </NumInputContainer>
-        {hasError && errorMessage && (
-          <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+        {$hasError && $errorMessage && (
+          <Text size="12-Regular" color={theme.colors.system.RED}>{$errorMessage}</Text>
         )}
       </InputWrapper>
 
