@@ -20,20 +20,20 @@ export const Container = styled.div`
   cursor: pointer;
 `;
 
-export const RadioButtonLabel = styled.label<Pick<RadioProps, 'isLarge' | 'disabled'>>`
+export const RadioButtonLabel = styled.label<Pick<RadioProps, '$isLarge' | 'disabled'>>`
   position: absolute;
-  width: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
-  height: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
+  width: ${({ $isLarge }) => ($isLarge ? '16px' : '12px')};
+  height: ${({ $isLarge }) => ($isLarge ? '16px' : '12px')};
   border-radius: 50%;
   background: transparent;
   border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_2}`)};
 `;
-export const RadioButton = styled.input<{ isLarge: boolean }>`
+export const RadioButton = styled.input<{ $isLarge: boolean }>`
   opacity: 0;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   border-radius: 50%;
-  width: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
-  height: ${({ isLarge }) => (isLarge ? '16px' : '12px')};
+  width: ${({ $isLarge }) => ($isLarge ? '16px' : '12px')};
+  height: ${({ $isLarge }) => ($isLarge ? '16px' : '12px')};
   margin-right: 10px;
   cursor: pointer;
   &:hover ~ ${RadioButtonLabel} {
@@ -43,9 +43,9 @@ export const RadioButton = styled.input<{ isLarge: boolean }>`
       content: "";
       display: block;
       border-radius: 50%;
-      width: ${({ isLarge }) => (isLarge ? '12px' : ' 10px')};
+      width: ${({ $isLarge }) => ($isLarge ? '12px' : ' 10px')};
       position: absolute;
-      height:${({ isLarge }) => (isLarge ? '12px' : ' 10px')};
+      height:${({ $isLarge }) => ($isLarge ? '12px' : ' 10px')};
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -53,7 +53,7 @@ export const RadioButton = styled.input<{ isLarge: boolean }>`
     }
   }
   ${({
-    disabled, theme, isLarge,
+    disabled, theme, $isLarge,
   }) => `
     &:checked + ${RadioButtonLabel} {
       background: transparent;
@@ -62,9 +62,9 @@ export const RadioButton = styled.input<{ isLarge: boolean }>`
         content: "";
         display: block;
         border-radius: 50%;
-        width: ${isLarge ? '12px' : ' 10px'};
+        width: ${$isLarge ? '12px' : ' 10px'};
         position: absolute;
-        height: ${isLarge ? '12px' : ' 10px'};
+        height: ${$isLarge ? '12px' : ' 10px'};
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);

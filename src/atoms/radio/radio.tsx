@@ -7,7 +7,7 @@ import {
 import { localTheme } from '../../theme';
 
 export const Radio = ({
-  disabled, selected, onClick, value, label, name, isLarge, labelColor,
+  disabled, selected, onClick, value, label, name, $isLarge, labelColor,
 }: RadioProps) => {
   const theme = localTheme();
   return (
@@ -27,9 +27,9 @@ export const Radio = ({
             onClick={onClick}
             onChange={() => {}}
             disabled={disabled}
-            isLarge={!!isLarge}
+            $isLarge={!!$isLarge}
           />
-          <RadioButtonLabel isLarge={isLarge} disabled={disabled} />
+          <RadioButtonLabel $isLarge={$isLarge} disabled={disabled} />
         </Container>
       </RadioAndLabel>
     )
