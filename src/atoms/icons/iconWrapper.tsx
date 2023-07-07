@@ -10,17 +10,17 @@ const IconComponent = styled.div<IconWrapperProps>`
   align-items: center;
   justify-content: center;
   transition: width 0.3s;
-  pointer-events: ${({ pointerEvents }) => pointerEvents};
+  pointer-events: ${({ $pointerEvents }) => $pointerEvents};
   svg {
     fill: ${({ fill, theme }) => (fill || theme.textShades.SHADE_MINUS_1)};
     stroke: ${({ stroke }) => stroke};
-    cursor:  ${({ cursor, hasHover }) => (hasHover ? 'pointer' : cursor || 'auto')};
+    cursor:  ${({ cursor, $hasHover }) => ($hasHover ? 'pointer' : cursor || 'auto')};
   }
   &:hover {
     svg {
       fill: ${({
-    fill, theme, hasHover, hoverColor,
-  }) => ((hasHover && !fill) && (hoverColor ?? theme.textShades.SHADE_MINUS_3))};
+    fill, theme, $hasHover, $hoverColor,
+  }) => (($hasHover && !fill) && ($hoverColor ?? theme.textShades.SHADE_MINUS_3))};
     }
   }
 `;
@@ -70,9 +70,9 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
   onMouseLeave,
   href,
   disabled,
-  pointerEvents,
-  hasHover = false,
-  hoverColor,
+  $pointerEvents,
+  $hasHover = false,
+  $hoverColor,
 }) => (href ? (
   <Outer disabled={disabled} target="_blank" href={href}>
     <AnchorIconComponent
@@ -110,9 +110,9 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       disabled={disabled}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
-      pointerEvents={pointerEvents}
-      hasHover={hasHover}
-      hoverColor={hoverColor}
+      $pointerEvents={$pointerEvents}
+      $hasHover={$hasHover}
+      $hoverColor={$hoverColor}
     >
       {icon && icon}
     </IconComponent>

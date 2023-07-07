@@ -13,7 +13,7 @@ export type IconWrapperProps = {
   onMouseLeave?: () => void
   href?: string;
   disabled?: boolean;
-  pointerEvents?: string;
-  hasHover?: boolean;
-  hoverColor?: string;
+  $pointerEvents?: string;
+  $hasHover?: boolean;
+  $hoverColor?: string;
 };

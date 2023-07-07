@@ -11,7 +11,7 @@ export const Footer = () => {
   const breakpoint = useBreakpoint();
   const isMobile = breakpoint <= Breakpoints.Phone;
   return (
-    <FooterComponent isMobile={isMobile}>
+    <FooterComponent $isMobile={isMobile}>
       {isMobile ? <FooterLogoMobile /> : <FooterLogo />}
       <Text color={theme.textShades.SHADE_MINUS_2} size={isMobile ? '9-Regular' : '10-Regular'}>Cielo | © Copyright 2023</Text>
     </FooterComponent>

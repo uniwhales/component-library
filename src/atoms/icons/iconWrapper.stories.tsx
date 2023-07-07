@@ -494,14 +494,14 @@ const Template11 = () => (
 
 const Template12 = () => (
   <>
-    <IconWrapper hasHover name="MultiPlatform" icon={<MultipartFormStandard />} />
-    <IconWrapper hasHover name="Planet" icon={<PlanetStandard />} />
-    <IconWrapper hasHover name="Hide" icon={<Hide />} />
-    <IconWrapper hasHover name="Watch" icon={<WatchStandard />} />
-    <IconWrapper hasHover name="Profile" icon={<ProfileStandard />} />
-    <IconWrapper hasHover name="Feed" icon={<Feed />} />
-    <IconWrapper hasHover name="Fire" icon={<Fire />} />
-    <IconWrapper hasHover name="Alert Bot" icon={<AlertBotStandard />} />
+    <IconWrapper $hasHover name="MultiPlatform" icon={<MultipartFormStandard />} />
+    <IconWrapper $hasHover name="Planet" icon={<PlanetStandard />} />
+    <IconWrapper $hasHover name="Hide" icon={<Hide />} />
+    <IconWrapper $hasHover name="Watch" icon={<WatchStandard />} />
+    <IconWrapper $hasHover name="Profile" icon={<ProfileStandard />} />
+    <IconWrapper $hasHover name="Feed" icon={<Feed />} />
+    <IconWrapper $hasHover name="Fire" icon={<Fire />} />
+    <IconWrapper $hasHover name="Alert Bot" icon={<AlertBotStandard />} />
   </>
 );
 
