@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Input>;
 
 const Template = (args: InputsProps) => {
   const {
-    type, icon, pattern, disabled, label, inputState, width, required,
+    type, icon, pattern, disabled, label, $inputState, width, required,
   } = args;
   const [localValue, setValue] = useState<string>('');
   const onChangeInput = (inputValue: string) => {
@@ -30,10 +30,10 @@ const Template = (args: InputsProps) => {
         onChange={(e) => onChangeInput(e.target.value)}
         type={type}
         icon={icon}
-        inputState={inputState}
+        $inputState={$inputState}
         required={required}
-        inputRef={ref}
-        maxLength={10}
+        $inputRef={ref}
+        $maxLength={10}
       />
     </Wrapper>
   );
@@ -69,45 +69,45 @@ export const WithIcon: Story = {
 
 Primary.args = {
   label: 'label',
-  inputState: {
+  $inputState: {
     status: 'default',
     message: '',
   },
   icon: <SearchStandard />,
 };
 Error.args = {
-  inputState: {
+  $inputState: {
     status: 'error',
     message: 'Error message',
   },
 };
 Help.args = {
-  inputState: {
+  $inputState: {
     status: 'help',
     message: 'Required',
   },
 };
 Exception.args = {
-  inputState: {
+  $inputState: {
     status: 'exception',
     message: 'Exception',
   },
 };
 Valid.args = {
-  inputState: {
+  $inputState: {
     status: 'valid',
     message: 'Correct',
   },
 };
 Invalid.args = {
-  inputState: {
+  $inputState: {
     status: 'invalid',
     message: 'Invalid',
   },
 };
 
 Disabled.args = {
-  inputState: {
+  $inputState: {
     status: 'disabled',
     message: 'disabled',
   },
@@ -116,7 +116,7 @@ Disabled.args = {
 };
 Required.args = {
   label: 'label',
-  inputState: {
+  $inputState: {
     status: 'default',
     message: '',
   },
@@ -129,7 +129,7 @@ Primary.parameters = {
 
 WithIcon.args = {
   icon: <SearchStandard />,
-  inputState: {
+  $inputState: {
     status: 'default',
     message: '',
   },

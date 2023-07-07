@@ -12,15 +12,15 @@ export type TextAreaTypes = {
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   value: string;
   label?: string;
-  inputState?: InputState;
+  $inputState?: InputState;
   placeholder?: string;
-  maxLength?: number;
+  $maxLength?: number;
   required?: boolean;
-  textareaRef?: Ref<HTMLTextAreaElement>;
+  $textareaRef?: Ref<HTMLTextAreaElement>;
   tabIndex?: number
 };
 
-const TextAreaStyled = styled.textarea<{ disabled?: boolean, inputState: InputState }>`
+const TextAreaStyled = styled.textarea<{ disabled?: boolean, $inputState: InputState, tabIndex?: number }>`
   resize: none;
   outline: none;
   height: 100%;
@@ -58,15 +58,15 @@ export const TextArea = ({
   onChange,
   label,
   disabled,
-  inputState = { message: '', status: 'default' },
+  $inputState = { message: '', status: 'default' },
   required,
-  textareaRef,
-  maxLength,
+  $textareaRef,
+  $maxLength,
   tabIndex,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
   const theme = localTheme();
-  const error = inputState.status === 'error';
+  const error = $inputState.status === 'error';
 
   const getMoreDetailsTextColor = (status: InputState['status']) => {
     const lookup = {
@@ -80,27 +80,27 @@ export const TextArea = ({
     return theme.colors.system.RED;
   };
 
-  const showMaxLength = !error && maxLength;
-  const showMoreDetails = (!error && maxLength) || (inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error');
+  const showMaxLength = !error && $maxLength;
+  const showMoreDetails = (!error && $maxLength) || ($inputState.status === 'valid' || $inputState.status === 'invalid' || $inputState.status === 'help' || $inputState.status === 'exception' || $inputState.status === 'error');
 
   const moreDetailsContainer = (showMoreDetails || showMaxLength) && (
     <MoreDetailContainer>
-      {(inputState.status === 'valid' || inputState.status === 'invalid' || inputState.status === 'help' || inputState.status === 'exception' || inputState.status === 'error') && (
+      {($inputState.status === 'valid' || $inputState.status === 'invalid' || $inputState.status === 'help' || $inputState.status === 'exception' || $inputState.status === 'error') && (
       <Text
-        color={getMoreDetailsTextColor(inputState.status)}
+        color={getMoreDetailsTextColor($inputState.status)}
         size="12-Regular"
       >
-        {inputState.message}
+        {$inputState.message}
       </Text>
       )}
-      {!error && maxLength && (
-        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${maxLength.toString()}`}</Text>
+      {!error && $maxLength && (
+        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${$maxLength.toString()}`}</Text>
       )}
     </MoreDetailContainer>
   );
 
   return (
-    <TextAreaWrapper inputState={inputState} disabled={!!disabled}>
+    <TextAreaWrapper $inputState={$inputState} disabled={!!disabled}>
       {label && (
         <InputLabel disabled={!!disabled}>
           {label}
@@ -108,13 +108,13 @@ export const TextArea = ({
         </InputLabel>
       )}
       <TextAreaContainer
-        inputState={inputState}
+        $inputState={$inputState}
         disabled={disabled}
         focus={focus}
       >
         <TextAreaStyled
-          inputState={inputState}
-          maxLength={maxLength}
+          $inputState={$inputState}
+          maxLength={$maxLength}
           disabled={disabled}
           value={value}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e)}
@@ -122,7 +122,7 @@ export const TextArea = ({
           onBlur={() => setFocus(false)}
           placeholder={placeholder || 'Placeholder'}
           tabIndex={tabIndex}
-          ref={textareaRef}
+          ref={$textareaRef}
         />
         {moreDetailsContainer}
       </TextAreaContainer>

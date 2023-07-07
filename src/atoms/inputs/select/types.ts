@@ -5,7 +5,7 @@ export interface Option {
   label: string,
   id: number;
   icon?: JSX.Element,
-  isSelected?: boolean;
+  $isSelected?: boolean;
   order?: number;
   required?: boolean;
 }
@@ -27,27 +27,27 @@ export interface SelectProps<T extends SelectVariation> {
   onSelectChange?: (o: SelectVal<T>) => void,
   selectOptions: SelectOptions<T>,
   selectValue?: SelectVal<T> | null,
-  readOnly?: boolean,
+  $readOnly?: boolean,
   isMulti?: boolean,
-  isCheckBox?: boolean,
+  $isCheckBox?: boolean,
   placeholder: string | ReactNode,
-  isXL?: boolean,
+  $isXL?: boolean,
   isClearable?: boolean,
   isSearchable?: boolean,
   showValue?: boolean,
   clearButtonText?: string,
   handleClearValue?: () => void;
   maxMenuHeight?: number;
-  isDisabled?: boolean;
+  $isDisabled?: boolean;
   onInputChange?: (e: string) => void;
   required?: boolean
   tabIndex?: number
   ref?: Ref<HTMLDivElement>
   error?: boolean
-  errorMessage?: string
-  showOnTop?: boolean
-  noOptionsMessage?: string;
-  smallText?: boolean;
+  $errorMessage?: string
+  $showOnTop?: boolean
+  $noOptionsMessage?: string;
+  $smallText?: boolean;
 }
 
 export type StyledProps = {
@@ -58,11 +58,11 @@ export type StyledProps = {
   theme: any;
   readOnly?: boolean;
   isMulti?: boolean;
-  isCheckBox?: boolean;
+  $isCheckBox?: boolean;
   label?: string;
-  isDisabled?: boolean;
+  $isDisabled?: boolean;
   error?: boolean;
-  showOnTop?: boolean;
+  $showOnTop?: boolean;
 };
 
 export const isSelectOptionGuard = (
