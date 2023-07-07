@@ -6,17 +6,17 @@ import { IdenticonProps } from './types';
 export const IdenticonComponent = ({
   size,
   id,
-  hasInteraction,
+  $hasInteraction,
   onClick,
   href,
   target,
   onMouseEnter,
-  isLink = true,
+  $isLink = true,
 }: IdenticonProps) => (
   <Container
-    as={isLink ? 'a' : undefined}
+    as={$isLink ? 'a' : undefined}
     size={size}
-    hasInteraction={hasInteraction}
+    $hasInteraction={$hasInteraction}
     onClick={onClick}
     href={href}
     target={target}

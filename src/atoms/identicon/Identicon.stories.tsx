@@ -24,13 +24,13 @@ export const NoInteraction: Story = {
 Primary.args = {
   id: 'someRandomString',
   size: 'big',
-  hasInteraction: true,
+  $hasInteraction: true,
   onClick: () => console.log('Clicked'),
 };
 
 NoInteraction.args = {
   id: 'someRandomString',
-  hasInteraction: false,
+  $hasInteraction: false,
   size: 'big',
-  isLink: false,
+  $isLink: false,
 };
