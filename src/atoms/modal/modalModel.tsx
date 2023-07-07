@@ -56,14 +56,14 @@ const AnnouncementText = styled.div`
     font-size: 14px;
 `;
 
-export const exampleModal = ({ latest, $closeFn }: ExampleModalProps) => (
+export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
   <ModalBase
-    $closeFn={$closeFn}
+    closeFn={closeFn}
     $headerText="Modal Header"
     $headerIcon={<StarIcon />}
     $modalVariant="single"
     $modalContent={(
-      <LatestAnnouncementsList height="100%" gap="48px">
+      <LatestAnnouncementsList height="calc(100vh - 100px)" gap="48px">
         {latest.map(({
           image, title, text, datetime,
         }) => (
@@ -82,13 +82,13 @@ export const exampleModal = ({ latest, $closeFn }: ExampleModalProps) => (
 );
 
 export const doubleModalExample = ({
-  $closeFn, placeholderText,
+  closeFn, placeholderText,
 }: DoubleModalProps) => {
   const [showMore, setShowMore] = useState(false);
   const theme = localTheme();
   return (
     <ModalBase
-      $closeFn={$closeFn}
+      closeFn={closeFn}
       $headerText="Double Modal"
       $headerIcon={<StarIcon />}
       $headerIconFill={theme.colors.primary.DARK_BLUE}

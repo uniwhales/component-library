@@ -3,13 +3,14 @@ import { css, styled } from 'styled-components';
 import { ButtonProps, GenericStylingProps } from './types';
 import { IconWrapper } from '../icons/iconWrapper';
 import { FloatingClose } from '../icons';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const ButtonWrapper = styled.div`
   padding: 50px;
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
 `;
 
-const Button = styled.button<GenericStylingProps>`
+const Button = styled.button<GenericStylingProps & { $isMobile?: boolean }>`
   transition: background 0.45s ease;
   font-size: 14px;
   line-height: 20px;
@@ -24,20 +25,31 @@ const Button = styled.button<GenericStylingProps>`
   border-radius: ${(props) => props.$borderRadius || '12px'};
   justify-content: center;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.0);
   .button__group {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
   }
+
   svg {
     width: 20px;
     height: 20px;
     cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')}!important;
     fill: ${(props) => props.theme.colors.system.WHITE}!important;
   }
+
+  ${({ $isMobile }) => $isMobile && css`
+  transition: transform 0.1s, box-shadow 0.2s;
+    &:active {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      transform: scale(0.9);
+    }
+  `}
 `;
-const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+
+const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   // disabled state
@@ -65,7 +77,8 @@ const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     }
   `}
 `;
-const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+
+const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   color: ${(props) => props.theme.textShades.SHADE_MINUS_3};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -105,7 +118,8 @@ const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `}
 `;
-const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+
+const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -145,7 +159,8 @@ const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
     };
   `};
 `;
-const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'>>`
+
+const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   width: ${({ width }) => width ?? '40px'};
   height: ${({ height }) => height ?? '40px'};
   padding: 10px;
@@ -164,7 +179,8 @@ const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
       }
   `};
 `;
-const ButtonSecondaryAction = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+
+const ButtonSecondaryAction = styled(Button)<Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   width: ${({ width }) => width ?? 'max-content'};
   height: ${({ height }) => height ?? '40px'};
   path {transition: fill 0.45s ease;}
@@ -197,8 +213,9 @@ const ButtonSecondaryAction = styled(Button) <Pick<ButtonProps, 'width' | 'heigh
     };
   `}
 `;
+
 const ButtonTinyAction = styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = styled(Button) <Pick<ButtonProps, 'width' | 'height'>>`
+const ButtonSecondaryActionInverse = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -363,9 +380,9 @@ const ButtonIconOnly = styled(Button)`
     };
   `}
 `;
-const SquareButton = styled.button<Pick<ButtonProps, '$size'>>`
-  height: ${({ $size }) => $size || '70px'};
-  width: ${({ $size }) => $size || '70px'};
+const SquareButton = styled.button<Pick<ButtonProps, 'size'> & { $isMobile?: boolean }>`
+  height: ${({ size }) => size || '70px'};
+  width: ${({ size }) => size || '70px'};
   border-radius: 10px;
   border: ${({ theme }) => `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
@@ -491,15 +508,15 @@ const CloseButtonModal = styled(Button)`
   `}
 `;
 
-const CloseButtonPrimary = styled(OnboardingPrimaryButton)<Pick<ButtonProps, '$size'>>`
-  height: ${({ $size }) => $size || '30px'};
-  width: ${({ $size }) => $size || '30px'};
+const CloseButtonPrimary = styled(OnboardingPrimaryButton)<Pick<ButtonProps, 'size'>>`
+  height: ${({ size }) => size || '30px'};
+  width: ${({ size }) => size || '30px'};
   border-radius: 50%;
 `;
 
-const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps, '$size'>>`
-  height: ${({ $size }) => $size || '30px'};
-  width: ${({ $size }) => $size || '30px'};
+const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps, 'size'>>`
+  height: ${({ size }) => size || '30px'};
+  width: ${({ size }) => size || '30px'};
   border-radius: 50%;
 `;
 
@@ -513,13 +530,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
   onMouseLeave,
   width,
   height,
-  $size = '70px',
+  size = '70px',
   color,
 }) => {
+  const isMobile = useIsMobile();
+
   switch ($buttonVariant) {
     case 'secondary':
       return (
         <ButtonSecondary
+          $isMobile={isMobile}
           width={width}
           height={height}
           onMouseEnter={onMouseEnter}
@@ -535,6 +555,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'tertiary':
       return (
         <ButtonTertiary
+          $isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
@@ -550,6 +571,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'primary_action':
       return (
         <ButtonPrimaryAction
+          $isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
@@ -565,6 +587,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action':
       return (
         <ButtonSecondaryAction
+          $isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
@@ -580,6 +603,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'tiny_action':
       return (
         <ButtonTinyAction
+          $isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -594,6 +618,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action_inverse':
       return (
         <ButtonSecondaryActionInverse
+          $isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
@@ -609,6 +634,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_small':
       return (
         <ButtonSpecialSmallNormal
+          $isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -624,6 +650,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_extra_tiny_round':
       return (
         <ButtonSpecialSmallRound
+          $isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -638,6 +665,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_extra_tiny_subtle':
       return (
         <ButtonSpecialSmallSubtle
+          $isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -649,6 +677,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'icon_only':
       return (
         <ButtonIconOnly
+          $isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -659,10 +688,11 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'square':
       return (
         <SquareButton
+          $isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
-          $size={$size}
+          size={size}
         >
           {children}
         </SquareButton>
@@ -670,6 +700,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'onboarding_primary':
       return (
         <OnboardingPrimaryButton
+          $isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -681,6 +712,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'onboarding_secondary':
       return (
         <OnboardingSecondaryButton
+          $isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -692,7 +724,8 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_primary':
       return (
         <CloseButtonPrimary
-          $size={$size}
+          $isMobile={isMobile}
+          size={size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -703,7 +736,8 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_secondary':
       return (
         <CloseButtonSecondary
-          $size={$size}
+          $isMobile={isMobile}
+          size={size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -714,6 +748,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_modal':
       return (
         <CloseButtonModal
+          $isMobile={isMobile}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -724,6 +759,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     default:
       return (
         <ButtonPrimary
+          $isMobile={isMobile}
           width={width}
           height={height}
           onMouseEnter={onMouseEnter}

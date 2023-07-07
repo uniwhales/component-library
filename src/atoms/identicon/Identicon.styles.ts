@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { DeviceWidth } from '../../hooks/useBreakpoint';
 import { IdenticonProps } from './types';
 
 export const Container = styled.div<Pick<IdenticonProps, '$hasInteraction' | 'size'>>`
@@ -16,17 +15,6 @@ export const Container = styled.div<Pick<IdenticonProps, '$hasInteraction' | 'si
   &:hover {
     border: ${({ $hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   };
-   /* On mobile we do not have hover effects   */
-  @media (min-width: ${DeviceWidth.tablet}) {
-    :hover {
-      border: ${({ $hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
-    };
-    canvas {
-      &:hover {
-        border: none;
-      }
-    }
-  }
 `;
 
 export const SelectableIdenticonWrapper = styled.div`

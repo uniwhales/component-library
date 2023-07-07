@@ -6,6 +6,7 @@ import { shortenAddressTo11Chars } from '../../utils/shortenAddress';
 import { UserMenu } from '../navbar/components/UserMenu/UserMenu';
 import { UserIdenticonWrapper } from './style';
 import { useClickOutside } from '../../utils/useClickOutside';
+import { isWindowAvailable } from '../../utils/isWindowAvailable';
 
 export type UserIdenticonProps = { plan?: string, onWalletConnectClick: ConnectButtonProps['onClick'], account?: string };
 
@@ -25,9 +26,10 @@ export const UserIdenticon = ({
   useClickOutside(clickRef, () => setIsMenuOpen(false));
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, [isWindowAvailable()]);
 
   return (
     <UserIdenticonWrapper ref={clickRef}>

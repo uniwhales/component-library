@@ -264,7 +264,7 @@ SquareButton.args = {
 SquareButtonCustomSize.args = {
   children: WithIcon(),
   $buttonVariant: 'square',
-  $size: '140px',
+  size: '140px',
 };
 OnboardingButtonPrimary.args = {
   children: 'Onboarding',
@@ -286,11 +286,11 @@ OnboardingButtonSecondaryCustomWidthButton.args = {
 };
 CloseButtonPrimary.args = {
   $buttonVariant: 'close_primary',
-  $size: '30px',
+  size: '30px',
 };
 CloseButtonSecondary.args = {
   $buttonVariant: 'close_secondary',
-  $size: '30px',
+  size: '30px',
 };
 CloseButtonModal.args = {
   $buttonVariant: 'close_modal',

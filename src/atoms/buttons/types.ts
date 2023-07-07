@@ -24,7 +24,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'close_modal'
   $borderRadius?: string,
   disabled?: boolean
-  $size?: string
+  size?: string
   color?: string
 }
 
