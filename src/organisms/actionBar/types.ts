@@ -1,10 +1,8 @@
 import { CardProps } from '../../atoms/card/types';
 import { FilterChipProps } from '../../atoms/filterChips/types';
-import {
-  SelectProps, SelectVariation,
-} from '../../atoms/inputs/select/select';
+import { SelectProps, SelectVariation } from '../../atoms/inputs/select/types';
 
-export type ChipFilterProps = Pick<FilterChipProps, 'icon' | 'isOn' | 'id'> & {
+export type ChipFilterProps = Pick<FilterChipProps, 'icon' | '$isOn' | 'id'> & {
   label: string
 };
 

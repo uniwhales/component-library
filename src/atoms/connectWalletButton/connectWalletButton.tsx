@@ -6,13 +6,13 @@ import { ConnectButton } from './connectWalletButton.styles';
 import { ConnectButtonProps } from './types';
 
 export const ConnectWalletButton: FC<ConnectButtonProps> = ({
-  onClick, $account,
+  onClick, account,
 }) => (
   <ConnectButton
     onClick={onClick}
-    $isConnected={!!$account}
+    $isConnected={!!account}
   >
-    {!$account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
-    <Text size="14-Bold">{$account ? 'Disconnect' : 'Connect'}</Text>
+    {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
+    <Text size="14-Bold">{account ? 'Disconnect' : 'Connect'}</Text>
   </ConnectButton>
 );

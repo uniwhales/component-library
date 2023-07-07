@@ -22,8 +22,8 @@ export const Navbar: FC<NavbarProps> = ({
   rightSideChildren,
   account,
   onWalletConnectClick,
-  bottomSpacing = true,
-  bgColor = true,
+  $bottomSpacing = true,
+  $bgColor = true,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
@@ -44,11 +44,11 @@ export const Navbar: FC<NavbarProps> = ({
     <>
       <NavbarContainer
         ref={clickRef}
-        bottomSpacing={bottomSpacing}
-        isMenuOpen={isMenuOpen}
+        $bottomSpacing={$bottomSpacing}
+        $isMenuOpen={isMenuOpen}
         account={account}
         onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
-        bgColor={bgColor}
+        $bgColor={$bgColor}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
@@ -67,7 +67,7 @@ export const Navbar: FC<NavbarProps> = ({
             {
               !account && breakpoint <= Breakpoints.Tablet
               && (
-                <ButtonAtom buttonVariant="special_small_round" onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
+                <ButtonAtom $buttonVariant="special_small_round" onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
                   <IconWrapper cursor="pointer" icon={<Meatball />} />
                 </ButtonAtom>
               )
@@ -76,7 +76,7 @@ export const Navbar: FC<NavbarProps> = ({
             {account && (
               <IdenticonComponent
                 id={account}
-                hasInteraction
+                $hasInteraction
                 size="big"
                 onClick={() => { setIsMenuOpen(!isMenuOpen); }}
               />
@@ -86,7 +86,7 @@ export const Navbar: FC<NavbarProps> = ({
         {/* On Tablet and smaller we show the menu inside expanded navbar */}
         {breakpoint <= Breakpoints.Tablet && (
         <UserMenu
-          isMenuOpen={isMenuOpen}
+          $isMenuOpen={isMenuOpen}
           onWalletConnectClick={(e) => {
             onWalletConnectClick(e);
             /*
@@ -102,7 +102,7 @@ export const Navbar: FC<NavbarProps> = ({
       {/* On Desktop we show the menu outside of navbar */}
       {breakpoint > Breakpoints.Tablet && (
       <UserMenu
-        isMenuOpen={isMenuOpen}
+        $isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {
           onWalletConnectClick(e);
           /*

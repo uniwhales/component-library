@@ -2,12 +2,13 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { localTheme } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
-import { Select, SelectOption } from '../../atoms/inputs/select/select';
+import { Select } from '../../atoms/inputs/select/select';
 import { Text } from '../../atoms/texts/text';
 import { ButtonAtom } from '../../atoms/buttons/button';
 import { ToggleAtom } from '../../atoms/toggles/toggle__standart';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CrossIcon, EditStandard } from '../../atoms/icons';
+import { SelectOption } from '../../atoms/inputs/select/types';
 
 export interface BotIdArray {
   id: number;
@@ -137,18 +138,18 @@ export const WalletAlertsTable = ({
       </Section>
       <SectionSelect flex={1}>
         <Group>
-          <Select<'multi'> readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
+          <Select<'multi'> $readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
         </Group>
       </SectionSelect>
       <Section flex={1}>
         <ButtonGroup>
-          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
+          <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary">
             <>
               <IconWrapper icon={<EditStandard />} />
               Edit
             </>
           </ButtonAtom>
-          <ButtonAtom onClick={() => removeWallet(id)} buttonVariant="tertiary">
+          <ButtonAtom onClick={() => removeWallet(id)} $buttonVariant="tertiary">
             <>
               <IconWrapper icon={<CrossIcon />} />
               Remove
@@ -156,12 +157,12 @@ export const WalletAlertsTable = ({
           </ButtonAtom>
         </ButtonGroup>
         <ButtonGroupMobile>
-          <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary_action">
+          <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary_action">
             <IconWrapper icon={<EditStandard />} />
           </ButtonAtom>
           <ButtonAtom
             onClick={() => removeWallet(id)}
-            buttonVariant="secondary_action"
+            $buttonVariant="secondary_action"
           >
             <IconWrapper icon={<CrossIcon />} />
           </ButtonAtom>

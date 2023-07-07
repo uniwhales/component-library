@@ -6,7 +6,7 @@ const FlexBase = styled.div`
   align-items: center;
 `;
 
-export const NavbarContainer = styled(FlexBase)<{ isMenuOpen?: boolean, account?: string | null, bottomSpacing: boolean, bgColor: boolean | string }>`
+export const NavbarContainer = styled(FlexBase)<{ $isMenuOpen?: boolean, account?: string | null, $bottomSpacing: boolean, $bgColor: boolean | string }>`
   position: sticky;
   top: 0;
   right: 0;
@@ -14,21 +14,21 @@ export const NavbarContainer = styled(FlexBase)<{ isMenuOpen?: boolean, account?
   flex-direction: column;
   justify-content: center;
 
-  background-color: ${({ theme, bgColor }) => (
-    typeof bgColor === 'string' ? bgColor : bgColor ? theme.containerAndCardShades.SHADE_PLUS_3 : 'transparent'
+  background-color: ${({ theme, $bgColor }) => (
+    typeof $bgColor === 'string' ? $bgColor : $bgColor ? theme.containerAndCardShades.SHADE_PLUS_3 : 'transparent'
   )};
-  box-shadow: ${({ theme, bottomSpacing, bgColor }) => bgColor && bottomSpacing && theme.dropShadow.REGULAR};
+  box-shadow: ${({ theme, $bottomSpacing, $bgColor }) => $bgColor && $bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.STICKY};
   gap: 24px;
-  margin-bottom: ${({ bottomSpacing }) => bottomSpacing && '24px'};
+  margin-bottom: ${({ $bottomSpacing }) => $bottomSpacing && '24px'};
 
-  ${tablet(css<{ isMenuOpen?: boolean, account?: string | null }>`
+  ${tablet(css<{ $isMenuOpen?: boolean, account?: string | null }>`
     gap: 0;
     justify-content: flex-start;
-    max-height: ${({ isMenuOpen, account }) => (!isMenuOpen ? '104px' : account ? '239px' : '164px')};
+    max-height: ${({ $isMenuOpen, account }) => (!$isMenuOpen ? '104px' : account ? '239px' : '164px')};
     transition: max-height 200ms ease-in-out;
-    border-radius: ${({ isMenuOpen }) => (isMenuOpen ? '0px 0px 12px 12px' : 'none')};
+    border-radius: ${({ $isMenuOpen }) => ($isMenuOpen ? '0px 0px 12px 12px' : 'none')};
   `)}
 `;
 
@@ -39,7 +39,7 @@ export const NavbarMainContent = styled.div`
   width: 100%;
   height: 42px;
 
-  ${tablet(css<{ isMenuOpen?: boolean }>`
+  ${tablet(css<{ $isMenuOpen?: boolean }>`
     height: 104px;
     min-height: 104px;
   `)}

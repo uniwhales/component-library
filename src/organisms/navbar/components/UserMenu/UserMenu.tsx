@@ -10,12 +10,12 @@ import { NavbarUserMenu } from './styles';
 import { UserMenuProps } from './types';
 
 export const UserMenu: FC<UserMenuProps> = ({
-  account, plan, onWalletConnectClick, isMenuOpen,
+  account, plan, onWalletConnectClick, $isMenuOpen,
 }) => {
   const { textShades } = localTheme();
 
   return (
-    <NavbarUserMenu isMenuOpen={isMenuOpen}>
+    <NavbarUserMenu $isMenuOpen={$isMenuOpen}>
       {account && <CopyToClipBoard walletCut text={account} />}
       {account && <Line length="98px" />}
       {account && plan && (

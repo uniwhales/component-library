@@ -21,7 +21,7 @@ const Template = () => {
   };
   return (
     <ConnectWalletButton
-      $account={account}
+      account={account}
       onClick={handleSwitch}
     />
   );

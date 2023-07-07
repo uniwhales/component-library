@@ -27,9 +27,9 @@ export type SliderRef = {
 
 export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
   min, max, onApply,
-  buttonText, buttonIcon,
-  buttonWidth, buttonHeight,
-  description, unit, useLogarithmic, disabled,
+  $buttonText, $buttonIcon,
+  $buttonWidth, $buttonHeight,
+  description, unit, $useLogarithmic, disabled,
 }, ref) => {
   const [sliderValue, setSliderValue] = useState('0');
   const [isOpen, setIsOpen] = useState(false);
@@ -69,22 +69,22 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
             if (disabled) return;
             setIsOpen(!isOpen);
           }}
-          isOpen={isOpen}
-          height={buttonHeight}
-          width={buttonWidth}
+          $isOpen={isOpen}
+          height={$buttonHeight}
+          width={$buttonWidth}
           disabled={!!disabled}
         >
           <InnerContainer>
             <MinUsdButtonContent>
-              {buttonIcon && <IconWrapper height="20px" width="20px" cursor="pointer" icon={buttonIcon} />}
-              {buttonText}
+              {$buttonIcon && <IconWrapper height="20px" width="20px" cursor="pointer" icon={$buttonIcon} />}
+              {$buttonText}
             </MinUsdButtonContent>
             <IconWrapper
               width="20px"
               height="20px"
               cursor="pointer"
               icon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-              pointerEvents="none"
+              $pointerEvents="none"
             />
           </InnerContainer>
         </MinUsdButton>
@@ -97,23 +97,23 @@ export const DropdownSlider = forwardRef<SliderRef, MinUsdProps>(({
                 min={min}
                 max={max}
                 value={sliderValue}
-                setValue={setSliderValue}
-                onInput={(e) => setSliderValue(e.target.value)}
+                $setValue={setSliderValue}
+                $onInput={(e) => setSliderValue(e.target.value)}
                 unit={unit}
-                hasError={valueIsEmpty || valueIsTooLarge}
-                errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
-                useLogarithmic={useLogarithmic}
+                $hasError={valueIsEmpty || valueIsTooLarge}
+                $errorMessage={valueIsEmpty ? 'Must be a value' : valueIsTooLarge ? `Max: ${max}` : undefined}
+                $useLogarithmic={$useLogarithmic}
               />
               <ButtonContainer>
                 <ButtonAtom
-                  buttonVariant="primary"
+                  $buttonVariant="primary"
                   onClick={onApplyClicked}
                   disabled={valueIsEmpty || valueIsTooLarge || Number.isNaN(Number(sliderValue))}
                 >
                   Apply
                 </ButtonAtom>
                 <ButtonAtom
-                  buttonVariant="secondary"
+                  $buttonVariant="secondary"
                   onClick={() => setSliderValue('0')}
                 >
                   Clear

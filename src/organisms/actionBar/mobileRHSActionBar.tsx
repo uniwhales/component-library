@@ -5,17 +5,17 @@ import { Text } from '../../atoms/texts/text';
 import { ContentWrapper } from './mobileRHSActionBar.styles';
 import { MobileRHSActionBarProps } from './types';
 
-type ChildProps = { elem: MobileRHSActionBarProps['left'], noHover?: MobileRHSActionBarProps['noHover'] };
-const Child = ({ elem, noHover }: ChildProps) => (
-  typeof elem === 'string' ? <Text size="14-Regular">{elem}</Text> : <IconWrapper cursor={noHover ? '' : 'pointer'} icon={elem} />);
+type ChildProps = { elem: MobileRHSActionBarProps['left'], $noHover?: MobileRHSActionBarProps['$noHover'] };
+const Child = ({ elem, $noHover }: ChildProps) => (
+  typeof elem === 'string' ? <Text size="14-Regular">{elem}</Text> : <IconWrapper cursor={$noHover ? '' : 'pointer'} icon={elem} />);
 
 export const MobileRHSActionBar = ({
-  left, right, noHover, padding, height,
+  left, right, $noHover, $padding, height,
 }: MobileRHSActionBarProps) => (
-  <Card noHover={noHover} padding={padding} height={height}>
+  <Card $noHover={$noHover} $padding={$padding} height={height}>
     <ContentWrapper>
-      <Child elem={left} noHover={noHover} />
-      <Child elem={right} noHover={noHover} />
+      <Child elem={left} $noHover={$noHover} />
+      <Child elem={right} $noHover={$noHover} />
     </ContentWrapper>
   </Card>
 );
