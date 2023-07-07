@@ -3,11 +3,11 @@ import { Column, Row } from '../common/flex';
 import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
-export const ModalContainer = styled.div<{ isMobile?:boolean }>`
+export const ModalContainer = styled.div<{ $isMobile?:boolean }>`
   position: fixed;
   height: 100%;
   width: 100%;
-  left: ${({ isMobile }) => !isMobile && '64px'};
+  left: ${({ $isMobile }) => !$isMobile && '64px'};
   top: 0;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
   display: flex;
@@ -15,12 +15,12 @@ export const ModalContainer = styled.div<{ isMobile?:boolean }>`
   justify-content: center;
 `;
 
-export const ModalBody = styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string }>`
+export const ModalBody = styled(Card)<{ replay: boolean, $modalVariant: 'single' | 'double', maxWidth?: string }>`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant, maxWidth }) => (maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
+  max-width: ${({ $modalVariant, maxWidth }) => (maxWidth || ($modalVariant === 'double' ? '748px' : '360px'))};
   max-height: 650px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};

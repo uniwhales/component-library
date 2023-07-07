@@ -34,8 +34,8 @@ const AnnouncementCardContainerMobile = styled.div`
     flex-direction: column;
 `;
 
-const Cover = styled.div<{ coverUrl: string }>`
-  background: ${({ coverUrl }) => `url(${coverUrl})`};
+const Cover = styled.div<{ $coverUrl: string }>`
+  background: ${({ $coverUrl }) => `url(${$coverUrl})`};
   height: 115px;
   width: 233px;
   margin-bottom: 20px;
@@ -56,19 +56,19 @@ const AnnouncementText = styled.div`
     font-size: 14px;
 `;
 
-export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
+export const exampleModal = ({ latest, $closeFn }: ExampleModalProps) => (
   <ModalBase
-    closeFn={closeFn}
-    headerText="Modal Header"
-    headerIcon={<StarIcon />}
-    modalVariant="single"
-    modalContent={(
+    $closeFn={$closeFn}
+    $headerText="Modal Header"
+    $headerIcon={<StarIcon />}
+    $modalVariant="single"
+    $modalContent={(
       <LatestAnnouncementsList height="100%" gap="48px">
         {latest.map(({
           image, title, text, datetime,
         }) => (
           <AnnouncementCardContainerMobile key={datetime}>
-            <Cover coverUrl={image} />
+            <Cover $coverUrl={image} />
             <Content>
               <Text size="14-Bold">{datetime}</Text>
               <Text size="16-Regular">{title}</Text>
@@ -82,26 +82,26 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
 );
 
 export const doubleModalExample = ({
-  closeFn, placeholderText,
+  $closeFn, placeholderText,
 }: DoubleModalProps) => {
   const [showMore, setShowMore] = useState(false);
   const theme = localTheme();
   return (
     <ModalBase
-      closeFn={closeFn}
-      headerText="Double Modal"
-      headerIcon={<StarIcon />}
-      headerIconFill={theme.colors.primary.DARK_BLUE}
-      modalVariant="double"
-      additionalTinyAction={(
-        <ButtonAtom buttonVariant="special_small">
+      $closeFn={$closeFn}
+      $headerText="Double Modal"
+      $headerIcon={<StarIcon />}
+      $headerIconFill={theme.colors.primary.DARK_BLUE}
+      $modalVariant="double"
+      $additionalTinyAction={(
+        <ButtonAtom $buttonVariant="special_small">
           <>
             <IconWrapper icon={<ProfileStandard />} />
             View Profile
           </>
         </ButtonAtom>
       )}
-      modalContent={(
+      $modalContent={(
         <ModalContentContainer>
           <ModalColumn>
             <Text size="14-Regular">{placeholderText}</Text>

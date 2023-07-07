@@ -18,14 +18,14 @@ import {
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 
 export const ModalBase: FC<ModalBaseProps> = ({
-  closeFn,
-  closeOnOverlayClick = true,
-  headerText,
-  headerIcon,
-  headerIconFill,
-  modalVariant,
-  additionalTinyAction,
-  modalContent,
+  $closeFn,
+  $closeOnOverlayClick = true,
+  $headerText,
+  $headerIcon,
+  $headerIconFill,
+  $modalVariant,
+  $additionalTinyAction,
+  $modalContent,
   maxWidth,
 }) => {
   const [replay, setReplay] = useState(false);
@@ -44,28 +44,28 @@ export const ModalBase: FC<ModalBaseProps> = ({
     <>
       <Overlay />
       <ModalContainer
-        isMobile={isMobile}
+        $isMobile={isMobile}
         onClick={(e: React.MouseEvent<HTMLButtonElement | HTMLDivElement, MouseEvent>) => {
           e.stopPropagation();
-          if (!closeFn || !closeOnOverlayClick) return;
+          if (!$closeFn || !$closeOnOverlayClick) return;
           setReplay(true);
-          setTimeout(() => closeFn(e), 150);
+          setTimeout(() => $closeFn(e), 150);
         }}
       >
         <ModalBody
           onClick={(e: { stopPropagation: () => void; }) => e.stopPropagation()}
           replay={replay}
-          modalVariant={modalVariant}
+          $modalVariant={$modalVariant}
           maxWidth={maxWidth}
-          noHover
+          $noHover
         >
           <>
             <CloseButton>
               <IconWrapper
                 onClick={(e) => {
-                  if (!closeFn) return;
+                  if (!$closeFn) return;
                   setReplay(true);
-                  setTimeout(() => closeFn(e), 150);
+                  setTimeout(() => $closeFn(e), 150);
                 }}
                 cursor="pointer"
                 icon={<FloatingClose />}
@@ -76,19 +76,19 @@ export const ModalBase: FC<ModalBaseProps> = ({
             </CloseButton>
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
-                {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
-                {headerText && (
+                {$headerIcon && <IconWrapper fill={$headerIconFill} height="26px" width="26px" icon={$headerIcon} />}
+                {$headerText && (
                   <Text
                     size="16-Regular"
                     color={theme.textShades.SHADE_MINUS_3}
                   >
-                    {headerText}
+                    {$headerText}
                   </Text>
                 )}
               </HeaderAndIconContainer>
-              {additionalTinyAction && additionalTinyAction}
+              {$additionalTinyAction && $additionalTinyAction}
             </ModalHeaderContainer>
-            {modalContent}
+            {$modalContent}
           </>
         </ModalBody>
       </ModalContainer>
