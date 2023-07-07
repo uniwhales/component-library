@@ -47,12 +47,12 @@ export interface TextProps {
   | number;
   size?: BodySizes | HeaderSizes;
   color?: string;
-  textDecoration?: string;
+  $textDecoration?: string;
   href?: string;
   target?: string;
-  hyperLinkVariation?: HyperLinkVariation
+  $hyperLinkVariation?: HyperLinkVariation
   disabled?: boolean;
-  removeLineHeight?:boolean;
+  $removeLineHeight?:boolean;
 }
 type HyperLinkStyleProperty = {
   idle: string,

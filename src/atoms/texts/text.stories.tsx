@@ -73,7 +73,7 @@ export const LinkS: Story = {
         <div>
           {hyperLinks.map((h) => (
             <div>
-              <Text key={item} hyperLinkVariation={h} target="_blank" href="https://www.uniwhales.io" size={item}>
+              <Text key={item} $hyperLinkVariation={h} target="_blank" href="https://www.uniwhales.io" size={item}>
                 <>
                   {item}
                   {' '}

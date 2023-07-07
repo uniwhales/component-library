@@ -3,18 +3,18 @@ import { StyledA, StyledHeading, StyledP } from './text.styles';
 import { TextProps } from './types';
 
 export const Text: FC<TextProps> = ({
-  children, size = '14-Regular', color, textDecoration, href, target, hyperLinkVariation, disabled, removeLineHeight,
+  children, size = '14-Regular', color, $textDecoration, href, target, $hyperLinkVariation, disabled, $removeLineHeight,
 }) => {
   const [textType, textWeight] = size.split('-');
   if (href) {
     return (
       <StyledA
-        hyperLinkVariation={hyperLinkVariation}
-        textType={textType}
-        textWeight={textWeight}
+        $hyperLinkVariation={$hyperLinkVariation}
+        $textType={textType}
+        $textWeight={textWeight}
         href={href}
         target={target}
-        textDecoration={textDecoration}
+        $textDecoration={$textDecoration}
         color={color}
         disabled={disabled}
       >
@@ -25,11 +25,11 @@ export const Text: FC<TextProps> = ({
   if ((['8', '9', '10', '11', '12', '14', '16'].includes(textType))) {
     return (
       <StyledP
-        textDecoration={textDecoration}
-        textType={textType}
+        $textDecoration={$textDecoration}
+        $textType={textType}
         color={color}
-        textWeight={textWeight}
-        removeLineHeight={removeLineHeight}
+        $textWeight={textWeight}
+        $removeLineHeight={$removeLineHeight}
       >
         {children}
       </StyledP>
@@ -38,11 +38,11 @@ export const Text: FC<TextProps> = ({
   if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(textType)) {
     return (
       <StyledHeading
-        textDecoration={textDecoration}
+        $textDecoration={$textDecoration}
         color={color}
         as={textType.toLowerCase()}
-        textType={textType}
-        textWeight={textWeight}
+        $textType={textType}
+        $textWeight={textWeight}
       >
         {children}
       </StyledHeading>
