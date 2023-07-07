@@ -1,5 +1,5 @@
 export interface CardProps {
-  noHover?: boolean
-  padding?: string
+  $noHover?: boolean
+  $padding?: string
   height?: string
 }

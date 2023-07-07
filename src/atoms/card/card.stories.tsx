@@ -12,5 +12,5 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Primary: Story = {
-  render: (args) => <Card {...args}><ButtonAtom onClick={() => {}} buttonVariant="primary">test</ButtonAtom></Card>,
+  render: (args) => <Card {...args}><ButtonAtom onClick={() => {}} $buttonVariant="primary">test</ButtonAtom></Card>,
 };
