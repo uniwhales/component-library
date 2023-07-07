@@ -139,7 +139,7 @@ const Template = (args: FilterChipProps) => {
             {...chip}
             variant="primary"
             onClick={() => setSelectFilter(chip.id)}
-            isOn={selectFilter === chip.id}
+            $isOn={selectFilter === chip.id}
           >
             <Text size="14-Regular">{chip.label}</Text>
           </FilterChip>
@@ -191,7 +191,7 @@ const Template3 = (args: FilterChipProps) => {
           variant="onboarding"
           id={i.id}
           disabled={disabled}
-          isOn={selected?.includes(i.id)}
+          $isOn={selected?.includes(i.id)}
         >
           <Text size="14-Regular" color="SHADE_MINUS_1">{i.text}</Text>
         </FilterChip>

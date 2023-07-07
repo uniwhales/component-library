@@ -3,12 +3,12 @@ import { CSSProperties } from 'react';
 import { FilterChipProps } from './types';
 import { Row } from '../common/flex';
 
-type Props = { isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'padding' | 'width'>;
+type Props = { $isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'padding' | 'width'>;
 
 export const FilterChipWrapper = styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
-  background: ${({ disabled, theme, isOn }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : isOn ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${({ disabled, theme, $isOn }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : $isOn ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   padding: ${({ padding }) => padding ?? '4px 12px'};
   border-radius: 12px;
@@ -16,7 +16,7 @@ export const FilterChipWrapper = styled.div<Props>`
   align-items: center;
   justify-content: center;
   height: 24px;
-  border: ${({ isOn, theme, disabled }) => `2px solid ${!disabled && isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
+  border: ${({ $isOn, theme, disabled }) => `2px solid ${!disabled && $isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
   path { transition: fill .45s ease; }
   transition: background .45s ease, width .45s ease;
   &:hover {
@@ -104,7 +104,7 @@ export const FilterChipSecondary = styled.div<Pick<FilterChipProps, 'padding' | 
   `}
 `;
 
-export const FilterChipOnboarding = styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width' | 'isOn' | 'padding'>>`
+export const FilterChipOnboarding = styled.div<Pick<FilterChipProps, 'disabled' | 'height' | 'width' | '$isOn' | 'padding'>>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,10 +123,10 @@ export const FilterChipOnboarding = styled.div<Pick<FilterChipProps, 'disabled' 
       }
   `}
   // active state
-  ${({ disabled, theme, isOn }) => !disabled && css`
-    border: ${isOn ? `1px solid ${theme.colors.primary.YELLOW}` : `1px solid ${theme.colors.primary.MAIN_BLUE}`};
+  ${({ disabled, theme, $isOn }) => !disabled && css`
+    border: ${$isOn ? `1px solid ${theme.colors.primary.YELLOW}` : `1px solid ${theme.colors.primary.MAIN_BLUE}`};
     color: ${theme.colors.system.WHITE};
-    background: ${isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
+    background: ${$isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
     cursor: pointer;
     &:hover {
       background: ${theme.colors.primary.MAIN_BLUE};

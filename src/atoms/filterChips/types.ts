@@ -9,8 +9,8 @@ export type FilterChipProps = {
   | string[];
   disabled?: boolean;
   icon?: JSX.Element;
-  isOn?: boolean;
+  $isOn?: boolean;
   onClick: (id: string, e: MouseEvent<HTMLElement>) => void;
-  iconSize?: string;
+  $iconSize?: string;
   id: string;
 } & Pick<CSSProperties, 'padding' | 'width' | 'height'>;
