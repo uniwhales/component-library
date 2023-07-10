@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "2.2.23-dev-FE-1394-12",
+  "version": "2.2.23-dev-FE-1394-16",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
@@ -76,7 +76,7 @@
     "react-hooks-identicons": "^1.0.4",
     "react-responsive-carousel": "^3.2.23",
     "react-select": "^5.3.1",
-    "styled-components": "6.0.2",
+    "styled-components": "6.0.3",
     "stylis": "4.3.0"
   },
   "repository": {
