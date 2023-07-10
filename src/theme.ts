@@ -9,8 +9,209 @@ import { ZIndex } from './utils/constants';
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 // const LeagueSpartanBold = require('./fonts/LeagueSpartan-Bold.otf');
 
+export interface TextTreatment {
+  fontSize: string;
+  lineHeight: string;
+  letterSpacing?: string;
+  fontWeight?: 'normal' | 'bold';
+}
+
+/** A list of breakpoints accessible by key/value. */
+const breakpoints = {
+  /** Above 1280 */
+  lg: '1280px',
+  /** Between 768 and  1279 */
+  md: '768px',
+  /** Below 767 */
+  sm: '480px',
+};
+
+/** All available width breakpoint */
+type Breakpoint = keyof typeof breakpoints;
+
+/** Copy of `breakpoints` as integers */
+const unitlessBreakpoints = {
+  /** Above 1280 */
+  lg: parseInt(breakpoints.lg, 10),
+  /** Between 768 and  1279 */
+  md: parseInt(breakpoints.md, 10),
+  /** Below 480 */
+  sm: parseInt(breakpoints.sm, 10),
+};
+
+/**
+ * We alias breakpoints onto the scale so that styled-system has access
+ * to the named breakpoints as well as the scale
+ */
+const BREAKPOINTS_SCALE = Object.assign(
+  [breakpoints.sm, breakpoints.md, breakpoints.lg],
+  breakpoints,
+);
+
+/** Available text variant names */
+const TEXT_VARIANT_NAMES = [
+  'H1-Regular',
+  'H1-Bold',
+  'H2-Regular',
+  'H2-Bold',
+  'H3-Regular',
+  'H3-Bold',
+  'H4-Regular',
+  'H4-Bold',
+  'H5-Regular',
+  'H5-Bold',
+  'H6-Regular',
+  'H6-Bold',
+  '16-Regular',
+  '16-Bold',
+  '14-Regular',
+  '14-Bold',
+  '12-Regular',
+  '12-Bold',
+  '11-Regular',
+  '11-Bold',
+  '10-Regular',
+  '10-Bold',
+  '9-Regular',
+  '9-Bold',
+  '8-Regular',
+  '8-Bold',
+] as const;
+
+/** Available text variants */
+const TEXT_VARIANTS: Record<
+  typeof TEXT_VARIANT_NAMES[number],
+TextTreatment
+> = {
+  'H1-Regular': {
+    fontSize: '44px',
+    lineHeight: '54px',
+  },
+  'H1-Bold': {
+    fontSize: '44px',
+    lineHeight: '54px',
+    fontWeight: 'bold',
+  },
+  'H2-Regular': {
+    fontSize: '40px',
+    lineHeight: '54px',
+  },
+  'H2-Bold': {
+    fontSize: '40px',
+    lineHeight: '54px',
+    fontWeight: 'bold',
+  },
+  'H3-Regular': {
+    fontSize: '32px',
+    lineHeight: '44px',
+  },
+  'H3-Bold': {
+    fontSize: '32px',
+    lineHeight: '44px',
+    fontWeight: 'bold',
+  },
+  'H4-Regular': {
+    fontSize: '24px',
+    lineHeight: '32px',
+  },
+  'H4-Bold': {
+    fontSize: '24px',
+    lineHeight: '32px',
+    fontWeight: 'bold',
+  },
+  'H5-Regular': {
+    fontSize: '20px',
+    lineHeight: '24px',
+  },
+  'H5-Bold': {
+    fontSize: '20px',
+    lineHeight: '24px',
+    fontWeight: 'bold',
+  },
+  'H6-Regular': {
+    fontSize: '16px',
+    lineHeight: '24px',
+  },
+  'H6-Bold': {
+    fontSize: '16px',
+    lineHeight: '24px',
+    fontWeight: 'bold',
+  },
+  '16-Regular': {
+    fontSize: '16px',
+    lineHeight: '20px',
+  },
+  '16-Bold': {
+    fontSize: '16px',
+    lineHeight: '20px',
+    fontWeight: 'bold',
+  },
+  '14-Regular': {
+    fontSize: '14px',
+    lineHeight: '18px',
+  },
+  '14-Bold': {
+    fontSize: '14px',
+    lineHeight: '18px',
+    fontWeight: 'bold',
+  },
+  '12-Regular': {
+    fontSize: '12px',
+    lineHeight: '16px',
+  },
+  '12-Bold': {
+    fontSize: '12px',
+    lineHeight: '16px',
+    fontWeight: 'bold',
+  },
+  '11-Regular': {
+    fontSize: '11px',
+    lineHeight: '16px',
+  },
+  '11-Bold': {
+    fontSize: '11px',
+    lineHeight: '16px',
+    fontWeight: 'bold',
+  },
+  '10-Regular': {
+    fontSize: '10px',
+    lineHeight: '16px',
+  },
+  '10-Bold': {
+    fontSize: '10px',
+    lineHeight: '16px',
+    fontWeight: 'bold',
+  },
+  '9-Regular': {
+    fontSize: '9px',
+    lineHeight: '16px',
+  },
+  '9-Bold': {
+    fontSize: '9px',
+    lineHeight: '16px',
+    fontWeight: 'bold',
+  },
+  '8-Regular': {
+    fontSize: '8px',
+    lineHeight: '16px',
+  },
+  '8-Bold': {
+    fontSize: '8px',
+    lineHeight: '16px',
+    fontWeight: 'bold',
+  },
+};
+
+/** Name of typographic treatment */
+type TextVariant = keyof typeof TEXT_VARIANTS;
+
 interface CieloThemeInterface {
   OVERLAY: string;
+  BREAKPOINTS_SCALE: typeof BREAKPOINTS_SCALE,
+  textVariants: typeof TEXT_VARIANTS,
+  grid: {
+    breakpoints: {},
+  }
   textShades: {
     SHADE_MINUS_3: string;
     SHADE_MINUS_2: string;
@@ -112,6 +313,8 @@ const LightTheme = {
 
 const Theme: CieloThemeInterface = {
   ...DarkTheme,
+  BREAKPOINTS_SCALE,
+  textVariants: TEXT_VARIANTS,
   colors: {
     primary: {
       MAIN_BLUE: '#1D86E8',
@@ -137,6 +340,10 @@ const Theme: CieloThemeInterface = {
       BLACK: '#131313',
       GREY: '#A5A6B8',
     },
+  },
+  // Empty grid object to prevent `Grid` component from throwing
+  grid: {
+    breakpoints: {},
   },
   zIndex: {
     [ZIndex.BACKDROP]: 0,
@@ -165,6 +372,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+/** All available color keys */
+type Color = keyof typeof Theme['colors'];
+
 export {
   GlobalStyle, Theme, colors, LightTheme, DarkTheme, localTheme, CieloThemeInterface,
+  Breakpoint, breakpoints, unitlessBreakpoints, TEXT_VARIANTS, TextVariant, TEXT_VARIANT_NAMES,
+  Color,
 };

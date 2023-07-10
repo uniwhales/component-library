@@ -1,52 +1,70 @@
-import React, { FC } from 'react';
-import { StyledA, StyledHeading, StyledP } from './text.styles';
-import { TextProps } from './types';
+import { styled } from 'styled-components';
+import {
+  ColorProps, FontSizeProps, FontWeightProps, ResponsiveValue,
+  TypographyProps, color, compose, style, system, typography, variant,
+} from 'styled-system';
+import { Color, TEXT_VARIANTS, TextVariant } from '../../theme';
 
-export const Text: FC<TextProps> = ({
-  children, size = '14-Regular', color, $textDecoration, href, target, $hyperLinkVariation, disabled, $removeLineHeight,
-}) => {
-  const [textType, textWeight] = size.split('-');
-  if (href) {
-    return (
-      <StyledA
-        $hyperLinkVariation={$hyperLinkVariation}
-        $textType={textType}
-        $textWeight={textWeight}
-        href={href}
-        target={target}
-        $textDecoration={$textDecoration}
-        color={color}
-        disabled={disabled}
-      >
-        {children}
-      </StyledA>
-    );
-  }
-  if ((['8', '9', '10', '11', '12', '14', '16'].includes(textType))) {
-    return (
-      <StyledP
-        $textDecoration={$textDecoration}
-        $textType={textType}
-        color={color}
-        $textWeight={textWeight}
-        $removeLineHeight={$removeLineHeight}
-      >
-        {children}
-      </StyledP>
-    );
-  }
-  if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(textType)) {
-    return (
-      <StyledHeading
-        $textDecoration={$textDecoration}
-        color={color}
-        as={textType.toLowerCase()}
-        $textType={textType}
-        $textWeight={textWeight}
-      >
-        {children}
-      </StyledHeading>
-    );
-  }
-  return null;
+/** BaseTextProps */
+export type BaseTextProps = TypographyProps &
+Omit<ColorProps, 'color'> & {
+  /**
+     * @description
+     * Variants of the text. Possible to pass an array that
+     * behaves accordingly to the media breakpoints ["sm", "md", "lg"]
+     * @example
+     * "10-Bold"
+     * "12-Regular"
+     * "16-Regular"
+     * ["10-Bold", "12-Regular", "16-Regular"]
+     * @see {@link TextVariant}
+     */
+  variant?: ResponsiveValue<TextVariant>
+  textColor?: ResponsiveValue<Color>
 };
+
+const textColor = style({
+  prop: 'textColor',
+  cssProperty: 'color',
+  key: 'colors',
+});
+
+export type TextTransform =
+  | 'none'
+  | 'capitalize'
+  | 'uppercase'
+  | 'lowercase'
+  | 'initial'
+  | 'inherit';
+
+const textTransform = system({ textTransform: true });
+
+/** styled functions for Text */
+export const textMixin = compose(typography, color, textColor, textTransform);
+
+/** TextProps */
+export type TextProps = BaseTextProps &
+{
+  textTransform?: ResponsiveValue<TextTransform>
+};
+
+export const Text = styled.p<TextProps & { $removeLineHeight?:boolean }>`
+/*   Adding unknown here as TS thinks we are making a mistake converting to a string
+  because we are not using numbers instead of regular string */
+  padding: 0;
+  margin: 0;
+  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  ${variant({ variants: TEXT_VARIANTS })}
+  ${textMixin}
+`;
+
+export const TextHref = styled.a<FontSizeProps & FontWeightProps & { disabled?:boolean }>`
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+  padding: 0;
+  margin: 0;
+  line-height: 24px;
+  color: ${({ theme }) => theme.colors.secondary.TEAL};
+  text-decoration: none;
+  ${variant({ variants: TEXT_VARIANTS })}
+  ${textMixin}
+`;
