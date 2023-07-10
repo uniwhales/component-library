@@ -26,7 +26,7 @@ export const RadioButtonLabel = styled.label<Pick<RadioProps, '$isLarge' | 'disa
   height: ${({ $isLarge }) => ($isLarge ? '16px' : '12px')};
   border-radius: 50%;
   background: transparent;
-  border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}` : `2px solid ${theme.textShades.SHADE_MINUS_2}`)};
+  border: ${({ disabled, theme }) => (disabled ? `2px solid ${theme.colors.SHADE_PLUS_1}` : `2px solid ${theme.colors.SHADE_MINUS_2}`)};
 `;
 export const RadioButton = styled.input<{ $isLarge: boolean }>`
   opacity: 0;
@@ -38,7 +38,7 @@ export const RadioButton = styled.input<{ $isLarge: boolean }>`
   cursor: pointer;
   &:hover ~ ${RadioButtonLabel} {
     background: transparent;
-    border: ${({ disabled, theme }) => (!disabled && `2px solid ${theme.colors.primary.YELLOW}`)};
+    border: ${({ disabled, theme }) => (!disabled && `2px solid ${theme.colors.YELLOW}`)};
     &::after {
       content: "";
       display: block;
@@ -49,7 +49,7 @@ export const RadioButton = styled.input<{ $isLarge: boolean }>`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: ${({ disabled, theme }) => (!disabled && theme.textShades.SHADE_MINUS_1)};
+      background: ${({ disabled, theme }) => (!disabled && theme.colors.SHADE_MINUS_1)};
     }
   }
   ${({
@@ -57,7 +57,7 @@ export const RadioButton = styled.input<{ $isLarge: boolean }>`
   }) => `
     &:checked + ${RadioButtonLabel} {
       background: transparent;
-      border: 2px solid ${disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.primary.YELLOW};
+      border: 2px solid ${disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.YELLOW};
       &::after {
         content: "";
         display: block;
@@ -68,7 +68,7 @@ export const RadioButton = styled.input<{ $isLarge: boolean }>`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: ${disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.primary.YELLOW};
+        background: ${disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.YELLOW};
       }
     }
   `}

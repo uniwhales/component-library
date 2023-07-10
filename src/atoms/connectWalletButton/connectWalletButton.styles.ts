@@ -5,7 +5,7 @@ import { ConnectButtonProps } from './types';
 export const ConnectButton = styled.button<ConnectButtonProps & { $isConnected: boolean }>`
   svg {
     cursor: pointer;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+    fill: ${({ theme }) => theme.colors.SHADE_MINUS_3};
   };
   padding: 8px;
   display: flex;
@@ -15,7 +15,7 @@ export const ConnectButton = styled.button<ConnectButtonProps & { $isConnected: 
   font-family: inherit;
   height: 40px;
   background-color: ${() => 'transparent'};
-  border: ${({ theme, $isConnected }) => ($isConnected ? 'none' : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
+  border: ${({ theme, $isConnected }) => ($isConnected ? 'none' : `2px solid ${theme.colors.MAIN_BLUE}`)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   transition: color 300ms, fill 300ms, background 300ms ease-in-out;
 
@@ -29,23 +29,23 @@ export const ConnectButton = styled.button<ConnectButtonProps & { $isConnected: 
   ${({ $isConnected, theme }) => css`
     &:hover {
       p {
-        color: ${$isConnected ? theme.colors.system.RED : theme.colors.system.WHITE};
+        color: ${$isConnected ? theme.colors.RED : theme.colors.WHITE};
       };
       svg {
-        fill: ${theme.colors.system.WHITE};
+        fill: ${theme.colors.WHITE};
       };
-      background: ${$isConnected ? 'transparent' : theme.colors.system.GREEN};
-      border: ${$isConnected ? 'none' : `2px solid ${theme.colors.system.GREEN}`};
+      background: ${$isConnected ? 'transparent' : theme.colors.CARRIBEAN_GREEN};
+      border: ${$isConnected ? 'none' : `2px solid ${theme.colors.CARRIBEAN_GREEN}`};
     }
   `}
 
   ${tablet(css<{ $isConnected: boolean }>`
     &:active {
       p {
-        color: ${({ theme }) => theme.colors.system.WHITE};
+        color: ${({ theme }) => theme.colors.WHITE};
       };
-      border: ${({ theme, $isConnected }) => ($isConnected ? 'none' : `2px solid ${theme.colors.system.GREEN}`)};
-      background: ${({ theme, $isConnected }) => ($isConnected ? theme.colors.system.RED : theme.colors.system.GREEN)};
+      border: ${({ theme, $isConnected }) => ($isConnected ? 'none' : `2px solid ${theme.colors.CARRIBEAN_GREEN}`)};
+      background: ${({ theme, $isConnected }) => ($isConnected ? theme.colors.RED : theme.colors.CARRIBEAN_GREEN)};
     }
   `)};
 `;

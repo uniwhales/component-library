@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Text } from '../../atoms/texts/text';
+import { BaseTextProps, Text } from '../../atoms/texts/text';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
 import { CopyStandard, LinkIcon } from '../../atoms/icons';
 import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils/shortenAddress';
-import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
 import { InnerContainer } from '../../organisms/dropdownSlider/styles';
+import { Color } from '../../theme';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -16,15 +16,15 @@ export interface CopyToClipBoardProps {
   text: string;
   walletCut?: boolean;
   addressId?:string;
-  color?: string;
+  color?: Color;
   shortText?: string;
   icon?: JSX.Element;
   linkIcon?: JSX.Element;
   background?: boolean
   link?: string;
-  $hoverColor?: string;
+  $hoverColor?: Color;
   iconLeft?: boolean;
-  textSize?: BodySizes | HeaderSizes
+  textSize?: BaseTextProps['size']
   iconSize?: string;
   copyCb?: (text: string) => void; // callback to be called when copy is clicked
 }
@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 `;
 const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | '$hoverColor'>>`
   border-radius: 36px;
-  background-color: ${({ theme, background }) => background && theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background-color: ${({ theme, background }) => background && theme.colors.NEUTRAL_SHADE_0};
   padding: 4px;
   &:hover {
     cursor: pointer;
@@ -93,7 +93,7 @@ export const CopyToClipBoard = ({
 
   const TextLabel = (
     <CopyTextLabel>
-      <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
+      <Text textColor={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
     </CopyTextLabel>
   );
 

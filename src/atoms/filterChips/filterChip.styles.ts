@@ -8,7 +8,7 @@ type Props = { $isOn: boolean, disabled?: boolean } & Pick<CSSProperties, 'paddi
 export const FilterChipWrapper = styled.div<Props>`
   width: ${({ width }) => width ?? 'fit-content'};
   box-sizing: border-box;
-  background: ${({ disabled, theme, $isOn }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : $isOn ? theme.containerAndCardShades.SHADE_PLUS_2 : theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${({ disabled, theme, $isOn }) => (disabled ? theme.colors.SHADE_PLUS_3 : $isOn ? theme.colors.SHADE_PLUS_2 : theme.colors.SHADE_PLUS_1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   padding: ${({ padding }) => padding ?? '4px 12px'};
   border-radius: 12px;
@@ -16,11 +16,11 @@ export const FilterChipWrapper = styled.div<Props>`
   align-items: center;
   justify-content: center;
   height: 24px;
-  border: ${({ $isOn, theme, disabled }) => `2px solid ${!disabled && $isOn ? theme.colors.primary.YELLOW : 'transparent'}`};
+  border: ${({ $isOn, theme, disabled }) => `2px solid ${!disabled && $isOn ? theme.colors.YELLOW : 'transparent'}`};
   path { transition: fill .45s ease; }
   transition: background .45s ease, width .45s ease;
   &:hover {
-    background: ${({ theme, disabled }) => !disabled && theme.textShades.SHADE_MINUS_1};
+    background: ${({ theme, disabled }) => !disabled && theme.colors.SHADE_MINUS_1};
   }
 `;
 export const FilterChipContent = styled.div<{ disabled: boolean }>`
@@ -29,19 +29,19 @@ export const FilterChipContent = styled.div<{ disabled: boolean }>`
   justify-content: center;
   gap: 4px;
   svg {
-    fill: ${({ disabled, theme }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.contrastColor.HIGH_CONTRAST)};
+    fill: ${({ disabled, theme }) => (disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.HIGH_CONTRAST)};
   }
   p{
-    color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.SHADE_MINUS_3)};
   }
     // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
-      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      background: ${props.theme.colors.SHADE_PLUS_3};
+      color: ${props.theme.colors.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+        fill: ${props.theme.colors.SHADE_PLUS_1}!important;
       }
   `}
 `;
@@ -51,7 +51,7 @@ export const FloatingCloseWrapper = styled(Row)<{ disabled?: boolean }>`
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
     &:hover {
-      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+      fill: ${({ theme }) => theme.colors.SHADE_MINUS_3}!important;
     };
   }
 `;
@@ -70,35 +70,35 @@ export const FilterChipSecondary = styled.div<Pick<FilterChipProps, 'padding' | 
   gap: 4px;
   width: ${({ width }) => width ?? 'fit-content'};
   height: ${({ height }) => height ?? 'fit-content'};
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+  color: ${({ theme }) => theme.colors.SHADE_MINUS_1};
   svg {
     width: 16px !important;
     height: 16px !important;
-    fill: ${({ theme }) => theme.textShades.SHADE_MINUS_3}!important;
+    fill: ${({ theme }) => theme.colors.SHADE_MINUS_3}!important;
   };
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_3};
-      color: ${props.theme.containerAndCardShades.SHADE_PLUS_1};
+      background: ${props.theme.colors.SHADE_PLUS_3};
+      color: ${props.theme.colors.SHADE_PLUS_1};
       border: 2px solid transparent;
 
       svg {
-        fill: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
+        fill: ${props.theme.colors.SHADE_PLUS_1}!important;
       }
   `}
   // active state
   ${(props) => !props.disabled && css`
-    background: ${props.theme.containerAndCardShades.SHADE_PLUS_2};
-    color: ${({ theme }) => theme.textShades.SHADE_MINUS_1}!important;
+    background: ${props.theme.colors.SHADE_PLUS_2};
+    color: ${({ theme }) => theme.colors.SHADE_MINUS_1}!important;
     svg {
-      fill: ${props.theme.textShades.SHADE_MINUS_1}!important;
+      fill: ${props.theme.colors.SHADE_MINUS_1}!important;
     }
     &:active {
-      background: ${props.theme.containerAndCardShades.SHADE_PLUS_1}!important;
-      color: ${props.theme.textShades.SHADE_MINUS_3}!important;
-      border: 2px solid ${props.theme.colors.primary.YELLOW};
+      background: ${props.theme.colors.SHADE_PLUS_1}!important;
+      color: ${props.theme.colors.SHADE_MINUS_3}!important;
+      border: 2px solid ${props.theme.colors.YELLOW};
       svg {
-        fill: ${props.theme.textShades.SHADE_MINUS_3}!important;
+        fill: ${props.theme.colors.SHADE_MINUS_3}!important;
       }
     };
   `}
@@ -114,22 +114,22 @@ export const FilterChipOnboarding = styled.div<Pick<FilterChipProps, 'disabled' 
   padding: ${({ padding }) => padding ?? '0 13px'};
   // disabled state
   ${(props) => props.disabled && css`
-      background: ${({ theme }) => theme.colors.primary.MEDIUM_BLUE};
-      color: ${({ theme }) => theme.colors.primary.DARK_BLUE};
+      background: ${({ theme }) => theme.colors.MEDIUM_BLUE};
+      color: ${({ theme }) => theme.colors.DARK_BLUE};
       border: 2px solid transparent;
 
       svg {
-        fill: ${({ theme }) => theme.colors.primary.DARK_BLUE}!important;
+        fill: ${({ theme }) => theme.colors.DARK_BLUE}!important;
       }
   `}
   // active state
   ${({ disabled, theme, $isOn }) => !disabled && css`
-    border: ${$isOn ? `1px solid ${theme.colors.primary.YELLOW}` : `1px solid ${theme.colors.primary.MAIN_BLUE}`};
-    color: ${theme.colors.system.WHITE};
-    background: ${$isOn ? theme.colors.primary.MAIN_BLUE : theme.colors.primary.DARK_BLUE};
+    border: ${$isOn ? `1px solid ${theme.colors.YELLOW}` : `1px solid ${theme.colors.MAIN_BLUE}`};
+    color: ${theme.colors.WHITE};
+    background: ${$isOn ? theme.colors.MAIN_BLUE : theme.colors.DARK_BLUE};
     cursor: pointer;
     &:hover {
-      background: ${theme.colors.primary.MAIN_BLUE};
+      background: ${theme.colors.MAIN_BLUE};
     };
   `};
 `;

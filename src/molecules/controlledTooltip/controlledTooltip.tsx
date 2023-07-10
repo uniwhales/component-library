@@ -21,14 +21,14 @@ export const ControlledTooltipComponent = ({
       offset={8}
       styles={{
         arrow: {
-          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          borderColor: theme.containerAndCardShades.SHADE_PLUS_1,
+          backgroundColor: theme.colors.BG_SHADE_PLUS_4,
+          borderColor: theme.colors.SHADE_PLUS_1,
           borderWidth: 1,
         },
         dropdown: {
-          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          color: theme.textShades.SHADE_MINUS_3,
-          borderColor: theme.containerAndCardShades.SHADE_PLUS_1,
+          backgroundColor: theme.colors.BG_SHADE_PLUS_4,
+          color: theme.colors.SHADE_MINUS_3,
+          borderColor: theme.colors.SHADE_PLUS_1,
           borderRadius: 9,
           borderWidth: 1,
           padding: padding ?? 23,

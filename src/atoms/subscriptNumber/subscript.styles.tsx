@@ -5,7 +5,7 @@ import { TEXT_VARIANTS } from '../../theme';
 
 export const StyledSubscript = styled.sub<TextProps>`
   padding: 0px 2px;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  color: ${({ theme }) => theme.colors.SHADE_MINUS_3};
   ${variant({ variants: TEXT_VARIANTS })}
   ${textMixin}
 `;

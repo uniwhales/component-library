@@ -15,9 +15,9 @@ export const Subscript = ({
 }: Props) => {
   console.debug('Subscript', textProps, subscript);
   return (
-    <Text variant={textProps.variant}>
+    <Text size={textProps.size}>
       {before}
-      <StyledSubscript variant={subscriptProps.variant}>
+      <StyledSubscript size={subscriptProps.size}>
         {subscript}
       </StyledSubscript>
       {after}

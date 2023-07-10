@@ -24,17 +24,17 @@ export const SimpleTooltip = ({
       width={multiline ? 300 : undefined}
       styles={{
         arrow: {
-          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
+          backgroundColor: theme.colors.BG_SHADE_PLUS_4,
+          border: `2px solid ${theme.colors.SHADE_PLUS_1}`,
           bottom: position === 'top' ? '-5px !important' : undefined,
           top: position === 'bottom' ? '-5px !important' : undefined,
           left: position === 'right' ? '-5px !important' : undefined,
           right: position === 'left' ? '-5px !important' : undefined,
         },
         tooltip: {
-          backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
-          color: theme.textShades.SHADE_MINUS_3,
-          border: `2px solid ${theme.containerAndCardShades.SHADE_PLUS_1}`,
+          backgroundColor: theme.colors.BG_SHADE_PLUS_4,
+          color: theme.colors.SHADE_MINUS_3,
+          border: `2px solid ${theme.colors.SHADE_PLUS_1}`,
           borderRadius: 9,
           padding: 9,
         },

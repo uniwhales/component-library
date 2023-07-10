@@ -7,28 +7,28 @@ const Track = ({ value, max }:{ value: string, max: number }) => css`
   border: none;
   height: 8px;
   background: ${({ theme }) => (Number(value) === max
-    ? theme.textShades.SHADE_MINUS_3
-    : theme.containerAndCardShades.NEUTRAL_SHADE_0)};
+    ? theme.colors.SHADE_MINUS_3
+    : theme.colors.NEUTRAL_SHADE_0)};
   border-radius: 12px;
 `;
 const TrackFill = ({ value, max }: { value: string, max: number }) => css`
   ${Track({ value, max })};
   height: 8px;
   background-color: transparent;
-  background-image: ${({ theme }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
-    linear-gradient(${theme.containerAndCardShades.SHADE_PLUS_2}, ${theme.containerAndCardShades.SHADE_PLUS_2})`};
+  background-image: ${({ theme }) => `linear-gradient(${Number(value) === max ? theme.colors.YELLOW : Number(value) > max ? theme.colors.RED : theme.colors.MAIN_BLUE}, ${Number(value) === max ? theme.colors.YELLOW : Number(value) > max ? theme.colors.RED : theme.colors.MAIN_BLUE}),
+    linear-gradient(${theme.colors.SHADE_PLUS_2}, ${theme.colors.SHADE_PLUS_2})`};
   background-size: var(--sx) 8px, calc(100% - var(--sx)) 8px;
   background-position: left center, right center;
   background-repeat: no-repeat;
   &:hover {
-    background-image: ${({ theme }) => `linear-gradient(${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}, ${Number(value) === max ? theme.colors.primary.YELLOW : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE}),
-    linear-gradient(${theme.textShades.SHADE_MINUS_1}, ${theme.textShades.SHADE_MINUS_1})`};
+    background-image: ${({ theme }) => `linear-gradient(${Number(value) === max ? theme.colors.YELLOW : Number(value) > max ? theme.colors.RED : theme.colors.MAIN_BLUE}, ${Number(value) === max ? theme.colors.YELLOW : Number(value) > max ? theme.colors.RED : theme.colors.MAIN_BLUE}),
+    linear-gradient(${theme.colors.SHADE_MINUS_1}, ${theme.colors.SHADE_MINUS_1})`};
   };
 `;
 
 const fill = css`
   height: 8px;
-  background: ${(props) => props.theme.colors.primary.MANGO};
+  background: ${(props) => props.theme.colors.MANGO};
   border-radius: 12px;
 `;
 
@@ -39,10 +39,10 @@ const Thumb = ({ value, max }: { value: string, max: number }) => css`
   height: 20px;
   border-radius: 50%;
   background: ${({ theme }) => (Number(value) === max
-    ? theme.colors.primary.YELLOW
-    : Number(value) > max ? theme.colors.system.RED : theme.colors.primary.MAIN_BLUE)};
+    ? theme.colors.YELLOW
+    : Number(value) > max ? theme.colors.RED : theme.colors.MAIN_BLUE)};
   &:hover {
-    background: ${(props) => props.theme.colors.primary.LIGHT_BLUE};
+    background: ${(props) => props.theme.colors.LIGHT_BLUE};
   }
 `;
 export const Input = styled.input<{ value: string, max: number }>`
@@ -114,10 +114,10 @@ export const NumInputContainer = styled.div<{ value: string, max: number, $hasEr
   align-items: center;
   gap: 8px;
   border-radius: 12px;
-  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  background: ${({ theme }) => theme.colors.SHADE_PLUS_1};
   border: ${({
     theme, value, max, $hasError,
-  }) => `2px solid ${$hasError ? theme.colors.system.RED : Number(value) === max ? theme.colors.primary.YELLOW : 'transparent'}`};
+  }) => `2px solid ${$hasError ? theme.colors.RED : Number(value) === max ? theme.colors.YELLOW : 'transparent'}`};
   cursor: pointer;
 `;
 export const NumInput = styled.input`
@@ -126,7 +126,7 @@ box-sizing: border-box;
   background: transparent;
   outline: none;
   width: 60px;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
+  color: ${({ theme }) => theme.colors.SHADE_MINUS_3};
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;

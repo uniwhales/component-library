@@ -31,7 +31,7 @@ const Proxy = () => {
 
   return (
     <>
-      <Navbar onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
+      <Navbar onWalletConnectClick={() => {}} $pageName="Example" account={undefined} plan="Free" />
       <BrochureLayout>
         <ButtonAtom
           $buttonVariant="primary"
@@ -53,7 +53,7 @@ const Double = () => {
 
   return (
     <>
-      <Navbar onWalletConnectClick={() => {}} pageName="Example" account={undefined} plan="Free" />
+      <Navbar onWalletConnectClick={() => {}} $pageName="Example" account={undefined} plan="Free" />
       <BrochureLayout>
         <ButtonAtom
           $buttonVariant="primary"

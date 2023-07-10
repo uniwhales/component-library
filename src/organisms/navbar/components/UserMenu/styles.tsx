@@ -7,7 +7,7 @@ export const NavbarUserMenu = styled.div<{ $isMenuOpen: boolean }>`
   gap: 8px;
   align-items: flex-end;
   padding: 24px;
-  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  background-color: ${({ theme }) => theme.colors.SHADE_PLUS_3};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   width: 160px;
   right: 34px;

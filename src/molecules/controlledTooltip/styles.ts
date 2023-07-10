@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Target = styled.div`
-  background: ${({ theme }) => theme.colors.primary.DARK_BLUE};
+  background: ${({ theme }) => theme.colors.DARK_BLUE};
   padding: 50px;
   border-radius: 16px;
   cursor: pointer;

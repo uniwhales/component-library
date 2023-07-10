@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Text>;
 export const BodyText: Story = {
   render: () => (
     <>
-      {TEXT_VARIANT_NAMES.map((item) => <Text key={item} variant={[item]}>{item}</Text>)}
+      {TEXT_VARIANT_NAMES.map((item) => <Text textColor={['CANARY', 'DARK_BLUE']} key={item} size={['11-Regular', item]}>{item}</Text>)}
     </>
   ),
 };

@@ -19,7 +19,7 @@ export const ModalBody = styled(Card)<{ replay: boolean, $modalVariant: 'single'
   flex-direction: column;
   gap: 6px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
-  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${({ theme }) => theme.colors.SHADE_PLUS_3};
   text-align: left;
   box-sizing: border-box;
 
@@ -37,7 +37,7 @@ export const ModalBody = styled(Card)<{ replay: boolean, $modalVariant: 'single'
 `;
 
 export const CloseButton = styled.div`
-  background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
+  background: ${({ theme }) => theme.colors.NEUTRAL_SHADE_0};
   height: 22px;
   width: 22px;
   border-radius: 50%;
@@ -45,7 +45,7 @@ export const CloseButton = styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-    background:${({ theme }) => theme.colors.primary.MANGO};
+    background:${({ theme }) => theme.colors.MANGO};
   }
 `;
 

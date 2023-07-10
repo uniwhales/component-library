@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Ref, useState } from 'react';
 import { styled } from 'styled-components';
-import { localTheme, Theme } from '../../theme';
+import { Color, localTheme, Theme } from '../../theme';
 import { RedCross, SelectedCheck } from '../icons';
 import { IconWrapper } from '../icons/iconWrapper';
 import { Text } from '../texts/text';
@@ -47,36 +47,36 @@ export const InputWrapper = styled.div<{ width?: string, disabled: boolean, $inp
   &:hover {
     input, textarea {
       &::placeholder {
-        color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
+        color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.colors.SHADE_MINUS_3};
       }
-      color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.colors.SHADE_MINUS_3};
       }
       svg {
-      fill: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
+      fill: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.colors.SHADE_MINUS_3};
     }
     label {
-      color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.textShades.SHADE_MINUS_3};
+      color: ${({ theme, disabled, $inputState }) => !disabled && $inputState.status === 'default' && theme.colors.SHADE_MINUS_3};
     }
   }
 `;
 
 export const getBorderColor = (theme: typeof Theme, status: InputState['status']) => {
   const lookup = {
-    error: theme.colors.system.RED,
-    invalid: theme.colors.system.RED,
-    exception: theme.colors.system.AMBER,
-    help: theme.colors.secondary.FUSCIA,
+    error: theme.colors.RED,
+    invalid: theme.colors.RED,
+    exception: theme.colors.AMBER,
+    help: theme.colors.FUSCIA,
   };
   if (status === 'error' || status === 'invalid' || status === 'exception' || status === 'help') {
     return lookup[status];
   }
-  return theme.textShades.SHADE_MINUS_1;
+  return theme.colors.SHADE_MINUS_1;
 };
 const InputStyled = styled.input<{ disabled?: boolean, withIcon: boolean, $inputState: InputState, $maxLength?:number }>`
   outline: none;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_2)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.SHADE_MINUS_2)};
   height: 40px;
   line-height:24px;
   padding: ${({ withIcon, $inputState }) => (withIcon || $inputState.status === 'invalid' ? '8px 24px 8px 38px' : '8px 24px')};
@@ -84,19 +84,19 @@ const InputStyled = styled.input<{ disabled?: boolean, withIcon: boolean, $input
   box-sizing: border-box;
   border-radius: 12px;
   border: none;
-  background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  background: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_PLUS_3 : theme.colors.BG_SHADE_PLUS_4)};
   ::placeholder {
-    color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
+    color: ${(props) => !props.disabled && props.theme.colors.SHADE_MINUS_1};
   }
   :focus  {
-    color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
+    color: ${(props) => !props.disabled && props.theme.colors.SHADE_MINUS_3};
   }
 `;
 export const InputLabel = styled.label<{ disabled?: boolean }>`
   display: flex;
   gap: 5px;
   font-size: 12px;
-  color: ${({ theme, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_MINUS_1 : theme.colors.SHADE_MINUS_2)};
   font-weight: 400;
   line-height: 16px;
 `;
@@ -106,9 +106,9 @@ export const InputContainer = styled.div<{ $inputState: InputState, focus: boole
   border-radius: 12px;
   box-sizing: border-box;
   &:hover {
-    outline: 1.5px solid ${({ theme, disabled, $inputState }) => (disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : !disabled && $inputState.status === 'default' ? theme.textShades.SHADE_MINUS_2 : getBorderColor(theme, $inputState.status))};
+    outline: 1.5px solid ${({ theme, disabled, $inputState }) => (disabled ? theme.colors.BG_SHADE_PLUS_4 : !disabled && $inputState.status === 'default' ? theme.colors.SHADE_MINUS_2 : getBorderColor(theme, $inputState.status))};
   }
-  outline: 1.5px solid ${({ theme, $inputState, disabled }) => (disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : getBorderColor(theme, $inputState.status))};
+  outline: 1.5px solid ${({ theme, $inputState, disabled }) => (disabled ? theme.colors.BG_SHADE_PLUS_4 : getBorderColor(theme, $inputState.status))};
 `;
 
 const LeftSideIcon = styled.div`
@@ -123,7 +123,7 @@ const RightSideIcon = styled.div`
   top:0;
   padding:9px 9px;
    svg {
-      fill: ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+      fill: ${({ theme }) => theme.colors.SHADE_MINUS_1};
   }
  `;
 
@@ -134,7 +134,7 @@ export const MoreDetailContainer = styled.div`
 `;
 
 export const Wrapper = styled.div<{ mt?: string }>`
-  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${({ theme }) => theme.colors.SHADE_PLUS_3};
   padding: 20px;
   margin-top: ${({ mt }) => mt && mt};
 `;
@@ -181,16 +181,16 @@ const Input = ({
   const [hover, setHover] = useState<boolean>(false);
   const theme = localTheme();
   const error = $inputState.status === 'error';
-  const getMoreDetailsTextColor = (status: InputState['status']) => {
+  const getMoreDetailsTextColor = (status: InputState['status']): Color => {
     const lookup = {
-      valid: theme.colors.system.GREEN,
-      exception: theme.colors.system.AMBER,
-      help: theme.colors.secondary.FUSCIA,
-    };
+      valid: 'CARRIBEAN_GREEN',
+      exception: 'AMBER',
+      help: 'FUSCIA',
+    } as const;
     if (status === 'exception' || status === 'help' || status === 'valid') {
       return lookup[status];
     }
-    return theme.colors.system.RED;
+    return 'RED';
   };
 
   const showMaxLength = !error && $maxLength;
@@ -200,14 +200,14 @@ const Input = ({
     <MoreDetailContainer>
       {($inputState.status === 'valid' || $inputState.status === 'invalid' || $inputState.status === 'help' || $inputState.status === 'exception' || $inputState.status === 'error') && (
       <Text
-        color={getMoreDetailsTextColor($inputState.status)}
-        size="12-Regular"
+        textColor={getMoreDetailsTextColor($inputState.status)}
+        size={['12-Regular']}
       >
         {$inputState.message}
       </Text>
       )}
       {!error && $maxLength && (
-        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${$maxLength.toString()}`}</Text>
+        <Text size={['11-Regular']} textColor={disabled ? 'SHADE_MINUS_1' : 'SHADE_MINUS_2'}>{`${value?.length.toString()}/${$maxLength.toString()}`}</Text>
       )}
     </MoreDetailContainer>
   );
@@ -228,7 +228,7 @@ const Input = ({
         onMouseLeave={() => setHover(false)}
       >
         <LeftSideIcon>
-          {!!icon && $inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={!disabled && hover ? theme.textShades.SHADE_MINUS_3 : theme.textShades.SHADE_MINUS_1} icon={icon} />)}
+          {!!icon && $inputState.status !== 'invalid' && (<IconWrapper height="20px" width="20px" fill={!disabled && hover ? theme.colors.SHADE_MINUS_3 : theme.colors.SHADE_MINUS_1} icon={icon} />)}
           {$inputState.status === 'invalid' && !focus && (<IconWrapper height="20px" width="20px" icon={<RedCross />} />)}
         </LeftSideIcon>
         <InputStyled

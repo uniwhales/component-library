@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { Text } from '../texts/text';
 import { IconWrapperProps } from './types';
 
 const IconComponent = styled.div<IconWrapperProps>`
@@ -12,7 +11,7 @@ const IconComponent = styled.div<IconWrapperProps>`
   transition: width 0.3s;
   pointer-events: ${({ $pointerEvents }) => $pointerEvents};
   svg {
-    fill: ${({ fill, theme }) => (fill || theme.textShades.SHADE_MINUS_1)};
+    fill: ${({ fill, theme }) => (fill || theme.colors.SHADE_MINUS_1)};
     stroke: ${({ stroke }) => stroke};
     cursor:  ${({ cursor, $hasHover }) => ($hasHover ? 'pointer' : cursor || 'auto')};
   }
@@ -20,7 +19,7 @@ const IconComponent = styled.div<IconWrapperProps>`
     svg {
       fill: ${({
     fill, theme, $hasHover, $hoverColor,
-  }) => (($hasHover && !fill) && ($hoverColor ?? theme.textShades.SHADE_MINUS_3))};
+  }) => (($hasHover && !fill) && ($hoverColor ?? theme.colors.SHADE_MINUS_3))};
     }
   }
 `;
@@ -35,7 +34,7 @@ const AnchorIconComponent = styled.div<IconWrapperProps>`
   border-radius: 100px;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary.YELLOW};
+    background: ${({ theme }) => theme.colors.YELLOW};
   }
   svg {
     fill: ${(props) => (props.fill || props.theme.contrastColor.HIGH_CONTRAST)};
@@ -46,7 +45,7 @@ const AnchorIconComponent = styled.div<IconWrapperProps>`
 `;
 
 const Border = styled.div<Pick<IconWrapperProps, 'href' | 'height' | 'width'>>`
-  background-color: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_1};
+  background-color: ${({ theme }) => theme.colors.SHADE_PLUS_1};
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   border-radius: 100px;
@@ -93,29 +92,25 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
         {icon && icon}
       </Border>
     </AnchorIconComponent>
-    {name && <Text size="14-Regular">{name}</Text>}
   </Outer>
 ) : (
-  <>
-    <IconComponent
-      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        if (!disabled && onClick) onClick(e);
-      }}
-      cursor={cursor}
-      height={height}
-      width={width}
-      fill={fill}
-      stroke={stroke}
-      name={name}
-      disabled={disabled}
-      onMouseEnter={() => onMouseEnter && onMouseEnter()}
-      onMouseLeave={() => onMouseLeave && onMouseLeave()}
-      $pointerEvents={$pointerEvents}
-      $hasHover={$hasHover}
-      $hoverColor={$hoverColor}
-    >
-      {icon && icon}
-    </IconComponent>
-    {name && <Text size="14-Regular">{name}</Text>}
-  </>
+  <IconComponent
+    onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!disabled && onClick) onClick(e);
+    }}
+    cursor={cursor}
+    height={height}
+    width={width}
+    fill={fill}
+    stroke={stroke}
+    name={name}
+    disabled={disabled}
+    onMouseEnter={() => onMouseEnter && onMouseEnter()}
+    onMouseLeave={() => onMouseLeave && onMouseLeave()}
+    $pointerEvents={$pointerEvents}
+    $hasHover={$hasHover}
+    $hoverColor={$hoverColor}
+  >
+    {icon && icon}
+  </IconComponent>
 ));

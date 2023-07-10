@@ -189,7 +189,6 @@ const ClearIndicator = (props: any) => {
     handleClearValue,
     isFocused,
   } = props;
-  const theme = localTheme();
   const [hover, setHover] = useState(false);
 
   return (
@@ -202,10 +201,9 @@ const ClearIndicator = (props: any) => {
       <ClearButtonContainer>
         <Text
           size="14-Regular"
-          color={
+          textColor={
             hover || isFocused || selectProps.isMenuOpen
-              ? theme.colors.system.WHITE
-              : theme.textShades.SHADE_MINUS_2
+              ? 'WHITE' : 'SHADE_MINUS_2'
           }
         >
           {clearButtonText}
@@ -220,7 +218,7 @@ const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   if (selectProps.menuIsOpen) {
     return (
       <IconWrapper
-        fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.WHITE}
+        fill={isDisabled ? theme.colors.SHADE_PLUS_1 : theme.colors.WHITE}
         icon={<ChevronUpIcon />}
         cursor="pointer"
       />
@@ -228,8 +226,8 @@ const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   }
   return (
     <IconWrapper
-      fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1
-        : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
+      fill={isDisabled ? theme.colors.SHADE_PLUS_1
+        : isFocused ? theme.colors.WHITE : theme.colors.SHADE_MINUS_1}
       icon={<ChevronDownIcon />}
       cursor="pointer"
     />
@@ -332,10 +330,10 @@ export const Select = <T extends SelectVariation>({
             /* Multi select that is not a group never shows placeholder
             but all disabled / all so we adjust the color */
             color: isFocused
-              ? theme.colors.system.WHITE
+              ? theme.colors.WHITE
               : isMulti && showValue && isSelectOptionGuard(selectOptions)
-                ? theme.textShades.SHADE_MINUS_2
-                : theme.textShades.SHADE_MINUS_1,
+                ? theme.colors.SHADE_MINUS_2
+                : theme.colors.SHADE_MINUS_1,
             fontSize: isMulti ? '16px' : '12px',
             lineHeight: '16px',
             cursor: 'pointer',
@@ -343,11 +341,11 @@ export const Select = <T extends SelectVariation>({
               fontSize: '12px',
               lineHeight: '16px',
               color: isFocused
-                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+                ? theme.colors.WHITE : theme.colors.SHADE_MINUS_1,
             },
             svg: {
               fill: isFocused
-                ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+                ? theme.colors.WHITE : theme.colors.SHADE_MINUS_1,
             },
           }),
         } as StylesConfig}
@@ -390,7 +388,7 @@ export const Select = <T extends SelectVariation>({
       />
       {error && $errorMessage && (
         <ErrorMessageContainer>
-          <Text size="12-Regular" color={theme.colors.system.RED}>{$errorMessage}</Text>
+          <Text size={['12-Regular']} textColor="RED">{$errorMessage}</Text>
         </ErrorMessageContainer>
       )}
     </SelectWrapper>

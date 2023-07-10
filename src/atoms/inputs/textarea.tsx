@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import {
   InputWrapper, InputLabel, InputContainer, InputState, MoreDetailContainer,
 } from './input';
-import { localTheme } from '../../theme';
+import { Color } from '../../theme';
 import { Text } from '../texts/text';
 import { Required } from './select/components';
 
@@ -26,21 +26,21 @@ const TextAreaStyled = styled.textarea<{ disabled?: boolean, $inputState: InputS
   height: 100%;
   width: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.textShades.SHADE_MINUS_3)};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_PLUS_1 : theme.colors.SHADE_MINUS_3)};
   padding: 8px 24px;
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   box-sizing: border-box;
   border-radius: 12px;
   border: none;
-  background: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
+  background: ${({ theme, disabled }) => (disabled ? theme.colors.SHADE_PLUS_3 : theme.colors.BG_SHADE_PLUS_4)};
   font-family: Poppins, sans-serif;
   line-height:24px;
   ::placeholder {
-    color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_1};
+    color: ${(props) => !props.disabled && props.theme.colors.SHADE_MINUS_1};
     font-family: Poppins, sans-serif;
   }
   :focus  {
-    color: ${(props) => !props.disabled && props.theme.textShades.SHADE_MINUS_3};
+    color: ${(props) => !props.disabled && props.theme.colors.SHADE_MINUS_3};
   }
 `;
 
@@ -65,19 +65,18 @@ export const TextArea = ({
   tabIndex,
 }: TextAreaTypes) => {
   const [focus, setFocus] = useState<boolean>(false);
-  const theme = localTheme();
   const error = $inputState.status === 'error';
 
-  const getMoreDetailsTextColor = (status: InputState['status']) => {
+  const getMoreDetailsTextColor = (status: InputState['status']): Color => {
     const lookup = {
-      valid: theme.colors.system.GREEN,
-      exception: theme.colors.system.AMBER,
-      help: theme.colors.secondary.FUSCIA,
-    };
+      valid: 'CARRIBEAN_GREEN',
+      exception: 'AMBER',
+      help: 'FUSCIA',
+    } as const;
     if (status === 'exception' || status === 'help' || status === 'valid') {
       return lookup[status];
     }
-    return theme.colors.system.RED;
+    return 'RED';
   };
 
   const showMaxLength = !error && $maxLength;
@@ -87,14 +86,14 @@ export const TextArea = ({
     <MoreDetailContainer>
       {($inputState.status === 'valid' || $inputState.status === 'invalid' || $inputState.status === 'help' || $inputState.status === 'exception' || $inputState.status === 'error') && (
       <Text
-        color={getMoreDetailsTextColor($inputState.status)}
-        size="12-Regular"
+        textColor={getMoreDetailsTextColor($inputState.status)}
+        size={['12-Regular']}
       >
         {$inputState.message}
       </Text>
       )}
       {!error && $maxLength && (
-        <Text size="11-Regular" color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_2}>{`${value?.length.toString()}/${$maxLength.toString()}`}</Text>
+        <Text size={['11-Regular']} textColor={disabled ? 'SHADE_MINUS_1' : 'SHADE_MINUS_2'}>{`${value?.length.toString()}/${$maxLength.toString()}`}</Text>
       )}
     </MoreDetailContainer>
   );

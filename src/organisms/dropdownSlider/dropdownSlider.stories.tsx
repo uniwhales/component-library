@@ -18,14 +18,11 @@ type Story = StoryObj<typeof DropdownSlider>;
 const Template = (
   args: React.JSX.IntrinsicAttributes & MinUsdProps
   & React.RefAttributes<SliderRef>,
-  isDark: boolean,
 ) => {
   const sliderEl = useRef<SliderRef>(null);
   const onApply = (val: string) => {
     console.log(`apply clicked ${val}`);
   };
-
-  const textColor = isDark ? '#B4B5C6' : '#70717C';
 
   return (
     <Column>
@@ -40,15 +37,15 @@ const Template = (
           $buttonWidth="140px"
           description={(
             <TextRow>
-              <Text color={textColor} size="12-Regular">
+              <Text size={['12-Regular']}>
                 Set a
                 {' '}
               </Text>
-              <Text size="12-Bold" color={textColor}>
+              <Text size={['12-Bold']}>
                 min. value (USD)
                 {' '}
               </Text>
-              <Text size="12-Regular" color={textColor}>for transactions</Text>
+              <Text size={['12-Regular']}>for transactions</Text>
             </TextRow>
           )}
           onApply={onApply}
@@ -71,16 +68,10 @@ const Template = (
 };
 
 export const DropdownSliderComponent: Story = {
-  render: (args, { globals: { backgrounds } }) => {
-    const isDark = backgrounds?.value === '#191B20';
-    return Template(args, isDark);
-  },
+  render: (args) => Template(args),
 };
 export const DropdownSliderWithScaleComponent: Story = {
-  render: (args, { globals: { backgrounds } }) => {
-    const isDark = backgrounds?.value === '#191B20';
-    return Template(args, isDark);
-  },
+  render: (args) => Template(args),
 };
 
 DropdownSliderComponent.args = {

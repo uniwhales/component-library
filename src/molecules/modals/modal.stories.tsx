@@ -33,7 +33,7 @@ const Template = () => {
         modalVariant="single"
         modalContent={(
           <DummyModalContent>
-            <Text size="14-Regular">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
+            <Text size={['14-Regular']}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque rem veritatis expedita, eaque modi sed adipisci.</Text>
             <Input
               value="afadf"
               label="fdfsa"
@@ -70,9 +70,9 @@ const Template2 = () => {
         modalContent={(
           <ModalContentContainer>
             <ModalColumn>
-              <Text size="14-Regular">{placeholderText}</Text>
+              <Text size={['14-Regular']}>{placeholderText}</Text>
               <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-                <Text size="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+                <Text size={['12-Regular']}>{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
                 <IconWrapper
                   height="12px"
                   width="12px"
@@ -83,7 +83,7 @@ const Template2 = () => {
             {showMore && (
               <ModalColumn>
                 {' '}
-                <Text size="14-Regular">{placeholderText}</Text>
+                <Text size={['14-Regular']}>{placeholderText}</Text>
               </ModalColumn>
             )}
           </ModalContentContainer>

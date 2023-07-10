@@ -10,10 +10,10 @@ export const Container = styled.div<Pick<IdenticonProps, '$hasInteraction' | 'si
   border-radius: 50%;
   box-sizing: border-box;
   cursor: ${({ $hasInteraction }) => $hasInteraction && 'pointer'};
-  background: ${({ theme, size }) => (size === 'small' ? null : theme.containerAndCardShades.SHADE_PLUS_3)};
+  background: ${({ theme, size }) => (size === 'small' ? null : theme.colors.SHADE_PLUS_3)};
   border: 1px solid transparent;
   &:hover {
-    border: ${({ $hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
+    border: ${({ $hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.MAIN_BLUE}`};
   };
 `;
 

@@ -24,7 +24,7 @@ export const TooltipButton = ({ content, position = 'top' }: TooltipButtonProps)
           <IconWrapper
             icon={<InfoStandard />}
             cursor="pointer"
-            fill={theme.textShades.SHADE_MINUS_2}
+            fill={theme.colors.SHADE_MINUS_2}
           />
         </TooltipButtonWrapper>
       </SimpleTooltip>

@@ -24,20 +24,20 @@ export const MinUsdButton = styled.div<{ $isOpen:boolean, width?:string, height?
   gap: 16px;
   padding: 10px;
   border-radius: 10px;
-  background: ${({ theme, $isOpen, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_3 : $isOpen ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.containerAndCardShades.BG_SHADE_PLUS_4 : theme.textShades.SHADE_MINUS_1}`};
+  background: ${({ theme, $isOpen, disabled }) => (disabled ? theme.colors.SHADE_PLUS_3 : $isOpen ? theme.colors.MAIN_BLUE : theme.colors.BG_SHADE_PLUS_4)};
+  border: ${({ theme, disabled }) => `1px solid ${disabled ? theme.colors.BG_SHADE_PLUS_4 : theme.colors.SHADE_MINUS_1}`};
   font-size: 12px;
-  color: ${({ theme, $isOpen }) => ($isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)};
+  color: ${({ theme, $isOpen }) => ($isOpen ? theme.colors.WHITE : theme.colors.SHADE_MINUS_1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   justify-content: space-between;
   svg {
-    fill: ${({ theme, $isOpen }) => ($isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1)}!important;
+    fill: ${({ theme, $isOpen }) => ($isOpen ? theme.colors.WHITE : theme.colors.SHADE_MINUS_1)}!important;
   }
  &:hover {
-    border: ${({ theme, $isOpen, disabled }) => (disabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : `1px solid ${$isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2}`)};
-    color: ${({ theme, $isOpen, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : `${$isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}`)};
+    border: ${({ theme, $isOpen, disabled }) => (disabled ? `1px solid ${theme.colors.BG_SHADE_PLUS_4}` : `1px solid ${$isOpen ? theme.colors.WHITE : theme.colors.SHADE_MINUS_2}`)};
+    color: ${({ theme, $isOpen, disabled }) => (disabled ? theme.colors.SHADE_MINUS_1 : `${$isOpen ? theme.colors.WHITE : theme.colors.SHADE_MINUS_3}`)};
     svg {
-      fill: ${({ theme, $isOpen, disabled }) => (disabled ? theme.textShades.SHADE_MINUS_1 : `${$isOpen ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3}`)}!important;
+      fill: ${({ theme, $isOpen, disabled }) => (disabled ? theme.colors.SHADE_MINUS_1 : `${$isOpen ? theme.colors.WHITE : theme.colors.SHADE_MINUS_3}`)}!important;
     }
   }
   }
@@ -55,7 +55,7 @@ export const Arrow = styled.div`
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   margin-top: 20px;
-  border-bottom: ${({ theme }) => `5px solid ${theme.containerAndCardShades.SHADE_PLUS_3}`};
+  border-bottom: ${({ theme }) => `5px solid ${theme.colors.SHADE_PLUS_3}`};
   margin: auto;
 `;
 
@@ -64,8 +64,8 @@ export const TextRow = styled(Row)`
 `;
 
 export const Details = styled.div`
-  border: ${({ theme }) => `1px solid ${theme.containerAndCardShades.SHADE_PLUS_2}`};
-  background: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  border: ${({ theme }) => `1px solid ${theme.colors.SHADE_PLUS_2}`};
+  background: ${({ theme }) => theme.colors.BG_SHADE_PLUS_4};
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -1,3 +1,5 @@
+import { Color } from '../../theme';
+
 export interface RadioProps {
   selected: boolean;
   disabled: boolean;
@@ -6,5 +8,5 @@ export interface RadioProps {
   $isLarge?: boolean;
   value?: string;
   label?: string;
-  labelColor?: string;
+  labelColor?: Color;
 }

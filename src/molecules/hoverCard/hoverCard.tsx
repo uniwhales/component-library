@@ -5,9 +5,9 @@ import { styled } from 'styled-components';
 import { HoverCardProps } from './types';
 
 const CieloHoverCardDropdown = styled(HoverCard.Dropdown)`
-  background-color: ${({ theme }) => theme.containerAndCardShades.BG_SHADE_PLUS_4};
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  border: 2px solid ${({ theme }) => theme.textShades.SHADE_MINUS_1};
+  background-color: ${({ theme }) => theme.colors.BG_SHADE_PLUS_4};
+  color: ${({ theme }) => theme.colors.SHADE_MINUS_3};
+  border: 2px solid ${({ theme }) => theme.colors.SHADE_MINUS_1};
   border-radius: 9px;
   padding: 9px;
 `;

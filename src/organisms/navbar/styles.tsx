@@ -15,7 +15,7 @@ export const NavbarContainer = styled(FlexBase)<{ $isMenuOpen?: boolean, account
   justify-content: center;
 
   background-color: ${({ theme, $bgColor }) => (
-    typeof $bgColor === 'string' ? $bgColor : $bgColor ? theme.containerAndCardShades.SHADE_PLUS_3 : 'transparent'
+    typeof $bgColor === 'string' ? $bgColor : $bgColor ? theme.colors.SHADE_PLUS_3 : 'transparent'
   )};
   box-shadow: ${({ theme, $bottomSpacing, $bgColor }) => $bgColor && $bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;

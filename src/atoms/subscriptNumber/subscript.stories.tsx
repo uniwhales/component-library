@@ -14,7 +14,15 @@ type Story = StoryObj<typeof Text>;
 export const BodyText: Story = {
   render: () => (
     <>
-      {TEXT_VARIANT_NAMES.map((item) => <Subscript after={item} before={item} subscript={item} subscriptProps={{ variant: ['10-Bold', '14-Regular'] }} textProps={{ variant: ['14-Regular', 'H3-Regular'] }} />)}
+      {TEXT_VARIANT_NAMES.map((item) => (
+        <Subscript
+          after={item}
+          before={item}
+          subscript={item}
+          subscriptProps={{ variant: ['10-Bold', '14-Regular'] }}
+          textProps={{ variant: ['14-Regular', 'H3-Regular'] }}
+        />
+      ))}
     </>
   ),
 };

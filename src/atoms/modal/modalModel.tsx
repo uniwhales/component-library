@@ -52,17 +52,17 @@ const Content = styled.div`
 `;
 
 const AnnouncementText = styled.div`
-    color: ${({ theme }) => theme.textShades.SHADE_MINUS_2};
+    color: ${({ theme }) => theme.colors.SHADE_MINUS_2};
     font-size: 14px;
 `;
 
 export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
   <ModalBase
     closeFn={closeFn}
-    $headerText="Modal Header"
-    $headerIcon={<StarIcon />}
+    headerText="Modal Header"
+    headerIcon={<StarIcon />}
     $modalVariant="single"
-    $modalContent={(
+    modalContent={(
       <LatestAnnouncementsList height="calc(100vh - 100px)" gap="48px">
         {latest.map(({
           image, title, text, datetime,
@@ -70,8 +70,8 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
           <AnnouncementCardContainerMobile key={datetime}>
             <Cover $coverUrl={image} />
             <Content>
-              <Text size="14-Bold">{datetime}</Text>
-              <Text size="16-Regular">{title}</Text>
+              <Text size={['14-Bold']}>{datetime}</Text>
+              <Text size={['16-Regular']}>{title}</Text>
               <AnnouncementText dangerouslySetInnerHTML={{ __html: text ?? '' }} />
             </Content>
           </AnnouncementCardContainerMobile>
@@ -89,11 +89,11 @@ export const doubleModalExample = ({
   return (
     <ModalBase
       closeFn={closeFn}
-      $headerText="Double Modal"
-      $headerIcon={<StarIcon />}
-      $headerIconFill={theme.colors.primary.DARK_BLUE}
+      headerText="Double Modal"
+      headerIcon={<StarIcon />}
+      headerIconFill={theme.colors.DARK_BLUE}
       $modalVariant="double"
-      $additionalTinyAction={(
+      additionalTinyAction={(
         <ButtonAtom $buttonVariant="special_small">
           <>
             <IconWrapper icon={<ProfileStandard />} />
@@ -101,14 +101,14 @@ export const doubleModalExample = ({
           </>
         </ButtonAtom>
       )}
-      $modalContent={(
+      modalContent={(
         <ModalContentContainer>
           <ModalColumn>
-            <Text size="14-Regular">{placeholderText}</Text>
+            <Text size={['14-Regular']}>{placeholderText}</Text>
             <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-              <Text color={theme.colors.primary.MAIN_BLUE} size="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+              <Text textColor={['MAIN_BLUE']} variant="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
               <IconWrapper
-                fill={theme.colors.primary.MAIN_BLUE}
+                fill={theme.colors.MAIN_BLUE}
                 height="12px"
                 width="12px"
                 icon={!showMore ? <ArrowRightIcon /> : <ArrowLeftIcon />}
@@ -118,7 +118,7 @@ export const doubleModalExample = ({
           {showMore && (
             <ModalColumn>
               {' '}
-              <Text size="14-Regular">{placeholderText}</Text>
+              <Text size={['14-Regular']}>{placeholderText}</Text>
             </ModalColumn>
           )}
         </ModalContentContainer>

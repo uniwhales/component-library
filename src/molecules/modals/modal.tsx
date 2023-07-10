@@ -49,7 +49,7 @@ export const Modal = ({
                 {headerText && (
                   <Text
                     size="16-Regular"
-                    color={theme.textShades.SHADE_MINUS_3}
+                    textColor="SHADE_MINUS_3"
                   >
                     {headerText}
                   </Text>
@@ -63,7 +63,7 @@ export const Modal = ({
                   }}
                   cursor="pointer"
                   icon={<FloatingClose />}
-                  fill={theme.contrastColor.HIGH_CONTRAST}
+                  fill={theme.colors.HIGH_CONTRAST}
                   height="18px"
                   width="18px"
                 />

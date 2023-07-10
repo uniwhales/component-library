@@ -15,13 +15,13 @@ type Story = StoryObj<typeof ControlledTooltipComponent>;
 const Template = () => {
   const target = (
     <Target>
-      <Text size="14-Regular" color="#F8F9FF">Click to see tooltip</Text>
+      <Text size={['14-Regular']} textColor="BG_SHADE_PLUS_4">Click to see tooltip</Text>
     </Target>
   );
   const content = (
     <Content>
-      <Text size="14-Regular">Each bar represents an onchain\n transaction. Cielo applies labels to\naid your understanding.</Text>
-      <ButtonAtom buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
+      <Text size={['14-Regular']}>Each bar represents an onchain\n transaction. Cielo applies labels to\naid your understanding.</Text>
+      <ButtonAtom $buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
     </Content>
   );
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { localTheme } from '../../theme';
 import { CopyToClipBoard } from '../../molecules/copyToClipBoard/copyToClipBoard';
 import { Select } from '../../atoms/inputs/select/select';
 import { Text } from '../../atoms/texts/text';
@@ -30,7 +29,7 @@ export interface WalletAlertsTableProps {
 }
 const Wrapper = styled.div<{ isLoading: boolean }>`
   position: relative;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${(props) => props.theme.colors.SHADE_PLUS_3};
   border-radius: 12px;
   opacity: ${(props) => (props.isLoading ? '0.5' : 1)};
   box-sizing: border-box;
@@ -105,69 +104,66 @@ const Overlay = styled.div`
 export const WalletAlertsTable = ({
   id, label, wallet, chains, isActive, setIsActive, editWallet, removeWallet, isLoading, filters,
   bot_id,
-}: WalletAlertsTableProps) => {
-  const theme = localTheme();
-  return (
-    <Wrapper isLoading={isLoading}>
-      {isLoading && <Overlay />}
-      <Section>
-        {label && (
-          <Text size="14-Bold" color={theme.textShades.SHADE_MINUS_2}>
-            {label}
-          </Text>
+}: WalletAlertsTableProps) => (
+  <Wrapper isLoading={isLoading}>
+    {isLoading && <Overlay />}
+    <Section>
+      {label && (
+      <Text size={['14-Bold']} textColor="SHADE_MINUS_2">
+        {label}
+      </Text>
+      )}
+      <CopyToClipBoard walletCut text={wallet} />
+    </Section>
+    <Section>
+      <Group>
+        <ToggleAtom
+          size="small"
+          isOn={isActive}
+          onClick={() => setIsActive(id, isActive)}
+        />
+      </Group>
+    </Section>
+    <Section>
+      <Group>
+        {bot_id && (
+        <Text size={['14-Regular']}>
+          {`bot #${bot_id.id}`}
+        </Text>
         )}
-        <CopyToClipBoard walletCut text={wallet} />
-      </Section>
-      <Section>
-        <Group>
-          <ToggleAtom
-            size="small"
-            isOn={isActive}
-            onClick={() => setIsActive(id, isActive)}
-          />
-        </Group>
-      </Section>
-      <Section>
-        <Group>
-          {bot_id && (
-            <Text size="14-Regular">
-              {`bot #${bot_id.id}`}
-            </Text>
-          )}
-        </Group>
-      </Section>
-      <SectionSelect flex={1}>
-        <Group>
-          <Select<'multi'> $readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
-        </Group>
-      </SectionSelect>
-      <Section flex={1}>
-        <ButtonGroup>
-          <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary">
-            <>
-              <IconWrapper icon={<EditStandard />} />
-              Edit
-            </>
-          </ButtonAtom>
-          <ButtonAtom onClick={() => removeWallet(id)} $buttonVariant="tertiary">
-            <>
-              <IconWrapper icon={<CrossIcon />} />
-              Remove
-            </>
-          </ButtonAtom>
-        </ButtonGroup>
-        <ButtonGroupMobile>
-          <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary_action">
+      </Group>
+    </Section>
+    <SectionSelect flex={1}>
+      <Group>
+        <Select<'multi'> $readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
+      </Group>
+    </SectionSelect>
+    <Section flex={1}>
+      <ButtonGroup>
+        <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary">
+          <>
             <IconWrapper icon={<EditStandard />} />
-          </ButtonAtom>
-          <ButtonAtom
-            onClick={() => removeWallet(id)}
-            $buttonVariant="secondary_action"
-          >
+            Edit
+          </>
+        </ButtonAtom>
+        <ButtonAtom onClick={() => removeWallet(id)} $buttonVariant="tertiary">
+          <>
             <IconWrapper icon={<CrossIcon />} />
-          </ButtonAtom>
-        </ButtonGroupMobile>
-      </Section>
-    </Wrapper>
-  );
-};
+            Remove
+          </>
+        </ButtonAtom>
+      </ButtonGroup>
+      <ButtonGroupMobile>
+        <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary_action">
+          <IconWrapper icon={<EditStandard />} />
+        </ButtonAtom>
+        <ButtonAtom
+          onClick={() => removeWallet(id)}
+          $buttonVariant="secondary_action"
+        >
+          <IconWrapper icon={<CrossIcon />} />
+        </ButtonAtom>
+      </ButtonGroupMobile>
+    </Section>
+  </Wrapper>
+);

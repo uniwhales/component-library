@@ -6,7 +6,7 @@ import { TextArea, TextAreaTypes } from './textarea';
 const Wrapper = styled.div`
   height: 400px;
   width: 400px;
-  background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${({ theme }) => theme.colors.SHADE_PLUS_3};
   padding: 30px;
 `;
 const meta: Meta<typeof TextArea> = {

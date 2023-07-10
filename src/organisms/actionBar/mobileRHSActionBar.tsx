@@ -7,7 +7,7 @@ import { MobileRHSActionBarProps } from './types';
 
 type ChildProps = { elem: MobileRHSActionBarProps['left'], $noHover?: MobileRHSActionBarProps['$noHover'] };
 const Child = ({ elem, $noHover }: ChildProps) => (
-  typeof elem === 'string' ? <Text size="14-Regular">{elem}</Text> : <IconWrapper cursor={$noHover ? '' : 'pointer'} icon={elem} />);
+  typeof elem === 'string' ? <Text size={['14-Regular']}>{elem}</Text> : <IconWrapper cursor={$noHover ? '' : 'pointer'} icon={elem} />);
 
 export const MobileRHSActionBar = ({
   left, right, $noHover, $padding, height,

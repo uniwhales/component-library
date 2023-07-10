@@ -14,9 +14,9 @@ export const SmallIcon = styled.div<{ $bgColor: string, $smallSize: string }>`
   bottom: 50%;
   left: 55%;
   padding: 2px;
-  background: ${(props) => (props.theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${(props) => (props.theme.colors.SHADE_PLUS_1)};
   border-radius: 50%;
-  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  border: 2px solid ${(props) => props.theme.colors.BG_SHADE_PLUS_4};
   z-index: ${({ theme }) => theme.zIndex.SAFE_LAYER};
   display: flex;
   justify-content: center;
@@ -27,9 +27,9 @@ export const SmallIcon = styled.div<{ $bgColor: string, $smallSize: string }>`
 export const LargeIcon = styled.div<{ $bgColor: string, $largeSize: string }>`
   position: absolute;
   border-radius: 50%;
-  background: ${(props) => (props.$bgColor ? props.$bgColor : props.theme.containerAndCardShades.SHADE_PLUS_1)};
+  background: ${(props) => (props.$bgColor ? props.$bgColor : props.theme.colors.SHADE_PLUS_1)};
   padding: 2px;
-  border: 2px solid ${(props) => props.theme.containerAndCardShades.BG_SHADE_PLUS_4};
+  border: 2px solid ${(props) => props.theme.colors.BG_SHADE_PLUS_4};
   display: flex;
   justify-content: center;
   height: 32px;

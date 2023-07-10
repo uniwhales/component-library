@@ -16,7 +16,7 @@ export const ShortText = ({
         label={text}
       >
         <div>
-          <Text size={size ?? '14-Regular'} href={href} target={target} color={color}>
+          <Text size={[size ?? '14-Regular']} href={href} target={target} textColor={color}>
             {`${text.slice(0, limit).trim()}...`}
           </Text>
         </div>
@@ -27,7 +27,7 @@ export const ShortText = ({
   return (
     <Text
       size={size ?? '14-Regular'}
-      color={color}
+      textColor={color}
       href={href}
       target={target}
     >

@@ -115,7 +115,7 @@ const OnboardingWrapper = styled.div`
   flex-wrap: wrap;
   width: 300px;
   padding: 16px;
-  background: ${({ theme }) => theme.colors.primary.DARK_BLUE};
+  background: ${({ theme }) => theme.colors.DARK_BLUE};
 `;
 const meta: Meta<typeof FilterChip> = {
   component: FilterChip,
@@ -141,7 +141,7 @@ const Template = (args: FilterChipProps) => {
             onClick={() => setSelectFilter(chip.id)}
             $isOn={selectFilter === chip.id}
           >
-            <Text size="14-Regular">{chip.label}</Text>
+            <Text size={['14-Regular']}>{chip.label}</Text>
           </FilterChip>
         ))}
     </Wrapper>
@@ -164,7 +164,7 @@ const Template2 = (args: FilterChipProps) => {
           disabled={disabled}
           icon={f.icon}
         >
-          <Text size="14-Regular" color="SHADE_MINUS_1">{f.text}</Text>
+          <Text size={['14-Regular']} textColor="SHADE_MINUS_1">{f.text}</Text>
         </FilterChip>
       ))}
     </Wrapper>
@@ -193,7 +193,7 @@ const Template3 = (args: FilterChipProps) => {
           disabled={disabled}
           $isOn={selected?.includes(i.id)}
         >
-          <Text size="14-Regular" color="SHADE_MINUS_1">{i.text}</Text>
+          <Text size={['14-Regular']} textColor="SHADE_MINUS_1">{i.text}</Text>
         </FilterChip>
       ))}
     </OnboardingWrapper>

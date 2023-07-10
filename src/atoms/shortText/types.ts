@@ -1,8 +1,8 @@
-import { BodySizes, HeaderSizes } from '../texts/types';
+import { Color, TextVariant } from '../../theme';
 
 export type TextPropsBase = {
-  size?: BodySizes | HeaderSizes;
-  color?: string;
+  size?: TextVariant;
+  color?: Color;
   chars?: number;
 };
 

@@ -15,12 +15,12 @@ export const MeatballRow = styled.div`
   text-decoration: none;
   display: flex;
   align-items: center;
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${(props) => props.theme.colors.SHADE_PLUS_3};
   padding: 8px;
   gap: 6px;
   cursor: pointer;
     &:hover {
-      background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+      background: ${(props) => props.theme.colors.NEUTRAL_SHADE_0};
     };
 `;
 
@@ -34,9 +34,9 @@ export const MeatballContainer = styled.div<{ width?: string }>`
   border-radius: 12px;
   box-shadow: ${(props) => props.theme.dropShadow.REGULAR};
   ${MeatballRow}:nth-child(2n) {
-   background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_1};
+   background: ${(props) => props.theme.colors.SHADE_PLUS_1};
     &:hover {
-        background: ${(props) => props.theme.containerAndCardShades.NEUTRAL_SHADE_0};
+        background: ${(props) => props.theme.colors.NEUTRAL_SHADE_0};
     };
   };
   ${MeatballRow}:first-child {

@@ -1,13 +1,13 @@
 import { styled } from 'styled-components';
 import {
-  ColorProps, FontSizeProps, FontWeightProps, ResponsiveValue,
+  ColorProps, FontSizeProps, ResponsiveValue,
   TypographyProps, color, compose, style, system, typography, variant,
 } from 'styled-system';
 import { Color, TEXT_VARIANTS, TextVariant } from '../../theme';
 
 /** BaseTextProps */
 export type BaseTextProps = TypographyProps &
-Omit<ColorProps, 'color'> & {
+Omit<ColorProps, 'color'> & Omit<FontSizeProps, 'fontSize'> & {
   /**
      * @description
      * Variants of the text. Possible to pass an array that
@@ -19,7 +19,7 @@ Omit<ColorProps, 'color'> & {
      * ["10-Bold", "12-Regular", "16-Regular"]
      * @see {@link TextVariant}
      */
-  variant?: ResponsiveValue<TextVariant>
+  size?: ResponsiveValue<TextVariant>
   textColor?: ResponsiveValue<Color>
 };
 
@@ -46,25 +46,32 @@ export const textMixin = compose(typography, color, textColor, textTransform);
 export type TextProps = BaseTextProps &
 {
   textTransform?: ResponsiveValue<TextTransform>
+  href?: string
+  target?: string
+  $removeLineHeight?: boolean
 };
 
-export const Text = styled.p<TextProps & { $removeLineHeight?:boolean }>`
+export const Text = styled.p<TextProps>`
 /*   Adding unknown here as TS thinks we are making a mistake converting to a string
   because we are not using numbers instead of regular string */
   padding: 0;
   margin: 0;
-  color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
-  ${variant({ variants: TEXT_VARIANTS })}
+  color: ${({ theme }) => theme.colors.SHADE_MINUS_3};
+  ${variant({ variants: TEXT_VARIANTS, prop: 'size' })}
   ${textMixin}
 `;
 
-export const TextHref = styled.a<FontSizeProps & FontWeightProps & { disabled?:boolean }>`
+export type HrefTextProps = TextProps & {
+  disabled?: boolean
+};
+
+export const Href = styled.a<HrefTextProps>`
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   padding: 0;
   margin: 0;
   line-height: 24px;
-  color: ${({ theme }) => theme.colors.secondary.TEAL};
+  color: ${({ theme }) => theme.colors.TEAL};
   text-decoration: none;
-  ${variant({ variants: TEXT_VARIANTS })}
+  ${variant({ variants: TEXT_VARIANTS, prop: 'size' })}
   ${textMixin}
 `;

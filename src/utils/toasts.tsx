@@ -8,11 +8,11 @@ type TypeOptions = 'info' | 'success' | 'warning' | 'error' | 'default';
 
 export const getToastColor = (type: TypeOptions, theme: typeof Theme) => {
   const colorsLookup = {
-    default: theme.contrastColor.LOW_CONTRAST,
-    info: theme.contrastColor.LOW_CONTRAST,
-    error: theme.colors.system.AMBER,
-    warning: theme.colors.system.RED,
-    success: theme.colors.primary.MAIN_BLUE,
+    default: theme.colors.LOW_CONTRAST,
+    info: theme.colors.LOW_CONTRAST,
+    error: theme.colors.AMBER,
+    warning: theme.colors.RED,
+    success: theme.colors.MAIN_BLUE,
   };
   return colorsLookup[type];
 };
@@ -20,20 +20,20 @@ export const getToastColor = (type: TypeOptions, theme: typeof Theme) => {
 export const getToastIcon = (type: TypeOptions, theme: typeof Theme) => {
   const lookup = {
     default: <IconWrapper
-      fill={theme.colors.primary.MAIN_BLUE}
+      fill={theme.colors.MAIN_BLUE}
       icon={<TimeStandard />}
     />,
     info: <IconWrapper
-      fill={theme.colors.primary.MAIN_BLUE}
+      fill={theme.colors.MAIN_BLUE}
       icon={<TimeStandard />}
     />,
     success: <IconWrapper icon={<SelectedCheck />} />,
     error: <IconWrapper
-      fill={theme.colors.system.RED}
+      fill={theme.colors.RED}
       icon={<NoticeIcon />}
     />,
     warning: <IconWrapper
-      fill={theme.colors.primary.MANGO}
+      fill={theme.colors.MANGO}
       icon={<RevokeIcon />}
     />,
   };

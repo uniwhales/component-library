@@ -3,7 +3,7 @@ import { CardProps } from './types';
 
 export const Card = styled.div<CardProps>`
   padding: ${({ $padding }) => $padding ?? '24px'};
-  background: ${(props) => props.theme.containerAndCardShades.SHADE_PLUS_3};
+  background: ${(props) => props.theme.colors.SHADE_PLUS_3};
   border-radius: 12px;
   height: ${({ height }) => height};
   ${(props) => {
