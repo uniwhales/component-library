@@ -2,6 +2,7 @@ import {
   MutableRefObject,
   useLayoutEffect, useState,
 } from 'react';
+import { isWindowAvailable } from './isWindowAvailable';
 
 type UseScreenEdgeProps = {
   ref: MutableRefObject<HTMLDivElement | undefined | null>,
@@ -13,6 +14,7 @@ export const useScreenEdge = ({ rect, ref, rootMargin = 0 }: UseScreenEdgeProps)
   const [isReached, setIsReached] = useState(false);
 
   useLayoutEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     const onScroll = () => {
       if (!ref.current) return;
       const rects = ref.current?.getBoundingClientRect();
@@ -22,7 +24,7 @@ export const useScreenEdge = ({ rect, ref, rootMargin = 0 }: UseScreenEdgeProps)
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isWindowAvailable()]);
 
   return isReached;
 };

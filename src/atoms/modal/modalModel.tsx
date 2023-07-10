@@ -63,7 +63,7 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
     headerIcon={<StarIcon />}
     modalVariant="single"
     modalContent={(
-      <LatestAnnouncementsList height="100%" gap="48px">
+      <LatestAnnouncementsList height="calc(100vh - 100px)" gap="48px">
         {latest.map(({
           image, title, text, datetime,
         }) => (

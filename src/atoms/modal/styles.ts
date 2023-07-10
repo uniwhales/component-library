@@ -1,6 +1,5 @@
 import { css, styled } from 'styled-components';
 import { Column, Row } from '../common/flex';
-import { phone, tablet } from '../../layouts/breakpoints';
 import { Card } from '../card/card';
 
 export const ModalContainer = styled.div<{ isMobile?:boolean }>`
@@ -15,31 +14,29 @@ export const ModalContainer = styled.div<{ isMobile?:boolean }>`
   justify-content: center;
 `;
 
-export const ModalBody = styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string }>`
+export const ModalBody = styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
   display: flex;
   flex-direction: column;
-  position: relative;
   gap: 6px;
-  max-width: ${({ modalVariant, maxWidth }) => (maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
-  max-height: 650px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
-
-  ${tablet(css<{ replay: boolean }>`
-    max-width: calc(100vw - 100px);
-  `)}
-
-  ${phone(css`
+  box-sizing: border-box;
+  
+  ${({ isMobile, modalVariant, maxWidth }) => (isMobile ? css`
+    position: fixed;
+    top: 0px;
+    left: 0px;
     width: 100vw;
-    max-height: 600px;
+    height: calc(100vh - 55px);
+  ` : css`
+    position: relative;
+    max-width: ${(maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
+    max-height: 650px;
   `)}
 `;
 
 export const CloseButton = styled.div`
-  top: 0;
-  right: -30px;
-  position: absolute;
   background: ${({ theme }) => theme.containerAndCardShades.NEUTRAL_SHADE_0};
   height: 22px;
   width: 22px;
@@ -48,7 +45,7 @@ export const CloseButton = styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-     background:${({ theme }) => theme.colors.primary.MANGO};
+    background:${({ theme }) => theme.colors.primary.MANGO};
   }
 `;
 

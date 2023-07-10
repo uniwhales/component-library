@@ -11,6 +11,7 @@ import {
   ModalWrapper,
 } from './modal.styles';
 import { ModalProps } from './types';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 export const Modal = ({
   show,
@@ -23,7 +24,7 @@ export const Modal = ({
 }: ModalProps) => {
   if (!show) return null;
   const theme = localTheme();
-
+  const isMobile = useIsMobile();
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -34,24 +35,14 @@ export const Modal = ({
   return ReactDom.createPortal(
     <>
       <Overlay onClick={toggle} />
-      <ModalWrapper>
+      <ModalWrapper isMobile={isMobile}>
         <ModalContent
+          isMobile={isMobile}
           modalVariant={modalVariant}
           noHover
         >
           <>
-            <CloseButton>
-              <IconWrapper
-                onClick={() => {
-                  setTimeout(() => toggle(), 150);
-                }}
-                cursor="pointer"
-                icon={<FloatingClose />}
-                fill={theme.contrastColor.HIGH_CONTRAST}
-                height="18px"
-                width="18px"
-              />
-            </CloseButton>
+
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper height="26px" width="26px" icon={headerIcon} />}
@@ -65,6 +56,18 @@ export const Modal = ({
                 )}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
+              <CloseButton>
+                <IconWrapper
+                  onClick={() => {
+                    setTimeout(() => toggle(), 150);
+                  }}
+                  cursor="pointer"
+                  icon={<FloatingClose />}
+                  fill={theme.contrastColor.HIGH_CONTRAST}
+                  height="18px"
+                  width="18px"
+                />
+              </CloseButton>
             </ModalHeaderContainer>
             {modalContent}
           </>
