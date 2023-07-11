@@ -22,14 +22,14 @@ export const NoInteraction: Story = {
 };
 
 Primary.args = {
-  id: 'someRandomString',
+  id: 'fbhwebfebhre fbhuerbf gfwrqgrew534645365464536',
   size: 'big',
   hasInteraction: true,
   onClick: () => console.log('Clicked'),
 };
 
 NoInteraction.args = {
-  id: 'someRandomString',
+  id: 'someRandomString fwehrbfuweq fwqref',
   hasInteraction: false,
   size: 'small',
   isLink: false,

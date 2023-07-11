@@ -4,6 +4,8 @@ import { IdenticonProps } from './types';
 export const IdenticonWrapper = styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   box-sizing: border-box;
@@ -17,7 +19,7 @@ export const IdenticonWrapper = styled.div<Pick<IdenticonProps, 'hasInteraction'
 `;
 
 export const IdenticonBlock = styled.div<Pick<IdenticonProps, 'size'>>`
-  width: ${({ size }) => (size === 'big' ? '8px' : '5px')};
-  height: ${({ size }) => (size === 'big' ? '8px' : '5px')};
-  background: linear-gradient(0deg, rgba(128, 128, 128, 0.5), rgba(128, 128, 128, 0.5)), ${(props) => props.color};
+  width: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
+  height: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
+  background: ${(props) => props.color};
 `;
