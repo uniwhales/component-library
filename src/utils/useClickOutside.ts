@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { isWindowAvailable } from './isWindowAvailable';
 
 export const useClickOutside = (ref: React.MutableRefObject<any>, callback: () => void) => {
   const handleClick = (e: any) => {
@@ -8,6 +9,7 @@ export const useClickOutside = (ref: React.MutableRefObject<any>, callback: () =
   };
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     document.addEventListener('click', handleClick);
     return () => {
       document.removeEventListener('click', handleClick);

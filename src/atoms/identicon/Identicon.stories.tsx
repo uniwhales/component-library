@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { IdenticonComponent } from './Identicon';
 import { IdenticonProps } from './types';
+import { IdenticonComponent } from './Identicon';
 
 const meta: Meta<typeof IdenticonComponent> = {
   component: IdenticonComponent,
@@ -31,6 +31,6 @@ Primary.args = {
 NoInteraction.args = {
   id: 'someRandomString',
   hasInteraction: false,
-  size: 'big',
+  size: 'small',
   isLink: false,
 };
