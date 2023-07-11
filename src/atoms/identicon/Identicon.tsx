@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container } from './Identicon.styles';
+import { sha256 } from 'js-sha256';
+import { localTheme } from '../../theme';
 import { IdenticonProps } from './types';
+import { IdenticonBlock, IdenticonWrapper } from './Identicon.styles';
 
-export const IdenticonComponent = ({
+export const Identicon = ({
   size,
   hasInteraction,
   onClick,
@@ -10,16 +12,34 @@ export const IdenticonComponent = ({
   target,
   onMouseEnter,
   isLink = true,
-}: IdenticonProps) => (
-  <Container
-    as={isLink ? 'a' : undefined}
-    size={size}
-    hasInteraction={hasInteraction}
-    onClick={onClick}
-    href={href}
-    target={target}
-    onMouseEnter={() => onMouseEnter && onMouseEnter()}
-  >
-    <div />
-  </Container>
-);
+  id,
+}: IdenticonProps) => {
+  const theme = localTheme();
+  const hash = sha256(id);
+  const colors = [
+    ...Object.values(theme.colors.primary),
+    ...Object.values(theme.colors.secondary),
+    ...Object.values(theme.colors.system),
+    ...Object.values(theme.textShades),
+    ...Object.values(theme.containerAndCardShades),
+  ];
+
+  const blocks = Array.from({ length: 25 }, (_, i) => {
+    const color = colors[parseInt(hash[i], 16) % colors.length];
+    return <IdenticonBlock size={size} key={i} color={color} />;
+  });
+
+  return (
+    <IdenticonWrapper
+      onMouseEnter={() => onMouseEnter && onMouseEnter()}
+      hasInteraction={hasInteraction}
+      size={size}
+      href={href}
+      target={target}
+      as={isLink ? 'a' : undefined}
+      onClick={onClick}
+    >
+      {blocks}
+    </IdenticonWrapper>
+  );
+};
