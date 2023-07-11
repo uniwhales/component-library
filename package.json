@@ -1,6 +1,6 @@
 {
   "name": "@cielo-finance/component-library",
-  "version": "2.2.23-dev-FE-1394-17-marcin-build-5",
+  "version": "2.2.23-dev-FE-1394-20",
   "description": "Lightweight react component library build with atomic design.",
   "main": "dist/index.js",
   "scripts": {
