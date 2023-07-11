@@ -1,11 +1,9 @@
 import React from 'react';
-import Identicon from 'react-hooks-identicons';
 import { Container } from './Identicon.styles';
 import { IdenticonProps } from './types';
 
 export const IdenticonComponent = ({
   size,
-  id,
   hasInteraction,
   onClick,
   href,
@@ -22,6 +20,6 @@ export const IdenticonComponent = ({
     target={target}
     onMouseEnter={() => onMouseEnter && onMouseEnter()}
   >
-    <Identicon count={5} string={id} size={size === 'big' ? 22 : 12} />
+    <div />
   </Container>
 );
