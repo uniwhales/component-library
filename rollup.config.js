@@ -22,7 +22,7 @@ export default {
     plugins: [
         commonjs(),
         peerDepsExternal(),
-        resolve({preferBuiltins: true, browser: true}),
+        resolve({preferBuiltins: true, browser: false}),
         typescript(),
         postcss({}),
         filesize(),
