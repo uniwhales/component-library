@@ -1,17 +1,17 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { IdenticonProps } from './types';
-import { Identicon } from './Identicon';
+import { IdenticonComponent } from './Identicon';
 
-const meta: Meta<typeof Identicon> = {
-  component: Identicon,
+const meta: Meta<typeof IdenticonComponent> = {
+  component: IdenticonComponent,
 };
 
 export default meta;
-type Story = StoryObj<typeof Identicon>;
+type Story = StoryObj<typeof IdenticonComponent>;
 
 const Template = (args: React.JSX.IntrinsicAttributes & IdenticonProps) => (
-  <Identicon {...args} />
+  <IdenticonComponent {...args} />
 );
 
 export const Primary: Story = {

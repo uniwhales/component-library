@@ -4,7 +4,7 @@ import { localTheme } from '../../theme';
 import { IdenticonProps } from './types';
 import { IdenticonBlock, IdenticonWrapper } from './Identicon.styles';
 
-export const Identicon = ({
+export const IdenticonComponent = ({
   size,
   hasInteraction,
   onClick,
