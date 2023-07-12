@@ -15,7 +15,7 @@ export const IdenticonWrapper = styled.div<Pick<IdenticonProps, 'hasInteraction'
   overflow: hidden;
   border: 2px solid transparent;
   &:hover {
-    border: ${({ hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.MAIN_BLUE}`};
+    border: ${({ hasInteraction, theme }) => hasInteraction && `2px solid ${theme.colors.MAIN_BLUE}`};
   };
 `;
 
