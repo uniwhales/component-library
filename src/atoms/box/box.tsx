@@ -4,10 +4,10 @@ import {
 } from 'styled-system';
 
 const Box = styled.div<LayoutProps & BackgroundProps>`
-    box-sizing: border-box;
-    min-width: 0;
-    ${layout}
-    ${background}
+  box-sizing: border-box;
+  min-width: 0;
+  ${layout}
+  ${background}
 `;
 
 export default Box;

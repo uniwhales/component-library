@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './radio';
-import { Wrapper } from './radio.styles';
+import { Column } from '../common/flex';
 
 const meta: Meta<typeof Radio> = {
   component: Radio,
@@ -16,7 +16,7 @@ const Template = () => {
   const [selected, setSelected] = useState<null | string>('Radio Two');
 
   return (
-    <Wrapper>
+    <Column>
       {dummyData.map((item) => (
         <Radio
           key={item.label}
@@ -29,7 +29,7 @@ const Template = () => {
           $isLarge
         />
       ))}
-    </Wrapper>
+    </Column>
   );
 };
 
