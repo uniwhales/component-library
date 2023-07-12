@@ -189,6 +189,7 @@ import { OpenseaProColor } from './chains/fullColorStyle/OpenseaProColor';
 import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
 import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
 import { FatUpArrowIcon } from './navigationIcons/FatArrowUpIcon';
+import { BidStandard } from './generalIcons/filledStyle/BidStandard';
 
 export default {
   title: 'Atoms/Icons',
@@ -334,6 +335,7 @@ const Template6: ComponentStory<typeof IconWrapper> = () => (
 );
 const Template7: ComponentStory<typeof IconWrapper> = () => (
   <>
+    <IconWrapper name="Bid" icon={<BidStandard />} />
     <IconWrapper name="MultiPlatform" icon={<MultipartFormStandard />} />
     <IconWrapper name="Planet" icon={<PlanetStandard />} />
     <IconWrapper name="Hide" icon={<Hide />} />
