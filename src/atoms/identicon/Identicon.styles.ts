@@ -20,7 +20,7 @@ export const IdenticonWrapper = styled.div<Pick<IdenticonProps, 'hasInteraction'
 `;
 
 export const IdenticonBlock = styled.div<Pick<IdenticonProps, 'size'>>`
-  width: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
-  height: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
+  width: ${({ size }) => (size === 'big' ? '4.5px' : '3px')};
+  height: ${({ size }) => (size === 'big' ? '4.5px' : '3px')};
   background: ${(props) => props.color};
 `;
