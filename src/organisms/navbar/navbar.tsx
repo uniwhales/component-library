@@ -78,7 +78,7 @@ export const Navbar: FC<NavbarProps> = ({
             {account && (
               <IdenticonComponent
                 id={account}
-                $hasInteraction
+                hasInteraction
                 size="big"
                 onClick={() => { setIsMenuOpen(!isMenuOpen); }}
               />

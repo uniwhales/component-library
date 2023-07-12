@@ -106,7 +106,7 @@ export const doubleModalExample = ({
           <ModalColumn>
             <Text size={['14-Regular']}>{placeholderText}</Text>
             <ExtraContentRow onClick={() => setShowMore(!showMore)}>
-              <Text textColor={['MAIN_BLUE']} variant="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
+              <Text textColor={['MAIN_BLUE']} size="12-Regular">{`${!showMore ? 'show' : 'hide'} extra content`}</Text>
               <IconWrapper
                 fill={theme.colors.MAIN_BLUE}
                 height="12px"

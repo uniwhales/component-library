@@ -34,7 +34,7 @@ export const UserIdenticon = ({
   return (
     <UserIdenticonWrapper ref={clickRef}>
       <IdenticonComponent
-        $hasInteraction
+        hasInteraction
         size="big"
         id="user-identicon"
         onClick={() => setIsMenuOpen(!isMenuOpen)}

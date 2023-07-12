@@ -68,6 +68,6 @@ export const ToggleAtom = ({
       <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
       <Toggle disabled={!!disabled} size={size} />
     </Switcher>
-    {label && <Text textColor={disabled ? 'SHADE_MINUS_1' : 'SHADE_MINUS_3'} variant="14-Regular">{label}</Text>}
+    {label && <Text textColor={disabled ? 'SHADE_MINUS_1' : 'SHADE_MINUS_3'} size="14-Regular">{label}</Text>}
   </Wrapper>
 );
