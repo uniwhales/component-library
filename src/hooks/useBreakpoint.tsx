@@ -27,9 +27,9 @@ const getDeviceConfig = (width: number, version: number = 1) => {
 };
 
 const useBreakpoint = (version?: number): ReturnType<typeof getDeviceConfig> => {
-  const [brkPnt, setBrkPnt] = useState<
-  ReturnType<typeof getDeviceConfig>
-  >(() => getDeviceConfig(window.innerWidth, version));
+  const [brkPnt, setBrkPnt] = useState<ReturnType<typeof getDeviceConfig>>(
+    () => getDeviceConfig(typeof window !== 'undefined' ? window.innerWidth : 0, version),
+  );
 
   useEffect(() => {
     if (!isWindowAvailable()) return () => {};
