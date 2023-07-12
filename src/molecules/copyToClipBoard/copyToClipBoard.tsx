@@ -7,6 +7,7 @@ import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
 import { InnerContainer } from '../../organisms/dropdownSlider/styles';
+import { isWindowAvailable } from '../../utils/isWindowAvailable';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -71,6 +72,7 @@ export const CopyToClipBoard = ({
       });
   };
   const openLink = () => {
+    if (!isWindowAvailable()) return;
     link && window.open(link, '_blank');
   };
 
