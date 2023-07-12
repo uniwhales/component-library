@@ -37,11 +37,12 @@ export const IdenticonComponent = ({
   map[2] = map[5] = arr.slice(16, 24);
   map[3] = map[4] = arr.slice(24, 32);
 
-  const blocks = map.flatMap((row) => {
+  const blocks = map.flatMap((row, i) => {
     const mirroredRow = [...row].reverse();
-    return [...row, ...mirroredRow].map((el) => {
+    return [...row, ...mirroredRow].map((el, j) => {
       const color = el ? patternColor : 'transparent';
-      return <IdenticonBlock size={size} key={`${id}-${color}`} color={color} />;
+      // eslint-disable-next-line react/no-array-index-key
+      return <IdenticonBlock size={size} key={`${id}-${i}-${j}`} color={color} />;
     });
   });
 
