@@ -1,24 +1,26 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { IdenticonProps } from './types';
 
-export const Container = styled.div<Pick<IdenticonProps, '$hasInteraction' | 'size'>>`
+
+export const IdenticonWrapper = styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
   width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
   box-sizing: border-box;
-  cursor: ${({ $hasInteraction }) => $hasInteraction && 'pointer'};
-  background: ${({ theme, size }) => (size === 'small' ? null : theme.colors.SHADE_PLUS_3)};
-  border: 1px solid transparent;
+  cursor: ${({ hasInteraction }) => hasInteraction && 'pointer'};
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
   &:hover {
-    border: ${({ $hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.MAIN_BLUE}`};
+    border: ${({ hasInteraction, theme }) => $hasInteraction && `2px solid ${theme.colors.MAIN_BLUE}`};
   };
 `;
 
-export const SelectableIdenticonWrapper = styled.div`
-  gap: 8px;
-  align-items: center;
-  display: contents;
+export const IdenticonBlock = styled.div<Pick<IdenticonProps, 'size'>>`
+  width: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
+  height: ${({ size }) => (size === 'big' ? '4px' : '2.5px')};
+  background: ${(props) => props.color};
 `;

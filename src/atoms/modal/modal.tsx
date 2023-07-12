@@ -16,6 +16,7 @@ import {
   HeaderAndIconContainer,
 } from './styles';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
+import { isWindowAvailable } from '../../utils/isWindowAvailable';
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
@@ -34,6 +35,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
   const isMobile = breakpoint <= Breakpoints.Tablet;
 
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';

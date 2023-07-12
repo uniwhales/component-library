@@ -12,6 +12,7 @@ import {
 } from './modal.styles';
 import { ModalProps } from './types';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import { isWindowAvailable } from '../../utils/isWindowAvailable';
 
 export const Modal = ({
   show,
@@ -26,11 +27,14 @@ export const Modal = ({
   const theme = localTheme();
   const isMobile = useIsMobile();
   useEffect(() => {
+    if (!isWindowAvailable()) return () => {};
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, []);
+
+  if (!isWindowAvailable()) return () => {};
 
   return ReactDom.createPortal(
     <>
