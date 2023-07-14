@@ -1,7 +1,7 @@
 import { ConnectButtonProps } from '../../atoms/connectWalletButton/types';
 
 export interface NavbarProps {
-  $pageName: string;
+  pageName: string;
   plan: string;
   leftSideChildren?: JSX.Element;
   rightSideChildren?: JSX.Element;
