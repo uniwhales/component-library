@@ -20,22 +20,25 @@ export const IdenticonComponent = ({
 }:IdenticonProps) => {
   const theme = localTheme();
   const hash = SHA256(id).toString();
-  const colors = Object.values(theme.colors);
+  const colors = [
+    ...Object.values(theme.colors),
+  ];
 
   const patternColor = colors[parseInt(hash[0], 16) % colors.length] as string;
 
-  const arr = hash.split('').map((el: any) => ((parseInt(el, 16) < 8) ? 0 : 1));
+  const arr = hash.split('').map((el) => ((parseInt(el, 16) < 8) ? 0 : 1));
   const map = [];
   map[0] = map[7] = arr.slice(0, 8);
   map[1] = map[6] = arr.slice(8, 16);
   map[2] = map[5] = arr.slice(16, 24);
   map[3] = map[4] = arr.slice(24, 32);
 
-  const blocks = map.flatMap((row) => {
+  const blocks = map.flatMap((row, i) => {
     const mirroredRow = [...row].reverse();
-    return [...row, ...mirroredRow].map((el) => {
+    return [...row, ...mirroredRow].map((el, j) => {
       const color = el ? patternColor : 'transparent';
-      return <IdenticonBlock size={size} key={`${id}-${color}`} color={color} />;
+      // eslint-disable-next-line react/no-array-index-key
+      return <IdenticonBlock size={size} key={`${id}-${i}-${j}`} color={color} />;
     });
   });
 
