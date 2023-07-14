@@ -18,7 +18,7 @@ type Story = StoryObj<typeof TextArea>;
 
 const Template = (args: TextAreaTypes) => {
   const {
-    $inputState, label, disabled, required, $maxLength,
+    inputState, label, disabled, required, maxLength,
   } = args;
   const [value, setValue] = useState<string>('');
   const ref = useRef<HTMLTextAreaElement>(null);
@@ -28,10 +28,10 @@ const Template = (args: TextAreaTypes) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={disabled}
-        $inputState={$inputState}
+        inputState={inputState}
         label={label}
         required={required}
-        $maxLength={$maxLength}
+        maxLength={maxLength}
         $textareaRef={ref}
       />
     </Wrapper>
@@ -49,18 +49,18 @@ export const Error: Story = {
 
 Primary.args = {
   label: 'label',
-  $inputState: {
+  inputState: {
     status: 'default',
     message: '',
   },
-  $maxLength: 30,
+  maxLength: 30,
 };
 
 Error.args = {
   label: 'label',
-  $inputState: {
+  inputState: {
     status: 'error',
     message: 'Error message',
   },
-  $maxLength: 30,
+  maxLength: 30,
 };

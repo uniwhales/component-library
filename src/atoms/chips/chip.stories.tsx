@@ -23,7 +23,7 @@ const WithIcon = (isText = true, iconSize = '16px') => (
   </>
 );
 
-const Template = (args: React.JSX.IntrinsicAttributes & { children: React.ReactChild; $secondaryTypeBgColor?: 'orange' | 'green' | 'red' | 'yellow' | undefined; $type: 'primary' | 'secondary' | 'tertiary' | 'editable' | 'tertiaryLined' | 'subtle'; } & Pick<React.CSSProperties, 'width' | 'cursor'>) => {
+const Template = (args: React.JSX.IntrinsicAttributes & { children: React.ReactChild; secondaryTypeBgColor?: 'orange' | 'green' | 'red' | 'yellow' | undefined; type: 'primary' | 'secondary' | 'tertiary' | 'editable' | 'tertiaryLined' | 'subtle'; } & Pick<React.CSSProperties, 'width' | 'cursor'>) => {
   const { children } = args;
   return <Chip {...args}>{children}</Chip>;
 };
@@ -56,40 +56,40 @@ Primary.parameters = {
   backgrounds: { default: 'dark' },
 };
 Primary.args = {
-  $type: 'primary',
+  type: 'primary',
   children: WithIcon(),
 };
 PrimaryCustomWidth.args = {
-  $type: 'primary',
+  type: 'primary',
   width: '200px',
   children: WithIcon(),
 };
 Secondary.args = {
-  $type: 'secondary',
+  type: 'secondary',
   children: WithIcon(),
 };
 Tertiary.args = {
-  $type: 'tertiary',
+  type: 'tertiary',
   children: WithIcon(true, '12px'),
 };
 TertiaryCustomWidth.args = {
-  $type: 'tertiary',
+  type: 'tertiary',
   width: '400px',
   children: WithIcon(true, '12px'),
 };
 Editable.args = {
-  $type: 'editable',
+  type: 'editable',
   children: 'Edit Chip',
 };
 TertiaryLined.args = {
-  $type: 'tertiaryLined',
+  type: 'tertiaryLined',
   children: 'Tertiary Lined',
 };
 TertiaryLined.args = {
-  $type: 'tertiaryLined',
+  type: 'tertiaryLined',
   children: 'Tertiary Lined',
 };
 Subtle.args = {
-  $type: 'subtle',
+  type: 'subtle',
   children: WithIcon(true, '8px'),
 };

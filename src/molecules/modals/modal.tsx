@@ -39,11 +39,11 @@ export const Modal = ({
   return ReactDom.createPortal(
     <>
       <Overlay onClick={toggle} />
-      <ModalWrapper $isMobile={isMobile}>
+      <ModalWrapper isMobile={isMobile}>
         <ModalContent
-          $modalVariant={modalVariant}
-          $noHover
-          $isMobile={isMobile}
+          modalVariant={modalVariant}
+          noHover
+          isMobile={isMobile}
         >
           <>
 

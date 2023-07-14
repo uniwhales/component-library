@@ -19,9 +19,8 @@ export const IdenticonComponent = ({
   id, size, hasInteraction, onMouseEnter, onClick, href, target, isLink,
 }:IdenticonProps) => {
   const theme = localTheme();
-const hash = SHA256(id).toString();
+  const hash = SHA256(id).toString();
   const colors = Object.values(theme.colors);
-
 
   const patternColor = colors[parseInt(hash[0], 16) % colors.length] as string;
 

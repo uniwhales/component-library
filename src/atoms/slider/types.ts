@@ -6,9 +6,9 @@ export interface SliderProps {
   max: number;
   $onInput: (e: ChangeEvent<HTMLInputElement>) => void;
   $setValue: Dispatch<SetStateAction<string>>;
-  $hasError: boolean;
-  $errorMessage?: string;
+  hasError: boolean;
+  errorMessage?: string;
   $charLimit?: number;
   unit?: string;
-  $useLogarithmic?: boolean;
+  useLogarithmic?: boolean;
 }

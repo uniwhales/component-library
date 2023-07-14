@@ -1,18 +1,25 @@
 import { css, styled } from 'styled-components';
 import { CardProps } from './types';
+import Box from '../box/box';
+import { Theme } from '../../theme';
 
-export const Card = styled.div<CardProps>`
-  padding: ${({ $padding }) => $padding ?? '24px'};
-  background: ${(props) => props.theme.colors.SHADE_PLUS_3};
-  border-radius: 12px;
-  height: ${({ height }) => height};
+const Card = styled(Box)<CardProps>`
   ${(props) => {
-    const { $noHover } = props;
-    return !$noHover && css`
+    const { noHover } = props;
+    return !noHover && css`
       cursor: pointer;
-      :hover {
+      &:hover {
         filter: brightness(1.2);
       }
   `;
   }}
 `;
+
+Card.displayName = 'Card';
+Card.defaultProps = {
+  background: Theme.colors.SHADE_PLUS_3,
+  padding: '24px',
+  borderRadius: '12px',
+};
+
+export { Card };

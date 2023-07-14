@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { CSSProperties } from 'react';
 import { ChipProps } from './types';
 
-const CustomChip = styled.div<{ $type: string } & Pick<CSSProperties, 'width' | 'cursor'>>`
+const CustomChip = styled.div<{ type: string } & Pick<CSSProperties, 'width' | 'cursor'>>`
   width: ${({ width }) => width ?? 'fit-content'};
   cursor: ${({ cursor }) => cursor ?? 'pointer'};
   display: flex;
@@ -19,12 +19,12 @@ export const PrimaryChip = styled(CustomChip)`
   background: ${({ theme }) => theme.colors.MAIN_BLUE};
 `;
 
-export const SecondaryChip = styled(CustomChip)<{ $bgColor: ChipProps['$secondaryTypeBgColor'] }>`
+export const SecondaryChip = styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 12px;
   width: fit-content;
   gap: 8px;
   border-radius: 12px;
-  background: ${({ $bgColor, theme }) => ($bgColor === 'orange' ? theme.colors.AMBER : $bgColor === 'green' ? theme.colors.CARRIBEAN_GREEN : $bgColor === 'yellow' ? theme.colors.YELLOW : theme.colors.RED)};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.AMBER : bgColor === 'green' ? theme.colors.CARRIBEAN_GREEN : bgColor === 'yellow' ? theme.colors.YELLOW : theme.colors.RED)};
 `;
 
 export const EditableChip = styled(CustomChip)`
@@ -40,11 +40,11 @@ export const EditableChip = styled(CustomChip)`
 `};
 `;
 
-export const TertiaryChip = styled(CustomChip)<{ $bgColor: ChipProps['$secondaryTypeBgColor'] }>`
+export const TertiaryChip = styled(CustomChip)<{ bgColor: ChipProps['secondaryTypeBgColor'] }>`
   padding: 4px 6px;
   gap: 4px;
   border-radius: 12px;
-  background: ${({ $bgColor, theme }) => ($bgColor === 'orange' ? theme.colors.AMBER : $bgColor === 'green' ? theme.colors.CARRIBEAN_GREEN : $bgColor === 'yellow' ? theme.colors.YELLOW : theme.colors.RED)};
+  background: ${({ bgColor, theme }) => (bgColor === 'orange' ? theme.colors.AMBER : bgColor === 'green' ? theme.colors.CARRIBEAN_GREEN : bgColor === 'yellow' ? theme.colors.YELLOW : theme.colors.RED)};
   text-transform: uppercase;
   &:hover {
     box-shadow: ${(props) => props.theme.dropShadow.REGULAR};

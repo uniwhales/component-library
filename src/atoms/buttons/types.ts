@@ -2,7 +2,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children?: React.ReactChild;
   width?: string;
   height?: string;
-  $buttonVariant:
+  buttonVariant:
   'primary'
   | 'secondary'
   | 'tertiary'
@@ -22,10 +22,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   | 'close_primary'
   | 'close_secondary'
   | 'close_modal'
-  $borderRadius?: string,
+  borderRadius?: string,
   disabled?: boolean
   size?: string
   color?: string
 }
 
-export type GenericStylingProps = Partial<Pick<ButtonProps, '$borderRadius'>>;
+export type GenericStylingProps = Partial<Pick<ButtonProps, 'borderRadius'>>;

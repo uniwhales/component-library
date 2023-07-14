@@ -1,13 +1,13 @@
 export interface MinUsdProps {
   min: number
   max: number
-  $buttonText: string
+  buttonText: string
   description: JSX.Element
   onApply: (value: string) => void
-  $buttonIcon?: JSX.Element
-  $buttonWidth?: string
-  $buttonHeight?: string
+  buttonIcon?: JSX.Element
+  buttonWidth?: string
+  buttonHeight?: string
   unit?: string
-  $useLogarithmic?:boolean
+  useLogarithmic?:boolean
   disabled?:boolean
 }

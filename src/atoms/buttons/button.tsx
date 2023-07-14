@@ -10,7 +10,7 @@ export const ButtonWrapper = styled.div`
   background: ${({ theme }) => theme.colors.SHADE_PLUS_3};
 `;
 
-const Button = styled.button<GenericStylingProps & { $isMobile?: boolean }>`
+const Button = styled.button<GenericStylingProps & { isMobile?: boolean }>`
   transition: background 0.45s ease;
   font-size: 14px;
   line-height: 20px;
@@ -22,7 +22,7 @@ const Button = styled.button<GenericStylingProps & { $isMobile?: boolean }>`
   font-weight: 400;
   font-family: Poppins, sans-serif;
   color: ${(props) => props.theme.colors.WHITE};
-  border-radius: ${(props) => props.$borderRadius || '12px'};
+  border-radius: ${(props) => props.borderRadius || '12px'};
   justify-content: center;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.0);
@@ -40,7 +40,7 @@ const Button = styled.button<GenericStylingProps & { $isMobile?: boolean }>`
     fill: ${(props) => props.theme.colors.WHITE}!important;
   }
 
-  ${({ $isMobile }) => $isMobile && css`
+  ${({ isMobile }) => isMobile && css`
   transition: transform 0.1s, box-shadow 0.2s;
     &:active {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -49,7 +49,7 @@ const Button = styled.button<GenericStylingProps & { $isMobile?: boolean }>`
   `}
 `;
 
-const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   // disabled state
@@ -78,7 +78,7 @@ const ButtonPrimary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { 
   `}
 `;
 
-const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   color: ${(props) => props.theme.colors.SHADE_MINUS_3};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -119,7 +119,7 @@ const ButtonSecondary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & 
   `}
 `;
 
-const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -160,7 +160,7 @@ const ButtonTertiary = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & {
   `};
 `;
 
-const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width ?? '40px'};
   height: ${({ height }) => height ?? '40px'};
   padding: 10px;
@@ -180,7 +180,7 @@ const ButtonPrimaryAction = styled(ButtonTertiary) <Pick<ButtonProps, 'width' | 
   `};
 `;
 
-const ButtonSecondaryAction = styled(Button)<Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonSecondaryAction = styled(Button)<Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width ?? 'max-content'};
   height: ${({ height }) => height ?? '40px'};
   path {transition: fill 0.45s ease;}
@@ -215,7 +215,7 @@ const ButtonSecondaryAction = styled(Button)<Pick<ButtonProps, 'width' | 'height
 `;
 
 const ButtonTinyAction = styled(ButtonSecondaryAction)``;
-const ButtonSecondaryActionInverse = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { $isMobile?: boolean }>`
+const ButtonSecondaryActionInverse = styled(Button) <Pick<ButtonProps, 'width' | 'height'> & { isMobile?: boolean }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
@@ -294,10 +294,10 @@ const ButtonSpecialSmallNormal = styled(Button) <Pick<ButtonProps, 'width'>>`
     };
   `}
 `;
-const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ $buttonVariant: ButtonProps['$buttonVariant'] }>`
+const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ buttonVariant: ButtonProps['buttonVariant'] }>`
   border-radius: 50%;
-  width: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '16px' : $buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
-  height: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '16px' : $buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
+  width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
+  height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '16px' : buttonVariant === 'special_tiny_round' ? '22px' : '42px')};
 
   display: flex;
   justify-content: center;
@@ -305,8 +305,8 @@ const ButtonSpecialSmallRound = styled(ButtonSpecialSmallNormal) <{ $buttonVaria
   padding: 0;
 
   svg {
-    width: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '12px' : $buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
-    height: ${({ $buttonVariant }) => ($buttonVariant === 'special_extra_tiny_round' ? '12px' : $buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
+    width: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
+    height: ${({ buttonVariant }) => (buttonVariant === 'special_extra_tiny_round' ? '12px' : buttonVariant === 'special_tiny_round' ? '12px' : '16px')}!important;
   }
 
 `;
@@ -380,7 +380,7 @@ const ButtonIconOnly = styled(Button)`
     };
   `}
 `;
-const SquareButton = styled.button<Pick<ButtonProps, 'size'> & { $isMobile?: boolean }>`
+const SquareButton = styled.button<Pick<ButtonProps, 'size'> & { isMobile?: boolean }>`
   height: ${({ size }) => size || '70px'};
   width: ${({ size }) => size || '70px'};
   border-radius: 10px;
@@ -522,10 +522,10 @@ const CloseButtonSecondary = styled(OnboardingSecondaryButton)<Pick<ButtonProps,
 
 export const ButtonAtom: FC<ButtonProps> = ({
   children,
-  $buttonVariant,
+  buttonVariant,
   disabled = false,
   onClick,
-  $borderRadius,
+  borderRadius,
   onMouseEnter,
   onMouseLeave,
   width,
@@ -535,16 +535,16 @@ export const ButtonAtom: FC<ButtonProps> = ({
 }) => {
   const isMobile = useIsMobile();
 
-  switch ($buttonVariant) {
+  switch (buttonVariant) {
     case 'secondary':
       return (
         <ButtonSecondary
-          $isMobile={isMobile}
+          isMobile={isMobile}
           width={width}
           height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -555,12 +555,12 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'tertiary':
       return (
         <ButtonTertiary
-          $isMobile={isMobile}
+          isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -571,12 +571,12 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'primary_action':
       return (
         <ButtonPrimaryAction
-          $isMobile={isMobile}
+          isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -587,12 +587,12 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action':
       return (
         <ButtonSecondaryAction
-          $isMobile={isMobile}
+          isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -603,11 +603,11 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'tiny_action':
       return (
         <ButtonTinyAction
-          $isMobile={isMobile}
+          isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -618,12 +618,12 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'secondary_action_inverse':
       return (
         <ButtonSecondaryActionInverse
-          $isMobile={isMobile}
+          isMobile={isMobile}
           height={height}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -634,7 +634,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_small':
       return (
         <ButtonSpecialSmallNormal
-          $isMobile={isMobile}
+          isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -650,11 +650,11 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_extra_tiny_round':
       return (
         <ButtonSpecialSmallRound
-          $isMobile={isMobile}
+          isMobile={isMobile}
           width={width}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $buttonVariant={$buttonVariant}
+          buttonVariant={buttonVariant}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -665,7 +665,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'special_extra_tiny_subtle':
       return (
         <ButtonSpecialSmallSubtle
-          $isMobile={isMobile}
+          isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -677,7 +677,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'icon_only':
       return (
         <ButtonIconOnly
-          $isMobile={isMobile}
+          isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -688,7 +688,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'square':
       return (
         <SquareButton
-          $isMobile={isMobile}
+          isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -700,7 +700,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'onboarding_primary':
       return (
         <OnboardingPrimaryButton
-          $isMobile={isMobile}
+          isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -712,7 +712,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'onboarding_secondary':
       return (
         <OnboardingSecondaryButton
-          $isMobile={isMobile}
+          isMobile={isMobile}
           disabled={disabled}
           onClick={!disabled ? onClick : () => { }}
           type="button"
@@ -724,7 +724,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_primary':
       return (
         <CloseButtonPrimary
-          $isMobile={isMobile}
+          isMobile={isMobile}
           size={size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
@@ -736,7 +736,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_secondary':
       return (
         <CloseButtonSecondary
-          $isMobile={isMobile}
+          isMobile={isMobile}
           size={size}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
@@ -748,7 +748,7 @@ export const ButtonAtom: FC<ButtonProps> = ({
     case 'close_modal':
       return (
         <CloseButtonModal
-          $isMobile={isMobile}
+          isMobile={isMobile}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"
@@ -759,12 +759,12 @@ export const ButtonAtom: FC<ButtonProps> = ({
     default:
       return (
         <ButtonPrimary
-          $isMobile={isMobile}
+          isMobile={isMobile}
           width={width}
           height={height}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          $borderRadius={$borderRadius}
+          borderRadius={borderRadius}
           onClick={!disabled ? onClick : () => { }}
           disabled={disabled}
           type="button"

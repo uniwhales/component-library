@@ -15,7 +15,7 @@ const Template = () => {
   const content = (
     <div>
       <Text size={['14-Regular']}>hover Card content</Text>
-      <ButtonAtom $buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
+      <ButtonAtom buttonVariant="secondary" onClick={() => console.log('clicked')}>click me</ButtonAtom>
     </div>
   );
 
@@ -27,7 +27,7 @@ const Template = () => {
           target={(
             <div style={{ width: 'fit-content', margin: 50 }}>
               <ButtonAtom
-                $buttonVariant="primary"
+                buttonVariant="primary"
                 onClick={() => {}}
               >
                 Hover over

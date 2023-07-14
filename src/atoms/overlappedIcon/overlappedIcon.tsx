@@ -14,10 +14,10 @@ export const OverlappedIcon = ({
 }: OverlappedIconProps) => (
   (
     <IconContainer>
-      <SmallIcon $smallSize={smallSize} $bgColor={bgColor}>
+      <SmallIcon smallSize={smallSize} bgColor={bgColor}>
         {!noIcon && <IconWrapper icon={smallIcon} />}
       </SmallIcon>
-      <LargeIcon $largeSize={largeSize} $bgColor={bgColor}>
+      <LargeIcon largeSize={largeSize} bgColor={bgColor}>
         {!noIcon && <IconWrapper icon={largeIcon} />}
       </LargeIcon>
     </IconContainer>

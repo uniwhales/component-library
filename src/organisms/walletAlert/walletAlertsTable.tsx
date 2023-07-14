@@ -135,18 +135,18 @@ export const WalletAlertsTable = ({
     </Section>
     <SectionSelect flex={1}>
       <Group>
-        <Select<'multi'> $readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
+        <Select<'multi'> readOnly isMulti placeholder="Alert Filters" selectOptions={chains} selectValue={filters} />
       </Group>
     </SectionSelect>
     <Section flex={1}>
       <ButtonGroup>
-        <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary">
+        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary">
           <>
             <IconWrapper icon={<EditStandard />} />
             Edit
           </>
         </ButtonAtom>
-        <ButtonAtom onClick={() => removeWallet(id)} $buttonVariant="tertiary">
+        <ButtonAtom onClick={() => removeWallet(id)} buttonVariant="tertiary">
           <>
             <IconWrapper icon={<CrossIcon />} />
             Remove
@@ -154,12 +154,12 @@ export const WalletAlertsTable = ({
         </ButtonAtom>
       </ButtonGroup>
       <ButtonGroupMobile>
-        <ButtonAtom onClick={() => editWallet(id)} $buttonVariant="secondary_action">
+        <ButtonAtom onClick={() => editWallet(id)} buttonVariant="secondary_action">
           <IconWrapper icon={<EditStandard />} />
         </ButtonAtom>
         <ButtonAtom
           onClick={() => removeWallet(id)}
-          $buttonVariant="secondary_action"
+          buttonVariant="secondary_action"
         >
           <IconWrapper icon={<CrossIcon />} />
         </ButtonAtom>

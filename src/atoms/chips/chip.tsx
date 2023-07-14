@@ -5,12 +5,12 @@ import {
 } from './chip.styles';
 
 export const Chip = ({
-  $type, children, $secondaryTypeBgColor, width, cursor,
+  type, children, secondaryTypeBgColor, width, cursor,
 }: ChipProps) => {
-  switch ($type) {
+  switch (type) {
     case 'secondary':
       return (
-        <SecondaryChip cursor={cursor} $bgColor={$secondaryTypeBgColor} $type={$type} width={width}>
+        <SecondaryChip cursor={cursor} bgColor={secondaryTypeBgColor} type={type} width={width}>
           {children}
         </SecondaryChip>
       );
@@ -21,7 +21,7 @@ export const Chip = ({
           width={width}
           suppressContentEditableWarning
           contentEditable
-          $type={$type}
+          type={type}
         >
           {children}
         </EditableChip>
@@ -30,28 +30,28 @@ export const Chip = ({
       return (
         <TertiaryChip
           cursor={cursor}
-          $type={$type}
+          type={type}
           width={width}
-          $bgColor={$secondaryTypeBgColor}
+          bgColor={secondaryTypeBgColor}
         >
           {children}
         </TertiaryChip>
       );
     case 'tertiaryLined':
       return (
-        <TertiaryLined cursor={cursor} $type={$type} width={width}>
+        <TertiaryLined cursor={cursor} type={type} width={width}>
           {children}
         </TertiaryLined>
       );
     case 'subtle':
       return (
-        <SubtleChip cursor={cursor} $type={$type} width={width}>
+        <SubtleChip cursor={cursor} type={type} width={width}>
           {children}
         </SubtleChip>
       );
     default:
       return (
-        <PrimaryChip cursor={cursor} $type={$type} width={width}>
+        <PrimaryChip cursor={cursor} type={type} width={width}>
           {children}
         </PrimaryChip>
       );

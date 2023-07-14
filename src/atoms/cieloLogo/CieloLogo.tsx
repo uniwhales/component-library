@@ -8,25 +8,25 @@ import { CieloLogoDarkBeta } from './CieloLogoDarkBeta';
 import { CieloLogoLightBeta } from './CieloLogoLightBeta';
 
 export const CieloLogo = ({
-  onClick, $night, $noText, $isBeta,
+  onClick, night, noText, isBeta,
 }: LogoProps) => {
-  if ($noText) {
+  if (noText) {
     return (
       <LogoContainer onClick={onClick}>
         <CieloLogoSymbol />
       </LogoContainer>
     );
   }
-  if ($isBeta) {
+  if (isBeta) {
     return (
       <LogoContainer onClick={onClick}>
-        {$night ? <CieloLogoDarkBeta /> : <CieloLogoLightBeta />}
+        {night ? <CieloLogoDarkBeta /> : <CieloLogoLightBeta />}
       </LogoContainer>
     );
   }
   return (
     <LogoContainer onClick={onClick}>
-      {$night ? <CieloLogoDark /> : <CieloLogoLight />}
+      {night ? <CieloLogoDark /> : <CieloLogoLight />}
     </LogoContainer>
 
   );

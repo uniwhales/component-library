@@ -6,7 +6,7 @@ const FlexBase = styled.div`
   align-items: center;
 `;
 
-export const NavbarContainer = styled(FlexBase)<{ $isMenuOpen?: boolean, account?: string | null, $bottomSpacing: boolean, $bgColor: boolean | string }>`
+export const NavbarContainer = styled(FlexBase)<{ $isMenuOpen?: boolean, account?: string | null, $bottomSpacing: boolean, bgColor: boolean | string }>`
   position: sticky;
   top: 0;
   right: 0;
@@ -14,10 +14,10 @@ export const NavbarContainer = styled(FlexBase)<{ $isMenuOpen?: boolean, account
   flex-direction: column;
   justify-content: center;
 
-  background-color: ${({ theme, $bgColor }) => (
-    typeof $bgColor === 'string' ? $bgColor : $bgColor ? theme.colors.SHADE_PLUS_3 : 'transparent'
+  background-color: ${({ theme, bgColor }) => (
+    typeof bgColor === 'string' ? bgColor : bgColor ? theme.colors.SHADE_PLUS_3 : 'transparent'
   )};
-  box-shadow: ${({ theme, $bottomSpacing, $bgColor }) => $bgColor && $bottomSpacing && theme.dropShadow.REGULAR};
+  box-shadow: ${({ theme, $bottomSpacing, bgColor }) => bgColor && $bottomSpacing && theme.dropShadow.REGULAR};
   padding: 16px 24px;
   z-index: ${({ theme }) => theme.zIndex.STICKY};
   gap: 24px;

@@ -27,14 +27,14 @@ const Template = (
   return (
     <Column>
       <Bar>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         <DropdownSlider
           {...args}
           ref={sliderEl}
-          $buttonText="Min.USD"
-          $buttonIcon={<CoinStandard />}
-          $buttonWidth="140px"
+          buttonText="Min.USD"
+          buttonIcon={<CoinStandard />}
+          buttonWidth="140px"
           description={(
             <TextRow>
               <Text size={['12-Regular']}>
@@ -50,18 +50,18 @@ const Template = (
           )}
           onApply={onApply}
         />
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
       </Bar>
       <Bar>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         {' '}
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
         {' '}
-        <ButtonAtom $buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
-        <ButtonAtom $buttonVariant="primary" onClick={() => sliderEl.current?.resetSlider()}>Clear slider</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => { }}>test</ButtonAtom>
+        <ButtonAtom buttonVariant="primary" onClick={() => sliderEl.current?.resetSlider()}>Clear slider</ButtonAtom>
       </Bar>
     </Column>
   );
@@ -82,7 +82,7 @@ DropdownSliderComponent.args = {
 DropdownSliderWithScaleComponent.args = {
   min: 0,
   max: 250000,
-  $useLogarithmic: true,
+  useLogarithmic: true,
 };
 
 DropdownSliderComponent.parameters = {

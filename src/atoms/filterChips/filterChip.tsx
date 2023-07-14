@@ -11,8 +11,8 @@ import {
 import { FilterChipProps } from './types';
 
 export const FilterChip = ({
-  children, icon, $isOn = false, onClick, id, width,
-  disabled, variant, $iconSize, height, padding,
+  children, icon, isOn = false, onClick, id, width,
+  disabled, variant, iconSize, height, padding,
 }: FilterChipProps) => {
   switch (variant) {
     case 'secondary':
@@ -25,8 +25,8 @@ export const FilterChip = ({
         >
           {icon && (
             <IconWrapper
-              width={$iconSize}
-              height={$iconSize}
+              width={iconSize}
+              height={iconSize}
               icon={icon}
               cursor={disabled ? 'not-allowed' : 'pointer'}
             />
@@ -44,7 +44,7 @@ export const FilterChip = ({
       return (
         <FilterChipOnboarding
           disabled={disabled}
-          $isOn={$isOn}
+          isOn={isOn}
           padding={padding}
           onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
         >
@@ -56,13 +56,13 @@ export const FilterChip = ({
         (
           <FilterChipWrapper
             disabled={disabled}
-            $isOn={$isOn}
+            isOn={isOn}
             onClick={(e: MouseEvent<HTMLElement>) => !disabled && onClick(id, e)}
             width={width}
             padding={padding}
           >
             <FilterChipContent disabled={!!disabled}>
-              {icon && <IconWrapper width={$iconSize ?? '16px'} height={$iconSize ?? '16px'} icon={icon} cursor={disabled ? 'not-allowed' : 'pointer'} />}
+              {icon && <IconWrapper width={iconSize ?? '16px'} height={iconSize ?? '16px'} icon={icon} cursor={disabled ? 'not-allowed' : 'pointer'} />}
               {children}
             </FilterChipContent>
           </FilterChipWrapper>

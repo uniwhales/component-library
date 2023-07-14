@@ -155,18 +155,18 @@ Primary.args = {
   width: '150px',
   selectOptions: ChainOptions,
   isMulti: false,
-  $readOnly: false,
+  readOnly: false,
   placeholder: 'DEX filters',
-  $isXL: false,
+  isXL: false,
   showValue: true,
-  $smallText: true,
+  smallText: true,
 };
 
 PrimaryIcon.args = {
   selectOptions: WithIcon,
   isMulti: false,
-  $readOnly: false,
-  $isXL: false,
+  readOnly: false,
+  isXL: false,
   showValue: true,
   placeholder: 'Primary Icon',
 };
@@ -174,9 +174,9 @@ PrimaryIcon.args = {
 LongOption.args = {
   selectOptions: LongOptions,
   isMulti: false,
-  $readOnly: false,
+  readOnly: false,
   placeholder: 'Long',
-  $isXL: false,
+  isXL: false,
   showValue: true,
 };
 
@@ -186,28 +186,28 @@ MultiSelect.parameters = {
 MultiSelect.args = {
   selectOptions: ColourOptions,
   isMulti: true,
-  $readOnly: false,
+  readOnly: false,
   showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size={['14-Regular']}>Filter Tx types and Chains</Text>
   </Placeholder>,
-  $isXL: true,
+  isXL: true,
   isClearable: false,
   isSearchable: false,
 };
 CustomMenuHeight.args = {
   selectOptions: ColourOptions,
   isMulti: true,
-  $readOnly: false,
+  readOnly: false,
   showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size={['14-Regular']}>Filter Tx types and Chains</Text>
   </Placeholder>,
-  $isXL: true,
+  isXL: true,
   isClearable: false,
   isSearchable: false,
   maxMenuHeight: 100,
@@ -218,14 +218,14 @@ SingleGroupSearchSelect.parameters = {
 SingleGroupSearchSelect.args = {
   selectOptions: GroupExample,
   isMulti: false,
-  $readOnly: false,
+  readOnly: false,
   showValue: true,
   placeholder:
   <Placeholder>
     <IconWrapper cursor="pointer" height="20px" width="20px" icon={<SettingsBars />} />
     <Text size={['14-Regular']}>Filter Tx types and Chains</Text>
   </Placeholder>,
-  $isXL: true,
+  isXL: true,
   isClearable: true,
   isSearchable: true,
 };

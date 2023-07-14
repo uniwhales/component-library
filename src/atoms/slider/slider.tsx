@@ -8,8 +8,8 @@ import {
 import { Text } from '../texts/text';
 
 export const Slider: FC<SliderProps> = ({
-  min, max, $onInput, value, $setValue, $hasError,
-  $errorMessage, unit, $charLimit = 16, $useLogarithmic = false,
+  min, max, $onInput, value, $setValue, hasError,
+  errorMessage, unit, $charLimit = 16, useLogarithmic = false,
 }: SliderProps) => {
   const styles = {
     '--min': min,
@@ -44,11 +44,11 @@ export const Slider: FC<SliderProps> = ({
   const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
     const linearValue = parseInt(e.target.value, 10);
     const blend = 0.5; // Adjust this value between 0 and 1 to control the compression
-    const newValue = $useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
+    const newValue = useLogarithmic ? customScale(linearValue, min, max, blend) : linearValue;
     const actualValue = Math.min(Math.round(newValue), max);
     $setValue(actualValue.toString());
 
-    const sliderValue = Math.round($useLogarithmic && newValue > 0
+    const sliderValue = Math.round(useLogarithmic && newValue > 0
       ? inverseLogScale(newValue, min, max) : newValue);
     e.target.value = sliderValue.toString();
   };
@@ -77,7 +77,7 @@ export const Slider: FC<SliderProps> = ({
         <NumInputContainer
           max={max}
           value={value}
-          $hasError={$hasError}
+          hasError={hasError}
         >
           <NumInput
             autoFocus
@@ -91,8 +91,8 @@ export const Slider: FC<SliderProps> = ({
             <Text size={['14-Regular']} textColor="SHADE_MINUS_1">{unit}</Text>
           )}
         </NumInputContainer>
-        {$hasError && $errorMessage && (
-          <Text size={['12-Regular']} textColor="RED">{$errorMessage}</Text>
+        {hasError && errorMessage && (
+          <Text size={['12-Regular']} textColor="RED">{errorMessage}</Text>
         )}
       </InputWrapper>
 

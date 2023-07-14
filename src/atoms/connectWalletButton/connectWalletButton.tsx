@@ -10,7 +10,7 @@ export const ConnectWalletButton: FC<ConnectButtonProps> = ({
 }) => (
   <ConnectButton
     onClick={onClick}
-    $isConnected={!!account}
+    isConnected={!!account}
   >
     {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
     <Text size={['14-Bold']}>{account ? 'Disconnect' : 'Connect'}</Text>

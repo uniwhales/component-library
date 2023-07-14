@@ -60,7 +60,7 @@ const Template2 = () => {
         headerIcon={<StarIcon />}
         modalVariant="double"
         additionalTinyAction={(
-          <ButtonAtom $buttonVariant="special_small">
+          <ButtonAtom buttonVariant="special_small">
             <>
               <IconWrapper height="16px" width="16px" icon={<ProfileStandard />} />
               View Profile

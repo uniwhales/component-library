@@ -9,7 +9,7 @@ export const IconContainer = styled.div`
   align-items: center;
 `;
 
-export const SmallIcon = styled.div<{ $bgColor: string, $smallSize: string }>`
+export const SmallIcon = styled.div<{ bgColor: string, smallSize: string }>`
   position: absolute;
   bottom: 50%;
   left: 55%;
@@ -24,10 +24,10 @@ export const SmallIcon = styled.div<{ $bgColor: string, $smallSize: string }>`
   width: 20px;
 `;
 
-export const LargeIcon = styled.div<{ $bgColor: string, $largeSize: string }>`
+export const LargeIcon = styled.div<{ bgColor: string, largeSize: string }>`
   position: absolute;
   border-radius: 50%;
-  background: ${(props) => (props.$bgColor ? props.$bgColor : props.theme.colors.SHADE_PLUS_1)};
+  background: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.SHADE_PLUS_1)};
   padding: 2px;
   border: 2px solid ${(props) => props.theme.colors.BG_SHADE_PLUS_4};
   display: flex;
@@ -35,7 +35,7 @@ export const LargeIcon = styled.div<{ $bgColor: string, $largeSize: string }>`
   height: 32px;
   width: 32px;
     img {
-    height: ${(props) => props.$largeSize};
-    width: ${(props) => props.$largeSize};
+    height: ${(props) => props.largeSize};
+    width: ${(props) => props.largeSize};
   };
 `;

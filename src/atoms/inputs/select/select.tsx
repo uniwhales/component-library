@@ -141,8 +141,8 @@ const OptionComponent = (props: any) => {
 
   return (
     <OptionWrapper
-      $showOnTop={showOnTop}
-      $isSelected={isSelected}
+      showOnTop={showOnTop}
+      isSelected={isSelected}
       $isLastGroup={isLastGroup}
       $hasGroups={groups.length > 0}
     >
@@ -151,9 +151,9 @@ const OptionComponent = (props: any) => {
 
           <CheckboxOptionContainer>
             <OptionLabelContainer
-              $isSelected={isSelected}
+              isSelected={isSelected}
               $addPadding={addPadding}
-              $smallText={smallText}
+              smallText={smallText}
             >
               {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
               {label}
@@ -168,8 +168,8 @@ const OptionComponent = (props: any) => {
           </CheckboxOptionContainer>
         ) : (
           <OptionLabelContainer
-            $isSelected={isSelected}
-            $smallText={smallText}
+            isSelected={isSelected}
+            smallText={smallText}
             $addPadding={addPadding}
           >
             {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
@@ -239,7 +239,7 @@ const MenuList = (props: any) => {
   const { selectProps } = props;
   const { menuPlacement } = selectProps;
   return (
-    <MenuListComponent $showOnTop={menuPlacement === 'top'}>
+    <MenuListComponent showOnTop={menuPlacement === 'top'}>
       <Comp {...props} />
     </MenuListComponent>
   );
@@ -253,11 +253,11 @@ const Control = (props: any) => {
   } = selectProps;
   return (
     <ControlComponent
-      $menuIsOpen={menuIsOpen}
-      $isDisabled={isDisabled}
+      menuIsOpen={menuIsOpen}
+      isDisabled={isDisabled}
       error={error}
-      $isFocused={isFocused}
-      $showOnTop={menuPlacement === 'top'}
+      isFocused={isFocused}
+      showOnTop={menuPlacement === 'top'}
     >
       <Comp {...props} />
     </ControlComponent>
@@ -270,8 +270,8 @@ const SingleValue = (props: any) => {
   const { isDisabled } = selectProps;
   return (
     <SingleValueComponent
-      $isDisabled={isDisabled}
-      $isFocused={isFocused}
+      isDisabled={isDisabled}
+      isFocused={isFocused}
     >
       <Comp {...props} />
     </SingleValueComponent>
@@ -280,48 +280,48 @@ const SingleValue = (props: any) => {
 
 export const Select = <T extends SelectVariation>({
   selectOptions,
-  $readOnly,
+  readOnly,
   onSelectChange,
   selectValue, isMulti = true,
-  $isCheckBox, placeholder,
+  isCheckBox, placeholder,
   isClearable = false,
   isSearchable = false,
   showValue = false,
   clearButtonText = 'Clear',
   handleClearValue,
   maxMenuHeight,
-  $isDisabled = false,
+  isDisabled = false,
   onInputChange,
   width,
   required,
   tabIndex,
   error,
-  $errorMessage,
+  errorMessage,
   ref,
-  $showOnTop,
-  $noOptionsMessage,
-  $smallText = false,
+  showOnTop,
+  noOptionsMessage,
+  smallText = false,
 }: SelectProps<T>) => {
   const theme = localTheme();
-  const customNoOptionsMessage = () => $noOptionsMessage || 'No options';
+  const customNoOptionsMessage = () => noOptionsMessage || 'No options';
 
   return (
-    <SelectWrapper error={!!error} $isDisabled={$isDisabled} width={width} ref={ref}>
+    <SelectWrapper error={!!error} isDisabled={isDisabled} width={width} ref={ref}>
       <ReactSelect
         noOptionsMessage={customNoOptionsMessage}
-        menuPlacement={$showOnTop ? 'top' : 'bottom'}
-        isDisabled={$isDisabled}
+        menuPlacement={showOnTop ? 'top' : 'bottom'}
+        isDisabled={isDisabled}
         options={selectOptions}
         isMulti={isMulti}
         /* React select allows a theme to be passed to the component, but unfortunately it
         restricts the theme to be of type ThemeConfig, which is not the type of our theme.
         So we have to use casting here to get around this. */
         theme={theme as unknown as ThemeConfig}
-        isOptionDisabled={() => !!$readOnly}
+        isOptionDisabled={() => !!readOnly}
         isSearchable={isSearchable}
         styles={{
           ...colourStyles,
-          cursor: $isDisabled ? 'not-allowed' : 'pointer',
+          cursor: isDisabled ? 'not-allowed' : 'pointer',
           /* We are defining it here because showValue isn't passed to the placeholder
             through the props
           */
@@ -358,7 +358,7 @@ export const Select = <T extends SelectVariation>({
         components={{
           MultiValue: (props: any) => MultiValue(props, selectValue),
           Option: (props: any) => OptionComponent({
-            ...props, $readOnly, $isCheckBox, $smallText,
+            ...props, readOnly, isCheckBox, smallText,
           }),
           IndicatorSeparator: () => null,
           ClearIndicator: (props: any) => ClearIndicator(
@@ -386,9 +386,9 @@ export const Select = <T extends SelectVariation>({
         tabIndex={tabIndex}
         required={required}
       />
-      {error && $errorMessage && (
+      {error && errorMessage && (
         <ErrorMessageContainer>
-          <Text size={['12-Regular']} textColor="RED">{$errorMessage}</Text>
+          <Text size={['12-Regular']} textColor="RED">{errorMessage}</Text>
         </ErrorMessageContainer>
       )}
     </SelectWrapper>

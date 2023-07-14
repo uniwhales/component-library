@@ -26,7 +26,7 @@ const Template = () => {
           disabled={item.disabled}
           selected={selected === item.label}
           onClick={(e) => setSelected(e.target.value)}
-          $isLarge
+          isLarge
         />
       ))}
     </Column>

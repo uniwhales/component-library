@@ -7,10 +7,10 @@ import { SocialButtonGroupProps } from './types';
 
 export const SocialButtonGroup = ({ onTelegramClick, onTwitterClick }: SocialButtonGroupProps) => (
   <Container>
-    <ButtonAtom onClick={onTelegramClick} $buttonVariant="special_small_round">
+    <ButtonAtom onClick={onTelegramClick} buttonVariant="special_small_round">
       <IconWrapper icon={<TelegramStandard />} />
     </ButtonAtom>
-    <ButtonAtom onClick={onTwitterClick} $buttonVariant="special_small_round">
+    <ButtonAtom onClick={onTwitterClick} buttonVariant="special_small_round">
       <IconWrapper icon={<TwitterStandard />} />
     </ButtonAtom>
   </Container>

@@ -24,7 +24,7 @@ export const Navbar: FC<NavbarProps> = ({
   account,
   onWalletConnectClick,
   $bottomSpacing = true,
-  $bgColor = true,
+  bgColor = true,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const breakpoint = useBreakpoint();
@@ -50,7 +50,7 @@ export const Navbar: FC<NavbarProps> = ({
         $isMenuOpen={isMenuOpen}
         account={account}
         onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
-        $bgColor={$bgColor}
+        bgColor={bgColor}
       >
         <NavbarMainContent>
           <NavbarLeftSide>
@@ -69,7 +69,7 @@ export const Navbar: FC<NavbarProps> = ({
             {
               !account && breakpoint <= Breakpoints.Tablet
               && (
-                <ButtonAtom $buttonVariant="special_small_round" onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
+                <ButtonAtom buttonVariant="special_small_round" onClick={() => { setIsMenuOpen(!isMenuOpen); }}>
                   <IconWrapper cursor="pointer" icon={<Meatball />} />
                 </ButtonAtom>
               )

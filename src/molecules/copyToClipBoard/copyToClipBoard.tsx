@@ -22,7 +22,7 @@ export interface CopyToClipBoardProps {
   linkIcon?: JSX.Element;
   background?: boolean
   link?: string;
-  $hoverColor?: Color;
+  hoverColor?: Color;
   iconLeft?: boolean;
   textSize?: BaseTextProps['size']
   iconSize?: string;
@@ -35,13 +35,13 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 5px;
 `;
-const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | '$hoverColor'>>`
+const Background = styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverColor'>>`
   border-radius: 36px;
   background-color: ${({ theme, background }) => background && theme.colors.NEUTRAL_SHADE_0};
   padding: 4px;
   &:hover {
     cursor: pointer;
-    background-color: ${({ background, $hoverColor }) => background && $hoverColor && $hoverColor};
+    background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
 const CopyTextLabel = styled.div`
@@ -54,7 +54,7 @@ export const CopyToClipBoard = ({
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
   */
-  $hoverColor, background, iconLeft, addressId,
+  hoverColor, background, iconLeft, addressId,
 }: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);
@@ -77,10 +77,10 @@ export const CopyToClipBoard = ({
   const copyIcon = (
     <IconWrapper
       onMouseEnter={() => {
-        if ($hoverColor && !background) setCurrentColor($hoverColor);
+        if (hoverColor && !background) setCurrentColor(hoverColor);
       }}
       onMouseLeave={() => {
-        if ($hoverColor && !background) setCurrentColor(color);
+        if (hoverColor && !background) setCurrentColor(color);
       }}
       cursor="pointer"
       width={iconSize ?? '12px'}
@@ -107,13 +107,13 @@ export const CopyToClipBoard = ({
       </SimpleTooltip>
       {iconLeft && TextLabel}
       {link && (
-        <Background $hoverColor={$hoverColor} background={background}>
+        <Background hoverColor={hoverColor} background={background}>
           <IconWrapper
             onMouseEnter={() => {
-              if ($hoverColor && !background) setCurrentLinkColor($hoverColor);
+              if (hoverColor && !background) setCurrentLinkColor(hoverColor);
             }}
             onMouseLeave={() => {
-              if ($hoverColor && !background) setCurrentLinkColor(color);
+              if (hoverColor && !background) setCurrentLinkColor(color);
             }}
             cursor="pointer"
             width={iconSize ?? '12px'}

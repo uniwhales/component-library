@@ -35,7 +35,7 @@ Primary.args = {
 NoHover.args = {
   left: <AllIcon />,
   right: <AllIcon />,
-  $noHover: true,
+  noHover: true,
   height: '54px',
 };
 
