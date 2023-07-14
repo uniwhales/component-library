@@ -41,7 +41,7 @@ export const UserIdenticon = ({
       />
       {account && <Text size="10-Regular">{shortenAddressTo11Chars(account)}</Text>}
       <UserMenu
-        $isMenuOpen={isMenuOpen}
+        isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {
           onWalletConnectClick(e);
         }}

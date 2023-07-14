@@ -7,9 +7,9 @@ import { NavbarUserMenu } from './styles';
 import { UserMenuProps } from './types';
 
 export const UserMenu: FC<UserMenuProps> = ({
-  account, onWalletConnectClick, $isMenuOpen,
+  account, onWalletConnectClick, isMenuOpen,
 }) => (
-  <NavbarUserMenu $isMenuOpen={$isMenuOpen}>
+  <NavbarUserMenu isMenuOpen={isMenuOpen}>
     {account && <CopyToClipBoard walletCut text={account} />}
     {/* @ts-ignore //TODO ERROR */}
     <ConnectWalletButton account={account} onClick={() => onWalletConnectClick()} />

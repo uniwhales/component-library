@@ -23,7 +23,7 @@ export const Navbar: FC<NavbarProps> = ({
   rightSideChildren,
   account,
   onWalletConnectClick,
-  $bottomSpacing = true,
+  bottomSpacing = true,
   bgColor = true,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,8 +46,8 @@ export const Navbar: FC<NavbarProps> = ({
     <>
       <NavbarContainer
         ref={clickRef}
-        $bottomSpacing={$bottomSpacing}
-        $isMenuOpen={isMenuOpen}
+        bottomSpacing={bottomSpacing}
+        isMenuOpen={isMenuOpen}
         account={account}
         onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
         bgColor={bgColor}
@@ -88,7 +88,7 @@ export const Navbar: FC<NavbarProps> = ({
         {/* On Tablet and smaller we show the menu inside expanded navbar */}
         {breakpoint <= Breakpoints.Tablet && (
         <UserMenu
-          $isMenuOpen={isMenuOpen}
+          isMenuOpen={isMenuOpen}
           onWalletConnectClick={(e) => {
             onWalletConnectClick(e);
             /*
@@ -104,7 +104,7 @@ export const Navbar: FC<NavbarProps> = ({
       {/* On Desktop we show the menu outside of navbar */}
       {breakpoint > Breakpoints.Tablet && (
       <UserMenu
-        $isMenuOpen={isMenuOpen}
+        isMenuOpen={isMenuOpen}
         onWalletConnectClick={(e) => {
           onWalletConnectClick(e);
           /*

@@ -1,8 +1,8 @@
 import { css, styled } from 'styled-components';
 import { tablet } from '../../../../layouts/breakpoints';
 
-export const NavbarUserMenu = styled.div<{ $isMenuOpen: boolean }>`
-  display: ${({ $isMenuOpen }) => ($isMenuOpen ? 'flex' : 'none')};
+export const NavbarUserMenu = styled.div<{ isMenuOpen: boolean }>`
+  display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 8px;
   align-items: flex-end;
@@ -19,7 +19,7 @@ export const NavbarUserMenu = styled.div<{ $isMenuOpen: boolean }>`
   transition: all 800ms ease-in-out;
   z-index: ${({ theme }) => theme.zIndex.STICKY};
 
-  ${tablet(css<{ $isMenuOpen: boolean }>`
+  ${tablet(css<{ isMenuOpen: boolean }>`
     position: unset;
     background-color: transparent;
     border-radius: none;

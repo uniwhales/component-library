@@ -7,10 +7,10 @@ export interface NavbarProps {
   rightSideChildren?: JSX.Element;
   onWalletConnectClick: ConnectButtonProps['onClick'];
   account?: ConnectButtonProps['account']
-  $bottomSpacing?: boolean;
+  bottomSpacing?: boolean;
   bgColor?: boolean | string;
 }
 
 type IsMenuOpen = { isMenuOpen?: boolean };
 type Direction = { direction: 'up' | 'down' };
-export type NavbarContainerProps = Pick<NavbarProps, 'account' | '$bottomSpacing'> & IsMenuOpen & Direction;
+export type NavbarContainerProps = Pick<NavbarProps, 'account' | 'bottomSpacing'> & IsMenuOpen & Direction;
