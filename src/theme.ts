@@ -242,6 +242,7 @@ interface CieloThemeInterface {
     WHITE: string
     BLACK: string
     GREY: string
+    GREEN: string
   },
   dropShadow: {
     REGULAR: string;
@@ -316,6 +317,7 @@ const Theme: CieloThemeInterface = {
     WHITE: '#FFFFFF',
     BLACK: '#131313',
     GREY: '#A5A6B8',
+    GREEN: '#1DD1A1',
   },
   BREAKPOINTS_SCALE,
   textVariants: TEXT_VARIANTS,
