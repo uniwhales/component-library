@@ -562,7 +562,6 @@ export const Select = <T extends SelectVariation>({
           <div className="react-select__placeholder">{placeholder}</div>
         }
         closeMenuOnSelect={!isMulti}
-        blurInputOnSelect={false}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
@@ -591,7 +590,7 @@ export const Select = <T extends SelectVariation>({
         }}
         value={selectValue}
         isXL={isXL}
-        closeMenuOnScroll={false}
+        closeMenuOnScroll
         maxMenuHeight={maxMenuHeight}
         tabIndex={tabIndex}
         required={required}
