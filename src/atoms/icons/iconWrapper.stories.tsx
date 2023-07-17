@@ -190,6 +190,7 @@ import { PulsechainColor } from './chains/fullColorStyle/PulsechainColor';
 import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
 import { FatUpArrowIcon } from './navigationIcons/FatArrowUpIcon';
 import { BidStandard } from './generalIcons/filledStyle/BidStandard';
+import { MantleColor } from './chains/fullColorStyle/MantleColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -297,6 +298,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="gnosis" icon={<GnosisColor />} />
     <IconWrapper name="blur" icon={<Blur />} />
     <IconWrapper name="Canto" icon={<Canto />} />
+    <IconWrapper name="mantle" icon={<MantleColor />} />
   </>
 );
 
