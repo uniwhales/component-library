@@ -350,6 +350,10 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       color: theme.colors.system.WHITE,
     },
   }),
+  indicatorsContainer: (defaultStyles) => ({
+    ...defaultStyles,
+    pointerEvents: 'none',
+  }),
 };
 
 const OptionComponent = (props: any) => {
@@ -457,57 +461,24 @@ const ClearIndicator = (props: any) => {
   );
 };
 
-const DropdownIndicator = (props: any) => {
-  const {
-    innerProps,
-    selectProps: { menuIsOpen },
-    isFocused,
-    isDisabled,
-  } = props;
-
+const DropdownIndicator = ({ selectProps, isFocused, isDisabled }: any) => {
   const theme = localTheme();
-
+  if (selectProps.menuIsOpen) {
+    return (
+      <IconWrapper
+        fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.WHITE}
+        icon={<ChevronUpIcon />}
+        cursor="pointer"
+      />
+    );
+  }
   return (
-    <components.DropdownIndicator
-      {...props}
-      innerProps={{
-        ...innerProps,
-        onMouseDown: (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        },
-        onTouchEnd: (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        },
-      }}
-    >
-      {menuIsOpen ? (
-        <IconWrapper
-          {...innerProps}
-          fill={
-        isDisabled
-          ? theme.containerAndCardShades.SHADE_PLUS_1
-          : theme.colors.system.WHITE
-      }
-          icon={<ChevronUpIcon />}
-          cursor="pointer"
-        />
-      ) : (
-        <IconWrapper
-          {...innerProps}
-          fill={
-        isDisabled
-          ? theme.containerAndCardShades.SHADE_PLUS_1
-          : isFocused
-            ? theme.colors.system.WHITE
-            : theme.textShades.SHADE_MINUS_1
-      }
-          icon={<ChevronDownIcon />}
-          cursor="pointer"
-        />
-      )}
-    </components.DropdownIndicator>
+    <IconWrapper
+      fill={isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1
+        : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1}
+      icon={<ChevronDownIcon />}
+      cursor="pointer"
+    />
   );
 };
 
