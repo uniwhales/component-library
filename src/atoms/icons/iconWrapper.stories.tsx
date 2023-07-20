@@ -154,7 +154,7 @@ import {
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
-  YourFeed, Configure, CieloLogoTyped, WalletConnect,
+  YourFeed, Configure, CieloLogoTyped, WalletConnect, BaseColor,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -299,6 +299,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="blur" icon={<Blur />} />
     <IconWrapper name="Canto" icon={<Canto />} />
     <IconWrapper name="mantle" icon={<MantleColor />} />
+    <IconWrapper name="base" icon={<BaseColor />} />
   </>
 );
 
