@@ -562,6 +562,7 @@ export const Select = <T extends SelectVariation>({
           <div className="react-select__placeholder">{placeholder}</div>
         }
         closeMenuOnSelect={!isMulti}
+        blurInputOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
