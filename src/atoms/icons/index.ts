@@ -219,6 +219,7 @@ export * from './chains/fullColorStyle/Canto';
 export * from './chains/fullColorStyle/ZkEvm';
 export * from './chains/fullColorStyle/ZkSync';
 export * from './chains/fullColorStyle/MantleColor';
+export * from './chains/fullColorStyle/BaseColor';
 
 // coins
 export { Dai } from './tokens/DAI';
