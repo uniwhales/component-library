@@ -31,7 +31,6 @@ const Template: ComponentStory<typeof DropdownSlider> = (args, { globals }) => {
           ref={sliderEl}
           buttonText="Min.USD"
           buttonIcon={<CoinStandard />}
-          buttonWidth="140px"
           description={(
             <TextRow>
               <Text color={isDark ? '#B4B5C6' : '#70717C'} size="12-Regular">
