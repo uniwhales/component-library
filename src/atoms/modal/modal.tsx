@@ -27,6 +27,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
   additionalTinyAction,
   modalContent,
   maxWidth,
+  hasSidebar = true,
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
@@ -44,7 +45,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
     <>
       <Overlay />
       <ModalContainer
-        isMobile={isMobile}
+        hasSidebar={hasSidebar}
         onClick={(e) => {
           e.stopPropagation();
           if (!closeFn || !closeOnOverlayClick) return;

@@ -3,11 +3,11 @@ import { Column, Row } from '../common/flex';
 import { Styled } from '../../theme';
 import { Card } from '../card/card';
 
-export const ModalContainer = Styled.div<{ isMobile?:boolean }>`
+export const ModalContainer = Styled.div<{ hasSidebar?:boolean }>`
   position: fixed;
   height: 100%;
   width: 100%;
-  left: ${({ isMobile }) => !isMobile && '64px'};
+  left: ${({ hasSidebar }) => hasSidebar && '64px'};
   top: 0;
   z-index: ${({ theme }) => theme.zIndex.MODAL};
   display: flex;
@@ -23,7 +23,7 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
   box-sizing: border-box;
-  
+
   ${({ isMobile, modalVariant, maxWidth }) => (isMobile ? css`
     position: fixed;
     top: 0px;

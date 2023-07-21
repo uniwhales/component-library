@@ -20,6 +20,7 @@ export type ModalBaseProps = {
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalTinyAction?: ReactElement
   maxWidth?: string
+  hasSidebar?:boolean
 };
 export type ExampleModalProps = {
   latest: ModalData[];
