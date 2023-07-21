@@ -2,8 +2,8 @@ import { Styled } from '../../theme';
 import { IdenticonProps } from './types';
 
 export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
-  height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
-  width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
+  height: ${({ size }) => (size === 'big' ? '36px' : size === 'small' ? '24px' : '18px')};
+  width: ${({ size }) => (size === 'big' ? '36px' : size === 'small' ? '24px' : '18px')};
   display: flex;
   align-items: center;
   justify-content: center;
