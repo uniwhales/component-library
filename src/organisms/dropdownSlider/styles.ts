@@ -6,6 +6,7 @@ export const Container = Styled(Column)`
   justify-content: center;
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 export const OpenContainer = Styled.div`
@@ -17,6 +18,7 @@ export const OpenContainer = Styled.div`
 `;
 
 export const MinUsdButton = Styled.div<{ isOpen:boolean, width?:string, height?:string, disabled:boolean }>`
+  box-sizing: border-box;
   height: ${({ height }) => height};
   width: ${({ width }) => width || '100%'};
   z-index: ${({ theme, isOpen }) => isOpen && theme.zIndex.MODAL};
