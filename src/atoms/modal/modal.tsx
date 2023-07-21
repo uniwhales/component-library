@@ -31,7 +31,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
   const breakpoint = useBreakpoint();
-  const isMobile = breakpoint <= Breakpoints.Tablet;
+  const isMobile = breakpoint <= Breakpoints.Phone;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
