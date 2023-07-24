@@ -14,7 +14,7 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
   align-items: center;
   border-radius: 12px;
   font-family: inherit;
-  height: 40px;
+  height: ${({ previewButton }) => (previewButton ? '30px' : '40px')};
   background-color: ${({ theme, previewButton }) => (previewButton ? theme.colors.primary.MAIN_BLUE : 'transparent')};
   border: ${({ theme, isConnected, previewButton }) => (isConnected
     ? 'none'
