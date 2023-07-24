@@ -9,7 +9,7 @@ export default {
   },
 } as ComponentMeta<typeof ConnectWalletButton>;
 
-const Template: ComponentStory<typeof ConnectWalletButton> = () => {
+const Template: ComponentStory<typeof ConnectWalletButton> = (args) => {
   const [account, setAccount] = useState<string | null>(null);
 
   const handleSwitch = () => {
@@ -21,6 +21,7 @@ const Template: ComponentStory<typeof ConnectWalletButton> = () => {
   };
   return (
     <ConnectWalletButton
+      {...args}
       account={account}
       onClick={handleSwitch}
     />
@@ -28,3 +29,8 @@ const Template: ComponentStory<typeof ConnectWalletButton> = () => {
 };
 
 export const ConnectButton = Template.bind({});
+export const PreviewButton = Template.bind({});
+
+PreviewButton.args = {
+  previewButton: true,
+};

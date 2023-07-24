@@ -6,11 +6,12 @@ import { ConnectButton } from './connectWalletButton.styles';
 import { ConnectButtonProps } from './types';
 
 export const ConnectWalletButton: FC<ConnectButtonProps> = ({
-  onClick, account,
+  onClick, account, previewButton,
 }) => (
   <ConnectButton
     onClick={onClick}
     isConnected={!!account}
+    previewButton={previewButton}
   >
     {!account && <IconWrapper height="16px" width="16px" icon={<WalletStandard />} />}
     <Text size="14-Bold">{account ? 'Disconnect' : 'Connect'}</Text>

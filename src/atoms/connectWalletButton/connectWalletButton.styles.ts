@@ -15,8 +15,12 @@ export const ConnectButton = Styled.button<ConnectButtonProps & { isConnected: b
   border-radius: 12px;
   font-family: inherit;
   height: 40px;
-  background-color: ${() => 'transparent'};
-  border: ${({ theme, isConnected }) => (isConnected ? 'none' : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
+  background-color: ${({ theme, previewButton }) => (previewButton ? theme.colors.primary.MAIN_BLUE : 'transparent')};
+  border: ${({ theme, isConnected, previewButton }) => (isConnected
+    ? 'none'
+    : previewButton
+      ? `2px solid ${theme.colors.primary.MAIN_BLUE}`
+      : `2px solid ${theme.colors.primary.MAIN_BLUE}`)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   transition: color 300ms, fill 300ms, background 300ms ease-in-out;
 
