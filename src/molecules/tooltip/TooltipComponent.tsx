@@ -5,12 +5,13 @@ import { TooltipProps } from './types';
 
 export const SimpleTooltip = ({
   label, children, position = 'top', opened, multiline = false,
-  zIndex, offset = 4,
+  zIndex, offset = 4, ref,
 }: TooltipProps) => {
   const theme = localTheme();
 
   return (
     <Tooltip
+      refProp={ref}
       radius={8}
       label={label}
       position={position}

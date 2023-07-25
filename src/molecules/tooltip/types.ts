@@ -10,4 +10,5 @@ export interface TooltipProps {
   zIndex?: ZIndex;
   multiline?: boolean;
   offset?: number;
+  ref?: string;
 }
