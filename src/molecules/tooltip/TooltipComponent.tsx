@@ -11,7 +11,6 @@ export const SimpleTooltip = ({
 
   return (
     <Tooltip
-      refProp="innerRef"
       radius={8}
       label={label}
       position={position}
