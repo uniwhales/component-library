@@ -22,7 +22,6 @@ export const SimpleTooltip = ({
       zIndex={zIndex}
       multiline={multiline}
       width={multiline ? 300 : undefined}
-      withinPortal={false}
       styles={{
         arrow: {
           backgroundColor: theme.containerAndCardShades.BG_SHADE_PLUS_4,
