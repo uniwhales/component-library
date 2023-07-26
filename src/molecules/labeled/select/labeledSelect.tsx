@@ -41,7 +41,7 @@ export const LabeledSelect = <T extends SelectVariation>(
       {label && (
       <Text size={labelFontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : labelColor || (isDisabled ? textShades.SHADE_MINUS_1 : textShades.SHADE_MINUS_2)}>
         <>
-          <Row gap="4px">
+          <Row gap="4px" alignItems="center">
             {icon && (
             <IconWrapper
               height={iconSize || '16px'}
@@ -58,7 +58,7 @@ export const LabeledSelect = <T extends SelectVariation>(
       {labels && labels.map((l) => (
         <Text key={l.label} size={l?.fontSize ?? '12-Regular'} color={!isDisabled && hover ? textShades.SHADE_MINUS_3 : l.color ?? textShades.SHADE_MINUS_1}>
           <>
-            <Row gap="4px">
+            <Row gap="4px" alignItems="center">
               {l.icon && (
               <IconWrapper
                 height={l.iconSize || '16px'}
