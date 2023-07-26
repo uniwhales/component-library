@@ -13,7 +13,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '../icons';
 export interface Option {
   value: string,
   label: string,
-  id: number;
+  id: number | string;
   icon?: JSX.Element,
   isSelected?: boolean;
   order?: number;
