@@ -22,7 +22,7 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   position: relative;
   gap: 6px;
   max-width: ${({ modalVariant, maxWidth }) => (maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
-  max-height: 650px;
+  max-height: 750px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
@@ -33,7 +33,7 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
 
   ${phone(css`
     width: 100vw;
-    max-height: 600px;
+    max-height: 700px;
   `)}
 `;
 

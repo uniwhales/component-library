@@ -17,7 +17,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
   position: relative;
   gap: 6px;
   max-width: ${({ modalVariant }) => (modalVariant === 'double' ? '748px' : '360px')};
-  max-height: 650px;
+  max-height: 750px;
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
@@ -26,7 +26,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double' }>`
   `)}
   ${phone(css`
     width: 100vw;
-    max-height: 600px;
+    max-height: 700px;
   `)}
 `;
 export const IconWrapperAbsolute = Styled.div`
