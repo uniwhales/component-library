@@ -110,8 +110,8 @@ export const IconWrapper: React.FC<IconWrapperProps> = ({
       disabled={disabled}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
-      pointerEvents={pointerEvents}
-      hasHover={hasHover}
+      pointerEvents={disabled ? 'none' : pointerEvents}
+      hasHover={!disabled && hasHover}
       hoverColor={hoverColor}
     >
       {icon && icon}
