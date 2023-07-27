@@ -44,8 +44,8 @@ export const LabeledSelect = <T extends SelectVariation>(
           <Row gap="4px" alignItems="center">
             {icon && (
             <IconWrapper
-              height={iconSize || '16px'}
-              width={iconSize || '16px'}
+              height={iconSize || '14px'}
+              width={iconSize || '14px'}
               icon={icon}
             />
             )}
@@ -61,8 +61,8 @@ export const LabeledSelect = <T extends SelectVariation>(
             <Row gap="4px" alignItems="center">
               {l.icon && (
               <IconWrapper
-                height={l.iconSize || '16px'}
-                width={l.iconSize || '16px'}
+                height={l.iconSize || '14px'}
+                width={l.iconSize || '14px'}
                 icon={l.icon}
               />
               )}
