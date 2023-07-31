@@ -23,6 +23,7 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
   box-sizing: border-box;
+  max-height: 750px;
 
   ${({ isMobile, modalVariant, maxWidth }) => (isMobile ? css`
     position: fixed;
