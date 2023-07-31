@@ -58,7 +58,14 @@ export const exampleModal = ({ latest, closeFn }: ExampleModalProps) => (
   <ModalBase
     closeFn={closeFn}
     headerText="Modal Header"
-    headerIcon={<StarIcon />}
+    additionalTinyAction={(
+      <ButtonAtom buttonVariant="special_extra_tiny_subtle">
+        <>
+          <IconWrapper icon={<ProfileStandard />} />
+          View Profile
+        </>
+      </ButtonAtom>
+    )}
     modalVariant="single"
     modalContent={(
       <LatestAnnouncementsList height="calc(100vh - 100px)" gap="48px">

@@ -17,6 +17,7 @@ import {
   CloseWrapper,
 } from './styles';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
+import { Column } from '../common/flex';
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
@@ -79,7 +80,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
               />
             </CloseButton>
           </CloseWrapper>
-          <>
+          <Column>
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
@@ -92,10 +93,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
                   </Text>
                 ) : headerText)}
               </HeaderAndIconContainer>
-              {additionalTinyAction && additionalTinyAction}
+              {additionalTinyAction && (
+                <div>
+                  {additionalTinyAction}
+                </div>
+              )}
             </ModalHeaderContainer>
             {modalContent}
-          </>
+          </Column>
         </ModalBody>
       </ModalContainer>
     </>
