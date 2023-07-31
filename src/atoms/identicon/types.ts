@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { CheckboxProps } from '../inputs/checkbox';
 
 export type IdenticonProps = {
-  size: 'big' | 'small';
+  size: 'big' | 'small' | 'tiny';
   id: string;
   hasInteraction: boolean;
   onClick?: () => void;

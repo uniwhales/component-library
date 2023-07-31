@@ -1,9 +1,5 @@
-import React, {
-  ReactNode, Ref, useState,
-} from 'react';
-import ReactSelect, {
-  components, StylesConfig,
-} from 'react-select';
+import React, { ReactNode, Ref, useState } from 'react';
+import ReactSelect, { components, StylesConfig } from 'react-select';
 import { Checkbox } from './checkbox';
 import { localTheme, Styled } from '../../theme';
 import { IconWrapper } from '../icons/iconWrapper';
@@ -11,59 +7,69 @@ import { Text } from '../texts/text';
 import { ChevronDownIcon, ChevronUpIcon } from '../icons';
 
 export interface Option {
-  value: string,
-  label: string,
+  value: string;
+  label: string;
   id: number;
-  icon?: JSX.Element,
+  icon?: JSX.Element;
   isSelected?: boolean;
   order?: number;
   required?: boolean;
 }
 export interface SelectGroupOption {
   label: string;
-  options: Option[]
+  options: Option[];
 }
 
-export interface SelectOption extends Option { }
+export interface SelectOption extends Option {}
 
 export type SelectVariation = 'single' | 'multi' | 'group' | 'multi-group';
-export type SelectVal<T extends SelectVariation> = T extends 'single' ? SelectOption : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectOption
-  : SelectOption[];
-export type SelectOptions<T extends SelectVariation> = T extends 'single' ? SelectOption[] : T extends 'multi' ? SelectOption[] : T extends 'group' ? SelectGroupOption[]
-  : SelectGroupOption[];
+export type SelectVal<T extends SelectVariation> = T extends 'single'
+  ? SelectOption
+  : T extends 'multi'
+    ? SelectOption[]
+    : T extends 'group'
+      ? SelectOption
+      : SelectOption[];
+export type SelectOptions<T extends SelectVariation> = T extends 'single'
+  ? SelectOption[]
+  : T extends 'multi'
+    ? SelectOption[]
+    : T extends 'group'
+      ? SelectGroupOption[]
+      : SelectGroupOption[];
 
 export interface SelectProps<T extends SelectVariation> {
-  width?: string,
-  onSelectChange?: (o: SelectVal<T>) => void,
-  selectOptions: SelectOptions<T>,
-  selectValue?: SelectVal<T> | null,
-  readOnly?: boolean,
-  isMulti?: boolean,
-  isCheckBox?: boolean,
-  placeholder: string | ReactNode,
-  isXL?: boolean,
-  isClearable?: boolean,
-  isSearchable?: boolean,
-  showValue?: boolean,
-  clearButtonText?: string,
+  width?: string;
+  onSelectChange?: (o: SelectVal<T>) => void;
+  selectOptions: SelectOptions<T>;
+  selectValue?: SelectVal<T> | null;
+  readOnly?: boolean;
+  isMulti?: boolean;
+  isCheckBox?: boolean;
+  placeholder: string | ReactNode;
+  isXL?: boolean;
+  isClearable?: boolean;
+  isSearchable?: boolean;
+  showValue?: boolean;
+  clearButtonText?: string;
   handleClearValue?: () => void;
   maxMenuHeight?: number;
   isDisabled?: boolean;
   onInputChange?: (e: string) => void;
-  required?: boolean
-  tabIndex?: number
-  ref?: Ref<HTMLDivElement>
-  error?: boolean
-  errorMessage?: string
-  showOnTop?: boolean
-  noOptionsMessage?:string;
+  required?: boolean;
+  tabIndex?: number;
+  ref?: Ref<HTMLDivElement>;
+  error?: boolean;
+  errorMessage?: string;
+  showOnTop?: boolean;
+  noOptionsMessage?: string;
   smallText?: boolean;
 }
 
 type StyledProps = {
-  isFocused?: boolean
-  isSelected?: boolean
-  menuIsOpen?: boolean
+  isFocused?: boolean;
+  isSelected?: boolean;
+  menuIsOpen?: boolean;
   options?: any;
   theme: any;
   readOnly?: boolean;
@@ -75,13 +81,18 @@ type StyledProps = {
   showOnTop?: boolean;
 };
 
-const SelectWrapper = Styled.div<{ width?: string, isDisabled:boolean }>`
+const SelectWrapper = Styled.div<{ width?: string; isDisabled: boolean }>`
   position: relative;
   width: ${({ width }) => width ?? '100%'};
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 `;
 
-const StyledSelect = Styled(ReactSelect) <{ isXL: boolean, width?: string, isDisabled: boolean, error: boolean }>`
+const StyledSelect = Styled(ReactSelect)<{
+  isXL: boolean;
+  width?: string;
+  isDisabled: boolean;
+  error: boolean;
+}>`
   outline: none;
   margin-bottom: ${({ error }) => error && '4px'};
   width: ${({ width }) => width ?? '100%'};
@@ -114,21 +125,31 @@ export const Placeholder = Styled.div`
   overflow: hidden;
 `;
 
-const OptionWrapper = Styled.div<{ isSelected: boolean, hasGroups: boolean, showOnTop?: boolean, isLastGroup?: boolean }>`
+const OptionWrapper = Styled.div<{
+  isSelected: boolean;
+  hasGroups: boolean;
+  showOnTop?: boolean;
+  isLastGroup?: boolean;
+}>`
   zIndex: ${({ theme }) => theme.zIndex.SAFE_LAYER};
-  background-color: ${({ theme, isSelected }) => (isSelected ? theme.colors.primary.MAIN_BLUE : theme.containerAndCardShades.SHADE_PLUS_2)};
+  background-color: ${({ theme, isSelected }) => (isSelected
+    ? theme.colors.primary.MAIN_BLUE
+    : theme.containerAndCardShades.SHADE_PLUS_2)};
   :hover {
     background-color: ${({ theme, isSelected }) => !isSelected && theme.textShades.SHADE_MINUS_1};
   }
   &:first-of-type {
-    border-radius: ${({ showOnTop, hasGroups }) => (showOnTop && !hasGroups && '12px 12px 0 0')};
+    border-radius: ${({ showOnTop, hasGroups }) => showOnTop && !hasGroups && '12px 12px 0 0'};
   }
   &:last-of-type {
-    border-radius: ${({ showOnTop, isLastGroup }) => (!showOnTop && isLastGroup && '0 0 12px 12px')};
+    border-radius: ${({ showOnTop, isLastGroup }) => !showOnTop && isLastGroup && '0 0 12px 12px'};
   }
 `;
 
-const OptionLabelContainer = Styled.label<{ addPadding: boolean, smallText?:boolean }>`
+const OptionLabelContainer = Styled.label<{
+  addPadding: boolean;
+  smallText?: boolean;
+}>`
   padding-left: ${({ addPadding }) => addPadding && '24px'};
   display: flex;
   align-items: center;
@@ -146,7 +167,9 @@ const ClearButtonContainer = Styled.div`
 const ClearWrapper = Styled.div``;
 
 export const Required = Styled.span<{ disabled?: boolean }>`
-  color: ${({ theme, disabled }) => (disabled ? theme.containerAndCardShades.SHADE_PLUS_1 : theme.colors.system.RED)};
+  color: ${({ theme, disabled }) => (disabled
+    ? theme.containerAndCardShades.SHADE_PLUS_1
+    : theme.colors.system.RED)};
 `;
 
 const CheckboxOptionContainer = Styled.div`
@@ -154,26 +177,49 @@ const CheckboxOptionContainer = Styled.div`
   justify-content: space-between;
 `;
 
-const ControlComponent = Styled.div<{ menuIsOpen: boolean, isFocused: boolean, isDisabled: boolean, error: boolean, showOnTop?: boolean }>`
+const ControlComponent = Styled.div<{
+  menuIsOpen: boolean;
+  isFocused: boolean;
+  isDisabled: boolean;
+  error: boolean;
+  showOnTop?: boolean;
+}>`
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
   padding: 0 10px 0 10px;
   box-shadow: none;
-  border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop ? '0 0 12px 12px' : menuIsOpen && isFocused && !showOnTop ? '12px 12px 0 0 ' : '12px')};
+  border-radius: ${({ menuIsOpen, isFocused, showOnTop }) => (menuIsOpen && isFocused && showOnTop
+    ? '0 0 12px 12px'
+    : menuIsOpen && isFocused && !showOnTop
+      ? '12px 12px 0 0 '
+      : '12px')};
   height: 40px;
   background: ${({ theme, isFocused, isDisabled }) => (isFocused
-    ? theme.colors.primary.MAIN_BLUE : isDisabled
+    ? theme.colors.primary.MAIN_BLUE
+    : isDisabled
       ? theme.containerAndCardShades.SHADE_PLUS_3
       : theme.containerAndCardShades.BG_SHADE_PLUS_4)};
-  border: ${({ theme, error, isDisabled }) => (isDisabled ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}` : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
-  color: ${({ theme, isFocused, isDisabled }) => (isDisabled ? theme.containerAndCardShades.SHADE_PLUS_1 : isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2)};
+  border: ${({ theme, error, isDisabled }) => (isDisabled
+    ? `1px solid ${theme.containerAndCardShades.BG_SHADE_PLUS_4}`
+    : error
+      ? `1px solid ${theme.colors.system.RED}`
+      : `1px solid ${theme.textShades.SHADE_MINUS_1}`)};
+  color: ${({ theme, isFocused, isDisabled }) => (isDisabled
+    ? theme.containerAndCardShades.SHADE_PLUS_1
+    : isFocused
+      ? theme.colors.system.WHITE
+      : theme.textShades.SHADE_MINUS_2)};
   font-weight: normal;
   svg {
     fill: ${({ theme, isFocused }) => isFocused && theme.colors.system.WHITE};
   }
   :hover {
-    border: ${({ theme, error, isDisabled }) => (isDisabled ? '1px solid transparent' : error ? `1px solid ${theme.colors.system.RED}` : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
+    border: ${({ theme, error, isDisabled }) => (isDisabled
+    ? '1px solid transparent'
+    : error
+      ? `1px solid ${theme.colors.system.RED}`
+      : `1px solid ${theme.textShades.SHADE_MINUS_2}`)};
     svg {
       fill: ${({ theme, isFocused }) => (isFocused ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_3)};
     }
@@ -192,7 +238,8 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   placeholder: (defaultStyles, { isFocused, theme }: StyledProps) => ({
     ...defaultStyles,
     color: isFocused
-      ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+      ? theme.colors.system.WHITE
+      : theme.textShades.SHADE_MINUS_1,
     fontSize: '12px',
     lineHeight: '16px',
     cursor: 'pointer',
@@ -200,11 +247,13 @@ const colourStyles: StylesConfig<StyledProps, false> = {
       fontSize: '12px',
       lineHeight: '16px',
       color: isFocused
-        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+        ? theme.colors.system.WHITE
+        : theme.textShades.SHADE_MINUS_1,
     },
     svg: {
       fill: isFocused
-        ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_1,
+        ? theme.colors.system.WHITE
+        : theme.textShades.SHADE_MINUS_1,
     },
   }),
   control: (defaultStyles) => ({
@@ -294,24 +343,39 @@ const colourStyles: StylesConfig<StyledProps, false> = {
   }),
   option: (defaultStyles, { theme, isSelected }: StyledProps) => ({
     ...defaultStyles,
-    color: isSelected ? theme.colors.system.WHITE : theme.textShades.SHADE_MINUS_2,
+    color: isSelected
+      ? theme.colors.system.WHITE
+      : theme.textShades.SHADE_MINUS_2,
     '&:hover': {
       color: theme.colors.system.WHITE,
     },
+  }),
+  indicatorsContainer: (defaultStyles) => ({
+    ...defaultStyles,
+    pointerEvents: 'none',
   }),
 };
 
 const OptionComponent = (props: any) => {
   const {
-    label, isSelected, readOnly, isCheckBox, data, options, selectProps, smallText,
+    label,
+    isSelected,
+    readOnly,
+    isCheckBox,
+    data,
+    options,
+    selectProps,
+    smallText,
   } = props;
   // check if any options have icons
   const optionsHaveIcon = options.filter((o: { icon: JSX.Element }) => o.icon);
   // check if groups have icons
   const groups = options.filter((o: SelectGroupOption) => o.options);
   const groupOptions = groups
-    && groups.map((g: { options: Option[]; }) => g.options.filter((o: Option) => o.icon));
-  const groupHasIcons = groupOptions.some((group: string | any[]) => group.length > 0);
+    && groups.map((g: { options: Option[] }) => g.options.filter((o: Option) => o.icon));
+  const groupHasIcons = groupOptions.some(
+    (group: string | any[]) => group.length > 0,
+  );
   // check if individual option has an icon
   const hasIcon = !!data.icon;
   // show padding if any options have
@@ -320,7 +384,9 @@ const OptionComponent = (props: any) => {
   const showOnTop = selectProps.menuPlacement === 'top';
 
   const isLastGroup = React.useMemo(() => {
-    const lastGroup = [...options].reverse().find((o: SelectGroupOption) => o.options);
+    const lastGroup = [...options]
+      .reverse()
+      .find((o: SelectGroupOption) => o.options);
     return lastGroup && lastGroup.options.includes(data);
   }, [options, data]);
 
@@ -333,15 +399,16 @@ const OptionComponent = (props: any) => {
     >
       <components.Option {...props} label={data.label}>
         {!readOnly && isCheckBox ? (
-
           <CheckboxOptionContainer>
             <OptionLabelContainer addPadding={addPadding} smallText={smallText}>
-              {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+              {data.icon && (
+                <IconWrapper height="14px" width="14px" icon={data.icon} />
+              )}
               {label}
             </OptionLabelContainer>
             <Checkbox
               selected={isSelected}
-              onClick={() => { }}
+              onClick={() => {}}
               disabled={false}
               size="small"
               selectCheck
@@ -349,7 +416,9 @@ const OptionComponent = (props: any) => {
           </CheckboxOptionContainer>
         ) : (
           <OptionLabelContainer smallText={smallText} addPadding={addPadding}>
-            {data.icon && <IconWrapper height="14px" width="14px" icon={data.icon} />}
+            {data.icon && (
+              <IconWrapper height="14px" width="14px" icon={data.icon} />
+            )}
             {label}
           </OptionLabelContainer>
         )}
@@ -447,8 +516,10 @@ export const Select = <T extends SelectVariation>({
   selectOptions,
   readOnly,
   onSelectChange,
-  selectValue, isMulti = true,
-  isCheckBox, placeholder,
+  selectValue,
+  isMulti = true,
+  isCheckBox,
+  placeholder,
   isXL = false,
   isClearable = false,
   isSearchable = false,
@@ -487,13 +558,19 @@ export const Select = <T extends SelectVariation>({
         styles={colourStyles}
         controlShouldRenderValue={showValue}
         isClearable={isClearable}
-        placeholder={<div className="react-select__placeholder">{placeholder}</div>}
+        placeholder={
+          <div className="react-select__placeholder">{placeholder}</div>
+        }
         closeMenuOnSelect={!isMulti}
+        blurInputOnSelect={!isMulti}
         hideSelectedOptions={false}
         onInputChange={(e) => onInputChange && onInputChange(e)}
         components={{
           Option: (props) => OptionComponent({
-            ...props, readOnly, isCheckBox, smallText,
+            ...props,
+            readOnly,
+            isCheckBox,
+            smallText,
           }),
           IndicatorSeparator: () => null,
           ClearIndicator: (props) => ClearIndicator(
@@ -522,7 +599,9 @@ export const Select = <T extends SelectVariation>({
       />
       {error && errorMessage && (
         <ErrorMessageContainer>
-          <Text size="12-Regular" color={theme.colors.system.RED}>{errorMessage}</Text>
+          <Text size="12-Regular" color={theme.colors.system.RED}>
+            {errorMessage}
+          </Text>
         </ErrorMessageContainer>
       )}
     </SelectWrapper>

@@ -18,6 +18,7 @@ export const Secondary = Template.bind({});
 export const CustomSize = Template.bind({});
 export const Hover = Template.bind({});
 export const BackgroundHover = Template.bind({});
+export const Mobile = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
@@ -47,4 +48,9 @@ BackgroundHover.args = {
   hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
   background: true,
+};
+
+Mobile.args = {
+  isMobile: true,
+  icon: <CopyStandard />,
 };
