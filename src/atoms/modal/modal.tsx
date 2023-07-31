@@ -14,6 +14,7 @@ import {
   ModalHeaderContainer,
   CloseButton,
   HeaderAndIconContainer,
+  CloseWrapper,
 } from './styles';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
 
@@ -62,8 +63,23 @@ export const ModalBase: FC<ModalBaseProps> = ({
           maxWidth={maxWidth}
           noHover
         >
+          <CloseWrapper>
+            <CloseButton>
+              <IconWrapper
+                onClick={(e) => {
+                  if (!closeFn) return;
+                  setReplay(true);
+                  setTimeout(() => closeFn(e), 150);
+                }}
+                cursor="pointer"
+                icon={<FloatingClose />}
+                fill={theme.contrastColor.HIGH_CONTRAST}
+                height="18px"
+                width="18px"
+              />
+            </CloseButton>
+          </CloseWrapper>
           <>
-
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
@@ -77,20 +93,6 @@ export const ModalBase: FC<ModalBaseProps> = ({
                 ) : headerText)}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
-              <CloseButton>
-                <IconWrapper
-                  onClick={(e) => {
-                    if (!closeFn) return;
-                    setReplay(true);
-                    setTimeout(() => closeFn(e), 150);
-                  }}
-                  cursor="pointer"
-                  icon={<FloatingClose />}
-                  fill={theme.contrastColor.HIGH_CONTRAST}
-                  height="18px"
-                  width="18px"
-                />
-              </CloseButton>
             </ModalHeaderContainer>
             {modalContent}
           </>

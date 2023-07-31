@@ -16,6 +16,7 @@ export const ModalContainer = Styled.div<{ hasSidebar?:boolean }>`
 `;
 
 export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' | 'double', maxWidth?: string, isMobile?: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -34,8 +35,13 @@ export const ModalBody = Styled(Card)<{ replay: boolean, modalVariant: 'single' 
   ` : css`
     position: relative;
     max-width: ${(maxWidth || (modalVariant === 'double' ? '748px' : '360px'))};
-    max-height: 650px;
   `)}
+`;
+
+export const CloseWrapper = Styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
 
 export const CloseButton = Styled.div`
@@ -60,6 +66,7 @@ export const ModalHeaderContainer = Styled.div`
 
 export const HeaderAndIconContainer = Styled(Row)`
   gap: 8px;
+  align-items: center;
 `;
 
 export const ModalContentContainer = Styled.div`
