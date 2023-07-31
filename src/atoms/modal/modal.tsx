@@ -27,11 +27,12 @@ export const ModalBase: FC<ModalBaseProps> = ({
   additionalTinyAction,
   modalContent,
   maxWidth,
+  hasSidebar = true,
 }) => {
   const [replay, setReplay] = useState(false);
   const theme = localTheme();
   const breakpoint = useBreakpoint();
-  const isMobile = breakpoint <= Breakpoints.Tablet;
+  const isMobile = breakpoint <= Breakpoints.Phone;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -44,7 +45,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
     <>
       <Overlay />
       <ModalContainer
-        isMobile={isMobile}
+        hasSidebar={hasSidebar}
         onClick={(e) => {
           e.stopPropagation();
           if (!closeFn || !closeOnOverlayClick) return;
@@ -53,6 +54,8 @@ export const ModalBase: FC<ModalBaseProps> = ({
         }}
       >
         <ModalBody
+          padding="25px 18px"
+          isMobile={isMobile}
           onClick={(e) => e.stopPropagation()}
           replay={replay}
           modalVariant={modalVariant}
@@ -60,33 +63,34 @@ export const ModalBase: FC<ModalBaseProps> = ({
           noHover
         >
           <>
-            <CloseButton>
-              <IconWrapper
-                onClick={(e) => {
-                  if (!closeFn) return;
-                  setReplay(true);
-                  setTimeout(() => closeFn(e), 150);
-                }}
-                cursor="pointer"
-                icon={<FloatingClose />}
-                fill={theme.contrastColor.HIGH_CONTRAST}
-                height="18px"
-                width="18px"
-              />
-            </CloseButton>
+
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
-                {headerText && (
+                {headerText && (typeof headerText === 'string' ? (
                   <Text
                     size="16-Regular"
                     color={theme.textShades.SHADE_MINUS_3}
                   >
                     {headerText}
                   </Text>
-                )}
+                ) : headerText)}
               </HeaderAndIconContainer>
               {additionalTinyAction && additionalTinyAction}
+              <CloseButton>
+                <IconWrapper
+                  onClick={(e) => {
+                    if (!closeFn) return;
+                    setReplay(true);
+                    setTimeout(() => closeFn(e), 150);
+                  }}
+                  cursor="pointer"
+                  icon={<FloatingClose />}
+                  fill={theme.contrastColor.HIGH_CONTRAST}
+                  height="18px"
+                  width="18px"
+                />
+              </CloseButton>
             </ModalHeaderContainer>
             {modalContent}
           </>

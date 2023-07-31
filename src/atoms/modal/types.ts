@@ -11,7 +11,7 @@ export interface ModalData {
 }
 
 export type ModalBaseProps = {
-  headerText?: string
+  headerText?: string | JSX.Element
   headerIcon?: ReactElement
   headerIconFill?: string
   modalVariant: 'single' | 'double'
@@ -20,6 +20,7 @@ export type ModalBaseProps = {
   closeFn?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>
   additionalTinyAction?: ReactElement
   maxWidth?: string
+  hasSidebar?:boolean
 };
 export type ExampleModalProps = {
   latest: ModalData[];

@@ -43,7 +43,13 @@ const Template: Story<TemplateSizes> = (args) => {
       {list.map((item) => (
         <Row gap="4px" alignItems="center">
           <Text size={item}>Some text:</Text>
-          <Subscript key={item} size={item} beforeSubscript="0.0" subscript="6" afterSubscript="452" />
+          <Subscript
+            key={item}
+            size={item}
+            beforeSubscript="0.0"
+            subscript="6"
+            afterSubscript="452"
+          />
         </Row>
       ))}
     </>

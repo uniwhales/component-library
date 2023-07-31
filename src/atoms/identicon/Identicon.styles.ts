@@ -1,10 +1,9 @@
-import { DeviceWidth } from '../../hooks/useBreakpoint';
 import { Styled } from '../../theme';
 import { IdenticonProps } from './types';
 
 export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'size'>>`
-  height: ${({ size }) => (size === 'big' ? '36px' : '24px')};
-  width: ${({ size }) => (size === 'big' ? '36px' : '24px')};
+  height: ${({ size }) => (size === 'big' ? '36px' : size === 'small' ? '24px' : '18px')};
+  width: ${({ size }) => (size === 'big' ? '36px' : size === 'small' ? '24px' : '18px')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,12 +15,6 @@ export const Container = Styled.div<Pick<IdenticonProps, 'hasInteraction' | 'siz
   &:hover {
     border: ${({ hasInteraction, theme }) => hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
   };
-   /* On mobile we do not have hover effects   */
-  @media (min-width: ${DeviceWidth.tablet}) {
-    :hover {
-      border: ${({ hasInteraction, theme }) => hasInteraction && `2px solid ${theme.colors.primary.MAIN_BLUE}`};
-    };
-  }
 `;
 
 export const SelectableIdenticonWrapper = Styled.div`
