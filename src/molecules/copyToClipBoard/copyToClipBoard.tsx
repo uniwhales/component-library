@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Text } from '../../atoms/texts/text';
 import { Styled } from '../../theme';
 import { IconWrapper } from '../../atoms/icons/iconWrapper';
@@ -7,6 +7,7 @@ import { shortenAddressTo11Chars, shortenAddressWithTwoParts } from '../../utils
 import { BodySizes, HeaderSizes } from '../../atoms/texts/types';
 import { SimpleTooltip } from '../tooltip/TooltipComponent';
 import { InnerContainer } from '../../organisms/dropdownSlider/styles';
+import { useClickOutside } from '../../utils/useClickOutside';
 
 enum TEXT {
   COPY = 'Copy to clipboard',
@@ -26,6 +27,7 @@ export interface CopyToClipBoardProps {
   iconLeft?: boolean;
   textSize?: BodySizes | HeaderSizes
   iconSize?: string;
+  isMobile?: boolean;
   copyCb?: (text: string) => void; // callback to be called when copy is clicked
 }
 
@@ -54,11 +56,14 @@ export const CopyToClipBoard = ({
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
   */
-  hoverColor, background, iconLeft, addressId,
+  hoverColor, background, iconLeft, addressId, isMobile = false,
 }: CopyToClipBoardProps) => {
   const [copy, setCopy] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState(color);
   const [currentLinkColor, setCurrentLinkColor] = useState(color);
+  const [mobileTooltipOpen, setMobileTooltipOpen] = useState(false);
+  const clickRef = useRef(null);
+  useClickOutside(clickRef, () => setMobileTooltipOpen(false));
 
   const copyText = () => {
     setCopy(true);
@@ -67,6 +72,7 @@ export const CopyToClipBoard = ({
       .then(() => {
         setTimeout(() => {
           setCopy(false);
+          setMobileTooltipOpen(false);
         }, 3000);
       });
   };
@@ -97,14 +103,26 @@ export const CopyToClipBoard = ({
     </CopyTextLabel>
   );
 
+  const MobileTooltip = (
+    <SimpleTooltip position="top" allowPointerEvents label={TEXT.COPIED} opened={mobileTooltipOpen}>
+      <InnerContainer>
+        {copyIcon}
+      </InnerContainer>
+    </SimpleTooltip>
+  );
+
+  const DesktopTooltip = (
+    <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
+      <InnerContainer>
+        {copyIcon}
+      </InnerContainer>
+    </SimpleTooltip>
+  );
+
   return (
-    <Wrapper>
+    <Wrapper ref={clickRef} onClick={() => setMobileTooltipOpen(true)}>
       {!iconLeft && TextLabel}
-      <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
-        <InnerContainer>
-          {copyIcon}
-        </InnerContainer>
-      </SimpleTooltip>
+      {isMobile ? MobileTooltip : DesktopTooltip}
       {iconLeft && TextLabel}
       {link && (
         <Background hoverColor={hoverColor} background={background}>

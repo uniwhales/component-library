@@ -22,6 +22,7 @@ const bodySizes: BodySizes[] = [
 
 interface TemplateSizes {
   list: BodySizes[],
+  isMobile?: boolean,
 }
 
 export default {
@@ -37,13 +38,21 @@ export default {
 } as ComponentMeta<typeof Subscript>;
 
 const Template: Story<TemplateSizes> = (args) => {
-  const { list } = args;
+  const { list, isMobile } = args;
   return (
     <>
       {list.map((item) => (
         <Row gap="4px" alignItems="center">
           <Text size={item}>Some text:</Text>
-          <Subscript key={item} size={item} beforeSubscript="0.0" subscript="6" afterSubscript="452" />
+          <Subscript
+            key={item}
+            size={item}
+            beforeSubscript="0.0"
+            subscript="6"
+            afterSubscript="452"
+            label="Some label"
+            isMobile={isMobile}
+          />
         </Row>
       ))}
     </>
@@ -51,6 +60,7 @@ const Template: Story<TemplateSizes> = (args) => {
 };
 
 export const BodyText = Template.bind({});
+export const Mobile = Template.bind({});
 
 BodyText.args = {
   list: bodySizes,
@@ -58,4 +68,9 @@ BodyText.args = {
 
 BodyText.parameters = {
   backgrounds: { default: 'dark' },
+};
+
+Mobile.args = {
+  list: bodySizes,
+  isMobile: true,
 };
