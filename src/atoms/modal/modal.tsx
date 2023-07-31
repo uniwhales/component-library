@@ -56,7 +56,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
         }}
       >
         <ModalBody
-          padding="25px 18px"
+          padding="36px"
           isMobile={isMobile}
           onClick={(e) => e.stopPropagation()}
           replay={replay}
