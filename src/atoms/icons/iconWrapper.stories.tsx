@@ -154,7 +154,7 @@ import {
   Follow, PlanetStandard, MultipartFormStandard, Timestamp, TrendingFlame,
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
-  YourFeed, Configure, CieloLogoTyped, WalletConnect, BaseColor,
+  YourFeed, Configure, CieloLogoTyped, WalletConnect, BaseColor, DiscordStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -409,6 +409,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Chain Scan" icon={<ChainScan />} />
     <IconWrapper name="Follow" icon={<Follow />} />
     <IconWrapper name="info" icon={<InfoStandard />} />
+    <IconWrapper name="Discord" icon={<DiscordStandard />} />
   </>
 );
 

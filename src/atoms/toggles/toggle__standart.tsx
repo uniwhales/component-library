@@ -8,6 +8,7 @@ export interface ToggleProps {
   label?:string
   size?: 'standard' | 'small'
   disabled?: boolean;
+  labelColor?: string;
 }
 const Wrapper = Styled.div`
   display: flex;
@@ -61,7 +62,7 @@ const FakeInput = Styled.input<{ size:any }>`
   }
 `;
 export const ToggleAtom = ({
-  isOn, onClick, label, size = 'standard', disabled,
+  isOn, onClick, label, size = 'standard', disabled, labelColor,
 }:ToggleProps) => {
   const theme = localTheme();
   return (
@@ -70,7 +71,7 @@ export const ToggleAtom = ({
         <FakeInput disabled={disabled} size={size} type="checkbox" checked={isOn} onChange={onClick} />
         <Toggle disabled={!!disabled} size={size} />
       </Switcher>
-      {label && <Text color={disabled ? theme.textShades.SHADE_MINUS_1 : theme.textShades.SHADE_MINUS_3} size="14-Regular">{label}</Text>}
+      {label && <Text color={disabled ? theme.textShades.SHADE_MINUS_1 : labelColor ?? theme.textShades.SHADE_MINUS_3} size="14-Regular">{label}</Text>}
     </Wrapper>
   );
 };

@@ -14,8 +14,10 @@ import {
   ModalHeaderContainer,
   CloseButton,
   HeaderAndIconContainer,
+  CloseWrapper,
 } from './styles';
 import useBreakpoint, { Breakpoints } from '../../hooks/useBreakpoint';
+import { Column } from '../common/flex';
 
 export const ModalBase: FC<ModalBaseProps> = ({
   closeFn,
@@ -54,7 +56,7 @@ export const ModalBase: FC<ModalBaseProps> = ({
         }}
       >
         <ModalBody
-          padding="25px 18px"
+          padding="36px"
           isMobile={isMobile}
           onClick={(e) => e.stopPropagation()}
           replay={replay}
@@ -62,8 +64,23 @@ export const ModalBase: FC<ModalBaseProps> = ({
           maxWidth={maxWidth}
           noHover
         >
-          <>
-
+          <CloseWrapper>
+            <CloseButton>
+              <IconWrapper
+                onClick={(e) => {
+                  if (!closeFn) return;
+                  setReplay(true);
+                  setTimeout(() => closeFn(e), 150);
+                }}
+                cursor="pointer"
+                icon={<FloatingClose />}
+                fill={theme.contrastColor.HIGH_CONTRAST}
+                height="18px"
+                width="18px"
+              />
+            </CloseButton>
+          </CloseWrapper>
+          <Column>
             <ModalHeaderContainer>
               <HeaderAndIconContainer>
                 {headerIcon && <IconWrapper fill={headerIconFill} height="26px" width="26px" icon={headerIcon} />}
@@ -76,24 +93,14 @@ export const ModalBase: FC<ModalBaseProps> = ({
                   </Text>
                 ) : headerText)}
               </HeaderAndIconContainer>
-              {additionalTinyAction && additionalTinyAction}
-              <CloseButton>
-                <IconWrapper
-                  onClick={(e) => {
-                    if (!closeFn) return;
-                    setReplay(true);
-                    setTimeout(() => closeFn(e), 150);
-                  }}
-                  cursor="pointer"
-                  icon={<FloatingClose />}
-                  fill={theme.contrastColor.HIGH_CONTRAST}
-                  height="18px"
-                  width="18px"
-                />
-              </CloseButton>
+              {additionalTinyAction && (
+                <div>
+                  {additionalTinyAction}
+                </div>
+              )}
             </ModalHeaderContainer>
             {modalContent}
-          </>
+          </Column>
         </ModalBody>
       </ModalContainer>
     </>

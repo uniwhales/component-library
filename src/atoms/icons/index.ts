@@ -110,6 +110,7 @@ export * from './generalIcons/filledStyle/Follow';
 export * from './generalIcons/filledStyle/TrendingFlame';
 export * from './generalIcons/filledStyle/CieloLogoTyped';
 export * from './generalIcons/filledStyle/BidStandard';
+export * from './generalIcons/filledStyle/DiscordStandard';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';

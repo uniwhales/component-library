@@ -15,7 +15,7 @@ export const ModalContent = Styled(Card)<{ modalVariant: 'single' | 'double', is
   position: relative;
   gap: 6px;
   max-width: ${({ modalVariant, isMobile }) => (isMobile && (modalVariant === 'double' ? '748px' : '360px'))};
-  max-height: ${({ isMobile }) => !isMobile && '650px'};
+  max-height: ${({ isMobile }) => !isMobile && '750px'};
   box-shadow: ${({ theme }) => theme.dropShadow.REGULAR};
   background: ${({ theme }) => theme.containerAndCardShades.SHADE_PLUS_3};
   text-align: left;
