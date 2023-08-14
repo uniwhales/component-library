@@ -124,14 +124,23 @@ export const NumInputContainer = Styled.div<{ value: string, max: number, hasErr
   cursor: pointer;
 `;
 export const NumInput = Styled.input`
-box-sizing: border-box;
+  font-size: 16px; /* Set the font size to a reasonable value to prevent zooming */
+  touch-action: manipulation; /* Disable double-tap-to-zoom and pinch-to-zoom actions */
+  user-select: none; /* Disable text selection on the input */
+
+  /* Optional: Disable other interactions like copy, cut, and paste */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  box-sizing: border-box;
   border: none;
   background: transparent;
   outline: none;
   width: 60px;
   color: ${({ theme }) => theme.textShades.SHADE_MINUS_3};
   font-weight: 400;
-  font-size: 14px;
   line-height: 18px;
   ::-webkit-inner-spin-button{
   -webkit-appearance: none;
