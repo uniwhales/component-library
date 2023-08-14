@@ -236,6 +236,7 @@ export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
 export { Punk } from './miscIcons/Punk';
 export * from './miscIcons/NotOptimisedForModalSvg';
+export * from './miscIcons/PoweredByCoinGecko';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed
