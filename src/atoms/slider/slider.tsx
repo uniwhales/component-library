@@ -82,7 +82,6 @@ export const Slider: FC<SliderProps> = ({
           hasError={hasError}
         >
           <NumInput
-            autoFocus
             type="number"
             max={max}
             value={value}
