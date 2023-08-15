@@ -111,6 +111,7 @@ export * from './generalIcons/filledStyle/TrendingFlame';
 export * from './generalIcons/filledStyle/CieloLogoTyped';
 export * from './generalIcons/filledStyle/BidStandard';
 export * from './generalIcons/filledStyle/DiscordStandard';
+export * from './generalIcons/filledStyle/StatsStandard';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
