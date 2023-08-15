@@ -29,6 +29,7 @@ export interface CopyToClipBoardProps {
   iconSize?: string;
   isMobile?: boolean;
   copyCb?: (text: string) => void; // callback to be called when copy is clicked
+  allowTextClick?: boolean;
 }
 
 const Wrapper = Styled.div`
@@ -51,7 +52,7 @@ const CopyTextLabel = Styled.div`
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
-  linkIcon, link, textSize, iconSize, copyCb,
+  linkIcon, link, textSize, iconSize, copyCb, allowTextClick = false,
   /*
     When hoverColor is provided without background only the icon highlights
     When hoverColor is provided with background only the background highlights
@@ -98,7 +99,11 @@ export const CopyToClipBoard = ({
   );
 
   const TextLabel = (
-    <CopyTextLabel>
+    <CopyTextLabel onClick={() => {
+      if (!allowTextClick) return;
+      copyText();
+    }}
+    >
       <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
     </CopyTextLabel>
   );
