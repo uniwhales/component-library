@@ -131,7 +131,7 @@ export const CopyToClipBoard = ({
 
   const TextAndIconTooltip = (
     <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
-      <InnerContainer>
+      <InnerContainer gap="4px">
         {TextLabel}
         {copyIcon}
       </InnerContainer>
