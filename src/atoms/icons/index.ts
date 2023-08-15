@@ -111,6 +111,7 @@ export * from './generalIcons/filledStyle/TrendingFlame';
 export * from './generalIcons/filledStyle/CieloLogoTyped';
 export * from './generalIcons/filledStyle/BidStandard';
 export * from './generalIcons/filledStyle/DiscordStandard';
+export * from './generalIcons/filledStyle/StatsStandard';
 
 // navigationIcons
 export * from './navigationIcons/ArrowDownIcon';
@@ -236,6 +237,7 @@ export { NftIcon } from './miscIcons/NftIcon';
 export { Magic } from './miscIcons/Magic';
 export { Punk } from './miscIcons/Punk';
 export * from './miscIcons/NotOptimisedForModalSvg';
+export * from './miscIcons/PoweredByCoinGecko';
 // placeholder
 export { Identicon } from './placeholder/Identicon';
 // feed

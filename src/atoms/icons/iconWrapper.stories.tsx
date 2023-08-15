@@ -155,6 +155,8 @@ import {
   OnboardingRegistration1, OnboardingRegistration2, OnboardingRegistration3,
   OnboardingRegistration4, OnboardingRegistration5, OnboardingRegistration6,
   YourFeed, Configure, CieloLogoTyped, WalletConnect, BaseColor, DiscordStandard,
+  PoweredByCoinGecko,
+  StatsStandard,
 } from '.';
 import { Collection } from './generalIcons/filledStyle/Collection';
 import { EvmosColor } from './chains/fullColorStyle/EvmosColor';
@@ -323,6 +325,7 @@ const Template5: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Magic" icon={<Magic />} />
     <IconWrapper name="Punk" icon={<Punk />} />
     <IconWrapper name="Mobile" height="" width="" icon={<NotOptimisedForModalSvg />} />
+    <IconWrapper name="PoweredByCoinGecko" icon={<PoweredByCoinGecko />} />
   </>
 );
 
@@ -410,6 +413,7 @@ const Template7: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Follow" icon={<Follow />} />
     <IconWrapper name="info" icon={<InfoStandard />} />
     <IconWrapper name="Discord" icon={<DiscordStandard />} />
+    <IconWrapper name="Stats" icon={<StatsStandard />} />
   </>
 );
 

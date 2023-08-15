@@ -19,6 +19,7 @@ export const CustomSize = Template.bind({});
 export const Hover = Template.bind({});
 export const BackgroundHover = Template.bind({});
 export const Mobile = Template.bind({});
+export const TextAndIcon = Template.bind({});
 
 Primary.parameters = {
   backgrounds: { default: 'dark' },
@@ -40,6 +41,13 @@ CustomSize.args = {
 Hover.args = {
   hoverColor: Theme.colors.primary.MANGO,
   link: 'sdad',
+};
+
+TextAndIcon.args = {
+  icon: <CopyStandard />,
+  text: 'Text is clickable',
+  allowTextClick: true,
+  hoverColor: Theme.colors.primary.MANGO,
 };
 
 BackgroundHover.args = {
