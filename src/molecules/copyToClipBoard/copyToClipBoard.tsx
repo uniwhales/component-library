@@ -47,8 +47,9 @@ const Background = Styled.div<Pick<CopyToClipBoardProps, 'background' | 'hoverCo
     background-color: ${({ background, hoverColor }) => background && hoverColor && hoverColor};
   }
 `;
-const CopyTextLabel = Styled.div`
+const CopyTextLabel = Styled.div<{ allowTextClick?: boolean }>`
   white-space: nowrap;
+  cursor: ${({ allowTextClick }) => (allowTextClick ? 'pointer' : 'default')};
 `;
 export const CopyToClipBoard = ({
   text = '0xF592602a9454162760A68E77ceA826e4386Cc', walletCut, color, shortText, icon,
@@ -99,12 +100,16 @@ export const CopyToClipBoard = ({
   );
 
   const TextLabel = (
-    <CopyTextLabel onClick={() => {
-      if (!allowTextClick) return;
-      copyText();
-    }}
+    <CopyTextLabel
+      onMouseEnter={() => {
+        if (allowTextClick && hoverColor) setCurrentColor(hoverColor);
+      }}
+      onMouseLeave={() => {
+        if (allowTextClick && hoverColor) setCurrentColor(color);
+      }}
+      allowTextClick={allowTextClick}
     >
-      <Text color={color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
+      <Text color={allowTextClick ? currentColor : color} size={textSize ?? '14-Regular'}>{addressId ? shortenAddressWithTwoParts(text, addressId) : walletCut ? shortenAddressTo11Chars(text) : shortText ?? text}</Text>
     </CopyTextLabel>
   );
 
@@ -123,6 +128,23 @@ export const CopyToClipBoard = ({
       </InnerContainer>
     </SimpleTooltip>
   );
+
+  const TextAndIconTooltip = (
+    <SimpleTooltip position="top" allowPointerEvents label={(copy ? TEXT.COPIED : TEXT.COPY)}>
+      <InnerContainer>
+        {TextLabel}
+        {copyIcon}
+      </InnerContainer>
+    </SimpleTooltip>
+  );
+
+  if (allowTextClick) {
+    return (
+      <Wrapper ref={clickRef} onClick={() => setMobileTooltipOpen(true)}>
+        {TextAndIconTooltip}
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper ref={clickRef} onClick={() => setMobileTooltipOpen(true)}>
