@@ -193,6 +193,7 @@ import { NotOptimisedForModalSvg } from './miscIcons/NotOptimisedForModalSvg';
 import { FatUpArrowIcon } from './navigationIcons/FatArrowUpIcon';
 import { BidStandard } from './generalIcons/filledStyle/BidStandard';
 import { MantleColor } from './chains/fullColorStyle/MantleColor';
+import { OpBNBColor } from './chains/fullColorStyle/OpBNBColor';
 
 export default {
   title: 'Atoms/Icons',
@@ -277,7 +278,7 @@ const Template3: ComponentStory<typeof IconWrapper> = () => (
     <IconWrapper name="Binance" icon={<BinanceColor />} />
     <IconWrapper name="Curve" icon={<CurveColor />} />
     <IconWrapper name="Ethereum" icon={<EthereumColor />} />
-
+    <IconWrapper name="opBNB" icon={<OpBNBColor />} />
     <IconWrapper name="ZkSync" icon={<ZkSyncColor />} />
     <IconWrapper name="ZkEvm" icon={<ZkEvmColor />} />
     <IconWrapper name="Etherscan" icon={<EtherscanColor />} />
