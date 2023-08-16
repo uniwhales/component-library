@@ -222,7 +222,7 @@ export * from './chains/fullColorStyle/ZkEvm';
 export * from './chains/fullColorStyle/ZkSync';
 export * from './chains/fullColorStyle/MantleColor';
 export * from './chains/fullColorStyle/BaseColor';
-
+export * from './chains/fullColorStyle/OpBNBColor';
 // coins
 export { Dai } from './tokens/DAI';
 export { Doge } from './tokens/DOGE';
